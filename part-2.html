@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <title>English Grammar Practice</title>
+                <style>
+                    body { font-family: Arial, sans-serif; margin: 20px; }
+                    h1 { color: #4CAF50; }
+                    .question { margin-bottom: 15px; }
+                    .feedback { margin-top: 10px; font-weight: bold; }
+                    .correct { color: green; }
+                    .incorrect { color: red; }
+                </style>
+                <script>
+                    function checkAnswer(correctOption, explanation, questionIndex) {
+                        var radios = document.getElementsByName('q' + questionIndex);
+                        var feedbackDiv = document.getElementById('feedback-' + questionIndex);
+                        var selected = -1;
+                        for (var i = 0; i < radios.length; i++) {
+                            if (radios[i].checked) { selected = i; break; }
+                        }
+                        if (selected == correctOption) {
+                            feedbackDiv.innerHTML = '<span class="correct">Correct!</span> ' + explanation;
+                        } else {
+                            feedbackDiv.innerHTML = '<span class="incorrect">Incorrect!</span> ' + explanation;
+                        }
+                    }
+                </script>
+            </head>
+            <body>
+                <h1>English Grammar Practice</h1>
+                <p>Select the correct answer for each question. You'll see feedback and explanations.</p>
+                <div class="question">
+                    <p><strong>Question 1:</strong> The people ___ we invited to the party didn’t come.</p>
+                    <label>
+                        <input type="radio" name="q0" value="0" onclick="checkAnswer(1, '\'whom\' is used when referring to the object of a verb, like \'the people whom we invited\'.', 0)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q0" value="1" onclick="checkAnswer(1, '\'whom\' is used when referring to the object of a verb, like \'the people whom we invited\'.', 0)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q0" value="2" onclick="checkAnswer(1, '\'whom\' is used when referring to the object of a verb, like \'the people whom we invited\'.', 0)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q0" value="3" onclick="checkAnswer(1, '\'whom\' is used when referring to the object of a verb, like \'the people whom we invited\'.', 0)"> which
+                    </label><br>
+                    <div id="feedback-0" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 2:</strong> I left early ___ the meeting was boring.</p>
+                    <label>
+                        <input type="radio" name="q1" value="0" onclick="checkAnswer(0, '\'because\' is used to introduce a reason for leaving.', 1)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q1" value="1" onclick="checkAnswer(0, '\'because\' is used to introduce a reason for leaving.', 1)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q1" value="2" onclick="checkAnswer(0, '\'because\' is used to introduce a reason for leaving.', 1)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q1" value="3" onclick="checkAnswer(0, '\'because\' is used to introduce a reason for leaving.', 1)"> as
+                    </label><br>
+                    <div id="feedback-1" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 3:</strong> The city ___ we visited last summer is famous for its history.</p>
+                    <label>
+                        <input type="radio" name="q2" value="0" onclick="checkAnswer(3, '\'which\' refers to the city, a non-human noun.', 2)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q2" value="1" onclick="checkAnswer(3, '\'which\' refers to the city, a non-human noun.', 2)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q2" value="2" onclick="checkAnswer(3, '\'which\' refers to the city, a non-human noun.', 2)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q2" value="3" onclick="checkAnswer(3, '\'which\' refers to the city, a non-human noun.', 2)"> which
+                    </label><br>
+                    <div id="feedback-2" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 4:</strong> The restaurant ___ we went to was amazing.</p>
+                    <label>
+                        <input type="radio" name="q3" value="0" onclick="checkAnswer(3, '\'which\' is used for non-human objects or things, like \'the restaurant which we went to\'.', 3)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q3" value="1" onclick="checkAnswer(3, '\'which\' is used for non-human objects or things, like \'the restaurant which we went to\'.', 3)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q3" value="2" onclick="checkAnswer(3, '\'which\' is used for non-human objects or things, like \'the restaurant which we went to\'.', 3)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q3" value="3" onclick="checkAnswer(3, '\'which\' is used for non-human objects or things, like \'the restaurant which we went to\'.', 3)"> which
+                    </label><br>
+                    <div id="feedback-3" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 5:</strong> I wish I ___ the opportunity to meet the president.</p>
+                    <label>
+                        <input type="radio" name="q4" value="0" onclick="checkAnswer(1, '\'had\' is used to express regret about something that didn’t happen.', 4)"> have
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q4" value="1" onclick="checkAnswer(1, '\'had\' is used to express regret about something that didn’t happen.', 4)"> had
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q4" value="2" onclick="checkAnswer(1, '\'had\' is used to express regret about something that didn’t happen.', 4)"> would have
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q4" value="3" onclick="checkAnswer(1, '\'had\' is used to express regret about something that didn’t happen.', 4)"> could have
+                    </label><br>
+                    <div id="feedback-4" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 6:</strong> I wish I ___ him at the airport yesterday.</p>
+                    <label>
+                        <input type="radio" name="q5" value="0" onclick="checkAnswer(2, '\'had met\' is used for past regrets.', 5)"> meet
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q5" value="1" onclick="checkAnswer(2, '\'had met\' is used for past regrets.', 5)"> met
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q5" value="2" onclick="checkAnswer(2, '\'had met\' is used for past regrets.', 5)"> had met
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q5" value="3" onclick="checkAnswer(2, '\'had met\' is used for past regrets.', 5)"> would meet
+                    </label><br>
+                    <div id="feedback-5" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 7:</strong> He couldn’t attend the party ___ he was out of town.</p>
+                    <label>
+                        <input type="radio" name="q6" value="0" onclick="checkAnswer(2, '\'since\' is used to explain a reason with a time reference.', 6)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q6" value="1" onclick="checkAnswer(2, '\'since\' is used to explain a reason with a time reference.', 6)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q6" value="2" onclick="checkAnswer(2, '\'since\' is used to explain a reason with a time reference.', 6)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q6" value="3" onclick="checkAnswer(2, '\'since\' is used to explain a reason with a time reference.', 6)"> as
+                    </label><br>
+                    <div id="feedback-6" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 8:</strong> I don’t know the person ___ they are talking about.</p>
+                    <label>
+                        <input type="radio" name="q7" value="0" onclick="checkAnswer(0, '\'who\' is used to refer to the subject of a sentence, like \'the person who they are talking about\'.', 7)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q7" value="1" onclick="checkAnswer(0, '\'who\' is used to refer to the subject of a sentence, like \'the person who they are talking about\'.', 7)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q7" value="2" onclick="checkAnswer(0, '\'who\' is used to refer to the subject of a sentence, like \'the person who they are talking about\'.', 7)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q7" value="3" onclick="checkAnswer(0, '\'who\' is used to refer to the subject of a sentence, like \'the person who they are talking about\'.', 7)"> which
+                    </label><br>
+                    <div id="feedback-7" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 9:</strong> We wish he ___ been there to see it.</p>
+                    <label>
+                        <input type="radio" name="q8" value="0" onclick="checkAnswer(1, '\'had\' is used for expressing regret about a past event.', 8)"> has
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q8" value="1" onclick="checkAnswer(1, '\'had\' is used for expressing regret about a past event.', 8)"> had
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q8" value="2" onclick="checkAnswer(1, '\'had\' is used for expressing regret about a past event.', 8)"> would have
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q8" value="3" onclick="checkAnswer(1, '\'had\' is used for expressing regret about a past event.', 8)"> could have
+                    </label><br>
+                    <div id="feedback-8" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 10:</strong> They wish they ___ a bigger house.</p>
+                    <label>
+                        <input type="radio" name="q9" value="0" onclick="checkAnswer(1, '\'had\' is used to express a wish for a different present situation.', 9)"> have
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q9" value="1" onclick="checkAnswer(1, '\'had\' is used to express a wish for a different present situation.', 9)"> had
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q9" value="2" onclick="checkAnswer(1, '\'had\' is used to express a wish for a different present situation.', 9)"> could have
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q9" value="3" onclick="checkAnswer(1, '\'had\' is used to express a wish for a different present situation.', 9)"> would have
+                    </label><br>
+                    <div id="feedback-9" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 11:</strong> I wish they ___ more time to prepare for the test.</p>
+                    <label>
+                        <input type="radio" name="q10" value="0" onclick="checkAnswer(1, '\'had\' is used for past regrets.', 10)"> have
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q10" value="1" onclick="checkAnswer(1, '\'had\' is used for past regrets.', 10)"> had
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q10" value="2" onclick="checkAnswer(1, '\'had\' is used for past regrets.', 10)"> would have
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q10" value="3" onclick="checkAnswer(1, '\'had\' is used for past regrets.', 10)"> could have
+                    </label><br>
+                    <div id="feedback-10" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 12:</strong> The man ___ you spoke to is my uncle.</p>
+                    <label>
+                        <input type="radio" name="q11" value="0" onclick="checkAnswer(1, '\'whom\' is used when referring to the object of a verb or preposition, as in \'the man whom you spoke to\'.', 11)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q11" value="1" onclick="checkAnswer(1, '\'whom\' is used when referring to the object of a verb or preposition, as in \'the man whom you spoke to\'.', 11)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q11" value="2" onclick="checkAnswer(1, '\'whom\' is used when referring to the object of a verb or preposition, as in \'the man whom you spoke to\'.', 11)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q11" value="3" onclick="checkAnswer(1, '\'whom\' is used when referring to the object of a verb or preposition, as in \'the man whom you spoke to\'.', 11)"> which
+                    </label><br>
+                    <div id="feedback-11" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 13:</strong> They wish they ___ accepted the offer when it was given to them.</p>
+                    <label>
+                        <input type="radio" name="q12" value="0" onclick="checkAnswer(1, '\'had\' expresses a past regret about something that didn’t happen.', 12)"> have
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q12" value="1" onclick="checkAnswer(1, '\'had\' expresses a past regret about something that didn’t happen.', 12)"> had
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q12" value="2" onclick="checkAnswer(1, '\'had\' expresses a past regret about something that didn’t happen.', 12)"> would have
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q12" value="3" onclick="checkAnswer(1, '\'had\' expresses a past regret about something that didn’t happen.', 12)"> could have
+                    </label><br>
+                    <div id="feedback-12" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 14:</strong> The person ___ lives next door is very friendly.</p>
+                    <label>
+                        <input type="radio" name="q13" value="0" onclick="checkAnswer(0, '\'who\' refers to the subject of the sentence, as in \'the person who lives next door\'.', 13)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q13" value="1" onclick="checkAnswer(0, '\'who\' refers to the subject of the sentence, as in \'the person who lives next door\'.', 13)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q13" value="2" onclick="checkAnswer(0, '\'who\' refers to the subject of the sentence, as in \'the person who lives next door\'.', 13)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q13" value="3" onclick="checkAnswer(0, '\'who\' refers to the subject of the sentence, as in \'the person who lives next door\'.', 13)"> which
+                    </label><br>
+                    <div id="feedback-13" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 15:</strong> The woman ___ car was parked outside is my neighbor.</p>
+                    <label>
+                        <input type="radio" name="q14" value="0" onclick="checkAnswer(2, '\'whose\' shows possession, as in \'the woman whose car was parked outside\'.', 14)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q14" value="1" onclick="checkAnswer(2, '\'whose\' shows possession, as in \'the woman whose car was parked outside\'.', 14)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q14" value="2" onclick="checkAnswer(2, '\'whose\' shows possession, as in \'the woman whose car was parked outside\'.', 14)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q14" value="3" onclick="checkAnswer(2, '\'whose\' shows possession, as in \'the woman whose car was parked outside\'.', 14)"> which
+                    </label><br>
+                    <div id="feedback-14" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 16:</strong> I know the man ___ house is on the corner.</p>
+                    <label>
+                        <input type="radio" name="q15" value="0" onclick="checkAnswer(2, '\'whose\' is used to indicate possession, as in \'the man whose house is on the corner\'.', 15)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q15" value="1" onclick="checkAnswer(2, '\'whose\' is used to indicate possession, as in \'the man whose house is on the corner\'.', 15)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q15" value="2" onclick="checkAnswer(2, '\'whose\' is used to indicate possession, as in \'the man whose house is on the corner\'.', 15)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q15" value="3" onclick="checkAnswer(2, '\'whose\' is used to indicate possession, as in \'the man whose house is on the corner\'.', 15)"> which
+                    </label><br>
+                    <div id="feedback-15" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 17:</strong> She wishes she ___ more money to buy the dress.</p>
+                    <label>
+                        <input type="radio" name="q16" value="0" onclick="checkAnswer(1, '\'had\' refers to a hypothetical situation in the present or past.', 16)"> has
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q16" value="1" onclick="checkAnswer(1, '\'had\' refers to a hypothetical situation in the present or past.', 16)"> had
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q16" value="2" onclick="checkAnswer(1, '\'had\' refers to a hypothetical situation in the present or past.', 16)"> will have
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q16" value="3" onclick="checkAnswer(1, '\'had\' refers to a hypothetical situation in the present or past.', 16)"> could have
+                    </label><br>
+                    <div id="feedback-16" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 18:</strong> The city ___ he lives in is very beautiful.</p>
+                    <label>
+                        <input type="radio" name="q17" value="0" onclick="checkAnswer(3, '\'which\' refers to the city, a non-human thing.', 17)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q17" value="1" onclick="checkAnswer(3, '\'which\' refers to the city, a non-human thing.', 17)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q17" value="2" onclick="checkAnswer(3, '\'which\' refers to the city, a non-human thing.', 17)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q17" value="3" onclick="checkAnswer(3, '\'which\' refers to the city, a non-human thing.', 17)"> which
+                    </label><br>
+                    <div id="feedback-17" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 19:</strong> The meeting was delayed ___ the technical issues.</p>
+                    <label>
+                        <input type="radio" name="q18" value="0" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'the technical issues\'.', 18)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q18" value="1" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'the technical issues\'.', 18)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q18" value="2" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'the technical issues\'.', 18)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q18" value="3" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'the technical issues\'.', 18)"> as
+                    </label><br>
+                    <div id="feedback-18" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 20:</strong> He was late ___ the traffic was terrible.</p>
+                    <label>
+                        <input type="radio" name="q19" value="0" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase, like \'the traffic\'.', 19)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q19" value="1" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase, like \'the traffic\'.', 19)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q19" value="2" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase, like \'the traffic\'.', 19)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q19" value="3" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase, like \'the traffic\'.', 19)"> as
+                    </label><br>
+                    <div id="feedback-19" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 21:</strong> The woman ___ works in the hospital is my aunt.</p>
+                    <label>
+                        <input type="radio" name="q20" value="0" onclick="checkAnswer(0, '\'who\' refers to the subject of the sentence, as in \'the woman who works in the hospital\'.', 20)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q20" value="1" onclick="checkAnswer(0, '\'who\' refers to the subject of the sentence, as in \'the woman who works in the hospital\'.', 20)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q20" value="2" onclick="checkAnswer(0, '\'who\' refers to the subject of the sentence, as in \'the woman who works in the hospital\'.', 20)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q20" value="3" onclick="checkAnswer(0, '\'who\' refers to the subject of the sentence, as in \'the woman who works in the hospital\'.', 20)"> which
+                    </label><br>
+                    <div id="feedback-20" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 22:</strong> She is always tired ___ she works two jobs.</p>
+                    <label>
+                        <input type="radio" name="q21" value="0" onclick="checkAnswer(0, '\'because\' introduces a reason for being tired.', 21)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q21" value="1" onclick="checkAnswer(0, '\'because\' introduces a reason for being tired.', 21)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q21" value="2" onclick="checkAnswer(0, '\'because\' introduces a reason for being tired.', 21)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q21" value="3" onclick="checkAnswer(0, '\'because\' introduces a reason for being tired.', 21)"> as
+                    </label><br>
+                    <div id="feedback-21" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 23:</strong> I took an umbrella ___ it might rain later.</p>
+                    <label>
+                        <input type="radio" name="q22" value="0" onclick="checkAnswer(3, '\'as\' is used to show a reason for taking the umbrella.', 22)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q22" value="1" onclick="checkAnswer(3, '\'as\' is used to show a reason for taking the umbrella.', 22)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q22" value="2" onclick="checkAnswer(3, '\'as\' is used to show a reason for taking the umbrella.', 22)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q22" value="3" onclick="checkAnswer(3, '\'as\' is used to show a reason for taking the umbrella.', 22)"> as
+                    </label><br>
+                    <div id="feedback-22" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 24:</strong> She was crying ___ she lost her favorite toy.</p>
+                    <label>
+                        <input type="radio" name="q23" value="0" onclick="checkAnswer(0, '\'because\' is used to introduce the reason for crying.', 23)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q23" value="1" onclick="checkAnswer(0, '\'because\' is used to introduce the reason for crying.', 23)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q23" value="2" onclick="checkAnswer(0, '\'because\' is used to introduce the reason for crying.', 23)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q23" value="3" onclick="checkAnswer(0, '\'because\' is used to introduce the reason for crying.', 23)"> as
+                    </label><br>
+                    <div id="feedback-23" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 25:</strong> She wishes she ___ gotten the promotion.</p>
+                    <label>
+                        <input type="radio" name="q24" value="0" onclick="checkAnswer(1, '\'had\' is used to express a regret about something in the past.', 24)"> has
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q24" value="1" onclick="checkAnswer(1, '\'had\' is used to express a regret about something in the past.', 24)"> had
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q24" value="2" onclick="checkAnswer(1, '\'had\' is used to express a regret about something in the past.', 24)"> would have
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q24" value="3" onclick="checkAnswer(1, '\'had\' is used to express a regret about something in the past.', 24)"> could have
+                    </label><br>
+                    <div id="feedback-24" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 26:</strong> I wish you ___ called me before the meeting.</p>
+                    <label>
+                        <input type="radio" name="q25" value="0" onclick="checkAnswer(1, '\'had\' is used to express a past regret.', 25)"> have
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q25" value="1" onclick="checkAnswer(1, '\'had\' is used to express a past regret.', 25)"> had
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q25" value="2" onclick="checkAnswer(1, '\'had\' is used to express a past regret.', 25)"> would have
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q25" value="3" onclick="checkAnswer(1, '\'had\' is used to express a past regret.', 25)"> could have
+                    </label><br>
+                    <div id="feedback-25" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 27:</strong> They wish they ___ that important decision differently.</p>
+                    <label>
+                        <input type="radio" name="q26" value="0" onclick="checkAnswer(2, '\'had made\' is used for expressing regret about a past action.', 26)"> make
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q26" value="1" onclick="checkAnswer(2, '\'had made\' is used for expressing regret about a past action.', 26)"> made
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q26" value="2" onclick="checkAnswer(2, '\'had made\' is used for expressing regret about a past action.', 26)"> had made
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q26" value="3" onclick="checkAnswer(2, '\'had made\' is used for expressing regret about a past action.', 26)"> would make
+                    </label><br>
+                    <div id="feedback-26" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 28:</strong> The boy ___ broke the window is my cousin.</p>
+                    <label>
+                        <input type="radio" name="q27" value="0" onclick="checkAnswer(0, '\'who\' is used to refer to the subject, like \'the boy who broke the window\'.', 27)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q27" value="1" onclick="checkAnswer(0, '\'who\' is used to refer to the subject, like \'the boy who broke the window\'.', 27)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q27" value="2" onclick="checkAnswer(0, '\'who\' is used to refer to the subject, like \'the boy who broke the window\'.', 27)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q27" value="3" onclick="checkAnswer(0, '\'who\' is used to refer to the subject, like \'the boy who broke the window\'.', 27)"> which
+                    </label><br>
+                    <div id="feedback-27" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 29:</strong> We should go to the park ___ it is sunny.</p>
+                    <label>
+                        <input type="radio" name="q28" value="0" onclick="checkAnswer(3, '\'as\' is used to explain a reason that is obvious or known.', 28)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q28" value="1" onclick="checkAnswer(3, '\'as\' is used to explain a reason that is obvious or known.', 28)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q28" value="2" onclick="checkAnswer(3, '\'as\' is used to explain a reason that is obvious or known.', 28)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q28" value="3" onclick="checkAnswer(3, '\'as\' is used to explain a reason that is obvious or known.', 28)"> as
+                    </label><br>
+                    <div id="feedback-28" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 30:</strong> The child ___ father is a doctor is very bright.</p>
+                    <label>
+                        <input type="radio" name="q29" value="0" onclick="checkAnswer(2, '\'whose\' is used to show possession, as in \'the child whose father is a doctor\'.', 29)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q29" value="1" onclick="checkAnswer(2, '\'whose\' is used to show possession, as in \'the child whose father is a doctor\'.', 29)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q29" value="2" onclick="checkAnswer(2, '\'whose\' is used to show possession, as in \'the child whose father is a doctor\'.', 29)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q29" value="3" onclick="checkAnswer(2, '\'whose\' is used to show possession, as in \'the child whose father is a doctor\'.', 29)"> which
+                    </label><br>
+                    <div id="feedback-29" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 31:</strong> I wish I ___ speak Spanish.</p>
+                    <label>
+                        <input type="radio" name="q30" value="0" onclick="checkAnswer(1, '\'could\' is used to express a present unreal wish.', 30)"> can
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q30" value="1" onclick="checkAnswer(1, '\'could\' is used to express a present unreal wish.', 30)"> could
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q30" value="2" onclick="checkAnswer(1, '\'could\' is used to express a present unreal wish.', 30)"> would
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q30" value="3" onclick="checkAnswer(1, '\'could\' is used to express a present unreal wish.', 30)"> will
+                    </label><br>
+                    <div id="feedback-30" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 32:</strong> The boy ___ you were talking to is my brother.</p>
+                    <label>
+                        <input type="radio" name="q31" value="0" onclick="checkAnswer(1, '\'whom\' is used when referring to the object of a verb, as in \'the boy whom you were talking to\'.', 31)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q31" value="1" onclick="checkAnswer(1, '\'whom\' is used when referring to the object of a verb, as in \'the boy whom you were talking to\'.', 31)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q31" value="2" onclick="checkAnswer(1, '\'whom\' is used when referring to the object of a verb, as in \'the boy whom you were talking to\'.', 31)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q31" value="3" onclick="checkAnswer(1, '\'whom\' is used when referring to the object of a verb, as in \'the boy whom you were talking to\'.', 31)"> which
+                    </label><br>
+                    <div id="feedback-31" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 33:</strong> The book ___ he gave me is fascinating.</p>
+                    <label>
+                        <input type="radio" name="q32" value="0" onclick="checkAnswer(3, '\'which\' refers to a thing, in this case \'the book\'.', 32)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q32" value="1" onclick="checkAnswer(3, '\'which\' refers to a thing, in this case \'the book\'.', 32)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q32" value="2" onclick="checkAnswer(3, '\'which\' refers to a thing, in this case \'the book\'.', 32)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q32" value="3" onclick="checkAnswer(3, '\'which\' refers to a thing, in this case \'the book\'.', 32)"> which
+                    </label><br>
+                    <div id="feedback-32" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 34:</strong> I haven’t been to the gym ___ I injured my back.</p>
+                    <label>
+                        <input type="radio" name="q33" value="0" onclick="checkAnswer(2, '\'since\' is used to refer to a specific time in the past.', 33)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q33" value="1" onclick="checkAnswer(2, '\'since\' is used to refer to a specific time in the past.', 33)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q33" value="2" onclick="checkAnswer(2, '\'since\' is used to refer to a specific time in the past.', 33)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q33" value="3" onclick="checkAnswer(2, '\'since\' is used to refer to a specific time in the past.', 33)"> as
+                    </label><br>
+                    <div id="feedback-33" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 35:</strong> We wish you ___ the competition.</p>
+                    <label>
+                        <input type="radio" name="q34" value="0" onclick="checkAnswer(1, '\'won\' is used for expressing a wish about a past event or situation.', 34)"> win
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q34" value="1" onclick="checkAnswer(1, '\'won\' is used for expressing a wish about a past event or situation.', 34)"> won
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q34" value="2" onclick="checkAnswer(1, '\'won\' is used for expressing a wish about a past event or situation.', 34)"> would win
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q34" value="3" onclick="checkAnswer(1, '\'won\' is used for expressing a wish about a past event or situation.', 34)"> could win
+                    </label><br>
+                    <div id="feedback-34" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 36:</strong> I have been tired ___ I started the new job.</p>
+                    <label>
+                        <input type="radio" name="q35" value="0" onclick="checkAnswer(2, '\'since\' is used for a starting point in time.', 35)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q35" value="1" onclick="checkAnswer(2, '\'since\' is used for a starting point in time.', 35)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q35" value="2" onclick="checkAnswer(2, '\'since\' is used for a starting point in time.', 35)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q35" value="3" onclick="checkAnswer(2, '\'since\' is used for a starting point in time.', 35)"> as
+                    </label><br>
+                    <div id="feedback-35" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 37:</strong> The shoes ___ she bought yesterday are very stylish.</p>
+                    <label>
+                        <input type="radio" name="q36" value="0" onclick="checkAnswer(3, '\'which\' refers to the shoes, a thing or object.', 36)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q36" value="1" onclick="checkAnswer(3, '\'which\' refers to the shoes, a thing or object.', 36)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q36" value="2" onclick="checkAnswer(3, '\'which\' refers to the shoes, a thing or object.', 36)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q36" value="3" onclick="checkAnswer(3, '\'which\' refers to the shoes, a thing or object.', 36)"> which
+                    </label><br>
+                    <div id="feedback-36" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 38:</strong> He wishes he ___ know more about the topic before the presentation.</p>
+                    <label>
+                        <input type="radio" name="q37" value="0" onclick="checkAnswer(2, '\'had\' expresses a past wish about knowledge or ability.', 37)"> does
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q37" value="1" onclick="checkAnswer(2, '\'had\' expresses a past wish about knowledge or ability.', 37)"> did
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q37" value="2" onclick="checkAnswer(2, '\'had\' expresses a past wish about knowledge or ability.', 37)"> had
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q37" value="3" onclick="checkAnswer(2, '\'had\' expresses a past wish about knowledge or ability.', 37)"> would
+                    </label><br>
+                    <div id="feedback-37" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 39:</strong> He wishes he ___ a better job.</p>
+                    <label>
+                        <input type="radio" name="q38" value="0" onclick="checkAnswer(1, '\'had\' is used in past wish scenarios, implying dissatisfaction with present conditions.', 38)"> has
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q38" value="1" onclick="checkAnswer(1, '\'had\' is used in past wish scenarios, implying dissatisfaction with present conditions.', 38)"> had
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q38" value="2" onclick="checkAnswer(1, '\'had\' is used in past wish scenarios, implying dissatisfaction with present conditions.', 38)"> will have
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q38" value="3" onclick="checkAnswer(1, '\'had\' is used in past wish scenarios, implying dissatisfaction with present conditions.', 38)"> could have
+                    </label><br>
+                    <div id="feedback-38" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 40:</strong> We wish she ___ more responsible in her job.</p>
+                    <label>
+                        <input type="radio" name="q39" value="0" onclick="checkAnswer(2, '\'were\' is used for unreal present or future wishes.', 39)"> is
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q39" value="1" onclick="checkAnswer(2, '\'were\' is used for unreal present or future wishes.', 39)"> was
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q39" value="2" onclick="checkAnswer(2, '\'were\' is used for unreal present or future wishes.', 39)"> were
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q39" value="3" onclick="checkAnswer(2, '\'were\' is used for unreal present or future wishes.', 39)"> had been
+                    </label><br>
+                    <div id="feedback-39" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 41:</strong> He got sick ___ the bad weather.</p>
+                    <label>
+                        <input type="radio" name="q40" value="0" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'the bad weather\'.', 40)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q40" value="1" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'the bad weather\'.', 40)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q40" value="2" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'the bad weather\'.', 40)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q40" value="3" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'the bad weather\'.', 40)"> as
+                    </label><br>
+                    <div id="feedback-40" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 42:</strong> I wish you ___ answered my email earlier.</p>
+                    <label>
+                        <input type="radio" name="q41" value="0" onclick="checkAnswer(1, '\'had\' is used to show regret about an action that didn’t happen.', 41)"> have
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q41" value="1" onclick="checkAnswer(1, '\'had\' is used to show regret about an action that didn’t happen.', 41)"> had
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q41" value="2" onclick="checkAnswer(1, '\'had\' is used to show regret about an action that didn’t happen.', 41)"> would have
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q41" value="3" onclick="checkAnswer(1, '\'had\' is used to show regret about an action that didn’t happen.', 41)"> could have
+                    </label><br>
+                    <div id="feedback-41" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 43:</strong> The game was postponed ___ heavy rain.</p>
+                    <label>
+                        <input type="radio" name="q42" value="0" onclick="checkAnswer(1, '\'because of\' is followed by a noun phrase, like \'heavy rain\'.', 42)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q42" value="1" onclick="checkAnswer(1, '\'because of\' is followed by a noun phrase, like \'heavy rain\'.', 42)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q42" value="2" onclick="checkAnswer(1, '\'because of\' is followed by a noun phrase, like \'heavy rain\'.', 42)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q42" value="3" onclick="checkAnswer(1, '\'because of\' is followed by a noun phrase, like \'heavy rain\'.', 42)"> as
+                    </label><br>
+                    <div id="feedback-42" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 44:</strong> He wishes he ___ more time to study for the exam.</p>
+                    <label>
+                        <input type="radio" name="q43" value="0" onclick="checkAnswer(1, '\'had\' expresses a regret about the past.', 43)"> has
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q43" value="1" onclick="checkAnswer(1, '\'had\' expresses a regret about the past.', 43)"> had
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q43" value="2" onclick="checkAnswer(1, '\'had\' expresses a regret about the past.', 43)"> would have
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q43" value="3" onclick="checkAnswer(1, '\'had\' expresses a regret about the past.', 43)"> could have
+                    </label><br>
+                    <div id="feedback-43" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 45:</strong> I didn’t go to work ___ I was feeling ill.</p>
+                    <label>
+                        <input type="radio" name="q44" value="0" onclick="checkAnswer(0, '\'because\' is used to explain the reason for not going to work.', 44)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q44" value="1" onclick="checkAnswer(0, '\'because\' is used to explain the reason for not going to work.', 44)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q44" value="2" onclick="checkAnswer(0, '\'because\' is used to explain the reason for not going to work.', 44)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q44" value="3" onclick="checkAnswer(0, '\'because\' is used to explain the reason for not going to work.', 44)"> as
+                    </label><br>
+                    <div id="feedback-44" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 46:</strong> She wishes her friends ___ more supportive when she needed them.</p>
+                    <label>
+                        <input type="radio" name="q45" value="0" onclick="checkAnswer(1, '\'had been\' is used for a regret about past situations or actions.', 45)"> were
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q45" value="1" onclick="checkAnswer(1, '\'had been\' is used for a regret about past situations or actions.', 45)"> had been
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q45" value="2" onclick="checkAnswer(1, '\'had been\' is used for a regret about past situations or actions.', 45)"> would have been
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q45" value="3" onclick="checkAnswer(1, '\'had been\' is used for a regret about past situations or actions.', 45)"> could have been
+                    </label><br>
+                    <div id="feedback-45" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 47:</strong> ___ the rain, the event was canceled.</p>
+                    <label>
+                        <input type="radio" name="q46" value="0" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase, like \'the rain\'.', 46)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q46" value="1" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase, like \'the rain\'.', 46)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q46" value="2" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase, like \'the rain\'.', 46)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q46" value="3" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase, like \'the rain\'.', 46)"> as
+                    </label><br>
+                    <div id="feedback-46" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 48:</strong> She looked happy ___ she had passed the exam.</p>
+                    <label>
+                        <input type="radio" name="q47" value="0" onclick="checkAnswer(0, '\'because\' is used to show the reason for her happiness.', 47)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q47" value="1" onclick="checkAnswer(0, '\'because\' is used to show the reason for her happiness.', 47)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q47" value="2" onclick="checkAnswer(0, '\'because\' is used to show the reason for her happiness.', 47)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q47" value="3" onclick="checkAnswer(0, '\'because\' is used to show the reason for her happiness.', 47)"> as
+                    </label><br>
+                    <div id="feedback-47" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 49:</strong> The dog ___ tail is wagging is very happy.</p>
+                    <label>
+                        <input type="radio" name="q48" value="0" onclick="checkAnswer(2, '\'whose\' shows possession, as in \'the dog whose tail is wagging\'.', 48)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q48" value="1" onclick="checkAnswer(2, '\'whose\' shows possession, as in \'the dog whose tail is wagging\'.', 48)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q48" value="2" onclick="checkAnswer(2, '\'whose\' shows possession, as in \'the dog whose tail is wagging\'.', 48)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q48" value="3" onclick="checkAnswer(2, '\'whose\' shows possession, as in \'the dog whose tail is wagging\'.', 48)"> which
+                    </label><br>
+                    <div id="feedback-48" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 50:</strong> ___ his success, everyone congratulated him.</p>
+                    <label>
+                        <input type="radio" name="q49" value="0" onclick="checkAnswer(3, '\'as\' is used to explain a reason in the form of a cause.', 49)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q49" value="1" onclick="checkAnswer(3, '\'as\' is used to explain a reason in the form of a cause.', 49)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q49" value="2" onclick="checkAnswer(3, '\'as\' is used to explain a reason in the form of a cause.', 49)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q49" value="3" onclick="checkAnswer(3, '\'as\' is used to explain a reason in the form of a cause.', 49)"> as
+                    </label><br>
+                    <div id="feedback-49" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 51:</strong> The traffic was bad ___ we decided to take another route.</p>
+                    <label>
+                        <input type="radio" name="q50" value="0" onclick="checkAnswer(0, '\'because\' introduces the reason for changing the route.', 50)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q50" value="1" onclick="checkAnswer(0, '\'because\' introduces the reason for changing the route.', 50)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q50" value="2" onclick="checkAnswer(0, '\'because\' introduces the reason for changing the route.', 50)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q50" value="3" onclick="checkAnswer(0, '\'because\' introduces the reason for changing the route.', 50)"> as
+                    </label><br>
+                    <div id="feedback-50" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 52:</strong> I wish I ___ understood the instructions better.</p>
+                    <label>
+                        <input type="radio" name="q51" value="0" onclick="checkAnswer(2, '\'had understood\' expresses regret about a past action.', 51)"> understand
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q51" value="1" onclick="checkAnswer(2, '\'had understood\' expresses regret about a past action.', 51)"> understood
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q51" value="2" onclick="checkAnswer(2, '\'had understood\' expresses regret about a past action.', 51)"> had understood
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q51" value="3" onclick="checkAnswer(2, '\'had understood\' expresses regret about a past action.', 51)"> would understand
+                    </label><br>
+                    <div id="feedback-51" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 53:</strong> She passed the interview ___ her excellent qualifications.</p>
+                    <label>
+                        <input type="radio" name="q52" value="0" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'her excellent qualifications\'.', 52)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q52" value="1" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'her excellent qualifications\'.', 52)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q52" value="2" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'her excellent qualifications\'.', 52)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q52" value="3" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'her excellent qualifications\'.', 52)"> as
+                    </label><br>
+                    <div id="feedback-52" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 54:</strong> He got a promotion ___ his hard work.</p>
+                    <label>
+                        <input type="radio" name="q53" value="0" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'his hard work\'.', 53)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q53" value="1" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'his hard work\'.', 53)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q53" value="2" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'his hard work\'.', 53)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q53" value="3" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'his hard work\'.', 53)"> as
+                    </label><br>
+                    <div id="feedback-53" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 55:</strong> ___ he had a good explanation, the teacher accepted his excuse.</p>
+                    <label>
+                        <input type="radio" name="q54" value="0" onclick="checkAnswer(3, '\'as\' is used to show that the reason was understood or accepted.', 54)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q54" value="1" onclick="checkAnswer(3, '\'as\' is used to show that the reason was understood or accepted.', 54)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q54" value="2" onclick="checkAnswer(3, '\'as\' is used to show that the reason was understood or accepted.', 54)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q54" value="3" onclick="checkAnswer(3, '\'as\' is used to show that the reason was understood or accepted.', 54)"> as
+                    </label><br>
+                    <div id="feedback-54" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 56:</strong> We wish they ___ attend the meeting tomorrow.</p>
+                    <label>
+                        <input type="radio" name="q55" value="0" onclick="checkAnswer(1, '\'would\' is used for a future wish or a desire about someone\'s actions.', 55)"> will
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q55" value="1" onclick="checkAnswer(1, '\'would\' is used for a future wish or a desire about someone\'s actions.', 55)"> would
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q55" value="2" onclick="checkAnswer(1, '\'would\' is used for a future wish or a desire about someone\'s actions.', 55)"> could
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q55" value="3" onclick="checkAnswer(1, '\'would\' is used for a future wish or a desire about someone\'s actions.', 55)"> had
+                    </label><br>
+                    <div id="feedback-55" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 57:</strong> I wish I ___ the answer to your question.</p>
+                    <label>
+                        <input type="radio" name="q56" value="0" onclick="checkAnswer(1, '\'knew\' is used for expressing a present unreal wish or regret.', 56)"> know
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q56" value="1" onclick="checkAnswer(1, '\'knew\' is used for expressing a present unreal wish or regret.', 56)"> knew
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q56" value="2" onclick="checkAnswer(1, '\'knew\' is used for expressing a present unreal wish or regret.', 56)"> have known
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q56" value="3" onclick="checkAnswer(1, '\'knew\' is used for expressing a present unreal wish or regret.', 56)"> had known
+                    </label><br>
+                    <div id="feedback-56" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 58:</strong> They decided to leave early ___ they had an appointment.</p>
+                    <label>
+                        <input type="radio" name="q57" value="0" onclick="checkAnswer(0, '\'because\' is used to introduce a reason clause.', 57)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q57" value="1" onclick="checkAnswer(0, '\'because\' is used to introduce a reason clause.', 57)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q57" value="2" onclick="checkAnswer(0, '\'because\' is used to introduce a reason clause.', 57)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q57" value="3" onclick="checkAnswer(0, '\'because\' is used to introduce a reason clause.', 57)"> as
+                    </label><br>
+                    <div id="feedback-57" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 59:</strong> The team ___ won the game is celebrating.</p>
+                    <label>
+                        <input type="radio" name="q58" value="0" onclick="checkAnswer(0, '\'who\' is used to refer to the subject of the sentence, like \'the team who won the game\'.', 58)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q58" value="1" onclick="checkAnswer(0, '\'who\' is used to refer to the subject of the sentence, like \'the team who won the game\'.', 58)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q58" value="2" onclick="checkAnswer(0, '\'who\' is used to refer to the subject of the sentence, like \'the team who won the game\'.', 58)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q58" value="3" onclick="checkAnswer(0, '\'who\' is used to refer to the subject of the sentence, like \'the team who won the game\'.', 58)"> which
+                    </label><br>
+                    <div id="feedback-58" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 60:</strong> She wishes she ___ speak French.</p>
+                    <label>
+                        <input type="radio" name="q59" value="0" onclick="checkAnswer(1, '\'could\' is used to express an unreal wish about the present or future.', 59)"> can
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q59" value="1" onclick="checkAnswer(1, '\'could\' is used to express an unreal wish about the present or future.', 59)"> could
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q59" value="2" onclick="checkAnswer(1, '\'could\' is used to express an unreal wish about the present or future.', 59)"> would
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q59" value="3" onclick="checkAnswer(1, '\'could\' is used to express an unreal wish about the present or future.', 59)"> will
+                    </label><br>
+                    <div id="feedback-59" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 61:</strong> I was late ___ the bus broke down.</p>
+                    <label>
+                        <input type="radio" name="q60" value="0" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase, like \'the bus broke down\'.', 60)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q60" value="1" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase, like \'the bus broke down\'.', 60)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q60" value="2" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase, like \'the bus broke down\'.', 60)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q60" value="3" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase, like \'the bus broke down\'.', 60)"> as
+                    </label><br>
+                    <div id="feedback-60" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 62:</strong> She wishes she ___ work on Saturdays.</p>
+                    <label>
+                        <input type="radio" name="q61" value="0" onclick="checkAnswer(2, '\'didn’t\' is used to express a wish about a present situation.', 61)"> doesn’t
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q61" value="1" onclick="checkAnswer(2, '\'didn’t\' is used to express a wish about a present situation.', 61)"> don’t
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q61" value="2" onclick="checkAnswer(2, '\'didn’t\' is used to express a wish about a present situation.', 61)"> didn’t
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q61" value="3" onclick="checkAnswer(2, '\'didn’t\' is used to express a wish about a present situation.', 61)"> hadn’t
+                    </label><br>
+                    <div id="feedback-61" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 63:</strong> The person to ___ I spoke was very helpful.</p>
+                    <label>
+                        <input type="radio" name="q62" value="0" onclick="checkAnswer(1, '\'whom\' is used when referring to the object of a verb or preposition, as in \'the person to whom I spoke\'.', 62)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q62" value="1" onclick="checkAnswer(1, '\'whom\' is used when referring to the object of a verb or preposition, as in \'the person to whom I spoke\'.', 62)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q62" value="2" onclick="checkAnswer(1, '\'whom\' is used when referring to the object of a verb or preposition, as in \'the person to whom I spoke\'.', 62)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q62" value="3" onclick="checkAnswer(1, '\'whom\' is used when referring to the object of a verb or preposition, as in \'the person to whom I spoke\'.', 62)"> which
+                    </label><br>
+                    <div id="feedback-62" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 64:</strong> They were tired ___ the long journey.</p>
+                    <label>
+                        <input type="radio" name="q63" value="0" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'the long journey\'.', 63)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q63" value="1" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'the long journey\'.', 63)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q63" value="2" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'the long journey\'.', 63)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q63" value="3" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'the long journey\'.', 63)"> as
+                    </label><br>
+                    <div id="feedback-63" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 65:</strong> The cake ___ she baked was delicious.</p>
+                    <label>
+                        <input type="radio" name="q64" value="0" onclick="checkAnswer(3, '\'which\' refers to the cake, a non-human thing.', 64)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q64" value="1" onclick="checkAnswer(3, '\'which\' refers to the cake, a non-human thing.', 64)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q64" value="2" onclick="checkAnswer(3, '\'which\' refers to the cake, a non-human thing.', 64)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q64" value="3" onclick="checkAnswer(3, '\'which\' refers to the cake, a non-human thing.', 64)"> which
+                    </label><br>
+                    <div id="feedback-64" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 66:</strong> I wish I ___ to the party yesterday.</p>
+                    <label>
+                        <input type="radio" name="q65" value="0" onclick="checkAnswer(2, '\'had gone\' is used for regrets about a past event.', 65)"> go
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q65" value="1" onclick="checkAnswer(2, '\'had gone\' is used for regrets about a past event.', 65)"> went
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q65" value="2" onclick="checkAnswer(2, '\'had gone\' is used for regrets about a past event.', 65)"> had gone
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q65" value="3" onclick="checkAnswer(2, '\'had gone\' is used for regrets about a past event.', 65)"> would go
+                    </label><br>
+                    <div id="feedback-65" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 67:</strong> I wish you ___ more careful with your decisions.</p>
+                    <label>
+                        <input type="radio" name="q66" value="0" onclick="checkAnswer(2, '\'would be\' is used for a desire or wish for someone’s behavior in the present or future.', 66)"> are
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q66" value="1" onclick="checkAnswer(2, '\'would be\' is used for a desire or wish for someone’s behavior in the present or future.', 66)"> were
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q66" value="2" onclick="checkAnswer(2, '\'would be\' is used for a desire or wish for someone’s behavior in the present or future.', 66)"> would be
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q66" value="3" onclick="checkAnswer(2, '\'would be\' is used for a desire or wish for someone’s behavior in the present or future.', 66)"> had been
+                    </label><br>
+                    <div id="feedback-66" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 68:</strong> The man ___ I saw yesterday is my boss.</p>
+                    <label>
+                        <input type="radio" name="q67" value="0" onclick="checkAnswer(1, '\'whom\' is used when referring to the object of a verb, like \'the man whom I saw yesterday\'.', 67)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q67" value="1" onclick="checkAnswer(1, '\'whom\' is used when referring to the object of a verb, like \'the man whom I saw yesterday\'.', 67)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q67" value="2" onclick="checkAnswer(1, '\'whom\' is used when referring to the object of a verb, like \'the man whom I saw yesterday\'.', 67)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q67" value="3" onclick="checkAnswer(1, '\'whom\' is used when referring to the object of a verb, like \'the man whom I saw yesterday\'.', 67)"> which
+                    </label><br>
+                    <div id="feedback-67" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 69:</strong> The company is growing rapidly ___ its innovative products.</p>
+                    <label>
+                        <input type="radio" name="q68" value="0" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'its innovative products\'.', 68)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q68" value="1" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'its innovative products\'.', 68)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q68" value="2" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'its innovative products\'.', 68)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q68" value="3" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase like \'its innovative products\'.', 68)"> as
+                    </label><br>
+                    <div id="feedback-68" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 70:</strong> We arrived late ___ the train was delayed.</p>
+                    <label>
+                        <input type="radio" name="q69" value="0" onclick="checkAnswer(1, '\'because of\' is used to explain the reason for arriving late.', 69)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q69" value="1" onclick="checkAnswer(1, '\'because of\' is used to explain the reason for arriving late.', 69)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q69" value="2" onclick="checkAnswer(1, '\'because of\' is used to explain the reason for arriving late.', 69)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q69" value="3" onclick="checkAnswer(1, '\'because of\' is used to explain the reason for arriving late.', 69)"> as
+                    </label><br>
+                    <div id="feedback-69" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 71:</strong> I wish she ___ here to help us.</p>
+                    <label>
+                        <input type="radio" name="q70" value="0" onclick="checkAnswer(2, '\'were\' is used with \'wish\' in hypothetical situations referring to present or future.', 70)"> is
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q70" value="1" onclick="checkAnswer(2, '\'were\' is used with \'wish\' in hypothetical situations referring to present or future.', 70)"> was
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q70" value="2" onclick="checkAnswer(2, '\'were\' is used with \'wish\' in hypothetical situations referring to present or future.', 70)"> were
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q70" value="3" onclick="checkAnswer(2, '\'were\' is used with \'wish\' in hypothetical situations referring to present or future.', 70)"> had been
+                    </label><br>
+                    <div id="feedback-70" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 72:</strong> ___ it was getting late, we decided to head home.</p>
+                    <label>
+                        <input type="radio" name="q71" value="0" onclick="checkAnswer(3, '\'as\' is used to indicate a reason or cause for the decision.', 71)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q71" value="1" onclick="checkAnswer(3, '\'as\' is used to indicate a reason or cause for the decision.', 71)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q71" value="2" onclick="checkAnswer(3, '\'as\' is used to indicate a reason or cause for the decision.', 71)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q71" value="3" onclick="checkAnswer(3, '\'as\' is used to indicate a reason or cause for the decision.', 71)"> as
+                    </label><br>
+                    <div id="feedback-71" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 73:</strong> The woman ___ I saw at the store is my aunt.</p>
+                    <label>
+                        <input type="radio" name="q72" value="0" onclick="checkAnswer(0, '\'who\' is used to refer to the subject of the sentence, as in \'the woman who I saw\'.', 72)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q72" value="1" onclick="checkAnswer(0, '\'who\' is used to refer to the subject of the sentence, as in \'the woman who I saw\'.', 72)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q72" value="2" onclick="checkAnswer(0, '\'who\' is used to refer to the subject of the sentence, as in \'the woman who I saw\'.', 72)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q72" value="3" onclick="checkAnswer(0, '\'who\' is used to refer to the subject of the sentence, as in \'the woman who I saw\'.', 72)"> which
+                    </label><br>
+                    <div id="feedback-72" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 74:</strong> The woman ___ book I borrowed is an author.</p>
+                    <label>
+                        <input type="radio" name="q73" value="0" onclick="checkAnswer(2, '\'whose\' is used to show possession, as in \'the woman whose book I borrowed\'.', 73)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q73" value="1" onclick="checkAnswer(2, '\'whose\' is used to show possession, as in \'the woman whose book I borrowed\'.', 73)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q73" value="2" onclick="checkAnswer(2, '\'whose\' is used to show possession, as in \'the woman whose book I borrowed\'.', 73)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q73" value="3" onclick="checkAnswer(2, '\'whose\' is used to show possession, as in \'the woman whose book I borrowed\'.', 73)"> which
+                    </label><br>
+                    <div id="feedback-73" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 75:</strong> She decided to stay home ___ she didn’t feel well.</p>
+                    <label>
+                        <input type="radio" name="q74" value="0" onclick="checkAnswer(0, '\'because\' introduces the reason for staying home.', 74)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q74" value="1" onclick="checkAnswer(0, '\'because\' introduces the reason for staying home.', 74)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q74" value="2" onclick="checkAnswer(0, '\'because\' introduces the reason for staying home.', 74)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q74" value="3" onclick="checkAnswer(0, '\'because\' introduces the reason for staying home.', 74)"> as
+                    </label><br>
+                    <div id="feedback-74" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 76:</strong> ___ he was running late, he skipped breakfast.</p>
+                    <label>
+                        <input type="radio" name="q75" value="0" onclick="checkAnswer(0, '\'because\' is used to explain why he skipped breakfast.', 75)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q75" value="1" onclick="checkAnswer(0, '\'because\' is used to explain why he skipped breakfast.', 75)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q75" value="2" onclick="checkAnswer(0, '\'because\' is used to explain why he skipped breakfast.', 75)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q75" value="3" onclick="checkAnswer(0, '\'because\' is used to explain why he skipped breakfast.', 75)"> as
+                    </label><br>
+                    <div id="feedback-75" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 77:</strong> The teacher ___ we met yesterday is very friendly.</p>
+                    <label>
+                        <input type="radio" name="q76" value="0" onclick="checkAnswer(0, '\'who\' is used for the subject of the sentence, like \'the teacher who we met\'.', 76)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q76" value="1" onclick="checkAnswer(0, '\'who\' is used for the subject of the sentence, like \'the teacher who we met\'.', 76)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q76" value="2" onclick="checkAnswer(0, '\'who\' is used for the subject of the sentence, like \'the teacher who we met\'.', 76)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q76" value="3" onclick="checkAnswer(0, '\'who\' is used for the subject of the sentence, like \'the teacher who we met\'.', 76)"> which
+                    </label><br>
+                    <div id="feedback-76" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 78:</strong> They wish they ___ more time to complete the project.</p>
+                    <label>
+                        <input type="radio" name="q77" value="0" onclick="checkAnswer(1, '\'had\' is used to express a regret about the past.', 77)"> have
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q77" value="1" onclick="checkAnswer(1, '\'had\' is used to express a regret about the past.', 77)"> had
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q77" value="2" onclick="checkAnswer(1, '\'had\' is used to express a regret about the past.', 77)"> will have
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q77" value="3" onclick="checkAnswer(1, '\'had\' is used to express a regret about the past.', 77)"> would have
+                    </label><br>
+                    <div id="feedback-77" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 79:</strong> The car ___ was parked here is gone.</p>
+                    <label>
+                        <input type="radio" name="q78" value="0" onclick="checkAnswer(3, '\'which\' refers to a thing or object, as in \'the car which was parked here\'.', 78)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q78" value="1" onclick="checkAnswer(3, '\'which\' refers to a thing or object, as in \'the car which was parked here\'.', 78)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q78" value="2" onclick="checkAnswer(3, '\'which\' refers to a thing or object, as in \'the car which was parked here\'.', 78)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q78" value="3" onclick="checkAnswer(3, '\'which\' refers to a thing or object, as in \'the car which was parked here\'.', 78)"> which
+                    </label><br>
+                    <div id="feedback-78" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 80:</strong> She stayed at home ___ she was feeling unwell.</p>
+                    <label>
+                        <input type="radio" name="q79" value="0" onclick="checkAnswer(0, '\'because\' is used to link a reason clause.', 79)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q79" value="1" onclick="checkAnswer(0, '\'because\' is used to link a reason clause.', 79)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q79" value="2" onclick="checkAnswer(0, '\'because\' is used to link a reason clause.', 79)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q79" value="3" onclick="checkAnswer(0, '\'because\' is used to link a reason clause.', 79)"> as
+                    </label><br>
+                    <div id="feedback-79" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 81:</strong> He wishes his team ___ win the championship this year.</p>
+                    <label>
+                        <input type="radio" name="q80" value="0" onclick="checkAnswer(2, '\'would win\' expresses a wish about a future event.', 80)"> wins
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q80" value="1" onclick="checkAnswer(2, '\'would win\' expresses a wish about a future event.', 80)"> won
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q80" value="2" onclick="checkAnswer(2, '\'would win\' expresses a wish about a future event.', 80)"> would win
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q80" value="3" onclick="checkAnswer(2, '\'would win\' expresses a wish about a future event.', 80)"> could win
+                    </label><br>
+                    <div id="feedback-80" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 82:</strong> He wishes his parents ___ more supportive when he was younger.</p>
+                    <label>
+                        <input type="radio" name="q81" value="0" onclick="checkAnswer(1, '\'had been\' is used for expressing regret about a past situation.', 81)"> were
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q81" value="1" onclick="checkAnswer(1, '\'had been\' is used for expressing regret about a past situation.', 81)"> had been
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q81" value="2" onclick="checkAnswer(1, '\'had been\' is used for expressing regret about a past situation.', 81)"> would have been
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q81" value="3" onclick="checkAnswer(1, '\'had been\' is used for expressing regret about a past situation.', 81)"> could have been
+                    </label><br>
+                    <div id="feedback-81" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 83:</strong> The musician ___ song became famous is now on tour.</p>
+                    <label>
+                        <input type="radio" name="q82" value="0" onclick="checkAnswer(2, '\'whose\' shows possession, as in \'the musician whose song became famous\'.', 82)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q82" value="1" onclick="checkAnswer(2, '\'whose\' shows possession, as in \'the musician whose song became famous\'.', 82)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q82" value="2" onclick="checkAnswer(2, '\'whose\' shows possession, as in \'the musician whose song became famous\'.', 82)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q82" value="3" onclick="checkAnswer(2, '\'whose\' shows possession, as in \'the musician whose song became famous\'.', 82)"> which
+                    </label><br>
+                    <div id="feedback-82" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 84:</strong> The man ___ helped me was very kind.</p>
+                    <label>
+                        <input type="radio" name="q83" value="0" onclick="checkAnswer(0, '\'who\' is used to refer to the subject of the sentence, as in \'the man who helped me\'.', 83)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q83" value="1" onclick="checkAnswer(0, '\'who\' is used to refer to the subject of the sentence, as in \'the man who helped me\'.', 83)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q83" value="2" onclick="checkAnswer(0, '\'who\' is used to refer to the subject of the sentence, as in \'the man who helped me\'.', 83)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q83" value="3" onclick="checkAnswer(0, '\'who\' is used to refer to the subject of the sentence, as in \'the man who helped me\'.', 83)"> which
+                    </label><br>
+                    <div id="feedback-83" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 85:</strong> They moved to a new house ___ they needed more space.</p>
+                    <label>
+                        <input type="radio" name="q84" value="0" onclick="checkAnswer(0, '\'because\' is used to show the reason for moving.', 84)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q84" value="1" onclick="checkAnswer(0, '\'because\' is used to show the reason for moving.', 84)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q84" value="2" onclick="checkAnswer(0, '\'because\' is used to show the reason for moving.', 84)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q84" value="3" onclick="checkAnswer(0, '\'because\' is used to show the reason for moving.', 84)"> as
+                    </label><br>
+                    <div id="feedback-84" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 86:</strong> They are moving house ___ they have a new job in another city.</p>
+                    <label>
+                        <input type="radio" name="q85" value="0" onclick="checkAnswer(0, '\'because\' is used to show the reason for moving.', 85)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q85" value="1" onclick="checkAnswer(0, '\'because\' is used to show the reason for moving.', 85)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q85" value="2" onclick="checkAnswer(0, '\'because\' is used to show the reason for moving.', 85)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q85" value="3" onclick="checkAnswer(0, '\'because\' is used to show the reason for moving.', 85)"> as
+                    </label><br>
+                    <div id="feedback-85" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 87:</strong> The company ___ you work for is expanding.</p>
+                    <label>
+                        <input type="radio" name="q86" value="0" onclick="checkAnswer(3, '\'which\' refers to the company, a non-human object, as in \'the company which you work for\'.', 86)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q86" value="1" onclick="checkAnswer(3, '\'which\' refers to the company, a non-human object, as in \'the company which you work for\'.', 86)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q86" value="2" onclick="checkAnswer(3, '\'which\' refers to the company, a non-human object, as in \'the company which you work for\'.', 86)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q86" value="3" onclick="checkAnswer(3, '\'which\' refers to the company, a non-human object, as in \'the company which you work for\'.', 86)"> which
+                    </label><br>
+                    <div id="feedback-86" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 88:</strong> This is the book ___ I was looking for.</p>
+                    <label>
+                        <input type="radio" name="q87" value="0" onclick="checkAnswer(3, '\'which\' is used for non-human objects or things, like \'the book which I was looking for\'.', 87)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q87" value="1" onclick="checkAnswer(3, '\'which\' is used for non-human objects or things, like \'the book which I was looking for\'.', 87)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q87" value="2" onclick="checkAnswer(3, '\'which\' is used for non-human objects or things, like \'the book which I was looking for\'.', 87)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q87" value="3" onclick="checkAnswer(3, '\'which\' is used for non-human objects or things, like \'the book which I was looking for\'.', 87)"> which
+                    </label><br>
+                    <div id="feedback-87" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 89:</strong> I wish I ___ that movie last weekend.</p>
+                    <label>
+                        <input type="radio" name="q88" value="0" onclick="checkAnswer(2, '\'had seen\' expresses a past regret.', 88)"> see
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q88" value="1" onclick="checkAnswer(2, '\'had seen\' expresses a past regret.', 88)"> saw
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q88" value="2" onclick="checkAnswer(2, '\'had seen\' expresses a past regret.', 88)"> had seen
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q88" value="3" onclick="checkAnswer(2, '\'had seen\' expresses a past regret.', 88)"> would see
+                    </label><br>
+                    <div id="feedback-88" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 90:</strong> We couldn’t go swimming ___ the weather was too cold.</p>
+                    <label>
+                        <input type="radio" name="q89" value="0" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase, like \'the weather\'.', 89)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q89" value="1" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase, like \'the weather\'.', 89)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q89" value="2" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase, like \'the weather\'.', 89)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q89" value="3" onclick="checkAnswer(1, '\'because of\' is used with a noun phrase, like \'the weather\'.', 89)"> as
+                    </label><br>
+                    <div id="feedback-89" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 91:</strong> The teacher smiled ___ the students did a great job.</p>
+                    <label>
+                        <input type="radio" name="q90" value="0" onclick="checkAnswer(3, '\'as\' is used to show a reason for an event or action.', 90)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q90" value="1" onclick="checkAnswer(3, '\'as\' is used to show a reason for an event or action.', 90)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q90" value="2" onclick="checkAnswer(3, '\'as\' is used to show a reason for an event or action.', 90)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q90" value="3" onclick="checkAnswer(3, '\'as\' is used to show a reason for an event or action.', 90)"> as
+                    </label><br>
+                    <div id="feedback-90" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 92:</strong> He failed the test ___ he didn’t study enough.</p>
+                    <label>
+                        <input type="radio" name="q91" value="0" onclick="checkAnswer(0, '\'because\' is used to show the reason for the failure.', 91)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q91" value="1" onclick="checkAnswer(0, '\'because\' is used to show the reason for the failure.', 91)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q91" value="2" onclick="checkAnswer(0, '\'because\' is used to show the reason for the failure.', 91)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q91" value="3" onclick="checkAnswer(0, '\'because\' is used to show the reason for the failure.', 91)"> as
+                    </label><br>
+                    <div id="feedback-91" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 93:</strong> I didn’t hear the phone ring ___ I was in the shower.</p>
+                    <label>
+                        <input type="radio" name="q92" value="0" onclick="checkAnswer(2, '\'since\' is used to refer to a specific period of time in the past.', 92)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q92" value="1" onclick="checkAnswer(2, '\'since\' is used to refer to a specific period of time in the past.', 92)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q92" value="2" onclick="checkAnswer(2, '\'since\' is used to refer to a specific period of time in the past.', 92)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q92" value="3" onclick="checkAnswer(2, '\'since\' is used to refer to a specific period of time in the past.', 92)"> as
+                    </label><br>
+                    <div id="feedback-92" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 94:</strong> She wishes she ___ to the concert with her friends.</p>
+                    <label>
+                        <input type="radio" name="q93" value="0" onclick="checkAnswer(2, '\'had gone\' is used to express regret about a missed opportunity in the past.', 93)"> go
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q93" value="1" onclick="checkAnswer(2, '\'had gone\' is used to express regret about a missed opportunity in the past.', 93)"> went
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q93" value="2" onclick="checkAnswer(2, '\'had gone\' is used to express regret about a missed opportunity in the past.', 93)"> had gone
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q93" value="3" onclick="checkAnswer(2, '\'had gone\' is used to express regret about a missed opportunity in the past.', 93)"> would go
+                    </label><br>
+                    <div id="feedback-93" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 95:</strong> ___ the price was high, I decided not to buy it.</p>
+                    <label>
+                        <input type="radio" name="q94" value="0" onclick="checkAnswer(3, '\'as\' is used to show a reason or cause.', 94)"> because
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q94" value="1" onclick="checkAnswer(3, '\'as\' is used to show a reason or cause.', 94)"> because of
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q94" value="2" onclick="checkAnswer(3, '\'as\' is used to show a reason or cause.', 94)"> since
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q94" value="3" onclick="checkAnswer(3, '\'as\' is used to show a reason or cause.', 94)"> as
+                    </label><br>
+                    <div id="feedback-94" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 96:</strong> The students ___ answered the question first won the prize.</p>
+                    <label>
+                        <input type="radio" name="q95" value="0" onclick="checkAnswer(0, '\'who\' is used for the subject, like \'the students who answered the question\'.', 95)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q95" value="1" onclick="checkAnswer(0, '\'who\' is used for the subject, like \'the students who answered the question\'.', 95)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q95" value="2" onclick="checkAnswer(0, '\'who\' is used for the subject, like \'the students who answered the question\'.', 95)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q95" value="3" onclick="checkAnswer(0, '\'who\' is used for the subject, like \'the students who answered the question\'.', 95)"> which
+                    </label><br>
+                    <div id="feedback-95" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 97:</strong> The person ___ called you is waiting outside.</p>
+                    <label>
+                        <input type="radio" name="q96" value="0" onclick="checkAnswer(0, '\'who\' is used for subjects of the sentence, like \'the person who called you\'.', 96)"> who
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q96" value="1" onclick="checkAnswer(0, '\'who\' is used for subjects of the sentence, like \'the person who called you\'.', 96)"> whom
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q96" value="2" onclick="checkAnswer(0, '\'who\' is used for subjects of the sentence, like \'the person who called you\'.', 96)"> whose
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q96" value="3" onclick="checkAnswer(0, '\'who\' is used for subjects of the sentence, like \'the person who called you\'.', 96)"> which
+                    </label><br>
+                    <div id="feedback-96" class="feedback"></div>
+                </div>
+</body>
+</html>
