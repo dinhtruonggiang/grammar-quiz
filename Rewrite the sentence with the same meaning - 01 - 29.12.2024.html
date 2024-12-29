@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rewrite Sentence Practice</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f9fafb;
+                color: #333;
+                margin: 0;
+                padding: 0;
+            }
+            .question-card {
+                background-color: #fff;
+                border: 1px solid #e5e7eb;
+                border-radius: 6px;
+                padding: 16px;
+                margin-bottom: 12px;
+                box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+            }
+            .question-title {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 8px;
+            }
+            .options button {
+                cursor: pointer;
+                margin-top: 6px;
+            }
+            .result {
+                margin-top: 12px;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container mx-auto p-4">
+            <h1 class="text-2xl font-bold text-center mb-6">Rewrite Sentence Practice</h1>
+            <div id="quiz-container" class="space-y-4"></div>
+        </div>
+
+        <script>
+            // JSON array of questions
+            const questions = [
+                {
+                    question: "Thank you for sending me a present.",
+                    answer: "I am grateful to you for the present.",
+                    explanation: "Both sentences express gratitude for the present, with a different structure."
+                },
+                {
+                    question: "They started learning English 5 years ago.",
+                    answer: "They have been learning English for 5 years.",
+                    explanation: "Both describe the same duration of time, using past simple and present perfect continuous."
+                },
+                {
+                    question: "If she doesn’t study harder, she won’t pass the exam.",
+                    answer: "Unless she studies harder, she won’t pass the exam.",
+                    explanation: "'Unless' is equivalent to 'if not' in meaning, making both sentences identical in logic."
+                },
+                {
+                    question: "She is too young to drive.",
+                    answer: "She is not old enough to drive.",
+                    explanation: "'Too young' and 'not old enough' share the same meaning, indicating being under the required age."
+                },
+                {
+                    question: "Although it was raining, they went for a walk.",
+                    answer: "Despite the rain, they went for a walk.",
+                    explanation: "'Although' and 'despite' both introduce contrasting ideas, making the sentences equivalent."
+                }
+                // Add the rest of the JSON questions here
+            ];
+
+            const quizContainer = document.getElementById('quiz-container');
+
+            // Function to render questions to the HTML
+            function renderQuestions() {
+                questions.forEach((questionItem, index) => {
+                    const questionCard = document.createElement('div');
+                    questionCard.className = 'question-card';
+                    
+                    questionCard.innerHTML = `
+                        <div class="question-title">Q${index + 1}: Rewrite this sentence:</div>
+                        <div class="mb-2"><strong>Original:</strong> ${questionItem.question}</div>
+                        <div class="options-container mb-4">
+                            <button class="btn-option bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded"
+                                data-answer="${questionItem.answer}" data-index="${index}">
+                                Show Answer
+                            </button>
+                        </div>
+                        <div class="result hidden text-green-600"></div>
+                        <div class="explanation hidden text-gray-600 mt-2"></div>
+                    `;
+                    
+                    quizContainer.appendChild(questionCard);
+
+                    // Attach click event for "Show Answer" button
+                    const answerButton = questionCard.querySelector('.btn-option');
+                    answerButton.addEventListener('click', (e) => {
+                        const resultDiv = questionCard.querySelector('.result');
+                        const explanationDiv = questionCard.querySelector('.explanation');
+
+                        const correctAnswer = e.target.getAttribute('data-answer');
+
+                        resultDiv.textContent = `Answer: ${correctAnswer}`;
+                        resultDiv.classList.remove('hidden');
+
+                        explanationDiv.textContent = `Explanation: ${questionItem.explanation}`;
+                        explanationDiv.classList.remove('hidden');
+                    });
+                });
+            }
+
+            renderQuestions();
+        </script>
+    <script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+    </html>
