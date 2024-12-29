@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <title>English Grammar Practice</title>
+                <style>
+                    body { font-family: Arial, sans-serif; margin: 20px; }
+                    h1 { color: #4CAF50; }
+                    .question { margin-bottom: 15px; }
+                    .feedback { margin-top: 10px; font-weight: bold; }
+                    .correct { color: green; }
+                    .incorrect { color: red; }
+                </style>
+                <script>
+                    function checkAnswer(correctOption, explanation, questionIndex) {
+                        var radios = document.getElementsByName('q' + questionIndex);
+                        var feedbackDiv = document.getElementById('feedback-' + questionIndex);
+                        var selected = -1;
+                        for (var i = 0; i < radios.length; i++) {
+                            if (radios[i].checked) { selected = i; break; }
+                        }
+                        if (selected == correctOption) {
+                            feedbackDiv.innerHTML = '<span class="correct">Correct!</span> ' + explanation;
+                        } else {
+                            feedbackDiv.innerHTML = '<span class="incorrect">Incorrect!</span> ' + explanation;
+                        }
+                    }
+                </script>
+            </head>
+            <body>
+                <h1>English Grammar Practice</h1>
+                <p>Select the correct answer for each question. You'll see feedback and explanations.</p>
+                <div class="question">
+                    <p><strong>Question 1:</strong> If he ___ me earlier, I could have helped him.</p>
+                    <label>
+                        <input type="radio" name="q0" value="0" onclick="checkAnswer(1, '\'Had + past participle\' is used in the if-clause for Type 3 unreal past conditions.', 0)"> asked
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q0" value="1" onclick="checkAnswer(1, '\'Had + past participle\' is used in the if-clause for Type 3 unreal past conditions.', 0)"> had asked
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q0" value="2" onclick="checkAnswer(1, '\'Had + past participle\' is used in the if-clause for Type 3 unreal past conditions.', 0)"> has asked
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q0" value="3" onclick="checkAnswer(1, '\'Had + past participle\' is used in the if-clause for Type 3 unreal past conditions.', 0)"> would ask
+                    </label><br>
+                    <div id="feedback-0" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 2:</strong> I ___ to the show if you buy the tickets.</p>
+                    <label>
+                        <input type="radio" name="q1" value="0" onclick="checkAnswer(2, 'Type 1 uses the simple future tense in the main clause to describe a real future result.', 1)"> come
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q1" value="1" onclick="checkAnswer(2, 'Type 1 uses the simple future tense in the main clause to describe a real future result.', 1)"> came
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q1" value="2" onclick="checkAnswer(2, 'Type 1 uses the simple future tense in the main clause to describe a real future result.', 1)"> will come
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q1" value="3" onclick="checkAnswer(2, 'Type 1 uses the simple future tense in the main clause to describe a real future result.', 1)"> would come
+                    </label><br>
+                    <div id="feedback-1" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 3:</strong> If it hadn’t been for his help, we ___ the competition.</p>
+                    <label>
+                        <input type="radio" name="q2" value="0" onclick="checkAnswer(2, 'Type 3 conditionals use \'would have + past participle\' in the main clause for past unreal results.', 2)"> wouldn’t win
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q2" value="1" onclick="checkAnswer(2, 'Type 3 conditionals use \'would have + past participle\' in the main clause for past unreal results.', 2)"> won
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q2" value="2" onclick="checkAnswer(2, 'Type 3 conditionals use \'would have + past participle\' in the main clause for past unreal results.', 2)"> wouldn't have won
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q2" value="3" onclick="checkAnswer(2, 'Type 3 conditionals use \'would have + past participle\' in the main clause for past unreal results.', 2)"> won't win
+                    </label><br>
+                    <div id="feedback-2" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 4:</strong> If I thought he cared, I ___ him.</p>
+                    <label>
+                        <input type="radio" name="q3" value="0" onclick="checkAnswer(2, 'Type 2 conditionals use \'would + base verb\' to indicate unreal situations in the present.', 3)"> help
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q3" value="1" onclick="checkAnswer(2, 'Type 2 conditionals use \'would + base verb\' to indicate unreal situations in the present.', 3)"> helped
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q3" value="2" onclick="checkAnswer(2, 'Type 2 conditionals use \'would + base verb\' to indicate unreal situations in the present.', 3)"> would help
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q3" value="3" onclick="checkAnswer(2, 'Type 2 conditionals use \'would + base verb\' to indicate unreal situations in the present.', 3)"> will help
+                    </label><br>
+                    <div id="feedback-3" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 5:</strong> Unless she finishes her homework, she ___ go out.</p>
+                    <label>
+                        <input type="radio" name="q4" value="0" onclick="checkAnswer(1, '\'Unless\' means \'if not,\' so it works similarly to a Type 1 conditional.', 4)"> can
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q4" value="1" onclick="checkAnswer(1, '\'Unless\' means \'if not,\' so it works similarly to a Type 1 conditional.', 4)"> will not
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q4" value="2" onclick="checkAnswer(1, '\'Unless\' means \'if not,\' so it works similarly to a Type 1 conditional.', 4)"> couldn't
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q4" value="3" onclick="checkAnswer(1, '\'Unless\' means \'if not,\' so it works similarly to a Type 1 conditional.', 4)"> wouldn't
+                    </label><br>
+                    <div id="feedback-4" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 6:</strong> If Mark spoke French, he ___ the job.</p>
+                    <label>
+                        <input type="radio" name="q5" value="0" onclick="checkAnswer(2, 'Unreal present situations (Type 2) require \'would + base verb\' in the main clause.', 5)"> will get
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q5" value="1" onclick="checkAnswer(2, 'Unreal present situations (Type 2) require \'would + base verb\' in the main clause.', 5)"> would have gotten
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q5" value="2" onclick="checkAnswer(2, 'Unreal present situations (Type 2) require \'would + base verb\' in the main clause.', 5)"> would get
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q5" value="3" onclick="checkAnswer(2, 'Unreal present situations (Type 2) require \'would + base verb\' in the main clause.', 5)"> gets
+                    </label><br>
+                    <div id="feedback-5" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 7:</strong> Plants die if they ___ enough water.</p>
+                    <label>
+                        <input type="radio" name="q6" value="0" onclick="checkAnswer(0, 'Zero conditionals use the present simple tense in both clauses for general truths.', 6)"> don't get
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q6" value="1" onclick="checkAnswer(0, 'Zero conditionals use the present simple tense in both clauses for general truths.', 6)"> didn't get
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q6" value="2" onclick="checkAnswer(0, 'Zero conditionals use the present simple tense in both clauses for general truths.', 6)"> will not get
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q6" value="3" onclick="checkAnswer(0, 'Zero conditionals use the present simple tense in both clauses for general truths.', 6)"> haven't gotten
+                    </label><br>
+                    <div id="feedback-6" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 8:</strong> If I had more time, I ___ join the club.</p>
+                    <label>
+                        <input type="radio" name="q7" value="0" onclick="checkAnswer(3, 'In Type 2 conditionals, \'would\' expresses an unreal present or future condition.', 7)"> will
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q7" value="1" onclick="checkAnswer(3, 'In Type 2 conditionals, \'would\' expresses an unreal present or future condition.', 7)"> could
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q7" value="2" onclick="checkAnswer(3, 'In Type 2 conditionals, \'would\' expresses an unreal present or future condition.', 7)"> can
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q7" value="3" onclick="checkAnswer(3, 'In Type 2 conditionals, \'would\' expresses an unreal present or future condition.', 7)"> would
+                    </label><br>
+                    <div id="feedback-7" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 9:</strong> If he studies harder, he ___ pass the exam.</p>
+                    <label>
+                        <input type="radio" name="q8" value="0" onclick="checkAnswer(1, 'In a Type 1 conditional, \'will\' is used in the main clause to indicate a possible future result.', 8)"> can
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q8" value="1" onclick="checkAnswer(1, 'In a Type 1 conditional, \'will\' is used in the main clause to indicate a possible future result.', 8)"> will
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q8" value="2" onclick="checkAnswer(1, 'In a Type 1 conditional, \'will\' is used in the main clause to indicate a possible future result.', 8)"> would
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q8" value="3" onclick="checkAnswer(1, 'In a Type 1 conditional, \'will\' is used in the main clause to indicate a possible future result.', 8)"> might
+                    </label><br>
+                    <div id="feedback-8" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 10:</strong> She would tell you the truth if she ___ you.</p>
+                    <label>
+                        <input type="radio" name="q9" value="0" onclick="checkAnswer(1, 'Type 2 conditionals use \'past simple\' in the if-clause to show unreal present situations.', 9)"> trusts
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q9" value="1" onclick="checkAnswer(1, 'Type 2 conditionals use \'past simple\' in the if-clause to show unreal present situations.', 9)"> trusted
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q9" value="2" onclick="checkAnswer(1, 'Type 2 conditionals use \'past simple\' in the if-clause to show unreal present situations.', 9)"> will trust
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q9" value="3" onclick="checkAnswer(1, 'Type 2 conditionals use \'past simple\' in the if-clause to show unreal present situations.', 9)"> trust
+                    </label><br>
+                    <div id="feedback-9" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 11:</strong> If you heat ice, it ___.</p>
+                    <label>
+                        <input type="radio" name="q10" value="0" onclick="checkAnswer(0, 'Zero conditional joins present simple clauses to express universal truths.', 10)"> melts
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q10" value="1" onclick="checkAnswer(0, 'Zero conditional joins present simple clauses to express universal truths.', 10)"> melt
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q10" value="2" onclick="checkAnswer(0, 'Zero conditional joins present simple clauses to express universal truths.', 10)"> will melt
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q10" value="3" onclick="checkAnswer(0, 'Zero conditional joins present simple clauses to express universal truths.', 10)"> melted
+                    </label><br>
+                    <div id="feedback-10" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 12:</strong> If she hadn’t been so busy, she ___ to the party.</p>
+                    <label>
+                        <input type="radio" name="q11" value="0" onclick="checkAnswer(1, 'Type 3 uses \'would have + past participle\' in the main clause to show past hypothetical results.', 11)"> would come
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q11" value="1" onclick="checkAnswer(1, 'Type 3 uses \'would have + past participle\' in the main clause to show past hypothetical results.', 11)"> would have come
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q11" value="2" onclick="checkAnswer(1, 'Type 3 uses \'would have + past participle\' in the main clause to show past hypothetical results.', 11)"> will come
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q11" value="3" onclick="checkAnswer(1, 'Type 3 uses \'would have + past participle\' in the main clause to show past hypothetical results.', 11)"> came
+                    </label><br>
+                    <div id="feedback-11" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 13:</strong> If she ___ more carefully, she wouldn't make mistakes.</p>
+                    <label>
+                        <input type="radio" name="q12" value="0" onclick="checkAnswer(1, 'In Type 2 conditionals, \'worked\' shows an unreal present condition.', 12)"> works
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q12" value="1" onclick="checkAnswer(1, 'In Type 2 conditionals, \'worked\' shows an unreal present condition.', 12)"> worked
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q12" value="2" onclick="checkAnswer(1, 'In Type 2 conditionals, \'worked\' shows an unreal present condition.', 12)"> had worked
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q12" value="3" onclick="checkAnswer(1, 'In Type 2 conditionals, \'worked\' shows an unreal present condition.', 12)"> will work
+                    </label><br>
+                    <div id="feedback-12" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 14:</strong> If I were you, I ___ take that job offer.</p>
+                    <label>
+                        <input type="radio" name="q13" value="0" onclick="checkAnswer(2, 'In a Type 2 conditional, \'would\' is used to indicate an unreal or hypothetical situation.', 13)"> will
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q13" value="1" onclick="checkAnswer(2, 'In a Type 2 conditional, \'would\' is used to indicate an unreal or hypothetical situation.', 13)"> might
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q13" value="2" onclick="checkAnswer(2, 'In a Type 2 conditional, \'would\' is used to indicate an unreal or hypothetical situation.', 13)"> would
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q13" value="3" onclick="checkAnswer(2, 'In a Type 2 conditional, \'would\' is used to indicate an unreal or hypothetical situation.', 13)"> can
+                    </label><br>
+                    <div id="feedback-13" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 15:</strong> If you ___ earlier, we wouldn’t be late.</p>
+                    <label>
+                        <input type="radio" name="q14" value="0" onclick="checkAnswer(1, 'Type 2 conditionals describe unreal situations in the present using the past tense (unreal now).', 14)"> woke up
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q14" value="1" onclick="checkAnswer(1, 'Type 2 conditionals describe unreal situations in the present using the past tense (unreal now).', 14)"> wake up
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q14" value="2" onclick="checkAnswer(1, 'Type 2 conditionals describe unreal situations in the present using the past tense (unreal now).', 14)"> had woken up
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q14" value="3" onclick="checkAnswer(1, 'Type 2 conditionals describe unreal situations in the present using the past tense (unreal now).', 14)"> woken up
+                    </label><br>
+                    <div id="feedback-14" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 16:</strong> If I ___ enough money, I would have bought that car.</p>
+                    <label>
+                        <input type="radio" name="q15" value="0" onclick="checkAnswer(2, 'In Type 3 conditionals, \'had + past participle\' is used in the if-clause for past unreal conditions.', 15)"> have
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q15" value="1" onclick="checkAnswer(2, 'In Type 3 conditionals, \'had + past participle\' is used in the if-clause for past unreal conditions.', 15)"> had
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q15" value="2" onclick="checkAnswer(2, 'In Type 3 conditionals, \'had + past participle\' is used in the if-clause for past unreal conditions.', 15)"> had had
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q15" value="3" onclick="checkAnswer(2, 'In Type 3 conditionals, \'had + past participle\' is used in the if-clause for past unreal conditions.', 15)"> will have
+                    </label><br>
+                    <div id="feedback-15" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 17:</strong> They ___ the game if it hadn't rained so heavily.</p>
+                    <label>
+                        <input type="radio" name="q16" value="0" onclick="checkAnswer(2, 'In Type 3 conditionals, \'could have + past participle\' describes past hypothetical results.', 16)"> might win
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q16" value="1" onclick="checkAnswer(2, 'In Type 3 conditionals, \'could have + past participle\' describes past hypothetical results.', 16)"> could win
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q16" value="2" onclick="checkAnswer(2, 'In Type 3 conditionals, \'could have + past participle\' describes past hypothetical results.', 16)"> could have won
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q16" value="3" onclick="checkAnswer(2, 'In Type 3 conditionals, \'could have + past participle\' describes past hypothetical results.', 16)"> will win
+                    </label><br>
+                    <div id="feedback-16" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 18:</strong> If they ___ now, they will arrive before dinner.</p>
+                    <label>
+                        <input type="radio" name="q17" value="0" onclick="checkAnswer(0, 'Type 1 uses present simple tense in the if-clause to show real future possibilities.', 17)"> leave
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q17" value="1" onclick="checkAnswer(0, 'Type 1 uses present simple tense in the if-clause to show real future possibilities.', 17)"> left
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q17" value="2" onclick="checkAnswer(0, 'Type 1 uses present simple tense in the if-clause to show real future possibilities.', 17)"> had left
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q17" value="3" onclick="checkAnswer(0, 'Type 1 uses present simple tense in the if-clause to show real future possibilities.', 17)"> leaving
+                    </label><br>
+                    <div id="feedback-17" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 19:</strong> He won’t go to the party if he ___ tired.</p>
+                    <label>
+                        <input type="radio" name="q18" value="0" onclick="checkAnswer(1, 'Type 1 conditionals use present simple in if-clauses for real conditions.', 18)"> were
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q18" value="1" onclick="checkAnswer(1, 'Type 1 conditionals use present simple in if-clauses for real conditions.', 18)"> is
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q18" value="2" onclick="checkAnswer(1, 'Type 1 conditionals use present simple in if-clauses for real conditions.', 18)"> was
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q18" value="3" onclick="checkAnswer(1, 'Type 1 conditionals use present simple in if-clauses for real conditions.', 18)"> has been
+                    </label><br>
+                    <div id="feedback-18" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 20:</strong> If you ___ him yesterday, would he have agreed?</p>
+                    <label>
+                        <input type="radio" name="q19" value="0" onclick="checkAnswer(1, 'Unreal past situations (Type 3) use \'had + past participle\' in the if-clause.', 19)"> called
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q19" value="1" onclick="checkAnswer(1, 'Unreal past situations (Type 3) use \'had + past participle\' in the if-clause.', 19)"> had called
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q19" value="2" onclick="checkAnswer(1, 'Unreal past situations (Type 3) use \'had + past participle\' in the if-clause.', 19)"> call
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q19" value="3" onclick="checkAnswer(1, 'Unreal past situations (Type 3) use \'had + past participle\' in the if-clause.', 19)"> will call
+                    </label><br>
+                    <div id="feedback-19" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 21:</strong> If you mix red and blue, you ___ purple.</p>
+                    <label>
+                        <input type="radio" name="q20" value="0" onclick="checkAnswer(1, 'Zero conditional expresses facts or general truths using the present simple tense.', 20)"> got
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q20" value="1" onclick="checkAnswer(1, 'Zero conditional expresses facts or general truths using the present simple tense.', 20)"> get
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q20" value="2" onclick="checkAnswer(1, 'Zero conditional expresses facts or general truths using the present simple tense.', 20)"> will get
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q20" value="3" onclick="checkAnswer(1, 'Zero conditional expresses facts or general truths using the present simple tense.', 20)"> have gotten
+                    </label><br>
+                    <div id="feedback-20" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 22:</strong> If I ___ taller, I would join the basketball team.</p>
+                    <label>
+                        <input type="radio" name="q21" value="0" onclick="checkAnswer(1, 'In Type 2 conditionals, \'were\' is used regardless of the subject to describe unreal present situations.', 21)"> am
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q21" value="1" onclick="checkAnswer(1, 'In Type 2 conditionals, \'were\' is used regardless of the subject to describe unreal present situations.', 21)"> were
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q21" value="2" onclick="checkAnswer(1, 'In Type 2 conditionals, \'were\' is used regardless of the subject to describe unreal present situations.', 21)"> was
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q21" value="3" onclick="checkAnswer(1, 'In Type 2 conditionals, \'were\' is used regardless of the subject to describe unreal present situations.', 21)"> had been
+                    </label><br>
+                    <div id="feedback-21" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 23:</strong> If John ___ earlier, he wouldn't have missed the flight.</p>
+                    <label>
+                        <input type="radio" name="q22" value="0" onclick="checkAnswer(1, 'In Type 3, \'had + past participle\' is required in the if-clause for unreal past conditions.', 22)"> woke up
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q22" value="1" onclick="checkAnswer(1, 'In Type 3, \'had + past participle\' is required in the if-clause for unreal past conditions.', 22)"> had woken up
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q22" value="2" onclick="checkAnswer(1, 'In Type 3, \'had + past participle\' is required in the if-clause for unreal past conditions.', 22)"> wakes up
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q22" value="3" onclick="checkAnswer(1, 'In Type 3, \'had + past participle\' is required in the if-clause for unreal past conditions.', 22)"> wake up
+                    </label><br>
+                    <div id="feedback-22" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 24:</strong> If you ___ work harder, you'll never succeed.</p>
+                    <label>
+                        <input type="radio" name="q23" value="0" onclick="checkAnswer(0, 'Type 1 conditionals use the present simple in the if-clause to describe real conditions.', 23)"> don't
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q23" value="1" onclick="checkAnswer(0, 'Type 1 conditionals use the present simple in the if-clause to describe real conditions.', 23)"> didn't
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q23" value="2" onclick="checkAnswer(0, 'Type 1 conditionals use the present simple in the if-clause to describe real conditions.', 23)"> won't
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q23" value="3" onclick="checkAnswer(0, 'Type 1 conditionals use the present simple in the if-clause to describe real conditions.', 23)"> wouldn't
+                    </label><br>
+                    <div id="feedback-23" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 25:</strong> If the driver had seen the warning sign, he ___ the accident.</p>
+                    <label>
+                        <input type="radio" name="q24" value="0" onclick="checkAnswer(2, 'Type 3 uses \'would have + past participle\' in the main clause for unreal past results.', 24)"> will avoid
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q24" value="1" onclick="checkAnswer(2, 'Type 3 uses \'would have + past participle\' in the main clause for unreal past results.', 24)"> avoided
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q24" value="2" onclick="checkAnswer(2, 'Type 3 uses \'would have + past participle\' in the main clause for unreal past results.', 24)"> would have avoided
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q24" value="3" onclick="checkAnswer(2, 'Type 3 uses \'would have + past participle\' in the main clause for unreal past results.', 24)"> avoids
+                    </label><br>
+                    <div id="feedback-24" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 26:</strong> If I won the lottery, I ___ a huge house.</p>
+                    <label>
+                        <input type="radio" name="q25" value="0" onclick="checkAnswer(1, 'Type 2 conditionals use \'would + base verb\' to describe unreal future conditions.', 25)"> will buy
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q25" value="1" onclick="checkAnswer(1, 'Type 2 conditionals use \'would + base verb\' to describe unreal future conditions.', 25)"> would buy
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q25" value="2" onclick="checkAnswer(1, 'Type 2 conditionals use \'would + base verb\' to describe unreal future conditions.', 25)"> buy
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q25" value="3" onclick="checkAnswer(1, 'Type 2 conditionals use \'would + base verb\' to describe unreal future conditions.', 25)"> bought
+                    </label><br>
+                    <div id="feedback-25" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 27:</strong> What ___ if you found a wallet on the street?</p>
+                    <label>
+                        <input type="radio" name="q26" value="0" onclick="checkAnswer(1, 'Type 2 conditional uses \'would\' in the main clause for unreal situations.', 26)"> did you do
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q26" value="1" onclick="checkAnswer(1, 'Type 2 conditional uses \'would\' in the main clause for unreal situations.', 26)"> would you do
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q26" value="2" onclick="checkAnswer(1, 'Type 2 conditional uses \'would\' in the main clause for unreal situations.', 26)"> will you do
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q26" value="3" onclick="checkAnswer(1, 'Type 2 conditional uses \'would\' in the main clause for unreal situations.', 26)"> do you do
+                    </label><br>
+                    <div id="feedback-26" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 28:</strong> If we ___ earlier, we would have caught the train.</p>
+                    <label>
+                        <input type="radio" name="q27" value="0" onclick="checkAnswer(1, 'Type 3 conditionals use \'had + past participle\' to describe unreal situations in the past.', 27)"> leave
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q27" value="1" onclick="checkAnswer(1, 'Type 3 conditionals use \'had + past participle\' to describe unreal situations in the past.', 27)"> had left
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q27" value="2" onclick="checkAnswer(1, 'Type 3 conditionals use \'had + past participle\' to describe unreal situations in the past.', 27)"> left
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q27" value="3" onclick="checkAnswer(1, 'Type 3 conditionals use \'had + past participle\' to describe unreal situations in the past.', 27)"> leaving
+                    </label><br>
+                    <div id="feedback-27" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 29:</strong> If they ___ more trees, the air would be fresher.</p>
+                    <label>
+                        <input type="radio" name="q28" value="0" onclick="checkAnswer(1, 'In Type 2 conditionals, \'planted\' expresses unreal conditions in the present.', 28)"> plant
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q28" value="1" onclick="checkAnswer(1, 'In Type 2 conditionals, \'planted\' expresses unreal conditions in the present.', 28)"> planted
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q28" value="2" onclick="checkAnswer(1, 'In Type 2 conditionals, \'planted\' expresses unreal conditions in the present.', 28)"> had planted
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q28" value="3" onclick="checkAnswer(1, 'In Type 2 conditionals, \'planted\' expresses unreal conditions in the present.', 28)"> plants
+                    </label><br>
+                    <div id="feedback-28" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 30:</strong> If I hadn’t forgotten her birthday, I ___ her a gift.</p>
+                    <label>
+                        <input type="radio" name="q29" value="0" onclick="checkAnswer(2, 'Type 3 conditionals use \'would have + past participle\' for unreal past results.', 29)"> gave
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q29" value="1" onclick="checkAnswer(2, 'Type 3 conditionals use \'would have + past participle\' for unreal past results.', 29)"> would give
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q29" value="2" onclick="checkAnswer(2, 'Type 3 conditionals use \'would have + past participle\' for unreal past results.', 29)"> would have given
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q29" value="3" onclick="checkAnswer(2, 'Type 3 conditionals use \'would have + past participle\' for unreal past results.', 29)"> will give
+                    </label><br>
+                    <div id="feedback-29" class="feedback"></div>
+                </div>
+                <div class="question">
+                    <p><strong>Question 31:</strong> If the weather is nice tomorrow, we ___ a barbecue.</p>
+                    <label>
+                        <input type="radio" name="q30" value="0" onclick="checkAnswer(1, 'In Type 1 conditionals, \'will\' is used to express real consequences in the future.', 30)"> have
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q30" value="1" onclick="checkAnswer(1, 'In Type 1 conditionals, \'will\' is used to express real consequences in the future.', 30)"> will have
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q30" value="2" onclick="checkAnswer(1, 'In Type 1 conditionals, \'will\' is used to express real consequences in the future.', 30)"> had
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q30" value="3" onclick="checkAnswer(1, 'In Type 1 conditionals, \'will\' is used to express real consequences in the future.', 30)"> would have
+                    </label><br>
+                    <div id="feedback-30" class="feedback"></div>
+                </div>
+</body>
+</html>
