@@ -34,6 +34,9 @@
                 margin-top: 12px;
                 font-weight: bold;
             }
+            .hidden {
+                display: none;
+            }
         </style>
     </head>
     <body>
@@ -43,7 +46,7 @@
         </div>
 
         <script>
-            // JSON array of questions
+            // JSON array with all 40 questions
             const questions = [
                 {
                     question: "Thank you for sending me a present.",
@@ -69,13 +72,177 @@
                     question: "Although it was raining, they went for a walk.",
                     answer: "Despite the rain, they went for a walk.",
                     explanation: "'Although' and 'despite' both introduce contrasting ideas, making the sentences equivalent."
+                },
+                {
+                    question: "I have never been to Japan.",
+                    answer: "This is the first time I have been to Japan.",
+                    explanation: "Both sentences express the speaker’s lack of prior experience visiting Japan."
+                },
+                {
+                    question: "The car is too expensive for me to buy.",
+                    answer: "I can’t afford the car.",
+                    explanation: "Both sentences express the inability to purchase the car due to its high price."
+                },
+                {
+                    question: "I met her during my trip to France.",
+                    answer: "I met her while I was travelling in France.",
+                    explanation: "'During' and 'while' both indicate when the meeting occurred, sharing the same meaning."
+                },
+                {
+                    question: "If you don’t hurry, you’ll miss the bus.",
+                    answer: "You’ll miss the bus unless you hurry.",
+                    explanation: "Both sentences describe the same consequence ('missing the bus') if there is no action ('hurrying')."
+                },
+                {
+                    question: "The book was so interesting that I couldn’t put it down.",
+                    answer: "It was such an interesting book that I couldn’t put it down.",
+                    explanation: "'So interesting' and 'such an interesting book' emphasize the same strong effect of the book."
+                },
+                {
+                    question: "My house is bigger than yours.",
+                    answer: "Your house is not as big as mine.",
+                    explanation: "Both sentences compare the size of the two houses, with reversed phrasing."
+                },
+                {
+                    question: "He no longer works here.",
+                    answer: "He used to work here.",
+                    explanation: "Both convey a past situation where he worked at the same place but does not anymore."
+                },
+                {
+                    question: "She started working here last year.",
+                    answer: "She has been working here for one year.",
+                    explanation: "Both describe her one-year duration of working, using simple past and present perfect continuous."
+                },
+                {
+                    question: "It’s not necessary for you to come early.",
+                    answer: "You don’t have to come early.",
+                    explanation: "'Not necessary' and 'don’t have to' both mean there is no obligation to come early."
+                },
+                {
+                    question: "The flight was delayed because of bad weather.",
+                    answer: "The flight was delayed due to bad weather.",
+                    explanation: "'Because of' and 'due to' are interchangeable phrases expressing the same cause."
+                },
+                {
+                    question: "I’m certain that he will succeed.",
+                    answer: "I’m sure that he will succeed.",
+                    explanation: "'Certain' and 'sure' both mean having strong confidence in his success."
+                },
+                {
+                    question: "She prefers tea to coffee.",
+                    answer: "She likes tea better than coffee.",
+                    explanation: "Both sentences express preference for tea compared to coffee."
+                },
+                {
+                    question: "Don’t let others see you.",
+                    answer: "Make sure no one sees you.",
+                    explanation: "Both sentences instruct the listener to avoid being seen by others."
+                },
+                {
+                    question: "He got up early so that he could catch the train.",
+                    answer: "He got up early to catch the train.",
+                    explanation: "'So that he could' and 'to' both indicate purpose."
+                },
+                {
+                    question: "This is my car.",
+                    answer: "The car belongs to me.",
+                    explanation: "Both indicate ownership of the car."
+                },
+                {
+                    question: "I’m not allowed to enter this room.",
+                    answer: "They don’t let me enter this room.",
+                    explanation: "'Not allowed' and 'don’t let' both express prohibition."
+                },
+                {
+                    question: "Let’s go out for dinner tonight.",
+                    answer: "Shall we go out for dinner tonight?",
+                    explanation: "Both sentences suggest going out for dinner tonight in different forms."
+                },
+                {
+                    question: "The hotel is cheaper than the guesthouse.",
+                    answer: "The guesthouse is more expensive than the hotel.",
+                    explanation: "Both sentences compare the price of the hotel and the guesthouse, with reversed phrasing."
+                },
+                {
+                    question: "Shall we meet at 7 p.m.?",
+                    answer: "How about meeting at 7 p.m.?",
+                    explanation: "Both sentences suggest meeting at 7 p.m. and invite agreement."
+                },
+                {
+                    question: "I am interested in learning languages.",
+                    answer: "Learning languages interests me.",
+                    explanation: "Both sentences describe the speaker's interest in learning languages."
+                },
+                {
+                    question: "She isn’t skilled at cooking.",
+                    answer: "She isn’t good at cooking.",
+                    explanation: "'Skilled at' and 'good at' have similar meanings in this context."
+                },
+                {
+                    question: "No one in this class is taller than John.",
+                    answer: "John is the tallest in this class.",
+                    explanation: "Both express that John is the tallest person among his classmates."
+                },
+                {
+                    question: "My father started working here in 2010.",
+                    answer: "My father has been working here since 2010.",
+                    explanation: "Both describe the duration of his work at this place, with a focus on the start point."
+                },
+                {
+                    question: "It’s necessary to wear a uniform at school.",
+                    answer: "You must wear a uniform at school.",
+                    explanation: "'Necessary' and 'must' both indicate obligation to wear a uniform."
+                },
+                {
+                    question: "He spent two hours completing the homework.",
+                    answer: "It took him two hours to complete the homework.",
+                    explanation: "Both sentences describe the amount of time needed to finish the homework."
+                },
+                {
+                    question: "The last time I met him was two years ago.",
+                    answer: "I haven’t met him for two years.",
+                    explanation: "Both indicate that two years have passed since the last meeting."
+                },
+                {
+                    question: "She is the owner of this house.",
+                    answer: "This house belongs to her.",
+                    explanation: "Both describe ownership of the house."
+                },
+                {
+                    question: "It’s a pity that I didn’t pass the test.",
+                    answer: "I wish I had passed the test.",
+                    explanation: "'It’s a pity' and 'I wish' express regret over the same situation."
+                },
+                {
+                    question: "The boy is too weak to lift the box.",
+                    answer: "The boy isn’t strong enough to lift the box.",
+                    explanation: "Both sentences describe the boy's inability to lift the box due to lack of strength."
+                },
+                {
+                    question: "He enjoys traveling abroad.",
+                    answer: "Traveling abroad is enjoyable for him.",
+                    explanation: "Both express his pleasure in traveling overseas."
+                },
+                {
+                    question: "She sings more beautifully than anyone else.",
+                    answer: "No one else sings as beautifully as she does.",
+                    explanation: "Both sentences compare her singing ability to everyone else’s."
+                },
+                {
+                    question: "I can’t wait to see you.",
+                    answer: "I’m looking forward to seeing you.",
+                    explanation: "Both sentences express excitement or anticipation about meeting someone."
+                },
+                {
+                    question: "Mary is both humorous and kind.",
+                    answer: "Not only is Mary humorous, but she is also kind.",
+                    explanation: "Both highlight Mary's character traits using different structures."
                 }
-                // Add the rest of the JSON questions here
             ];
 
             const quizContainer = document.getElementById('quiz-container');
 
-            // Function to render questions to the HTML
+            // Render questions to the HTML
             function renderQuestions() {
                 questions.forEach((questionItem, index) => {
                     const questionCard = document.createElement('div');
@@ -96,7 +263,6 @@
                     
                     quizContainer.appendChild(questionCard);
 
-                    // Attach click event for "Show Answer" button
                     const answerButton = questionCard.querySelector('.btn-option');
                     answerButton.addEventListener('click', (e) => {
                         const resultDiv = questionCard.querySelector('.result');
