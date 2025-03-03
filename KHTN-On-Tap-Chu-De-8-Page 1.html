@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KHTN Ôn Tập Chủ Đề 8 - Page 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>KHTN Ôn Tập Chủ Đề 8 - Page 1</h1>
+    <h2>I. Câu Hỏi Nhiều Lựa Chọn</h2>
+    <ul>
+        <li><strong>Câu 1:</strong> Tính chất vật lý của ethylic alcohol là<br>
+            <strong>Đáp án:</strong> D. chất lỏng không màu, nhẹ hơn nước, tan vô hạn trong nước, hòa tan được nhiều chất.
+        </li>
+        <li><strong>Câu 2:</strong> Nhiệt độ sôi của ethylic alcohol là<br>
+            <strong>Đáp án:</strong> B. 87,3°C.
+        </li>
+        <li><strong>Câu 3:</strong> Ethylic alcohol trong phân tử gồm<br>
+            <strong>Đáp án:</strong> A. nhóm ethyl (C₂H₅) liên kết với nhóm –OH.
+        </li>
+        <li><strong>Câu 4:</strong> Công thức cấu tạo của rượu etylic là<br>
+            <strong>Đáp án:</strong> A. CH₂ – CH₃ – OH.
+        </li>
+        <li><strong>Câu 5:</strong> Ý nghĩa trên nhãn chai rượu ghi "18°"<br>
+            <strong>Đáp án:</strong> B. nhiệt độ đông đặc của ethylic alcohol là 18°C.
+        </li>
+        <li><strong>Câu 6:</strong> Chất hóa sau đây là ethylic alcohol?<br>
+            <strong>Đáp án:</strong> A. C₂H₅OH.
+        </li>
+        <li><strong>Câu 7:</strong> Ethylic alcohol có tính chất đặc trưng là<br>
+            <strong>Đáp án:</strong> D. trong phân tử rượu có nhóm –OH.
+        </li>
+        <li><strong>Câu 8:</strong> Tính chất vật lý của acetic acid là<br>
+            <strong>Đáp án:</strong> D. chất lỏng, không màu, vị chua, không tan trong nước.
+        </li>
+        <li><strong>Câu 9:</strong> Acetic acid có công thức là<br>
+            <strong>Đáp án:</strong> C. CH₂=CHCOOH.
+        </li>
+        <li><strong>Câu 10:</strong> Acid có trong giấm ăn là<br>
+            <strong>Đáp án:</strong> D. Acetic acid.
+        </li>
+        <li><strong>Câu 11:</strong> Giấm ăn là dung dịch acetic acid có nồng độ là<br>
+            <strong>Đáp án:</strong> C. 5% – 9%.
+        </li>
+        <li><strong>Câu 12:</strong> Khẳng định nào sau đây không đúng về phản ứng ester hóa?<br>
+            <strong>Đáp án:</strong> D. Phản ứng xảy ra giữa acid và alcohol luôn cần xúc tác là H₂SO₄ đặc.
+        </li>
+    </ul>
+
+    <h2>II. Phần Trả Lời Ngắn</h2>
+    <ul>
+        <li><strong>Câu 1:</strong> Hoàn thành các phương trình hóa học sau:</li>
+        <li>C₆H₁₂O₆ → C₂H₅OH + CO₂</li>
+        <li>C₂H₅OH + O₂ → CH₃COOH + H₂O</li>
+        <li>CH₃COOH + C₂H₅OH → CH₃COOC₂H₅ + H₂O</li>
+    </ul>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
