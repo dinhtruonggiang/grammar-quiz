@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KHTN Ôn Tập Chủ Đề 8 - Page 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .equation {
+            font-family: "Courier New", monospace;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>KHTN Ôn Tập Chủ Đề 8 - Page 2</h1>
+    
+    <h2>I. Hoàn Thành Phương Trình Hóa Học</h2>
+    <ul>
+        <li class="equation">CH₃COOH + MgO → (CH₃COO)₂Mg + H₂O.</li>
+        <li class="equation">CH₃COOH + 2O₂ (t°) → 2CO₂ + 2H₂O.</li>
+        <li class="equation">2C₂H₅OH + 2Na → 2C₂H₅ONa + H₂.</li>
+        <li class="equation">2CH₃COOH + CaCO₃ → Ca(CH₃COO)₂ + CO₂ + H₂O.</li>
+        <li class="equation">2CH₃COOH + Zn(OH)₂ → Zn(CH₃COO)₂ + 2H₂O.</li>
+        <li class="equation">C₂H₅OH + 3O₂ (t°) → 2CO₂ + 3H₂O.</li>
+        <li class="equation">CH₃COOH + CuO → (CH₃COO)₂Cu + H₂O.</li>
+        <li class="equation">2CH₃COOH + 2K → 2KCH₃COO + H₂.</li>
+        <li class="equation">C₂H₅OH + 2K → 2C₂H₅OK + H₂.</li>
+        <li class="equation">2CH₃COOH + 2Na → 2CH₃COONa + H₂.</li>
+        <li class="equation">CH₃COOH + ZnO → Zn(CH₃COO)₂ + H₂O.</li>
+        <li class="equation">2CH₃COOH + Mg(OH)₂ → (CH₃COO)₂Mg + 2H₂O.</li>
+    </ul>
+
+    <h2>II. Câu Hỏi Tự Luận</h2>
+    <ul>
+        <li><strong>Câu 2: Trình bày tác hại của việc lạm dụng rượu bia:</strong></li>
+        <ul>
+            <li>Sức khỏe: Kích thích thần kinh, gây nghiện, gây ung thư và nhiều căn bệnh khác,...</li>
+            <li>Gây ra các hậu quả nghiêm trọng như tệ nạn xã hội, bạo lực gia đình, tai nạn giao thông, ...</li>
+        </ul>
+
+        <li><strong>Câu 3: Trình bày ứng dụng của ethylic alcohol:</strong></li>
+        <ul>
+            <li>Dùng làm dung môi (pha nước hoa, sơn,...).</li>
+            <li>Pha vào xăng làm nhiên liệu.</li>
+            <li>Sản xuất đồ uống có cồn.</li>
+            <li>Làm nguyên liệu sản xuất ether, ester, ...</li>
+        </ul>
+
+        <li><strong>Câu 4: Trình bày ứng dụng của acetic acid:</strong></li>
+        <ul>
+            <li>Acetic acid được dùng trong sản xuất giấm ăn.</li>
+            <li>Dùng trong sản xuất dược phẩm.</li>
+            <li>Sản xuất sơn, chất dẻo, keo dán, ...</li>
+        </ul>
+    </ul>
+
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
