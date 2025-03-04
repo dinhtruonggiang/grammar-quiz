@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Trắc Nghiệm Địa Lý 9</title>
+    <style>
+        .question { margin-bottom: 20px; }
+        .options label { display: block; margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h2>BẮC TRUNG BỘ</h2>
+    
+    <div class="question">
+        <p><strong>1. Đặc điểm địa hình của Bắc Trung Bộ là:</strong></p>
+        <div class="options">
+            <label><input type="radio" name="q1"> A. Chỉ có đồng bằng</label>
+            <label><input type="radio" name="q1" value="correct"> B. Lãnh thổ trải dài theo chiều bắc-nam, có núi đồi ở phía tây và đồng bằng ven biển ở phía đông</label>
+            <label><input type="radio" name="q1"> C. Chỉ có núi đồi</label>
+        </div>
+    </div>
+	
+	<div class="question">
+        <p><strong>2. Đặc điểm địa hình của Bắc Trung Bộ có ảnh hưởng như thế nào đến cơ cấu kinh tế?</strong></p>
+        <div class="options">
+            <label><input type="radio" name="q2" value="correct"> A. Tạo điều kiện hình thành cơ cấu kinh tế đặc trưng: lâm nghiệp, nông nghiệp và khai thác, nuôi trồng thủy sản</label>
+            <label><input type="radio" name="q2"> B. Chỉ thuận lợi cho phát triển nông nghiệp</label>
+            <label><input type="radio" name="q2"> C. Chỉ thuận lợi cho phát triển lâm nghiệp</label>
+        </div>
+    </div>
+
+    <h2>DUYÊN HẢI NAM TRUNG BỘ</h2>
+
+    <div class="question">
+        <p><strong>3. Hạn chế chính về điều kiện tự nhiên của Duyên Hải Nam Trung Bộ là:</strong></p>
+        <div class="options">
+            <label><input type="radio" name="q3" value="correct"> A. Biến đổi khí hậu gây hạn hán, sa mạc hóa và đất dễ bị rửa trôi, ảnh hưởng đến sản xuất và đời sống</label>
+            <label><input type="radio" name="q3"> B. Chỉ có vấn đề về hạn hán</label>
+            <label><input type="radio" name="q3"> C. Chỉ có vấn đề về đất đai</label>
+        </div>
+    </div>
+
+    <h2>TÂY NGUYÊN</h2>
+
+    <div class="question">
+        <p><strong>4. Thế mạnh về địa hình và đất của Tây Nguyên là:</strong></p>
+        <div class="options">
+            <label><input type="radio" name="q4" value="correct"> A. Có các cao nguyên xếp tầng và đất đỏ bazan phân bố rộng lớn, thuận lợi cho quy hoạch vùng chuyên canh cây công nghiệp lâu năm, cây ăn quả và trồng rừng</label>
+            <label><input type="radio" name="q4"> B. Chỉ có đất đỏ bazan</label>
+            <label><input type="radio" name="q4"> C. Chỉ có cao nguyên xếp tầng</label>
+        </div>
+    </div>
+	
+	<div class="question">
+        <p><strong>5. Đặc điểm dân cư của Tây Nguyên bao gồm:</strong></p>
+        <div class="options">
+            <label><input type="radio" name="q5" value="correct"> A. Có nền văn hóa đa dạng, giàu kinh nghiệm sản xuất nông lâm nghiệp, có truyền thống đoàn kết và trình độ dân trí cao (tỉ lệ người lớn biết chữ: 91.8%)</label>
+            <label><input type="radio" name="q5"> B. Chỉ có truyền thống văn hóa</label>
+            <label><input type="radio" name="q5"> C. Chỉ có kinh nghiệm sản xuất</label>
+        </div>
+    </div>
+
+    <div class="question">
+        <p><strong>6. Đặc điểm văn hóa của Tây Nguyên bao gồm:</strong></p>
+        <div class="options">
+            <label><input type="radio" name="q6" value="correct"> A. Không gian văn hóa cồng chiêng, kiến trúc nhà Rông, nhà Dài, lễ hội cồng chiêng, lễ hội lúa mới và các di tích lịch sử văn hóa như Khu khảo cổ Cát Tiên</label>
+            <label><input type="radio" name="q6"> B. Chỉ có không gian văn hóa cồng chiêng</label>
+            <label><input type="radio" name="q6"> C. Chỉ có kiến trúc nhà Rông và nhà Dài</label>
+        </div>
+    </div>
+    <div class="question">
+        <p><strong>7. Xu hướng phát triển cây công nghiệp lâu năm ở Tây Nguyên (2018-2021) là:</strong></p>
+        <div class="options">
+            <label><input type="radio" name="q7" value="correct"> A. Tăng cả diện tích (từ 1059,8 lên 1089,1 nghìn ha) và sản lượng (từ 2776,7 lên 3814,8 nghìn tấn)</label>
+            <label><input type="radio" name="q7"> B. Giảm diện tích, tăng sản lượng</label>
+            <label><input type="radio" name="q7"> C. Giảm cả diện tích và sản lượng</label>
+        </div>
+    </div>
+
+    <button onclick="checkAnswers()" class="submit-btn">Kiểm tra đáp án</button>
+    <p id="result"></p>
+
+    <script>
+        function checkAnswers() {
+            const correctAnswers = ['B', 'A', 'A', 'A', 'A', 'A', 'A'];
+            const answers = document.querySelectorAll('input[value="correct"]:checked');
+            const score = answers.length;
+            const total = correctAnswers.length;
+            const percentage = Math.round((score/total)*100);
+            
+            document.getElementById('result').innerHTML = 
+                `Kết quả: ${score}/${total} câu đúng (${percentage}%)`;
+        }
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
