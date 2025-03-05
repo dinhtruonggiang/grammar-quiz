@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Trắc nghiệm KHTN Lớp 9 - Giữa HK2</title>
+</head>
+<body class="bg-gray-50 p-4 md:p-8">
+    <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow">
+        <h1 class="text-2xl font-bold mb-6 text-center">Bài Kiểm Tra KHTN Lớp 9 - Giữa HK2</h1>
+        <h2 class="text-lg font-semibold mb-4">Chủ đề 10: Vỏ Trái Đất và Tài Nguyên Thiên Nhiên</h2>
+
+        <form id="quizForm" class="space-y-8">
+			<!-- Câu 1 -->
+            <div class="border-b pb-6">
+                <fieldset>
+                    <legend class="font-medium mb-3">Câu 1: Trình bày lợi ích của việc tiết kiệm và bảo vệ tài nguyên trong vỏ trái đất là:</legend>
+                    <div class="space-y-2 ml-4">
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="A" class="mr-2">
+                            Giữ được sự cân bằng của tự nhiên và sự phát triển bền vững của xã hội
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="B" class="mr-2">
+                            Tăng thu nhập cho người khai thác
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="C" class="mr-2">
+                            Đảm bảo nguồn tài nguyên vô tận
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="D" class="mr-2">
+                            Tạo thêm việc làm cho xã hội
+                        </label>
+                    </div>
+                    <div id="result1" class="mt-3 hidden"></div>
+                </fieldset>
+            </div>
+
+            <!-- Câu 2 -->
+            <div class="border-b pb-6">
+                <fieldset>
+                    <legend class="font-medium mb-3">Câu 2: Giải pháp hạn chế việc sử dụng nhiên liệu hóa thạch là:</legend>
+                    <div class="space-y-2 ml-4">
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="A" class="mr-2">
+                            Sử dụng năng lượng tái tạo như năng lượng gió, nước, mặt trời để thay thế cho nhiên liệu hóa thạch
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="B" class="mr-2">
+                            Tăng cường khai thác nhiên liệu hóa thạch
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="C" class="mr-2">
+                            Giảm sử dụng các thiết bị điện
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="D" class="mr-2">
+                            Tăng giá nhiên liệu hóa thạch
+                        </label>
+                    </div>
+                    <div id="result2" class="mt-3 hidden"></div>
+                </fieldset>
+            </div>
+
+            <!-- Câu 3 -->
+            <div class="border-b pb-6">
+                <fieldset>
+                    <legend class="font-medium mb-3">Câu 3: Trình bày tác động của sự ấm lên toàn cầu:</legend>
+                    <div class="space-y-2 ml-4">
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="A" class="mr-2">
+                            Gây nên hiện tượng thời tiết cực đoan: hạn hán, lũ lụt, bão, băng tan và làm biến đổi môi trường sống của sinh vật
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="B" class="mr-2">
+                            Chỉ ảnh hưởng đến vùng cực
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="C" class="mr-2">
+                            Không ảnh hưởng đến con người
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="D" class="mr-2">
+                            Chỉ làm tăng nhiệt độ nhẹ
+                        </label>
+                    </div>
+                    <div id="result3" class="mt-3 hidden"></div>
+                </fieldset>
+            </div>
+			
+			<!-- Câu 1 -->
+        <div class="mb-8 pb-6 border-b">
+            <div class="mb-4">
+                <h3 class="font-semibold">Câu 4:</h3>
+                <p>Trình bày lợi ích của việc tiết kiệm và bảo vệ tài nguyên trong vỏ Trái Đất. <span class="text-blue-600">(Chọn 2 trong 4 ý sau)</span></p>
+            </div>
+
+            <div class="bg-gray-50 p-4 rounded">
+                <p class="font-medium mb-2">Chọn 2 ý trả lời:</p>
+                <div class="space-y-2">
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="q4" class="rounded">
+                        <span>Tiết kiệm được chi phí khai thác</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="q4" class="rounded">
+                        <span>Bảo vệ môi trường, giảm ô nhiễm</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="q4" class="rounded">
+                        <span>Tiết kiệm tài nguyên cho thế hệ sau</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="q4" class="rounded">
+                        <span>Góp phần phát triển bền vững</span>
+                    </label>
+                </div>
+				<div id="result4" class="mt-3 hidden"></div>
+            </div>
+        </div>
+
+        <!-- Câu 2 -->
+        <div class="mb-8">
+            <div class="mb-4">
+                <h3 class="font-semibold">Câu 5:</h3>
+                <p>Nêu các giải pháp hạn chế việc sử dụng nhiên liệu hóa thạch. <span class="text-blue-600">(Chọn 2 trong 4 ý sau)</span></p>
+            </div>
+
+            <div class="bg-gray-50 p-4 rounded">
+                <p class="font-medium mb-2">Chọn 2 ý trả lời:</p>
+                <div class="space-y-2">
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="q5" class="rounded">
+                        <span>Sử dụng năng lượng tái tạo như năng lượng gió, nước, mặt trời để thay thế</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="q5" class="rounded">
+                        <span>Thu thuế đối với những hàng hóa trong quá trình sản xuất có sử dụng nhiên liệu hóa thạch</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="q5" class="rounded">
+                        <span>Khuyến khích sử dụng phương tiện công cộng</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="q5" class="rounded">
+                        <span>Phát triển công nghệ tiết kiệm năng lượng</span>
+                    </label>
+                </div>
+				<div id="result5" class="mt-3 hidden"></div>
+            </div>
+        </div>
+		
+		<!-- Câu 1 -->
+        <div class="mb-8 pb-6 border-b">
+            <fieldset>
+                <legend class="font-medium mb-3">Câu 6: Hydrogen và ethanol được sử dụng như thế nào trong việc thay thế nhiên liệu hóa thạch?</legend>
+                <div class="space-y-2 ml-4">
+                    <label class="flex items-center">
+                        <input type="radio" name="q6" value="A" class="mr-2">
+                        Chỉ dùng để sản xuất nhiên liệu hóa thạch
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q6" value="B" class="mr-2">
+                        Làm nhiên liệu thay thế nhiên liệu hóa thạch
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q6" value="C" class="mr-2">
+                        Chỉ dùng trong công nghiệp hóa chất
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q6" value="D" class="mr-2">
+                        Dùng để tăng hiệu suất nhiên liệu hóa thạch
+                    </label>
+                </div>
+            </fieldset>
+        </div>
+
+        <!-- Câu 2 -->
+        <div class="mb-8 pb-6 border-b">
+            <fieldset>
+                <legend class="font-medium mb-3">Câu 7: Hiện tượng thời tiết cực đoan do sự ấm lên toàn cầu bao gồm:</legend>
+                <div class="space-y-2 ml-4">
+                    <label class="flex items-center">
+                        <input type="radio" name="q7" value="A" class="mr-2">
+                        Chỉ có hạn hán và lũ lụt
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q7" value="B" class="mr-2">
+                        Hạn hán, lũ lụt, bão, băng tan
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q7" value="C" class="mr-2">
+                        Chỉ có bão và băng tan
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q7" value="D" class="mr-2">
+                        Chỉ có hiện tượng băng tan
+                    </label>
+                </div>
+            </fieldset>
+        </div>
+
+        <!-- Câu 3 -->
+        <div class="mb-8">
+            <fieldset>
+                <legend class="font-medium mb-3">Câu 8: Tác động của sự ấm lên toàn cầu đối với môi trường sống là:</legend>
+                <div class="space-y-2 ml-4">
+                    <label class="flex items-center">
+                        <input type="radio" name="q8" value="A" class="mr-2">
+                        Làm biến đổi môi trường sống của thực vật động vật theo hướng tích cực
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q8" value="B" class="mr-2">
+                        Làm biến đổi môi trường sống của thực vật động vật theo hướng tiêu cực
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q8" value="C" class="mr-2">
+                        Không ảnh hưởng đến môi trường sống
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q8" value="D" class="mr-2">
+                        Chỉ ảnh hưởng đến con người
+                    </label>
+                </div>
+            </fieldset>
+        </div>
+            <!-- Câu 25 -->
+            <div class="border-b pb-6">
+                <fieldset>
+                    <legend class="font-medium mb-3">Câu 25: Nguyên tố nào phổ biến nhất trong vỏ Trái Đất?</legend>
+                    <div class="space-y-2 ml-4">
+                        <label class="flex items-center">
+                            <input type="radio" name="q25" value="A" class="mr-2">
+                            Carbon
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q25" value="B" class="mr-2">
+                            Oxygen
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q25" value="C" class="mr-2">
+                            Sắt
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q25" value="D" class="mr-2">
+                            Silicon
+                        </label>
+                    </div>
+                    <div id="result25" class="mt-3 hidden"></div>
+                </fieldset>
+            </div>
+
+            <!-- Câu 26 -->
+            <div class="border-b pb-6">
+                <fieldset>
+                    <legend class="font-medium mb-3">Câu 26: Nguyên tố phổ biến thứ hai ở vỏ trái đất là</legend>
+                    <div class="space-y-2 ml-4">
+                        <label class="flex items-center">
+                            <input type="radio" name="q26" value="A" class="mr-2">
+                            Carbon
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q26" value="B" class="mr-2">
+                            Oxygen
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q26" value="C" class="mr-2">
+                            Sắt
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q26" value="D" class="mr-2">
+                            Silicon
+                        </label>
+                    </div>
+                    <div id="result26" class="mt-3 hidden"></div>
+                </fieldset>
+            </div>
+
+            <!-- Continue with more questions... -->
+            <!-- Câu 27 -->
+            <div class="border-b pb-6">
+                <fieldset>
+                    <legend class="font-medium mb-3">Câu 27: Trong vỏ trái đất các nguyên tố hóa học thường tồn tại ở dạng</legend>
+                    <div class="space-y-2 ml-4">
+                        <label class="flex items-center">
+                            <input type="radio" name="q27" value="A" class="mr-2">
+                            đơn chất
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q27" value="B" class="mr-2">
+                            acid
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q27" value="C" class="mr-2">
+                            oxide và muối
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q27" value="D" class="mr-2">
+                            base
+                        </label>
+                    </div>
+                    <div id="result27" class="mt-3 hidden"></div>
+                </fieldset>
+            </div>
+
+            <!-- Câu 28 -->
+            <div class="border-b pb-6">
+                <fieldset>
+                    <legend class="font-medium mb-3">Câu 28: Nhiên liệu hóa thạch là:</legend>
+                    <div class="space-y-2 ml-4">
+                        <label class="flex items-center">
+                            <input type="radio" name="q28" value="A" class="mr-2">
+                            nguồn nhiên liệu tái tạo
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q28" value="B" class="mr-2">
+                            đã chứa ít nhất 50% xác động và thực vật
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q28" value="C" class="mr-2">
+                            chỉ bao gồm dầu mỏ, than đá
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q28" value="D" class="mr-2">
+                            nhiên liệu hình thành từ xác sinh vật bị chôn vùi và biến đổi hàng triệu năm trước
+                        </label>
+                    </div>
+                    <div id="result28" class="mt-3 hidden"></div>
+                </fieldset>
+            </div>
+
+            <!-- Add more questions here... -->
+			
+			<!-- Câu 29 -->
+            <div class="border-b pb-6">
+                <fieldset>
+                    <legend class="font-medium mb-3">Câu 29: Nhiên liệu hóa thạch</legend>
+                    <div class="space-y-2 ml-4">
+                        <label class="flex items-center">
+                            <input type="radio" name="q29" value="A" class="mr-2">
+                            là nguồn nhiên liệu tái tạo
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q29" value="B" class="mr-2">
+                            là đá chứa ít nhất 50% xác động và thực vật
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q29" value="C" class="mr-2">
+                            được tạo thành từ quá trình phân hủy các sinh vật chôn vùi hàng triệu năm trước
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q29" value="D" class="mr-2">
+                            chỉ bao gồm dầu mỏ, than đá
+                        </label>
+                    </div>
+                    <div id="result29" class="mt-3 hidden"></div>
+                </fieldset>
+            </div>
+
+            <!-- Câu 30 -->
+            <div class="border-b pb-6">
+                <fieldset>
+                    <legend class="font-medium mb-3">Câu 30: Ứng dụng của silicon là</legend>
+                    <div class="space-y-2 ml-4">
+                        <label class="flex items-center">
+                            <input type="radio" name="q30" value="A" class="mr-2">
+                            sản xuất phân bón
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q30" value="B" class="mr-2">
+                            chất bán dẫn trong các linh kiện điện tử
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q30" value="C" class="mr-2">
+                            sản xuất chất dẻo
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q30" value="D" class="mr-2">
+                            sản xuất vôi tôi
+                        </label>
+                    </div>
+                    <div id="result30" class="mt-3 hidden"></div>
+                </fieldset>
+            </div>
+
+            <!-- Câu 31 -->
+            <div class="border-b pb-6">
+                <fieldset>
+                    <legend class="font-medium mb-3">Câu 31: Dạng tồn tại của carbon trong tự nhiên ở dạng đơn chất là</legend>
+                    <div class="space-y-2 ml-4">
+                        <label class="flex items-center">
+                            <input type="radio" name="q31" value="A" class="mr-2">
+                            than, kim cương
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q31" value="B" class="mr-2">
+                            than, khí carbonic
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q31" value="C" class="mr-2">
+                            đá vôi
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q31" value="D" class="mr-2">
+                            carboxylic acid
+                        </label>
+                    </div>
+                    <div id="result31" class="mt-3 hidden"></div>
+                </fieldset>
+            </div>
+
+            <!-- Câu 32 -->
+            <div class="border-b pb-6">
+                <fieldset>
+                    <legend class="font-medium mb-3">Câu 32: Phát biểu nào sau đây KHÔNG đúng về silicon?</legend>
+                    <div class="space-y-2 ml-4">
+                        <label class="flex items-center">
+                            <input type="radio" name="q32" value="A" class="mr-2">
+                            Silicon là nguyên tố phổ biến thứ hai trong thiên nhiên, chỉ sau oxygen
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q32" value="B" class="mr-2">
+                            Silicon chiếm ¼ khối lượng vỏ Trái Đất
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q32" value="C" class="mr-2">
+                            Trong tự nhiên silicon tồn tại cả ở dạng đơn chất và hợp chất
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q32" value="D" class="mr-2">
+                            Một số hợp chất của silicon: cát trắng, đất sét (cao lanh)
+                        </label>
+                    </div>
+                    <div id="result32" class="mt-3 hidden"></div>
+                </fieldset>
+            </div>
+
+            <!-- Câu 33 -->
+            <div class="border-b pb-6">
+                <fieldset>
+                    <legend class="font-medium mb-3">Câu 33: Khí chủ yếu gây hiện tượng hiệu ứng nhà kính là</legend>
+                    <div class="space-y-2 ml-4">
+                        <label class="flex items-center">
+                            <input type="radio" name="q33" value="A" class="mr-2">
+                            carbon monoxide và methane
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q33" value="B" class="mr-2">
+                            carbon dioxide và methane
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q33" value="C" class="mr-2">
+                            oxygen và methane
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q33" value="D" class="mr-2">
+                            nitrogen và carbon dioxide
+                        </label>
+                    </div>
+                    <div id="result33" class="mt-3 hidden"></div>
+                </fieldset>
+            </div>
+			
+			<!-- Câu 34 -->
+            <div class="border-b pb-6">
+                <fieldset>
+                    <legend class="font-medium mb-3">Câu 34: Ý nào KHÔNG đúng về vai trò của việc khai thác hợp lí và sử dụng tiết kiệm, hiệu quả nguồn tài nguyên khoáng sản?</legend>
+                    <div class="space-y-2 ml-4">
+                        <label class="flex items-center">
+                            <input type="radio" name="q34" value="A" class="mr-2">
+                            Khoáng sản là loại tài nguyên không thể phục hồi được.
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q34" value="B" class="mr-2">
+                            Một số khoáng sản có nguy cơ cạn kiệt.
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q34" value="C" class="mr-2">
+                            Bảo vệ môi trường.
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q34" value="D" class="mr-2">
+                            Khoáng sản nước ta còn trữ lượng rất lớn.
+                        </label>
+                    </div>
+                    <div id="result34" class="mt-3 hidden"></div>
+                </fieldset>
+            </div>
+
+            <!-- Câu 35 -->
+            <div class="border-b pb-6">
+                <fieldset>
+                    <legend class="font-medium mb-3">Câu 35: Nội dung nào dưới đây KHÔNG phản ánh đúng biện pháp bảo vệ nguồn tài nguyên trong vỏ Trái Đất?</legend>
+                    <div class="space-y-2 ml-4">
+                        <label class="flex items-center">
+                            <input type="radio" name="q35" value="A" class="mr-2">
+                            Dùng nhiều năng lượng hóa thạch, hạn chế dùng năng lượng tái tạo.
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q35" value="B" class="mr-2">
+                            Sử dụng tiết kiệm những nhiên liệu hóa thạch.
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q35" value="C" class="mr-2">
+                            Chấp hành quy định của pháp luật về bảo vệ tài nguyên, môi trường.
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q35" value="D" class="mr-2">
+                            Tuyên truyền, giáo dục để nâng cao ý thức trách nhiệm của người dân.
+                        </label>
+                    </div>
+                    <div id="result35" class="mt-3 hidden"></div>
+                </fieldset>
+            </div>
+			
+			<!-- Câu 36 -->
+        <div class="border-b pb-6">
+            <fieldset>
+                <legend class="font-medium mb-3">Câu 36: Tiết kiệm điện năng giúp</legend>
+                <div class="space-y-2 ml-4">
+                    <label class="flex items-center">
+                        <input type="radio" name="q36" value="A" class="mr-2">
+                        tăng nhu cầu sử dụng năng lượng hóa thạch.
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q36" value="B" class="mr-2">
+                        giảm phát thải chất thải rắn.
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q36" value="C" class="mr-2">
+                        giảm phát thải khí nhà kính, góp phần ứng phó biến đổi khí hậu.
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q36" value="D" class="mr-2">
+                        giảm nhu cầu sử dụng nhiên liệu tái tạo.
+                    </label>
+                </div>
+                <div id="result36" class="mt-3 hidden"></div>
+            </fieldset>
+        </div>
+
+        <!-- Câu 37 -->
+        <div class="border-b pb-6">
+            <fieldset>
+                <legend class="font-medium mb-3">Câu 37: Trong quá trình khai thác, vận chuyển và chế biến dầu khí ở nước ta cần đặc biệt chú ý giải quyết vấn đề nào sau đây?</legend>
+                <div class="space-y-2 ml-4">
+                    <label class="flex items-center">
+                        <input type="radio" name="q37" value="A" class="mr-2">
+                        Tác động của thiên tai.
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q37" value="B" class="mr-2">
+                        Các sự cố môi trường.
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q37" value="C" class="mr-2">
+                        Liên doanh với nước ngoài
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q37" value="D" class="mr-2">
+                        Thu hồi khí đồng hành.
+                    </label>
+                </div>
+                <div id="result37" class="mt-3 hidden"></div>
+            </fieldset>
+        </div>
+
+        <!-- Câu 38 -->
+        <div class="border-b pb-6">
+            <fieldset>
+                <legend class="font-medium mb-3">Câu 38: Việc khai thác và sử dụng tài nguyên vỏ Trái Đất hợp lý sẽ</legend>
+                <div class="space-y-2 ml-4">
+                    <label class="flex items-center">
+                        <input type="radio" name="q38" value="A" class="mr-2">
+                        lãng phí.
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q38" value="B" class="mr-2">
+                        tiết kiệm chi phí và nâng cao hiệu quả kinh tế.
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q38" value="C" class="mr-2">
+                        ảnh hưởng xấu đến môi trường và phát triển bền vững.
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q38" value="D" class="mr-2">
+                        một số loại khoáng sản có nguy cơ bị cạn kiệt.
+                    </label>
+                </div>
+                <div id="result38" class="mt-3 hidden"></div>
+            </fieldset>
+        </div>
+
+        <!-- Câu 39 -->
+        <div class="border-b pb-6">
+            <fieldset>
+                <legend class="font-medium mb-3">Câu 39: Nguyên liệu chính để sản xuất thủy tinh là</legend>
+                <div class="space-y-2 ml-4">
+                    <label class="flex items-center">
+                        <input type="radio" name="q39" value="A" class="mr-2">
+                        cát thạch anh, đá vôi, soda.
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q39" value="B" class="mr-2">
+                        đất sét, nước, có hoặc không có cát.
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q39" value="C" class="mr-2">
+                        đất sét trắng, cát trắng, nước, một số hợp chất của kim loại.
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q39" value="D" class="mr-2">
+                        đá vôi, đất sét, chất phụ gia.
+                    </label>
+                </div>
+                <div id="result39" class="mt-3 hidden"></div>
+            </fieldset>
+        </div>
+
+        <!-- Câu 40 -->
+        <div class="border-b pb-6">
+            <fieldset>
+                <legend class="font-medium mb-3">Câu 40: Nguyên liệu chính để sản xuất gạch, ngói là</legend>
+                <div class="space-y-2 ml-4">
+                    <label class="flex items-center">
+                        <input type="radio" name="q40" value="A" class="mr-2">
+                        cát thạch anh, đá vôi, soda.
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q40" value="B" class="mr-2">
+                        đất sét, nước, có hoặc không có cát.
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q40" value="C" class="mr-2">
+                        đất sét trắng, cát trắng, nước, một số hợp chất của kim loại.
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q40" value="D" class="mr-2">
+                        đá vôi, đất sét, chất phụ gia.
+                    </label>
+                </div>
+                <div id="result40" class="mt-3 hidden"></div>
+            </fieldset>
+        </div>
+
+        <!-- Câu 41 -->
+        <div class="border-b pb-6">
+            <fieldset>
+                <legend class="font-medium mb-3">Câu 41: Nguyên liệu chính để sản xuất sứ là</legend>
+                <div class="space-y-2 ml-4">
+                    <label class="flex items-center">
+                        <input type="radio" name="q41" value="A" class="mr-2">
+                        cát thạch anh, đá vôi, soda.
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q41" value="B" class="mr-2">
+                        đất sét, nước, có hoặc không có cát.
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q41" value="C" class="mr-2">
+                        đất sét trắng, cát trắng, nước, một số hợp chất của kim loại.
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="q41" value="D" class="mr-2">
+                        đá vôi, đất sét, chất phụ gia.
+                    </label>
+                </div>
+                <div id="result41" class="mt-3 hidden"></div>
+            </fieldset>
+        </div>
+
+            <!-- Continue with questions 36-41... -->
+
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                Nộp bài
+            </button>
+        </form>
+
+        <div id="finalScore" class="mt-6 text-center hidden">
+            <h3 class="text-xl font-bold">Kết quả:</h3>
+            <p class="text-lg">Số câu đúng: <span id="score">0</span>/9</p>
+        </div>
+    </div>
+
+    <script>
+        const answers = {
+            q1: 'A', // Giữ được sự cân bằng của tự nhiên...
+            q2: 'A', // Sử dụng năng lượng tái tạo...
+            q3: 'A', // Gây nên hiện tượng thời tiết cực đoan...
+            q25: 'B', // Oxygen
+            q26: 'D', // Silicon
+            q27: 'C', // oxide và muối
+            q28: 'D', // nhiên liệu hình thành từ xác sinh vật...
+            q29: 'C', // được tạo thành từ quá trình phân hủy...
+            q30: 'B', // chất bán dẫn trong các linh kiện điện tử
+            q31: 'A', // than, kim cương
+            q32: 'B', // Silicon chiếm 1/4 khối lượng vỏ Trái Đất
+            q33: 'B'  // carbon dioxide và methane
+			q34: 'D', // Khoáng sản nước ta còn trữ lượng rất lớn
+            q35: 'A', // Dùng nhiều năng lượng hóa thạch...
+            q36: 'C', // giảm phát thải khí nhà kính...
+            q37: 'B', // Các sự cố môi trường
+            q38: 'B', // tiết kiệm chi phí và nâng cao hiệu quả kinh tế
+            q39: 'C', // đất sét trắng, cát trắng, nước...
+            q40: 'A', // cát thạch anh, đá vôi, soda
+            q41: 'C'  // đất sét trắng, cát trắng, nước...
+        };
+
+        const explanations = {
+            q1: 'Tiết kiệm và bảo vệ tài nguyên giúp duy trì sự cân bằng tự nhiên và phát triển bền vững của xã hội, đảm bảo nguồn tài nguyên cho các thế hệ tương lai.',
+            q2: 'Sử dụng năng lượng tái tạo (gió, nước, mặt trời) là giải pháp tốt nhất để hạn chế sử dụng nhiên liệu hóa thạch, giảm phát thải khí nhà kính.',
+            q3: 'Sự ấm lên toàn cầu gây ra nhiều hiện tượng thời tiết cực đoan, ảnh hưởng nghiêm trọng đến môi trường sống và các hệ sinh thái.',
+            q25: 'Oxygen (O) là nguyên tố phổ biến nhất trong vỏ Trái Đất.',
+            q26: 'Silicon (Si) là nguyên tố phổ biến thứ hai trong vỏ Trái Đất.',
+            q27: 'Trong vỏ Trái Đất, các nguyên tố hóa học thường tồn tại ở dạng oxide và muối.',
+            q28: 'Nhiên liệu hóa thạch được hình thành từ xác sinh vật bị chôn vùi và biến đổi qua hàng triệu năm.',
+            q29: 'Nhiên liệu hóa thạch được tạo thành từ quá trình phân hủy các sinh vật chôn vùi hàng triệu năm trước, không phải là nguồn nhiên liệu tái tạo.',
+            q30: 'Silicon được ứng dụng chủ yếu làm chất bán dẫn trong các linh kiện điện tử do tính chất đặc biệt của nó.',
+            q31: 'Than và kim cương là hai dạng đơn chất phổ biến của carbon trong tự nhiên.',
+            q32: 'Phát biểu không đúng là "Silicon chiếm ¼ khối lượng vỏ Trái Đất" vì tỉ lệ thực tế khác.',
+            q33: 'Carbon dioxide (CO2) và methane (CH4) là hai khí chính gây hiệu ứng nhà kính trong khí quyển.'
+			q34: 'Đây là phát biểu không đúng vì thực tế khoáng sản của nước ta có hạn và nhiều loại đang có nguy cơ cạn kiệt.',
+            q35: 'Việc dùng nhiều năng lượng hóa thạch và hạn chế năng lượng tái tạo là không đúng với nguyên tắc bảo vệ tài nguyên.',
+            q36: 'Tiết kiệm điện năng giúp giảm phát thải khí nhà kính, góp phần ứng phó với biến đổi khí hậu.',
+            q37: 'Trong khai thác dầu khí, các sự cố môi trường là vấn đề cần đặc biệt chú ý.',
+            q38: 'Khai thác và sử dụng tài nguyên hợp lý sẽ tiết kiệm chi phí và nâng cao hiệu quả kinh tế.',
+            q39: 'Nguyên liệu chính để sản xuất thủy tinh gồm đất sét trắng, cát trắng, nước và các hợp chất kim loại.',
+            q40: 'Nguyên liệu chính để sản xuất gạch, ngói là cát thạch anh, đá vôi và soda.',
+            q41: 'Nguyên liệu chính để sản xuất sứ là đất sét trắng, cát trắng, nước và các hợp chất kim loại.'
+        };
+
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let score = 0;
+            
+            for (const [question, correctAnswer] of Object.entries(answers)) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                const resultDiv = document.getElementById(`result${question.substring(1)}`);
+                
+                if (selected) {
+                    const isCorrect = selected.value === correctAnswer;
+                    if (isCorrect) score++;
+                    
+                    resultDiv.innerHTML = `
+                        <div class="p-3 rounded ${isCorrect ? 'bg-green-100' : 'bg-red-100'}">
+                            <p class="font-medium ${isCorrect ? 'text-green-700' : 'text-red-700'}">
+                                ${isCorrect ? 'Đúng!' : 'Sai!'} Đáp án đúng là ${correctAnswer}
+                            </p>
+                            <p class="mt-1 text-sm">${explanations[question]}</p>
+                        </div>
+                    `;
+                    resultDiv.classList.remove('hidden');
+                }
+            }
+
+            document.getElementById('score').textContent = score;
+            document.getElementById('finalScore').classList.remove('hidden');
+        });
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
