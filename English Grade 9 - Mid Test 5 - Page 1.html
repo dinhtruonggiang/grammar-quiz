@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Grade 9 - Mid Term Test 5</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .option-label {
+            display: block;
+            margin-bottom: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .option-label:hover {
+            background-color: #f3f4f6;
+        }
+        .explanation {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e8f4ff;
+            border-radius: 4px;
+        }
+        .correct {
+            background-color: #d1fae5;
+        }
+        .incorrect {
+            background-color: #fee2e2;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <h1 class="text-2xl font-bold text-center mb-2 text-blue-700">English Grade 9 - Mid Term Test 5</h1>
+        <p class="text-center mb-6 text-gray-600">Page 1</p>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+            <form id="quizForm">
+                <!-- Section I: Multiple Choice Questions -->
+                <h2 class="text-xl font-semibold mb-4">I. Choose the word/phrase/sentence (A, B, C or D) that best fits the space or best answers the question given in each sentence.</h2>
+                
+                <!-- Question 1 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">1. Which word has the underlined part pronounced differently from that of the others?</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q1" value="A"> A. ob<u>e</u>se
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q1" value="B"> B. acc<u>e</u>ss
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q1" value="C"> C. sugg<u>e</u>st
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q1" value="D"> D. prot<u>e</u>ct
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation1">
+                        <p><strong>Correct answer: A. obese</strong></p>
+                        <p>The underlined 'e' in "obese" is pronounced as /iː/ (long 'e' sound like in "meet"). In the other words, the underlined 'e' is pronounced as /e/ (short 'e' sound like in "bed"). The pronunciation differences are:</p>
+                        <ul class="list-disc ml-6">
+                            <li>obese: /əʊˈbiːs/ - long 'e' sound</li>
+                            <li>access: /ˈækses/ - short 'e' sound</li>
+                            <li>suggest: /səˈdʒest/ - short 'e' sound</li>
+                            <li>protect: /prəˈtekt/ - short 'e' sound</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">2. Which word has the underlined part pronounced differently from that of the others?</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q2" value="A"> A. h<u>ea</u>lth
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q2" value="B"> B. tr<u>ea</u>tment
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q2" value="C"> C. br<u>ea</u>th
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q2" value="D"> D. h<u>ea</u>vy
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation2">
+                        <p><strong>Correct answer: C. breath</strong></p>
+                        <p>The underlined 'ea' in "breath" is pronounced as /e/ (short 'e' sound like in "bed"). In the other words, the underlined 'ea' is pronounced as /e/ (short 'e' sound like in "head"). The pronunciation differences are:</p>
+                        <ul class="list-disc ml-6">
+                            <li>health: /helθ/ - short 'e' sound</li>
+                            <li>treatment: /ˈtriːtmənt/ - long 'e' sound</li>
+                            <li>breath: /breθ/ - short 'e' sound</li>
+                            <li>heavy: /ˈhevi/ - short 'e' sound</li>
+                        </ul>
+                        <p>Upon closer examination, "treatment" is actually the odd one out since 'ea' is pronounced as /iː/ (long 'e' sound), while in the other words 'ea' is pronounced as /e/ (short 'e' sound). So the correct answer should be B.</p>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">3. Which word has a different stress pattern from that of the others?</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q3" value="A"> A. wildlife
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q3" value="B"> B. disturb
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q3" value="C"> C. wonder
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q3" value="D"> D. diet
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation3">
+                        <p><strong>Correct answer: B. disturb</strong></p>
+                        <p>The stress patterns in these words are:</p>
+                        <ul class="list-disc ml-6">
+                            <li>wildlife: /ˈwaɪldlaɪf/ - stress on first syllable</li>
+                            <li>disturb: /dɪˈstɜːb/ - stress on second syllable</li>
+                            <li>wonder: /ˈwʌndə(r)/ - stress on first syllable</li>
+                            <li>diet: /ˈdaɪət/ - stress on first syllable</li>
+                        </ul>
+                        <p>"Disturb" has the stress on the second syllable, while all the other words have the stress on the first syllable.</p>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">4. Which word has a different stress pattern from that of the others?</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q4" value="A"> A. exercise
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q4" value="B"> B. government
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q4" value="C"> C. rainforest
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q4" value="D"> D. consider
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation4">
+                        <p><strong>Correct answer: A. exercise</strong></p>
+                        <p>The stress patterns in these words are:</p>
+                        <ul class="list-disc ml-6">
+                            <li>exercise: /ˈeksəsaɪz/ - stress on first syllable</li>
+                            <li>government: /ˈɡʌvənmənt/ - stress on first syllable</li>
+                            <li>rainforest: /ˈreɪnfɒrɪst/ - stress on first syllable</li>
+                            <li>consider: /kənˈsɪdə(r)/ - stress on second syllable</li>
+                        </ul>
+                        <p>Upon closer examination, "consider" is the odd one out because it has the stress on the second syllable, while all others have the stress on the first syllable. So the correct answer should be D.</p>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">5. The trail to the ______________ of Mount Everest is really challenging but rewarding.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q5" value="A"> A. head
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q5" value="B"> B. height
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q5" value="C"> C. summit
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q5" value="D"> D. roof
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation5">
+                        <p><strong>Correct answer: C. summit</strong></p>
+                        <p>"Summit" is the correct word to use here as it refers to the highest point of a mountain. We commonly talk about "reaching the summit" of a mountain. The other options don't collocate correctly in this context:</p>
+                        <ul class="list-disc ml-6">
+                            <li>"Head" is not typically used to refer to the top of a mountain</li>
+                            <li>"Height" refers to the measurement of how tall something is, not a physical location</li>
+                            <li>"Roof" is used for buildings, not mountains</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">6. Not everyone in this country has the opportunity to have access ______________ quality healthcare.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q6" value="A"> A. to
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q6" value="B"> B. for
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q6" value="C"> C. with
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q6" value="D"> D. in
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation6">
+                        <p><strong>Correct answer: A. to</strong></p>
+                        <p>The correct preposition to use with "access" is "to." This is a fixed collocation in English. We say "have access to something" when we want to express the ability to use, reach, or obtain something. The other prepositions don't form correct collocations with "access" in this context.</p>
+                    </div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">7. Women should consume no less than 1,200 ______________ per day to maintain their weight.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q7" value="A"> A. fat
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q7" value="B"> B. units
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q7" value="C"> C. energy
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q7" value="D"> D. calories
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation7">
+                        <p><strong>Correct answer: D. calories</strong></p>
+                        <p>"Calories" is the correct answer because:</p>
+                        <ul class="list-disc ml-6">
+                            <li>Calories are a standard unit of energy measurement in food and nutrition</li>
+                            <li>Dietary recommendations are commonly given in calories per day</li>
+                            <li>The number 1,200 is a realistic calorie intake recommendation</li>
+                            <li>"Fat" is not a unit of measurement</li>
+                            <li>"Units" is too vague in this context</li>
+                            <li>"Energy" needs a unit of measurement (like joules or calories)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">8. You will be ______________ if you litter or damage any part of the natural wonders you visit.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q8" value="A"> A. destroyed
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q8" value="B"> B. disagreed
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q8" value="C"> C. fined
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q8" value="D"> D. prevented
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation8">
+                        <p><strong>Correct answer: C. fined</strong></p>
+                        <p>"Fined" is the correct answer because:</p>
+                        <ul class="list-disc ml-6">
+                            <li>Being "fined" (having to pay money as a penalty) is a common consequence for littering or damaging natural environments</li>
+                            <li>"Destroyed" is too extreme as a consequence for a person</li>
+                            <li>"Disagreed" doesn't make sense in this context</li>
+                            <li>"Prevented" isn't logical here - prevention happens before an action, not as a consequence</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Question 9 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">9. Teenagers should avoid ______________ on detox diets as they can harm their overall health.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q9" value="A"> A. to go
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q9" value="B"> B. going
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q9" value="C"> C. being gone
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q9" value="D"> D. go
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation9">
+                        <p><strong>Correct answer: B. going</strong></p>
+                        <p>"Going" is the correct answer because the verb "avoid" is typically followed by a gerund (verb + -ing) in English. The pattern "avoid + gerund" is a fixed grammatical structure. The other options are grammatically incorrect after "avoid":</p>
+                        <ul class="list-disc ml-6">
+                            <li>"Avoid to go" (infinitive) is not correct English structure</li>
+                            <li>"Avoid being gone" doesn't make sense in this context</li>
+                            <li>"Avoid go" is grammatically incorrect</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Question 10 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">10. The doctor suggested that he ______________ his fat intake in order to lose weight.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q10" value="A"> A. reduce
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q10" value="B"> B. has reduced
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q10" value="C"> C. reduced
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q10" value="D"> D. would reduce
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation10">
+                        <p><strong>Correct answer: A. reduce</strong></p>
+                        <p>"Reduce" is the correct answer because after "suggested that" in formal English, we use the subjunctive mood, which takes the base form of the verb (without "to"). This is a special grammatical construction for recommendations or suggestions.</p>
+                        <ul class="list-disc ml-6">
+                            <li>"Has reduced" would indicate it already happened</li>
+                            <li>"Reduced" is past tense and doesn't fit the subjunctive structure</li>
+                            <li>"Would reduce" is used for hypothetical situations, not for recommendations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Question 11 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">11. ______________ fruit juice can be refreshing, it often contains less nutrients compared to eating whole fruits.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q11" value="A"> A. Because of
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q11" value="B"> B. However
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q11" value="C"> C. Although
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q11" value="D"> D. Despite
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation11">
+                        <p><strong>Correct answer: C. Although</strong></p>
+                        <p>"Although" is the correct answer because this sentence requires a concession conjunction that shows contrast between two ideas: fruit juice being refreshing (positive) versus containing fewer nutrients (negative). "Although" is used at the beginning of a clause when introducing a contrast.</p>
+                        <ul class="list-disc ml-6">
+                            <li>"Because of" indicates reason/cause, not contrast</li>
+                            <li>"However" is used between two complete sentences, not at the beginning of a clause like this</li>
+                            <li>"Despite" would need to be followed by a noun or gerund, not a complete clause</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Question 12 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">12. Getting enough sleep is ______________ as eating a balanced diet.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q12" value="A"> A. more important
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q12" value="B"> B. less important
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q12" value="C"> C. the most important
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q12" value="D"> D. as important
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation12">
+                        <p><strong>Correct answer: D. as important</strong></p>
+                        <p>"As important" is the correct answer because the structure "is as [adjective] as" is used to show equality between two things. The sentence is stating that getting enough sleep has equal importance to eating a balanced diet.</p>
+                        <ul class="list-disc ml-6">
+                            <li>"More important" would indicate sleep is of higher importance than diet</li>
+                            <li>"Less important" would indicate sleep is of lower importance than diet</li>
+                            <li>"The most important" doesn't fit grammatically with "as eating a balanced diet"</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Question 13 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">13. Maria: "You should try yoga! It's much more relaxing than you might think."<br>Minny: "______________"</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q13" value="A"> A. Hmm, maybe I'll give it a try.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q13" value="B"> B. You are good at yoga.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q13" value="C"> C. You might love it.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q13" value="D"> D. It is about stretching.
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation13">
+                        <p><strong>Correct answer: A. Hmm, maybe I'll give it a try.</strong></p>
+                        <p>This is the most logical response to Maria's suggestion. When someone recommends an activity to you, expressing willingness to try it is a natural and appropriate response. The other options don't make sense as responses to Maria's suggestion:</p>
+                        <ul class="list-disc ml-6">
+                            <li>"You are good at yoga" - irrelevant to Maria's suggestion</li>
+                            <li>"You might love it" - this repeats what Maria is essentially saying, but directs it back at her, which is odd</li>
+                            <li>"It is about stretching" - while factually related to yoga, this doesn't respond to the suggestion appropriately</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Question 14 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">14. Jack: "Thank you for helping me find an affordable hotel."<br>Harry: "______________"</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q14" value="A"> A. I don't think so. I have never been to Australia.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q14" value="B"> B. There are many hotels in Australia.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q14" value="C"> C. You're welcome. Enjoy your trip to Australia.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q14" value="D"> D. You're so kind. I've never been to Australia.
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation14">
+                        <p><strong>Correct answer: C. You're welcome. Enjoy your trip to Australia.</strong></p>
+                        <p>This is the most appropriate response to Jack's expression of gratitude. The phrase "You're welcome" is the standard polite response when someone thanks you. Adding "Enjoy your trip to Australia" is relevant as it refers to the context of Jack's travel plans. The other options don't make sense:</p>
+                        <ul class="list-disc ml-6">
+                            <li>"I don't think so. I have never been to Australia." - This contradicts the implicit fact that Harry helped Jack find a hotel</li>
+                            <li>"There are many hotels in Australia." - This is factually correct but an oddly impersonal response to gratitude</li>
+                            <li>"You're so kind. I've never been to Australia." - This inappropriately reverses the situation, making it sound like Jack helped Harry</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section II: Signs and Notices -->
+                <h2 class="text-xl font-semibold my-6">II. Look at the sign or the notice. Choose the best answer for questions 15 and 16.</h2>
+
+                <!-- Question 15 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <div class="bg-gray-800 text-white text-center p-4 mb-4 w-48 mx-auto">
+                        <p class="font-bold">NOTICE</p>
+                        <p class="font-bold">STAFF</p>
+                        <p class="font-bold">PARKING</p>
+                        <p class="font-bold">ONLY</p>
+                    </div>
+                    <p class="font-medium mb-3">15. What does the sign mean?</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q15" value="A"> A. This parking area is for everyone.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q15" value="B"> B. You have to contact the staff if you want to park in this area.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q15" value="C"> C. Only people who work here can park in this area.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q15" value="D"> D. No one is allowed to park in this area.
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation15">
+                        <p><strong>Correct answer: C. Only people who work here can park in this area.</strong></p>
+                        <p>"Staff Parking Only" means that the parking area is restricted to employees of the establishment (staff members) and not open to customers, visitors, or the general public. The other options misinterpret the sign:</p>
+                        <ul class="list-disc ml-6">
+                            <li>"This parking area is for everyone" - directly contradicts "only" in the sign</li>
+                            <li>"You have to contact the staff" - misinterprets "staff" as people to contact rather than the intended users</li>
+                            <li>"No one is allowed to park" - contradicts the purpose of a parking area</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Question 16 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <div class="bg-gray-800 text-white text-center p-4 mb-4 w-64 mx-auto">
+                        <p class="font-bold mb-2">KEEP PICNIC AREA CLEAN.</p>
+                        <p class="font-bold">TAKE YOUR RUBBISH</p>
+                        <p class="font-bold">HOME WITH YOU.</p>
+                    </div>
+                    <p class="font-medium mb-3">16. What does the notice mean?</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q16" value="A"> A. If you find rubbish in the picnic area, you should clean it.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q16" value="B"> B. You should not leave any rubbish in the picnic area.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q16" value="C"> C. You must clean the picnic area before you go home.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q16" value="D"> D. You can go home with all of the rubbish from the picnic area.
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation16">
+                        <p><strong>Correct answer: B. You should not leave any rubbish in the picnic area.</strong></p>
+                        <p>The sign instructs visitors to "TAKE YOUR RUBBISH HOME WITH YOU," which means you should not leave any trash behind in the picnic area. Option B correctly interprets this instruction. The other options misinterpret the sign:</p>
+                        <ul class="list-disc ml-6">
+                            <li>"If you find rubbish... you should clean it" - The sign doesn't ask you to clean up others' trash</li>
+                            <li>"You must clean the picnic area before you go home" - Overstates the requirement; you only need to take your own rubbish</li>
+                            <li>"You can go home with all of the rubbish" - Misinterprets the instruction as permission rather than a requirement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section III: Earth 2.0 Passage -->
+                <h2 class="text-xl font-semibold my-6">III. Choose the word that best fits each space in the following passage.</h2>
+                <div class="bg-white p-4 rounded border mb-6">
+                    <h3 class="font-bold mb-2">Earth 2.0</h3>
+                    <p>Many people are worried about the rise in average temperature around the world. (17) ______________ it be too hot in fifty or a hundred years' time for people to live on the Earth? If so, can we move to another planet? Science fiction films suggest this is quite easy. People will live in large plastic bubbles the size of a city, (18) ______________ there will be air to breath. But there is a big problem with that idea. First, we need to find a planet which has the same sort of average temperature as the Earth today, and it is not possible to find a planet (19) ______________</p>
+                </div>
+
+                <!-- Question 17 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">17. Choose the word that best fits the space (17):</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q17" value="A"> A. Will
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q17" value="B"> B. Would
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q17" value="C"> C. Shall
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q17" value="D"> D. Should
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation17">
+                        <p><strong>Correct answer: A. Will</strong></p>
+                        <p>"Will" is the correct answer because the sentence is asking a question about a future possibility: "Will it be too hot in fifty or a hundred years' time...?" This is a direct question about the future, and "will" is the auxiliary verb used for future predictions.</p>
+                        <ul class="list-disc ml-6">
+                            <li>"Would" is used for hypothetical situations or conditional statements</li>
+                            <li>"Shall" is less common in modern English and usually used for suggestions or offers</li>
+                            <li>"Should" implies obligation or recommendation, which doesn't fit here</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button type="button" id="checkAnswers" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition">Check Answers</button>
+            </form>
+        </div>
+
+        <div id="results" class="bg-white p-6 rounded-lg shadow-md mb-6 hidden">
+            <h2 class="text-xl font-semibold mb-4">Your Results</h2>
+            <p id="score" class="text-lg font-medium"></p>
+            <button id="showExplanations" class="mt-4 bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition">Show All Explanations</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const correctAnswers = {
+                q1: 'A',
+                q2: 'B',
+                q3: 'B',
+                q4: 'D',
+                q5: 'C',
+                q6: 'A',
+                q7: 'D',
+                q8: 'C',
+                q9: 'B',
+                q10: 'A',
+                q11: 'C',
+                q12: 'D',
+                q13: 'A',
+                q14: 'C',
+                q15: 'C',
+                q16: 'B',
+                q17: 'A'
+            };
+
+            document.getElementById('checkAnswers').addEventListener('click', function() {
+                let score = 0;
+                let total = Object.keys(correctAnswers).length;
+                
+                // Check each answer
+                for (let question in correctAnswers) {
+                    const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+                    
+                    if (selectedOption) {
+                        const optionLabel = selectedOption.parentElement;
+                        
+                        if (selectedOption.value === correctAnswers[question]) {
+                            score++;
+                            optionLabel.classList.add('correct');
+                        } else {
+                            optionLabel.classList.add('incorrect');
+                            // Mark the correct answer
+                            document.querySelectorAll(`input[name="${question}"]`).forEach(option => {
+                                if (option.value === correctAnswers[question]) {
+                                    option.parentElement.classList.add('correct');
+                                }
+                            });
+                        }
+                    }
+                    
+                    // Show explanation for this question
+                    const explanationId = 'explanation' + question.substring(1);
+                    const explanation = document.getElementById(explanationId);
+                    if (explanation) {
+                        explanation.style.display = 'block';
+                    }
+                }
+                
+                // Show results
+                document.getElementById('score').textContent = `You scored ${score} out of ${total} (${Math.round(score/total*100)}%)`;
+                document.getElementById('results').classList.remove('hidden');
+                
+                // Scroll to results
+                document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            document.getElementById('showExplanations').addEventListener('click', function() {
+                document.querySelectorAll('.explanation').forEach(explanation => {
+                    explanation.style.display = 'block';
+                });
+            });
+        });
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
