@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Grade 9 Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .option-label {
+            display: block;
+            margin-bottom: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .option-label:hover {
+            background-color: #f3f4f6;
+        }
+        .explanation {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e8f4ff;
+            border-radius: 4px;
+        }
+        .correct {
+            background-color: #d1fae5;
+        }
+        .incorrect {
+            background-color: #fee2e2;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8 max-w-3xl">
+        <h1 class="text-2xl font-bold text-center mb-6 text-blue-700">TEST 3 - ENGLISH GRADE 9</h1>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+            <h2 class="text-xl font-semibold mb-4">I. Choose the word/phrase/sentence (A, B, C or D) that best fits the space or best answers the question given in each sentence.</h2>
+            
+            <form id="quizForm">
+                <!-- Question 1 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">1. Which word has the underlined part pronounced differently from that of the others?</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q1" value="A"> A. h<u>u</u>nt
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q1" value="B"> B. r<u>u</u>le
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q1" value="C"> C. j<u>u</u>ngle
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q1" value="D"> D. c<u>u</u>lture
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation1">
+                        <p><strong>Correct answer: B. r<u>u</u>le</strong></p>
+                        <p>In "rule," the underlined 'u' is pronounced as /uː/ (long u sound), while in "hunt," "jungle," and "culture," the underlined 'u' is pronounced as /ʌ/ (short u sound).</p>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">2. Which word has the underlined part pronounced differently from that of the others?</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q2" value="A"> A. suggest<u>ed</u>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q2" value="B"> B. finish<u>ed</u>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q2" value="C"> C. reduc<u>ed</u>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q2" value="D"> D. impress<u>ed</u>
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation2">
+                        <p><strong>Correct answer: C. reduc<u>ed</u></strong></p>
+                        <p>In "reduced," the ending "-ed" is pronounced as /t/, while in "suggested," "finished," and "impressed," the ending "-ed" is pronounced as /d/ or /ɪd/.</p>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">3. Which word has a different stress pattern from that of the others?</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q3" value="A"> A. litter
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q3" value="B"> B. wonder
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q3" value="C"> C. damage
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q3" value="D"> D. maintain
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation3">
+                        <p><strong>Correct answer: D. maintain</strong></p>
+                        <p>"Maintain" has the stress on the second syllable (main-TAIN), while "litter," "wonder," and "damage" have the stress on the first syllable (LIT-ter, WON-der, DAM-age).</p>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">4. Which word has a different stress pattern from that of the others?</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q4" value="A"> A. consider
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q4" value="B"> B. government
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q4" value="C"> C. national
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q4" value="D"> D. animal
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation4">
+                        <p><strong>Correct answer: A. consider</strong></p>
+                        <p>"Consider" has the stress on the second syllable (con-SID-er), while "government," "national," and "animal" have the stress on the first syllable (GOV-ern-ment, NA-tion-al, AN-i-mal).</p>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">5. The ____________ of Fansipan offers spectacular views of the surrounding mountains and valleys.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q5" value="A"> A. roof
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q5" value="B"> B. summit
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q5" value="C"> C. head
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q5" value="D"> D. cap
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation5">
+                        <p><strong>Correct answer: B. summit</strong></p>
+                        <p>"Summit" refers to the highest point of a mountain, which would offer spectacular views. "Roof," "head," and "cap" are not commonly used to describe the top of a mountain in this context.</p>
+                    </div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">6. The tropical ____________ in Vietnam, particularly Phú Mát National Park, are famous for their diversity of plants and animals.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q6" value="A"> A. rainforests
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q6" value="B"> B. safari parks
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q6" value="C"> C. deserts
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q6" value="D"> D. grasslands
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation6">
+                        <p><strong>Correct answer: A. rainforests</strong></p>
+                        <p>Vietnam is known for its tropical rainforests, particularly in national parks. The climate and geography of Vietnam do not support deserts or extensive grasslands, and "safari parks" are human-made attractions.</p>
+                    </div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">7. Tourists can enjoy a peaceful boat ride that ____________ them through the scenic Trà Sư Melaleuca Forest.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q7" value="A"> A. swims
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q7" value="B"> B. falls
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q7" value="C"> C. floats
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q7" value="D"> D. slips
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation7">
+                        <p><strong>Correct answer: C. floats</strong></p>
+                        <p>"Floats" is the most appropriate verb to describe how a boat carries passengers through water. "Swims" is for living beings, "falls" indicates dropping, and "slips" suggests accidental movement.</p>
+                    </div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">8. Adventurous hikers often go ____________ the paths in search of hidden waterfalls or breathtaking views.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q8" value="A"> A. in
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q8" value="B"> B. to
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q8" value="C"> C. for
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q8" value="D"> D. off
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation8">
+                        <p><strong>Correct answer: D. off</strong></p>
+                        <p>"Go off the paths" means to leave the established trails and explore less traveled areas, which is what adventurous hikers would do to find hidden waterfalls.</p>
+                    </div>
+                </div>
+
+                <!-- Question 9 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">9. Sơn Đoòng Cave is considered as one of ____________ caves in the world.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q9" value="A"> A. the largest
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q9" value="B"> B. larger
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q9" value="C"> C. the large
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q9" value="D"> D. much large
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation9">
+                        <p><strong>Correct answer: A. the largest</strong></p>
+                        <p>When referring to something that ranks at the top in a category (one of a group), we use the superlative form "the largest." Sơn Đoòng is actually considered the largest cave in the world by volume.</p>
+                    </div>
+                </div>
+
+                <!-- Question 10 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">10. If we don't stop ____________, our natural environment will suffer serious damage.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q10" value="A"> A. to litter
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q10" value="B"> B. litter
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q10" value="C"> C. littering
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q10" value="D"> D. littered
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation10">
+                        <p><strong>Correct answer: C. littering</strong></p>
+                        <p>After "stop," we use the gerund form of the verb ("littering"). "To litter" would be used after verbs like "want," "plan," etc. "Litter" alone is incorrect, and "littered" is the past tense form.</p>
+                    </div>
+                </div>
+
+                <!-- Question 11 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">11. The Amazon rainforest, ____________ is the oldest rainforest on Earth, is home to an incredible variety of wildlife.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q11" value="A"> A. that
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q11" value="B"> B. it
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q11" value="C"> C. there
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q11" value="D"> D. which
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation11">
+                        <p><strong>Correct answer: D. which</strong></p>
+                        <p>We use "which" to introduce a non-defining relative clause that provides additional information about the Amazon rainforest. "That" is used for defining clauses, while "it" and "there" don't work grammatically in this context.</p>
+                    </div>
+                </div>
+
+                <!-- Question 12 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">12. Travelers should ____________ visiting natural wonders during peak seasons.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q12" value="A"> A. refuse
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q12" value="B"> B. avoid
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q12" value="C"> C. prevent
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q12" value="D"> D. disagree
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation12">
+                        <p><strong>Correct answer: B. avoid</strong></p>
+                        <p>"Avoid" is the most appropriate verb meaning "to keep away from." "Refuse" means to reject an offer, "prevent" means to stop something from happening, and "disagree" means to have a different opinion.</p>
+                    </div>
+                </div>
+
+                <!-- Question 13 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">13. Bảo: "I think we should go hiking in Cát Tiên National Park this weekend. The weather is supposed to be perfect!" Lan: "____________"</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q13" value="A"> A. That sounds amazing.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q13" value="B"> B. The weather will be better this weekend.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q13" value="C"> C. You should consider hiking.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q13" value="D"> D. I suppose you are right.
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation13">
+                        <p><strong>Correct answer: A. That sounds amazing.</strong></p>
+                        <p>This response shows enthusiasm and agreement with Bảo's suggestion. The other options don't make sense as responses: B repeats information, C suggests something Bảo has already proposed, and D sounds uncertain.</p>
+                    </div>
+                </div>
+
+                <!-- Question 14 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">14. An: "Let's go to Đà Nẵng by plane. It's faster." Phương: "____________ as it's cheaper and we can enjoy the scenery along the way."</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q14" value="A"> A. I believe going by train is not as good as going by plane
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q14" value="B"> B. Going by train is worse
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q14" value="C"> C. I think going by train is better
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q14" value="D"> D. I dislike going by train
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation14">
+                        <p><strong>Correct answer: C. I think going by train is better</strong></p>
+                        <p>Based on the explanation that follows (it's cheaper and offers scenery), Phương clearly prefers the train over the plane, so "I think going by train is better" is the logical choice.</p>
+                    </div>
+                </div>
+
+                <!-- Section II -->
+                <h2 class="text-xl font-semibold my-6">II. Look at the sign or the notice. Choose the best answer (A, B, C or D) for questions 15 and 16.</h2>
+
+                <!-- Question 15 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <div class="bg-yellow-600 text-white font-bold p-4 mb-4 w-48 text-center">
+                        <p>CAUTION</p>
+                        <p>SLOW DOWN</p>
+                        <p>PEDESTRIAN TRAFFIC</p>
+                    </div>
+                    <p class="font-medium mb-3">15. What does the sign mean?</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q15" value="A"> A. Pedestrians should walk slowly.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q15" value="B"> B. You should slow your speed and pay attention to pedestrians.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q15" value="C"> C. Pedestrians will slow down the traffic.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q15" value="D"> D. You should drive carefully because of slow pedestrians.
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation15">
+                        <p><strong>Correct answer: B. You should slow your speed and pay attention to pedestrians.</strong></p>
+                        <p>The sign "CAUTION, SLOW DOWN, PEDESTRIAN TRAFFIC" is warning drivers to reduce their speed because there are pedestrians in the area. It's not telling pedestrians to walk slowly or saying that pedestrians will slow traffic.</p>
+                    </div>
+                </div>
+
+                <!-- Question 16 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <div class="bg-yellow-300 p-4 mb-4 w-64">
+                        <p class="font-bold">"Learn to sew with Ms. Georgia"</p>
+                        <p>Room 3.1 is closed for repairs.</p>
+                        <p>Lessons in Room 4.1 until Friday.</p>
+                    </div>
+                    <p class="font-medium mb-3">16. What does the notice tell us?</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q16" value="A"> A. Ms. Georgia's class will be on a different day.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q16" value="B"> B. There is a new location for Ms. Georgia's class.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q16" value="C"> C. Ms. Georgia will repair her room on Friday.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q16" value="D"> D. Ms. Georgia isn't coming to school until Friday.
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation16">
+                        <p><strong>Correct answer: B. There is a new location for Ms. Georgia's class.</strong></p>
+                        <p>The notice states that Room 3.1 (the regular room) is closed for repairs, and classes will be held in Room 4.1 until Friday. This means there is a temporary new location for Ms. Georgia's sewing class.</p>
+                    </div>
+                </div>
+
+                <!-- Section III -->
+                <h2 class="text-xl font-semibold my-6">III. Choose the word (A, B, C or D) that best fits each space in the following passage.</h2>
+                
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="mb-4">
+                        <strong>The rise of English</strong><br>
+                        The story of the English language is amazing. The language did not exist two thousand years ago. By 500 CE, there was a language called Englisc. (17) ____________ only about thirty thousand people spoke it. Nearly one thousand years later, at the time of Shakespeare, English was the language of about six million people. Most of them lived in Britain. (18) ____________ is the countries of England, Scotland and Wales. But English did not even reach the edges of Britain, because many people spoke other languages in Scotland and Wales.
+                    </p>
+
+                    <!-- Question 17 -->
+                    <div class="mb-6">
+                        <p class="font-medium mb-3">17.</p>
+                        <div class="ml-4">
+                            <label class="option-label">
+                                <input type="radio" name="q17" value="A"> A. Although
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q17" value="B"> B. However
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q17" value="C"> C. Therefore
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q17" value="D"> D. Because
+                            </label>
+                        </div>
+                        <div class="explanation" id="explanation17">
+                            <p><strong>Correct answer: B. However</strong></p>
+                            <p>The sentence needs a contrasting conjunction. "However" correctly shows the contrast between the existence of the language and the small number of people who spoke it. "Although" would require a different sentence structure, "Therefore" indicates a result, and "Because" indicates a reason, neither of which fits the context.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 18 -->
+                    <div class="mb-6">
+                        <p class="font-medium mb-3">18.</p>
+                        <div class="ml-4">
+                            <label class="option-label">
+                                <input type="radio" name="q18" value="A"> A. What
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q18" value="B"> B. Where
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q18" value="C"> C. Which
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q18" value="D"> D. That
+                            </label>
+                        </div>
+                        <div class="explanation" id="explanation18">
+                            <p><strong>Correct answer: C. Which</strong></p>
+                            <p>"Which" is the correct relative pronoun to introduce additional information about Britain. The sentence defines what constitutes Britain (England, Scotland, and Wales). "What" would be used for definitions, "Where" for locations, and "That" typically for defining (rather than non-defining) clauses.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" id="checkAnswers" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition">Check Answers</button>
+            </form>
+        </div>
+
+        <div id="results" class="bg-white p-6 rounded-lg shadow-md mb-6 hidden">
+            <h2 class="text-xl font-semibold mb-4">Your Results</h2>
+            <p id="score" class="text-lg font-medium"></p>
+            <button id="showExplanations" class="mt-4 bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition">Show All Explanations</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const correctAnswers = {
+                q1: 'B', q2: 'C', q3: 'D', q4: 'A', q5: 'B',
+                q6: 'A', q7: 'C', q8: 'D', q9: 'A', q10: 'C',
+                q11: 'D', q12: 'B', q13: 'A', q14: 'C', q15: 'B',
+                q16: 'B', q17: 'B', q18: 'C'
+            };
+
+            document.getElementById('checkAnswers').addEventListener('click', function() {
+                let score = 0;
+                let total = Object.keys(correctAnswers).length;
+                
+                // Check each answer
+                for (let question in correctAnswers) {
+                    const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+                    
+                    if (selectedOption) {
+                        const optionLabel = selectedOption.parentElement;
+                        
+                        if (selectedOption.value === correctAnswers[question]) {
+                            score++;
+                            optionLabel.classList.add('correct');
+                        } else {
+                            optionLabel.classList.add('incorrect');
+                            // Mark the correct answer
+                            document.querySelectorAll(`input[name="${question}"]`).forEach(option => {
+                                if (option.value === correctAnswers[question]) {
+                                    option.parentElement.classList.add('correct');
+                                }
+                            });
+                        }
+                        
+                        // Show explanation for this question
+                        const explanationId = 'explanation' + question.substring(1);
+                        document.getElementById(explanationId).style.display = 'block';
+                    }
+                }
+                
+                // Show results
+                document.getElementById('score').textContent = `You scored ${score} out of ${total} (${Math.round(score/total*100)}%)`;
+                document.getElementById('results').classList.remove('hidden');
+                
+                // Scroll to results
+                document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            document.getElementById('showExplanations').addEventListener('click', function() {
+                document.querySelectorAll('.explanation').forEach(explanation => {
+                    explanation.style.display = 'block';
+                });
+            });
+        });
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
