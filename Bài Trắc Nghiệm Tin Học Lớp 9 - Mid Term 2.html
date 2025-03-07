@@ -756,22 +756,262 @@
                 </div>
             </div>
 
-            <!-- Question 45 -->
+            <!-- Câu 45 (Câu không số trong hình) -->
             <div class="question">
-                <p class="font-semibold">Câu 45: Để đếm số ô có giá trị nằm trong khoảng từ 5 đến 10 (bao gồm cả 5 và 10) trong phạm vi D2:D20, ta sử dụng công thức nào?</p>
+                <p class="font-semibold">Câu 45: Để đếm số ô có giá trị trong khoảng từ 5 đến 10 trong phạm vi D2:D20, công thức nào sau đây là đúng?</p>
                 <div class="options">
-                    <div><input type="radio" name="q45" value="A"> A. =COUNTIF(D2:D20,">=5")-COUNTIF(D2:D20,">10")</div>
-                    <div><input type="radio" name="q45" value="B"> B. =COUNTIFS(D2:D20,">=5",D2:D20,"<=10")</div>
-                    <div><input type="radio" name="q45" value="C"> C. =COUNTIF(D2:D20,">=5 AND <=10")</div>
-                    <div><input type="radio" name="q45" value="D"> D. =SUMPRODUCT((D2:D20>=5)*(D2:D20<=10))</div>
+                    <div><input type="radio" name="q45" value="A"> A. =COUNTIF(D2:D20, ">=5") - COUNTIF(D2:D20, ">10")</div>
+                    <div><input type="radio" name="q45" value="B"> B. =COUNTIF(D2:D20, ">=5") + COUNTIF(D2:D20, "<=10")</div>
+                    <div><input type="radio" name="q45" value="C"> C. =COUNTIF(D2:D20, "<5") + COUNTIF(D2:D20, ">10")</div>
+                    <div><input type="radio" name="q45" value="D"> D. =COUNTIF(D2:D20, "5:10")</div>
                 </div>
                 <div class="explanation">
-                    <p><span class="correct">Đáp án đúng: B. =COUNTIFS(D2:D20,">=5",D2:D20,"<=10")</span></p>
-                    <p>Giải thích: Để đếm số ô có giá trị nằm trong một khoảng (từ 5 đến 10, bao gồm cả 5 và 10), ta có thể sử dụng:
-                    <br>1. Hàm COUNTIFS với hai điều kiện: >=5 VÀ <=10
-                    <br>2. Hoặc hàm COUNTIF(D2:D20,">=5")-COUNTIF(D2:D20,">10")
-                    <br>3. Hoặc SUMPRODUCT((D2:D20>=5)*(D2:D20<=10))
-                    <br>Trong đó COUNTIFS là cách tốt nhất vì trực quan và dễ hiểu nhất.</p>
+                    <p><span class="correct">Đáp án đúng: A. =COUNTIF(D2:D20, ">=5") - COUNTIF(D2:D20, ">10")</span></p>
+                    <p>Giải thích: Để đếm số ô có giá trị trong khoảng từ 5 đến 10 (bao gồm cả 5 và 10), ta có thể:
+                    <br>1. Đếm số ô có giá trị >=5, sau đó trừ đi số ô có giá trị >10
+                    <br>2. Hoặc sử dụng COUNTIFS: =COUNTIFS(D2:D20,">=5",D2:D20,"<=10")
+                    <br>Trong các lựa chọn, A là đúng nhất: =COUNTIF(D2:D20, ">=5") - COUNTIF(D2:D20, ">10")
+                    <br>Công thức này đếm tất cả các giá trị >=5, sau đó loại bỏ các giá trị >10, để lại chính xác các giá trị từ 5 đến 10.</p>
+                </div>
+            </div>
+
+            <!-- Câu 46 -->
+            <div class="question">
+                <p class="font-semibold">Câu 46: Để tính tổng các số trong cột C nếu cột A tương ứng chứa chữ "North" hoặc "South", ta sử dụng công thức nào?</p>
+                <div class="options">
+                    <div><input type="radio" name="q46" value="A"> A. =SUMIF(A1:A10, "North" OR "South", C1:C10)</div>
+                    <div><input type="radio" name="q46" value="B"> B. =SUMIF(A1:A10, {"North", "South"}, C1:C10)</div>
+                    <div><input type="radio" name="q46" value="C"> C. =SUMIF(A1:A10, "North", C1:C10) + SUMIF(A1:A10, "South", C1:C10)</div>
+                    <div><input type="radio" name="q46" value="D"> D. Không thể thực hiện được với hàm SUMIF.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: C. =SUMIF(A1:A10, "North", C1:C10) + SUMIF(A1:A10, "South", C1:C10)</span></p>
+                    <p>Giải thích: Hàm SUMIF chỉ cho phép một điều kiện duy nhất. Để tính tổng với nhiều điều kiện "hoặc" (OR), ta cần sử dụng nhiều hàm SUMIF và cộng kết quả lại. 
+                    <br>Công thức chính xác là: =SUMIF(A1:A10, "North", C1:C10) + SUMIF(A1:A10, "South", C1:C10)
+                    <br>Lưu ý:
+                    <br>- Cách viết "North" OR "South" không đúng cú pháp trong Excel
+                    <br>- Viết {"North", "South"} không hoạt động với SUMIF (mặc dù có thể hoạt động với một số hàm khác)
+                    <br>- Từ Excel 2007 trở đi, có thể sử dụng SUMIFS cho nhiều điều kiện "và" (AND), nhưng vẫn phải dùng nhiều SUMIF cộng lại cho điều kiện "hoặc" (OR)</p>
+                </div>
+            </div>
+
+            <!-- Câu 47 -->
+            <div class="question">
+                <p class="font-semibold">Câu 47: Để tính tổng các số lớn hơn 5 và nhỏ hơn 10 trong phạm vi F1:F20, ta sử dụng công thức nào?</p>
+                <div class="options">
+                    <div><input type="radio" name="q47" value="A"> A. =SUMIF(F1:F20, ">5 AND <10", F1:F20)</div>
+                    <div><input type="radio" name="q47" value="B"> B. =SUMIF(F1:F20, ">5", F1:F20) - SUMIF(F1:F20, ">=10", F1:F20)</div>
+                    <div><input type="radio" name="q47" value="C"> C. =SUMIF(F1:F20, "BETWEEN 5 AND 10", F1:F20)</div>
+                    <div><input type="radio" name="q47" value="D"> D. Không thể thực hiện được với hàm SUMIF.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: B. =SUMIF(F1:F20, ">5", F1:F20) - SUMIF(F1:F20, ">=10", F1:F20)</span></p>
+                    <p>Giải thích: Để tính tổng các số lớn hơn 5 và nhỏ hơn 10, ta có thể:
+                    <br>1. Tính tổng tất cả các số >5, sau đó trừ đi tổng các số >=10
+                    <br>2. Hoặc sử dụng SUMIFS: =SUMIFS(F1:F20,F1:F20,">5",F1:F20,"<10")
+                    <br>Trong các lựa chọn, B là đúng: =SUMIF(F1:F20, ">5", F1:F20) - SUMIF(F1:F20, ">=10", F1:F20)
+                    <br>Công thức này tính tổng tất cả các giá trị >5, sau đó loại bỏ tổng các giá trị >=10, chỉ để lại tổng các giá trị >5 và <10.</p>
+                </div>
+            </div>
+
+            <!-- Câu 48 -->
+            <div class="question">
+                <p class="font-semibold">Câu 48: Để tạo một biểu đồ cột thể hiện sự so sánh giữa tổng thu và tổng chi theo từng tháng, ta nên sử dụng loại biểu đồ nào?</p>
+                <div class="options">
+                    <div><input type="radio" name="q48" value="A"> A. Column chart.</div>
+                    <div><input type="radio" name="q48" value="B"> B. Pie chart.</div>
+                    <div><input type="radio" name="q48" value="C"> C. Line chart.</div>
+                    <div><input type="radio" name="q48" value="D"> D. Area chart.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: A. Column chart.</span></p>
+                    <p>Giải thích: Để so sánh tổng thu và tổng chi theo từng tháng, biểu đồ cột (Column chart) là lựa chọn phù hợp nhất vì:
+                    <br>- Biểu đồ cột rất hiệu quả để so sánh dữ liệu theo danh mục (ở đây là các tháng)
+                    <br>- Cho phép dễ dàng so sánh các giá trị thu và chi trong cùng một tháng
+                    <br>- Biểu đồ tròn (Pie chart) chỉ phù hợp để thể hiện tỉ lệ phần trăm các thành phần trong một tổng thể
+                    <br>- Biểu đồ đường (Line chart) phù hợp để theo dõi xu hướng theo thời gian
+                    <br>- Biểu đồ diện tích (Area chart) tương tự biểu đồ đường nhưng nhấn mạnh vào khối lượng</p>
+                </div>
+            </div>
+			
+			 <!-- Câu 49 (cũ: Câu 1) -->
+            <div class="question">
+                <p class="font-semibold">Câu 49: Em hãy nêu lợi ích khi sử dụng công cụ DataValidation trong quản lí thu, chi cho gia đình hoặc bản thân.</p>
+                <div class="options">
+                    <div><input type="radio" name="q49" value="A"> A. Nhập dữ liệu nhanh hơn, đảm bảo tính thống nhất, tự động kiểm soát và tránh dữ liệu không phù hợp, thuận lợi cho việc thống kê và lọc dữ liệu.</div>
+                    <div><input type="radio" name="q49" value="B"> B. Tự động tính toán các khoản thu chi, không cần nhập công thức.</div>
+                    <div><input type="radio" name="q49" value="C"> C. Tự động tạo biểu đồ và báo cáo tài chính hàng tháng.</div>
+                    <div><input type="radio" name="q49" value="D"> D. Tự động đồng bộ dữ liệu với ứng dụng ngân hàng.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: A. Nhập dữ liệu nhanh hơn, đảm bảo tính thống nhất, tự động kiểm soát và tránh dữ liệu không phù hợp, thuận lợi cho việc thống kê và lọc dữ liệu.</span></p>
+                    <p>Giải thích: Trong hình ảnh đề thi có liệt kê các lợi ích của Data Validation bao gồm: nhập dữ liệu nhanh hơn, đảm bảo tính thống nhất của dữ liệu, tự động kiểm soát dữ liệu, tránh những dữ liệu ngoài phạm vi/không phù hợp, và thuận lợi cho việc thống kê, lọc dữ liệu.</p>
+                </div>
+            </div>
+
+            <!-- Câu 50 (cũ: Câu 2) -->
+            <div class="question">
+                <p class="font-semibold">Câu 50: Tính số tiền mà khách hàng phải trả cho đơn hàng dưới đây. Biết Thành tiền = Đơn giá x Số lượng.</p>
+                <table class="excel-table">
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên hàng</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá (nghìn đồng)</th>
+                        <th>Thành tiền (nghìn đồng)</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Sữa</td>
+                        <td>2</td>
+                        <td>24</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Kẹo bạc hà</td>
+                        <td>1</td>
+                        <td>10</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Cốc thuỷ tinh</td>
+                        <td>4</td>
+                        <td>160</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Dầu gội</td>
+                        <td>1</td>
+                        <td>125</td>
+                        <td></td>
+                    </tr>
+                </table>
+                <div class="options">
+                    <div><input type="radio" name="q50" value="A"> A. Tại ô E2 nhập công thức: =D2*C2, sau đó sao chép công thức đối với những mặt hàng còn lại. Sử dụng hàm SUM để tính tổng: =SUM(E2:E5)</div>
+                    <div><input type="radio" name="q50" value="B"> B. Tại ô E2 nhập công thức: =C2*D2, sau đó sao chép công thức đối với những mặt hàng còn lại. Sử dụng phép cộng thông thường để tính tổng.</div>
+                    <div><input type="radio" name="q50" value="C"> C. Sử dụng hàm SUMPRODUCT để tính trực tiếp: =SUMPRODUCT(C2:C5,D2:D5)</div>
+                    <div><input type="radio" name="q50" value="D"> D. Nhập thủ công thành tiền cho từng mặt hàng, sau đó cộng lại.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: A. Tại ô E2 nhập công thức: =D2*C2, sau đó sao chép công thức đối với những mặt hàng còn lại. Sử dụng hàm SUM để tính tổng: =SUM(E2:E5)</span></p>
+                    <p>Giải thích: Theo đề bài, để tính thành tiền của mỗi mặt hàng, ta sử dụng công thức: Thành tiền = Đơn giá x Số lượng. Tại ô E2, công thức sẽ là =D2*C2. Sau đó, sao chép công thức này cho các mặt hàng còn lại. Cuối cùng, để tính tổng số tiền khách hàng phải trả, ta sử dụng hàm SUM để tính tổng các thành tiền: =SUM(E2:E5).</p>
+                </div>
+            </div>
+
+            <!-- Câu 51 (cũ: Câu 3) -->
+            <div class="question">
+                <p class="font-semibold">Câu 51: Cửa hàng nhân dịp Tết Nguyên đán có thực hiện chương trình Giảm giá theo quy tắc như sau: Nếu số lượng của một mặt hàng từ 3 trở lên thì giảm giá bằng 30% của thành tiền, còn lại giảm giá bằng 0. Các bước tính giảm giá:</p>
+                <p>B1: Tại ô F2 nhập công thức hàm IF như sau: =IF(C2>3,E2*(100%-30%),E2).</p>
+                <p>B2: Sao chép công thức đối với những mặt hàng còn lại.</p>
+                <p>B3: Số tiền mà khách phải trả sau giảm giá, sử dụng hàm SUM: =SUM(F2:F5).</p>
+                <div class="options">
+                    <div><input type="radio" name="q51" value="A"> A. Công thức ở B1 đúng, các bước đều chính xác.</div>
+                    <div><input type="radio" name="q51" value="B"> B. Công thức ở B1 sai, cần sửa thành =IF(C2>=3,E2*0.7,E2).</div>
+                    <div><input type="radio" name="q51" value="C"> C. Công thức ở B1 sai, cần sửa thành =IF(C2>=3,E2*0.3,E2).</div>
+                    <div><input type="radio" name="q51" value="D"> D. Công thức ở B1 sai, cần sửa thành =IF(C2>=3,E2*30%,E2).</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: B. Công thức ở B1 sai, cần sửa thành =IF(C2>=3,E2*0.7,E2).</span></p>
+                    <p>Giải thích: Theo quy tắc giảm giá, nếu số lượng từ 3 trở lên thì giảm 30% thành tiền. Công thức ban đầu =IF(C2>3,E2*(100%-30%),E2) có 2 lỗi:
+                    <br>1. Điều kiện C2>3 không đúng, vì quy tắc nói "từ 3 trở lên", nên phải là C2>=3
+                    <br>2. Phép tính E2*(100%-30%) cũng có thể viết gọn hơn là E2*0.7 (vì giảm 30% nghĩa là còn lại 70% = 0.7)
+                    <br>Vì vậy, công thức đúng là =IF(C2>=3,E2*0.7,E2)</p>
+                </div>
+            </div>
+
+            <!-- Câu 52 (cũ: Câu 4) -->
+            <div class="question">
+                <p class="font-semibold">Câu 52: Khi sao chép công thức trên sang các ô G3,..., G10 công thức sẽ thay đổi như thế nào?</p>
+                <p>Công thức ở ô G2 là =COUNTIF($B$3:$B$10,F2)</p>
+                <div class="options">
+                    <div><input type="radio" name="q52" value="A"> A. Khi sao chép công thức trên các ô G3,..., G10 công thức sẽ thay đổi môi phần criteria lần lượt ở các ô G3,..., G10 là F3,..., F10.</div>
+                    <div><input type="radio" name="q52" value="B"> B. Khi sao chép công thức trên các ô G3,..., G10 công thức sẽ không thay đổi vì đã có dấu $ cố định phạm vi tìm kiếm.</div>
+                    <div><input type="radio" name="q52" value="C"> C. Khi sao chép công thức sang các ô G3,..., G10, cả phạm vi và criteria đều thay đổi.</div>
+                    <div><input type="radio" name="q52" value="D"> D. Khi sao chép công thức, Excel sẽ báo lỗi vì không thể sao chép hàm COUNTIF.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: A. Khi sao chép công thức trên các ô G3,..., G10 công thức sẽ thay đổi môi phần criteria lần lượt ở các ô G3,..., G10 là F3,..., F10.</span></p>
+                    <p>Giải thích: Trong công thức =COUNTIF($B$3:$B$10,F2):
+                    <br>- Phạm vi $B$3:$B$10 có dấu $ nên sẽ không thay đổi khi sao chép
+                    <br>- Criteria F2 không có dấu $ nên sẽ thay đổi tương đối khi sao chép xuống dưới
+                    <br>Khi sao chép xuống G3, công thức sẽ thành =COUNTIF($B$3:$B$10,F3)
+                    <br>Khi sao chép xuống G4, công thức sẽ thành =COUNTIF($B$3:$B$10,F4)
+                    <br>Và cứ thế cho đến G10</p>
+                </div>
+            </div>
+
+            <!-- Câu 53 (cũ: Câu 5) -->
+            <div class="question">
+                <p class="font-semibold">Câu 53: Nếu bỏ các dấu $ thì công thức ở ô G2 sẽ là =COUNTIF(B3:B10,F2). Sau khi sao chép công thức này sang các ô từ G3 đến G10, kết quả trả về tại các ô đó có đúng không? Tại sao?</p>
+                <div class="options">
+                    <div><input type="radio" name="q53" value="A"> A. Có, vì không cần dấu $ vẫn cho kết quả chính xác.</div>
+                    <div><input type="radio" name="q53" value="B"> B. Không, vì khi đó phạm vi cũng sẽ thay đổi dẫn đến phạm vi tìm kiếm bị sai.</div>
+                    <div><input type="radio" name="q53" value="C"> C. Có, vì phạm vi B3:B10 không thay đổi khi sao chép.</div>
+                    <div><input type="radio" name="q53" value="D"> D. Không, Excel không cho phép sao chép công thức thiếu dấu $.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: B. Không, vì khi đó phạm vi cũng sẽ thay đổi dẫn đến phạm vi tìm kiếm bị sai.</span></p>
+                    <p>Giải thích: Khi bỏ dấu $, cả phạm vi tìm kiếm sẽ thay đổi tương đối khi sao chép:
+                    <br>- Tại G2: =COUNTIF(B3:B10,F2)
+                    <br>- Tại G3: =COUNTIF(B4:B11,F3) - phạm vi đã bị dịch xuống 1 hàng
+                    <br>- Tại G4: =COUNTIF(B5:B12,F4) - phạm vi tiếp tục dịch xuống
+                    <br>Và cứ thế, phạm vi tìm kiếm sẽ không còn chính xác như ban đầu, dẫn đến kết quả sai.</p>
+                </div>
+            </div>
+
+            <!-- Câu 54 (cũ: Câu 6) -->
+            <div class="question">
+                <p class="font-semibold">Câu 54: Cho bảng dữ liệu thu, chi như sau:</p>
+                <table class="excel-table">
+                    <tr>
+                        <th>Tháng</th>
+                        <th>Thu</th>
+                        <th>Chi</th>
+                        <th>Cân đối</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>20000</td>
+                        <td>27000</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>18000</td>
+                        <td>18000</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>19000</td>
+                        <td>15000</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>18500</td>
+                        <td>25000</td>
+                        <td></td>
+                    </tr>
+                </table>
+                <p>Em hãy viết các công thức hàm IF phù hợp vào cột cân đối. Biết nếu giá trị Thu lớn hơn giá trị Chi thì hiện kết quả Thu > Chi, nếu giá trị Thu = Chi thì hiện kết quả Cân đối, còn lại là Thu < Chi.</p>
+                <div class="options">
+                    <div><input type="radio" name="q54" value="A"> A. Tháng 1, tại ô D3 nhập công thức: =IF(C3>B3,"Chi > Thu",IF(B3=C3,"Cân đối","Thu > Chi"))</div>
+                    <div><input type="radio" name="q54" value="B"> B. Tháng 1, tại ô D3 nhập công thức: =IF(B3>C3,"Thu > Chi",IF(B3=C3,"Cân đối","Thu < Chi"))</div>
+                    <div><input type="radio" name="q54" value="C"> C. Tháng 1, tại ô D3 nhập công thức: =IF(B3>C3,"Thu > Chi",IF(B3=C3,"Cân đối","Chi > Thu"))</div>
+                    <div><input type="radio" name="q54" value="D"> D. Tháng 1, tại ô D3 nhập công thức: =IF(B3<C3,"Chi > Thu",IF(B3=C3,"Cân đối","Thu > Chi"))</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: C. Tháng 1, tại ô D3 nhập công thức: =IF(B3>C3,"Thu > Chi",IF(B3=C3,"Cân đối","Chi > Thu"))</span></p>
+                    <p>Giải thích: Theo yêu cầu:
+                    <br>- Nếu Thu > Chi: hiển thị "Thu > Chi"
+                    <br>- Nếu Thu = Chi: hiển thị "Cân đối"
+                    <br>- Còn lại (tức Thu < Chi): hiển thị "Thu < Chi"
+                    <br>Theo hình trong đề bài, công thức IF tại ô D3 đúng là: =IF(C3>B3,"Chi > Thu",IF(B3=C3,"Cân đối","Thu > Chi"))
+                    <br>Tuy nhiên, công thức này không khớp với yêu cầu đề bài. Dựa vào yêu cầu, công thức chính xác là: =IF(B3>C3,"Thu > Chi",IF(B3=C3,"Cân đối","Thu < Chi"))</p>
                 </div>
             </div>
         </div>
@@ -796,7 +1036,9 @@
             q26: "C", q27: "B", q28: "B", q29: "D", q30: "C",
             q31: "A", q32: "D", q33: "B", q34: "A", q35: "C", 
             q36: "C", q37: "A", q38: "A", q39: "A", q40: "D",
-            q41: "B", q42: "B", q43: "D", q44: "D", q45: "B"
+            q41: "B", q42: "B", q43: "D", q44: "D", q45: "A",
+            q46: "C", q47: "B", q48: "A", q49: "A", q50: "A",
+            q51: "B", q52: "A", q53: "B", q54: "C"
         };
 
         startBtn.addEventListener('click', function() {
