@@ -1048,8 +1048,26 @@
         });
 
         submitBtn.addEventListener('click', function() {
-            // Đếm chỉ những câu hiển thị (câu 36-45)
-            let displayedQuestions = ['q36', 'q37', 'q38', 'q39', 'q40', 'q41', 'q42', 'q43', 'q44', 'q45'];
+            // Xác định các câu hỏi thực sự hiển thị trên trang
+            let displayedQuestions = [];
+            for (let i = 1; i <= 54; i++) {
+                const questionElement = document.getElementById(`question-${i}`);
+                if (questionElement) {
+                    displayedQuestions.push(`q${i}`);
+                }
+            }
+            
+            // Nếu không tìm thấy ID cụ thể, thử tìm theo tất cả các câu hỏi có trong DOM
+            if (displayedQuestions.length === 0) {
+                // Lấy tất cả câu hỏi hiển thị theo input radio
+                const allInputs = document.querySelectorAll('input[type="radio"]');
+                const questionNames = new Set();
+                allInputs.forEach(input => {
+                    questionNames.add(input.name);
+                });
+                displayedQuestions = Array.from(questionNames);
+            }
+            
             let totalQuestions = displayedQuestions.length;
             let correctCount = 0;
             
@@ -1142,4 +1160,3 @@ window.console = new Proxy(console, {
 });
 </script></body>
 </html>
-                    
