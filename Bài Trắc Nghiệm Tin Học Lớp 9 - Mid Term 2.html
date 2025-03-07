@@ -1,0 +1,903 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Tin Học Lớp 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .explanation {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e7f3ff;
+            border-radius: 5px;
+            display: none;
+        }
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+        .selected-wrong {
+            color: red;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-4">
+    <div class="container mx-auto max-w-4xl bg-white p-8 shadow-lg rounded-lg">
+        <h1 class="text-3xl font-bold text-center mb-6">Bài Trắc Nghiệm Tin Học Lớp 9 - Mid Test 2</h1>
+        <div class="mb-6 text-center">
+            <button id="startBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Bắt đầu làm bài
+            </button>
+            <button id="submitBtn" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-4 hidden">
+                Nộp bài
+            </button>
+            <button id="showExplanationBtn" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded ml-4 hidden">
+                Hiển thị giải thích
+            </button>
+            <button id="retryBtn" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded ml-4 hidden">
+                Làm lại
+            </button>
+        </div>
+
+        <div id="result" class="mb-6 text-center hidden">
+            <h2 class="text-xl font-bold">Kết quả:</h2>
+            <p id="score" class="text-lg"></p>
+        </div>
+
+        <div id="quiz" class="hidden">
+            <!-- Question 1 -->
+            <div class="question">
+                <p class="font-semibold">Câu 1: Hàm COUNTIF trong bảng tính có ý nghĩa gì?</p>
+                <div class="options">
+                    <div><input type="radio" name="q1" value="A"> A. Hàm thống kê.</div>
+                    <div><input type="radio" name="q1" value="B"> B. Hàm tính tổng.</div>
+                    <div><input type="radio" name="q1" value="C"> C. Hàm đếm có điều kiện.</div>
+                    <div><input type="radio" name="q1" value="D"> D. Hàm có điều kiện.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: C. Hàm đếm có điều kiện.</span></p>
+                    <p>Giải thích: COUNTIF là hàm dùng để đếm số ô trong một phạm vi thỏa mãn điều kiện cụ thể. Cú pháp: =COUNTIF(range, criteria) - trong đó range là phạm vi cần đếm, criteria là điều kiện để đếm.</p>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question">
+                <p class="font-semibold">Câu 2: "sum_range" trong hàm SUMIF có ý nghĩa gì?</p>
+                <div class="options">
+                    <div><input type="radio" name="q2" value="A"> A. Phạm vi ô cần tính tổng.</div>
+                    <div><input type="radio" name="q2" value="B"> B. Điều kiện để tính tổng.</div>
+                    <div><input type="radio" name="q2" value="C"> C. Phạm vi ô chứa điều kiện.</div>
+                    <div><input type="radio" name="q2" value="D"> D. Giá trị cần tìm kiếm.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: A. Phạm vi ô cần tính tổng.</span></p>
+                    <p>Giải thích: Trong hàm SUMIF, sum_range là phạm vi chứa các ô mà chúng ta cần tính tổng khi điều kiện được thỏa mãn. Cú pháp của SUMIF là =SUMIF(range, criteria, [sum_range]) - trong đó sum_range là phạm vi chứa các giá trị cần tính tổng.</p>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question">
+                <p class="font-semibold">Câu 3: Công thức chung của hàm SUMIF là gì?</p>
+                <div class="options">
+                    <div><input type="radio" name="q3" value="A"> A. =SUM(range, criteria)</div>
+                    <div><input type="radio" name="q3" value="B"> B. =COUNTIF(range, criteria)</div>
+                    <div><input type="radio" name="q3" value="C"> C. =AVERAGEIF(range, criteria, [average_range])</div>
+                    <div><input type="radio" name="q3" value="D"> D. =SUMIF(range, criteria, [sum_range])</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: D. =SUMIF(range, criteria, [sum_range])</span></p>
+                    <p>Giải thích: Công thức chung của hàm SUMIF là =SUMIF(range, criteria, [sum_range]), trong đó:
+                    <br>- range: phạm vi chứa điều kiện cần kiểm tra
+                    <br>- criteria: điều kiện để lọc
+                    <br>- [sum_range]: phạm vi chứa các giá trị cần tính tổng (tùy chọn, nếu không có thì tính tổng các giá trị trong range)</p>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question">
+                <p class="font-semibold">Câu 4: Trong bài 7A, bảng tính hỗ trợ quản lí tài chính gia đình thường gồm mấy trang tính?</p>
+                <div class="options">
+                    <div><input type="radio" name="q4" value="A"> A. 1.</div>
+                    <div><input type="radio" name="q4" value="B"> B. 2.</div>
+                    <div><input type="radio" name="q4" value="C"> C. 3.</div>
+                    <div><input type="radio" name="q4" value="D"> D. 4.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: B. 2.</span></p>
+                    <p>Giải thích: Trong bài 7A, bảng tính hỗ trợ quản lý tài chính gia đình thường gồm 2 trang tính - một trang để nhập dữ liệu thu chi và một trang để thống kê, phân tích dữ liệu.</p>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question">
+                <p class="font-semibold">Câu 5: Trong công thức chung của COUNTIF, tham số criteria có ý nghĩa gì?</p>
+                <div class="options">
+                    <div><input type="radio" name="q5" value="A"> A. Phạm vi chứa các ô tính cần kiểm tra để đếm.</div>
+                    <div><input type="radio" name="q5" value="B"> B. Điều kiện kiểm tra các ô tính trong phạm vi range.</div>
+                    <div><input type="radio" name="q5" value="C"> C. Phạm vi chứa các giá trị không hợp lệ.</div>
+                    <div><input type="radio" name="q5" value="D"> D. Điều kiện xác thực dữ liệu để tạo bảng tính.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: B. Điều kiện kiểm tra các ô tính trong phạm vi range.</span></p>
+                    <p>Giải thích: Trong hàm COUNTIF, tham số criteria là điều kiện được sử dụng để kiểm tra các ô trong phạm vi range và đếm những ô thỏa mãn điều kiện đó. Criteria có thể là số, chuỗi, biểu thức, hoặc tham chiếu đến ô khác.</p>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question">
+                <p class="font-semibold">Câu 6: Để tìm giá trị lớn nhất trong cột chi, ta sử dụng hàm nào?</p>
+                <div class="options">
+                    <div><input type="radio" name="q6" value="A"> A. =MAX(range)</div>
+                    <div><input type="radio" name="q6" value="B"> B. =MIN(range)</div>
+                    <div><input type="radio" name="q6" value="C"> C. =AVERAGE(range)</div>
+                    <div><input type="radio" name="q6" value="D"> D. =COUNTIF(range,criteria)</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: A. =MAX(range)</span></p>
+                    <p>Giải thích: Hàm MAX() được sử dụng để tìm giá trị lớn nhất trong một phạm vi dữ liệu. Để tìm giá trị lớn nhất trong cột chi, ta sử dụng =MAX(range) trong đó range là phạm vi các ô trong cột chi.</p>
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question">
+                <p class="font-semibold">Câu 7: Loại dữ liệu trong cột "Ngày thu/chi" là:</p>
+                <div class="options">
+                    <div><input type="radio" name="q7" value="A"> A. kiểu dữ liệu số.</div>
+                    <div><input type="radio" name="q7" value="B"> B. kiểu dữ liệu văn bản.</div>
+                    <div><input type="radio" name="q7" value="C"> C. kiểu dữ liệu tiền tệ.</div>
+                    <div><input type="radio" name="q7" value="D"> D. kiểu dữ liệu ngày tháng năm.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: D. kiểu dữ liệu ngày tháng năm.</span></p>
+                    <p>Giải thích: Cột "Ngày thu/chi" chứa thông tin về thời gian khi phát sinh khoản thu hoặc chi, nên dữ liệu phải được lưu dưới dạng ngày tháng năm để có thể sắp xếp, lọc và thực hiện các phân tích theo thời gian.</p>
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question">
+                <p class="font-semibold">Câu 8: Hàm nào trong Excel dùng để đếm số ô tính trong vùng dữ liệu thỏa mãn điều kiện?</p>
+                <div class="options">
+                    <div><input type="radio" name="q8" value="A"> A. COUNT.</div>
+                    <div><input type="radio" name="q8" value="B"> B. SUMIF.</div>
+                    <div><input type="radio" name="q8" value="C"> C. COUNTIF.</div>
+                    <div><input type="radio" name="q8" value="D"> D. INDEX.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: C. COUNTIF.</span></p>
+                    <p>Giải thích: COUNTIF là hàm dùng để đếm số ô trong một phạm vi thỏa mãn điều kiện cụ thể. Trong khi đó, COUNT đếm số ô chứa dữ liệu số, SUMIF tính tổng các giá trị thỏa mãn điều kiện, và INDEX trả về giá trị từ một ô cụ thể trong một phạm vi.</p>
+                </div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="question">
+                <p class="font-semibold">Câu 9: Trong công thức SUMIF, "range" là gì?</p>
+                <div class="options">
+                    <div><input type="radio" name="q9" value="A"> A. Phạm vi ô cần tính tổng.</div>
+                    <div><input type="radio" name="q9" value="B"> B. Điều kiện để tính tổng.</div>
+                    <div><input type="radio" name="q9" value="C"> C. Phạm vi ô chứa điều kiện.</div>
+                    <div><input type="radio" name="q9" value="D"> D. Giá trị cần tìm kiếm.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: C. Phạm vi ô chứa điều kiện.</span></p>
+                    <p>Giải thích: Trong hàm SUMIF, tham số range là phạm vi chứa các ô cần kiểm tra điều kiện. Nếu không có tham số sum_range, thì các giá trị trong range sẽ được tính tổng nếu thỏa mãn điều kiện. Nếu có tham số sum_range, thì các giá trị tương ứng trong sum_range sẽ được tính tổng.</p>
+                </div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="question">
+                <p class="font-semibold">Câu 10: Để trích xuất giá trị tháng từ dữ liệu kiểu ngày ta dùng hàm nào?</p>
+                <div class="options">
+                    <div><input type="radio" name="q10" value="A"> A. =MONTH(serial_number)</div>
+                    <div><input type="radio" name="q10" value="B"> B. =MAX(range)</div>
+                    <div><input type="radio" name="q10" value="C"> C. =AVERAGE(range)</div>
+                    <div><input type="radio" name="q10" value="D"> D. =COUNTIF(range,criteria)</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: A. =MONTH(serial_number)</span></p>
+                    <p>Giải thích: Hàm MONTH() được sử dụng để trích xuất giá trị tháng từ một giá trị ngày tháng trong Excel. Hàm này trả về một số từ 1 (tháng 1) đến 12 (tháng 12) tương ứng với tháng trong giá trị ngày tháng được cung cấp.</p>
+                </div>
+            </div>
+
+            <!-- Question 11 -->
+            <div class="question">
+                <p class="font-semibold">Câu 11: Trong các khoản sau, khoản thu của gia đình là:</p>
+                <div class="options">
+                    <div><input type="radio" name="q11" value="A"> A. Chi tiêu ăn uống.</div>
+                    <div><input type="radio" name="q11" value="B"> B. Du lịch và giải trí.</div>
+                    <div><input type="radio" name="q11" value="C"> C. Lương, tiền làm thêm,...</div>
+                    <div><input type="radio" name="q11" value="D"> D. Tiền xăng xe.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: C. Lương, tiền làm thêm,...</span></p>
+                    <p>Giải thích: Trong quản lý tài chính gia đình, khoản thu bao gồm tất cả các nguồn tiền đi vào gia đình như lương, tiền làm thêm, tiền thưởng, tiền lãi từ đầu tư, v.v. Các lựa chọn khác (chi tiêu ăn uống, du lịch và giải trí, tiền xăng xe) đều là các khoản chi tiêu, tức là tiền đi ra khỏi gia đình.</p>
+                </div>
+            </div>
+
+            <!-- Question 12 -->
+            <div class="question">
+                <p class="font-semibold">Câu 12: Trong công thức chung của IF, tham số value_if_true có ý nghĩa gì?</p>
+                <div class="options">
+                    <div><input type="radio" name="q12" value="A"> A. Giá trị trả về nếu điều kiện là sai.</div>
+                    <div><input type="radio" name="q12" value="B"> B. Phạm vi chứa các giá trị không hợp lệ.</div>
+                    <div><input type="radio" name="q12" value="C"> C. Giá trị trả về nếu điều kiện là đúng.</div>
+                    <div><input type="radio" name="q12" value="D"> D. Điều kiện kiểm tra.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: C. Giá trị trả về nếu điều kiện là đúng.</span></p>
+                    <p>Giải thích: Trong hàm IF, tham số value_if_true là giá trị sẽ được trả về nếu điều kiện (logical_test) được đánh giá là TRUE (đúng). Cú pháp đầy đủ của hàm IF là: =IF(logical_test, value_if_true, value_if_false).</p>
+                </div>
+            </div>
+
+            <!-- Question 13 -->
+            <div class="question">
+                <p class="font-semibold">Câu 13: Công thức chung của hàm IF là</p>
+                <div class="options">
+                    <div><input type="radio" name="q13" value="A"> A. =IF(logical_test, [value_if_false], [value_if_true])</div>
+                    <div><input type="radio" name="q13" value="B"> B. =IF([value_if_false], [value_if_true], logical_test)</div>
+                    <div><input type="radio" name="q13" value="C"> C. =IF([value_if_true], [value_if_false], logical_test)</div>
+                    <div><input type="radio" name="q13" value="D"> D. =IF(logical_test, [value_if_true], [value_if_false])</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: D. =IF(logical_test, [value_if_true], [value_if_false])</span></p>
+                    <p>Giải thích: Cú pháp chuẩn của hàm IF là =IF(logical_test, [value_if_true], [value_if_false]), trong đó:
+                    <br>- logical_test: điều kiện cần kiểm tra, trả về TRUE hoặc FALSE
+                    <br>- value_if_true: giá trị trả về nếu điều kiện đúng
+                    <br>- value_if_false: giá trị trả về nếu điều kiện sai</p>
+                </div>
+            </div>
+
+            <!-- Question 14 -->
+            <div class="question">
+                <p class="font-semibold">Câu 14: Hàm nào trong Excel được sử dụng để tính tổng một dãy số?</p>
+                <div class="options">
+                    <div><input type="radio" name="q14" value="A"> A. SUM.</div>
+                    <div><input type="radio" name="q14" value="B"> B. AVERAGE.</div>
+                    <div><input type="radio" name="q14" value="C"> C. COUNT.</div>
+                    <div><input type="radio" name="q14" value="D"> D. MAX.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: A. SUM.</span></p>
+                    <p>Giải thích: Hàm SUM trong Excel được sử dụng để tính tổng các giá trị số trong một phạm vi đã cho. Ví dụ: =SUM(A1:A10) sẽ tính tổng các giá trị số trong phạm vi từ ô A1 đến A10.</p>
+                </div>
+            </div>
+
+            <!-- Question 15 -->
+            <div class="question">
+                <p class="font-semibold">Câu 15: "criteria" trong hàm SUMIF có ý nghĩa gì?</p>
+                <div class="options">
+                    <div><input type="radio" name="q15" value="A"> A. Điều kiện để tính tổng.</div>
+                    <div><input type="radio" name="q15" value="B"> B. Phạm vi ô cần tính tổng.</div>
+                    <div><input type="radio" name="q15" value="C"> C. Phạm vi ô chứa điều kiện.</div>
+                    <div><input type="radio" name="q15" value="D"> D. Giá trị cần tìm kiếm.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: A. Điều kiện để tính tổng.</span></p>
+                    <p>Giải thích: Trong hàm SUMIF, tham số criteria là điều kiện được sử dụng để quyết định xem giá trị nào sẽ được tính tổng. Các ô trong phạm vi range sẽ được kiểm tra với điều kiện này, và nếu thỏa mãn, giá trị tương ứng sẽ được tính vào tổng.</p>
+                </div>
+            </div>
+
+            <!-- Question 16 -->
+            <div class="question">
+                <p class="font-semibold">Câu 16: Hàm nào không được sử dụng để tính tổng thu, chi theo tháng; hỗ trợ cân đối thu, chi và trích xuất tháng trong dữ liệu ngày?</p>
+                <div class="options">
+                    <div><input type="radio" name="q16" value="A"> A. MIN.</div>
+                    <div><input type="radio" name="q16" value="B"> B. SUMIF.</div>
+                    <div><input type="radio" name="q16" value="C"> C. MONTH</div>
+                    <div><input type="radio" name="q16" value="D"> D. IF.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: A. MIN.</span></p>
+                    <p>Giải thích: Hàm MIN dùng để tìm giá trị nhỏ nhất trong một phạm vi, không liên quan đến việc tính tổng thu chi theo tháng hay hỗ trợ cân đối thu chi. Trong khi đó:
+                    <br>- SUMIF được sử dụng để tính tổng có điều kiện (ví dụ: tổng thu/chi trong một tháng cụ thể)
+                    <br>- MONTH dùng để trích xuất tháng từ dữ liệu ngày
+                    <br>- IF dùng để kiểm tra điều kiện (ví dụ: kiểm tra nếu thu lớn hơn chi)</p>
+                </div>
+            </div>
+
+            <!-- Question 17 -->
+            <div class="question">
+                <p class="font-semibold">Câu 17: Công thức tính để đếm số lần chi cho việc ăn uống trong vùng C1:C6 là:</p>
+                <div class="options">
+                    <div><input type="radio" name="q17" value="A"> A. =COUNT(C1:C6,"Ăn uống")</div>
+                    <div><input type="radio" name="q17" value="B"> B. =COUNTIF(C1:C6,Ăn uống)</div>
+                    <div><input type="radio" name="q17" value="C"> C. =COUNTIF(C1:C6,"Ăn uống")</div>
+                    <div><input type="radio" name="q17" value="D"> D. =COUNT(C1:C6,Ăn uống)</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: C. =COUNTIF(C1:C6,"Ăn uống")</span></p>
+                    <p>Giải thích: Để đếm số lần xuất hiện của từ "Ăn uống" trong vùng C1:C6, ta sử dụng hàm COUNTIF với cú pháp chính xác là =COUNTIF(C1:C6,"Ăn uống"), trong đó:
+                    <br>- C1:C6 là phạm vi cần kiểm tra
+                    <br>- "Ăn uống" là điều kiện tìm kiếm, phải đặt trong dấu ngoặc kép vì đây là chuỗi văn bản</p>
+                </div>
+            </div>
+
+            <!-- Question 18 -->
+            <div class="question">
+                <p class="font-semibold">Câu 18: Để áp dụng Data Validation cho một ô, bạn thực hiện như thế nào?</p>
+                <div class="options">
+                    <div><input type="radio" name="q18" value="A"> A. Chọn ô, vào thẻ Data, chọn Data Validation.</div>
+                    <div><input type="radio" name="q18" value="B"> B. Chọn ô, vào thẻ Home, chọn Format Cells.</div>
+                    <div><input type="radio" name="q18" value="C"> C. Chọn ô, vào thẻ Formulas, chọn Name Manager.</div>
+                    <div><input type="radio" name="q18" value="D"> D. Chọn ô, vào thẻ Review, chọn Protect Sheet.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: A. Chọn ô, vào thẻ Data, chọn Data Validation.</span></p>
+                    <p>Giải thích: Để áp dụng Data Validation (Xác thực dữ liệu) cho một ô trong Excel, bạn cần:
+                    <br>1. Chọn ô hoặc vùng ô muốn áp dụng xác thực
+                    <br>2. Vào tab "Data" (Dữ liệu) trên Ribbon
+                    <br>3. Chọn "Data Validation" (Xác thực dữ liệu)
+                    <br>4. Thiết lập các quy tắc xác thực phù hợp trong hộp thoại hiện ra</p>
+                </div>
+            </div>
+
+            <!-- Question 19 -->
+            <div class="question">
+                <p class="font-semibold">Câu 19: Để tính tổng tiền chi tiêu, ta sử dụng hàm nào?</p>
+                <div class="options">
+                    <div><input type="radio" name="q19" value="A"> A. SUMIF.</div>
+                    <div><input type="radio" name="q19" value="B"> B. SUM.</div>
+                    <div><input type="radio" name="q19" value="C"> C. COUNT.</div>
+                    <div><input type="radio" name="q19" value="D"> D. COUNTIF.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: B. SUM.</span></p>
+                    <p>Giải thích: Để tính tổng tiền chi tiêu, ta sử dụng hàm SUM để cộng tất cả các giá trị trong phạm vi chứa số tiền chi tiêu. Ví dụ: =SUM(D2:D100) sẽ tính tổng tất cả các giá trị từ ô D2 đến D100. Nếu muốn tính tổng chi tiêu có điều kiện (ví dụ: chỉ tính cho một loại chi tiêu cụ thể), thì mới sử dụng SUMIF.</p>
+                </div>
+            </div>
+
+            <!-- Question 20 -->
+            <div class="question">
+                <p class="font-semibold">Câu 20: Công thức tính để đếm số ô trong vùng C1:C6 chứa từ "Ăn" là:</p>
+                <div class="options">
+                    <div><input type="radio" name="q20" value="A"> A. =COUNT(C1:C6,"Ăn")</div>
+                    <div><input type="radio" name="q20" value="B"> B. =COUNTIF(C1:C6,Ăn)</div>
+                    <div><input type="radio" name="q20" value="C"> C. =COUNTIF(C1:C6,"Ăn")</div>
+                    <div><input type="radio" name="q20" value="D"> D. =COUNT(C1:C6,Ăn)</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: C. =COUNTIF(C1:C6,"Ăn")</span></p>
+                    <p>Giải thích: Để đếm số ô trong một phạm vi chứa một chuỗi cụ thể, ta sử dụng hàm COUNTIF với tham số đầu tiên là phạm vi cần kiểm tra (C1:C6), và tham số thứ hai là chuỗi cần tìm ("Ăn") được đặt trong dấu ngoặc kép để Excel hiểu đó là một chuỗi văn bản.</p>
+                </div>
+            </div>
+
+            <!-- Question 21 -->
+            <div class="question">
+                <p class="font-semibold">Câu 21: Để bảo vệ một vùng dữ liệu quan trọng khỏi bị sửa đổi, ta sử dụng tính năng nào?</p>
+                <div class="options">
+                    <div><input type="radio" name="q21" value="A"> A. Protect Sheet.</div>
+                    <div><input type="radio" name="q21" value="B"> B. Hide Sheet.</div>
+                    <div><input type="radio" name="q21" value="C"> C. Password Protect.</div>
+                    <div><input type="radio" name="q21" value="D"> D. Format Cells.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: A. Protect Sheet.</span></p>
+                    <p>Giải thích: Tính năng Protect Sheet (Bảo vệ trang tính) được sử dụng để ngăn không cho người dùng sửa đổi dữ liệu trong một trang tính. Bạn có thể chọn các ô cụ thể mà người dùng có thể chỉnh sửa, trong khi khóa các ô khác để bảo vệ dữ liệu quan trọng.</p>
+                </div>
+            </div>
+
+            <!-- Question 22 -->
+            <div class="question">
+                <p class="font-semibold">Câu 22: Chọn phát biểu sai. Khi thực hành tạo Bảng tính khoản thu, chi cho Câu lạc bộ</p>
+                <div class="options">
+                    <div><input type="radio" name="q22" value="A"> A. Trang tính thu gồm các thông tin: STT, tên khoản thu, nội dung, ngày thu, số tiền, người thu.</div>
+                    <div><input type="radio" name="q22" value="B"> B. Trang tính chi gồm các thông tin: STT, tên khoản chi, nội dung chi, ngày chi, số tiền, người chi.</div>
+                    <div><input type="radio" name="q22" value="C"> C. Trên bảng tính "QuanLiTaiChinhCLB.xlsx", nhập dữ liệu thu và chi tương ứng vào các cột tương ứng.</div>
+                    <div><input type="radio" name="q22" value="D"> D. Danh sách các khoản thu của câu lạc bộ: Khoản thu từ tiền góp các thành viên; chi cho mua giấy tờ, sổ sách; thu từ làm thêm.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: D. Danh sách các khoản thu của câu lạc bộ: Khoản thu từ tiền góp các thành viên; chi cho mua giấy tờ, sổ sách; thu từ làm thêm.</span></p>
+                    <p>Giải thích: Phát biểu D là sai vì trộn lẫn khoản thu và khoản chi trong cùng một danh sách. "Chi cho mua giấy tờ, sổ sách" là khoản chi, không phải khoản thu, nên không nên đưa vào danh sách các khoản thu của câu lạc bộ. Các khoản thu chỉ nên bao gồm "Khoản thu từ tiền góp các thành viên" và "thu từ làm thêm".</p>
+                </div>
+            </div>
+
+            <!-- Question 23 -->
+            <div class="question">
+                <p class="font-semibold">Câu 23: Sử dụng hàm IF để kiểm tra nếu số tiền trong một ô lớn hơn 1000000 thì hiển thị "Vượt mức", ngược lại hiển thị "Hợp lí".</p>
+                <div class="options">
+                    <div><input type="radio" name="q23" value="A"> A. =IF(A2>1000000,"Vượt mức","Hợp lí")</div>
+                    <div><input type="radio" name="q23" value="B"> B. =IF(A2<1000000,"Vượt mức","Hợp lí")</div>
+                    <div><input type="radio" name="q23" value="C"> C. =IF(A2=1000000,"Vượt mức","Hợp lí")</div>
+                    <div><input type="radio" name="q23" value="D"> D. =IF(A2>=1000000,"Vượt mức","Hợp lí")</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: A. =IF(A2>1000000,"Vượt mức","Hợp lí")</span></p>
+                    <p>Giải thích: Công thức =IF(A2>1000000,"Vượt mức","Hợp lí") sẽ kiểm tra:
+                    <br>- Nếu giá trị trong ô A2 lớn hơn 1000000, hiển thị "Vượt mức"
+                    <br>- Nếu giá trị trong ô A2 nhỏ hơn hoặc bằng 1000000, hiển thị "Hợp lí"
+                    <br>Điều này phù hợp với yêu cầu đã nêu trong câu hỏi.</p>
+                </div>
+            </div>
+
+            <!-- Question 24 -->
+            <div class="question">
+                <p class="font-semibold">Câu 24: Công thức tính để đếm số ô trong vùng A7:A20 chứa từ có đúng 3 kí tự và kết thúc bằng "an" là:</p>
+                <div class="options">
+                    <div><input type="radio" name="q24" value="A"> A. =COUNTIF(A7:A20,"!an")</div>
+                    <div><input type="radio" name="q24" value="B"> B. =COUNTIF(A7:A20,"?an")</div>
+                    <div><input type="radio" name="q24" value="C"> C. =COUNTIF(A7:A20,"_an")</div>
+                    <div><input type="radio" name="q24" value="D"> D. =COUNTIF(A7:A20," an")</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: B. =COUNTIF(A7:A20,"?an")</span></p>
+                    <p>Giải thích: Trong Excel, ký tự "?" đại diện cho một ký tự bất kỳ. Để tìm từ có đúng 3 ký tự và kết thúc bằng "an", ta cần tìm các từ có dạng: 1 ký tự bất kỳ + "an". 
+                    <br>Công thức =COUNTIF(A7:A20,"?an") sẽ đếm số ô trong vùng A7:A20 chứa chính xác một ký tự bất kỳ theo sau bởi "an", đảm bảo tổng cộng là 3 ký tự.</p>
+                </div>
+            </div>
+
+            <!-- Question 25 -->
+            <div class="question">
+                <p class="font-semibold">Câu 25: Đâu là công thức đúng của COUNTIF?</p>
+                <div class="options">
+                    <div><input type="radio" name="q25" value="A"> A. COUNTIF(range, criteria)</div>
+                    <div><input type="radio" name="q25" value="B"> B. IF(range, criteria)</div>
+                    <div><input type="radio" name="q25" value="C"> C. COUNT(range, criteria)</div>
+                    <div><input type="radio" name="q25" value="D"> D. SUMIF(range, criteria)</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: A. COUNTIF(range, criteria)</span></p>
+                    <p>Giải thích: Công thức chính xác của hàm COUNTIF là COUNTIF(range, criteria):
+                    <br>- range: phạm vi các ô cần đếm
+                    <br>- criteria: điều kiện để đếm
+                    <br>Các công thức khác không phải là cấu trúc đúng của COUNTIF.</p>
+                </div>
+            </div>
+
+            <!-- Question 26 -->
+            <div class="question">
+                <p class="font-semibold">Câu 26: Định dạng nào phù hợp nhất cho cột ngày trong bảng quản lý thu chi?</p>
+                <div class="options">
+                    <div><input type="radio" name="q26" value="A"> A. General.</div>
+                    <div><input type="radio" name="q26" value="B"> B. Number.</div>
+                    <div><input type="radio" name="q26" value="C"> C. Date.</div>
+                    <div><input type="radio" name="q26" value="D"> D. Text.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: C. Date.</span></p>
+                    <p>Giải thích: Định dạng Date (Ngày) là phù hợp nhất cho cột ngày trong bảng quản lý thu chi vì:
+                    <br>- Cho phép Excel hiểu đúng dữ liệu ngày tháng
+                    <br>- Hỗ trợ sắp xếp và lọc theo thứ tự thời gian
+                    <br>- Cho phép tính toán khoảng thời gian
+                    <br>- Hỗ trợ các hàm liên quan đến ngày tháng như MONTH(), YEAR() để phân tích theo tháng, năm</p>
+                </div>
+            </div>
+
+            <!-- Question 27 -->
+            <div class="question">
+                <p class="font-semibold">Câu 27: Để tính tổng số tiền thu trong cột B từ B1 đến B100, ta sử dụng hàm nào?</p>
+                <div class="options">
+                    <div><input type="radio" name="q27" value="A"> A. =SUM(B1:B10)</div>
+                    <div><input type="radio" name="q27" value="B"> B. =SUM(B1:B100)</div>
+                    <div><input type="radio" name="q27" value="C"> C. =COUNT(B1:B100)</div>
+                    <div><input type="radio" name="q27" value="D"> D. =AVERAGE(B:B)</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: B. =SUM(B1:B100)</span></p>
+                    <p>Giải thích: Để tính tổng số tiền thu trong cột B từ B1 đến B100, ta sử dụng hàm SUM với phạm vi từ B1 đến B100: =SUM(B1:B100). Công thức này sẽ cộng tất cả các giá trị số trong phạm vi từ ô B1 đến B100.</p>
+                </div>
+            </div>
+
+            <!-- Question 28 -->
+            <div class="question">
+                <p class="font-semibold">Câu 28: Trong công thức chung của COUNTIF, tham số range có ý nghĩa gì?</p>
+                <div class="options">
+                    <div><input type="radio" name="q28" value="A"> A. Số lượng các ô tính thỏa mãn điều kiện kiểm tra.</div>
+                    <div><input type="radio" name="q28" value="B"> B. Phạm vi chứa các ô tính cần kiểm tra để đếm.</div>
+                    <div><input type="radio" name="q28" value="C"> C. Điều kiện kiểm tra các ô tính trong phạm vi criteria.</div>
+                    <div><input type="radio" name="q28" value="D"> D. Phạm vi chứa các giá trị không hợp lệ.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: B. Phạm vi chứa các ô tính cần kiểm tra để đếm.</span></p>
+                    <p>Giải thích: Trong hàm COUNTIF, tham số range đại diện cho phạm vi các ô mà chúng ta muốn kiểm tra và đếm. Đây là vùng dữ liệu mà Excel sẽ áp dụng điều kiện (criteria) để đếm số ô thỏa mãn điều kiện đó.</p>
+                </div>
+            </div>
+
+            <!-- Question 29 -->
+            <div class="question">
+                <p class="font-semibold">Câu 29: Để thống kê số lần thu, số lần chi theo từng khoản ta sử dụng hàm</p>
+                <div class="options">
+                    <div><input type="radio" name="q29" value="A"> A. SUM</div>
+                    <div><input type="radio" name="q29" value="B"> B. SUMIF.</div>
+                    <div><input type="radio" name="q29" value="C"> C. COUNT</div>
+                    <div><input type="radio" name="q29" value="D"> D. COUNTIF.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: D. COUNTIF.</span></p>
+                    <p>Giải thích: Để thống kê số lần thu, số lần chi theo từng khoản, ta sử dụng hàm COUNTIF để đếm số lần xuất hiện của mỗi loại khoản thu/chi. Ví dụ: =COUNTIF(B2:B100,"Lương") sẽ đếm số lần xuất hiện của khoản thu "Lương" trong phạm vi B2:B100.</p>
+                </div>
+            </div>
+
+            <!-- Question 30 -->
+            <div class="question">
+                <p class="font-semibold">Câu 30: Định dạng nào phù hợp nhất cho cột ngày trong bảng đối chiếu?</p>
+                <div class="options">
+                    <div><input type="radio" name="q30" value="A"> A. General.</div>
+                    <div><input type="radio" name="q30" value="B"> B. Number.</div>
+                    <div><input type="radio" name="q30" value="C"> C. Date.</div>
+                    <div><input type="radio" name="q30" value="D"> D. Text.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: C. Date.</span></p>
+                    <p>Giải thích: Định dạng Date (Ngày) là phù hợp nhất cho cột ngày trong bảng đối chiếu vì nó cho phép Excel nhận dạng giá trị ngày tháng đúng cách, từ đó có thể sắp xếp, lọc, và thực hiện các phép tính liên quan đến thời gian một cách chính xác.</p>
+                </div>
+            </div>
+
+            <!-- Question 31 -->
+            <div class="question">
+                <p class="font-semibold">Câu 31: "criteria" trong hàm SUMIF có ý nghĩa gì?</p>
+                <div class="options">
+                    <div><input type="radio" name="q31" value="A"> A. Điều kiện để tính tổng.</div>
+                    <div><input type="radio" name="q31" value="B"> B. Phạm vi ô cần tính tổng.</div>
+                    <div><input type="radio" name="q31" value="C"> C. Phạm vi ô chứa điều kiện.</div>
+                    <div><input type="radio" name="q31" value="D"> D. Giá trị cần tìm kiếm.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: A. Điều kiện để tính tổng.</span></p>
+                    <p>Giải thích: Trong hàm SUMIF, tham số criteria là điều kiện mà các ô trong phạm vi range phải thỏa mãn để giá trị tương ứng của chúng được tính vào tổng. Nó có thể là một số, chuỗi, biểu thức, hoặc tham chiếu đến một ô chứa điều kiện.</p>
+                </div>
+            </div>
+
+            <!-- Question 32 -->
+            <div class="question">
+                <p class="font-semibold">Câu 32: Công thức chung của hàm IF là</p>
+                <div class="options">
+                    <div><input type="radio" name="q32" value="A"> A. =IF(logical_test, [value_if_false], [value_if_true]).</div>
+                    <div><input type="radio" name="q32" value="B"> B. =IF([value_if_false], [value_if_true], logical_test).</div>
+                    <div><input type="radio" name="q32" value="C"> C. =IF([value_if_true], [value_if_false], logical_test).</div>
+                    <div><input type="radio" name="q32" value="D"> D. =IF(logical_test, [value_if_true], [value_if_false]).</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: D. =IF(logical_test, [value_if_true], [value_if_false]).</span></p>
+                    <p>Giải thích: Công thức chuẩn của hàm IF trong Excel là =IF(logical_test, [value_if_true], [value_if_false]), trong đó:
+                    <br>- logical_test: Điều kiện cần kiểm tra (trả về TRUE hoặc FALSE)
+                    <br>- [value_if_true]: Giá trị trả về nếu điều kiện là TRUE (đúng)
+                    <br>- [value_if_false]: Giá trị trả về nếu điều kiện là FALSE (sai)</p>
+                </div>
+            </div>
+
+            <!-- Question 33 -->
+            <div class="question">
+                <p class="font-semibold">Câu 33: Bảng tính hỗ trợ quản lí tài chính gia đình gồm mấy trang tính?</p>
+                <div class="options">
+                    <div><input type="radio" name="q33" value="A"> A. 1.</div>
+                    <div><input type="radio" name="q33" value="B"> B. 2.</div>
+                    <div><input type="radio" name="q33" value="C"> C. 3.</div>
+                    <div><input type="radio" name="q33" value="D"> D. 4.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: B. 2.</span></p>
+                    <p>Giải thích: Bảng tính hỗ trợ quản lý tài chính gia đình thường gồm 2 trang tính:
+                    <br>1. Trang nhập liệu: để ghi nhận các khoản thu chi hàng ngày
+                    <br>2. Trang thống kê/báo cáo: để phân tích, tính toán và hiển thị các báo cáo tổng hợp về tình hình tài chính</p>
+                </div>
+            </div>
+
+            <!-- Question 34 -->
+            <div class="question">
+                <p class="font-semibold">Câu 34: Hàm nào trong Excel được sử dụng để tính tổng một dãy số?</p>
+                <div class="options">
+                    <div><input type="radio" name="q34" value="A"> A. SUM.</div>
+                    <div><input type="radio" name="q34" value="B"> B. AVERAGE.</div>
+                    <div><input type="radio" name="q34" value="C"> C. COUNT.</div>
+                    <div><input type="radio" name="q34" value="D"> D. MAX.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: A. SUM.</span></p>
+                    <p>Giải thích: Hàm SUM trong Excel được sử dụng để tính tổng các giá trị số trong một phạm vi cho trước. Ví dụ: =SUM(B1:B10) sẽ tính tổng tất cả các giá trị số từ ô B1 đến B10.</p>
+                </div>
+            </div>
+
+            <!-- Question 35 -->
+            <div class="question">
+                <p class="font-semibold">Câu 35: Trong công thức SUMIF, "range" là gì?</p>
+                <div class="options">
+                    <div><input type="radio" name="q35" value="A"> A. Phạm vi ô cần tính tổng.</div>
+                    <div><input type="radio" name="q35" value="B"> B. Điều kiện để tính tổng.</div>
+                    <div><input type="radio" name="q35" value="C"> C. Phạm vi ô chứa điều kiện.</div>
+                    <div><input type="radio" name="q35" value="D"> D. Giá trị cần tìm kiếm.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: C. Phạm vi ô chứa điều kiện.</span></p>
+                    <p>Giải thích: Trong hàm SUMIF, tham số range là phạm vi chứa các ô mà điều kiện (criteria) sẽ được áp dụng để kiểm tra. Nếu một ô trong range thỏa mãn điều kiện, thì giá trị tương ứng (từ cùng vị trí trong sum_range hoặc từ chính range nếu không có sum_range) sẽ được tính vào tổng.</p>
+                </div>
+            </div>
+
+            <!-- Question 36 -->
+            <div class="question">
+                <p class="font-semibold">Câu 36: Hàm nào trong Excel dùng để đếm số ô tính trong vùng dữ liệu thỏa mãn điều kiện?</p>
+                <div class="options">
+                    <div><input type="radio" name="q36" value="A"> A. COUNT.</div>
+                    <div><input type="radio" name="q36" value="B"> B. SUMIF.</div>
+                    <div><input type="radio" name="q36" value="C"> C. COUNTIF.</div>
+                    <div><input type="radio" name="q36" value="D"> D. INDEX.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: C. COUNTIF.</span></p>
+                    <p>Giải thích: COUNTIF là hàm dùng để đếm số ô trong một phạm vi thỏa mãn điều kiện cụ thể. Cú pháp: =COUNTIF(range, criteria). Hàm COUNT chỉ đếm số lượng các ô có chứa số, không xét điều kiện; SUMIF tính tổng các giá trị thỏa mãn điều kiện; INDEX trả về giá trị tại vị trí xác định trong phạm vi.</p>
+                </div>
+            </div>
+
+            <!-- Question 37 -->
+            <div class="question">
+                <p class="font-semibold">Câu 37: Để tìm giá trị lớn nhất trong cột chi, ta sử dụng hàm nào?</p>
+                <div class="options">
+                    <div><input type="radio" name="q37" value="A"> A. =MAX(range)</div>
+                    <div><input type="radio" name="q37" value="B"> B. =MIN(range)</div>
+                    <div><input type="radio" name="q37" value="C"> C. =AVERAGE(range)</div>
+                    <div><input type="radio" name="q37" value="D"> D. =COUNTIF(range,criteria)</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: A. =MAX(range)</span></p>
+                    <p>Giải thích: Hàm MAX() được sử dụng để tìm giá trị lớn nhất trong một phạm vi dữ liệu. Để tìm giá trị lớn nhất trong cột chi, ta sử dụng =MAX(range) trong đó range là phạm vi các ô trong cột chi (ví dụ: MAX(B2:B20)).</p>
+                </div>
+            </div>
+
+            <!-- Question 38 -->
+            <div class="question">
+                <p class="font-semibold">Câu 38: Hàm nào không được sử dụng để tính tổng thu, chi theo tháng; hỗ trợ cân đối thu, chi?</p>
+                <div class="options">
+                    <div><input type="radio" name="q38" value="A"> A. MIN.</div>
+                    <div><input type="radio" name="q38" value="B"> B. SUMIF.</div>
+                    <div><input type="radio" name="q38" value="C"> C. MONTH</div>
+                    <div><input type="radio" name="q38" value="D"> D. IF.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: A. MIN.</span></p>
+                    <p>Giải thích: Hàm MIN dùng để tìm giá trị nhỏ nhất trong một phạm vi, không liên quan đến việc tính tổng thu chi. Trong khi đó:
+                    <br>- SUMIF giúp tính tổng có điều kiện (ví dụ tổng thu chi theo từng loại)
+                    <br>- MONTH giúp trích xuất tháng từ ngày, hỗ trợ việc phân tích theo tháng
+                    <br>- IF giúp kiểm tra điều kiện và hỗ trợ trong việc phân tích cân đối thu chi</p>
+                </div>
+            </div>
+
+            <!-- Question 39 -->
+            <div class="question">
+                <p class="font-semibold">Câu 39: "sum_range" trong hàm SUMIF có ý nghĩa gì?</p>
+                <div class="options">
+                    <div><input type="radio" name="q39" value="A"> A. Phạm vi ô cần tính tổng.</div>
+                    <div><input type="radio" name="q39" value="B"> B. Điều kiện để tính tổng.</div>
+                    <div><input type="radio" name="q39" value="C"> C. Phạm vi ô chứa điều kiện.</div>
+                    <div><input type="radio" name="q39" value="D"> D. Giá trị cần tìm kiếm.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: A. Phạm vi ô cần tính tổng.</span></p>
+                    <p>Giải thích: Trong hàm SUMIF(range, criteria, [sum_range]), tham số sum_range là phạm vi chứa các giá trị cần tính tổng khi điều kiện được thỏa mãn. Nếu không cung cấp sum_range, Excel sẽ sử dụng range làm phạm vi tính tổng.</p>
+                </div>
+            </div>
+
+            <!-- Question 40 -->
+            <div class="question">
+                <p class="font-semibold">Câu 40: Loại dữ liệu trong cột "Ngày thu/chi" là:</p>
+                <div class="options">
+                    <div><input type="radio" name="q40" value="A"> A. kiểu dữ liệu số.</div>
+                    <div><input type="radio" name="q40" value="B"> B. kiểu dữ liệu văn bản.</div>
+                    <div><input type="radio" name="q40" value="C"> C. kiểu dữ liệu tiền tệ.</div>
+                    <div><input type="radio" name="q40" value="D"> D. kiểu dữ liệu ngày tháng năm.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: D. kiểu dữ liệu ngày tháng năm.</span></p>
+                    <p>Giải thích: Cột "Ngày thu/chi" cần lưu trữ thông tin về thời gian khi phát sinh các khoản thu chi, nên kiểu dữ liệu thích hợp là ngày tháng năm (Date). Định dạng ngày tháng cho phép Excel thực hiện các phép tính liên quan đến thời gian và sắp xếp dữ liệu theo thứ tự thời gian.</p>
+                </div>
+            </div>
+
+            <!-- Question 41 -->
+            <div class="question">
+                <p class="font-semibold">Câu 41: Để tính tổng các số lớn hơn hoặc bằng 50 trong phạm vi C1:C15, ta sử dụng công thức nào?</p>
+                <div class="options">
+                    <div><input type="radio" name="q41" value="A"> A. =SUMIF(C1:C15, ">50", C1:C15)</div>
+                    <div><input type="radio" name="q41" value="B"> B. =SUMIF(C1:C15, ">=50", C1:C15)</div>
+                    <div><input type="radio" name="q41" value="C"> C. =SUMIF(C1:C15, "<50", C1:C15)</div>
+                    <div><input type="radio" name="q41" value="D"> D. =SUMIF(C1:C15, "50", C1:C15)</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: B. =SUMIF(C1:C15, ">=50", C1:C15)</span></p>
+                    <p>Giải thích: Để tính tổng các số lớn hơn hoặc bằng 50, ta sử dụng hàm SUMIF với điều kiện ">=50". Trong công thức:
+                    <br>- C1:C15 là phạm vi chứa các giá trị cần kiểm tra
+                    <br>- ">=50" là điều kiện (lớn hơn hoặc bằng 50)
+                    <br>- C1:C15 ở cuối là phạm vi chứa các giá trị cần tính tổng (trong trường hợp này trùng với phạm vi kiểm tra)</p>
+                </div>
+            </div>
+
+            <!-- Question 42 -->
+            <div class="question">
+                <p class="font-semibold">Câu 42: Biểu đồ phù hợp để biểu diễn tỉ lệ phần trăm các khoản thu/chi là:</p>
+                <div class="options">
+                    <div><input type="radio" name="q42" value="A"> A. So sánh tổng thu và tổng chi.</div>
+                    <div><input type="radio" name="q42" value="B"> B. Tỉ lệ phần trăm các khoản thu/chi.</div>
+                    <div><input type="radio" name="q42" value="C"> C. Đánh giá mức độ thu chi hợp lý.</div>
+                    <div><input type="radio" name="q42" value="D"> D. Đưa ra phương hướng cho việc thu/chi.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: B. Tỉ lệ phần trăm các khoản thu/chi.</span></p>
+                    <p>Giải thích: Biểu đồ tròn (Pie chart) như trong hình tại câu 42 được sử dụng để biểu diễn tỉ lệ phần trăm các khoản thu/chi, cho thấy tỉ lệ đóng góp của từng loại khoản vào tổng thể. Biểu đồ này rất hiệu quả khi muốn thể hiện cơ cấu phân bổ thu nhập và chi tiêu.</p>
+                </div>
+            </div>
+
+            <!-- Question 43 -->
+            <div class="question">
+                <p class="font-semibold">Câu 43: Để đếm số ô có giá trị lớn hơn 10 trong phạm vi A1:A10, ta sử dụng công thức nào?</p>
+                <div class="options">
+                    <div><input type="radio" name="q43" value="A"> A. =COUNTIF(A1:A10, ">=10")</div>
+                    <div><input type="radio" name="q43" value="B"> B. =COUNTIF(A1:A10, "<10")</div>
+                    <div><input type="radio" name="q43" value="C"> C. =COUNTIF(A1:A10, "=10")</div>
+                    <div><input type="radio" name="q43" value="D"> D. =COUNTIF(A1:A10, ">10")</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: D. =COUNTIF(A1:A10, ">10")</span></p>
+                    <p>Giải thích: Để đếm số ô có giá trị lớn hơn 10, ta sử dụng hàm COUNTIF với điều kiện ">10". Trong công thức này:
+                    <br>- A1:A10 là phạm vi cần đếm
+                    <br>- ">10" là điều kiện (lớn hơn 10)
+                    <br>Kết quả sẽ là số lượng ô trong phạm vi A1:A10 có giá trị lớn hơn 10.</p>
+                </div>
+            </div>
+
+            <!-- Question 44 -->
+            <div class="question">
+                <p class="font-semibold">Câu 44: Để đếm số lần chi cho nhu cầu mua sắm trong tháng, ta sử dụng hàm nào?</p>
+                <div class="options">
+                    <div><input type="radio" name="q44" value="A"> A. SUMIF.</div>
+                    <div><input type="radio" name="q44" value="B"> B. SUM.</div>
+                    <div><input type="radio" name="q44" value="C"> C. COUNT.</div>
+                    <div><input type="radio" name="q44" value="D"> D. COUNTIF.</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: D. COUNTIF.</span></p>
+                    <p>Giải thích: Để đếm số lần chi cho nhu cầu mua sắm trong tháng, ta sử dụng hàm COUNTIF để đếm các ô chứa thông tin về khoản chi cho mua sắm. Ví dụ: =COUNTIF(phạm_vi_chứa_mục_đích_chi, "mua sắm"). Hàm này sẽ đếm số lần xuất hiện của chuỗi "mua sắm" trong phạm vi được chỉ định.</p>
+                </div>
+            </div>
+
+            <!-- Question 45 -->
+            <div class="question">
+                <p class="font-semibold">Câu 45: Để đếm số ô có giá trị nằm trong khoảng từ 5 đến 10 (bao gồm cả 5 và 10) trong phạm vi D2:D20, ta sử dụng công thức nào?</p>
+                <div class="options">
+                    <div><input type="radio" name="q45" value="A"> A. =COUNTIF(D2:D20,">=5")-COUNTIF(D2:D20,">10")</div>
+                    <div><input type="radio" name="q45" value="B"> B. =COUNTIFS(D2:D20,">=5",D2:D20,"<=10")</div>
+                    <div><input type="radio" name="q45" value="C"> C. =COUNTIF(D2:D20,">=5 AND <=10")</div>
+                    <div><input type="radio" name="q45" value="D"> D. =SUMPRODUCT((D2:D20>=5)*(D2:D20<=10))</div>
+                </div>
+                <div class="explanation">
+                    <p><span class="correct">Đáp án đúng: B. =COUNTIFS(D2:D20,">=5",D2:D20,"<=10")</span></p>
+                    <p>Giải thích: Để đếm số ô có giá trị nằm trong một khoảng (từ 5 đến 10, bao gồm cả 5 và 10), ta có thể sử dụng:
+                    <br>1. Hàm COUNTIFS với hai điều kiện: >=5 VÀ <=10
+                    <br>2. Hoặc hàm COUNTIF(D2:D20,">=5")-COUNTIF(D2:D20,">10")
+                    <br>3. Hoặc SUMPRODUCT((D2:D20>=5)*(D2:D20<=10))
+                    <br>Trong đó COUNTIFS là cách tốt nhất vì trực quan và dễ hiểu nhất.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quiz = document.getElementById('quiz');
+        const startBtn = document.getElementById('startBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const showExplanationBtn = document.getElementById('showExplanationBtn');
+        const retryBtn = document.getElementById('retryBtn');
+        const result = document.getElementById('result');
+        const score = document.getElementById('score');
+        
+        // Danh sách đáp án đúng từ câu 1-45
+        const correctAnswers = {
+            q1: "C", q2: "A", q3: "D", q4: "B", q5: "B", 
+            q6: "A", q7: "D", q8: "C", q9: "C", q10: "A",
+            q11: "C", q12: "C", q13: "D", q14: "A", q15: "A", 
+            q16: "A", q17: "C", q18: "A", q19: "B", q20: "C",
+            q21: "A", q22: "D", q23: "A", q24: "B", q25: "A", 
+            q26: "C", q27: "B", q28: "B", q29: "D", q30: "C",
+            q31: "A", q32: "D", q33: "B", q34: "A", q35: "C", 
+            q36: "C", q37: "A", q38: "A", q39: "A", q40: "D",
+            q41: "B", q42: "B", q43: "D", q44: "D", q45: "B"
+        };
+
+        startBtn.addEventListener('click', function() {
+            quiz.classList.remove('hidden');
+            startBtn.classList.add('hidden');
+            submitBtn.classList.remove('hidden');
+        });
+
+        submitBtn.addEventListener('click', function() {
+            // Đếm chỉ những câu hiển thị (câu 36-45)
+            let displayedQuestions = ['q36', 'q37', 'q38', 'q39', 'q40', 'q41', 'q42', 'q43', 'q44', 'q45'];
+            let totalQuestions = displayedQuestions.length;
+            let correctCount = 0;
+            
+            // Calculate score and highlight answers
+            for (let question of displayedQuestions) {
+                const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+                if (selectedOption) {
+                    const userAnswer = selectedOption.value;
+                    const isCorrect = userAnswer === correctAnswers[question];
+                    
+                    if (isCorrect) {
+                        correctCount++;
+                        selectedOption.parentElement.classList.add('correct');
+                    } else {
+                        selectedOption.parentElement.classList.add('selected-wrong');
+                        // Highlight the correct answer
+                        document.querySelectorAll(`input[name="${question}"]`).forEach(input => {
+                            if (input.value === correctAnswers[question]) {
+                                input.parentElement.classList.add('correct');
+                            }
+                        });
+                    }
+                }
+                
+                // Disable all inputs
+                document.querySelectorAll(`input[name="${question}"]`).forEach(input => {
+                    input.disabled = true;
+                });
+            }
+            
+            // Display score
+            score.textContent = `Số câu đúng: ${correctCount}/${totalQuestions} (${Math.round(correctCount/totalQuestions*100)}%)`;
+            result.classList.remove('hidden');
+            submitBtn.classList.add('hidden');
+            showExplanationBtn.classList.remove('hidden');
+            retryBtn.classList.remove('hidden');
+        });
+
+        showExplanationBtn.addEventListener('click', function() {
+            document.querySelectorAll('.explanation').forEach(exp => {
+                exp.style.display = 'block';
+            });
+            showExplanationBtn.disabled = true;
+        });
+
+        retryBtn.addEventListener('click', function() {
+            // Reset all selections and classes
+            document.querySelectorAll('input[type="radio"]').forEach(input => {
+                input.checked = false;
+                input.disabled = false;
+                input.parentElement.classList.remove('correct', 'selected-wrong');
+            });
+            
+            // Hide explanations
+            document.querySelectorAll('.explanation').forEach(exp => {
+                exp.style.display = 'none';
+            });
+            
+            // Reset buttons and result
+            result.classList.add('hidden');
+            retryBtn.classList.add('hidden');
+            showExplanationBtn.classList.add('hidden');
+            showExplanationBtn.disabled = false;
+            submitBtn.classList.remove('hidden');
+        });
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
+                    
