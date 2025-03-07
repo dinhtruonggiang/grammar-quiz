@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Công Nghệ 9 Giữa Kỳ 2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .correct-answer {
+            color: green;
+            font-weight: bold;
+        }
+        .wrong-answer {
+            color: red;
+            text-decoration: line-through;
+        }
+        .explanation {
+            display: none;
+            background-color: #f8f9fa;
+            padding: 10px;
+            margin-top: 10px;
+            border-left: 4px solid #4CAF50;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 10px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .image-container {
+            text-align: center;
+            margin: 15px 0;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-4">
+    <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold text-center mb-6">BÀI TRẮC NGHIỆM CÔNG NGHỆ 9 GIỮA KỲ 2</h1>
+        <p class="mb-4 text-center">Chủ đề: Thiết bị vật liệu dụng cụ, tính toán chi phí và lắp đặt mạch điện</p>
+        
+        <div id="quiz-container">
+            <!-- Chủ đề 4: Thiết bị Vật liệu dụng cụ -->
+            <div class="mb-6 p-4 bg-gray-50 rounded">
+                <p class="font-semibold">Câu 1: Thiết bị điện được đề cập trong tài liệu bao gồm:</p>
+                <div class="ml-4 mt-2">
+                    <div class="mb-1">
+                        <input type="radio" name="q1" id="q1a" value="A">
+                        <label for="q1a">A. Aptomat, công tắc, ổ điện</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q1" id="q1b" value="B">
+                        <label for="q1b">B. Công tắc, ổ điện, bóng đèn</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q1" id="q1c" value="C">
+                        <label for="q1c">C. Aptomat, công tắc, bóng đèn</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q1" id="q1d" value="D">
+                        <label for="q1d">D. Aptomat, dây dẫn, nẹp nhựa</label>
+                    </div>
+                </div>
+                <div class="explanation" id="exp1">
+                    <p><strong>Đáp án đúng: A. Aptomat, công tắc, ổ điện</strong></p>
+                    <p>Theo tài liệu: "Thiết bị điện: Aptomat, công tắc, ổ điện."</p>
+                </div>
+            </div>
+
+            <!-- Câu 2 -->
+            <div class="mb-6 p-4 bg-gray-50 rounded">
+                <p class="font-semibold">Câu 2: Điện áp định mức ghi trên thiết bị phải có giá trị như thế nào so với điện áp nguồn?</p>
+                <div class="ml-4 mt-2">
+                    <div class="mb-1">
+                        <input type="radio" name="q2" id="q2a" value="A">
+                        <label for="q2a">A. Nhỏ hơn điện áp nguồn</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q2" id="q2b" value="B">
+                        <label for="q2b">B. Bằng điện áp nguồn</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q2" id="q2c" value="C">
+                        <label for="q2c">C. Lớn hơn điện áp nguồn</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q2" id="q2d" value="D">
+                        <label for="q2d">D. Lớn hơn hoặc bằng điện áp nguồn</label>
+                    </div>
+                </div>
+                <div class="explanation" id="exp2">
+                    <p><strong>Đáp án đúng: D. Lớn hơn hoặc bằng điện áp nguồn</strong></p>
+                    <p>Theo tài liệu: "Điện áp định mức ghi trên thiết bị phải lớn hơn hoặc bằng điện áp nguồn."</p>
+                </div>
+            </div>
+
+            <!-- Câu 3 -->
+            <div class="mb-6 p-4 bg-gray-50 rounded">
+                <p class="font-semibold">Câu 3: Cường độ dòng điện định mức ghi trên thiết bị phải có giá trị như thế nào so với tổng cường độ dòng điện cung cấp cho tải?</p>
+                <div class="ml-4 mt-2">
+                    <div class="mb-1">
+                        <input type="radio" name="q3" id="q3a" value="A">
+                        <label for="q3a">A. Nhỏ hơn</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q3" id="q3b" value="B">
+                        <label for="q3b">B. Bằng</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q3" id="q3c" value="C">
+                        <label for="q3c">C. Lớn hơn</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q3" id="q3d" value="D">
+                        <label for="q3d">D. Lớn hơn hoặc bằng</label>
+                    </div>
+                </div>
+                <div class="explanation" id="exp3">
+                    <p><strong>Đáp án đúng: D. Lớn hơn hoặc bằng</strong></p>
+                    <p>Theo tài liệu: "Cường độ dòng điện định mức ghi trên thiết bị phải lớn hơn hoặc bằng tổng cường độ dòng điện cung cấp cho tải."</p>
+                </div>
+            </div>
+
+            <!-- Câu 4 -->
+            <div class="mb-6 p-4 bg-gray-50 rounded">
+                <p class="font-semibold">Câu 4: Vật liệu sử dụng trong lắp đặt mạch điện bao gồm:</p>
+                <div class="ml-4 mt-2">
+                    <div class="mb-1">
+                        <input type="radio" name="q4" id="q4a" value="A">
+                        <label for="q4a">A. Dây dẫn, bảng điện, băng keo điện, nẹp nhựa, đinh vít tắc kê nhựa</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q4" id="q4b" value="B">
+                        <label for="q4b">B. Aptomat, công tắc, ổ điện, bóng đèn</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q4" id="q4c" value="C">
+                        <label for="q4c">C. Dây dẫn, công tắc, bóng đèn</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q4" id="q4d" value="D">
+                        <label for="q4d">D. Aptomat, dây dẫn, băng keo điện</label>
+                    </div>
+                </div>
+                <div class="explanation" id="exp4">
+                    <p><strong>Đáp án đúng: A. Dây dẫn, bảng điện, băng keo điện, nẹp nhựa, đinh vít tắc kê nhựa</strong></p>
+                    <p>Theo tài liệu: "Vật liệu: dây dẫn, bảng điện, băng keo điện, nẹp nhựa, đinh vít tắc kê nhựa."</p>
+                </div>
+            </div>
+
+            <!-- Câu 5 -->
+            <div class="mb-6 p-4 bg-gray-50 rounded">
+                <p class="font-semibold">Câu 5: Trong mạch điện, tải được đề cập trong tài liệu là gì?</p>
+                <div class="ml-4 mt-2">
+                    <div class="mb-1">
+                        <input type="radio" name="q5" id="q5a" value="A">
+                        <label for="q5a">A. Aptomat</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q5" id="q5b" value="B">
+                        <label for="q5b">B. Ổ điện</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q5" id="q5c" value="C">
+                        <label for="q5c">C. Bóng đèn</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q5" id="q5d" value="D">
+                        <label for="q5d">D. Dây dẫn</label>
+                    </div>
+                </div>
+                <div class="explanation" id="exp5">
+                    <p><strong>Đáp án đúng: C. Bóng đèn</strong></p>
+                    <p>Theo tài liệu: "Tải: Bóng đèn."</p>
+                </div>
+            </div>
+
+            <!-- Chủ đề 5: Tính toán chi phí -->
+            <div class="mb-6 p-4 bg-gray-50 rounded">
+                <p class="font-semibold">Câu 6: Công thức tính chiều dài nẹp ống là gì?</p>
+                <div class="ml-4 mt-2">
+                    <div class="mb-1">
+                        <input type="radio" name="q6" id="q6a" value="A">
+                        <label for="q6a">A. Lnẹp = Chiều dài tuyến dây × 1,2</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q6" id="q6b" value="B">
+                        <label for="q6b">B. Lnẹp = Cộng tất cả kích thước nẹp ống ngang và kích thước nẹp ống dọc xuống bảng điện và đèn</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q6" id="q6c" value="C">
+                        <label for="q6c">C. Lnẹp = Chiều dài ống × số dây có trong nẹp ống</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q6" id="q6d" value="D">
+                        <label for="q6d">D. Lnẹp = Chiều dài dây thực tế ÷ 1,2</label>
+                    </div>
+                </div>
+                <div class="explanation" id="exp6">
+                    <p><strong>Đáp án đúng: B. Lnẹp = Cộng tất cả kích thước nẹp ống ngang và kích thước nẹp ống dọc xuống bảng điện và đèn</strong></p>
+                    <p>Theo tài liệu: "Tính nẹp ống: Lnẹp = Cộng tất cả kích thước nẹp ống ngang và kích thước nẹp ống dọc xuống bảng điện và đèn."</p>
+                </div>
+            </div>
+
+            <!-- Câu 7 -->
+            <div class="mb-6 p-4 bg-gray-50 rounded">
+                <p class="font-semibold">Câu 7: Công thức tính chiều dài theo tuyến dây là gì?</p>
+                <div class="ml-4 mt-2">
+                    <div class="mb-1">
+                        <input type="radio" name="q7" id="q7a" value="A">
+                        <label for="q7a">A. Chiều dài theo tuyến dây = chiều dài nẹp ống × 1,2</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q7" id="q7b" value="B">
+                        <label for="q7b">B. Chiều dài theo tuyến dây = chiều dài ống × số dây có trong nẹp ống</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q7" id="q7c" value="C">
+                        <label for="q7c">C. Chiều dài theo tuyến dây = chiều dài dây thực tế ÷ 1,2</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q7" id="q7d" value="D">
+                        <label for="q7d">D. Chiều dài theo tuyến dây = tổng kích thước nẹp ống ngang và dọc</label>
+                    </div>
+                </div>
+                <div class="explanation" id="exp7">
+                    <p><strong>Đáp án đúng: B. Chiều dài theo tuyến dây = chiều dài ống × số dây có trong nẹp ống</strong></p>
+                    <p>Theo tài liệu: "Tính chiều dài theo tuyến dây = chiều dài ống x số dây có trong nẹp ống."</p>
+                </div>
+            </div>
+
+            <!-- Câu 8 -->
+            <div class="mb-6 p-4 bg-gray-50 rounded">
+                <p class="font-semibold">Câu 8: Trong tính toán chiều dài dây, giá trị của 1 dây là bao nhiêu?</p>
+                <div class="ml-4 mt-2">
+                    <div class="mb-1">
+                        <input type="radio" name="q8" id="q8a" value="A">
+                        <label for="q8a">A. 0,5</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q8" id="q8b" value="B">
+                        <label for="q8b">B. 1</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q8" id="q8c" value="C">
+                        <label for="q8c">C. 1,2</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q8" id="q8d" value="D">
+                        <label for="q8d">D. 1,5</label>
+                    </div>
+                </div>
+                <div class="explanation" id="exp8">
+                    <p><strong>Đáp án đúng: A. 0,5</strong></p>
+                    <p>Theo tài liệu: "Lưu ý: 1 dây = 0,5."</p>
+                </div>
+            </div>
+
+            <!-- Câu 9 -->
+            <div class="mb-6 p-4 bg-gray-50 rounded">
+                <p class="font-semibold">Câu 9: Công thức tính chiều dài dây thực tế là gì?</p>
+                <div class="ml-4 mt-2">
+                    <div class="mb-1">
+                        <input type="radio" name="q9" id="q9a" value="A">
+                        <label for="q9a">A. Chiều dài dây thực tế = chiều dài tuyến dây × 1,2</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q9" id="q9b" value="B">
+                        <label for="q9b">B. Chiều dài dây thực tế = chiều dài ống × số dây</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q9" id="q9c" value="C">
+                        <label for="q9c">C. Chiều dài dây thực tế = chiều dài nẹp ống × 1,5</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q9" id="q9d" value="D">
+                        <label for="q9d">D. Chiều dài dây thực tế = tổng kích thước nẹp ống ngang và dọc</label>
+                    </div>
+                </div>
+                <div class="explanation" id="exp9">
+                    <p><strong>Đáp án đúng: A. Chiều dài dây thực tế = chiều dài tuyến dây × 1,2</strong></p>
+                    <p>Theo tài liệu: "Tính chiều dài dây thực tế = chiều dài trong tuyến dây x 1,2."</p>
+                </div>
+            </div>
+
+            <!-- Câu 10 -->
+            <div class="mb-6 p-4 bg-gray-50 rounded">
+                <p class="font-semibold">Câu 10: Các bước thực hành tính toán chi phí mạng điện trong nhà theo thứ tự là:</p>
+                <div class="ml-4 mt-2">
+                    <div class="mb-1">
+                        <input type="radio" name="q10" id="q10a" value="A">
+                        <label for="q10a">A. Lập bảng kê → Nghiên cứu sơ đồ → Lập bảng tính toán chi phí</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q10" id="q10b" value="B">
+                        <label for="q10b">B. Nghiên cứu sơ đồ → Lập bảng kê → Lập bảng tính toán chi phí</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q10" id="q10c" value="C">
+                        <label for="q10c">C. Lập bảng tính toán chi phí → Nghiên cứu sơ đồ → Lập bảng kê</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q10" id="q10d" value="D">
+                        <label for="q10d">D. Nghiên cứu sơ đồ → Lập bảng tính toán chi phí → Lập bảng kê</label>
+                    </div>
+                </div>
+                <div class="explanation" id="exp10">
+                    <p><strong>Đáp án đúng: B. Nghiên cứu sơ đồ → Lập bảng kê → Lập bảng tính toán chi phí</strong></p>
+                    <p>Theo tài liệu: "Các bước thực hành tính toán chi phí mạng điện trong nhà: B1: Nghiên cứu sơ đồ lắp đặt mạng điện. B2: Lập bảng kê số lượng thiết bị vật liệu. B3: Lập bảng tính toán chi phí."</p>
+                </div>
+            </div>
+
+            <!-- Câu 11 -->
+            <div class="mb-6 p-4 bg-gray-50 rounded">
+                <p class="font-semibold">Câu 11: Sơ đồ lắp đặt có mục đích gì?</p>
+                <div class="ml-4 mt-2">
+                    <div class="mb-1">
+                        <input type="radio" name="q11" id="q11a" value="A">
+                        <label for="q11a">A. Xác định đơn giá của thiết bị, vật liệu</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q11" id="q11b" value="B">
+                        <label for="q11b">B. Xác định chi phí lắp đặt</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q11" id="q11c" value="C">
+                        <label for="q11c">C. Xác định số lượng thiết bị vật liệu cần chuẩn bị để lắp đặt</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q11" id="q11d" value="D">
+                        <label for="q11d">D. Hiểu rõ nguyên lý hoạt động của mạch điện</label>
+                    </div>
+                </div>
+                <div class="explanation" id="exp11">
+                    <p><strong>Đáp án đúng: C. Xác định số lượng thiết bị vật liệu cần chuẩn bị để lắp đặt</strong></p>
+                    <p>Theo tài liệu: "Sơ đồ lắp đặt: Giúp chúng ta xác định được số lượng thiết bị vật liệu cần cần chuẩn bị để lắp đặt nhưng không thể xác định được đơn giá của thiết bị, vật liệu."</p>
+                </div>
+            </div>
+
+            <!-- Câu 12 -->
+            <div class="mb-6 p-4 bg-gray-50 rounded">
+                <p class="font-semibold">Câu 12: Để tính chi phí cho từng chủng loại thiết bị vật liệu, ta cần:</p>
+                <div class="ml-4 mt-2">
+                    <div class="mb-1">
+                        <input type="radio" name="q12" id="q12a" value="A">
+                        <label for="q12a">A. Lấy đơn giá × số lượng</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q12" id="q12b" value="B">
+                        <label for="q12b">B. Lấy số lượng ÷ đơn giá</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q12" id="q12c" value="C">
+                        <label for="q12c">C. Lấy đơn giá + số lượng</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q12" id="q12d" value="D">
+                        <label for="q12d">D. Lấy 1,2 × đơn giá</label>
+                    </div>
+                </div>
+                <div class="explanation" id="exp12">
+                    <p><strong>Đáp án đúng: A. Lấy đơn giá × số lượng</strong></p>
+                    <p>Theo tài liệu: "Tính chi phí cho từng chủng loại thiết bị vật liệu ta lấy đơn giá x số lượng."</p>
+                </div>
+            </div>
+
+            <!-- Chủ đề 6: Thực hành lắp đặt mạng điện -->
+            <div class="mb-6 p-4 bg-gray-50 rounded">
+                <p class="font-semibold">Câu 13: Bước đầu tiên trong thực hành lắp đặt mạch điện là:</p>
+                <div class="ml-4 mt-2">
+                    <div class="mb-1">
+                        <input type="radio" name="q13" id="q13a" value="A">
+                        <label for="q13a">A. Lắp đặt mạch điện</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q13" id="q13b" value="B">
+                        <label for="q13b">B. Tìm hiểu sơ đồ nguyên lý</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q13" id="q13c" value="C">
+                        <label for="q13c">C. Vẽ sơ đồ lắp đặt</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q13" id="q13d" value="D">
+                        <label for="q13d">D. Chuẩn bị thiết bị, vật liệu, dụng cụ</label>
+                    </div>
+                </div>
+                <div class="explanation" id="exp13">
+                    <p><strong>Đáp án đúng: B. Tìm hiểu sơ đồ nguyên lý</strong></p>
+                    <p>Theo tài liệu: "Các bước thực hành lắp đặt mạch điện: B1. Tìm hiểu sơ đồ nguyên lý."</p>
+                </div>
+            </div>
+
+            <!-- Câu 14 -->
+            <div class="mb-6 p-4 bg-gray-50 rounded">
+                <p class="font-semibold">Câu 14: Các bước thực hành lắp đặt mạch điện theo thứ tự là:</p>
+                <div class="ml-4 mt-2">
+                    <div class="mb-1">
+                        <input type="radio" name="q14" id="q14a" value="A">
+                        <label for="q14a">A. Tìm hiểu sơ đồ nguyên lý → Vẽ sơ đồ lắp đặt → Chuẩn bị thiết bị, vật liệu, dụng cụ → Lắp đặt mạch điện → Kiểm tra hoạt động</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q14" id="q14b" value="B">
+                        <label for="q14b">B. Vẽ sơ đồ lắp đặt → Tìm hiểu sơ đồ nguyên lý → Chuẩn bị thiết bị, vật liệu, dụng cụ → Lắp đặt mạch điện → Kiểm tra hoạt động</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q14" id="q14c" value="C">
+                        <label for="q14c">C. Chuẩn bị thiết bị, vật liệu, dụng cụ → Tìm hiểu sơ đồ nguyên lý → Vẽ sơ đồ lắp đặt → Lắp đặt mạch điện → Kiểm tra hoạt động</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q14" id="q14d" value="D">
+                        <label for="q14d">D. Tìm hiểu sơ đồ nguyên lý → Chuẩn bị thiết bị, vật liệu, dụng cụ → Vẽ sơ đồ lắp đặt → Lắp đặt mạch điện → Kiểm tra hoạt động</label>
+                    </div>
+                </div>
+                <div class="explanation" id="exp14">
+                    <p><strong>Đáp án đúng: A. Tìm hiểu sơ đồ nguyên lý → Vẽ sơ đồ lắp đặt → Chuẩn bị thiết bị, vật liệu, dụng cụ → Lắp đặt mạch điện → Kiểm tra hoạt động</strong></p>
+                    <p>Theo tài liệu: "Các bước thực hành lắp đặt mạch điện: B1. Tìm hiểu sơ đồ nguyên lý. B2. Vẽ sơ đồ lắp đặt. B3. Chuẩn bị thiết bị, vật liệu, dụng cụ. B4. Lắp đặt mạch điện. B5. Kiểm tra hoạt động thử nghiệm của mạch."</p>
+                </div>
+            </div>
+
+            <!-- Câu 15 -->
+            <div class="mb-6 p-4 bg-gray-50 rounded">
+                <p class="font-semibold">Câu 15: Kiểm tra khi chưa cấp điện bao gồm:</p>
+                <div class="ml-4 mt-2">
+                    <div class="mb-1">
+                        <input type="radio" name="q15" id="q15a" value="A">
+                        <label for="q15a">A. Kiểm tra điện áp</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q15" id="q15b" value="B">
+                        <label for="q15b">B. Kiểm tra hoạt động của mạch</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q15" id="q15c" value="C">
+                        <label for="q15c">C. Kiểm tra vị trí lắp đặt, mối nối, kiểm tra điện trở</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q15" id="q15d" value="D">
+                        <label for="q15d">D. Kiểm tra hoạt động của đèn</label>
+                    </div>
+                </div>
+                <div class="explanation" id="exp15">
+                    <p><strong>Đáp án đúng: C. Kiểm tra vị trí lắp đặt, mối nối, kiểm tra điện trở</strong></p>
+                    <p>Theo tài liệu: "Kiểm tra khi chưa cấp điện (kiểm tra vị trí lắp đặt, mối nối, kiểm tra điện trở)."</p>
+                </div>
+            </div>
+
+            <!-- Câu 16 -->
+            <div class="mb-6 p-4 bg-gray-50 rounded">
+                <p class="font-semibold">Câu 16: Kiểm tra khi đã cấp điện bao gồm:</p>
+                <div class="ml-4 mt-2">
+                    <div class="mb-1">
+                        <input type="radio" name="q16" id="q16a" value="A">
+                        <label for="q16a">A. Kiểm tra điện áp ở CP, ổ cắm; kiểm tra hoạt động của mạch theo nguyên lý</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q16" id="q16b" value="B">
+                        <label for="q16b">B. Kiểm tra vị trí lắp đặt, mối nối</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q16" id="q16c" value="C">
+                        <label for="q16c">C. Kiểm tra điện trở</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q16" id="q16d" value="D">
+                        <label for="q16d">D. Kiểm tra số lượng thiết bị</label>
+                    </div>
+                </div>
+                <div class="explanation" id="exp16">
+                    <p><strong>Đáp án đúng: A. Kiểm tra điện áp ở CP, ổ cắm; kiểm tra hoạt động của mạch theo nguyên lý</strong></p>
+                    <p>Theo tài liệu: "Kiểm tra cấp điện (kiểm tra điện áp ở CP, ổ cắm; kiểm tra hoạt động của mạch theo nguyên lý)."</p>
+                </div>
+            </div>
+
+            <!-- Mạch điện bảng điện -->
+            <div class="mb-6 p-4 bg-gray-50 rounded">
+                <p class="font-semibold">Câu 17: Khi aptomat ngắt, điều gì sẽ xảy ra với mạch điện?</p>
+                <div class="ml-4 mt-2">
+                    <div class="mb-1">
+                        <input type="radio" name="q17" id="q17a" value="A">
+                        <label for="q17a">A. Toàn mạch không hoạt động</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q17" id="q17b" value="B">
+                        <label for="q17b">B. Chỉ đèn tắt</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q17" id="q17c" value="C">
+                        <label for="q17c">C. Chỉ ổ điện không có điện</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q17" id="q17d" value="D">
+                        <label for="q17d">D. Mạch vẫn hoạt động bình thường</label>
+                    </div>
+                </div>
+                <div class="explanation" id="exp17">
+                    <p><strong>Đáp án đúng: A. Toàn mạch không hoạt động</strong></p>
+                    <p>Theo tài liệu: "Khi aptomat ngắt: Toàn mạch không hoạt động."</p>
+                </div>
+            </div>
+
+            <!-- Câu 18 -->
+            <div class="mb-6 p-4 bg-gray-50 rounded">
+                <p class="font-semibold">Câu 18: Khi aptomat đóng và công tắc đóng, điều gì sẽ xảy ra với đèn trong mạch điện bảng điện?</p>
+                <div class="ml-4 mt-2">
+                    <div class="mb-1">
+                        <input type="radio" name="q18" id="q18a" value="A">
+                        <label for="q18a">A. Đèn sáng</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q18" id="q18b" value="B">
+                        <label for="q18b">B. Đèn tắt</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q18" id="q18c" value="C">
+                        <label for="q18c">C. Đèn nhấp nháy</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q18" id="q18d" value="D">
+                        <label for="q18d">D. Không xác định được</label>
+                    </div>
+                </div>
+                <div class="explanation" id="exp18">
+                    <p><strong>Đáp án đúng: A. Đèn sáng</strong></p>
+                    <p>Theo tài liệu: "Khi aptomat đóng: Công tắc đóng đèn sáng, công tắc ngắt đèn tắt."</p>
+                </div>
+            </div>
+
+            <!-- Câu 19 -->
+            <div class="mb-6 p-4 bg-gray-50 rounded">
+                <p class="font-semibold">Câu 19: Trong mạch điện bảng điện, khi aptomat đóng thì ổ điện:</p>
+                <div class="ml-4 mt-2">
+                    <div class="mb-1">
+                        <input type="radio" name="q19" id="q19a" value="A">
+                        <label for="q19a">A. Luôn có điện</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q19" id="q19b" value="B">
+                        <label for="q19b">B. Chỉ có điện khi công tắc đóng</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q19" id="q19c" value="C">
+                        <label for="q19c">C. Chỉ có điện khi đèn sáng</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q19" id="q19d" value="D">
+                        <label for="q19d">D. Không có điện</label>
+                    </div>
+                </div>
+                <div class="explanation" id="exp19">
+                    <p><strong>Đáp án đúng: A. Luôn có điện</strong></p>
+                    <p>Theo tài liệu: "Ổ điện luôn có điện."</p>
+                </div>
+            </div>
+
+            <!-- Mạch đèn cầu thang -->
+            <div class="mb-6 p-4 bg-gray-50 rounded">
+                <p class="font-semibold">Câu 20: Trong mạch đèn cầu thang, đèn sẽ sáng khi:</p>
+                <div class="ml-4 mt-2">
+                    <div class="mb-1">
+                        <input type="radio" name="q20" id="q20a" value="A">
+                        <label for="q20a">A. CT1 ở 1; CT2 ở 1 hoặc CT1 ở 2; CT2 ở 2</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q20" id="q20b" value="B">
+                        <label for="q20b">B. CT1 ở 1; CT2 ở 2 hoặc CT1 ở 2; CT2 ở 1</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q20" id="q20c" value="C">
+                        <label for="q20c">C. CT1 luôn ở 1; CT2 luôn ở 1</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q20" id="q20d" value="D">
+                        <label for="q20d">D. CT1 luôn ở 2; CT2 luôn ở 2</label>
+                    </div>
+                </div>
+                <div class="explanation" id="exp20">
+                    <p><strong>Đáp án đúng: A. CT1 ở 1; CT2 ở 1 hoặc CT1 ở 2; CT2 ở 2</strong></p>
+                    <p>Theo tài liệu: "CT1 ở 1; CT2 ở 1: đèn sáng. CT1 ở 2; CT2 ở 2: đèn sáng."</p>
+                </div>
+            </div>
+
+            <!-- Câu 21 -->
+            <div class="mb-6 p-4 bg-gray-50 rounded">
+                <p class="font-semibold">Câu 21: Trong mạch đèn cầu thang, đèn sẽ tắt khi:</p>
+                <div class="ml-4 mt-2">
+                    <div class="mb-1">
+                        <input type="radio" name="q21" id="q21a" value="A">
+                        <label for="q21a">A. CT1 ở 1; CT2 ở 2 hoặc CT1 ở 2; CT2 ở 1</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q21" id="q21b" value="B">
+                        <label for="q21b">B. CT1 ở 1; CT2 ở 1 hoặc CT1 ở 2; CT2 ở 2</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q21" id="q21c" value="C">
+                        <label for="q21c">C. CT1 luôn ở 1; CT2 luôn ở 1</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q21" id="q21d" value="D">
+                        <label for="q21d">D. CT1 luôn ở 2; CT2 luôn ở 2</label>
+                    </div>
+                </div>
+                <div class="explanation" id="exp21">
+                    <p><strong>Đáp án đúng: A. CT1 ở 1; CT2 ở 2 hoặc CT1 ở 2; CT2 ở 1</strong></p>
+                    <p>Theo tài liệu: "CT1 ở 1; CT2 ở 2: đèn tắt. CT1 ở 2; CT2 ở 1: đèn tắt."</p>
+                </div>
+            </div>
+
+            <!-- Câu 22 -->
+            <div class="mb-6 p-4 bg-gray-50 rounded">
+                <p class="font-semibold">Câu 22: Trong mạch đèn cầu thang, khi aptomat đóng thì ổ điện:</p>
+                <div class="ml-4 mt-2">
+                    <div class="mb-1">
+                        <input type="radio" name="q22" id="q22a" value="A">
+                        <label for="q22a">A. Luôn có điện</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q22" id="q22b" value="B">
+                        <label for="q22b">B. Chỉ có điện khi đèn sáng</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q22" id="q22c" value="C">
+                        <label for="q22c">C. Chỉ có điện khi CT1 và CT2 ở vị trí 1</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q22" id="q22d" value="D">
+                        <label for="q22d">D. Không có điện</label>
+                    </div>
+                </div>
+                <div class="explanation" id="exp22">
+                    <p><strong>Đáp án đúng: A. Luôn có điện</strong></p>
+                    <p>Theo tài liệu: "Ổ điện luôn có điện."</p>
+                </div>
+            </div>
+
+            <!-- Câu hỏi nâng cao -->
+            <div class="mb-6 p-4 bg-gray-50 rounded">
+                <p class="font-semibold">Câu 23: Câu hỏi nâng cao: Đối với sơ đồ lắp đặt mạch đèn cầu thang, điểm sai trên sơ đồ là:</p>
+                <div class="ml-4 mt-2">
+                    <div class="mb-1">
+                        <input type="radio" name="q23" id="q23a" value="A">
+                        <label for="q23a">A. Vị trí lắp đặt aptomat</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q23" id="q23b" value="B">
+                        <label for="q23b">B. Kết nối dây của công tắc CT1 và CT2</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q23" id="q23c" value="C">
+                        <label for="q23c">C. Vị trí lắp đặt đèn</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q23" id="q23d" value="D">
+                        <label for="q23d">D. Kết nối dây của ổ điện</label>
+                    </div>
+                </div>
+                <div class="explanation" id="exp23">
+                    <p><strong>Đáp án đúng: B. Kết nối dây của công tắc CT1 và CT2</strong></p>
+                    <p>Đây là câu hỏi nâng cao dựa trên yêu cầu "Phát hiện điểm vẽ sai trên sơ đồ lắp đặt. Vẽ lại cho đúng." Lỗi thường gặp trong sơ đồ lắp đặt mạch đèn cầu thang là kết nối dây giữa hai công tắc CT1 và CT2 không đúng, khiến đèn không thể hoạt động theo nguyên lý của mạch đèn cầu thang.</p>
+                </div>
+            </div>
+
+            <div class="mt-6 flex justify-center space-x-4">
+                <button id="checkBtn" class="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Kiểm tra kết quả</button>
+                <button id="showExplanationBtn" class="px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition hidden">Hiển thị giải thích</button>
+                <button id="resetBtn" class="px-6 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition hidden">Làm lại</button>
+            </div>
+
+            <div id="resultDiv" class="mt-6 p-4 bg-gray-100 rounded text-center hidden">
+                <p class="text-lg font-bold" id="scoreDisplay"></p>
+                <p class="text-md" id="evaluationDisplay"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: "A", q2: "D", q3: "D", q4: "A", q5: "C", 
+            q6: "B", q7: "B", q8: "A", q9: "A", q10: "B",
+            q11: "C", q12: "A", q13: "B", q14: "A", q15: "C",
+            q16: "A", q17: "A", q18: "A", q19: "A", q20: "A",
+            q21: "A", q22: "A", q23: "B"
+        };
+
+        const checkBtn = document.getElementById('checkBtn');
+        const showExplanationBtn = document.getElementById('showExplanationBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const resultDiv = document.getElementById('resultDiv');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const evaluationDisplay = document.getElementById('evaluationDisplay');
+
+        checkBtn.addEventListener('click', function() {
+            let score = 0;
+            let totalQuestions = Object.keys(correctAnswers).length;
+            
+            // Check answers
+            for (let question in correctAnswers) {
+                const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+                
+                // If an option is selected
+                if (selectedOption) {
+                    const allOptions = document.querySelectorAll(`input[name="${question}"]`);
+                    
+                    // Disable all options for this question
+                    allOptions.forEach(option => {
+                        option.disabled = true;
+                        
+                        // Mark incorrect answers
+                        if (option.checked && option.value !== correctAnswers[question]) {
+                            option.parentElement.classList.add('wrong-answer');
+                        }
+                        
+                        // Mark correct answer
+                        if (option.value === correctAnswers[question]) {
+                            option.parentElement.classList.add('correct-answer');
+                        }
+                    });
+                    
+                    // If selected answer is correct
+                    if (selectedOption.value === correctAnswers[question]) {
+                        score++;
+                    }
+                }
+            }
+            
+            // Display score
+            scoreDisplay.textContent = `Điểm của bạn: ${score}/${totalQuestions} (${Math.round(score/totalQuestions*100)}%)`;
+            
+            // Evaluation based on score
+            if (score === totalQuestions) {
+                evaluationDisplay.textContent = "Xuất sắc! Bạn đã trả lời đúng tất cả các câu hỏi.";
+            } else if (score >= totalQuestions * 0.8) {
+                evaluationDisplay.textContent = "Rất tốt! Bạn đã nắm vững hầu hết các kiến thức.";
+            } else if (score >= totalQuestions * 0.6) {
+                evaluationDisplay.textContent = "Khá! Bạn đã hiểu được các khái niệm cơ bản.";
+            } else {
+                evaluationDisplay.textContent = "Bạn cần ôn tập lại kiến thức.";
+            }
+            
+            // Show result and other buttons
+            resultDiv.classList.remove('hidden');
+            showExplanationBtn.classList.remove('hidden');
+            resetBtn.classList.remove('hidden');
+            checkBtn.classList.add('hidden');
+        });
+
+        showExplanationBtn.addEventListener('click', function() {
+            // Show all explanations
+            document.querySelectorAll('.explanation').forEach(exp => {
+                exp.style.display = 'block';
+            });
+            
+            // Disable the button after clicking
+            showExplanationBtn.disabled = true;
+        });
+
+        resetBtn.addEventListener('click', function() {
+            // Re-enable all radio buttons and clear selections
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.disabled = false;
+                radio.checked = false;
+                radio.parentElement.classList.remove('correct-answer', 'wrong-answer');
+            });
+            
+            // Hide explanations
+            document.querySelectorAll('.explanation').forEach(exp => {
+                exp.style.display = 'none';
+            });
+            
+            // Reset buttons and displays
+            resultDiv.classList.add('hidden');
+            showExplanationBtn.classList.add('hidden');
+            resetBtn.classList.add('hidden');
+            checkBtn.classList.remove('hidden');
+            showExplanationBtn.disabled = false;
+        });
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
