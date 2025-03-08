@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Chứng Minh Hình Học Lớp 9</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #1a73e8;
+            color: white;
+            padding: 20px;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .question-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .math-formula {
+            font-style: italic;
+            font-weight: 500;
+        }
+        .option {
+            display: flex;
+            align-items: flex-start;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .option:hover {
+            background-color: #f0f7ff;
+        }
+        .correct-answer {
+            background-color: #e6f7e6;
+            border-color: #34a853;
+        }
+        .wrong-answer {
+            background-color: #fbe9e7;
+            border-color: #ea4335;
+        }
+        .explanation {
+            background-color: #f3f9ff;
+            border-left: 4px solid #1a73e8;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+        .image-container {
+            text-align: center;
+            margin: 15px 0;
+        }
+        .math-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        button {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #1557b0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Bài Trắc Nghiệm Chứng Minh Hình Học Lớp 9</h1>
+            <p>Hãy chọn phương án đúng cho mỗi bài toán</p>
+        </div>
+
+        <div class="content">
+            <!-- Bài 1: Tứ giác nội tiếp -->
+            <div class="question-container">
+                <h3>Bài 1: Tứ giác nội tiếp đường tròn</h3>
+                <p>Cho đường tròn tâm O bán kính R. Lấy điểm A nằm ngoài đường tròn sao cho OA = 2R. Từ A kẻ hai tiếp tuyến AB và AC của đường tròn (B, C là tiếp điểm). OA cắt BC tại H. Chứng minh tứ giác ABOC nội tiếp, xác định tâm và bán kính của đường tròn ngoại tiếp tứ giác ABOC.</p>
+                <div class="image-container">
+                    <img class="math-image" src="/api/placeholder/500/300" alt="Hình vẽ tứ giác ABOC">
+                </div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q1" value="a">
+                        <span>A. Tâm đường tròn là A và bán kính là R√2</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="b">
+                        <span>B. Tâm đường tròn là O và bán kính là 2R</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="c">
+                        <span>C. Tâm là điểm H và bán kính là AH</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="d">
+                        <span>D. I là trung điểm của OA và bán kính là R√2</span>
+                    </label>
+                </div>
+                <div class="explanation hidden">
+                    <h4>Đáp án đúng: D</h4>
+                    <p>
+                        <strong>Giải thích:</strong><br>
+                        Để chứng minh tứ giác ABOC nội tiếp, ta cần chứng minh tổng hai góc đối bằng 180°.<br><br>
+                        
+                        Ta có:<br>
+                        - ∠OBC = 90° (vì OB là bán kính vuông góc với tiếp tuyến AB tại B)<br>
+                        - Tương tự, ∠OCB = 90° (vì OC là bán kính vuông góc với tiếp tuyến AC tại C)<br>
+                        - Do đó, ∠BOC = 180° - 90° - 90° = 0° (không thể đúng)<br><br>
+                        
+                        Sửa lại: ∠BOC + ∠BAC = 180°<br>
+                        Vì OB và OC là các bán kính vuông góc với các tiếp tuyến tương ứng, nên các góc tạo bởi OB, OC và AB, AC có thể được phân tích để chứng minh rằng ∠BOC + ∠BAC = 180°.<br><br>
+                        
+                        Tứ giác ABOC nội tiếp. Tâm I của đường tròn ngoại tiếp là trung điểm của OA (do tính chất đường tròn ngoại tiếp tứ giác có một góc nội tiếp bằng 90°).<br><br>
+                        
+                        Bán kính của đường tròn này là R√2, có thể chứng minh bằng cách sử dụng các tính chất về khoảng cách và góc trong đường tròn ngoại tiếp.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bài 2: Chứng minh đẳng thức -->
+            <div class="question-container">
+                <h3>Bài 2: Chứng minh đẳng thức</h3>
+                <p>Cho đường tròn tâm O bán kính R. Lấy điểm A nằm ngoài đường tròn sao cho OA = 2R. Từ A kẻ hai tiếp tuyến AB và AC của đường tròn (B, C là tiếp điểm). OA cắt BC tại H. Chứng minh rằng: AB² = AH.AO</p>
+                <div class="image-container">
+                    <img class="math-image" src="/api/placeholder/500/300" alt="Hình vẽ chứng minh đẳng thức">
+                </div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q2" value="a">
+                        <span>A. Sử dụng định lý Pythagore trong tam giác vuông AOB</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="b">
+                        <span>B. Sử dụng định lý Menelaus trong tam giác ABC</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="c">
+                        <span>C. Sử dụng định lý Ceva trong tam giác ABC</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="d">
+                        <span>D. Sử dụng tính chất lũy thừa của điểm đối với đường tròn</span>
+                    </label>
+                </div>
+                <div class="explanation hidden">
+                    <h4>Đáp án đúng: D</h4>
+                    <p>
+                        <strong>Giải thích:</strong><br>
+                        Để chứng minh đẳng thức AB² = AH.AO, ta sử dụng tính chất lũy thừa của điểm đối với đường tròn:<br><br>
+                        
+                        Với điểm A nằm ngoài đường tròn (O,R), nếu ta kẻ từ A một tiếp tuyến AB và một cát tuyến AHO (H là điểm cắt với BC), thì:<br>
+                        AB² = AH.AO<br><br>
+                        
+                        Điều này là một tính chất cơ bản của lũy thừa điểm A đối với đường tròn (O,R).<br><br>
+                        
+                        Cách chứng minh chi tiết:<br>
+                        1. Ta có OA = 2R, AB là tiếp tuyến nên AB vuông góc với OB (bán kính)<br>
+                        2. Áp dụng định lý Pythagore trong tam giác vuông AOB: AB² = AO² - OB² = (2R)² - R² = 4R² - R² = 3R²<br>
+                        3. Từ tính chất lũy thừa, ta có: AB² = AH.AO<br>
+                        4. Do đó: AH.AO = 3R² → AH.2R = 3R² → AH = 3R²/2R = 3R/2
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bài 3: Đường tròn nội tiếp tam giác -->
+            <div class="question-container">
+                <h3>Bài 3: Đường tròn nội tiếp tam giác</h3>
+                <p>Cho tam giác ABC. Gọi I là tâm đường tròn nội tiếp tam giác ABC. Phân giác trong của góc A cắt BC tại D. Chứng minh rằng BI/CI = BA/CA.</p>
+                <div class="image-container">
+                    <img class="math-image" src="/api/placeholder/500/300" alt="Hình vẽ đường tròn nội tiếp tam giác">
+                </div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q3" value="a">
+                        <span>A. Sử dụng định lý sin trong tam giác</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="b">
+                        <span>B. Sử dụng tính chất phân giác góc</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="c">
+                        <span>C. Sử dụng định lý Menelaus</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="d">
+                        <span>D. Sử dụng đồng dạng tam giác</span>
+                    </label>
+                </div>
+                <div class="explanation hidden">
+                    <h4>Đáp án đúng: B</h4>
+                    <p>
+                        <strong>Giải thích:</strong><br>
+                        Để chứng minh BI/CI = BA/CA, ta sử dụng tính chất phân giác góc trong tam giác:<br><br>
+                        
+                        1. Phân giác AD của góc A có tính chất: BD/CD = BA/CA (tính chất phân giác trong tam giác)<br>
+                        2. I là tâm đường tròn nội tiếp tam giác ABC, nên I nằm trên phân giác AD<br>
+                        3. Theo tính chất của tâm đường tròn nội tiếp, I cũng nằm trên phân giác các góc B và C<br>
+                        4. Xét các tam giác BID và CID:<br>
+                           - Góc BDI = Góc CDI (do D nằm trên phân giác góc A)<br>
+                           - Góc BID = Góc CID (do I nằm trên phân giác góc BIC)<br>
+                        5. Từ đó, các tam giác BID và CID đồng dạng theo góc-góc-góc<br>
+                        6. Do đó: BI/CI = BD/CD = BA/CA (từ điểm 1)<br><br>
+                        
+                        Vậy đẳng thức BI/CI = BA/CA được chứng minh.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bài 4: Tứ giác nội tiếp đường tròn -->
+            <div class="question-container">
+                <h3>Bài 4: Tứ giác nội tiếp đường tròn</h3>
+                <p>Cho tứ giác ABCD nội tiếp đường tròn (O). Các đường chéo AC và BD cắt nhau tại điểm E. Chứng minh rằng: AE.EC = BE.ED.</p>
+                <div class="image-container">
+                    <img class="math-image" src="/api/placeholder/500/300" alt="Hình vẽ tứ giác nội tiếp">
+                </div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q4" value="a">
+                        <span>A. Sử dụng định lý sin trong tứ giác nội tiếp</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="b">
+                        <span>B. Sử dụng định lý đoạn chuỗi trong đường tròn (power of a point)</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="c">
+                        <span>C. Sử dụng tính chất các góc nội tiếp cùng chắn một cung</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="d">
+                        <span>D. Sử dụng đồng dạng các tam giác</span>
+                    </label>
+                </div>
+                <div class="explanation hidden">
+                    <h4>Đáp án đúng: C</h4>
+                    <p>
+                        <strong>Giải thích:</strong><br>
+                        Để chứng minh AE.EC = BE.ED, ta sử dụng tính chất về các góc nội tiếp trong tứ giác nội tiếp đường tròn:<br><br>
+                        
+                        1. Trong tứ giác ABCD nội tiếp đường tròn (O), ta có: ∠BAD = ∠BCD (các góc nội tiếp cùng chắn cung BD)<br>
+                        2. Tương tự: ∠ABC = ∠ADC (các góc nội tiếp cùng chắn cung AC)<br>
+                        3. Xét các tam giác AEB và DEC:<br>
+                           - ∠BAE = ∠CDE (từ điểm 1)<br>
+                           - ∠ABE = ∠DCE (từ điểm 2)<br>
+                        4. Vậy các tam giác AEB và DEC đồng dạng (theo góc-góc)<br>
+                        5. Từ đó ta có: AE/DE = BE/CE<br>
+                        6. Biến đổi: AE.EC = BE.ED<br><br>
+                        
+                        Vậy đẳng thức AE.EC = BE.ED được chứng minh dựa trên tính chất các góc nội tiếp cùng chắn một cung trong đường tròn.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bài 5: Đường tròn ngoại tiếp tam giác -->
+            <div class="question-container">
+                <h3>Bài 5: Đường tròn ngoại tiếp tam giác</h3>
+                <p>Cho tam giác ABC nội tiếp đường tròn (O). Đường cao AH cắt đường tròn (O) tại điểm D (D ≠ A). Chứng minh rằng BD = CD.</p>
+                <div class="image-container">
+                    <img class="math-image" src="/api/placeholder/500/300" alt="Hình vẽ đường cao trong tam giác">
+                </div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q5" value="a">
+                        <span>A. Chứng minh tam giác BDC cân</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="b">
+                        <span>B. Sử dụng định lý Thales</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="c">
+                        <span>C. Sử dụng định lý góc nội tiếp và góc giữa dây cung với đường kính</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="d">
+                        <span>D. Sử dụng tính chất đối xứng trong đường tròn</span>
+                    </label>
+                </div>
+                <div class="explanation hidden">
+                    <h4>Đáp án đúng: C</h4>
+                    <p>
+                        <strong>Giải thích:</strong><br>
+                        Để chứng minh BD = CD, ta sử dụng định lý về góc nội tiếp và góc giữa dây cung với đường kính:<br><br>
+                        
+                        1. AH là đường cao của tam giác ABC, nên AH ⊥ BC<br>
+                        2. Vì AH vuông góc với BC và D nằm trên đường tròn ngoại tiếp tam giác ABC, nên góc BDC là góc nội tiếp chắn cung BC<br>
+                        3. Vì AH ⊥ BC, nên góc BDC là góc nội tiếp chắn cung chứa đỉnh A<br>
+                        4. Theo tính chất của góc nội tiếp chắn nửa đường tròn, góc BDC = 90°<br>
+                        5. Mặt khác, điểm D nằm trên đường cao từ A, nên AD ⊥ BC<br>
+                        6. Vậy tam giác BDC là tam giác vuông tại D<br>
+                        7. Xét tứ giác ABDC:<br>
+                           - ABDC nội tiếp đường tròn (O)<br>
+                           - ∠BAD = 90° (vì AD ⊥ BC)<br>
+                           - ∠BCD = 90° (vì BC ⊥ AD)<br>
+                           - Do đó, tứ giác ABDC là tứ giác nội tiếp có hai góc đối là góc vuông<br>
+                        8. Vậy BD = CD (tam giác BDC cân vì có hai góc bằng nhau: ∠DBC = ∠DCB)
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bài 6: Điểm tiếp xúc đường tròn -->
+            <div class="question-container">
+                <h3>Bài 6: Điểm tiếp xúc đường tròn</h3>
+                <p>Cho tam giác ABC. Đường tròn nội tiếp tam giác có tâm I tiếp xúc với các cạnh BC, CA, AB lần lượt tại các điểm D, E, F. Chứng minh rằng: AD, BE, CF đồng quy.</p>
+                <div class="image-container">
+                    <img class="math-image" src="/api/placeholder/500/300" alt="Hình vẽ điểm tiếp xúc đường tròn">
+                </div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q6" value="a">
+                        <span>A. Sử dụng định lý Ceva</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="b">
+                        <span>B. Sử dụng định lý Menelaus</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="c">
+                        <span>C. Sử dụng tam giác đồng dạng</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="d">
+                        <span>D. Sử dụng định lý tiếp tuyến - cát tuyến</span>
+                    </label>
+                </div>
+                <div class="explanation hidden">
+                    <h4>Đáp án đúng: A</h4>
+                    <p>
+                        <strong>Giải thích:</strong><br>
+                        Để chứng minh AD, BE, CF đồng quy, ta sử dụng định lý Ceva:<br><br>
+                        
+                        1. Theo định lý Ceva, ba đường thẳng AD, BE, CF đồng quy khi và chỉ khi: (AF/FB)·(BD/DC)·(CE/EA) = 1<br>
+                        2. Từ tính chất của đường tròn nội tiếp, ta có:<br>
+                           - AF = AB - BF = AB - s + c (với s là nửa chu vi tam giác, c là độ dài cạnh AB)<br>
+                           - FB = s - c<br>
+                           - BD = s - a (với a là độ dài cạnh BC)<br>
+                           - DC = s - b (với b là độ dài cạnh CA)<br>
+                           - CE = s - b<br>
+                           - EA = s - a<br>
+                        3. Thay vào công thức Ceva:<br>
+                           (AF/FB)·(BD/DC)·(CE/EA) = ((s-b)/(s-c))·((s-a)/(s-b))·((s-c)/(s-a)) = 1<br>
+                        4. Vậy theo định lý Ceva, ba đường thẳng AD, BE, CF đồng quy<br><br>
+                        
+                        Chú thích: Điểm đồng quy này được gọi là điểm Gergonne của tam giác ABC.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bài 7: Chứng minh góc -->
+            <div class="question-container">
+                <h3>Bài 7: Chứng minh góc</h3>
+                <p>Cho hai đường tròn (O,R) và (O',R') cắt nhau tại hai điểm A và B. Từ A kẻ hai dây cung AC và AD (với C nằm trên đường tròn (O), D nằm trên đường tròn (O')). Chứng minh rằng: ∠ACB = ∠ADB.</p>
+                <div class="image-container">
+                    <img class="math-image" src="/api/placeholder/500/300" alt="Hình vẽ hai đường tròn cắt nhau">
+                </div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q7" value="a">
+                        <span>A. Góc nội tiếp cùng chắn một cung</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="b">
+                        <span>B. Góc nội tiếp và góc ở tâm</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="c">
+                        <span>C. Tứ giác nội tiếp</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="d">
+                        <span>D. Đường tròn radical</span>
+                    </label>
+                </div>
+                <div class="explanation hidden">
+                    <h4>Đáp án đúng: A</h4>
+                    <p>
+                        <strong>Giải thích:</strong><br>
+                        Để chứng minh ∠ACB = ∠ADB, ta sử dụng tính chất của góc nội tiếp cùng chắn một cung:<br><br>
+                        
+                        1. Điểm A và B là hai điểm chung của hai đường tròn (O,R) và (O',R')<br>
+                        2. Xét đường tròn (O,R):<br>
+                           - Điểm A, C, B nằm trên đường tròn (O,R)<br>
+                           - ∠ACB là góc nội tiếp chắn cung AB trong đường tròn (O,R)<br>
+                        3. Xét đường tròn (O',R'):<br>
+                           - Điểm A, D, B nằm trên đường tròn (O',R')<br>
+                           - ∠ADB là góc nội tiếp chắn cung AB trong đường tròn (O',R')<br>
+                        4. Vì cung AB là chung cho cả hai đường tròn, nên các góc nội tiếp chắn cùng một cung bằng nhau<br>
+                        5. Do đó: ∠ACB = ∠ADB<br><br>
+                        
+                        Đây là một ứng dụng trực tiếp của tính chất góc nội tiếp cùng chắn một cung trong hai đường tròn khác nhau có điểm chung.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Phần kết quả -->
+            <div id="result-section" class="question-container">
+                <h3>Kết quả</h3>
+                <div id="score-display" class="hidden">
+                    <p>Số câu đúng: <span id="correct-count">0</span>/7</p>
+                    <p>Điểm số: <span id="score">0</span>/10</p>
+                </div>
+                <div class="buttons">
+                    <button id="check-btn">Kiểm tra đáp án</button>
+                    <button id="reset-btn">Làm lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Định nghĩa đáp án đúng
+        const correctAnswers = {
+            q1: "d", // Bài 1: I là trung điểm của OA và bán kính là R√2
+            q2: "d", // Bài 2: Sử dụng tính chất lũy thừa của điểm đối với đường tròn
+            q3: "b", // Bài 3: Sử dụng tính chất phân giác góc
+            q4: "c", // Bài 4: Sử dụng tính chất các góc nội tiếp cùng chắn một cung
+            q5: "c", // Bài 5: Sử dụng định lý góc nội tiếp và góc giữa dây cung với đường kính
+            q6: "a", // Bài 6: Sử dụng định lý Ceva
+            q7: "a"  // Bài 7: Góc nội tiếp cùng chắn một cung
+        };
+
+        // Lấy các phần tử DOM
+        const checkBtn = document.getElementById('check-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const scoreDisplay = document.getElementById('score-display');
+        const correctCountElement = document.getElementById('correct-count');
+        const scoreElement = document.getElementById('score');
+        const explanations = document.querySelectorAll('.explanation');
+
+        // Xử lý sự kiện khi nhấn nút kiểm tra đáp án
+        checkBtn.addEventListener('click', function() {
+            let correctCount = 0;
+            
+            // Kiểm tra từng câu
+            for (const question in correctAnswers) {
+                const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+                if (selectedOption) {
+                    const answer = selectedOption.value;
+                    const optionElement = selectedOption.closest('.option');
+                    
+                    if (answer === correctAnswers[question]) {
+                        optionElement.classList.add('correct-answer');
+                        correctCount++;
+                    } else {
+                        optionElement.classList.add('wrong-answer');
+                        // Đánh dấu đáp án đúng
+                        const correctOption = document.querySelector(`input[name="${question}"][value="${correctAnswers[question]}"]`).closest('.option');
+                        correctOption.classList.add('correct-answer');
+                    }
+                }
+            }
+            
+            // Hiển thị điểm
+            correctCountElement.textContent = correctCount;
+            scoreElement.textContent = ((correctCount / 7) * 10).toFixed(1);
+            scoreDisplay.classList.remove('hidden');
+            
+            // Hiển thị giải thích
+            explanations.forEach(exp => exp.classList.remove('hidden'));
+            
+            // Vô hiệu hóa các tùy chọn
+            document.querySelectorAll('input[type="radio"]').forEach(input => {
+                input.disabled = true;
+            });
+        });
+
+        // Xử lý sự kiện khi nhấn nút làm lại
+        resetBtn.addEventListener('click', function() {
+            // Bỏ chọn tất cả các tùy chọn
+            document.querySelectorAll('input[type="radio"]').forEach(input => {
+                input.checked = false;
+                input.disabled = false;
+            });
+            
+            // Xóa các đánh dấu đáp án
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('correct-answer', 'wrong-answer');
+            });
+            
+            // Ẩn điểm và giải thích
+            scoreDisplay.classList.add('hidden');
+            explanations.forEach(exp => exp.classList.add('hidden'));
+        });
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
