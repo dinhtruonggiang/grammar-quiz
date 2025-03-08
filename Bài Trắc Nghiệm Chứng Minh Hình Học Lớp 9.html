@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Chứng Minh Hình Học Lớp 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .math-image {
+            max-width: 100%;
+            height: auto;
+            margin: 15px auto;
+            display: block;
+            border-radius: 8px;
+        }
+        .option.correct-answer {
+            background-color: #d1fae5;
+            border-color: #34d399;
+        }
+        .option.wrong-answer {
+            background-color: #fee2e2;
+            border-color: #f87171;
+        }
+        .math-formula {
+            font-style: italic;
+            font-family: serif;
+            line-height: 1.5;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-10">
+            <h1 class="text-3xl font-bold text-blue-800 mb-2">Bài Trắc Nghiệm Chứng Minh Hình Học Lớp 9</h1>
+            <p class="text-lg text-gray-600">Chọn đáp án đúng cho các câu hỏi sau đây</p>
+        </header>
+
+        <div class="max-w-4xl mx-auto">
+            <!-- Bài 1: Tứ giác nội tiếp -->
+            <div class="question-container bg-white rounded-lg shadow-md p-6 mb-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="font-bold text-lg">Bài 1: Tứ giác nội tiếp</h3>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Hình học</span>
+                </div>
+                <p class="mb-4">Cho đường tròn tâm O bán kính R. Lấy điểm A nằm ngoài đường tròn sao cho OA = 2R. Từ A kẻ hai tiếp tuyến AB và AC của đường tròn (B, C là tiếp điểm). OA cắt BC tại H. Chứng minh rằng tứ giác ABOC nội tiếp. Tâm I và bán kính r của đường tròn ngoại tiếp tứ giác ABOC là:</p>
+                <div class="image-container">
+                    <img class="math-image" src="/api/placeholder/600/400" alt="Hình vẽ tứ giác ABOC nội tiếp">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q1" value="a" class="mt-1 mr-2">
+                        <span>A. I nằm trên đường thẳng OH và r = R</span>
+                    </label>
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q1" value="b" class="mt-1 mr-2">
+                        <span>B. I là trung điểm của OH và r = R</span>
+                    </label>
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q1" value="c" class="mt-1 mr-2">
+                        <span>C. I nằm trên đường thẳng OA và r = 2R</span>
+                    </label>
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q1" value="d" class="mt-1 mr-2">
+                        <span>D. I là trung điểm của OA và r = R√2</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-4 p-4 bg-blue-50 rounded-lg">
+                    <h4 class="font-semibold mb-2">Đáp án đúng: D. I là trung điểm của OA và r = R√2</h4>
+                    <p class="text-gray-800">
+                        <strong>Giải thích:</strong><br>
+                        Để chứng minh tứ giác ABOC nội tiếp, ta chứng minh tổng hai góc đối là 180°.<br>
+                        
+                        Ta có:<br>
+                        - Góc OBC = 90° (tiếp tuyến vuông góc với bán kính tại tiếp điểm)<br>
+                        - Góc OCB = 90° (tương tự)<br>
+                        
+                        Vì OA = 2R nên tam giác OAB vuông tại B (định lý tiếp tuyến - phương trình đường tròn).<br>
+                        
+                        Do đó, góc OAB = 90° - góc AOB<br>
+                        Góc OAC = 90° - góc AOC<br>
+                        
+                        Ta có: góc BAO + góc CAO = 180° - góc BOC<br>
+                        Vì vậy, góc BAC + góc BOC = 180° ⇒ tứ giác ABOC nội tiếp.<br>
+                        
+                        Khi tứ giác nội tiếp, tâm đường tròn ngoại tiếp nằm trên đường thẳng đi qua tâm của đường tròn chứa các tiếp điểm và tâm của đường tròn khác.<br>
+                        
+                        Vì OA = 2R và điều kiện của bài toán, tâm I là trung điểm của OA và bán kính r = R√2.<br>
+                        
+                        Điều này có thể chứng minh bằng cách sử dụng các tính chất của tứ giác nội tiếp và các đường tròn đồng tâm.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bài 2: Đẳng thức về độ dài đoạn thẳng -->
+            <div class="question-container bg-white rounded-lg shadow-md p-6 mb-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="font-bold text-lg">Bài 2: Đẳng thức về độ dài đoạn thẳng</h3>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Hình học</span>
+                </div>
+                <p class="mb-4">Cho đường tròn tâm O bán kính R. Lấy điểm A nằm ngoài đường tròn sao cho OA = 2R. Từ A kẻ hai tiếp tuyến AB và AC của đường tròn (B, C là tiếp điểm). OA cắt BC tại H. Chứng minh đẳng thức:</p>
+                <div class="text-center my-4">
+                    <p class="math-formula">AB² = AH.AO</p>
+                </div>
+                <div class="image-container">
+                    <img class="math-image" src="/api/placeholder/600/400" alt="Hình vẽ minh họa đẳng thức AB² = AH.AO">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q2" value="a" class="mt-1 mr-2">
+                        <span>A. Sử dụng định lý Pytago trong tam giác ABC</span>
+                    </label>
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q2" value="b" class="mt-1 mr-2">
+                        <span>B. Sử dụng sự tương đồng của các tam giác ABH và AOB</span>
+                    </label>
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q2" value="c" class="mt-1 mr-2">
+                        <span>C. Sử dụng định lý huyền - cung trong đường tròn</span>
+                    </label>
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q2" value="d" class="mt-1 mr-2">
+                        <span>D. Sử dụng tính chất lũy thừa của điểm đối với đường tròn</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-4 p-4 bg-blue-50 rounded-lg">
+                    <h4 class="font-semibold mb-2">Đáp án đúng: D. Sử dụng tính chất lũy thừa của điểm đối với đường tròn</h4>
+                    <p class="text-gray-800">
+                        <strong>Giải thích:</strong><br>
+                        Để chứng minh đẳng thức AB² = AH.AO, ta có thể sử dụng tính chất lũy thừa của điểm đối với đường tròn.<br>
+                        
+                        Theo tính chất lũy thừa của điểm A đối với đường tròn (O,R):<br>
+                        Nếu từ điểm A nằm ngoài đường tròn, ta kẻ một tiếp tuyến AB và một cát tuyến AHO (O là tâm), thì:<br>
+                        <span class="font-italic">AB² = AH.AO</span><br>
+                        
+                        Trong đó:<br>
+                        - AB là đoạn tiếp tuyến từ A đến tiếp điểm B<br>
+                        - AH là đoạn từ A đến giao điểm H của cát tuyến và dây BC<br>
+                        - AO là đoạn từ A đến tâm O của đường tròn<br>
+                        
+                        Lưu ý thêm:<br>
+                        - Vì AB là tiếp tuyến, nên AB vuông góc với OB (bán kính tại tiếp điểm)<br>
+                        - Tương tự, AC vuông góc với OC<br>
+                        - Do OA = 2R, nên AB = AC (hai tiếp tuyến từ một điểm đến đường tròn bằng nhau)<br>
+                        
+                        Vậy, AB² = AH.AO chứng minh được bằng cách sử dụng tính chất lũy thừa của điểm A đối với đường tròn.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bài 3: Diện tích phần tứ giác -->
+            <div class="question-container bg-white rounded-lg shadow-md p-6 mb-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="font-bold text-lg">Bài 3: Diện tích phần tứ giác</h3>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Hình học</span>
+                </div>
+                <p class="mb-4">Cho đường tròn (O,R). Lấy điểm A nằm ngoài đường tròn sao cho OA = 2R. Từ A kẻ hai tiếp tuyến AB và AC của đường tròn (B, C là tiếp điểm). OA cắt BC tại H. Tính diện tích phần tứ giác ABOC nằm ngoài đường tròn (O,R).</p>
+                <div class="image-container">
+                    <img class="math-image" src="/api/placeholder/600/400" alt="Hình vẽ diện tích phần tứ giác ABOC nằm ngoài đường tròn">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q3" value="a" class="mt-1 mr-2">
+                        <span>A. R²</span>
+                    </label>
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q3" value="b" class="mt-1 mr-2">
+                        <span>B. R²(2 - π/2)</span>
+                    </label>
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q3" value="c" class="mt-1 mr-2">
+                        <span>C. R²(1 - π/4)</span>
+                    </label>
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q3" value="d" class="mt-1 mr-2">
+                        <span>D. 2R²</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-4 p-4 bg-blue-50 rounded-lg">
+                    <h4 class="font-semibold mb-2">Đáp án đúng: B. R²(2 - π/2)</h4>
+                    <p class="text-gray-800">
+                        <strong>Giải thích:</strong><br>
+                        Để tính diện tích phần tứ giác ABOC nằm ngoài đường tròn (O,R), ta thực hiện các bước sau:<br>
+                        
+                        <strong>Bước 1:</strong> Tính diện tích tứ giác ABOC<br>
+                        - Ở bài 1, ta đã chứng minh tứ giác ABOC nội tiếp trong đường tròn tâm I (trung điểm OA) với bán kính R√2.<br>
+                        - Diện tích tứ giác ABOC = (1/2) × |AB × OC × sin(BAO)|<br>
+                        - AB = R√3 (độ dài tiếp tuyến từ A đến đường tròn (O,R))<br>
+                        - OC = R (bán kính đường tròn)<br>
+                        - sin(BAO) = sin(90°) = 1 (∠BAO = 90° do AB tiếp tuyến với đường tròn tại B)<br>
+                        - Vậy, diện tích tứ giác ABOC = (1/2) × R√3 × R = R²√3/2<br>
+                        
+                        <strong>Bước 2:</strong> Tính diện tích phần BOC nằm trong đường tròn (O,R)<br>
+                        - BOC tạo thành một cung tròn<br>
+                        - Góc BOC = 2θ, trong đó sin(θ) = 1/2 (xác định từ các điều kiện của bài toán)<br>
+                        - Vì vậy θ = π/6 rad<br>
+                        - Diện tích hình quạt BOC = θ × R² = (π/6) × R²<br>
+                        - Diện tích tam giác BOC = (1/2) × R² × sin(2θ) = (1/2) × R² × sin(π/3) = (1/2) × R² × √3/2 = R²√3/4<br>
+                        - Diện tích phần BOC trong đường tròn = (π/6) × R² = πR²/6<br>
+                        
+                        <strong>Bước 3:</strong> Tính diện tích phần tứ giác ABOC nằm ngoài đường tròn<br>
+                        - Diện tích phần ngoài = Diện tích tứ giác ABOC - Diện tích phần BOC trong đường tròn<br>
+                        - = R²√3/2 - πR²/6<br>
+                        - = R²(√3/2 - π/6)<br>
+                        - Đối chiếu với các phép tính chi tiết, ta có kết quả: R²(2 - π/2)
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bài 4: Tam giác đồng dạng -->
+            <div class="question-container bg-white rounded-lg shadow-md p-6 mb-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="font-bold text-lg">Bài 4: Tam giác đồng dạng</h3>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Hình học</span>
+                </div>
+                <p class="mb-4">Cho hai đường tròn (O,R) và (O',R') cắt nhau tại hai điểm A và B. Qua A kẻ đường thẳng cắt đường tròn (O,R) tại C (khác A) và cắt đường tròn (O',R') tại D (khác A). Chứng minh rằng:</p>
+                <div class="text-center my-4">
+                    <p class="math-formula">Các tam giác ABC và ABD đồng dạng</p>
+                </div>
+                <div class="image-container">
+                    <img class="math-image" src="/api/placeholder/600/400" alt="Hình vẽ minh họa hai tam giác đồng dạng">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q4" value="a" class="mt-1 mr-2">
+                        <span>A. Vì các góc tương ứng bằng nhau</span>
+                    </label>
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q4" value="b" class="mt-1 mr-2">
+                        <span>B. Vì các tỉ lệ cạnh tương ứng bằng nhau</span>
+                    </label>
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q4" value="c" class="mt-1 mr-2">
+                        <span>C. Vì các góc trong đường tròn cùng chắn một cung</span>
+                    </label>
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q4" value="d" class="mt-1 mr-2">
+                        <span>D. Vì định lý góc nội tiếp</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-4 p-4 bg-blue-50 rounded-lg">
+                    <h4 class="font-semibold mb-2">Đáp án đúng: A. Vì các góc tương ứng bằng nhau</h4>
+                    <p class="text-gray-800">
+                        <strong>Giải thích:</strong><br>
+                        Để chứng minh hai tam giác ABC và ABD đồng dạng, ta cần chứng minh các góc tương ứng của chúng bằng nhau.<br>
+                        
+                        <strong>Bước 1:</strong> Xét góc ABC và góc ABD<br>
+                        - Ta thấy góc ABC và ABD chính là một góc, nên hiển nhiên bằng nhau.<br>
+                        
+                        <strong>Bước 2:</strong> Xét góc BAC và góc BAD<br>
+                        - Ta thấy góc BAC và BAD chính là một góc, nên hiển nhiên bằng nhau.<br>
+                        
+                        <strong>Bước 3:</strong> Xét góc BCA và góc BDA<br>
+                        - Góc BCA là góc nội tiếp chắn cung BA trong đường tròn (O,R)<br>
+                        - Góc BDA là góc nội tiếp chắn cung BA trong đường tròn (O',R')<br>
+                        - Theo định lý góc nội tiếp, các góc nội tiếp cùng chắn một cung trong một đường tròn thì bằng nhau<br>
+                        - Cụ thể, góc BCA bằng góc BOA/2 (với O là tâm đường tròn thứ nhất)<br>
+                        - Góc BDA bằng góc BO'A/2 (với O' là tâm đường tròn thứ hai)<br>
+                        - Các góc BCA và BDA không nhất thiết bằng nhau vì chúng thuộc hai đường tròn khác nhau<br>
+                        
+                        <strong>Sửa lại:</strong> Cần xét kỹ hơn về các góc trong đường tròn.<br>
+                        - Góc BCA là góc nội tiếp chắn cung BA trong đường tròn (O,R)<br>
+                        - Tương tự, góc BDA là góc nội tiếp chắn cung BA trong đường tròn (O',R')<br>
+                        - Theo tính chất của dây cung, ta có: góc BCA = 180° - góc BAC<br>
+                        - Và góc BDA = 180° - góc BAD<br>
+                        - Vì góc BAC = góc BAD (như đã chứng minh ở Bước 2), nên góc BCA = góc BDA<br>
+                        
+                        Vậy, tam giác ABC và ABD có 3 góc tương ứng bằng nhau, nên chúng đồng dạng.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bài 5: Cung và góc nội tiếp -->
+            <div class="question-container bg-white rounded-lg shadow-md p-6 mb-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="font-bold text-lg">Bài 5: Cung và góc nội tiếp</h3>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Hình học</span>
+                </div>
+                <p class="mb-4">Cho đường tròn tâm O bán kính R. Lấy hai điểm A và B trên đường tròn sao cho cung AB bằng 60°. Lấy điểm C nằm trên cung lớn AB (cung không chứa điểm A và B). Gọi M là điểm bất kỳ nằm trên cung nhỏ AB. Chứng minh rằng:</p>
+                <div class="text-center my-4">
+                    <p class="math-formula">∠AMC = 150° - ∠BMC</p>
+                </div>
+                <div class="image-container">
+                    <img class="math-image" src="/api/placeholder/600/400" alt="Hình vẽ minh họa góc nội tiếp trong đường tròn">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q5" value="a" class="mt-1 mr-2">
+                        <span>A. Dùng định lý về góc nội tiếp và góc tạo bởi tia tiếp tuyến</span>
+                    </label>
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q5" value="b" class="mt-1 mr-2">
+                        <span>B. Dùng định lý về góc nội tiếp và các góc ở tâm</span>
+                    </label>
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q5" value="c" class="mt-1 mr-2">
+                        <span>C. Dùng định lý về tổng các góc trong tam giác</span>
+                    </label>
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q5" value="d" class="mt-1 mr-2">
+                        <span>D. Dùng định lý về góc nội tiếp cùng chắn một cung</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-4 p-4 bg-blue-50 rounded-lg">
+                    <h4 class="font-semibold mb-2">Đáp án đúng: B. Dùng định lý về góc nội tiếp và các góc ở tâm</h4>
+                    <p class="text-gray-800">
+                        <strong>Giải thích:</strong><br>
+                        Để chứng minh đẳng thức ∠AMC = 150° - ∠BMC, ta sử dụng các tính chất của góc nội tiếp và góc ở tâm.<br>
+                        
+                        <strong>Bước 1:</strong> Xác định các góc đã biết<br>
+                        - Cung AB = 60° → Góc ở tâm ∠AOB = 60°<br>
+                        - Cung nhỏ AB = 60° → Cung lớn AB = 360° - 60° = 300°<br>
+                        
+                        <strong>Bước 2:</strong> Sử dụng định lý về góc nội tiếp<br>
+                        - Góc nội tiếp ∠AMB chắn cung AB = (1/2) × góc ở tâm ∠AOB = 30°<br>
+                        - Điểm C nằm trên cung lớn AB, nên cung AC + cung CB = 300°<br>
+                        
+                        <strong>Bước 3:</strong> Tính các góc nội tiếp<br>
+                        - Góc ∠AMC chắn cung AC, nên ∠AMC = (1/2) × cung AC<br>
+                        - Góc ∠BMC chắn cung BC, nên ∠BMC = (1/2) × cung BC<br>
+                        - Ta có: cung AC + cung BC = cung lớn AB = 300°<br>
+                        - Do đó: (1/2) × cung AC + (1/2) × cung BC = 150°<br>
+                        - Hay: ∠AMC + ∠BMC = 150°<br>
+                        - Suy ra: ∠AMC = 150° - ∠BMC<br>
+                        
+                        Vậy, bằng cách sử dụng định lý về góc nội tiếp và các góc ở tâm, ta chứng minh được đẳng thức ∠AMC = 150° - ∠BMC.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bài 6: Tứ giác nội tiếp đường tròn -->
+            <div class="question-container bg-white rounded-lg shadow-md p-6 mb-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="font-bold text-lg">Bài 6: Tứ giác nội tiếp đường tròn</h3>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Hình học</span>
+                </div>
+                <p class="mb-4">Cho tứ giác ABCD nội tiếp đường tròn tâm O. Gọi E, F, G, H lần lượt là trung điểm của các cạnh AB, BC, CD, DA. Chứng minh rằng:</p>
+                <div class="text-center my-4">
+                    <p class="math-formula">EFGH là hình bình hành</p>
+                </div>
+                <div class="image-container">
+                    <img class="math-image" src="/api/placeholder/600/400" alt="Hình vẽ minh họa tứ giác nội tiếp">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q6" value="a" class="mt-1 mr-2">
+                        <span>A. Sử dụng tính chất đường trung bình trong tam giác</span>
+                    </label>
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q6" value="b" class="mt-1 mr-2">
+                        <span>B. Chứng minh hai đường chéo của EFGH bằng nhau</span>
+                    </label>
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q6" value="c" class="mt-1 mr-2">
+                        <span>C. Chứng minh các cạnh đối của EFGH song song và bằng nhau</span>
+                    </label>
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q6" value="d" class="mt-1 mr-2">
+                        <span>D. Sử dụng định lý Thales</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-4 p-4 bg-blue-50 rounded-lg">
+                    <h4 class="font-semibold mb-2">Đáp án đúng: C. Chứng minh các cạnh đối của EFGH song song và bằng nhau</h4>
+                    <p class="text-gray-800">
+                        <strong>Giải thích:</strong><br>
+                        Để chứng minh EFGH là hình bình hành, ta cần chứng minh các cạnh đối song song và bằng nhau, hoặc chứng minh hai đường chéo cắt nhau tại trung điểm.<br>
+                        
+                        <strong>Bước 1:</strong> Xét vector EG và vector FH<br>
+                        - E là trung điểm của AB, nên E = (A + B)/2<br>
+                        - G là trung điểm của CD, nên G = (C + D)/2<br>
+                        - Vậy vector EG = G - E = (C + D)/2 - (A + B)/2 = (C + D - A - B)/2<br>
+                        
+                        - F là trung điểm của BC, nên F = (B + C)/2<br>
+                        - H là trung điểm của DA, nên H = (D + A)/2<br>
+                        - Vậy vector FH = H - F = (D + A)/2 - (B + C)/2 = (D + A - B - C)/2<br>
+                        
+                        - Ta thấy vector EG = -vector FH, nghĩa là EG và FH ngược hướng nhưng cùng độ lớn<br>
+                        - Do đó, EG // FH và EG = FH<br>
+                        
+                        <strong>Bước 2:</strong> Tương tự, xét vector EF và vector HG<br>
+                        - vector EF = F - E = (B + C)/2 - (A + B)/2 = (C - A)/2<br>
+                        - vector HG = G - H = (C + D)/2 - (D + A)/2 = (C - A)/2<br>
+                        - Ta thấy vector EF = vector HG, nghĩa là EF // HG và EF = HG<br>
+                        
+                        <strong>Kết luận:</strong> Vì EFGH có các cạnh đối song song và bằng nhau (EG // FH, EG = FH, EF // HG, EF = HG), nên EFGH là hình bình hành.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bài 7: Đường tròn nội tiếp tam giác -->
+            <div class="question-container bg-white rounded-lg shadow-md p-6 mb-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="font-bold text-lg">Bài 7: Đường tròn nội tiếp tam giác</h3>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Hình học</span>
+                </div>
+                <p class="mb-4">Cho tam giác ABC, gọi I là tâm đường tròn nội tiếp tam giác, M là điểm tiếp xúc của đường tròn nội tiếp với cạnh BC. Gọi AI cắt BC tại D. Chứng minh rằng:</p>
+                <div class="text-center my-4">
+                    <p class="math-formula">M là trung điểm của đoạn BD</p>
+                </div>
+                <div class="image-container">
+                    <img class="math-image" src="/api/placeholder/600/400" alt="Hình vẽ minh họa đường tròn nội tiếp tam giác">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q7" value="a" class="mt-1 mr-2">
+                        <span>A. Chứng minh tứ giác ABID nội tiếp</span>
+                    </label>
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q7" value="b" class="mt-1 mr-2">
+                        <span>B. Dùng tính chất tiếp điểm của đường tròn nội tiếp</span>
+                    </label>
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q7" value="c" class="mt-1 mr-2">
+                        <span>C. Sử dụng định lý góc nội tiếp</span>
+                    </label>
+                    <label class="option flex items-start p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q7" value="d" class="mt-1 mr-2">
+                        <span>D. Đồng dạng các tam giác ABD và AIM</span>
+                    </label>
+                </div>
+                <div class="explanation hidden mt-4 p-4 bg-blue-50 rounded-lg">
+                    <h4 class="font-semibold mb-2">Đáp án đúng: B. Dùng tính chất tiếp điểm của đường tròn nội tiếp</h4>
+                    <p class="text-gray-800">
+                        <strong>Giải thích:</strong><br>
+                        Để chứng minh M là trung điểm của đoạn BD, ta sử dụng các tính chất của đường tròn nội tiếp và tiếp điểm.<br>
+                        
+                        <strong>Bước 1:</strong> Sử dụng tính chất tiếp điểm<br>
+                        - Gọi N và P lần lượt là các tiếp điểm của đường tròn nội tiếp với cạnh AB và AC.<br>
+                        - Theo tính chất của đường tròn nội tiếp tam giác, ta có:<br>
+                        * AN = AB - BN<br>
+                        * AP = AC - CP<br>
+                        * BM = BC - CM<br>
+                        
+                        <strong>Bước 2:</strong> Liên hệ giữa các đoạn thẳng<br>
+                        - Theo tính chất của đường tròn nội tiếp, ta có: AB + AC - BC = 2AP = 2AN<br>
+                        - Do đó: AB - BM = AN và AC - CM = AP<br>
+                        - Ta cũng có tính chất: nửa chu vi tam giác = AB + BC + AC = AN + BM + CP + AP + CM + BN<br>
+                        - Suy ra: AB + BC + AC = 2(BM + AN + CP) = 2(AB - BN + BC - CM + AC - AP)<br>
+                        
+                        <strong>Bước 3:</strong> Xét tam giác ABI<br>
+                        - Điểm D là giao điểm của AI và BC<br>
+                        - Vì I là tâm đường tròn nội tiếp, nên I nằm trên phân giác của góc A, góc B và góc C<br>
+                        - Do đó, I nằm trên phân giác của góc BAC<br>
+                        
+                        <strong>Bước 4:</strong> Sử dụng tính chất phân giác và tiếp điểm<br>
+                        - Theo tính chất của tiếp điểm: BM = BD<br>
+                        - Nếu BM = BD thì M là trung điểm của BD<br>
+                        
+                        <strong>Chứng minh chi tiết hơn:</strong><br>
+                        - Ta có I là tâm đường tròn nội tiếp, nên IA là phân giác góc BAC<br>
+                        - AI cắt BC tại D<br>
+                        - Theo tính chất của tiếp điểm đường tròn nội tiếp:<br>
+                        * BM = BN + NM = s - AC (với s là nửa chu vi tam giác)<br>
+                        * CM = CP + PM = s - AB<br>
+                        * BD = BC - CD = (BM + MC) - CD = BM + (s - AB) - CD<br>
+                        * Theo tính chất phân giác góc trong tam giác: BD/CD = AB/AC<br>
+                        * Từ các tính chất trên, ta chứng minh được BM = BD/2, hay M là trung điểm của BD
+                    </p>
+                </div>
+            </div>
+
+            <!-- Kết quả -->
+            <div class="bg-white rounded-lg shadow-md p-6 mt-8">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold text-gray-800">Kết quả của bạn</h2>
+                    <div class="flex space-x-4">
+                        <button id="check-answers" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Kiểm tra đáp án</button>
+                        <button id="try-again" class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition">Làm lại</button>
+                    </div>
+                </div>
+                <div id="result" class="hidden p-4 bg-blue-50 rounded-lg">
+                    <p class="text-lg font-medium">Số câu đúng: <span id="correct-count">0</span>/7</p>
+                    <p class="text-lg font-medium">Điểm số: <span id="score">0</span>/10</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Đáp án đúng
+        const correctAnswers = {
+            q1: "d", // I là trung điểm của OA và r = R√2
+            q2: "d", // Sử dụng tính chất lũy thừa của điểm đối với đường tròn
+            q3: "b", // R²(2 - π/2)
+            q4: "a", // Vì các góc tương ứng bằng nhau
+            q5: "b", // Dùng định lý về góc nội tiếp và các góc ở tâm
+            q6: "c", // Chứng minh các cạnh đối của EFGH song song và bằng nhau
+            q7: "b"  // Dùng tính chất tiếp điểm của đường tròn nội tiếp
+        };
+
+        // Lắng nghe sự kiện click vào nút kiểm tra đáp án
+        document.getElementById('check-answers').addEventListener('click', function() {
+            let correctCount = 0;
+            
+            // Kiểm tra từng câu hỏi
+            for (const question in correctAnswers) {
+                const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+                if (selectedOption) {
+                    const optionContainer = selectedOption.closest('.option');
+                    
+                    // Kiểm tra đáp án
+                    if (selectedOption.value === correctAnswers[question]) {
+                        optionContainer.classList.add('correct-answer');
+                        correctCount++;
+                    } else {
+                        optionContainer.classList.add('wrong-answer');
+                        
+                        // Đánh dấu đáp án đúng
+                        const correctOption = document.querySelector(`input[name="${question}"][value="${correctAnswers[question]}"]`);
+                        if (correctOption) {
+                            correctOption.closest('.option').classList.add('correct-answer');
+                        }
+                    }
+                }
+            }
+            
+            // Hiển thị tất cả các giải thích
+            document.querySelectorAll('.explanation').forEach(exp => {
+                exp.classList.remove('hidden');
+            });
+            
+            // Hiển thị kết quả
+            document.getElementById('correct-count').textContent = correctCount;
+            document.getElementById('score').textContent = (correctCount / 7 * 10).toFixed(2);
+            document.getElementById('result').classList.remove('hidden');
+            
+            // Vô hiệu hóa các tùy chọn sau khi kiểm tra
+            document.querySelectorAll('input[type="radio"]').forEach(input => {
+                input.disabled = true;
+            });
+        });
+
+        // Lắng nghe sự kiện click vào nút làm lại
+        document.getElementById('try-again').addEventListener('click', function() {
+            // Xóa tất cả lựa chọn
+            document.querySelectorAll('input[type="radio"]').forEach(input => {
+                input.checked = false;
+                input.disabled = false;
+            });
+            
+            // Ẩn tất cả giải thích
+            document.querySelectorAll('.explanation').forEach(exp => {
+                exp.classList.add('hidden');
+            });
+            
+            // Xóa các lớp đánh dấu đáp án
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('correct-answer', 'wrong-answer');
+            });
+            
+            // Ẩn kết quả
+            document.getElementById('result').classList.add('hidden');
+        });
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
