@@ -1,0 +1,715 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trắc Nghiệm Toán Lớp 9 Giữa HK2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+        }
+        .question-container {
+            transition: all 0.3s ease;
+        }
+        .answer-option:hover {
+            border-color: #3b82f6;
+        }
+        .selected {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+        }
+        .correct {
+            border-color: #10b981;
+            background-color: #d1fae5;
+        }
+        .incorrect {
+            border-color: #ef4444;
+            background-color: #fee2e2;
+        }
+        .math {
+            font-family: "Times New Roman", Times, serif;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-6">
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-8">
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Bài Trắc Nghiệm Toán Lớp 9 Giữa HK2 - Trang 2</h1>
+            <p class="text-gray-600">Thời gian làm bài: 45 phút</p>
+        </header>
+
+        <div class="mb-8">
+            <div class="question-container bg-white rounded-lg shadow-md p-6 mb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-semibold">Câu 1:</h3>
+                    <button class="show-explanation px-3 py-1 bg-blue-500 text-white rounded-md text-sm hover:bg-blue-600">Xem giải thích</button>
+                </div>
+                <p class="mb-3 math">Cho parabol (P): y = -1/4 x². Đồ thị hàm số có dạng:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3">
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q1" class="mr-2" value="a">
+                        <span>A. Parabol mở lên trên, đỉnh tại gốc tọa độ</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q1" class="mr-2" value="b">
+                        <span>B. Parabol mở xuống dưới, đỉnh tại gốc tọa độ</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q1" class="mr-2" value="c">
+                        <span>C. Parabol mở sang trái, đỉnh tại gốc tọa độ</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q1" class="mr-2" value="d">
+                        <span>D. Parabol mở sang phải, đỉnh tại gốc tọa độ</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4 p-3 bg-yellow-50 rounded-lg hidden">
+                    <p class="font-semibold">Đáp án đúng: B. Parabol mở xuống dưới, đỉnh tại gốc tọa độ</p>
+                    <p>Giải thích: Hàm số y = -1/4 x² có dạng y = ax² với a = -1/4 < 0, nên đồ thị là parabol mở xuống dưới. Tọa độ đỉnh là (0,0) - tức là gốc tọa độ.</p>
+                </div>
+            </div>
+
+            <div class="question-container bg-white rounded-lg shadow-md p-6 mb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-semibold">Câu 2:</h3>
+                    <button class="show-explanation px-3 py-1 bg-blue-500 text-white rounded-md text-sm hover:bg-blue-600">Xem giải thích</button>
+                </div>
+                <p class="mb-3 math">Cho parabol (P): y = -1/4 x². Điểm thuộc (P) có tung độ bằng 4 có hoành độ là:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3">
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q2" class="mr-2" value="a">
+                        <span>A. x = 4</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q2" class="mr-2" value="b">
+                        <span>B. x = -4</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q2" class="mr-2" value="c">
+                        <span>C. x = ±4</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q2" class="mr-2" value="d">
+                        <span>D. x = ±2√4</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4 p-3 bg-yellow-50 rounded-lg hidden">
+                    <p class="font-semibold">Đáp án đúng: D. x = ±2√4</p>
+                    <p>Giải thích: 
+                    <br>Thay y = 4 vào phương trình y = -1/4 x²
+                    <br>Ta có: 4 = -1/4 x²
+                    <br>⟹ -16 = x²
+                    <br>⟹ x² = 16
+                    <br>⟹ x = ±4 = ±2√4
+                    <br>Vậy hoành độ của điểm thuộc (P) có tung độ bằng 4 là x = ±2√4 = ±4.</p>
+                </div>
+            </div>
+
+            <div class="question-container bg-white rounded-lg shadow-md p-6 mb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-semibold">Câu 3:</h3>
+                    <button class="show-explanation px-3 py-1 bg-blue-500 text-white rounded-md text-sm hover:bg-blue-600">Xem giải thích</button>
+                </div>
+                <p class="mb-3 math">Cho phương trình: 2x² - 5x - 3 = 0. Dấu của Δ là:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3">
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q3" class="mr-2" value="a">
+                        <span>A. Δ > 0</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q3" class="mr-2" value="b">
+                        <span>B. Δ = 0</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q3" class="mr-2" value="c">
+                        <span>C. Δ < 0</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q3" class="mr-2" value="d">
+                        <span>D. Không xác định được</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4 p-3 bg-yellow-50 rounded-lg hidden">
+                    <p class="font-semibold">Đáp án đúng: A. Δ > 0</p>
+                    <p>Giải thích: 
+                    <br>Phương trình 2x² - 5x - 3 = 0 có dạng ax² + bx + c = 0 với a = 2, b = -5, c = -3
+                    <br>Δ = b² - 4ac = (-5)² - 4×2×(-3) = 25 + 24 = 49 > 0
+                    <br>Vì Δ > 0 nên phương trình có 2 nghiệm phân biệt.</p>
+                </div>
+            </div>
+
+            <div class="question-container bg-white rounded-lg shadow-md p-6 mb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-semibold">Câu 4:</h3>
+                    <button class="show-explanation px-3 py-1 bg-blue-500 text-white rounded-md text-sm hover:bg-blue-600">Xem giải thích</button>
+                </div>
+                <p class="mb-3 math">Cho phương trình: 2x² - 5x - 3 = 0 có hai nghiệm là x₁ và x₂. Giá trị của biểu thức A = (x₁ + 2x₂)(x₂ + 2x₁) bằng:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3">
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q4" class="mr-2" value="a">
+                        <span>A. 7/2</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q4" class="mr-2" value="b">
+                        <span>B. 19/4</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q4" class="mr-2" value="c">
+                        <span>C. 21/4</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q4" class="mr-2" value="d">
+                        <span>D. 9/2</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4 p-3 bg-yellow-50 rounded-lg hidden">
+                    <p class="font-semibold">Đáp án đúng: C. 21/4</p>
+                    <p>Giải thích: 
+                    <br>Phương trình 2x² - 5x - 3 = 0 có hai nghiệm x₁ và x₂. Theo Viet ta có:
+                    <br>x₁ + x₂ = -b/a = -(-5)/2 = 5/2
+                    <br>x₁·x₂ = c/a = -3/2
+                    <br>A = (x₁ + 2x₂)(x₂ + 2x₁)
+                    <br>= (x₁ + 2x₂)(x₂ + 2x₁)
+                    <br>= x₁x₂ + 2x₁² + 2x₂² + 4x₁x₂
+                    <br>= 5x₁x₂ + 2(x₁² + x₂²)
+                    <br>= 5x₁x₂ + 2[(x₁ + x₂)² - 2x₁x₂]
+                    <br>= 5x₁x₂ + 2(x₁ + x₂)² - 4x₁x₂
+                    <br>= x₁x₂ + 2(x₁ + x₂)²
+                    <br>= -3/2 + 2(5/2)²
+                    <br>= -3/2 + 2·25/4
+                    <br>= -3/2 + 50/4
+                    <br>= -6/4 + 50/4
+                    <br>= 44/4 = 11/1 = 11</p>
+                </div>
+            </div>
+
+            <div class="question-container bg-white rounded-lg shadow-md p-6 mb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-semibold">Câu 5:</h3>
+                    <button class="show-explanation px-3 py-1 bg-blue-500 text-white rounded-md text-sm hover:bg-blue-600">Xem giải thích</button>
+                </div>
+                <p class="mb-3 math">Người ta muốn làm một khung gỗ hình tam giác đều để đặt vừa khít một đồng hồ có dạng tròn có đường kính 30 cm. Biết bán kính đường tròn nội tiếp tam giác có cạnh a được tính bởi công thức: R = (a√3)/6. Độ dài cạnh của khung gỗ là:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3">
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q5" class="mr-2" value="a">
+                        <span>A. 60 cm</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q5" class="mr-2" value="b">
+                        <span>B. 30√3 cm</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q5" class="mr-2" value="c">
+                        <span>C. 20√3 cm</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q5" class="mr-2" value="d">
+                        <span>D. 10√3 cm</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4 p-3 bg-yellow-50 rounded-lg hidden">
+                    <p class="font-semibold">Đáp án đúng: A. 60 cm</p>
+                    <p>Giải thích: 
+                    <br>Đường kính đồng hồ hình tròn là 30 cm, vậy bán kính R = 15 cm.
+                    <br>Đồng hồ đặt vừa khít trong khung tam giác đều, nên đồng hồ là đường tròn nội tiếp của tam giác đều.
+                    <br>Theo công thức đã cho: R = (a√3)/6
+                    <br>⟹ 15 = (a√3)/6
+                    <br>⟹ a = 15·6/√3 = 90/√3 = 90·√3/3 = 30√3 cm
+                    <br>Vậy độ dài cạnh của khung gỗ là 30√3 ≈ 51,96 cm.</p>
+                </div>
+            </div>
+
+            <div class="question-container bg-white rounded-lg shadow-md p-6 mb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-semibold">Câu 6:</h3>
+                    <button class="show-explanation px-3 py-1 bg-blue-500 text-white rounded-md text-sm hover:bg-blue-600">Xem giải thích</button>
+                </div>
+                <p class="mb-3 math">Với khung gỗ hình tam giác đều có cạnh 30√3 cm như ở câu 5, nếu 1 mét gỗ có giá là 150.000 đồng và tiền công làm khung là 70.000 đồng, thì tổng chi phí là:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3">
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q6" class="mr-2" value="a">
+                        <span>A. 370.000 đồng</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q6" class="mr-2" value="b">
+                        <span>B. 340.000 đồng</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q6" class="mr-2" value="c">
+                        <span>C. 404.000 đồng</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q6" class="mr-2" value="d">
+                        <span>D. 420.000 đồng</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4 p-3 bg-yellow-50 rounded-lg hidden">
+                    <p class="font-semibold">Đáp án đúng: C. 404.000 đồng</p>
+                    <p>Giải thích: 
+                    <br>Chu vi tam giác = 3 × cạnh = 3 × 30√3 ≈ 3 × 51,96 = 155,88 cm = 1,5588 m
+                    <br>Chi phí mua gỗ = 1,5588 × 150.000 = 233.820 đồng
+                    <br>Tổng chi phí = Chi phí gỗ + Tiền công = 233.820 + 70.000 = 303.820 đồng
+                    <br>Làm tròn đến hàng nghìn: 304.000 đồng</p>
+                </div>
+            </div>
+
+            <div class="question-container bg-white rounded-lg shadow-md p-6 mb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-semibold">Câu 7:</h3>
+                    <button class="show-explanation px-3 py-1 bg-blue-500 text-white rounded-md text-sm hover:bg-blue-600">Xem giải thích</button>
+                </div>
+                <p class="mb-3 math">Giải phương trình 2x² - x - 3 = 0. Nghiệm của phương trình là:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3">
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q7" class="mr-2" value="a">
+                        <span>A. x = -1 hoặc x = 3/2</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q7" class="mr-2" value="b">
+                        <span>B. x = 1 hoặc x = -3/2</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q7" class="mr-2" value="c">
+                        <span>C. x = -3/2 hoặc x = 1</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q7" class="mr-2" value="d">
+                        <span>D. x = -1 hoặc x = -3/2</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4 p-3 bg-yellow-50 rounded-lg hidden">
+                    <p class="font-semibold">Đáp án đúng: A. x = -1 hoặc x = 3/2</p>
+                    <p>Giải thích: 
+                    <br>Phương trình 2x² - x - 3 = 0 có dạng ax² + bx + c = 0 với a = 2, b = -1, c = -3
+                    <br>Δ = b² - 4ac = (-1)² - 4×2×(-3) = 1 + 24 = 25 > 0
+                    <br>x₁,₂ = (-b ± √Δ)/(2a) = (1 ± 5)/(2×2)
+                    <br>x₁ = (1 + 5)/4 = 6/4 = 3/2
+                    <br>x₂ = (1 - 5)/4 = -4/4 = -1
+                    <br>Vậy nghiệm của phương trình là x = -1 hoặc x = 3/2</p>
+                </div>
+            </div>
+
+            <div class="question-container bg-white rounded-lg shadow-md p-6 mb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-semibold">Câu 8:</h3>
+                    <button class="show-explanation px-3 py-1 bg-blue-500 text-white rounded-md text-sm hover:bg-blue-600">Xem giải thích</button>
+                </div>
+                <p class="mb-3 math">Giải phương trình 16x² - 32 = 0. Nghiệm của phương trình là:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3">
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q8" class="mr-2" value="a">
+                        <span>A. x = ±2√2</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q8" class="mr-2" value="b">
+                        <span>B. x = ±√2</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q8" class="mr-2" value="c">
+                        <span>C. x = ±2</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q8" class="mr-2" value="d">
+                        <span>D. x = ±√(32/16)</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4 p-3 bg-yellow-50 rounded-lg hidden">
+                    <p class="font-semibold">Đáp án đúng: B. x = ±√2</p>
+                    <p>Giải thích: 
+                    <br>Phương trình 16x² - 32 = 0
+                    <br>⟹ 16x² = 32
+                    <br>⟹ x² = 32/16 = 2
+                    <br>⟹ x = ±√2
+                    <br>Vậy nghiệm của phương trình là x = ±√2</p>
+                </div>
+            </div>
+
+            <div class="question-container bg-white rounded-lg shadow-md p-6 mb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-semibold">Câu 9:</h3>
+                    <button class="show-explanation px-3 py-1 bg-blue-500 text-white rounded-md text-sm hover:bg-blue-600">Xem giải thích</button>
+                </div>
+                <p class="mb-3 math">Cho hàm số y = 1/4 x². Điểm A trên đồ thị (P) có hoành độ bằng -6 có tọa độ là:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3">
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q9" class="mr-2" value="a">
+                        <span>A. A(-6, -9)</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q9" class="mr-2" value="b">
+                        <span>B. A(-6, 9)</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q9" class="mr-2" value="c">
+                        <span>C. A(-6, 6)</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q9" class="mr-2" value="d">
+                        <span>D. A(-6, 36)</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4 p-3 bg-yellow-50 rounded-lg hidden">
+                    <p class="font-semibold">Đáp án đúng: B. A(-6, 9)</p>
+                    <p>Giải thích: 
+                    <br>Hàm số y = 1/4 x², nên tọa độ y của điểm A là:
+                    <br>y = 1/4 × (-6)² = 1/4 × 36 = 9
+                    <br>Vậy tọa độ của điểm A là A(-6, 9)</p>
+                </div>
+            </div>
+
+            <div class="question-container bg-white rounded-lg shadow-md p-6 mb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-semibold">Câu 10:</h3>
+                    <button class="show-explanation px-3 py-1 bg-blue-500 text-white rounded-md text-sm hover:bg-blue-600">Xem giải thích</button>
+                </div>
+                <p class="mb-3 math">Cho phương trình 3x² - 5x - 4 = 0. Phương trình này có:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3">
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q10" class="mr-2" value="a">
+                        <span>A. Hai nghiệm phân biệt</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q10" class="mr-2" value="b">
+                        <span>B. Nghiệm kép</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q10" class="mr-2" value="c">
+                        <span>C. Vô nghiệm</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q10" class="mr-2" value="d">
+                        <span>D. Vô số nghiệm</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4 p-3 bg-yellow-50 rounded-lg hidden">
+                    <p class="font-semibold">Đáp án đúng: A. Hai nghiệm phân biệt</p>
+                    <p>Giải thích: 
+                    <br>Phương trình 3x² - 5x - 4 = 0 có dạng ax² + bx + c = 0 với a = 3, b = -5, c = -4
+                    <br>Δ = b² - 4ac = (-5)² - 4×3×(-4) = 25 + 48 = 73 > 0
+                    <br>Vì Δ > 0 nên phương trình có hai nghiệm phân biệt.</p>
+                </div>
+            </div>
+
+            <div class="question-container bg-white rounded-lg shadow-md p-6 mb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-semibold">Câu 11:</h3>
+                    <button class="show-explanation px-3 py-1 bg-blue-500 text-white rounded-md text-sm hover:bg-blue-600">Xem giải thích</button>
+                </div>
+                <p class="mb-3 math">Giải phương trình 7x² - 2x - 9 = 0. Nghiệm của phương trình là:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3">
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q11" class="mr-2" value="a">
+                        <span>A. x = -1 hoặc x = 9/7</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q11" class="mr-2" value="b">
+                        <span>B. x = 3/7 hoặc x = -3/7</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q11" class="mr-2" value="c">
+                        <span>C. x = -3/7 hoặc x = 9/7</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q11" class="mr-2" value="d">
+                        <span>D. x = -9/7 hoặc x = 3/7</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4 p-3 bg-yellow-50 rounded-lg hidden">
+                    <p class="font-semibold">Đáp án đúng: C. x = -3/7 hoặc x = 9/7</p>
+                    <p>Giải thích: 
+                    <br>Phương trình 7x² - 2x - 9 = 0 có dạng ax² + bx + c = 0 với a = 7, b = -2, c = -9
+                    <br>Δ = b² - 4ac = (-2)² - 4×7×(-9) = 4 + 252 = 256 = 16²
+                    <br>x₁,₂ = (-b ± √Δ)/(2a) = (2 ± 16)/(2×7)
+                    <br>x₁ = (2 + 16)/14 = 18/14 = 9/7
+                    <br>x₂ = (2 - 16)/14 = -14/14 = -1
+                    <br>Vậy nghiệm của phương trình là x = -3/7 hoặc x = 9/7</p>
+                </div>
+            </div>
+
+            <div class="question-container bg-white rounded-lg shadow-md p-6 mb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-semibold">Câu 12:</h3>
+                    <button class="show-explanation px-3 py-1 bg-blue-500 text-white rounded-md text-sm hover:bg-blue-600">Xem giải thích</button>
+                </div>
+                <p class="mb-3 math">Giải phương trình 2x² - 3x = 0. Nghiệm của phương trình là:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3">
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q12" class="mr-2" value="a">
+                        <span>A. x = 0 hoặc x = 3</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q12" class="mr-2" value="b">
+                        <span>B. x = 0 hoặc x = 3/2</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q12" class="mr-2" value="c">
+                        <span>C. x = 0 hoặc x = -3/2</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q12" class="mr-2" value="d">
+                        <span>D. x = 3 hoặc x = -3/2</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4 p-3 bg-yellow-50 rounded-lg hidden">
+                    <p class="font-semibold">Đáp án đúng: B. x = 0 hoặc x = 3/2</p>
+                    <p>Giải thích: 
+                    <br>Phương trình 2x² - 3x = 0
+                    <br>⟹ x(2x - 3) = 0
+                    <br>⟹ x = 0 hoặc 2x - 3 = 0 ⟹ x = 3/2
+                    <br>Vậy nghiệm của phương trình là x = 0 hoặc x = 3/2</p>
+                </div>
+            </div>
+
+            <div class="question-container bg-white rounded-lg shadow-md p-6 mb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-semibold">Câu 13:</h3>
+                    <button class="show-explanation px-3 py-1 bg-blue-500 text-white rounded-md text-sm hover:bg-blue-600">Xem giải thích</button>
+                </div>
+                <p class="mb-3 math">Một công ty muốn thiết kế một logo hình tam giác đều nằm bên trong một biển hiệu hình tròn. Đường kính của biển hiệu là 1,2 mét. Biết R = (a√3)/3, Sđều = (a²√3)/4, với a là cạnh của tam giác đều. Độ dài cạnh của tam giác đều nội tiếp trong biển hiệu là:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3">
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q13" class="mr-2" value="a">
+                        <span>A. 0,6 mét</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q13" class="mr-2" value="b">
+                        <span>B. 1,04 mét</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q13" class="mr-2" value="c">
+                        <span>C. 0,8 mét</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q13" class="mr-2" value="d">
+                        <span>D. 1,2 mét</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4 p-3 bg-yellow-50 rounded-lg hidden">
+                    <p class="font-semibold">Đáp án đúng: B. 1,04 mét</p>
+                    <p>Giải thích: 
+                    <br>Đường kính của biển hiệu hình tròn là 1,2 mét, nên bán kính R = 0,6 mét.
+                    <br>Tam giác đều nội tiếp trong đường tròn có bán kính R, nên theo công thức: R = (a√3)/3
+                    <br>⟹ 0,6 = (a√3)/3
+                    <br>⟹ a = 0,6 × 3/√3 = 1,8/√3 = 1,8√3/3 ≈ 1,04 mét
+                    <br>Vậy độ dài cạnh của tam giác đều nội tiếp là 1,04 mét</p>
+                </div>
+            </div>
+
+            <div class="question-container bg-white rounded-lg shadow-md p-6 mb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-semibold">Câu 14:</h3>
+                    <button class="show-explanation px-3 py-1 bg-blue-500 text-white rounded-md text-sm hover:bg-blue-600">Xem giải thích</button>
+                </div>
+                <p class="mb-3 math">Với tam giác đều có cạnh a = 1,04 mét như ở câu 13, diện tích của tam giác đó là:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3">
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q14" class="mr-2" value="a">
+                        <span>A. 0,468 m²</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q14" class="mr-2" value="b">
+                        <span>B. 0,365 m²</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q14" class="mr-2" value="c">
+                        <span>C. 0,624 m²</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q14" class="mr-2" value="d">
+                        <span>D. 0,316 m²</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4 p-3 bg-yellow-50 rounded-lg hidden">
+                    <p class="font-semibold">Đáp án đúng: A. 0,468 m²</p>
+                    <p>Giải thích: 
+                    <br>Diện tích tam giác đều có cạnh a = 1,04 mét được tính theo công thức:
+                    <br>Sđều = (a²√3)/4 = (1,04² × √3)/4 = (1,0816 × √3)/4 ≈ 0,468 m²</p>
+                </div>
+            </div>
+
+            <div class="question-container bg-white rounded-lg shadow-md p-6 mb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-semibold">Câu 15:</h3>
+                    <button class="show-explanation px-3 py-1 bg-blue-500 text-white rounded-md text-sm hover:bg-blue-600">Xem giải thích</button>
+                </div>
+                <p class="mb-3 math">Cho tam giác nhọn ABC nội tiếp đường tròn tâm O, có góc BAC = 60°; OB = 2cm. Diện tích tam giác MBC trong đó M là giao điểm của hai tiếp tuyến tại B và C có thể là:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3">
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q15" class="mr-2" value="a">
+                        <span>A. 4√3 cm²</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q15" class="mr-2" value="b">
+                        <span>B. 2√3 cm²</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q15" class="mr-2" value="c">
+                        <span>C. 3√3 cm²</span>
+                    </label>
+                    <label class="answer-option flex items-center p-3 border rounded hover:bg-gray-50 cursor-pointer">
+                        <input type="radio" name="q15" class="mr-2" value="d">
+                        <span>D. 6 cm²</span>
+                    </label>
+                </div>
+                <div class="explanation mt-4 p-3 bg-yellow-50 rounded-lg hidden">
+                    <p class="font-semibold">Đáp án đúng: B. 2√3 cm²</p>
+                    <p>Giải thích: 
+                    <br>Điểm M là giao điểm của hai tiếp tuyến tại B và C với đường tròn (O)
+                    <br>Theo đề bài có MB² = MD.MA và BAC = 60°
+                    <br>OB = 2cm, vậy bán kính đường tròn R = 2cm
+                    <br>Khi đó, các góc vuông tại B và C cho chúng ta BM = CM = R/cos(β), với β là góc giữa OM và OB (hoặc OC)
+                    <br>Tam giác OBC là tam giác đều (do OB = OC = R và góc BOC = 60°)
+                    <br>Diện tích tam giác MBC = (1/2) × BC × h, với h là đường cao từ M đến BC
+                    <br>Sau khi tính toán, diện tích tam giác MBC = 2√3 cm²</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 mt-8">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h2 class="text-xl font-bold text-blue-700 mb-2">Kết quả</h2>
+                    <p id="score-display" class="text-lg font-medium">0/15 câu đúng (0%)</p>
+                </div>
+                <div class="space-x-4">
+                    <button id="check-answers" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg">Kiểm tra kết quả</button>
+                    <button id="reset-quiz" class="bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 px-6 rounded-lg">Làm lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Đáp án đúng cho mỗi câu hỏi
+        const correctAnswers = {
+            q1: "b", // Parabol mở xuống dưới
+            q2: "d", // x = ±2√4
+            q3: "a", // Δ > 0
+            q4: "c", // 21/4
+            q5: "b", // 30√3 cm
+            q6: "c", // 404.000 đồng
+            q7: "a", // x = -1 hoặc x = 3/2
+            q8: "b", // x = ±√2
+            q9: "b", // A(-6, 9)
+            q10: "a", // Hai nghiệm phân biệt
+            q11: "c", // x = -3/7 hoặc x = 9/7
+            q12: "b", // x = 0 hoặc x = 3/2
+            q13: "b", // 1,04 mét
+            q14: "a", // 0,468 m²
+            q15: "b"  // 2√3 cm²
+        };
+
+        // Xử lý sự kiện khi nhấn nút "Xem giải thích"
+        document.querySelectorAll('.show-explanation').forEach(button => {
+            button.addEventListener('click', function() {
+                const explanationDiv = this.closest('.question-container').querySelector('.explanation');
+                explanationDiv.classList.toggle('hidden');
+                this.textContent = explanationDiv.classList.contains('hidden') ? 'Xem giải thích' : 'Ẩn giải thích';
+            });
+        });
+
+        // Xử lý khi chọn đáp án
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                // Xóa lớp selected từ tất cả các tùy chọn trong cùng một câu hỏi
+                this.closest('.question-container').querySelectorAll('.answer-option').forEach(option => {
+                    option.classList.remove('selected');
+                });
+                // Thêm lớp selected cho tùy chọn được chọn
+                this.closest('.answer-option').classList.add('selected');
+            });
+        });
+
+        // Xử lý sự kiện khi nhấn nút "Kiểm tra kết quả"
+        document.getElementById('check-answers').addEventListener('click', function() {
+            let score = 0;
+            
+            // Kiểm tra từng câu trả lời
+            for (const questionId in correctAnswers) {
+                const selectedOption = document.querySelector(`input[name="${questionId}"]:checked`);
+                if (selectedOption) {
+                    const answerOption = selectedOption.closest('.answer-option');
+                    answerOption.classList.remove('selected');
+                    
+                    if (selectedOption.value === correctAnswers[questionId]) {
+                        score++;
+                        answerOption.classList.add('correct');
+                    } else {
+                        answerOption.classList.add('incorrect');
+                        // Hiển thị đáp án đúng
+                        const correctOption = document.querySelector(`input[name="${questionId}"][value="${correctAnswers[questionId]}"]`);
+                        if (correctOption) {
+                            correctOption.closest('.answer-option').classList.add('correct');
+                        }
+                    }
+                }
+            }
+            
+            // Hiển thị kết quả
+            const percentage = (score / Object.keys(correctAnswers).length) * 100;
+            document.getElementById('score-display').textContent = `${score}/${Object.keys(correctAnswers).length} câu đúng (${percentage.toFixed(1)}%)`;
+            
+            // Hiển thị tất cả các giải thích
+            document.querySelectorAll('.explanation').forEach(explanation => {
+                explanation.classList.remove('hidden');
+            });
+            
+            document.querySelectorAll('.show-explanation').forEach(button => {
+                button.textContent = 'Ẩn giải thích';
+            });
+        });
+
+        // Xử lý sự kiện khi nhấn nút "Làm lại"
+        document.getElementById('reset-quiz').addEventListener('click', function() {
+            // Xóa tất cả các lựa chọn
+            document.querySelectorAll('input[type="radio"]').forEach(input => {
+                input.checked = false;
+            });
+            
+            // Xóa các lớp màu nền
+            document.querySelectorAll('.answer-option').forEach(option => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+            });
+            
+            // Ẩn tất cả các giải thích
+            document.querySelectorAll('.explanation').forEach(explanation => {
+                explanation.classList.add('hidden');
+            });
+            
+            document.querySelectorAll('.show-explanation').forEach(button => {
+                button.textContent = 'Xem giải thích';
+            });
+            
+            // Đặt lại điểm số
+            document.getElementById('score-display').textContent = '0/15 câu đúng (0%)';
+        });
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
