@@ -3,595 +3,542 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Mid Test 3 - Grade 9</title>
+    <title>English Grade 9 Quiz</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .correct-answer {
-            background-color: #d1fae5;
-            border-left: 4px solid #10b981;
-            padding-left: 12px;
+        .option-label {
+            display: block;
+            margin-bottom: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
         }
-        .wrong-answer {
-            background-color: #fee2e2;
-            border-left: 4px solid #ef4444;
-            padding-left: 12px;
+        .option-label:hover {
+            background-color: #f3f4f6;
         }
         .explanation {
             display: none;
-            background-color: #f3f4f6;
-            border-left: 4px solid #6366f1;
-            padding: 10px 15px;
             margin-top: 10px;
-            border-radius: 5px;
+            padding: 10px;
+            background-color: #e8f4ff;
+            border-radius: 4px;
+        }
+        .correct {
+            background-color: #d1fae5;
+        }
+        .incorrect {
+            background-color: #fee2e2;
         }
     </style>
 </head>
-<body class="bg-gray-100 font-sans">
-    <div class="container mx-auto px-4 py-8 max-w-4xl">
-        <header class="text-center mb-8">
-            <h1 class="text-3xl font-bold text-blue-800">TIẾNG ANH LỚP 9 - MID TEST 3</h1>
-            <p class="text-gray-600 mt-2">Thời gian: 45 phút</p>
-        </header>
-
-        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-            <h2 class="text-xl font-bold mb-4">I. Chọn từ/cụm từ/câu (A, B, C hoặc D) phù hợp nhất.</h2>
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8 max-w-3xl">
+        <h1 class="text-2xl font-bold text-center mb-6 text-blue-700">TEST 3 - ENGLISH GRADE 9</h1>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+            <h2 class="text-xl font-semibold mb-4">I. Choose the word/phrase/sentence (A, B, C or D) that best fits the space or best answers the question given in each sentence.</h2>
             
-            <!-- Câu 1 -->
-            <div class="mb-6 p-4 bg-gray-50 rounded">
-                <p class="font-semibold">1. Which word has the underlined part pronounced differently from that of the others?</p>
-                <div class="ml-4 mt-2">
-                    <div class="mb-1">
-                        <input type="radio" name="q1" id="q1a" value="A">
-                        <label for="q1a">A. hunt</label>
+            <form id="quizForm">
+                <!-- Question 1 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">1. Which word has the underlined part pronounced differently from that of the others?</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q1" value="A"> A. h<u>u</u>nt
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q1" value="B"> B. r<u>u</u>le
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q1" value="C"> C. j<u>u</u>ngle
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q1" value="D"> D. c<u>u</u>lture
+                        </label>
                     </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q1" id="q1b" value="B">
-                        <label for="q1b">B. rule</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q1" id="q1c" value="C">
-                        <label for="q1c">C. jungle</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q1" id="q1d" value="D">
-                        <label for="q1d">D. culture</label>
+                    <div class="explanation" id="explanation1">
+                        <p><strong>Correct answer: B. r<u>u</u>le</strong></p>
+                        <p>In "rule," the underlined 'u' is pronounced as /uː/ (long u sound), while in "hunt," "jungle," and "culture," the underlined 'u' is pronounced as /ʌ/ (short u sound).</p>
                     </div>
                 </div>
-                <div class="explanation" id="exp1">
-                    <p><strong>Đáp án đúng: B. rule</strong></p>
-                    <p>Phần gạch chân của "rule" phát âm là /u:/ (âm dài), trong khi "hunt", "jungle" và "culture" đều có phần gạch chân phát âm là /ʌ/ (âm ngắn).</p>
-                </div>
-            </div>
 
-            <!-- Câu 2 -->
-            <div class="mb-6 p-4 bg-gray-50 rounded">
-                <p class="font-semibold">2. Which word has the underlined part pronounced differently from that of the others?</p>
-                <div class="ml-4 mt-2">
-                    <div class="mb-1">
-                        <input type="radio" name="q2" id="q2a" value="A">
-                        <label for="q2a">A. suggested</label>
+                <!-- Question 2 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">2. Which word has the underlined part pronounced differently from that of the others?</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q2" value="A"> A. suggest<u>ed</u>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q2" value="B"> B. finish<u>ed</u>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q2" value="C"> C. reduc<u>ed</u>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q2" value="D"> D. impress<u>ed</u>
+                        </label>
                     </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q2" id="q2b" value="B">
-                        <label for="q2b">B. finished</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q2" id="q2c" value="C">
-                        <label for="q2c">C. reduced</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q2" id="q2d" value="D">
-                        <label for="q2d">D. impressed</label>
+                    <div class="explanation" id="explanation2">
+                        <p><strong>Correct answer: C. reduc<u>ed</u></strong></p>
+                        <p>In "reduced," the ending "-ed" is pronounced as /t/, while in "suggested," "finished," and "impressed," the ending "-ed" is pronounced as /d/ or /ɪd/.</p>
                     </div>
                 </div>
-                <div class="explanation" id="exp2">
-                    <p><strong>Đáp án đúng: C. reduced</strong></p>
-                    <p>Đuôi "-ed" trong "reduced" được phát âm là /t/, trong khi "-ed" trong "suggested", "finished" và "impressed" được phát âm là /id/.</p>
-                </div>
-            </div>
 
-            <!-- Câu 3 -->
-            <div class="mb-6 p-4 bg-gray-50 rounded">
-                <p class="font-semibold">3. Which word has a different stress pattern from that of the others?</p>
-                <div class="ml-4 mt-2">
-                    <div class="mb-1">
-                        <input type="radio" name="q3" id="q3a" value="A">
-                        <label for="q3a">A. litter</label>
+                <!-- Question 3 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">3. Which word has a different stress pattern from that of the others?</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q3" value="A"> A. litter
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q3" value="B"> B. wonder
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q3" value="C"> C. damage
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q3" value="D"> D. maintain
+                        </label>
                     </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q3" id="q3b" value="B">
-                        <label for="q3b">B. wonder</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q3" id="q3c" value="C">
-                        <label for="q3c">C. damage</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q3" id="q3d" value="D">
-                        <label for="q3d">D. maintain</label>
+                    <div class="explanation" id="explanation3">
+                        <p><strong>Correct answer: D. maintain</strong></p>
+                        <p>"Maintain" has the stress on the second syllable (main-TAIN), while "litter," "wonder," and "damage" have the stress on the first syllable (LIT-ter, WON-der, DAM-age).</p>
                     </div>
                 </div>
-                <div class="explanation" id="exp3">
-                    <p><strong>Đáp án đúng: D. maintain</strong></p>
-                    <p>"Maintain" có trọng âm rơi vào âm tiết thứ hai (main-TAIN), trong khi các từ còn lại đều có trọng âm rơi vào âm tiết đầu tiên (LIT-ter, WON-der, DAM-age).</p>
-                </div>
-            </div>
 
-            <!-- Câu 4 -->
-            <div class="mb-6 p-4 bg-gray-50 rounded">
-                <p class="font-semibold">4. Which word has a different stress pattern from that of the others?</p>
-                <div class="ml-4 mt-2">
-                    <div class="mb-1">
-                        <input type="radio" name="q4" id="q4a" value="A">
-                        <label for="q4a">A. consider</label>
+                <!-- Question 4 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">4. Which word has a different stress pattern from that of the others?</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q4" value="A"> A. consider
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q4" value="B"> B. government
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q4" value="C"> C. national
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q4" value="D"> D. animal
+                        </label>
                     </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q4" id="q4b" value="B">
-                        <label for="q4b">B. government</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q4" id="q4c" value="C">
-                        <label for="q4c">C. national</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q4" id="q4d" value="D">
-                        <label for="q4d">D. animal</label>
+                    <div class="explanation" id="explanation4">
+                        <p><strong>Correct answer: A. consider</strong></p>
+                        <p>"Consider" has the stress on the second syllable (con-SID-er), while "government," "national," and "animal" have the stress on the first syllable (GOV-ern-ment, NA-tion-al, AN-i-mal).</p>
                     </div>
                 </div>
-                <div class="explanation" id="exp4">
-                    <p><strong>Đáp án đúng: D. animal</strong></p>
-                    <p>"Animal" có trọng âm rơi vào âm tiết đầu tiên (A-ni-mal), trong khi các từ còn lại đều có trọng âm rơi vào âm tiết thứ nhất: con-SI-der, GO-vern-ment, NA-tio-nal.</p>
-                </div>
-            </div>
 
-            <!-- Câu 5 -->
-            <div class="mb-6 p-4 bg-gray-50 rounded">
-                <p class="font-semibold">5. The ______________ of Fansipan offers spectacular views of the surrounding mountains and valleys.</p>
-                <div class="ml-4 mt-2">
-                    <div class="mb-1">
-                        <input type="radio" name="q5" id="q5a" value="A">
-                        <label for="q5a">A. roof</label>
+                <!-- Question 5 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">5. The ____________ of Fansipan offers spectacular views of the surrounding mountains and valleys.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q5" value="A"> A. roof
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q5" value="B"> B. summit
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q5" value="C"> C. head
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q5" value="D"> D. cap
+                        </label>
                     </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q5" id="q5b" value="B">
-                        <label for="q5b">B. summit</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q5" id="q5c" value="C">
-                        <label for="q5c">C. head</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q5" id="q5d" value="D">
-                        <label for="q5d">D. cap</label>
+                    <div class="explanation" id="explanation5">
+                        <p><strong>Correct answer: B. summit</strong></p>
+                        <p>"Summit" refers to the highest point of a mountain, which would offer spectacular views. "Roof," "head," and "cap" are not commonly used to describe the top of a mountain in this context.</p>
                     </div>
                 </div>
-                <div class="explanation" id="exp5">
-                    <p><strong>Đáp án đúng: B. summit</strong></p>
-                    <p>"Summit" có nghĩa là "đỉnh núi", từ thích hợp nhất khi nói về núi Fansipan. "Roof" (mái nhà), "head" (đầu), "cap" (mũ) không được sử dụng để chỉ đỉnh núi trong ngữ cảnh này.</p>
-                </div>
-            </div>
 
-            <!-- Câu 6 -->
-            <div class="mb-6 p-4 bg-gray-50 rounded">
-                <p class="font-semibold">6. The tropical ______________ in Vietnam, particularly Pù Mát National Park, are famous for their diversity of plants and animals.</p>
-                <div class="ml-4 mt-2">
-                    <div class="mb-1">
-                        <input type="radio" name="q6" id="q6a" value="A">
-                        <label for="q6a">A. rainforests</label>
+                <!-- Question 6 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">6. The tropical ____________ in Vietnam, particularly Phú Mát National Park, are famous for their diversity of plants and animals.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q6" value="A"> A. rainforests
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q6" value="B"> B. safari parks
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q6" value="C"> C. deserts
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q6" value="D"> D. grasslands
+                        </label>
                     </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q6" id="q6b" value="B">
-                        <label for="q6b">B. safari parks</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q6" id="q6c" value="C">
-                        <label for="q6c">C. deserts</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q6" id="q6d" value="D">
-                        <label for="q6d">D. grasslands</label>
+                    <div class="explanation" id="explanation6">
+                        <p><strong>Correct answer: A. rainforests</strong></p>
+                        <p>Vietnam is known for its tropical rainforests, particularly in national parks. The climate and geography of Vietnam do not support deserts or extensive grasslands, and "safari parks" are human-made attractions.</p>
                     </div>
                 </div>
-                <div class="explanation" id="exp6">
-                    <p><strong>Đáp án đúng: A. rainforests</strong></p>
-                    <p>Vườn quốc gia Pù Mát nổi tiếng với hệ sinh thái rừng nhiệt đới (rainforest). Việt Nam không có sa mạc (deserts), công viên safari (safari parks) không phải đặc trưng của Pù Mát, và đồng cỏ (grasslands) không phải là hệ sinh thái chính ở đây.</p>
-                </div>
-            </div>
 
-            <!-- Câu 7 -->
-            <div class="mb-6 p-4 bg-gray-50 rounded">
-                <p class="font-semibold">7. Tourists can enjoy a peaceful boat ride that ______________ them through the scenic Trà Sư Melaleuca Forest.</p>
-                <div class="ml-4 mt-2">
-                    <div class="mb-1">
-                        <input type="radio" name="q7" id="q7a" value="A">
-                        <label for="q7a">A. swims</label>
+                <!-- Question 7 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">7. Tourists can enjoy a peaceful boat ride that ____________ them through the scenic Trà Sư Melaleuca Forest.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q7" value="A"> A. swims
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q7" value="B"> B. falls
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q7" value="C"> C. floats
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q7" value="D"> D. slips
+                        </label>
                     </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q7" id="q7b" value="B">
-                        <label for="q7b">B. falls</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q7" id="q7c" value="C">
-                        <label for="q7c">C. floats</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q7" id="q7d" value="D">
-                        <label for="q7d">D. slips</label>
+                    <div class="explanation" id="explanation7">
+                        <p><strong>Correct answer: C. floats</strong></p>
+                        <p>"Floats" is the most appropriate verb to describe how a boat carries passengers through water. "Swims" is for living beings, "falls" indicates dropping, and "slips" suggests accidental movement.</p>
                     </div>
                 </div>
-                <div class="explanation" id="exp7">
-                    <p><strong>Đáp án đúng: C. floats</strong></p>
-                    <p>"Floats" (trôi nổi, lướt đi) là động từ thích hợp nhất để mô tả chuyến đi thuyền qua rừng tràm Trà Sư. "Swims" (bơi) dùng cho người hoặc động vật, không phải thuyền. "Falls" (rơi) và "slips" (trượt) không phù hợp với ngữ cảnh đi thuyền.</p>
-                </div>
-            </div>
 
-            <!-- Câu 8 -->
-            <div class="mb-6 p-4 bg-gray-50 rounded">
-                <p class="font-semibold">8. Adventurous hikers often go ______________ the paths in search of hidden waterfalls or breathtaking views.</p>
-                <div class="ml-4 mt-2">
-                    <div class="mb-1">
-                        <input type="radio" name="q8" id="q8a" value="A">
-                        <label for="q8a">A. in</label>
+                <!-- Question 8 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">8. Adventurous hikers often go ____________ the paths in search of hidden waterfalls or breathtaking views.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q8" value="A"> A. in
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q8" value="B"> B. to
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q8" value="C"> C. for
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q8" value="D"> D. off
+                        </label>
                     </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q8" id="q8b" value="B">
-                        <label for="q8b">B. to</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q8" id="q8c" value="C">
-                        <label for="q8c">C. for</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q8" id="q8d" value="D">
-                        <label for="q8d">D. off</label>
+                    <div class="explanation" id="explanation8">
+                        <p><strong>Correct answer: D. off</strong></p>
+                        <p>"Go off the paths" means to leave the established trails and explore less traveled areas, which is what adventurous hikers would do to find hidden waterfalls.</p>
                     </div>
                 </div>
-                <div class="explanation" id="exp8">
-                    <p><strong>Đáp án đúng: D. off</strong></p>
-                    <p>"Go off the paths" nghĩa là đi ra khỏi đường mòn, đi vào những nơi chưa được khai phá - phù hợp với hành động của những người đi bộ đường dài phiêu lưu. Các giới từ khác không tạo thành cụm từ đúng nghĩa trong ngữ cảnh này.</p>
-                </div>
-            </div>
 
-            <!-- Câu 9 -->
-            <div class="mb-6 p-4 bg-gray-50 rounded">
-                <p class="font-semibold">9. Son Doong Cave is considered as one of ______________ caves in the world.</p>
-                <div class="ml-4 mt-2">
-                    <div class="mb-1">
-                        <input type="radio" name="q9" id="q9a" value="A">
-                        <label for="q9a">A. the largest</label>
+                <!-- Question 9 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">9. Sơn Đoòng Cave is considered as one of ____________ caves in the world.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q9" value="A"> A. the largest
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q9" value="B"> B. larger
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q9" value="C"> C. the large
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q9" value="D"> D. much large
+                        </label>
                     </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q9" id="q9b" value="B">
-                        <label for="q9b">B. larger</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q9" id="q9c" value="C">
-                        <label for="q9c">C. the large</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q9" id="q9d" value="D">
-                        <label for="q9d">D. much large</label>
+                    <div class="explanation" id="explanation9">
+                        <p><strong>Correct answer: A. the largest</strong></p>
+                        <p>When referring to something that ranks at the top in a category (one of a group), we use the superlative form "the largest." Sơn Đoòng is actually considered the largest cave in the world by volume.</p>
                     </div>
                 </div>
-                <div class="explanation" id="exp9">
-                    <p><strong>Đáp án đúng: A. the largest</strong></p>
-                    <p>Khi nói "one of + tính từ", ta phải dùng tính từ so sánh nhất (superlative). "One of the largest caves" (một trong những hang động lớn nhất) là cấu trúc đúng. Các đáp án khác không tuân theo quy tắc ngữ pháp.</p>
-                </div>
-            </div>
 
-            <!-- Câu 10 -->
-            <div class="mb-6 p-4 bg-gray-50 rounded">
-                <p class="font-semibold">10. If we don't stop ______________, our natural environment will suffer serious damage.</p>
-                <div class="ml-4 mt-2">
-                    <div class="mb-1">
-                        <input type="radio" name="q10" id="q10a" value="A">
-                        <label for="q10a">A. to litter</label>
+                <!-- Question 10 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">10. If we don't stop ____________, our natural environment will suffer serious damage.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q10" value="A"> A. to litter
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q10" value="B"> B. litter
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q10" value="C"> C. littering
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q10" value="D"> D. littered
+                        </label>
                     </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q10" id="q10b" value="B">
-                        <label for="q10b">B. litter</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q10" id="q10c" value="C">
-                        <label for="q10c">C. littering</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q10" id="q10d" value="D">
-                        <label for="q10d">D. littered</label>
+                    <div class="explanation" id="explanation10">
+                        <p><strong>Correct answer: C. littering</strong></p>
+                        <p>After "stop," we use the gerund form of the verb ("littering"). "To litter" would be used after verbs like "want," "plan," etc. "Litter" alone is incorrect, and "littered" is the past tense form.</p>
                     </div>
                 </div>
-                <div class="explanation" id="exp10">
-                    <p><strong>Đáp án đúng: C. littering</strong></p>
-                    <p>Sau động từ "stop", ta dùng V-ing để chỉ dừng một hành động đang diễn ra. "Stop littering" nghĩa là dừng việc xả rác. "To litter" không đúng vì "stop to do" có nghĩa là dừng lại để làm việc gì đó. "Litter" và "littered" không phù hợp với cấu trúc ngữ pháp của câu.</p>
-                </div>
-            </div>
 
-            <!-- Câu 11 -->
-            <div class="mb-6 p-4 bg-gray-50 rounded">
-                <p class="font-semibold">11. The Amazon rainforest, ______________ is the oldest rainforest on Earth, is home to an incredible variety of wildlife.</p>
-                <div class="ml-4 mt-2">
-                    <div class="mb-1">
-                        <input type="radio" name="q11" id="q11a" value="A">
-                        <label for="q11a">A. that</label>
+                <!-- Question 11 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">11. The Amazon rainforest, ____________ is the oldest rainforest on Earth, is home to an incredible variety of wildlife.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q11" value="A"> A. that
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q11" value="B"> B. it
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q11" value="C"> C. there
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q11" value="D"> D. which
+                        </label>
                     </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q11" id="q11b" value="B">
-                        <label for="q11b">B. it</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q11" id="q11c" value="C">
-                        <label for="q11c">C. there</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q11" id="q11d" value="D">
-                        <label for="q11d">D. which</label>
+                    <div class="explanation" id="explanation11">
+                        <p><strong>Correct answer: D. which</strong></p>
+                        <p>We use "which" to introduce a non-defining relative clause that provides additional information about the Amazon rainforest. "That" is used for defining clauses, while "it" and "there" don't work grammatically in this context.</p>
                     </div>
                 </div>
-                <div class="explanation" id="exp11">
-                    <p><strong>Đáp án đúng: D. which</strong></p>
-                    <p>Đây là mệnh đề quan hệ không xác định (non-defining relative clause) cung cấp thông tin bổ sung về rừng Amazon. Đại từ quan hệ "which" được dùng để chỉ vật và là lựa chọn đúng. "That" thường không dùng trong mệnh đề quan hệ không xác định. "It" và "there" không phải là đại từ quan hệ.</p>
-                </div>
-            </div>
 
-            <!-- Câu 12 -->
-            <div class="mb-6 p-4 bg-gray-50 rounded">
-                <p class="font-semibold">12. Travelers should ______________ visiting natural wonders during peak seasons.</p>
-                <div class="ml-4 mt-2">
-                    <div class="mb-1">
-                        <input type="radio" name="q12" id="q12a" value="A">
-                        <label for="q12a">A. refuse</label>
+                <!-- Question 12 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">12. Travelers should ____________ visiting natural wonders during peak seasons.</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q12" value="A"> A. refuse
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q12" value="B"> B. avoid
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q12" value="C"> C. prevent
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q12" value="D"> D. disagree
+                        </label>
                     </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q12" id="q12b" value="B">
-                        <label for="q12b">B. avoid</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q12" id="q12c" value="C">
-                        <label for="q12c">C. prevent</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q12" id="q12d" value="D">
-                        <label for="q12d">D. disagree</label>
+                    <div class="explanation" id="explanation12">
+                        <p><strong>Correct answer: B. avoid</strong></p>
+                        <p>"Avoid" is the most appropriate verb meaning "to keep away from." "Refuse" means to reject an offer, "prevent" means to stop something from happening, and "disagree" means to have a different opinion.</p>
                     </div>
                 </div>
-                <div class="explanation" id="exp12">
-                    <p><strong>Đáp án đúng: B. avoid</strong></p>
-                    <p>"Avoid" (tránh) là từ thích hợp nhất: du khách nên tránh thăm các kỳ quan thiên nhiên vào mùa cao điểm. "Refuse" (từ chối) quá mạnh, "prevent" (ngăn chặn) không phù hợp với ngữ cảnh, và "disagree" (không đồng ý) không đi với cụm "visiting natural wonders".</p>
-                </div>
-            </div>
 
-            <!-- Câu 13 -->
-            <div class="mb-6 p-4 bg-gray-50 rounded">
-                <p class="font-semibold">13. Bao: "I think we should go hiking in Cat Tien National Park this weekend. The weather is supposed to be perfect!" Lan: "______________"</p>
-                <div class="ml-4 mt-2">
-                    <div class="mb-1">
-                        <input type="radio" name="q13" id="q13a" value="A">
-                        <label for="q13a">A. That sounds amazing.</label>
+                <!-- Question 13 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">13. Bảo: "I think we should go hiking in Cát Tiên National Park this weekend. The weather is supposed to be perfect!" Lan: "____________"</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q13" value="A"> A. That sounds amazing.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q13" value="B"> B. The weather will be better this weekend.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q13" value="C"> C. You should consider hiking.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q13" value="D"> D. I suppose you are right.
+                        </label>
                     </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q13" id="q13b" value="B">
-                        <label for="q13b">B. The weather will be better this weekend.</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q13" id="q13c" value="C">
-                        <label for="q13c">C. You should consider hiking.</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q13" id="q13d" value="D">
-                        <label for="q13d">D. I suppose you are right.</label>
+                    <div class="explanation" id="explanation13">
+                        <p><strong>Correct answer: A. That sounds amazing.</strong></p>
+                        <p>This response shows enthusiasm and agreement with Bảo's suggestion. The other options don't make sense as responses: B repeats information, C suggests something Bảo has already proposed, and D sounds uncertain.</p>
                     </div>
                 </div>
-                <div class="explanation" id="exp13">
-                    <p><strong>Đáp án đúng: A. That sounds amazing.</strong></p>
-                    <p>Trong đối thoại này, Bao đề xuất đi leo núi và nói thời tiết sẽ rất đẹp. Câu trả lời "That sounds amazing" (Nghe có vẻ tuyệt) là lời đồng ý phù hợp nhất. Các đáp án khác hoặc không liên quan ("The weather will be better this weekend" - thời tiết đã được đề cập là hoàn hảo), hoặc không phù hợp với ngữ cảnh ("You should consider hiking" - Bao đang đề xuất chứ không phải đang cần lời khuyên).</p>
-                </div>
-            </div>
 
-            <!-- Câu 14 -->
-            <div class="mb-6 p-4 bg-gray-50 rounded">
-                <p class="font-semibold">14. An: "Let's go to Đà Nẵng by plane. It's faster." Phuong: "______________as it's cheaper and we can enjoy the scenery along the way."</p>
-                <div class="ml-4 mt-2">
-                    <div class="mb-1">
-                        <input type="radio" name="q14" id="q14a" value="A">
-                        <label for="q14a">A. I believe going by train is not as good as going by plane</label>
+                <!-- Question 14 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-medium mb-3">14. An: "Let's go to Đà Nẵng by plane. It's faster." Phương: "____________ as it's cheaper and we can enjoy the scenery along the way."</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q14" value="A"> A. I believe going by train is not as good as going by plane
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q14" value="B"> B. Going by train is worse
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q14" value="C"> C. I think going by train is better
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q14" value="D"> D. I dislike going by train
+                        </label>
                     </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q14" id="q14b" value="B">
-                        <label for="q14b">B. Going by train is worse</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q14" id="q14c" value="C">
-                        <label for="q14c">C. I think going by train is better</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q14" id="q14d" value="D">
-                        <label for="q14d">D. I dislike going by train</label>
+                    <div class="explanation" id="explanation14">
+                        <p><strong>Correct answer: C. I think going by train is better</strong></p>
+                        <p>Based on the explanation that follows (it's cheaper and offers scenery), Phương clearly prefers the train over the plane, so "I think going by train is better" is the logical choice.</p>
                     </div>
                 </div>
-                <div class="explanation" id="exp14">
-                    <p><strong>Đáp án đúng: C. I think going by train is better</strong></p>
-                    <p>Phần sau câu Phuong nói "as it's cheaper and we can enjoy the scenery along the way" cho thấy Phuong ưa thích đi tàu hơn. Vì vậy đáp án "I think going by train is better" (Tôi nghĩ đi tàu tốt hơn) phù hợp nhất với ngữ cảnh. Các lựa chọn khác đều mâu thuẫn với phần tiếp theo của câu.</p>
-                </div>
-            </div>
 
-            <h2 class="text-xl font-bold mb-4 mt-8">II. Nhìn biển báo hoặc thông báo. Chọn câu trả lời tốt nhất.</h2>
-            
-            <!-- Câu 15 -->
-            <div class="mb-6 p-4 bg-gray-50 rounded">
-                <div class="flex mb-4">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMTUwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZmZjYzAwIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMyIvPjx0ZXh0IHg9IjUwJSIgeT0iMzUlIiBmb250LWZhbWlseT0iQXJpYWwgQmxhY2siIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMwMDAwMDAiPkNBVVRJT048L3RleHQ+PHRleHQgeD0iNTAlIiB5PSI1NSUiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjayIgZm9udC1zaXplPSIyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzAwMDAwMCI+U0xPVzwvdGV4dD48dGV4dCB4PSI1MCUiIHk9Ijc1JSIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrIiBmb250LXNpemU9IjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMDAwMDAwIj5ET1dOPC90ZXh0Pjx0ZXh0IHg9IjUwJSIgeT0iOTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMwMDAwMDAiPlBFREVTVFJJQU4gVFJBRkZJQzwvdGV4dD48L3N2Zz4=" alt="Caution sign" class="h-40 mx-auto" />
-                </div>
-                <p class="font-semibold">15. What does the sign mean?</p>
-                <div class="ml-4 mt-2">
-                    <div class="mb-1">
-                        <input type="radio" name="q15" id="q15a" value="A">
-                        <label for="q15a">A. Pedestrians should walk slowly.</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q15" id="q15b" value="B">
-                        <label for="q15b">B. You should slow your speed and pay attention to pedestrians.</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q15" id="q15c" value="C">
-                        <label for="q15c">C. Pedestrians will slow down the traffic.</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q15" id="q15d" value="D">
-                        <label for="q15d">D. You should drive carefully because of slow pedestrians.</label>
-                    </div>
-                </div>
-                <div class="explanation" id="exp15">
-                    <p><strong>Đáp án đúng: B. You should slow your speed and pay attention to pedestrians.</strong></p>
-                    <p>Biển cảnh báo "CAUTION SLOW DOWN PEDESTRIAN TRAFFIC" nghĩa là người điều khiển phương tiện cần giảm tốc độ và chú ý đến người đi bộ. Đáp án B chính xác nhất với ý nghĩa của biển báo.</p>
-                </div>
-            </div>
+                <!-- Section II -->
+                <h2 class="text-xl font-semibold my-6">II. Look at the sign or the notice. Choose the best answer (A, B, C or D) for questions 15 and 16.</h2>
 
-            <!-- Câu 16 -->
-            <div class="mb-6 p-4 bg-gray-50 rounded">
-                <div class="flex mb-4">
-                    <div class="bg-yellow-300 p-4 rounded border-2 border-black mx-auto text-center">
-                        <p class="font-bold">Learn to sew with Ms. Georgia</p>
+                <!-- Question 15 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <div class="bg-yellow-600 text-white font-bold p-4 mb-4 w-48 text-center">
+                        <p>CAUTION</p>
+                        <p>SLOW DOWN</p>
+                        <p>PEDESTRIAN TRAFFIC</p>
+                    </div>
+                    <p class="font-medium mb-3">15. What does the sign mean?</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q15" value="A"> A. Pedestrians should walk slowly.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q15" value="B"> B. You should slow your speed and pay attention to pedestrians.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q15" value="C"> C. Pedestrians will slow down the traffic.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q15" value="D"> D. You should drive carefully because of slow pedestrians.
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation15">
+                        <p><strong>Correct answer: B. You should slow your speed and pay attention to pedestrians.</strong></p>
+                        <p>The sign "CAUTION, SLOW DOWN, PEDESTRIAN TRAFFIC" is warning drivers to reduce their speed because there are pedestrians in the area. It's not telling pedestrians to walk slowly or saying that pedestrians will slow traffic.</p>
+                    </div>
+                </div>
+
+                <!-- Question 16 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <div class="bg-yellow-300 p-4 mb-4 w-64">
+                        <p class="font-bold">"Learn to sew with Ms. Georgia"</p>
                         <p>Room 3.1 is closed for repairs.</p>
                         <p>Lessons in Room 4.1 until Friday.</p>
                     </div>
+                    <p class="font-medium mb-3">16. What does the notice tell us?</p>
+                    <div class="ml-4">
+                        <label class="option-label">
+                            <input type="radio" name="q16" value="A"> A. Ms. Georgia's class will be on a different day.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q16" value="B"> B. There is a new location for Ms. Georgia's class.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q16" value="C"> C. Ms. Georgia will repair her room on Friday.
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q16" value="D"> D. Ms. Georgia isn't coming to school until Friday.
+                        </label>
+                    </div>
+                    <div class="explanation" id="explanation16">
+                        <p><strong>Correct answer: B. There is a new location for Ms. Georgia's class.</strong></p>
+                        <p>The notice states that Room 3.1 (the regular room) is closed for repairs, and classes will be held in Room 4.1 until Friday. This means there is a temporary new location for Ms. Georgia's sewing class.</p>
+                    </div>
                 </div>
-                <p class="font-semibold">16. What does the notice tell us?</p>
-                <div class="ml-4 mt-2">
-                    <div class="mb-1">
-                        <input type="radio" name="q16" id="q16a" value="A">
-                        <label for="q16a">A. Ms. Georgia's class will be on a different day.</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q16" id="q16b" value="B">
-                        <label for="q16b">B. There is a new location for Ms. Georgia's class.</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q16" id="q16c" value="C">
-                        <label for="q16c">C. Ms. Georgia will repair her room on Friday.</label>
-                    </div>
-                    <div class="mb-1">
-                        <input type="radio" name="q16" id="q16d" value="D">
-                        <label for="q16d">D. Ms. Georgia isn't coming to school until Friday.</label>
-                    </div>
-                </div>
-                <div class="explanation" id="exp16">
-                    <p><strong>Đáp án đúng: B. There is a new location for Ms. Georgia's class.</strong></p>
-                    <p>Thông báo cho biết "Room 3.1 is closed for repairs. Lessons in Room 4.1 until Friday." Điều này có nghĩa là lớp học của cô Georgia được chuyển sang phòng mới (từ 3.1 sang 4.1). Vì vậy đáp án B là chính xác nhất.</p>
-                </div>
-            </div>
 
-            <div class="mt-6 flex justify-center space-x-4">
-                <button id="checkBtn" class="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Kiểm tra kết quả</button>
-                <button id="showExplanationBtn" class="px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition hidden">Hiển thị giải thích</button>
-                <button id="resetBtn" class="px-6 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition hidden">Làm lại</button>
-            </div>
+                <!-- Section III -->
+                <h2 class="text-xl font-semibold my-6">III. Choose the word (A, B, C or D) that best fits each space in the following passage.</h2>
+                
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="mb-4">
+                        <strong>The rise of English</strong><br>
+                        The story of the English language is amazing. The language did not exist two thousand years ago. By 500 CE, there was a language called Englisc. (17) ____________ only about thirty thousand people spoke it. Nearly one thousand years later, at the time of Shakespeare, English was the language of about six million people. Most of them lived in Britain. (18) ____________ is the countries of England, Scotland and Wales. But English did not even reach the edges of Britain, because many people spoke other languages in Scotland and Wales.
+                    </p>
 
-            <div id="resultDiv" class="mt-6 p-4 bg-gray-100 rounded text-center hidden">
-                <p class="text-lg font-bold" id="scoreDisplay"></p>
-                <p class="text-md" id="evaluationDisplay"></p>
-            </div>
+                    <!-- Question 17 -->
+                    <div class="mb-6">
+                        <p class="font-medium mb-3">17.</p>
+                        <div class="ml-4">
+                            <label class="option-label">
+                                <input type="radio" name="q17" value="A"> A. Although
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q17" value="B"> B. However
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q17" value="C"> C. Therefore
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q17" value="D"> D. Because
+                            </label>
+                        </div>
+                        <div class="explanation" id="explanation17">
+                            <p><strong>Correct answer: B. However</strong></p>
+                            <p>The sentence needs a contrasting conjunction. "However" correctly shows the contrast between the existence of the language and the small number of people who spoke it. "Although" would require a different sentence structure, "Therefore" indicates a result, and "Because" indicates a reason, neither of which fits the context.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 18 -->
+                    <div class="mb-6">
+                        <p class="font-medium mb-3">18.</p>
+                        <div class="ml-4">
+                            <label class="option-label">
+                                <input type="radio" name="q18" value="A"> A. What
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q18" value="B"> B. Where
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q18" value="C"> C. Which
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q18" value="D"> D. That
+                            </label>
+                        </div>
+                        <div class="explanation" id="explanation18">
+                            <p><strong>Correct answer: C. Which</strong></p>
+                            <p>"Which" is the correct relative pronoun to introduce additional information about Britain. The sentence defines what constitutes Britain (England, Scotland, and Wales). "What" would be used for definitions, "Where" for locations, and "That" typically for defining (rather than non-defining) clauses.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" id="checkAnswers" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition">Check Answers</button>
+            </form>
+        </div>
+
+        <div id="results" class="bg-white p-6 rounded-lg shadow-md mb-6 hidden">
+            <h2 class="text-xl font-semibold mb-4">Your Results</h2>
+            <p id="score" class="text-lg font-medium"></p>
+            <button id="showExplanations" class="mt-4 bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition">Show All Explanations</button>
         </div>
     </div>
 
     <script>
-        const correctAnswers = {
-            q1: "B", q2: "C", q3: "D", q4: "D", q5: "B", 
-            q6: "A", q7: "C", q8: "D", q9: "A", q10: "C",
-            q11: "D", q12: "B", q13: "A", q14: "C", q15: "B",
-            q16: "B"
-        };
+        document.addEventListener('DOMContentLoaded', function() {
+            const correctAnswers = {
+                q1: 'B', q2: 'C', q3: 'D', q4: 'A', q5: 'B',
+                q6: 'A', q7: 'C', q8: 'D', q9: 'A', q10: 'C',
+                q11: 'D', q12: 'B', q13: 'A', q14: 'C', q15: 'B',
+                q16: 'B', q17: 'B', q18: 'C'
+            };
 
-        const checkBtn = document.getElementById('checkBtn');
-        const showExplanationBtn = document.getElementById('showExplanationBtn');
-        const resetBtn = document.getElementById('resetBtn');
-        const resultDiv = document.getElementById('resultDiv');
-        const scoreDisplay = document.getElementById('scoreDisplay');
-        const evaluationDisplay = document.getElementById('evaluationDisplay');
-
-        checkBtn.addEventListener('click', function() {
-            let score = 0;
-            let totalQuestions = Object.keys(correctAnswers).length;
-            
-            // Check answers
-            for (let question in correctAnswers) {
-                const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+            document.getElementById('checkAnswers').addEventListener('click', function() {
+                let score = 0;
+                let total = Object.keys(correctAnswers).length;
                 
-                // If an option is selected
-                if (selectedOption) {
-                    const allOptions = document.querySelectorAll(`input[name="${question}"]`);
+                // Check each answer
+                for (let question in correctAnswers) {
+                    const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
                     
-                    // Disable all options for this question
-                    allOptions.forEach(option => {
-                        option.disabled = true;
+                    if (selectedOption) {
+                        const optionLabel = selectedOption.parentElement;
                         
-                        // Mark incorrect answers
-                        if (option.checked && option.value !== correctAnswers[question]) {
-                            option.parentElement.classList.add('wrong-answer');
+                        if (selectedOption.value === correctAnswers[question]) {
+                            score++;
+                            optionLabel.classList.add('correct');
+                        } else {
+                            optionLabel.classList.add('incorrect');
+                            // Mark the correct answer
+                            document.querySelectorAll(`input[name="${question}"]`).forEach(option => {
+                                if (option.value === correctAnswers[question]) {
+                                    option.parentElement.classList.add('correct');
+                                }
+                            });
                         }
                         
-                        // Mark correct answer
-                        if (option.value === correctAnswers[question]) {
-                            option.parentElement.classList.add('correct-answer');
-                        }
-                    });
-                    
-                    // If selected answer is correct
-                    if (selectedOption.value === correctAnswers[question]) {
-                        score++;
+                        // Show explanation for this question
+                        const explanationId = 'explanation' + question.substring(1);
+                        document.getElementById(explanationId).style.display = 'block';
                     }
                 }
-            }
-            
-            // Display score
-            scoreDisplay.textContent = `Điểm của bạn: ${score}/${totalQuestions} (${Math.round(score/totalQuestions*100)}%)`;
-            
-            // Evaluation based on score
-            if (score === totalQuestions) {
-                evaluationDisplay.textContent = "Xuất sắc! Bạn đã trả lời đúng tất cả các câu hỏi.";
-            } else if (score >= totalQuestions * 0.8) {
-                evaluationDisplay.textContent = "Rất tốt! Bạn đã nắm vững hầu hết các kiến thức.";
-            } else if (score >= totalQuestions * 0.6) {
-                evaluationDisplay.textContent = "Khá! Bạn đã hiểu được các khái niệm cơ bản.";
-            } else {
-                evaluationDisplay.textContent = "Bạn cần ôn tập lại kiến thức.";
-            }
-            
-            // Show result and other buttons
-            resultDiv.classList.remove('hidden');
-            showExplanationBtn.classList.remove('hidden');
-            resetBtn.classList.remove('hidden');
-            checkBtn.classList.add('hidden');
-        });
-
-        showExplanationBtn.addEventListener('click', function() {
-            // Show all explanations
-            document.querySelectorAll('.explanation').forEach(exp => {
-                exp.style.display = 'block';
+                
+                // Show results
+                document.getElementById('score').textContent = `You scored ${score} out of ${total} (${Math.round(score/total*100)}%)`;
+                document.getElementById('results').classList.remove('hidden');
+                
+                // Scroll to results
+                document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
             });
             
-            // Disable the button after clicking
-            showExplanationBtn.disabled = true;
-        });
-
-        resetBtn.addEventListener('click', function() {
-            // Re-enable all radio buttons and clear selections
-            document.querySelectorAll('input[type="radio"]').forEach(radio => {
-                radio.disabled = false;
-                radio.checked = false;
-                radio.parentElement.classList.remove('correct-answer', 'wrong-answer');
+            document.getElementById('showExplanations').addEventListener('click', function() {
+                document.querySelectorAll('.explanation').forEach(explanation => {
+                    explanation.style.display = 'block';
+                });
             });
-            
-            // Hide explanations
-            document.querySelectorAll('.explanation').forEach(exp => {
-                exp.style.display = 'none';
-            });
-            
-            // Reset buttons and displays
-            resultDiv.classList.add('hidden');
-            showExplanationBtn.classList.add('hidden');
-            resetBtn.classList.add('hidden');
-            checkBtn.classList.remove('hidden');
-            showExplanationBtn.disabled = false;
         });
     </script>
 <script>window.parent.postMessage({ action: "ready" }, "*"); 
