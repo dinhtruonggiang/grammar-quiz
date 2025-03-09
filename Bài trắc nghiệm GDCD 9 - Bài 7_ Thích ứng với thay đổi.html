@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài trắc nghiệm GDCD 9 - Bài 7: Thích ứng với thay đổi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .explanation {
+            display: none;
+        }
+        .question-block {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body class="bg-blue-50 p-4 md:p-8">
+    <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl md:text-3xl font-bold text-center text-red-600 mb-6">GIÁO DỤC CÔNG DÂN LỚP 9</h1>
+        <h2 class="text-xl md:text-2xl font-bold text-center text-blue-700 mb-8">BÀI 7: THÍCH ỨNG VỚI THAY ĐỔI</h2>
+        
+        <div class="mb-6 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+            <p class="font-medium text-gray-800 mb-2">Hướng dẫn:</p>
+            <ul class="list-disc pl-5 text-gray-700">
+                <li>Đọc kỹ từng câu hỏi và chọn đáp án đúng</li>
+                <li>Sau khi làm xong, nhấn nút "Kiểm tra kết quả" để xem đáp án và giải thích</li>
+                <li>Bài trắc nghiệm gồm 10 câu hỏi dựa trên nội dung bài 7</li>
+            </ul>
+        </div>
+
+        <form id="quizForm">
+            <!-- Câu hỏi 1 -->
+            <div class="question-block p-4 bg-gray-50 rounded-lg mb-6">
+                <p class="font-medium mb-3">Câu 1: Thay đổi là gì?</p>
+                <div class="pl-5">
+                    <div class="mb-1">
+                        <input type="radio" name="q1" id="q1a" value="a">
+                        <label for="q1a">A. Sự mất mát và rủi ro trong cuộc sống</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q1" id="q1b" value="b">
+                        <label for="q1b">B. Sự biến đổi từ trạng thái này sang trạng thái khác</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q1" id="q1c" value="c">
+                        <label for="q1c">C. Sự phát triển theo chiều hướng tích cực</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q1" id="q1d" value="d">
+                        <label for="q1d">D. Sự thay đổi môi trường sống</label>
+                    </div>
+                </div>
+                <div class="explanation mt-3 p-3 bg-green-50 border border-green-200 rounded-md">
+                    <p class="font-medium text-green-800">Đáp án đúng: B. Sự biến đổi từ trạng thái này sang trạng thái khác</p>
+                    <p class="text-gray-700 mt-1">Giải thích: Thay đổi là sự biến đổi từ trạng thái này sang trạng thái khác. Thay đổi có thể diễn ra trong nhiều lĩnh vực của đời sống cá nhân và xã hội.</p>
+                </div>
+            </div>
+
+            <!-- Câu hỏi 2 -->
+            <div class="question-block p-4 bg-gray-50 rounded-lg mb-6">
+                <p class="font-medium mb-3">Câu 2: Đâu KHÔNG phải là biểu hiện của thay đổi trong cuộc sống?</p>
+                <div class="pl-5">
+                    <div class="mb-1">
+                        <input type="radio" name="q2" id="q2a" value="a">
+                        <label for="q2a">A. Thay đổi về công nghệ và khoa học</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q2" id="q2b" value="b">
+                        <label for="q2b">B. Thay đổi về nơi học tập, sinh sống</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q2" id="q2c" value="c">
+                        <label for="q2c">C. Thay đổi về quan hệ bạn bè, người thân</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q2" id="q2d" value="d">
+                        <label for="q2d">D. Duy trì mọi thứ không thay đổi theo thời gian</label>
+                    </div>
+                </div>
+                <div class="explanation mt-3 p-3 bg-green-50 border border-green-200 rounded-md">
+                    <p class="font-medium text-green-800">Đáp án đúng: D. Duy trì mọi thứ không thay đổi theo thời gian</p>
+                    <p class="text-gray-700 mt-1">Giải thích: Duy trì mọi thứ không thay đổi theo thời gian không phải là biểu hiện của thay đổi, mà ngược lại là sự bảo thủ, không chấp nhận thay đổi. Cuộc sống luôn vận động và thay đổi theo thời gian.</p>
+                </div>
+            </div>
+
+            <!-- Câu hỏi 3 -->
+            <div class="question-block p-4 bg-gray-50 rounded-lg mb-6">
+                <p class="font-medium mb-3">Câu 3: Tại sao con người cần thích ứng với thay đổi?</p>
+                <div class="pl-5">
+                    <div class="mb-1">
+                        <input type="radio" name="q3" id="q3a" value="a">
+                        <label for="q3a">A. Để phát triển bản thân và hòa nhập với cuộc sống</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q3" id="q3b" value="b">
+                        <label for="q3b">B. Để không bị người khác chê cười</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q3" id="q3c" value="c">
+                        <label for="q3c">C. Vì thay đổi luôn tốt đẹp hơn hiện tại</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q3" id="q3d" value="d">
+                        <label for="q3d">D. Vì đó là quy luật bắt buộc đối với tất cả mọi người</label>
+                    </div>
+                </div>
+                <div class="explanation mt-3 p-3 bg-green-50 border border-green-200 rounded-md">
+                    <p class="font-medium text-green-800">Đáp án đúng: A. Để phát triển bản thân và hòa nhập với cuộc sống</p>
+                    <p class="text-gray-700 mt-1">Giải thích: Con người cần thích ứng với thay đổi để phát triển bản thân và hòa nhập với cuộc sống. Thích ứng với thay đổi giúp con người tồn tại, phát triển và thành công trong môi trường luôn biến động.</p>
+                </div>
+            </div>
+
+            <!-- Câu hỏi 4 -->
+            <div class="question-block p-4 bg-gray-50 rounded-lg mb-6">
+                <p class="font-medium mb-3">Câu 4: Kĩ năng nào sau đây KHÔNG cần thiết để thích ứng với thay đổi?</p>
+                <div class="pl-5">
+                    <div class="mb-1">
+                        <input type="radio" name="q4" id="q4a" value="a">
+                        <label for="q4a">A. Kĩ năng học tập suốt đời</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q4" id="q4b" value="b">
+                        <label for="q4b">B. Kĩ năng giao tiếp và hợp tác</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q4" id="q4c" value="c">
+                        <label for="q4c">C. Kĩ năng bảo thủ và cố chấp với quan điểm cũ</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q4" id="q4d" value="d">
+                        <label for="q4d">D. Kĩ năng giải quyết vấn đề và ra quyết định</label>
+                    </div>
+                </div>
+                <div class="explanation mt-3 p-3 bg-green-50 border border-green-200 rounded-md">
+                    <p class="font-medium text-green-800">Đáp án đúng: C. Kĩ năng bảo thủ và cố chấp với quan điểm cũ</p>
+                    <p class="text-gray-700 mt-1">Giải thích: Kĩ năng bảo thủ và cố chấp với quan điểm cũ không phải là kĩ năng cần thiết để thích ứng với thay đổi, ngược lại, nó cản trở khả năng thích ứng. Thích ứng với thay đổi đòi hỏi sự linh hoạt, cởi mở và sẵn sàng học hỏi điều mới.</p>
+                </div>
+            </div>
+
+            <!-- Câu hỏi 5 -->
+            <div class="question-block p-4 bg-gray-50 rounded-lg mb-6">
+                <p class="font-medium mb-3">Câu 5: Biểu hiện nào sau đây thể hiện khả năng thích ứng tốt với thay đổi?</p>
+                <div class="pl-5">
+                    <div class="mb-1">
+                        <input type="radio" name="q5" id="q5a" value="a">
+                        <label for="q5a">A. Từ chối học cách sử dụng công nghệ mới</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q5" id="q5b" value="b">
+                        <label for="q5b">B. Cảm thấy lo lắng và sợ hãi khi đối mặt với thay đổi</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q5" id="q5c" value="c">
+                        <label for="q5c">C. Chủ động tìm hiểu và học hỏi điều mới</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q5" id="q5d" value="d">
+                        <label for="q5d">D. Tiếp tục làm việc theo cách cũ dù không hiệu quả</label>
+                    </div>
+                </div>
+                <div class="explanation mt-3 p-3 bg-green-50 border border-green-200 rounded-md">
+                    <p class="font-medium text-green-800">Đáp án đúng: C. Chủ động tìm hiểu và học hỏi điều mới</p>
+                    <p class="text-gray-700 mt-1">Giải thích: Chủ động tìm hiểu và học hỏi điều mới là biểu hiện của khả năng thích ứng tốt với thay đổi. Người có khả năng thích ứng tốt luôn cởi mở, sẵn sàng tiếp nhận kiến thức mới và linh hoạt trong các tình huống khác nhau.</p>
+                </div>
+            </div>
+
+            <!-- Câu hỏi 6 -->
+            <div class="question-block p-4 bg-gray-50 rounded-lg mb-6">
+                <p class="font-medium mb-3">Câu 6: Khi chuyển trường, học môi trường mới, cách nào sau đây giúp thích ứng hiệu quả nhất?</p>
+                <div class="pl-5">
+                    <div class="mb-1">
+                        <input type="radio" name="q6" id="q6a" value="a">
+                        <label for="q6a">A. Chỉ giao tiếp với bạn bè cũ từ trường cũ</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q6" id="q6b" value="b">
+                        <label for="q6b">B. Tìm hiểu về môi trường mới và chủ động giao tiếp với bạn mới</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q6" id="q6c" value="c">
+                        <label for="q6c">C. Tránh tham gia các hoạt động tập thể của lớp mới</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q6" id="q6d" value="d">
+                        <label for="q6d">D. Đợi người khác chủ động làm quen trước</label>
+                    </div>
+                </div>
+                <div class="explanation mt-3 p-3 bg-green-50 border border-green-200 rounded-md">
+                    <p class="font-medium text-green-800">Đáp án đúng: B. Tìm hiểu về môi trường mới và chủ động giao tiếp với bạn mới</p>
+                    <p class="text-gray-700 mt-1">Giải thích: Tìm hiểu về môi trường mới và chủ động giao tiếp với bạn mới là cách thích ứng hiệu quả nhất khi chuyển trường. Điều này giúp nhanh chóng hòa nhập, thiết lập mối quan hệ mới và tạo cảm giác thoải mái trong môi trường học tập mới.</p>
+                </div>
+            </div>
+
+            <!-- Câu hỏi 7 -->
+            <div class="question-block p-4 bg-gray-50 rounded-lg mb-6">
+                <p class="font-medium mb-3">Câu 7: Thái độ nào sau đây thể hiện khả năng thích ứng kém với thay đổi?</p>
+                <div class="pl-5">
+                    <div class="mb-1">
+                        <input type="radio" name="q7" id="q7a" value="a">
+                        <label for="q7a">A. Cởi mở với ý kiến mới</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q7" id="q7b" value="b">
+                        <label for="q7b">B. Tư duy linh hoạt, sáng tạo</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q7" id="q7c" value="c">
+                        <label for="q7c">C. Phàn nàn và chống đối mỗi khi có thay đổi</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q7" id="q7d" value="d">
+                        <label for="q7d">D. Sẵn sàng học hỏi điều mới</label>
+                    </div>
+                </div>
+                <div class="explanation mt-3 p-3 bg-green-50 border border-green-200 rounded-md">
+                    <p class="font-medium text-green-800">Đáp án đúng: C. Phàn nàn và chống đối mỗi khi có thay đổi</p>
+                    <p class="text-gray-700 mt-1">Giải thích: Phàn nàn và chống đối mỗi khi có thay đổi thể hiện khả năng thích ứng kém. Người có thái độ này thường khó chấp nhận sự thay đổi, không sẵn sàng tiếp thu cái mới và gặp nhiều khó khăn khi môi trường xung quanh thay đổi.</p>
+                </div>
+            </div>
+
+            <!-- Câu hỏi 8 -->
+            <div class="question-block p-4 bg-gray-50 rounded-lg mb-6">
+                <p class="font-medium mb-3">Câu 8: Tác động của thay đổi về công nghệ đến cuộc sống là gì?</p>
+                <div class="pl-5">
+                    <div class="mb-1">
+                        <input type="radio" name="q8" id="q8a" value="a">
+                        <label for="q8a">A. Chỉ làm cuộc sống phức tạp hơn</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q8" id="q8b" value="b">
+                        <label for="q8b">B. Thay đổi phương thức học tập, làm việc và giao tiếp</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q8" id="q8c" value="c">
+                        <label for="q8c">C. Không có tác động đáng kể đến đời sống hàng ngày</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q8" id="q8d" value="d">
+                        <label for="q8d">D. Chỉ ảnh hưởng đến người làm trong lĩnh vực công nghệ</label>
+                    </div>
+                </div>
+                <div class="explanation mt-3 p-3 bg-green-50 border border-green-200 rounded-md">
+                    <p class="font-medium text-green-800">Đáp án đúng: B. Thay đổi phương thức học tập, làm việc và giao tiếp</p>
+                    <p class="text-gray-700 mt-1">Giải thích: Thay đổi về công nghệ tác động đến cuộc sống bằng cách thay đổi phương thức học tập, làm việc và giao tiếp của con người. Công nghệ mới mang đến các phương tiện, công cụ mới giúp con người thực hiện công việc hiệu quả hơn và kết nối với nhau dễ dàng hơn.</p>
+                </div>
+            </div>
+
+            <!-- Câu hỏi 9 -->
+            <div class="question-block p-4 bg-gray-50 rounded-lg mb-6">
+                <p class="font-medium mb-3">Câu 9: Khi gia đình chuyển đến nơi ở mới, điều gì giúp thích ứng hiệu quả?</p>
+                <div class="pl-5">
+                    <div class="mb-1">
+                        <input type="radio" name="q9" id="q9a" value="a">
+                        <label for="q9a">A. Tìm hiểu về khu vực mới và làm quen với hàng xóm</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q9" id="q9b" value="b">
+                        <label for="q9b">B. Giữ nguyên thói quen cũ và không thay đổi gì</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q9" id="q9c" value="c">
+                        <label for="q9c">C. Tránh giao tiếp với người lạ trong khu vực mới</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q9" id="q9d" value="d">
+                        <label for="q9d">D. Phàn nàn về khó khăn khi chuyển đến nơi mới</label>
+                    </div>
+                </div>
+                <div class="explanation mt-3 p-3 bg-green-50 border border-green-200 rounded-md">
+                    <p class="font-medium text-green-800">Đáp án đúng: A. Tìm hiểu về khu vực mới và làm quen với hàng xóm</p>
+                    <p class="text-gray-700 mt-1">Giải thích: Tìm hiểu về khu vực mới và làm quen với hàng xóm giúp thích ứng hiệu quả khi chuyển đến nơi ở mới. Việc này giúp nhanh chóng hòa nhập với môi trường sống mới, tạo mối quan hệ xã hội mới và cảm thấy an toàn, thoải mái tại nơi ở mới.</p>
+                </div>
+            </div>
+
+            <!-- Câu hỏi 10 -->
+            <div class="question-block p-4 bg-gray-50 rounded-lg mb-6">
+                <p class="font-medium mb-3">Câu 10: Vai trò của gia đình trong việc giúp con cái thích ứng với thay đổi là gì?</p>
+                <div class="pl-5">
+                    <div class="mb-1">
+                        <input type="radio" name="q10" id="q10a" value="a">
+                        <label for="q10a">A. Bảo vệ con cái khỏi mọi thay đổi và khó khăn</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q10" id="q10b" value="b">
+                        <label for="q10b">B. Quyết định mọi việc thay con để tránh sai lầm</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q10" id="q10c" value="c">
+                        <label for="q10c">C. Hỗ trợ, động viên và hướng dẫn con cái đối mặt với thay đổi</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="radio" name="q10" id="q10d" value="d">
+                        <label for="q10d">D. Để con tự giải quyết mọi vấn đề không cần hỗ trợ</label>
+                    </div>
+                </div>
+                <div class="explanation mt-3 p-3 bg-green-50 border border-green-200 rounded-md">
+                    <p class="font-medium text-green-800">Đáp án đúng: C. Hỗ trợ, động viên và hướng dẫn con cái đối mặt với thay đổi</p>
+                    <p class="text-gray-700 mt-1">Giải thích: Vai trò của gia đình trong việc giúp con cái thích ứng với thay đổi là hỗ trợ, động viên và hướng dẫn con cái đối mặt với thay đổi. Gia đình cần tạo môi trường an toàn để con cái học cách đối mặt với thách thức, đồng thời cung cấp sự hỗ trợ tinh thần và kỹ năng cần thiết.</p>
+                </div>
+            </div>
+
+            <div class="flex justify-center mt-8">
+                <button type="button" id="checkBtn" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-lg font-medium text-lg">Kiểm tra kết quả</button>
+            </div>
+
+            <div id="resultArea" class="mt-8 p-5 bg-blue-50 rounded-lg text-center hidden">
+                <h3 class="text-xl font-bold text-blue-800 mb-3">Kết quả của bạn</h3>
+                <p id="score" class="text-2xl font-bold mb-3">0/10</p>
+                <p id="feedback" class="text-lg text-gray-700"></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('checkBtn').addEventListener('click', function() {
+            // Đáp án đúng
+            const correctAnswers = {
+                q1: 'b',
+                q2: 'd',
+                q3: 'a',
+                q4: 'c',
+                q5: 'c',
+                q6: 'b',
+                q7: 'c',
+                q8: 'b',
+                q9: 'a',
+                q10: 'c'
+            };
+
+            let score = 0;
+            let totalQuestions = Object.keys(correctAnswers).length;
+
+            // Kiểm tra từng câu hỏi
+            for(let question in correctAnswers) {
+                let selectedAnswer = document.querySelector(`input[name="${question}"]:checked`);
+                
+                // Hiển thị giải thích cho tất cả các câu hỏi
+                document.querySelectorAll(`input[name="${question}"]`).forEach(input => {
+                    input.parentElement.classList.remove('bg-red-100', 'bg-green-100');
+                });
+
+                if(selectedAnswer) {
+                    let explanation = selectedAnswer.closest('.question-block').querySelector('.explanation');
+                    explanation.style.display = 'block';
+                    
+                    // Đánh dấu đáp án đúng/sai
+                    if(selectedAnswer.value === correctAnswers[question]) {
+                        selectedAnswer.parentElement.classList.add('bg-green-100');
+                        score++;
+                    } else {
+                        selectedAnswer.parentElement.classList.add('bg-red-100');
+                        // Highlight đáp án đúng
+                        document.querySelector(`input[name="${question}"][value="${correctAnswers[question]}"]`).parentElement.classList.add('bg-green-100');
+                    }
+                } else {
+                    // Nếu không chọn đáp án nào
+                    document.querySelector(`input[name="${question}"][value="${correctAnswers[question]}"]`).parentElement.classList.add('bg-green-100');
+                    document.querySelector(`input[name="${question}"]`).closest('.question-block').querySelector('.explanation').style.display = 'block';
+                }
+            }
+
+            // Hiển thị kết quả
+            document.getElementById('score').textContent = `${score}/${totalQuestions}`;
+            
+            // Phản hồi dựa trên điểm số
+            let feedback = '';
+            if(score === totalQuestions) {
+                feedback = 'Xuất sắc! Bạn đã hiểu rõ về chủ đề thích ứng với thay đổi.';
+            } else if(score >= totalQuestions * 0.8) {
+                feedback = 'Rất tốt! Bạn nắm vững hầu hết các nội dung về thích ứng với thay đổi.';
+            } else if(score >= totalQuestions * 0.6) {
+                feedback = 'Khá tốt! Bạn đã hiểu được những điểm cơ bản về thích ứng với thay đổi.';
+            } else if(score >= totalQuestions * 0.4) {
+                feedback = 'Bạn cần ôn tập thêm về chủ đề thích ứng với thay đổi.';
+            } else {
+                feedback = 'Bạn cần xem lại bài học kỹ hơn để hiểu rõ về thích ứng với thay đổi.';
+            }
+            
+            document.getElementById('feedback').textContent = feedback;
+            document.getElementById('resultArea').classList.remove('hidden');
+            
+            // Cuộn đến khu vực kết quả
+            document.getElementById('resultArea').scrollIntoView({behavior: "smooth"});
+        });
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
