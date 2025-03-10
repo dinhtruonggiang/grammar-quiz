@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Văn Lớp 9 Giữa Kì 2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .question {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 20px;
+        }
+        
+        .options label {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .options label:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .explanation {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .btn-check {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .btn-check:hover {
+            background-color: #45a049;
+        }
+        
+        .correct {
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+        
+        .incorrect {
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="quiz-container">
+        <h1 class="text-2xl font-bold text-center my-6">Bài Trắc Nghiệm Văn Lớp 9 - Phân Tích Văn Bản Văn Học</h1>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <!-- Câu 1 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 1: Không gian của truyện là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q1" value="A"> A. Nơi diễn ra các sự kiện trong tác phẩm
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="B"> B. Thời điểm xảy ra các sự kiện trong tác phẩm
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="C"> C. Bối cảnh xã hội của tác phẩm
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="D"> D. Khung cảnh thiên nhiên trong tác phẩm
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q1', 'A')">Kiểm tra</button>
+                <div id="explanation-q1" class="explanation">
+                    <p><strong>Đáp án đúng là A: Nơi diễn ra các sự kiện trong tác phẩm</strong></p>
+                    <p>Giải thích: Không gian của truyện là nơi diễn ra các sự kiện trong tác phẩm, trả lời cho câu hỏi "ở đâu, vị trí cụ thể". Không gian có vai trò quan trọng trong việc tạo bối cảnh cho câu chuyện, góp phần xây dựng tính chân thực và làm nổi bật chủ đề của tác phẩm.</p>
+                </div>
+            </div>
+
+            <!-- Câu 2 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 2: Thời gian trong tác phẩm văn học được xác định bằng?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q2" value="A"> A. Năm tháng cụ thể
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="B"> B. Thời điểm sáng tác tác phẩm
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="C"> C. Thời gian xuất bản tác phẩm
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="D"> D. Trả lời cho câu hỏi: Khi nào? Lúc nào? Bao lâu?
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q2', 'D')">Kiểm tra</button>
+                <div id="explanation-q2" class="explanation">
+                    <p><strong>Đáp án đúng là D: Trả lời cho câu hỏi: Khi nào? Lúc nào? Bao lâu?</strong></p>
+                    <p>Giải thích: Thời gian trong tác phẩm văn học được xác định qua việc trả lời các câu hỏi: Khi nào? Lúc nào? Bao lâu? Thời gian không chỉ đơn thuần là mốc thời gian cụ thể mà còn liên quan đến quá trình diễn biến sự kiện, thời điểm diễn ra các hành động và độ dài thời gian của câu chuyện.</p>
+                </div>
+            </div>
+
+            <!-- Câu 3 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 3: Đặc điểm nào sau đây không thuộc về cách thể hiện đặc điểm nhân vật?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q3" value="A"> A. Lời nói và suy nghĩ
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="B"> B. Hành động và chuyển biến trong nhận thức
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="C"> C. Ngôn ngữ và diễn biến tâm lí
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="D"> D. Cốt truyện và bối cảnh
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q3', 'D')">Kiểm tra</button>
+                <div id="explanation-q3" class="explanation">
+                    <p><strong>Đáp án đúng là D: Cốt truyện và bối cảnh</strong></p>
+                    <p>Giải thích: Đặc điểm nhân vật được thể hiện qua lời nói, suy nghĩ, hành động, chuyển biến trong nhận thức, ngôn ngữ và diễn biến tâm lí. Cốt truyện và bối cảnh không phải là cách thể hiện đặc điểm nhân vật mà là yếu tố của truyện. Theo tài liệu, đặc điểm nhân vật được thể hiện qua: lời nói + suy nghĩ + hành động + chuyển biến trong nhận thức + ngôn ngữ + diễn biến tâm lí.</p>
+                </div>
+            </div>
+
+            <!-- Câu 4 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 4: Trong văn bản tự sự, ngôi kể nào thường được sử dụng để bộc lộ trực tiếp cảm xúc, suy nghĩ của nhân vật?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q4" value="A"> A. Ngôi thứ nhất
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="B"> B. Ngôi thứ hai
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="C"> C. Ngôi thứ ba
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="D"> D. Ngôi kể kết hợp
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q4', 'A')">Kiểm tra</button>
+                <div id="explanation-q4" class="explanation">
+                    <p><strong>Đáp án đúng là A: Ngôi thứ nhất</strong></p>
+                    <p>Giải thích: Ngôi thứ nhất (ngôi kể xưng "tôi") được sử dụng để bộc lộ trực tiếp cảm xúc, suy nghĩ của nhân vật một cách sâu sắc, sinh động. Người kể chuyện là chính nhân vật trong câu chuyện, do đó có thể trực tiếp bày tỏ cảm xúc, suy nghĩ, tâm trạng của mình. Đây là ngôi kể phù hợp khi tác giả muốn diễn tả những trải nghiệm nội tâm sâu sắc của nhân vật.</p>
+                </div>
+            </div>
+
+            <!-- Câu 5 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 5: Đặc điểm của cốt truyện là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q5" value="A"> A. Là khung cảnh diễn ra các sự kiện
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="B"> B. Là chuỗi các sự việc diễn ra (kể về ai + những việc gì + kết quả)
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="C"> C. Là tâm lý nhân vật trong tác phẩm
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="D"> D. Là mối quan hệ giữa các nhân vật
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q5', 'B')">Kiểm tra</button>
+                <div id="explanation-q5" class="explanation">
+                    <p><strong>Đáp án đúng là B: Là chuỗi các sự việc diễn ra (kể về ai + những việc gì + kết quả)</strong></p>
+                    <p>Giải thích: Cốt truyện là chuỗi các sự việc diễn ra trong tác phẩm, bao gồm việc kể về ai, những việc gì đã xảy ra và kết quả của những sự việc đó. Theo tài liệu, cốt truyện đơn tuyến/đa tuyến/giản dị/lồi cuốn/hấp dẫn/kịch tính/kết hợp yếu tố kì ảo. Cốt truyện không chỉ đơn thuần là các sự kiện mà còn làm nổi bật tư tưởng và chủ đề của tác phẩm.</p>
+                </div>
+            </div>
+
+            <!-- Câu 6 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 6: Chi tiết trong văn bản truyện có vai trò gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q6" value="A"> A. Chỉ để làm cho câu chuyện thêm dài
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="B"> B. Gây ấn tượng, cảm xúc mạnh với người đọc
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="C"> C. Không có tác dụng gì đặc biệt
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="D"> D. Chỉ để miêu tả bối cảnh
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q6', 'B')">Kiểm tra</button>
+                <div id="explanation-q6" class="explanation">
+                    <p><strong>Đáp án đúng là B: Gây ấn tượng, cảm xúc mạnh với người đọc</strong></p>
+                    <p>Giải thích: Chi tiết trong văn bản truyện có vai trò gây ấn tượng, cảm xúc mạnh với người đọc. Theo tài liệu, chi tiết còn góp phần quan trọng tạo nên hình tượng nghệ thuật gợi cảm và sống động trong tác phẩm, thúc đẩy cốt truyện, thể hiện chủ đề, tư tưởng của tác phẩm, và khắc họa tính cách/phẩm chất/đặc điểm/số phận/cuộc đời của nhân vật. Chi tiết cũng có thể là "mạnh mối, gợi mở phần đoạn" trong văn bản.</p>
+                </div>
+            </div>
+
+            <!-- Câu 7 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 7: Tình huống truyện là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q7" value="A"> A. Là sự kiện bất ngờ trong câu chuyện
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="B"> B. Là tình thế hoặc hoàn cảnh khiến nhân vật phải đưa ra quyết định
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="C"> C. Là mối quan hệ giữa các nhân vật
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="D"> D. Là kết thúc của câu chuyện
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q7', 'B')">Kiểm tra</button>
+                <div id="explanation-q7" class="explanation">
+                    <p><strong>Đáp án đúng là B: Là tình thế hoặc hoàn cảnh khiến nhân vật phải đưa ra quyết định</strong></p>
+                    <p>Giải thích: Tình huống truyện là tình thế hoặc hoàn cảnh khiến nhân vật phải đưa ra quyết định. Theo tài liệu, tình huống truyện có vai trò then chốt (TH.T): làm rõ đặc điểm nhân vật, tạo sự hấp dẫn/lôi cuốn/thúc đẩy cốt truyện/"thắt nút"/cao trào. Tình huống truyện là yếu tố quan trọng tạo nên tính hấp dẫn và kịch tính cho câu chuyện.</p>
+                </div>
+            </div>
+
+            <!-- Câu 8 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 8: Chủ đề của văn bản truyện thường liên quan đến:</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q8" value="A"> A. Chỉ liên quan đến hành động của nhân vật
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="B"> B. Tình cảm/Hành động/Thái độ của nhân vật đối với đời tượng
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="C"> C. Chỉ liên quan đến bối cảnh lịch sử
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="D"> D. Chỉ liên quan đến tình cảm của nhân vật
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q8', 'B')">Kiểm tra</button>
+                <div id="explanation-q8" class="explanation">
+                    <p><strong>Đáp án đúng là B: Tình cảm/Hành động/Thái độ của nhân vật đối với đời tượng</strong></p>
+                    <p>Giải thích: Chủ đề của văn bản truyện thường liên quan đến tình cảm/hành động/thái độ của nhân vật đối với đối tượng. Theo tài liệu, chủ đề thể hiện tư tưởng, quan điểm, thái độ của tác giả đối với hiện thực cuộc sống. Chủ đề thường được xác định thông qua cách sắp xếp các sự kiện chính, cách khắc họa khung cảnh, và thông qua nhân vật (lời nói, suy nghĩ, hành động).</p>
+                </div>
+            </div>
+
+            <!-- Câu 9 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 9: Đối với câu rút gọn (CRG), điểm (D) là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q9" value="A"> A. Câu bị lược bỏ toàn bộ thành phần
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="B"> B. Câu đã có đầy đủ thành phần
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="C"> C. Câu bị lược thành phần (chủ ngữ/vị ngữ/...) nhưng có thể khôi phục lại thành phần bị rút gọn nhờ vào ngữ cảnh
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="D"> D. Không liên quan đến câu rút gọn
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q9', 'C')">Kiểm tra</button>
+                <div id="explanation-q9" class="explanation">
+                    <p><strong>Đáp án đúng là C: Câu bị lược thành phần (chủ ngữ/vị ngữ/...) nhưng có thể khôi phục lại thành phần bị rút gọn nhờ vào ngữ cảnh</strong></p>
+                    <p>Giải thích: Theo tài liệu, đối với câu rút gọn (CRG), điểm (D) là: câu bị lược thành phần (chủ ngữ/vị ngữ/...) nhưng có thể khôi phục lại thành phần bị rút gọn nhờ vào ngữ cảnh. Câu rút gọn là câu thiếu thành phần cú pháp nhưng vẫn đảm bảo được nội dung thông tin cần truyền đạt nhờ vào ngữ cảnh.</p>
+                </div>
+            </div>
+
+            <!-- Câu 10 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 10: Năng (C) của câu rút gọn (CRG) có tác dụng gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q10" value="A"> A. Làm cho câu dài và phức tạp hơn
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="B"> B. Làm cho câu ngắn gọn hơn, tránh lặp lại từ ngữ đã xuất hiện trước đó
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="C"> C. Làm cho câu khó hiểu hơn
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="D"> D. Không có tác dụng đặc biệt
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q10', 'B')">Kiểm tra</button>
+                <div id="explanation-q10" class="explanation">
+                    <p><strong>Đáp án đúng là B: Làm cho câu ngắn gọn hơn, tránh lặp lại từ ngữ đã xuất hiện trước đó</strong></p>
+                    <p>Giải thích: Theo tài liệu, năng (C) của câu rút gọn (CRG) có tác dụng làm cho câu ngắn gọn hơn, tránh lặp lại từ ngữ đã xuất hiện trước đó. Việc rút gọn câu giúp tránh sự rườm rà, lặp lại không cần thiết, làm cho văn bản trở nên súc tích, ngắn gọn hơn mà vẫn đảm bảo đủ nội dung thông tin cần truyền đạt.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer(question, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+            const explanationDiv = document.getElementById(`explanation-${question}`);
+            
+            if (!selectedOption) {
+                alert("Vui lòng chọn một đáp án!");
+                return;
+            }
+            
+            const labels = document.querySelectorAll(`input[name="${question}"]`).forEach(radio => {
+                const label = radio.parentElement;
+                label.classList.remove("correct", "incorrect");
+                
+                if (radio.checked) {
+                    if (radio.value === correctAnswer) {
+                        label.classList.add("correct");
+                    } else {
+                        label.classList.add("incorrect");
+                    }
+                }
+                
+                if (radio.value === correctAnswer && !radio.checked) {
+                    label.classList.add("correct");
+                }
+            });
+            
+            explanationDiv.style.display = "block";
+        }
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
