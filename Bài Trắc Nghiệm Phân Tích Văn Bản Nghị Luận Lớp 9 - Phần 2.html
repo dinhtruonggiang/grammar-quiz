@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trắc Nghiệm Phân Tích Văn Bản Nghị Luận Lớp 9 - Phần 2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .question {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 20px;
+        }
+        
+        .options label {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .options label:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .explanation {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .btn-check {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .btn-check:hover {
+            background-color: #45a049;
+        }
+        
+        .correct {
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+        
+        .incorrect {
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="quiz-container">
+        <h1 class="text-2xl font-bold text-center my-6">Bài Trắc Nghiệm Phân Tích Văn Bản Nghị Luận Lớp 9 - Phần 2</h1>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <!-- Câu 1 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 1: Tác dụng của việc lựa chọn các kiểu câu ghép là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q1" value="A"> A. Để trang trí bài văn
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="B"> B. Nhằm phân loại kiểu câu ghép đẳng lập/chính phụ và biểu thị quan hệ ý nghĩa
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="C"> C. Để làm cho bài văn khó hiểu hơn
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="D"> D. Không có tác dụng cụ thể
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q1', 'B')">Kiểm tra</button>
+                <div id="explanation-q1" class="explanation">
+                    <p><strong>Đáp án đúng là B: Nhằm phân loại kiểu câu ghép đẳng lập/chính phụ và biểu thị quan hệ ý nghĩa</strong></p>
+                    <p>Giải thích: Theo tài liệu, tác dụng của việc lựa chọn các kiểu câu ghép là "nhằm phân loại kiểu câu ghép đẳng lập/chính phụ và biểu thị quan hệ ý nghĩa". Việc lựa chọn câu ghép phù hợp sẽ giúp diễn đạt đúng mối quan hệ logic giữa các ý trong bài văn nghị luận.</p>
+                </div>
+            </div>
+
+            <!-- Câu 2 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 2: Các phương tiện liên kết thường được sử dụng trong văn bản nghị luận là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q2" value="A"> A. Kết từ/Cặp kết từ/Cặp từ hô ứng và các dấu câu
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="B"> B. Chỉ dùng dấu phẩy và dấu chấm
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="C"> C. Các từ láy và từ đồng nghĩa
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="D"> D. Chỉ sử dụng câu hỏi tu từ
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q2', 'A')">Kiểm tra</button>
+                <div id="explanation-q2" class="explanation">
+                    <p><strong>Đáp án đúng là A: Kết từ/Cặp kết từ/Cặp từ hô ứng và các dấu câu</strong></p>
+                    <p>Giải thích: Theo tài liệu, các phương tiện liên kết thường được sử dụng trong văn bản nghị luận bao gồm "Kết từ/Cặp kết từ/Cặp từ hô ứng" và các dấu câu. Những phương tiện này giúp kết nối các ý tưởng, tạo sự liên kết chặt chẽ và logic trong bài văn.</p>
+                </div>
+            </div>
+
+            <!-- Câu 3 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 3: Thông điệp trong văn bản nghị luận là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q3" value="A"> A. Đoạn văn dài nhất trong bài
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="B"> B. Một câu ngắn gọn ở cuối bài
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="C"> C. Ý chính mà tác giả muốn gửi gắm đến người đọc
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="D"> D. Tựa đề của bài văn
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q3', 'C')">Kiểm tra</button>
+                <div id="explanation-q3" class="explanation">
+                    <p><strong>Đáp án đúng là C: Ý chính mà tác giả muốn gửi gắm đến người đọc</strong></p>
+                    <p>Giải thích: Theo tài liệu, thông điệp trong văn bản nghị luận là ý chính, là điều mà tác giả muốn gửi gắm đến người đọc. Thông điệp thường được thể hiện qua câu "Chúng ta hãy... Để..." - một lời kêu gọi, nhắc nhở hoặc đề xuất hành động cụ thể liên quan đến vấn đề đã được bàn luận.</p>
+                </div>
+            </div>
+
+            <!-- Câu 4 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 4: Vai trò của Luận điểm trong việc thể hiện Luận đề là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q4" value="A"> A. Không có vai trò quan trọng
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="B"> B. Làm tăng số lượng từ trong bài
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="C"> C. Làm sáng tỏ luận đề và góp phần tăng sức thuyết phục cho văn bản
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="D"> D. Chỉ để bổ sung thêm thông tin
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q4', 'C')">Kiểm tra</button>
+                <div id="explanation-q4" class="explanation">
+                    <p><strong>Đáp án đúng là C: Làm sáng tỏ luận đề và góp phần tăng sức thuyết phục cho văn bản</strong></p>
+                    <p>Giải thích: Theo tài liệu, vai trò của Luận điểm trong việc thể hiện Luận đề là "làm sáng tỏ luận đề và góp phần tăng sức thuyết phục cho văn bản". Luận điểm là những quan điểm, nhận định cụ thể để triển khai, phân tích và làm rõ vấn đề chung (Luận đề) mà bài văn đang bàn luận.</p>
+                </div>
+            </div>
+
+            <!-- Câu 5 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 5: Vai trò của Lí lẽ trong việc thể hiện Luận đề là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q5" value="A"> A. Làm tăng sức thuyết phục cho văn bản và góp phần làm sáng tỏ luận đề
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="B"> B. Chỉ để trang trí cho bài văn
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="C"> C. Không có vai trò quan trọng
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="D"> D. Để làm tăng số lượng từ trong bài
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q5', 'A')">Kiểm tra</button>
+                <div id="explanation-q5" class="explanation">
+                    <p><strong>Đáp án đúng là A: Làm tăng sức thuyết phục cho văn bản và góp phần làm sáng tỏ luận đề</strong></p>
+                    <p>Giải thích: Theo tài liệu, vai trò của Lí lẽ trong việc thể hiện Luận đề là "làm tăng sức thuyết phục cho văn bản và góp phần làm sáng tỏ luận đề". Lí lẽ cung cấp căn cứ, cơ sở hợp lý để chứng minh, giải thích và làm rõ các luận điểm, từ đó làm sáng tỏ luận đề.</p>
+                </div>
+            </div>
+
+            <!-- Câu 6 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 6: Các kiểu câu ghép đẳng lập thường thể hiện quan hệ ý nghĩa nào?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q6" value="A"> A. Quan hệ chính phụ
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="B"> B. Liệt kê, tiếp nối, tương phản, nhượng bộ, lựa chọn, nguyên nhân - kết quả, giải thích
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="C"> C. Chỉ quan hệ thời gian
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="D"> D. Không thể hiện quan hệ ý nghĩa nào
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q6', 'B')">Kiểm tra</button>
+                <div id="explanation-q6" class="explanation">
+                    <p><strong>Đáp án đúng là B: Liệt kê, tiếp nối, tương phản, nhượng bộ, lựa chọn, nguyên nhân - kết quả, giải thích</strong></p>
+                    <p>Giải thích: Theo tài liệu, các kiểu câu ghép đẳng lập thường thể hiện các quan hệ ý nghĩa như liệt kê, tiếp nối, tương phản, nhượng bộ, lựa chọn, nguyên nhân - kết quả, và giải thích. Quan hệ đẳng lập thể hiện sự ngang bằng về vai trò giữa các vế trong câu ghép.</p>
+                </div>
+            </div>
+
+            <!-- Câu 7 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 7: Trong văn bản nghị luận, câu ghép chính phụ thường thể hiện các quan hệ ý nghĩa nào?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q7" value="A"> A. Chỉ quan hệ thời gian
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="B"> B. Không thể hiện quan hệ ý nghĩa nào
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="C"> C. Nguyên nhân, kết quả, mục đích, điều kiện, sự kiện
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="D"> D. Chỉ quan hệ liệt kê
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q7', 'C')">Kiểm tra</button>
+                <div id="explanation-q7" class="explanation">
+                    <p><strong>Đáp án đúng là C: Nguyên nhân, kết quả, mục đích, điều kiện, sự kiện</strong></p>
+                    <p>Giải thích: Theo tài liệu, câu ghép chính phụ thường thể hiện các quan hệ ý nghĩa như nguyên nhân, kết quả, mục đích, điều kiện, sự kiện. Trong câu ghép chính phụ, vế chính đóng vai trò quan trọng hơn, vế phụ có chức năng bổ sung, giải thích, làm rõ cho vế chính.</p>
+                </div>
+            </div>
+
+            <!-- Câu 8 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 8: Ý kiến đánh giá chung trong văn bản nghị luận thể hiện điều gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q8" value="A"> A. Sự tức giận của người viết
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="B"> B. Suy nghĩ, thái độ, tình cảm của người viết về vấn đề
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="C"> C. Chỉ là thông tin khách quan
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="D"> D. Không thể hiện điều gì đặc biệt
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q8', 'B')">Kiểm tra</button>
+                <div id="explanation-q8" class="explanation">
+                    <p><strong>Đáp án đúng là B: Suy nghĩ, thái độ, tình cảm của người viết về vấn đề</strong></p>
+                    <p>Giải thích: Theo tài liệu, ý kiến đánh giá chung trong văn bản nghị luận thể hiện "suy nghĩ, thái độ, tình cảm của người viết về vấn đề". Đây là phần thể hiện quan điểm cá nhân, cảm xúc và nhận định tổng quát của người viết đối với vấn đề được bàn luận trong bài.</p>
+                </div>
+            </div>
+
+            <!-- Câu 9 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 9: Khi được hỏi "Em ấn tượng với Lí lẽ, Bằng chứng nào? Vì sao?", ta cần đáp ứng những yêu cầu nào?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q9" value="A"> A. Lựa chọn ngẫu nhiên một lí lẽ hoặc bằng chứng
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="B"> B. Nêu tất cả các lí lẽ và bằng chứng trong bài
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="C"> C. Nêu cảm nhận chủ quan của mình về bài văn
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="D"> D. Nêu lí lẽ, bằng chứng gây ấn tượng và giải thích vì sao chúng góp phần làm sáng tỏ luận đề và tăng sức thuyết phục cho văn bản
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q9', 'D')">Kiểm tra</button>
+                <div id="explanation-q9" class="explanation">
+                    <p><strong>Đáp án đúng là D: Nêu lí lẽ, bằng chứng gây ấn tượng và giải thích vì sao chúng góp phần làm sáng tỏ luận đề và tăng sức thuyết phục cho văn bản</strong></p>
+                    <p>Giải thích: Theo tài liệu, khi được hỏi về lí lẽ, bằng chứng gây ấn tượng, ta cần nêu rõ lí lẽ hoặc bằng chứng đó và giải thích vì sao chúng ấn tượng, đồng thời phân tích cách chúng góp phần làm sáng tỏ luận đề và tăng sức thuyết phục cho văn bản. Đây là cách trả lời đầy đủ và chuyên sâu.</p>
+                </div>
+            </div>
+
+            <!-- Câu 10 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 10: Vai trò của Bằng chứng trong việc thể hiện Luận đề là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q10" value="A"> A. Làm tăng sức thuyết phục cho văn bản và góp phần làm sáng tỏ luận đề
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="B"> B. Chỉ để bài văn dài hơn
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="C"> C. Không có vai trò quan trọng
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="D"> D. Chỉ để thể hiện kiến thức của người viết
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q10', 'A')">Kiểm tra</button>
+                <div id="explanation-q10" class="explanation">
+                    <p><strong>Đáp án đúng là A: Làm tăng sức thuyết phục cho văn bản và góp phần làm sáng tỏ luận đề</strong></p>
+                    <p>Giải thích: Theo tài liệu, vai trò của Bằng chứng trong việc thể hiện Luận đề là "làm tăng sức thuyết phục cho văn bản và góp phần làm sáng tỏ luận đề". Bằng chứng (cả khách quan và văn học) cung cấp những ví dụ cụ thể, minh họa và chứng minh cho các luận điểm và lí lẽ, từ đó làm cho luận đề thêm phần rõ ràng và thuyết phục.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer(question, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+            const explanationDiv = document.getElementById(`explanation-${question}`);
+            
+            if (!selectedOption) {
+                alert("Vui lòng chọn một đáp án!");
+                return;
+            }
+            
+            const labels = document.querySelectorAll(`input[name="${question}"]`).forEach(radio => {
+                const label = radio.parentElement;
+                label.classList.remove("correct", "incorrect");
+                
+                if (radio.checked) {
+                    if (radio.value === correctAnswer) {
+                        label.classList.add("correct");
+                    } else {
+                        label.classList.add("incorrect");
+                    }
+                }
+                
+                if (radio.value === correctAnswer && !radio.checked) {
+                    label.classList.add("correct");
+                }
+            });
+            
+            explanationDiv.style.display = "block";
+        }
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
