@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trắc Nghiệm Phân Tích Văn Bản Nghị Luận Lớp 9 - Phần 3</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .question {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 20px;
+        }
+        
+        .options label {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .options label:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .explanation {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .btn-check {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .btn-check:hover {
+            background-color: #45a049;
+        }
+        
+        .correct {
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+        
+        .incorrect {
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="quiz-container">
+        <h1 class="text-2xl font-bold text-center my-6">Bài Trắc Nghiệm Phân Tích Văn Bản Nghị Luận Lớp 9 - Phần 3</h1>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <!-- Câu 1 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 1: Bằng chứng văn học là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q1" value="A"> A. Những câu nói, chi tiết, hình ảnh, câu văn, đoạn văn trong tác phẩm văn học
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="B"> B. Những thuật ngữ khoa học
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="C"> C. Những số liệu thống kê
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="D"> D. Tất cả các phương án trên
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q1', 'A')">Kiểm tra</button>
+                <div id="explanation-q1" class="explanation">
+                    <p><strong>Đáp án đúng là A: Những câu nói, chi tiết, hình ảnh, câu văn, đoạn văn trong tác phẩm văn học</strong></p>
+                    <p>Giải thích: Theo tài liệu, bằng chứng văn học là "những câu nói, chi tiết, hình ảnh, câu văn, đoạn văn trong tác phẩm văn học". Đây là những yếu tố được trích dẫn từ tác phẩm văn học để minh họa, củng cố cho luận điểm và lí lẽ trong bài văn nghị luận.</p>
+                </div>
+            </div>
+
+            <!-- Câu 2 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 2: Để sử dụng hiệu quả bằng chứng văn học, người viết cần làm gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q2" value="A"> A. Sử dụng càng nhiều bằng chứng càng tốt
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="B"> B. Trích dẫn chính xác, phân tích ý nghĩa và làm rõ mối liên hệ với luận điểm
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="C"> C. Chỉ sử dụng những bằng chứng dài
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="D"> D. Tránh phân tích bằng chứng
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q2', 'B')">Kiểm tra</button>
+                <div id="explanation-q2" class="explanation">
+                    <p><strong>Đáp án đúng là B: Trích dẫn chính xác, phân tích ý nghĩa và làm rõ mối liên hệ với luận điểm</strong></p>
+                    <p>Giải thích: Theo tài liệu, để sử dụng hiệu quả bằng chứng văn học, người viết cần "trích dẫn chính xác, phân tích ý nghĩa và làm rõ mối liên hệ với luận điểm". Điều này đảm bảo bằng chứng thực sự hỗ trợ và làm rõ cho luận điểm, tăng sức thuyết phục cho bài văn.</p>
+                </div>
+            </div>
+
+            <!-- Câu 3 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 3: Cấu trúc của văn bản nghị luận bao gồm những phần nào?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q3" value="A"> A. Mở bài, thân bài, kết luận
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="B"> B. Giới thiệu, triển khai, kết thúc
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="C"> C. Đặt vấn đề, giải quyết vấn đề, kết luận
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="D"> D. Tất cả các phương án trên đều đúng
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q3', 'D')">Kiểm tra</button>
+                <div id="explanation-q3" class="explanation">
+                    <p><strong>Đáp án đúng là D: Tất cả các phương án trên đều đúng</strong></p>
+                    <p>Giải thích: Theo tài liệu, cấu trúc của văn bản nghị luận có thể được gọi theo nhiều cách khác nhau: "Mở bài, thân bài, kết luận" hoặc "Giới thiệu, triển khai, kết thúc" hoặc "Đặt vấn đề, giải quyết vấn đề, kết luận". Tất cả đều đề cập đến ba phần cơ bản của một bài văn nghị luận: phần mở đầu, phần phát triển và phần kết thúc.</p>
+                </div>
+            </div>
+
+            <!-- Câu 4 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 4: Dấu hiệu nhận biết luận điểm trong văn bản nghị luận là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q4" value="A"> A. Là những câu dài nhất trong bài
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="B"> B. Những câu thường có từ "Chẳng hạn như", "Ví dụ"
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="C"> C. Những câu thường bắt đầu bằng "Tôi nghĩ rằng", "Theo tôi", "Tôi cho rằng"
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="D"> D. Những câu có chứa số liệu cụ thể
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q4', 'C')">Kiểm tra</button>
+                <div id="explanation-q4" class="explanation">
+                    <p><strong>Đáp án đúng là C: Những câu thường bắt đầu bằng "Tôi nghĩ rằng", "Theo tôi", "Tôi cho rằng"</strong></p>
+                    <p>Giải thích: Theo tài liệu, dấu hiệu nhận biết luận điểm trong văn bản nghị luận là "những câu thường bắt đầu bằng 'Tôi nghĩ rằng', 'Theo tôi', 'Tôi cho rằng'". Những cụm từ này báo hiệu quan điểm, nhận định của người viết, đó chính là luận điểm.</p>
+                </div>
+            </div>
+
+            <!-- Câu 5 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 5: Dấu hiệu nhận biết lí lẽ trong văn bản nghị luận là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q5" value="A"> A. Những câu thường bắt đầu bằng "Bởi vì", "Vì", "Bởi lẽ", "Do", "Nguyên nhân là"
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="B"> B. Những câu có số liệu cụ thể
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="C"> C. Những câu dài nhất trong bài văn
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="D"> D. Những câu sử dụng nhiều từ ngữ hoa mỹ
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q5', 'A')">Kiểm tra</button>
+                <div id="explanation-q5" class="explanation">
+                    <p><strong>Đáp án đúng là A: Những câu thường bắt đầu bằng "Bởi vì", "Vì", "Bởi lẽ", "Do", "Nguyên nhân là"</strong></p>
+                    <p>Giải thích: Theo tài liệu, dấu hiệu nhận biết lí lẽ trong văn bản nghị luận là "những câu thường bắt đầu bằng 'Bởi vì', 'Vì', 'Bởi lẽ', 'Do', 'Nguyên nhân là'". Những từ này báo hiệu phần giải thích, lập luận để chứng minh cho luận điểm đã nêu.</p>
+                </div>
+            </div>
+
+            <!-- Câu 6 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 6: Dấu hiệu nhận biết bằng chứng trong văn bản nghị luận là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q6" value="A"> A. Những câu dài và phức tạp nhất
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="B"> B. Những câu thường bắt đầu bằng "Tôi nghĩ rằng", "Theo tôi"
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="C"> C. Những câu thường có từ "Chẳng hạn như", "Ví dụ", "Điển hình là", "Cụ thể là" hoặc câu văn/đoạn văn được trích dẫn
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="D"> D. Những câu có nhiều biện pháp tu từ
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q6', 'C')">Kiểm tra</button>
+                <div id="explanation-q6" class="explanation">
+                    <p><strong>Đáp án đúng là C: Những câu thường có từ "Chẳng hạn như", "Ví dụ", "Điển hình là", "Cụ thể là" hoặc câu văn/đoạn văn được trích dẫn</strong></p>
+                    <p>Giải thích: Theo tài liệu, dấu hiệu nhận biết bằng chứng trong văn bản nghị luận là "những câu thường có từ 'Chẳng hạn như', 'Ví dụ', 'Điển hình là', 'Cụ thể là' hoặc câu văn/đoạn văn được trích dẫn". Những từ này báo hiệu phần minh họa, dẫn chứng cụ thể để hỗ trợ cho lí lẽ và luận điểm.</p>
+                </div>
+            </div>
+
+            <!-- Câu 7 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 7: Trong phần mở bài của văn bản nghị luận, người viết cần làm gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q7" value="A"> A. Nêu kết luận của bài văn
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="B"> B. Nêu vấn đề nghị luận, luận đề và phương pháp triển khai
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="C"> C. Trình bày tất cả các luận điểm
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="D"> D. Đưa ra tất cả các bằng chứng
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q7', 'B')">Kiểm tra</button>
+                <div id="explanation-q7" class="explanation">
+                    <p><strong>Đáp án đúng là B: Nêu vấn đề nghị luận, luận đề và phương pháp triển khai</strong></p>
+                    <p>Giải thích: Theo tài liệu, trong phần mở bài của văn bản nghị luận, người viết cần "nêu vấn đề nghị luận, luận đề và phương pháp triển khai". Mở bài có nhiệm vụ giới thiệu vấn đề sẽ được bàn luận, quan điểm chính của người viết và cách thức/hướng triển khai vấn đề trong bài văn.</p>
+                </div>
+            </div>
+
+            <!-- Câu 8 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 8: Trong phần thân bài của văn bản nghị luận, người viết cần làm gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q8" value="A"> A. Chỉ nêu luận đề
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="B"> B. Đưa ra kết luận của bài văn
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="C"> C. Triển khai các luận điểm bằng lí lẽ và bằng chứng
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="D"> D. Chỉ đưa ra ý kiến chủ quan
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q8', 'C')">Kiểm tra</button>
+                <div id="explanation-q8" class="explanation">
+                    <p><strong>Đáp án đúng là C: Triển khai các luận điểm bằng lí lẽ và bằng chứng</strong></p>
+                    <p>Giải thích: Theo tài liệu, trong phần thân bài của văn bản nghị luận, người viết cần "triển khai các luận điểm bằng lí lẽ và bằng chứng". Thân bài là phần chính của bài văn, nơi người viết phát triển các luận điểm bằng cách đưa ra lí lẽ thuyết phục và minh họa bằng các bằng chứng cụ thể.</p>
+                </div>
+            </div>
+
+            <!-- Câu 9 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 9: Trong phần kết luận của văn bản nghị luận, người viết cần làm gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q9" value="A"> A. Tóm tắt lại luận đề, các luận điểm chính và đưa ra thông điệp
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="B"> B. Đưa ra thêm luận điểm mới
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="C"> C. Giới thiệu vấn đề nghị luận
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="D"> D. Đưa ra các bằng chứng mới
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q9', 'A')">Kiểm tra</button>
+                <div id="explanation-q9" class="explanation">
+                    <p><strong>Đáp án đúng là A: Tóm tắt lại luận đề, các luận điểm chính và đưa ra thông điệp</strong></p>
+                    <p>Giải thích: Theo tài liệu, trong phần kết luận của văn bản nghị luận, người viết cần "tóm tắt lại luận đề, các luận điểm chính và đưa ra thông điệp". Kết luận có nhiệm vụ tổng kết lại những nội dung chính đã trình bày và nhấn mạnh thông điệp mà người viết muốn gửi gắm đến người đọc.</p>
+                </div>
+            </div>
+
+            <!-- Câu 10 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 10: Biện pháp tu từ nào thường được sử dụng trong văn bản nghị luận?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q10" value="A"> A. Chỉ dùng so sánh
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="B"> B. Chỉ dùng ẩn dụ
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="C"> C. Chỉ dùng hoán dụ
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="D"> D. So sánh, ẩn dụ, nhân hóa, hoán dụ, câu hỏi tu từ, điệp ngữ, đối
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q10', 'D')">Kiểm tra</button>
+                <div id="explanation-q10" class="explanation">
+                    <p><strong>Đáp án đúng là D: So sánh, ẩn dụ, nhân hóa, hoán dụ, câu hỏi tu từ, điệp ngữ, đối</strong></p>
+                    <p>Giải thích: Theo tài liệu, các biện pháp tu từ thường được sử dụng trong văn bản nghị luận bao gồm "so sánh, ẩn dụ, nhân hóa, hoán dụ, câu hỏi tu từ, điệp ngữ, đối". Các biện pháp tu từ này giúp làm cho bài văn nghị luận thêm phần sinh động, hấp dẫn và tăng sức thuyết phục.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer(question, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+            const explanationDiv = document.getElementById(`explanation-${question}`);
+            
+            if (!selectedOption) {
+                alert("Vui lòng chọn một đáp án!");
+                return;
+            }
+            
+            const labels = document.querySelectorAll(`input[name="${question}"]`).forEach(radio => {
+                const label = radio.parentElement;
+                label.classList.remove("correct", "incorrect");
+                
+                if (radio.checked) {
+                    if (radio.value === correctAnswer) {
+                        label.classList.add("correct");
+                    } else {
+                        label.classList.add("incorrect");
+                    }
+                }
+                
+                if (radio.value === correctAnswer && !radio.checked) {
+                    label.classList.add("correct");
+                }
+            });
+            
+            explanationDiv.style.display = "block";
+        }
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
