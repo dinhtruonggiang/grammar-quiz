@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Văn Lớp 9 Giữa Kì 2 - Phần 2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .question {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 20px;
+        }
+        
+        .options label {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .options label:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .explanation {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .btn-check {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .btn-check:hover {
+            background-color: #45a049;
+        }
+        
+        .correct {
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+        
+        .incorrect {
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="quiz-container">
+        <h1 class="text-2xl font-bold text-center my-6">Bài Trắc Nghiệm Văn Lớp 9 - Phần 2</h1>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <!-- Câu 1 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 1: Đặc điểm nhân vật 9 TTT có nghĩa là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q1" value="A"> A. Nhân vật có 9 đặc điểm tính cách
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="B"> B. Nhân vật có tính tình tốt trẻ trung
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="C"> C. Nhân vật có khả năng điều tra vượt trội, khả năng quan sát tình tướng, suy luận, đánh giá các bên
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="D"> D. Nhân vật có 9 cách thể hiện khác nhau
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q1', 'C')">Kiểm tra</button>
+                <div id="explanation-q1" class="explanation">
+                    <p><strong>Đáp án đúng là C: Nhân vật có khả năng điều tra vượt trội, khả năng quan sát tình tướng, suy luận, đánh giá các bên</strong></p>
+                    <p>Giải thích: Theo tài liệu, đặc điểm nhân vật 9 TTT (Nhân vật trong trinh thám) là có khả năng điều tra vượt trội, khả năng quan sát tình tướng, khả năng phân tích, suy luận, đánh giá các bên. Đây là những đặc điểm thường thấy ở các nhân vật trong văn bản truyện trinh thám.</p>
+                </div>
+            </div>
+
+            <!-- Câu 2 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 2: Vai trò của nhân vật trong văn bản truyện là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q2" value="A"> A. Nhân vật chỉ là phương tiện phản ánh đời sống, khái quát hiện thực
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="B"> B. Nhân vật chỉ để làm cho câu chuyện thêm hấp dẫn
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="C"> C. Nhân vật không có vai trò gì đặc biệt
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="D"> D. Nhân vật chỉ để nói lên quan điểm của tác giả
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q2', 'A')">Kiểm tra</button>
+                <div id="explanation-q2" class="explanation">
+                    <p><strong>Đáp án đúng là A: Nhân vật chỉ là phương tiện phản ánh đời sống, khái quát hiện thực</strong></p>
+                    <p>Giải thích: Theo tài liệu, vai trò của nhân vật trong văn bản truyện là phương tiện phản ánh đời sống, khái quát hiện thực. Hình tượng nhân vật thể hiện cách nhìn con người, cuộc sống của tác giả và thể hiện ước mơ, hi vọng, tình cảm, thái độ của người viết.</p>
+                </div>
+            </div>
+
+            <!-- Câu 3 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 3: Thứ tự ngôi kể trong văn bản tự sự từ dễ thấy nhất đến khó nhận biết nhất là?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q3" value="A"> A. Ngôi thứ nhất, ngôi thứ ba, ngôi thứ hai
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="B"> B. Ngôi thứ hai, ngôi thứ nhất, ngôi thứ ba
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="C"> C. Ngôi thứ ba, ngôi thứ hai, ngôi thứ nhất
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="D"> D. Ngôi thứ ba, ngôi thứ nhất, ngôi thứ hai
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q3', 'A')">Kiểm tra</button>
+                <div id="explanation-q3" class="explanation">
+                    <p><strong>Đáp án đúng là A: Ngôi thứ nhất, ngôi thứ ba, ngôi thứ hai</strong></p>
+                    <p>Giải thích: Trong văn bản tự sự, ngôi thứ nhất (xưng "tôi") dễ nhận biết nhất do người kể trực tiếp sử dụng đại từ nhân xưng ngôi thứ nhất. Tiếp theo là ngôi thứ ba (kể về người khác, nói về "nó", "anh ấy", "cô ấy"...), và khó nhận biết nhất là ngôi thứ hai (kể chuyện bằng cách xưng "bạn", "mày", "các bạn"...).</p>
+                </div>
+            </div>
+
+            <!-- Câu 4 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 4: Đặc điểm của ngôi kể thứ hai là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q4" value="A"> A. Bộc lộ trực tiếp cảm xúc, suy nghĩ của người kể
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="B"> B. Với điểm nhìn linh hoạt, mạch kể chuyện được thể hiện một cách linh hoạt, từ đó những sự việc xoay quanh nhân vật
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="C"> C. Người kể đứng ngoài câu chuyện
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="D"> D. Người kể là nhân vật chính
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q4', 'B')">Kiểm tra</button>
+                <div id="explanation-q4" class="explanation">
+                    <p><strong>Đáp án đúng là B: Với điểm nhìn linh hoạt, mạch kể chuyện được thể hiện một cách linh hoạt, từ đó những sự việc xoay quanh nhân vật</strong></p>
+                    <p>Giải thích: Theo tài liệu, ngôi kể thứ hai có đặc điểm là với điểm nhìn linh hoạt, mạch kể chuyện được thể hiện một cách linh hoạt, từ đó những sự việc xoay quanh nhân vật. Ngôi kể thứ hai thường ít phổ biến hơn so với ngôi thứ nhất và ngôi thứ ba, nhưng tạo được hiệu ứng độc đáo khi giao tiếp trực tiếp với người đọc.</p>
+                </div>
+            </div>
+
+            <!-- Câu 5 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 5: Vai trò của cốt truyện trong văn bản tự sự là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q5" value="A"> A. Cốt truyện làm nổi bật tư tưởng và chủ đề của tác phẩm
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="B"> B. Cốt truyện chỉ có tác dụng kể lại các sự kiện
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="C"> C. Cốt truyện không có vai trò quan trọng
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="D"> D. Cốt truyện chỉ để miêu tả không gian, thời gian
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q5', 'A')">Kiểm tra</button>
+                <div id="explanation-q5" class="explanation">
+                    <p><strong>Đáp án đúng là A: Cốt truyện làm nổi bật tư tưởng và chủ đề của tác phẩm</strong></p>
+                    <p>Giải thích: Theo tài liệu, cốt truyện có vai trò làm nổi bật tư tưởng và chủ đề của tác phẩm. Cốt truyện không chỉ đơn thuần là chuỗi các sự kiện diễn ra (kể về ai + những việc gì + kết quả) mà còn là phương tiện để tác giả thể hiện tư tưởng, chủ đề và thông điệp của tác phẩm.</p>
+                </div>
+            </div>
+
+            <!-- Câu 6 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 6: Cốt truyện xoay quanh các sự việc/quá trình thường trả lời cho chuỗi câu hỏi gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q6" value="A"> A. Ai? Ở đâu? Khi nào?
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="B"> B. Ai+làm gì? Ai+làm gì? Ai+làm gì?...→ thể hiện điều gì?
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="C"> C. Tại sao? Như thế nào? Vì sao?
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="D"> D. Thế nào? Ra sao? Bao nhiêu?
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q6', 'B')">Kiểm tra</button>
+                <div id="explanation-q6" class="explanation">
+                    <p><strong>Đáp án đúng là B: Ai+làm gì? Ai+làm gì? Ai+làm gì?...→ thể hiện điều gì?</strong></p>
+                    <p>Giải thích: Theo tài liệu, cốt truyện xoay quanh các sự việc/quá trình thường trả lời cho chuỗi câu hỏi: Ai+làm gì? Ai+làm gì? Ai+làm gì?...→ thể hiện điều gì? Cốt truyện thể hiện các hành động của nhân vật và kết quả, ý nghĩa của những hành động đó.</p>
+                </div>
+            </div>
+
+            <!-- Câu 7 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 7: Căn cứ xác định chủ đề của văn bản truyện bao gồm những yếu tố nào?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q7" value="A"> A. Chỉ dựa vào tên tác phẩm
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="B"> B. Chỉ dựa vào nhân vật chính
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="C"> C. Cách sắp xếp các sự kiện chính, cách khắc họa khung cảnh, qua nhân vật
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="D"> D. Chỉ dựa vào kết thúc của truyện
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q7', 'C')">Kiểm tra</button>
+                <div id="explanation-q7" class="explanation">
+                    <p><strong>Đáp án đúng là C: Cách sắp xếp các sự kiện chính, cách khắc họa khung cảnh, qua nhân vật</strong></p>
+                    <p>Giải thích: Theo tài liệu, căn cứ xác định chủ đề của văn bản truyện bao gồm: cách sắp xếp các sự kiện chính, cách khắc họa khung cảnh, và qua nhân vật (lời nói/suy nghĩ/hành động). Qua các yếu tố này, tác giả thể hiện tư tưởng, quan điểm và thái độ của mình đối với đối tượng phản ánh, từ đó người đọc có thể xác định được chủ đề của tác phẩm.</p>
+                </div>
+            </div>
+
+            <!-- Câu 8 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 8: Đặc điểm (D) của câu đặc biệt (CĐB) là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q8" value="A"> A. Câu có tất cả các thành phần
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="B"> B. Câu không cấu tạo theo mô hình CN-VN mà chỉ có nòng cốt đặc biệt
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="C"> C. Câu không có chủ ngữ và vị ngữ
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="D"> D. Câu có nhiều thành phần phụ
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q8', 'B')">Kiểm tra</button>
+                <div id="explanation-q8" class="explanation">
+                    <p><strong>Đáp án đúng là B: Câu không cấu tạo theo mô hình CN-VN mà chỉ có nòng cốt đặc biệt</strong></p>
+                    <p>Giải thích: Theo tài liệu, đặc điểm (D) của câu đặc biệt (CĐB) là câu không cấu tạo theo mô hình CN-VN (Chủ ngữ - Vị ngữ) mà chỉ có nòng cốt đặc biệt. Đây là loại câu khác biệt với câu thông thường, không tuân theo cấu trúc ngữ pháp tiêu chuẩn của câu.</p>
+                </div>
+            </div>
+
+            <!-- Câu 9 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 9: Công năng (C) của câu đặc biệt (CĐB) là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q9" value="A"> A. Bộc lộ cảm xúc của người viết và dùng để gọi/dùng để đáp/dùng để chỉ sự tồn tại của sự vật, hiện tượng, sự kiện
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="B"> B. Chỉ để làm cho văn bản thêm đa dạng
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="C"> C. Không có công năng đặc biệt
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="D"> D. Chỉ để làm cho câu thêm ngắn gọn
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q9', 'A')">Kiểm tra</button>
+                <div id="explanation-q9" class="explanation">
+                    <p><strong>Đáp án đúng là A: Bộc lộ cảm xúc của người viết và dùng để gọi/dùng để đáp/dùng để chỉ sự tồn tại của sự vật, hiện tượng, sự kiện</strong></p>
+                    <p>Giải thích: Theo tài liệu, công năng (C) của câu đặc biệt (CĐB) là bộc lộ cảm xúc của người viết và dùng để gọi/dùng để đáp/dùng để chỉ sự tồn tại của sự vật, hiện tượng, sự kiện. Câu đặc biệt thường được sử dụng để bộc lộ cảm xúc mạnh mẽ hoặc để nhấn mạnh một điều gì đó quan trọng.</p>
+                </div>
+            </div>
+
+            <!-- Câu 10 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 10: Trong văn bản tự sự, lời người kể chuyện, lời nhân vật, lời đối thoại/độc thoại được gọi là?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q10" value="A"> A. Tự điển
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="B"> B. Tự thuật
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="C"> C. Tự do
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="D"> D. Tự ôn
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q10', 'D')">Kiểm tra</button>
+                <div id="explanation-q10" class="explanation">
+                    <p><strong>Đáp án đúng là D: Tự ôn</strong></p>
+                    <p>Giải thích: Theo ghi chú ở cuối tài liệu, lời người kể chuyện, lời nhân vật, lời đối thoại/độc thoại được gọi là "tự ôn" (viết tắt là TƯ). Đây là các dạng lời trong văn bản tự sự. Lời kể/thoại là những phương thức thể hiện nội dung trong văn bản tự sự và là yếu tố quan trọng để xây dựng nên câu chuyện.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer(question, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+            const explanationDiv = document.getElementById(`explanation-${question}`);
+            
+            if (!selectedOption) {
+                alert("Vui lòng chọn một đáp án!");
+                return;
+            }
+            
+            const labels = document.querySelectorAll(`input[name="${question}"]`).forEach(radio => {
+                const label = radio.parentElement;
+                label.classList.remove("correct", "incorrect");
+                
+                if (radio.checked) {
+                    if (radio.value === correctAnswer) {
+                        label.classList.add("correct");
+                    } else {
+                        label.classList.add("incorrect");
+                    }
+                }
+                
+                if (radio.value === correctAnswer && !radio.checked) {
+                    label.classList.add("correct");
+                }
+            });
+            
+            explanationDiv.style.display = "block";
+        }
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
