@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trắc Nghiệm Phân Tích Văn Bản Nghị Luận Lớp 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .question {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 20px;
+        }
+        
+        .options label {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .options label:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .explanation {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .btn-check {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .btn-check:hover {
+            background-color: #45a049;
+        }
+        
+        .correct {
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+        
+        .incorrect {
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="quiz-container">
+        <h1 class="text-2xl font-bold text-center my-6">Bài Trắc Nghiệm Phân Tích Văn Bản Nghị Luận Lớp 9</h1>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <!-- Câu 1 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 1: Luận đề trong văn bản nghị luận là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q1" value="A"> A. Là các bằng chứng được đưa ra trong bài viết
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="B"> B. Là vấn đề bàn luận của văn bản nghị luận
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="C"> C. Là ý kiến riêng của người viết
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="D"> D. Là các lí lẽ để bảo vệ quan điểm
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q1', 'B')">Kiểm tra</button>
+                <div id="explanation-q1" class="explanation">
+                    <p><strong>Đáp án đúng là B: Là vấn đề bàn luận của văn bản nghị luận</strong></p>
+                    <p>Giải thích: Theo tài liệu, luận đề được định nghĩa là "vấn đề bàn luận" của văn bản nghị luận. Đây chính là vấn đề, hiện tượng mà bài văn nghị luận sẽ tập trung bàn về, phân tích và đưa ra các quan điểm, đánh giá.</p>
+                </div>
+            </div>
+
+            <!-- Câu 2 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 2: Luận điểm trong văn bản nghị luận bao gồm những gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q2" value="A"> A. Các bằng chứng cụ thể để chứng minh quan điểm
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="B"> B. Các đoạn văn miêu tả chi tiết
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="C"> C. Ý kiến/nhận định/quan điểm của người viết và nội dung của đoạn văn
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="D"> D. Cách trình bày vấn đề của bài văn
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q2', 'C')">Kiểm tra</button>
+                <div id="explanation-q2" class="explanation">
+                    <p><strong>Đáp án đúng là C: Ý kiến/nhận định/quan điểm của người viết và nội dung của đoạn văn</strong></p>
+                    <p>Giải thích: Theo tài liệu, luận điểm bao gồm "ý kiến: chép câu văn/từ ngữ nêu ý kiến, đánh giá, nhận định, quan điểm... của người viết về vấn đề" và "nội dung của đoạn văn (thực trạng/tác hại/vai trò/kết quả...)". Luận điểm chính là những quan điểm cụ thể mà người viết đưa ra để bàn luận về vấn đề chính.</p>
+                </div>
+            </div>
+
+            <!-- Câu 3 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 3: Lí lẽ trong văn bản nghị luận có tác dụng gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q3" value="A"> A. Tô điểm cho bài văn thêm phần văn hoa
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="B"> B. Thể hiện sự phân tích, làm rõ hơn luận điểm
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="C"> C. Chỉ để minh họa cho vấn đề
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="D"> D. Thể hiện cảm xúc của người viết
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q3', 'B')">Kiểm tra</button>
+                <div id="explanation-q3" class="explanation">
+                    <p><strong>Đáp án đúng là B: Thể hiện sự phân tích, làm rõ hơn luận điểm</strong></p>
+                    <p>Giải thích: Theo tài liệu, lí lẽ "chép câu văn/từ ngữ thể hiện sự phân tích, lí giải rõ hơn". Lí lẽ giúp giải thích (Vì sao đưa ra ý kiến trên? Lí giải, phân tích nguyên nhân? Thực trạng? Tác hại? vì sao cần...). Lí lẽ làm cho luận điểm trở nên vững chắc và thuyết phục hơn.</p>
+                </div>
+            </div>
+
+            <!-- Câu 4 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 4: Bằng chứng khách quan (BCKQ) là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q4" value="A"> A. Là ý kiến chủ quan của người viết
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="B"> B. Là những dẫn chứng từ tác phẩm văn học
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="C"> C. Là những con người/sự kiện/số liệu/thời gian/nơi chốn/khảo sát/nghiên cứu có trong thực tế
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="D"> D. Là những chi tiết/hình ảnh từ trí tưởng tượng
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q4', 'C')">Kiểm tra</button>
+                <div id="explanation-q4" class="explanation">
+                    <p><strong>Đáp án đúng là C: Là những con người/sự kiện/số liệu/thời gian/nơi chốn/khảo sát/nghiên cứu có trong thực tế</strong></p>
+                    <p>Giải thích: Theo tài liệu, bằng chứng khách quan được định nghĩa là "những con người/sự kiện/số liệu/thời gian/nơi chốn/khảo sát/nghiên cứu...có trong thực tế". Đây là những dẫn chứng có tính xác thực, có thể kiểm chứng được từ thực tế, làm tăng tính thuyết phục cho bài văn nghị luận.</p>
+                </div>
+            </div>
+
+            <!-- Câu 5 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 5: Cách triển khai bằng chứng trong văn bản nghị luận có tác dụng gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q5" value="A"> A. Làm cho bài văn thêm dài
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="B"> B. Làm tăng độ tin cậy và sức thuyết phục cho văn bản
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="C"> C. Thể hiện khả năng ghi nhớ của người viết
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="D"> D. Chỉ để tô điểm cho bài văn
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q5', 'B')">Kiểm tra</button>
+                <div id="explanation-q5" class="explanation">
+                    <p><strong>Đáp án đúng là B: Làm tăng độ tin cậy và sức thuyết phục cho văn bản</strong></p>
+                    <p>Giải thích: Theo tài liệu, cách triển khai bằng chứng có tác dụng "làm tăng độ tin cậy và sức thuyết phục cho văn bản". Khi người viết đưa ra các bằng chứng và triển khai chúng một cách hiệu quả, thuyết phục, sẽ giúp làm sáng tỏ luận điểm và luận đề của bài văn.</p>
+                </div>
+            </div>
+
+            <!-- Câu 6 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 6: Cách trình bày vấn đề khách quan (CTBVĐKQ) bao gồm những gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q6" value="A"> A. Chỉ trình bày cảm xúc chủ quan của người viết
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="B"> B. Chỉ trình bày thống kê số liệu
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="C"> C. Chép câu văn/từ ngữ là những thông tin, bằng chứng khách quan
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="D"> D. Trình bày ngẫu nhiên không có căn cứ
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q6', 'C')">Kiểm tra</button>
+                <div id="explanation-q6" class="explanation">
+                    <p><strong>Đáp án đúng là C: Chép câu văn/từ ngữ là những thông tin, bằng chứng khách quan</strong></p>
+                    <p>Giải thích: Theo tài liệu, cách trình bày vấn đề khách quan (CTBVĐKQ) bao gồm "chép câu văn/từ ngữ là những thông tin, bằng chứng khách quan". Việc này có tác dụng đảm bảo tính đúng đắn, chính xác và tăng sức thuyết phục cho bài văn.</p>
+                </div>
+            </div>
+
+            <!-- Câu 7 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 7: Cách trình bày vấn đề chủ quan (CTBVĐCQ) có tác dụng gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q7" value="A"> A. Thể hiện rõ tính cảm, thái độ của người viết và khơi gợi sự đồng cảm của người đọc
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="B"> B. Làm cho bài văn thêm dài
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="C"> C. Chỉ để thể hiện quan điểm riêng không cần thuyết phục người đọc
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="D"> D. Làm giảm tính thuyết phục của bài văn
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q7', 'A')">Kiểm tra</button>
+                <div id="explanation-q7" class="explanation">
+                    <p><strong>Đáp án đúng là A: Thể hiện rõ tính cảm, thái độ của người viết và khơi gợi sự đồng cảm của người đọc</strong></p>
+                    <p>Giải thích: Theo tài liệu, cách trình bày vấn đề chủ quan (CTBVĐCQ) có tác dụng "thể hiện rõ tính cảm, thái độ...của người viết và khơi gợi sự đồng cảm của người đọc". Khi người viết bày tỏ quan điểm, cảm xúc của mình một cách chân thành, sẽ tạo được sự đồng cảm và thu hút người đọc.</p>
+                </div>
+            </div>
+
+            <!-- Câu 8 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 8: Phân tích mối liên hệ (MLH) giữa Luận điểm - Lí lẽ - Bằng chứng có tác dụng gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q8" value="A"> A. Chỉ để làm cho bài văn dài hơn
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="B"> B. Làm cho bài văn rối rắm hơn
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="C"> C. Làm sáng tỏ luận điểm và tăng sức thuyết phục cho văn bản
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="D"> D. Không có tác dụng rõ ràng
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q8', 'C')">Kiểm tra</button>
+                <div id="explanation-q8" class="explanation">
+                    <p><strong>Đáp án đúng là C: Làm sáng tỏ luận điểm và tăng sức thuyết phục cho văn bản</strong></p>
+                    <p>Giải thích: Theo tài liệu, phân tích mối liên hệ giữa Luận điểm - Lí lẽ - Bằng chứng có tác dụng "làm sáng tỏ luận điểm" và "tăng sức thuyết phục cho văn bản". Khi người viết chỉ ra được mối liên hệ logic giữa các yếu tố này, sẽ giúp người đọc hiểu rõ hơn quan điểm của người viết và tăng tính thuyết phục của bài văn.</p>
+                </div>
+            </div>
+
+            <!-- Câu 9 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 9: Tác dụng của việc lựa chọn câu đơn trong văn bản nghị luận là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q9" value="A"> A. Không có tác dụng gì đặc biệt
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="B"> B. Để biểu thị một phần đoạn đơn lẻ
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="C"> C. Chỉ để làm cho bài văn dễ viết hơn
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="D"> D. Để làm cho bài văn thiếu tính liên kết
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q9', 'B')">Kiểm tra</button>
+                <div id="explanation-q9" class="explanation">
+                    <p><strong>Đáp án đúng là B: Để biểu thị một phần đoạn đơn lẻ</strong></p>
+                    <p>Giải thích: Theo tài liệu, tác dụng của việc lựa chọn câu đơn là "để biểu thị một phần đoạn đơn". Câu đơn thường được sử dụng để diễn đạt một ý tưởng, thông tin đơn giản, rõ ràng và dứt khoát.</p>
+                </div>
+            </div>
+
+            <!-- Câu 10 -->
+            <div class="question">
+                <h3 class="font-bold text-lg">Câu 10: Tác dụng của việc lựa chọn câu ghép trong văn bản nghị luận là gì?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q10" value="A"> A. Để biểu thị một phần đoạn đơn lẻ
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="B"> B. Để biểu thị một phần đoạn phức hợp, thể hiện quá trình tư duy có tính phức hợp
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="C"> C. Chỉ để làm cho bài văn dài hơn
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="D"> D. Không có tác dụng gì đặc biệt
+                    </label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q10', 'B')">Kiểm tra</button>
+                <div id="explanation-q10" class="explanation">
+                    <p><strong>Đáp án đúng là B: Để biểu thị một phần đoạn phức hợp, thể hiện quá trình tư duy có tính phức hợp</strong></p>
+                    <p>Giải thích: Theo tài liệu, tác dụng của việc lựa chọn câu ghép là "để biểu thị một phần đoạn phức hợp, thể hiện quá trình tư duy có tính phức hợp". Câu ghép giúp diễn đạt nhiều ý tưởng có mối liên hệ với nhau, thể hiện tư duy phân tích, tổng hợp và logic của người viết.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer(question, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+            const explanationDiv = document.getElementById(`explanation-${question}`);
+            
+            if (!selectedOption) {
+                alert("Vui lòng chọn một đáp án!");
+                return;
+            }
+            
+            const labels = document.querySelectorAll(`input[name="${question}"]`).forEach(radio => {
+                const label = radio.parentElement;
+                label.classList.remove("correct", "incorrect");
+                
+                if (radio.checked) {
+                    if (radio.value === correctAnswer) {
+                        label.classList.add("correct");
+                    } else {
+                        label.classList.add("incorrect");
+                    }
+                }
+                
+                if (radio.value === correctAnswer && !radio.checked) {
+                    label.classList.add("correct");
+                }
+            });
+            
+            explanationDiv.style.display = "block";
+        }
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
