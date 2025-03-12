@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Địa Lý 9 - Giữa Kì 2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f0f9ff;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            margin: 8px 0;
+            cursor: pointer;
+        }
+        .explanation {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e8f5e9;
+            border-radius: 5px;
+        }
+        .submit-btn {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .reset-btn {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+        .incorrect {
+            color: red;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold text-center mb-6 text-blue-800">BÀI TRẮC NGHIỆM ĐỊA LÝ LỚP 9 - GIỮA KÌ 2</h1>
+        <h2 class="text-xl font-semibold mb-4 text-blue-600">Chủ đề: Duyên hải Nam Trung Bộ</h2>
+        
+        <div id="quiz-container">
+            <div class="question" id="q1">
+                <p class="font-semibold">Câu 1: Nhà máy điện nào sau đây là nhà máy nhiệt điện ở Duyên hải Nam Trung Bộ?</p>
+                <div class="options">
+                    <div class="option" onclick="checkAnswer('q1', 'a')">
+                        <input type="radio" name="q1" id="q1a" value="a">
+                        <label for="q1a">A. Sông Tranh 2</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q1', 'b')">
+                        <input type="radio" name="q1" id="q1b" value="b">
+                        <label for="q1b">B. Vĩnh Tân</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q1', 'c')">
+                        <input type="radio" name="q1" id="q1c" value="c">
+                        <label for="q1c">C. Nhơn Hội</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q1', 'd')">
+                        <input type="radio" name="q1" id="q1d" value="d">
+                        <label for="q1d">D. Phú Mỹ</label>
+                    </div>
+                </div>
+                <div class="explanation" id="explanation-q1">
+                    <p><strong>Đáp án đúng: B. Vĩnh Tân</strong></p>
+                    <p>Giải thích: Theo bảng phân bố ngành công nghiệp điện ở Duyên hải Nam Trung Bộ, Vĩnh Tân là nhà máy nhiệt điện duy nhất được liệt kê. Sông Tranh 2 là thủy điện, Nhơn Hội là điện gió, và Phú Mỹ là điện mặt trời.</p>
+                </div>
+            </div>
+
+            <div class="question" id="q2">
+                <p class="font-semibold">Câu 2: Các nhà máy thủy điện ở Duyên hải Nam Trung Bộ được xây dựng chủ yếu trên những con sông nào?</p>
+                <div class="options">
+                    <div class="option" onclick="checkAnswer('q2', 'a')">
+                        <input type="radio" name="q2" id="q2a" value="a">
+                        <label for="q2a">A. A Vương, Sông Bung, Đắk Mi 4, Sông Tranh 2</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q2', 'b')">
+                        <input type="radio" name="q2" id="q2b" value="b">
+                        <label for="q2b">B. Ba, Kôn, Đồng Nai, Đà Rằng</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q2', 'c')">
+                        <input type="radio" name="q2" id="q2c" value="c">
+                        <label for="q2c">C. Hương, Thạch Hãn, Bến Hải</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q2', 'd')">
+                        <input type="radio" name="q2" id="q2d" value="d">
+                        <label for="q2d">D. Cả, Mã, Chu, Đáy</label>
+                    </div>
+                </div>
+                <div class="explanation" id="explanation-q2">
+                    <p><strong>Đáp án đúng: A. A Vương, Sông Bung, Đắk Mi 4, Sông Tranh 2</strong></p>
+                    <p>Giải thích: Theo bảng thông tin, các nhà máy thủy điện ở Duyên hải Nam Trung Bộ được xây dựng trên các con sông: A Vương, Sông Bung, Đắk Mi 4, Sông Tranh 2. Đây là các sông nằm trong hệ thống sông Vu Gia - Thu Bồn thuộc Duyên hải Nam Trung Bộ.</p>
+                </div>
+            </div>
+
+            <div class="question" id="q3">
+                <p class="font-semibold">Câu 3: Các dự án điện gió ở Duyên hải Nam Trung Bộ tập trung chủ yếu ở đâu?</p>
+                <div class="options">
+                    <div class="option" onclick="checkAnswer('q3', 'a')">
+                        <input type="radio" name="q3" id="q3a" value="a">
+                        <label for="q3a">A. Đà Nẵng và Quảng Nam</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q3', 'b')">
+                        <input type="radio" name="q3" id="q3b" value="b">
+                        <label for="q3b">B. Quảng Ngãi và Bình Định</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q3', 'c')">
+                        <input type="radio" name="q3" id="q3c" value="c">
+                        <label for="q3c">C. Nhơn Hội, Hòa Hội, Đầm Nai, Mũi Dinh, Phong Điền, Thái Hoà</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q3', 'd')">
+                        <input type="radio" name="q3" id="q3d" value="d">
+                        <label for="q3d">D. Dung Quất, Phú Mỹ, Phước Hữu</label>
+                    </div>
+                </div>
+                <div class="explanation" id="explanation-q3">
+                    <p><strong>Đáp án đúng: C. Nhơn Hội, Hòa Hội, Đầm Nai, Mũi Dinh, Phong Điền, Thái Hoà</strong></p>
+                    <p>Giải thích: Theo bảng thông tin, các dự án điện gió ở Duyên hải Nam Trung Bộ tập trung chủ yếu ở Nhơn Hội, Hòa Hội, Đầm Nai, Mũi Dinh, Phong Điền, Thái Hoà. Những địa điểm này nằm ở các tỉnh ven biển miền Trung, nơi có tiềm năng gió lớn.</p>
+                </div>
+            </div>
+
+            <div class="question" id="q4">
+                <p class="font-semibold">Câu 4: Mỏ dầu khí Sư Tử Đen nằm ở tỉnh nào của vùng Duyên hải Nam Trung Bộ?</p>
+                <div class="options">
+                    <div class="option" onclick="checkAnswer('q4', 'a')">
+                        <input type="radio" name="q4" id="q4a" value="a">
+                        <label for="q4a">A. Bình Định</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q4', 'b')">
+                        <input type="radio" name="q4" id="q4b" value="b">
+                        <label for="q4b">B. Phú Yên</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q4', 'c')">
+                        <input type="radio" name="q4" id="q4c" value="c">
+                        <label for="q4c">C. Bình Thuận</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q4', 'd')">
+                        <input type="radio" name="q4" id="q4d" value="d">
+                        <label for="q4d">D. Quảng Ngãi</label>
+                    </div>
+                </div>
+                <div class="explanation" id="explanation-q4">
+                    <p><strong>Đáp án đúng: C. Bình Thuận</strong></p>
+                    <p>Giải thích: Theo bảng phân bố khoáng sản biển, mỏ dầu khí Sư Tử Đen nằm ở tỉnh Bình Thuận. Đây là một trong những mỏ dầu khí quan trọng nằm ở thềm lục địa phía Nam của vùng Duyên hải Nam Trung Bộ.</p>
+                </div>
+            </div>
+
+            <div class="question" id="q5">
+                <p class="font-semibold">Câu 5: Các địa phương nào ở Duyên hải Nam Trung Bộ có tiềm năng khai thác quặng Titan?</p>
+                <div class="options">
+                    <div class="option" onclick="checkAnswer('q5', 'a')">
+                        <input type="radio" name="q5" id="q5a" value="a">
+                        <label for="q5a">A. Quảng Ngãi, Ninh Thuận</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q5', 'b')">
+                        <input type="radio" name="q5" id="q5b" value="b">
+                        <label for="q5b">B. Bình Định, Phú Yên, Bình Thuận</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q5', 'c')">
+                        <input type="radio" name="q5" id="q5c" value="c">
+                        <label for="q5c">C. Đà Nẵng, Quảng Nam</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q5', 'd')">
+                        <input type="radio" name="q5" id="q5d" value="d">
+                        <label for="q5d">D. Tất cả các tỉnh ven biển miền Trung</label>
+                    </div>
+                </div>
+                <div class="explanation" id="explanation-q5">
+                    <p><strong>Đáp án đúng: B. Bình Định, Phú Yên, Bình Thuận</strong></p>
+                    <p>Giải thích: Theo bảng thông tin, các khu vực có tiềm năng khai thác quặng Titan ở Duyên hải Nam Trung Bộ là Phú Cát, Tuy An, Hàm Tân thuộc các tỉnh Bình Định, Phú Yên, Bình Thuận. Đây là những nơi có sa khoáng Titan dọc theo các bãi cát ven biển.</p>
+                </div>
+            </div>
+
+            <div class="question" id="q6">
+                <p class="font-semibold">Câu 6: Hai điểm khai thác muối lớn ở Duyên hải Nam Trung Bộ là:</p>
+                <div class="options">
+                    <div class="option" onclick="checkAnswer('q6', 'a')">
+                        <input type="radio" name="q6" id="q6a" value="a">
+                        <label for="q6a">A. Sa Huỳnh và Cà Ná</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q6', 'b')">
+                        <input type="radio" name="q6" id="q6b" value="b">
+                        <label for="q6b">B. Phú Mỹ và Phước Hữu</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q6', 'c')">
+                        <input type="radio" name="q6" id="q6c" value="c">
+                        <label for="q6c">C. Phú Cát và Tuy An</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q6', 'd')">
+                        <input type="radio" name="q6" id="q6d" value="d">
+                        <label for="q6d">D. Nhơn Hội và Hòa Hội</label>
+                    </div>
+                </div>
+                <div class="explanation" id="explanation-q6">
+                    <p><strong>Đáp án đúng: A. Sa Huỳnh và Cà Ná</strong></p>
+                    <p>Giải thích: Theo bảng thông tin về phân bố khoáng sản, Sa Huỳnh (Quảng Ngãi) và Cà Ná (Ninh Thuận) là hai điểm khai thác muối lớn ở vùng Duyên hải Nam Trung Bộ. Đây là những vùng có điều kiện khí hậu khô nóng, nhiều nắng, thuận lợi cho việc sản xuất muối.</p>
+                </div>
+            </div>
+
+            <div class="question" id="q7">
+                <p class="font-semibold">Câu 7: Mỏ khí tự nhiên Sư Tử Trắng thuộc tỉnh nào của vùng Duyên hải Nam Trung Bộ?</p>
+                <div class="options">
+                    <div class="option" onclick="checkAnswer('q7', 'a')">
+                        <input type="radio" name="q7" id="q7a" value="a">
+                        <label for="q7a">A. Bình Định</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q7', 'b')">
+                        <input type="radio" name="q7" id="q7b" value="b">
+                        <label for="q7b">B. Phú Yên</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q7', 'c')">
+                        <input type="radio" name="q7" id="q7c" value="c">
+                        <label for="q7c">C. Bình Thuận</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q7', 'd')">
+                        <input type="radio" name="q7" id="q7d" value="d">
+                        <label for="q7d">D. Ninh Thuận</label>
+                    </div>
+                </div>
+                <div class="explanation" id="explanation-q7">
+                    <p><strong>Đáp án đúng: C. Bình Thuận</strong></p>
+                    <p>Giải thích: Theo bảng thông tin, mỏ khí tự nhiên Sư Tử Trắng nằm ở tỉnh Bình Thuận. Đây là một trong những mỏ khí quan trọng ở thềm lục địa phía Nam của vùng Duyên hải Nam Trung Bộ, cùng khu vực với mỏ dầu Sư Tử Đen.</p>
+                </div>
+            </div>
+
+            <div class="question" id="q8">
+                <p class="font-semibold">Câu 8: Các dự án điện mặt trời ở Duyên hải Nam Trung Bộ tập trung chủ yếu ở đâu?</p>
+                <div class="options">
+                    <div class="option" onclick="checkAnswer('q8', 'a')">
+                        <input type="radio" name="q8" id="q8a" value="a">
+                        <label for="q8a">A. Dung Quất, Phú Mỹ, Phước Hữu, Trung Nam Thuận Nam, Phan Thiết</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q8', 'b')">
+                        <input type="radio" name="q8" id="q8b" value="b">
+                        <label for="q8b">B. Nhơn Hội, Hòa Hội, Đầm Nai</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q8', 'c')">
+                        <input type="radio" name="q8" id="q8c" value="c">
+                        <label for="q8c">C. A Vương, Sông Bung, Đắk Mi 4</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q8', 'd')">
+                        <input type="radio" name="q8" id="q8d" value="d">
+                        <label for="q8d">D. Vĩnh Tân, Sa Huỳnh, Cà Ná</label>
+                    </div>
+                </div>
+                <div class="explanation" id="explanation-q8">
+                    <p><strong>Đáp án đúng: A. Dung Quất, Phú Mỹ, Phước Hữu, Trung Nam Thuận Nam, Phan Thiết</strong></p>
+                    <p>Giải thích: Theo bảng phân bố ngành công nghiệp điện, các dự án điện mặt trời ở Duyên hải Nam Trung Bộ tập trung chủ yếu ở Dung Quất, Phú Mỹ, Phước Hữu, Trung Nam Thuận Nam, Phan Thiết. Những khu vực này có điều kiện thuận lợi về cường độ bức xạ mặt trời và thời gian nắng trong năm.</p>
+                </div>
+            </div>
+
+            <div class="question" id="q9">
+                <p class="font-semibold">Câu 9: Duyên hải Nam Trung Bộ có tiềm năng phát triển loại năng lượng nào sau đây?</p>
+                <div class="options">
+                    <div class="option" onclick="checkAnswer('q9', 'a')">
+                        <input type="radio" name="q9" id="q9a" value="a">
+                        <label for="q9a">A. Chỉ có thủy điện</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q9', 'b')">
+                        <input type="radio" name="q9" id="q9b" value="b">
+                        <label for="q9b">B. Chỉ có nhiệt điện</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q9', 'c')">
+                        <input type="radio" name="q9" id="q9c" value="c">
+                        <label for="q9c">C. Thủy điện, nhiệt điện, điện gió và điện mặt trời</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q9', 'd')">
+                        <input type="radio" name="q9" id="q9d" value="d">
+                        <label for="q9d">D. Chỉ có điện hạt nhân</label>
+                    </div>
+                </div>
+                <div class="explanation" id="explanation-q9">
+                    <p><strong>Đáp án đúng: C. Thủy điện, nhiệt điện, điện gió và điện mặt trời</strong></p>
+                    <p>Giải thích: Theo bảng phân bố ngành công nghiệp điện, Duyên hải Nam Trung Bộ có tiềm năng phát triển đa dạng các loại năng lượng bao gồm thủy điện (A Vương, Sông Bung...), nhiệt điện (Vĩnh Tân), điện gió (Nhơn Hội, Hòa Hội...) và điện mặt trời (Dung Quất, Phú Mỹ...). Đây là vùng có điều kiện tự nhiên đa dạng, thuận lợi cho phát triển nhiều loại hình năng lượng.</p>
+                </div>
+            </div>
+
+            <div class="question" id="q10">
+                <p class="font-semibold">Câu 10: Đâu là đặc điểm chung của các khoáng sản biển ở Duyên hải Nam Trung Bộ?</p>
+                <div class="options">
+                    <div class="option" onclick="checkAnswer('q10', 'a')">
+                        <input type="radio" name="q10" id="q10a" value="a">
+                        <label for="q10a">A. Chỉ có muối và không có khoáng sản khác</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q10', 'b')">
+                        <input type="radio" name="q10" id="q10b" value="b">
+                        <label for="q10b">B. Tập trung chủ yếu ở miền Bắc của vùng</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q10', 'c')">
+                        <input type="radio" name="q10" id="q10c" value="c">
+                        <label for="q10c">C. Đa dạng, bao gồm dầu khí, titan và muối</label>
+                    </div>
+                    <div class="option" onclick="checkAnswer('q10', 'd')">
+                        <input type="radio" name="q10" id="q10d" value="d">
+                        <label for="q10d">D. Không có giá trị kinh tế</label>
+                    </div>
+                </div>
+                <div class="explanation" id="explanation-q10">
+                    <p><strong>Đáp án đúng: C. Đa dạng, bao gồm dầu khí, titan và muối</strong></p>
+                    <p>Giải thích: Theo bảng thông tin về phân bố khoáng sản biển, vùng Duyên hải Nam Trung Bộ có nguồn khoáng sản đa dạng, bao gồm dầu khí (Sư Tử Đen, Sư Tử Trắng), titan (Phú Cát, Tuy An, Hàm Tân) và muối (Sa Huỳnh, Cà Ná). Sự đa dạng này tạo điều kiện thuận lợi cho phát triển kinh tế của vùng.</p>
+                </div>
+            </div>
+
+            <div class="mt-6 flex justify-center">
+                <button class="submit-btn" onclick="submitQuiz()">Nộp Bài</button>
+                <button class="reset-btn" onclick="resetQuiz()">Làm Lại</button>
+            </div>
+
+            <div id="results" class="mt-4 p-4 bg-blue-100 rounded-lg text-center hidden">
+                <p class="text-xl font-bold">Kết quả: <span id="score">0</span>/10</p>
+                <p>Hãy kiểm tra lại các câu trả lời và xem phần giải thích để hiểu rõ hơn!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let userAnswers = {};
+        let correctAnswers = {
+            'q1': 'b',
+            'q2': 'a',
+            'q3': 'c',
+            'q4': 'c',
+            'q5': 'b',
+            'q6': 'a',
+            'q7': 'c',
+            'q8': 'a',
+            'q9': 'c',
+            'q10': 'c'
+        };
+
+        function checkAnswer(questionId, option) {
+            userAnswers[questionId] = option;
+            document.querySelectorAll(`input[name="${questionId}"]`).forEach(input => {
+                if (input.value === option) {
+                    input.checked = true;
+                } else {
+                    input.checked = false;
+                }
+            });
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            for (let questionId in correctAnswers) {
+                if (userAnswers[questionId] === correctAnswers[questionId]) {
+                    score++;
+                }
+
+                const labels = document.querySelectorAll(`#${questionId} label`);
+                labels.forEach(label => {
+                    const option = label.getAttribute('for').slice(-1);
+                    if (option === correctAnswers[questionId]) {
+                        label.classList.add('correct');
+                    } else if (option === userAnswers[questionId]) {
+                        label.classList.add('incorrect');
+                    }
+                });
+
+                // Show explanation
+                document.getElementById(`explanation-${questionId}`).style.display = 'block';
+            }
+
+            document.getElementById('score').textContent = score;
+            document.getElementById('results').classList.remove('hidden');
+
+            // Disable radio buttons
+            document.querySelectorAll('input[type="radio"]').forEach(input => {
+                input.disabled = true;
+            });
+            
+            // Disable submit button
+            document.querySelector('.submit-btn').disabled = true;
+        }
+
+        function resetQuiz() {
+            userAnswers = {};
+            
+            // Clear all selections
+            document.querySelectorAll('input[type="radio"]').forEach(input => {
+                input.checked = false;
+                input.disabled = false;
+            });
+            
+            // Hide all explanations
+            document.querySelectorAll('.explanation').forEach(div => {
+                div.style.display = 'none';
+            });
+            
+            // Remove correct/incorrect classes
+            document.querySelectorAll('label').forEach(label => {
+                label.classList.remove('correct', 'incorrect');
+            });
+            
+            // Hide results
+            document.getElementById('results').classList.add('hidden');
+            
+            // Enable submit button
+            document.querySelector('.submit-btn').disabled = false;
+        }
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
