@@ -1,0 +1,485 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trắc Nghiệm Khoa Học Tự Nhiên Lớp 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .question {
+            margin-bottom: 2rem;
+        }
+        .options {
+            margin-left: 1.5rem;
+        }
+        .explanation {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f0f9ff;
+            border-radius: 0.5rem;
+        }
+        .correct {
+            color: #047857;
+            font-weight: bold;
+        }
+        .incorrect {
+            color: #b91c1c;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 p-6">
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold text-center mb-6">Bài Trắc Nghiệm Khoa Học Tự Nhiên Lớp 9</h1>
+        <h2 class="text-xl font-semibold mb-4">Di Truyền và Biến Dị</h2>
+        
+        <div id="quiz-container">
+            <div class="question">
+                <p class="font-medium">Câu 1: Cơ chế xác định giới tính ở người dựa trên:</p>
+                <div class="options">
+                    <div><input type="radio" name="q1" id="q1a"> <label for="q1a">Chỉ nhiễm sắc thể X</label></div>
+                    <div><input type="radio" name="q1" id="q1b"> <label for="q1b">Chỉ nhiễm sắc thể Y</label></div>
+                    <div><input type="radio" name="q1" id="q1c"> <label for="q1c">Sự kết hợp giữa nhiễm sắc thể X và Y</label></div>
+                    <div><input type="radio" name="q1" id="q1d"> <label for="q1d">Các gene trên nhiễm sắc thể thường</label></div>
+                </div>
+                <button onclick="showExplanation('exp1')" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Xem giải thích</button>
+                <div id="exp1" class="explanation">
+                    <p><span class="correct">Đáp án đúng: C. Sự kết hợp giữa nhiễm sắc thể X và Y</span></p>
+                    <p>Giải thích: Theo hình vẽ và nội dung trong tài liệu, cơ chế xác định giới tính ở người là sự phân li của cặp NST giới tính trong quá trình phát sinh giao tử:</p>
+                    <ul class="list-disc pl-5 mt-2">
+                        <li>Nam giới (44A + XY) sinh ra hai loại tinh trùng mang NST X và tinh trùng mang NST Y</li>
+                        <li>Nữ giới (44A + XX) chỉ sinh ra một loại trứng mang NST X</li>
+                        <li>Khi tinh trùng mang X kết hợp với trứng (X), tạo hợp tử XX phát triển thành con gái</li>
+                        <li>Khi tinh trùng mang Y kết hợp với trứng (X), tạo hợp tử XY phát triển thành con trai</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p class="font-medium">Câu 2: DNA được cấu trúc theo nguyên tắc:</p>
+                <div class="options">
+                    <div><input type="radio" name="q2" id="q2a"> <label for="q2a">Tính đa dạng</label></div>
+                    <div><input type="radio" name="q2" id="q2b"> <label for="q2b">Nguyên tắc đa phân</label></div>
+                    <div><input type="radio" name="q2" id="q2c"> <label for="q2c">Nguyên tắc bổ sung</label></div>
+                    <div><input type="radio" name="q2" id="q2d"> <label for="q2d">Trình tự gene</label></div>
+                </div>
+                <button onclick="showExplanation('exp2')" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Xem giải thích</button>
+                <div id="exp2" class="explanation">
+                    <p><span class="correct">Đáp án đúng: C. Nguyên tắc bổ sung</span></p>
+                    <p>Giải thích: Theo nội dung mục 3 trong tài liệu, DNA được cấu trúc theo nguyên tắc đa phân, từ 4 loại nucleotide được liên kết và sắp xếp theo nguyên tắc bổ sung: A liên kết với T, C liên kết với G.</p>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p class="font-medium">Câu 3: Quá trình tái bản DNA có ý nghĩa:</p>
+                <div class="options">
+                    <div><input type="radio" name="q3" id="q3a"> <label for="q3a">Tạo ra đột biến gene</label></div>
+                    <div><input type="radio" name="q3" id="q3b"> <label for="q3b">Tạo ra các mã di truyền mới</label></div>
+                    <div><input type="radio" name="q3" id="q3c"> <label for="q3c">Duy trì và truyền thông tin di truyền chính xác qua các thế hệ</label></div>
+                    <div><input type="radio" name="q3" id="q3d"> <label for="q3d">Thay đổi trình tự nucleotide</label></div>
+                </div>
+                <button onclick="showExplanation('exp3')" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Xem giải thích</button>
+                <div id="exp3" class="explanation">
+                    <p><span class="correct">Đáp án đúng: C. Duy trì và truyền thông tin di truyền chính xác qua các thế hệ</span></p>
+                    <p>Giải thích: Theo mục 4 và 8 trong tài liệu, quá trình tái bản DNA là cơ chế sao chép các phân tử DNA trước mỗi lần phân bào, giúp duy trì độ ổn định và vật chất di truyền của các thế hệ tế bào và cơ thể. Tái bản DNA đảm bảo tế bào con nhận được bộ gene giống hệt tế bào mẹ trong phân bào.</p>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p class="font-medium">Câu 4: Điểm khác biệt của phân li độc lập so với di truyền liên kết là:</p>
+                <div class="options">
+                    <div><input type="radio" name="q4" id="q4a"> <label for="q4a">Các gene nằm trên cùng một nhiễm sắc thể</label></div>
+                    <div><input type="radio" name="q4" id="q4b"> <label for="q4b">Các gene nằm trên các nhiễm sắc thể khác nhau</label></div>
+                    <div><input type="radio" name="q4" id="q4c"> <label for="q4c">Làm xuất hiện nhiều biến dị tổ hợp</label></div>
+                    <div><input type="radio" name="q4" id="q4d"> <label for="q4d">Có sự phân li và tổ hợp cùng nhau trong giảm phân</label></div>
+                </div>
+                <button onclick="showExplanation('exp4')" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Xem giải thích</button>
+                <div id="exp4" class="explanation">
+                    <p><span class="correct">Đáp án đúng: B. Các gene nằm trên các nhiễm sắc thể khác nhau</span></p>
+                    <p>Giải thích: Theo bảng so sánh trong mục 2 của tài liệu, phân li độc lập có đặc điểm:</p>
+                    <ul class="list-disc pl-5 mt-2">
+                        <li>Vị trí của các gene: Các gene nằm trên các nhiễm sắc thể khác nhau</li>
+                        <li>Sự phân li và tổ hợp: Các gene phân li độc lập và tổ hợp tự do trong giảm phân và thụ tinh</li>
+                        <li>Số lượng biến dị tổ hợp: Làm hạn chế sự xuất hiện của biến dị tổ hợp</li>
+                    </ul>
+                    <p>Trong khi di truyền liên kết thì các gene nằm trên cùng một nhiễm sắc thể và phân li, tổ hợp cùng nhau.</p>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p class="font-medium">Câu 5: Đột biến nhiễm sắc thể có thể gây ra các hội chứng như:</p>
+                <div class="options">
+                    <div><input type="radio" name="q5" id="q5a"> <label for="q5a">Chỉ hội chứng Down</label></div>
+                    <div><input type="radio" name="q5" id="q5b"> <label for="q5b">Hội chứng "tiếng mèo kêu" và Hội chứng Turner</label></div>
+                    <div><input type="radio" name="q5" id="q5c"> <label for="q5c">Chỉ bệnh máu khó đông</label></div>
+                    <div><input type="radio" name="q5" id="q5d"> <label for="q5d">Hội chứng Down, Hội chứng Turner và Hội chứng "tiếng mèo kêu"</label></div>
+                </div>
+                <button onclick="showExplanation('exp5')" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Xem giải thích</button>
+                <div id="exp5" class="explanation">
+                    <p><span class="correct">Đáp án đúng: D. Hội chứng Down, Hội chứng Turner và Hội chứng "tiếng mèo kêu"</span></p>
+                    <p>Giải thích: Theo mục 9 trong tài liệu, những đột biến nhiễm sắc thể có thể gây ra các hội chứng sau:</p>
+                    <ul class="list-disc pl-5 mt-2">
+                        <li>Hội chứng "tiếng mèo kêu" (Cri-du-chat syndrome)</li>
+                        <li>Hội chứng Turner (XO)</li>
+                        <li>Hội chứng Down (Trisomy 21 - ba nhiễm sắc thể số 21)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p class="font-medium">Câu 6: Trong bài tập về cây dầu Hà Lan, tính trạng màu hạt vàng là:</p>
+                <div class="options">
+                    <div><input type="radio" name="q6" id="q6a"> <label for="q6a">Trội so với màu hạt xanh</label></div>
+                    <div><input type="radio" name="q6" id="q6b"> <label for="q6b">Lặn so với màu hạt xanh</label></div>
+                    <div><input type="radio" name="q6" id="q6c"> <label for="q6c">Đồng trội với màu hạt xanh</label></div>
+                    <div><input type="radio" name="q6" id="q6d"> <label for="q6d">Trung gian với màu hạt xanh</label></div>
+                </div>
+                <button onclick="showExplanation('exp6')" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Xem giải thích</button>
+                <div id="exp6" class="explanation">
+                    <p><span class="correct">Đáp án đúng: A. Trội so với màu hạt xanh</span></p>
+                    <p>Giải thích: Theo bài tập 2 trong tài liệu: "Ở cây dầu Hà Lan, tính trạng hạt vàng là trội so với tính trạng hạt xanh". Điều này được nêu rõ trong đề bài.</p>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p class="font-medium">Câu 7: Nucleotide là đơn vị cấu trúc cơ bản của:</p>
+                <div class="options">
+                    <div><input type="radio" name="q7" id="q7a"> <label for="q7a">Protein</label></div>
+                    <div><input type="radio" name="q7" id="q7b"> <label for="q7b">DNA và RNA</label></div>
+                    <div><input type="radio" name="q7" id="q7c"> <label for="q7c">Nhiễm sắc thể</label></div>
+                    <div><input type="radio" name="q7" id="q7d"> <label for="q7d">Amino acid</label></div>
+                </div>
+                <button onclick="showExplanation('exp7')" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Xem giải thích</button>
+                <div id="exp7" class="explanation">
+                    <p><span class="correct">Đáp án đúng: B. DNA và RNA</span></p>
+                    <p>Giải thích: Theo mục 3 và 5 trong tài liệu, nucleotide là đơn vị cấu trúc cơ bản của DNA và RNA. DNA được cấu trúc từ 4 loại nucleotide (A, T, G, C) được liên kết và sắp xếp theo nhiều cách khác nhau.</p>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p class="font-medium">Câu 8: Quá trình tái bản DNA tuân theo nguyên tắc:</p>
+                <div class="options">
+                    <div><input type="radio" name="q8" id="q8a"> <label for="q8a">Bán phân tử</label></div>
+                    <div><input type="radio" name="q8" id="q8b"> <label for="q8b">Bổ sung và bán bảo toàn</label></div>
+                    <div><input type="radio" name="q8" id="q8c"> <label for="q8c">Đa dạng hóa</label></div>
+                    <div><input type="radio" name="q8" id="q8d"> <label for="q8d">Tổng hợp protein</label></div>
+                </div>
+                <button onclick="showExplanation('exp8')" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Xem giải thích</button>
+                <div id="exp8" class="explanation">
+                    <p><span class="correct">Đáp án đúng: B. Bổ sung và bán bảo toàn</span></p>
+                    <p>Giải thích: Theo mục 7 trong tài liệu, quá trình tái bản DNA tuân theo nguyên tắc bổ sung và nguyên tắc bán bảo toàn. Kết quả tạo thành hai phân tử DNA có cấu trúc giống nhau và giống DNA mẹ. Mỗi phân tử con có một mạch từ DNA mẹ và một mạch mới được tổng hợp theo nguyên tắc bổ sung.</p>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p class="font-medium">Câu 9: Mục đích của quá trình tổng hợp protein là:</p>
+                <div class="options">
+                    <div><input type="radio" name="q9" id="q9a"> <label for="q9a">Tạo ra các biến dị di truyền</label></div>
+                    <div><input type="radio" name="q9" id="q9b"> <label for="q9b">Tạo ra các phân tử DNA mới</label></div>
+                    <div><input type="radio" name="q9" id="q9c"> <label for="q9c">Tạo ra các phân tử RNA mới</label></div>
+                    <div><input type="radio" name="q9" id="q9d"> <label for="q9d">Tạo ra các protein cần thiết cho cơ thể</label></div>
+                </div>
+                <button onclick="showExplanation('exp9')" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Xem giải thích</button>
+                <div id="exp9" class="explanation">
+                    <p><span class="correct">Đáp án đúng: D. Tạo ra các protein cần thiết cho cơ thể</span></p>
+                    <p>Giải thích: Theo mục 8 trong tài liệu, một trong những ý nghĩa của tái bản DNA là tạo nguyên liệu di truyền cho các quá trình phiên mã (tạo RNA) → dịch mã → tổng hợp protein. Quá trình tổng hợp protein là quá trình tạo ra các protein cần thiết cho sự sinh trưởng, phát triển và sinh sản của sinh vật.</p>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p class="font-medium">Câu 10: Đơn vị di truyền cơ bản của sinh vật là:</p>
+                <div class="options">
+                    <div><input type="radio" name="q10" id="q10a"> <label for="q10a">Nhiễm sắc thể</label></div>
+                    <div><input type="radio" name="q10" id="q10b"> <label for="q10b">Gene</label></div>
+                    <div><input type="radio" name="q10" id="q10c"> <label for="q10c">Nucleotide</label></div>
+                    <div><input type="radio" name="q10" id="q10d"> <label for="q10d">Protein</label></div>
+                </div>
+                <button onclick="showExplanation('exp10')" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Xem giải thích</button>
+                <div id="exp10" class="explanation">
+                    <p><span class="correct">Đáp án đúng: B. Gene</span></p>
+                    <p>Giải thích: Theo mục 6 trong tài liệu, cơ sở của sự đa dạng về tính trạng của các loài chính là sự đa dạng về gene. Gene là đơn vị di truyền cơ bản quy định các tính trạng di truyền. Các gene khác nhau có số lượng, thành phần và trình tự sắp xếp nucleotide khác nhau quy định các tính trạng khác nhau.</p>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p class="font-medium">Câu 11: Trong bài tập về cây dầu Hà Lan, tính trạng thân cao là:</p>
+                <div class="options">
+                    <div><input type="radio" name="q11" id="q11a"> <label for="q11a">Lặn so với thân thấp</label></div>
+                    <div><input type="radio" name="q11" id="q11b"> <label for="q11b">Trội so với thân thấp</label></div>
+                    <div><input type="radio" name="q11" id="q11c"> <label for="q11c">Đồng trội với thân thấp</label></div>
+                    <div><input type="radio" name="q11" id="q11d"> <label for="q11d">Trung gian với thân thấp</label></div>
+                </div>
+                <button onclick="showExplanation('exp11')" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Xem giải thích</button>
+                <div id="exp11" class="explanation">
+                    <p><span class="correct">Đáp án đúng: B. Trội so với thân thấp</span></p>
+                    <p>Giải thích: Theo bài tập 3 trong tài liệu: "Ở cây dầu Hà Lan, tính trạng thân cao là trội so với tính trạng thân thấp". Điều này được nêu rõ trong đề bài.</p>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p class="font-medium">Câu 12: Khi nói về phân li độc lập, phát biểu nào sau đây là đúng?</p>
+                <div class="options">
+                    <div><input type="radio" name="q12" id="q12a"> <label for="q12a">Các gene nằm trên cùng một nhiễm sắc thể</label></div>
+                    <div><input type="radio" name="q12" id="q12b"> <label for="q12b">Làm xuất hiện nhiều biến dị tổ hợp</label></div>
+                    <div><input type="radio" name="q12" id="q12c"> <label for="q12c">Các gene phân li và tổ hợp cùng nhau trong giảm phân</label></div>
+                    <div><input type="radio" name="q12" id="q12d"> <label for="q12d">Làm hạn chế sự xuất hiện của biến dị tổ hợp</label></div>
+                </div>
+                <button onclick="showExplanation('exp12')" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Xem giải thích</button>
+                <div id="exp12" class="explanation">
+                    <p><span class="correct">Đáp án đúng: D. Làm hạn chế sự xuất hiện của biến dị tổ hợp</span></p>
+                    <p>Giải thích: Theo bảng so sánh trong mục 2 của tài liệu, phân li độc lập có đặc điểm "Số lượng biến dị tổ hợp: Làm hạn chế sự xuất hiện của biến dị tổ hợp". Trong khi đó:</p>
+                    <ul class="list-disc pl-5 mt-2">
+                        <li>Các gene phân li độc lập nằm trên các nhiễm sắc thể khác nhau, không phải cùng một nhiễm sắc thể</li>
+                        <li>Di truyền liên kết (không phải phân li độc lập) làm xuất hiện nhiều biến dị tổ hợp</li>
+                        <li>Các gene phân li độc lập và tổ hợp tự do trong giảm phân và thụ tinh, không phải phân li và tổ hợp cùng nhau</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p class="font-medium">Câu 13: Nữ giới sinh ra giao tử có nhiễm sắc thể giới tính nào?</p>
+                <div class="options">
+                    <div><input type="radio" name="q13" id="q13a"> <label for="q13a">Chỉ X</label></div>
+                    <div><input type="radio" name="q13" id="q13b"> <label for="q13b">Chỉ Y</label></div>
+                    <div><input type="radio" name="q13" id="q13c"> <label for="q13c">Cả X và Y</label></div>
+                    <div><input type="radio" name="q13" id="q13d"> <label for="q13d">Không có nhiễm sắc thể giới tính</label></div>
+                </div>
+                <button onclick="showExplanation('exp13')" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Xem giải thích</button>
+                <div id="exp13" class="explanation">
+                    <p><span class="correct">Đáp án đúng: A. Chỉ X</span></p>
+                    <p>Giải thích: Theo nội dung mục 1 trong tài liệu: "Nữ giới sinh ra một loại trứng mang NST X". Điều này là bởi vì nữ giới có kiểu gen 44A + XX, nên khi giảm phân chỉ có thể tạo ra giao tử mang nhiễm sắc thể X.</p>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p class="font-medium">Câu 14: Nam giới sinh ra giao tử có nhiễm sắc thể giới tính nào?</p>
+                <div class="options">
+                    <div><input type="radio" name="q14" id="q14a"> <label for="q14a">Chỉ X</label></div>
+                    <div><input type="radio" name="q14" id="q14b"> <label for="q14b">Chỉ Y</label></div>
+                    <div><input type="radio" name="q14" id="q14c"> <label for="q14c">Cả X và Y</label></div>
+                    <div><input type="radio" name="q14" id="q14d"> <label for="q14d">Không có nhiễm sắc thể giới tính</label></div>
+                </div>
+                <button onclick="showExplanation('exp14')" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Xem giải thích</button>
+                <div id="exp14" class="explanation">
+                    <p><span class="correct">Đáp án đúng: C. Cả X và Y</span></p>
+                    <p>Giải thích: Theo nội dung mục 1 trong tài liệu: "Nam giới sinh ra hai loại tinh trùng mang NST X và tinh trùng mang NST Y". Điều này là bởi vì nam giới có kiểu gen 44A + XY, nên khi giảm phân sẽ tạo ra hai loại giao tử: một nửa mang nhiễm sắc thể X và một nửa mang nhiễm sắc thể Y.</p>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p class="font-medium">Câu 15: Khi tinh trùng mang nhiễm sắc thể Y kết hợp với trứng sẽ tạo ra hợp tử:</p>
+                <div class="options">
+                    <div><input type="radio" name="q15" id="q15a"> <label for="q15a">XX phát triển thành con gái</label></div>
+                    <div><input type="radio" name="q15" id="q15b"> <label for="q15b">XY phát triển thành con trai</label></div>
+                    <div><input type="radio" name="q15" id="q15c"> <label for="q15c">YY không phát triển được</label></div>
+                    <div><input type="radio" name="q15" id="q15d"> <label for="q15d">XYY phát triển thành con trai bất thường</label></div>
+                </div>
+                <button onclick="showExplanation('exp15')" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Xem giải thích</button>
+                <div id="exp15" class="explanation">
+                    <p><span class="correct">Đáp án đúng: B. XY phát triển thành con trai</span></p>
+                    <p>Giải thích: Theo nội dung mục 1 trong tài liệu: "Khi tinh trùng mang NST Y kết hợp với trứng mang NST X tạo ra hợp tử XY, phát triển thành cơ thể con trai." Điều này là bởi vì trứng luôn mang nhiễm sắc thể X, khi kết hợp với tinh trùng mang Y sẽ tạo thành hợp tử XY xác định giới tính nam.</p>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p class="font-medium">Câu 16: Quá trình tái bản DNA xảy ra vào thời điểm nào trong chu kỳ tế bào?</p>
+                <div class="options">
+                    <div><input type="radio" name="q16" id="q16a"> <label for="q16a">Pha G1</label></div>
+                    <div><input type="radio" name="q16" id="q16b"> <label for="q16b">Pha S</label></div>
+                    <div><input type="radio" name="q16" id="q16c"> <label for="q16c">Pha G2</label></div>
+                    <div><input type="radio" name="q16" id="q16d"> <label for="q16d">Pha M</label></div>
+                </div>
+                <button onclick="showExplanation('exp16')" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Xem giải thích</button>
+                <div id="exp16" class="explanation">
+                    <p><span class="correct">Đáp án đúng: B. Pha S</span></p>
+                    <p>Giải thích: Theo nội dung mục 4 trong tài liệu, quá trình tái bản DNA là một cơ chế sao chép các phân tử DNA trước mỗi lần phân bào. Trong chu kỳ tế bào, quá trình tái bản DNA xảy ra ở pha S (Synthesis - tổng hợp) của kỳ trung gian, trước khi bắt đầu quá trình phân bào. Đây là giai đoạn tổng hợp và nhân đôi vật chất di truyền.</p>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p class="font-medium">Câu 17: Trình tự các quá trình trong tổng hợp protein là:</p>
+                <div class="options">
+                    <div><input type="radio" name="q17" id="q17a"> <label for="q17a">Phiên mã → Dịch mã → Tổng hợp protein</label></div>
+                    <div><input type="radio" name="q17" id="q17b"> <label for="q17b">Dịch mã → Phiên mã → Tổng hợp protein</label></div>
+                    <div><input type="radio" name="q17" id="q17c"> <label for="q17c">Tổng hợp protein → Phiên mã → Dịch mã</label></div>
+                    <div><input type="radio" name="q17" id="q17d"> <label for="q17d">Tái bản DNA → Phiên mã → Dịch mã</label></div>
+                </div>
+                <button onclick="showExplanation('exp17')" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Xem giải thích</button>
+                <div id="exp17" class="explanation">
+                    <p><span class="correct">Đáp án đúng: A. Phiên mã → Dịch mã → Tổng hợp protein</span></p>
+                    <p>Giải thích: Theo nội dung mục 8 trong tài liệu, một trong những ý nghĩa di truyền của tái bản DNA là "Tạo nguyên liệu di truyền cho các quá trình phiên mã → dịch mã → tổng hợp protein." Phiên mã là quá trình tạo ra mRNA từ DNA, sau đó dịch mã là quá trình tổng hợp protein dựa trên thông tin từ mRNA.</p>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p class="font-medium">Câu 18: Hội chứng Down là kết quả của:</p>
+                <div class="options">
+                    <div><input type="radio" name="q18" id="q18a"> <label for="q18a">Đột biến gene</label></div>
+                    <div><input type="radio" name="q18" id="q18b"> <label for="q18b">Mất đoạn nhiễm sắc thể</label></div>
+                    <div><input type="radio" name="q18" id="q18c"> <label for="q18c">Đột biến số lượng nhiễm sắc thể (Trisomy 21)</label></div>
+                    <div><input type="radio" name="q18" id="q18d"> <label for="q18d">Đảo đoạn nhiễm sắc thể</label></div>
+                </div>
+                <button onclick="showExplanation('exp18')" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Xem giải thích</button>
+                <div id="exp18" class="explanation">
+                    <p><span class="correct">Đáp án đúng: C. Đột biến số lượng nhiễm sắc thể (Trisomy 21)</span></p>
+                    <p>Giải thích: Theo nội dung mục 9 trong tài liệu, hội chứng Down là kết quả của đột biến nhiễm sắc thể được ghi rõ là "Hội chứng Down (Trisomy 21)". Trisomy 21 nghĩa là có ba nhiễm sắc thể số 21 thay vì hai như bình thường, một dạng đột biến số lượng nhiễm sắc thể.</p>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p class="font-medium">Câu 19: Trong di truyền liên kết, các gene:</p>
+                <div class="options">
+                    <div><input type="radio" name="q19" id="q19a"> <label for="q19a">Nằm trên các nhiễm sắc thể khác nhau</label></div>
+                    <div><input type="radio" name="q19" id="q19b"> <label for="q19b">Nằm trên cùng một nhiễm sắc thể</label></div>
+                    <div><input type="radio" name="q19" id="q19c"> <label for="q19c">Phân li độc lập khi giảm phân</label></div>
+                    <div><input type="radio" name="q19" id="q19d"> <label for="q19d">Không truyền cho thế hệ sau</label></div>
+                </div>
+                <button onclick="showExplanation('exp19')" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Xem giải thích</button>
+                <div id="exp19" class="explanation">
+                    <p><span class="correct">Đáp án đúng: B. Nằm trên cùng một nhiễm sắc thể</span></p>
+                    <p>Giải thích: Theo bảng so sánh trong mục 2 của tài liệu, di truyền liên kết có đặc điểm "Vị trí của các gene: Các gene nằm gần nhau trên cùng một nhiễm sắc thể." Khi các gene nằm trên cùng một nhiễm sắc thể, chúng thường di truyền cùng nhau qua các thế hệ, tạo nên hiện tượng di truyền liên kết.</p>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p class="font-medium">Câu 20: Sự thay đổi trình tự nucleotide trong chuỗi DNA có thể dẫn đến:</p>
+                <div class="options">
+                    <div><input type="radio" name="q20" id="q20a"> <label for="q20a">Tăng số lượng nhiễm sắc thể</label></div>
+                    <div><input type="radio" name="q20" id="q20b"> <label for="q20b">Thay đổi tính chất di truyền</label></div>
+                    <div><input type="radio" name="q20" id="q20c"> <label for="q20c">Thay đổi cấu trúc tế bào</label></div>
+                    <div><input type="radio" name="q20" id="q20d"> <label for="q20d">Tạo ra mã di truyền không hoạt động</label></div>
+                </div>
+                <button onclick="showExplanation('exp20')" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Xem giải thích</button>
+                <div id="exp20" class="explanation">
+                    <p><span class="correct">Đáp án đúng: B. Thay đổi tính chất di truyền</span></p>
+                    <p>Giải thích: Theo nội dung mục 5 và 6 trong tài liệu: "Các chuỗi nucleotide này cũng có thể thay đổi thông qua đột biến, làm tăng thêm sự đa dạng di truyền giữa các sinh vật" và "Khi xem xét trong phạm vi một gene, nếu trình tự nucleotide của gene bị thay đổi có thể tạo ra trình tự amino acid mới, từ đó có thể hình thành kiểu hình mới của tính trạng." Đây là đột biến gene dẫn đến thay đổi tính chất di truyền của sinh vật.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-8 text-center">
+            <button id="check-btn" class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 font-medium">Kiểm tra kết quả</button>
+            <button id="reset-btn" class="ml-4 px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 font-medium">Làm lại</button>
+        </div>
+        
+        <div id="result" class="mt-6 p-4 bg-yellow-50 rounded-lg hidden">
+            <p class="text-center font-bold text-xl">Số câu đúng: <span id="score">0</span>/20</p>
+        </div>
+    </div>
+
+    <script>
+        // Đáp án đúng cho mỗi câu hỏi
+        const correctAnswers = {
+            q1: "q1c",
+            q2: "q2c",
+            q3: "q3c",
+            q4: "q4b",
+            q5: "q5d",
+            q6: "q6a",
+            q7: "q7b",
+            q8: "q8b",
+            q9: "q9d",
+            q10: "q10b",
+            q11: "q11b",
+            q12: "q12d",
+            q13: "q13a",
+            q14: "q14c",
+            q15: "q15b",
+            q16: "q16b",
+            q17: "q17a",
+            q18: "q18c",
+            q19: "q19b",
+            q20: "q20b"
+        };
+        
+        // Hiển thị giải thích
+        function showExplanation(expId) {
+            const exp = document.getElementById(expId);
+            if (exp.style.display === "block") {
+                exp.style.display = "none";
+            } else {
+                exp.style.display = "block";
+            }
+        }
+        
+        // Kiểm tra kết quả
+        document.getElementById('check-btn').addEventListener('click', function() {
+            let score = 0;
+            
+            // Kiểm tra từng câu hỏi
+            for (let i = 1; i <= 20; i++) {
+                const questionName = 'q' + i;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                
+                if (selectedOption) {
+                    // Đánh dấu đáp án đúng và sai
+                    const options = document.querySelectorAll(`input[name="${questionName}"]`);
+                    options.forEach(option => {
+                        const label = option.nextElementSibling;
+                        if (option.id === correctAnswers[questionName]) {
+                            label.classList.add('correct');
+                        } else if (option.checked && option.id !== correctAnswers[questionName]) {
+                            label.classList.add('incorrect');
+                        }
+                    });
+                    
+                    // Tính điểm
+                    if (selectedOption.id === correctAnswers[questionName]) {
+                        score++;
+                    }
+                }
+            }
+            
+            // Hiển thị kết quả
+            document.getElementById('score').textContent = score;
+            document.getElementById('result').classList.remove('hidden');
+        });
+        
+        // Làm lại bài
+        document.getElementById('reset-btn').addEventListener('click', function() {
+            // Bỏ chọn tất cả các lựa chọn
+            const allOptions = document.querySelectorAll('input[type="radio"]');
+            allOptions.forEach(option => {
+                option.checked = false;
+                const label = option.nextElementSibling;
+                label.classList.remove('correct', 'incorrect');
+            });
+            
+            // Ẩn kết quả
+            document.getElementById('result').classList.add('hidden');
+            
+            // Ẩn tất cả các giải thích
+            const explanations = document.querySelectorAll('.explanation');
+            explanations.forEach(exp => {
+                exp.style.display = 'none';
+            });
+        });
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
