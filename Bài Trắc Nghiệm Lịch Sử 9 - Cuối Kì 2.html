@@ -1,0 +1,719 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Lịch Sử 9 - Cuối Kì 2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .question {
+            margin-bottom: 2rem;
+        }
+        .option {
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            transition: background-color 0.3s;
+        }
+        .option:hover {
+            background-color: #f3f4f6;
+        }
+        .selected {
+            background-color: #dbeafe;
+        }
+        .correct {
+            background-color: #dcfce7;
+        }
+        .wrong {
+            background-color: #fee2e2;
+        }
+        .explanation {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f8fafc;
+            border-left: 4px solid #3b82f6;
+            border-radius: 0.25rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto py-8 px-4 max-w-4xl">
+        <header class="text-center mb-10">
+            <h1 class="text-3xl font-bold text-blue-800 mb-2">BÀI TRẮC NGHIỆM LỊCH SỬ LỚP 9</h1>
+            <h2 class="text-xl text-gray-600">Ôn tập kiểm tra cuối kì 2 - Năm học 2024-2025</h2>
+        </header>
+
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <div class="text-right mb-4">
+                <span id="score" class="font-bold text-lg">Điểm: 0/15</span>
+            </div>
+
+            <div id="quiz-container">
+                <!-- Câu 1 -->
+                <div class="question" id="question1">
+                    <h3 class="font-bold text-lg mb-3">Câu 1: Quân dân miền Nam từng bước đánh bại chiến lược "Chiến tranh đặc biệt" của Mỹ trên mặt trận quân sự như thế nào?</h3>
+                    <div class="options space-y-2">
+                        <div class="option" data-value="A" onclick="selectOption('question1', 'A')">
+                            <span class="font-medium">A.</span> Chiến thắng Ấp Bắc (2/1/1963) → chứng tỏ khả năng đánh bại chiến lược "Chiến tranh đặc biệt" của quân dân miền Nam
+                        </div>
+                        <div class="option" data-value="B" onclick="selectOption('question1', 'B')">
+                            <span class="font-medium">B.</span> Chiến thắng Bình Giã (2/12/1964) → chiến lược "Chiến tranh đặc biệt" phá sản về cơ bản
+                        </div>
+                        <div class="option" data-value="C" onclick="selectOption('question1', 'C')">
+                            <span class="font-medium">C.</span> Chiến thắng An Lão, Ba Gia, Đồng Xoài → chiến lược "Chiến tranh đặc biệt" phá sản hoàn toàn
+                        </div>
+                        <div class="option" data-value="D" onclick="selectOption('question1', 'D')">
+                            <span class="font-medium">D.</span> Tất cả các đáp án trên
+                        </div>
+                    </div>
+                    <div class="explanation" id="explanation1">
+                        <h4 class="font-bold mb-2">Giải thích:</h4>
+                        <p>Đáp án đúng là D. Tất cả các đáp án trên.</p>
+                        <p>Quân dân miền Nam đã từng bước đánh bại chiến lược "Chiến tranh đặc biệt" của Mỹ qua ba giai đoạn:</p>
+                        <ul class="list-disc ml-6 mt-2">
+                            <li>Giai đoạn 1: Chiến thắng Ấp Bắc (2/1/1963) chứng tỏ khả năng đánh bại chiến lược "Chiến tranh đặc biệt" và đẩy lên phong trào "thi đua Ấp Bắc - giết giặc lập công".</li>
+                            <li>Giai đoạn 2: Chiến thắng Bình Giã (2/12/1964) đánh dấu bước ngoặt khiến chiến lược "Chiến tranh đặc biệt" bị phá sản về cơ bản.</li>
+                            <li>Giai đoạn 3: Các chiến thắng tại An Lão, Ba Gia, Đồng Xoài đã khiến chiến lược "Chiến tranh đặc biệt" bị phá sản hoàn toàn.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Câu 2 -->
+                <div class="question" id="question2">
+                    <h3 class="font-bold text-lg mb-3">Câu 2: Sự kiện nào đánh dấu Chiến dịch Hồ Chí Minh toàn thắng?</h3>
+                    <div class="options space-y-2">
+                        <div class="option" data-value="A" onclick="selectOption('question2', 'A')">
+                            <span class="font-medium">A.</span> 17 giờ ngày 26/4/1975, Chiến dịch Hồ Chí Minh bắt đầu
+                        </div>
+                        <div class="option" data-value="B" onclick="selectOption('question2', 'B')">
+                            <span class="font-medium">B.</span> Năm cánh quân giải phóng tiến vào Sài Gòn, chiếm các cơ quan đầu não
+                        </div>
+                        <div class="option" data-value="C" onclick="selectOption('question2', 'C')">
+                            <span class="font-medium">C.</span> 10 giờ 45 phút ngày 30/4/1975, xe tăng quân giải phóng tiến vào Dinh Độc Lập
+                        </div>
+                        <div class="option" data-value="D" onclick="selectOption('question2', 'D')">
+                            <span class="font-medium">D.</span> 11 giờ 30 phút ngày 30/4/1975, cờ cách mạng tung bay trên nóc Dinh Độc Lập
+                        </div>
+                    </div>
+                    <div class="explanation" id="explanation2">
+                        <h4 class="font-bold mb-2">Giải thích:</h4>
+                        <p>Đáp án đúng là D. 11 giờ 30 phút ngày 30/4/1975, cờ cách mạng tung bay trên nóc Dinh Độc Lập.</p>
+                        <p>Diễn biến chính của Chiến dịch Hồ Chí Minh:</p>
+                        <ul class="list-disc ml-6 mt-2">
+                            <li>17 giờ ngày 26/4/1975: Chiến dịch Hồ Chí Minh bắt đầu (đây là thời điểm khởi đầu).</li>
+                            <li>Sau đó, năm cánh quân giải phóng tiến vào Sài Gòn, chiếm các cơ quan đầu não của chính quyền Sài Gòn (đây là quá trình tiến hành).</li>
+                            <li>10 giờ 45 phút ngày 30/4/1975: xe tăng quân giải phóng tiến vào Dinh Độc Lập (giai đoạn quyết định).</li>
+                            <li>11 giờ 30 phút ngày 30/4/1975: cờ cách mạng tung bay trên nóc Dinh Độc Lập, chính quyền Sài Gòn tuyên bố đầu hàng. Chiến dịch Hồ Chí Minh toàn thắng (đây là thời điểm kết thúc thắng lợi của chiến dịch).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Câu 3 -->
+                <div class="question" id="question3">
+                    <h3 class="font-bold text-lg mb-3">Câu 3: Nguyên nhân cơ bản nhất dẫn đến thắng lợi của cuộc kháng chiến chống Mỹ, cứu nước là gì?</h3>
+                    <div class="options space-y-2">
+                        <div class="option" data-value="A" onclick="selectOption('question3', 'A')">
+                            <span class="font-medium">A.</span> Sự lãnh đạo của Đảng với đường lối chính trị quân sự đúng đắn, sáng tạo
+                        </div>
+                        <div class="option" data-value="B" onclick="selectOption('question3', 'B')">
+                            <span class="font-medium">B.</span> Nhân dân Việt Nam yêu nước, đoàn kết, chiến đấu dũng cảm
+                        </div>
+                        <div class="option" data-value="C" onclick="selectOption('question3', 'C')">
+                            <span class="font-medium">C.</span> Hậu phương miền Bắc đáp ứng kịp thời yêu cầu của cuộc chiến đấu ở hai miền
+                        </div>
+                        <div class="option" data-value="D" onclick="selectOption('question3', 'D')">
+                            <span class="font-medium">D.</span> Sự ủng hộ của các nước xã hội chủ nghĩa và nhân dân yêu chuộng hòa bình trên thế giới
+                        </div>
+                    </div>
+                    <div class="explanation" id="explanation3">
+                        <h4 class="font-bold mb-2">Giải thích:</h4>
+                        <p>Đáp án đúng là A. Sự lãnh đạo của Đảng với đường lối chính trị quân sự đúng đắn, sáng tạo.</p>
+                        <p>Trong các nguyên nhân dẫn đến thắng lợi của cuộc kháng chiến chống Mỹ, cứu nước, nguyên nhân cơ bản nhất, quan trọng nhất là sự lãnh đạo sáng suốt của Đảng. Đảng đã đề ra đường lối kháng chiến chống Mỹ đúng đắn, vận dụng sáng tạo chủ nghĩa Mác-Lênin vào hoàn cảnh cụ thể của Việt Nam.</p>
+                        <p>Các nguyên nhân khác đều rất quan trọng, nhưng đều xuất phát từ sự lãnh đạo của Đảng:</p>
+                        <ul class="list-disc ml-6 mt-2">
+                            <li>Tinh thần yêu nước, đoàn kết, chiến đấu dũng cảm của nhân dân được phát huy dưới sự lãnh đạo của Đảng.</li>
+                            <li>Hậu phương miền Bắc được xây dựng vững mạnh và chi viện kịp thời cho tiền tuyến nhờ đường lối đúng đắn của Đảng.</li>
+                            <li>Sự ủng hộ quốc tế cũng được huy động nhờ đường lối đối ngoại khôn khéo của Đảng.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Câu 4 -->
+                <div class="question" id="question4">
+                    <h3 class="font-bold text-lg mb-3">Câu 4: Nội dung nào không phải là đường lối Đổi mới về kinh tế của Đảng và Nhà nước ta trong giai đoạn 1986-1991?</h3>
+                    <div class="options space-y-2">
+                        <div class="option" data-value="A" onclick="selectOption('question4', 'A')">
+                            <span class="font-medium">A.</span> Xóa bỏ cơ chế quản lí kinh tế tập trung, quan liêu bao cấp
+                        </div>
+                        <div class="option" data-value="B" onclick="selectOption('question4', 'B')">
+                            <span class="font-medium">B.</span> Phát triển kinh tế hàng hóa nhiều thành phần theo định hướng XHCN
+                        </div>
+                        <div class="option" data-value="C" onclick="selectOption('question4', 'C')">
+                            <span class="font-medium">C.</span> Mở rộng quan hệ kinh tế đối ngoại
+                        </div>
+                        <div class="option" data-value="D" onclick="selectOption('question4', 'D')">
+                            <span class="font-medium">D.</span> Đẩy mạnh công nghiệp hóa, hiện đại hóa đất nước
+                        </div>
+                    </div>
+                    <div class="explanation" id="explanation4">
+                        <h4 class="font-bold mb-2">Giải thích:</h4>
+                        <p>Đáp án đúng là D. Đẩy mạnh công nghiệp hóa, hiện đại hóa đất nước.</p>
+                        <p>Trong giai đoạn 1986-1991, đường lối Đổi mới về kinh tế của Đảng và Nhà nước ta bao gồm các nội dung chính:</p>
+                        <ul class="list-disc ml-6 mt-2">
+                            <li>Xóa bỏ cơ chế quản lí kinh tế tập trung, quan liêu bao cấp, hình thành cơ chế thị trường.</li>
+                            <li>Phát triển kinh tế hàng hóa nhiều thành phần theo định hướng XHCN.</li>
+                            <li>Mở rộng quan hệ kinh tế đối ngoại.</li>
+                        </ul>
+                        <p>Việc "Đẩy mạnh công nghiệp hóa, hiện đại hóa đất nước" không phải là nội dung của đường lối Đổi mới trong giai đoạn 1986-1991 mà là chủ trương được đề ra rõ nét hơn trong giai đoạn sau, từ Đại hội VII (1991) và đặc biệt là từ Đại hội VIII (1996) của Đảng.</p>
+                    </div>
+                </div>
+
+                <!-- Câu 5 -->
+                <div class="question" id="question5">
+                    <h3 class="font-bold text-lg mb-3">Câu 5: Thành tựu nào sau đây không phải là kết quả của công cuộc Đổi mới (1986-1991)?</h3>
+                    <div class="options space-y-2">
+                        <div class="option" data-value="A" onclick="selectOption('question5', 'A')">
+                            <span class="font-medium">A.</span> Nền kinh tế hàng hóa nhiều thành phần vận hành theo cơ chế thị trường có sự quản lí của Nhà nước bắt đầu hình thành
+                        </div>
+                        <div class="option" data-value="B" onclick="selectOption('question5', 'B')">
+                            <span class="font-medium">B.</span> Trở thành một trong những nước xuất khẩu gạo hàng đầu trên thế giới
+                        </div>
+                        <div class="option" data-value="C" onclick="selectOption('question5', 'C')">
+                            <span class="font-medium">C.</span> Kinh tế đối ngoại phát triển nhanh và mở rộng về quy mô, hình thức
+                        </div>
+                        <div class="option" data-value="D" onclick="selectOption('question5', 'D')">
+                            <span class="font-medium">D.</span> Việt Nam gia nhập Tổ chức Thương mại Thế giới (WTO)
+                        </div>
+                    </div>
+                    <div class="explanation" id="explanation5">
+                        <h4 class="font-bold mb-2">Giải thích:</h4>
+                        <p>Đáp án đúng là D. Việt Nam gia nhập Tổ chức Thương mại Thế giới (WTO).</p>
+                        <p>Giải thích:</p>
+                        <ul class="list-disc ml-6 mt-2">
+                            <li>Việt Nam gia nhập Tổ chức Thương mại Thế giới (WTO) vào năm 2007, không phải trong giai đoạn 1986-1991.</li>
+                            <li>Các thành tựu trong giai đoạn 1986-1991 bao gồm:
+                                <ul class="list-circle ml-6 mt-1">
+                                    <li>Nền kinh tế hàng hóa nhiều thành phần vận hành theo cơ chế thị trường có sự quản lí của Nhà nước bắt đầu hình thành.</li>
+                                    <li>Việt Nam trở thành một trong những nước xuất khẩu gạo hàng đầu trên thế giới (từ năm 1989).</li>
+                                    <li>Kinh tế đối ngoại phát triển nhanh và mở rộng về quy mô, hình thức.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Câu 6 -->
+                <div class="question" id="question6">
+                    <h3 class="font-bold text-lg mb-3">Câu 6: Ý nghĩa quan trọng nhất của công cuộc Đổi mới ở Việt Nam (1986-1991) là gì?</h3>
+                    <div class="options space-y-2">
+                        <div class="option" data-value="A" onclick="selectOption('question6', 'A')">
+                            <span class="font-medium">A.</span> Đưa đất nước thoát khỏi khủng hoảng kinh tế - xã hội
+                        </div>
+                        <div class="option" data-value="B" onclick="selectOption('question6', 'B')">
+                            <span class="font-medium">B.</span> Đưa Việt Nam trở thành nước xuất khẩu gạo hàng đầu thế giới
+                        </div>
+                        <div class="option" data-value="C" onclick="selectOption('question6', 'C')">
+                            <span class="font-medium">C.</span> Khẳng định sự lãnh đạo đúng đắn của Đảng
+                        </div>
+                        <div class="option" data-value="D" onclick="selectOption('question6', 'D')">
+                            <span class="font-medium">D.</span> Mở rộng quan hệ đối ngoại của Việt Nam
+                        </div>
+                    </div>
+                    <div class="explanation" id="explanation6">
+                        <h4 class="font-bold mb-2">Giải thích:</h4>
+                        <p>Đáp án đúng là C. Khẳng định sự lãnh đạo đúng đắn của Đảng.</p>
+                        <p>Ý nghĩa quan trọng nhất của công cuộc Đổi mới ở Việt Nam (1986-1991) là khẳng định sự lãnh đạo đúng đắn của Đảng trong việc đề ra và thực hiện đường lối đổi mới, từ đó, đem lại niềm tin và tạo ra sức mạnh cho nhân dân trong giai đoạn tiếp theo.</p>
+                        <p>Các ý nghĩa khác của công cuộc Đổi mới cũng quan trọng nhưng không phải là ý nghĩa quan trọng nhất:</p>
+                        <ul class="list-disc ml-6 mt-2">
+                            <li>Đưa đất nước thoát khỏi khủng hoảng kinh tế - xã hội là kết quả của công cuộc Đổi mới.</li>
+                            <li>Việt Nam trở thành nước xuất khẩu gạo hàng đầu thế giới là một thành tựu cụ thể.</li>
+                            <li>Mở rộng quan hệ đối ngoại là một nội dung của công cuộc Đổi mới.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Câu 7 -->
+                <div class="question" id="question7">
+                    <h3 class="font-bold text-lg mb-3">Câu 7: Chiến thắng nào đánh dấu bước ngoặt làm phá sản về cơ bản chiến lược "Chiến tranh đặc biệt" của Mỹ ở miền Nam Việt Nam?</h3>
+                    <div class="options space-y-2">
+                        <div class="option" data-value="A" onclick="selectOption('question7', 'A')">
+                            <span class="font-medium">A.</span> Chiến thắng Ấp Bắc (2/1/1963)
+                        </div>
+                        <div class="option" data-value="B" onclick="selectOption('question7', 'B')">
+                            <span class="font-medium">B.</span> Chiến thắng Bình Giã (2/12/1964)
+                        </div>
+                        <div class="option" data-value="C" onclick="selectOption('question7', 'C')">
+                            <span class="font-medium">C.</span> Chiến thắng Ba Gia (5/1965)
+                        </div>
+                        <div class="option" data-value="D" onclick="selectOption('question7', 'D')">
+                            <span class="font-medium">D.</span> Chiến thắng Đồng Xoài (6/1965)
+                        </div>
+                    </div>
+                    <div class="explanation" id="explanation7">
+                        <h4 class="font-bold mb-2">Giải thích:</h4>
+                        <p>Đáp án đúng là B. Chiến thắng Bình Giã (2/12/1964).</p>
+                        <p>Quá trình đánh bại chiến lược "Chiến tranh đặc biệt" của Mỹ ở miền Nam Việt Nam diễn ra qua các giai đoạn:</p>
+                        <ul class="list-disc ml-6 mt-2">
+                            <li>Chiến thắng Ấp Bắc (2/1/1963): chứng tỏ khả năng đánh bại chiến lược "Chiến tranh đặc biệt" của quân dân miền Nam.</li>
+                            <li>Chiến thắng Bình Giã (2/12/1964): đánh dấu bước ngoặt làm phá sản về cơ bản chiến lược "Chiến tranh đặc biệt". Đây là trận đánh lớn kéo dài 3 ngày đêm, quân giải phóng đã tiêu diệt và làm bị thương 1.700 quân địch, bắn rơi và phá hủy 22 máy bay, bắn cháy 30 xe quân sự.</li>
+                            <li>Chiến thắng An Lão, Ba Gia, Đồng Xoài (1965): đánh dấu sự phá sản hoàn toàn của chiến lược "Chiến tranh đặc biệt".</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Câu 8 -->
+                <div class="question" id="question8">
+                    <h3 class="font-bold text-lg mb-3">Câu 8: Kết quả nào dưới đây không phải là thành tựu của công cuộc Đổi mới trong giai đoạn 1986-1991?</h3>
+                    <div class="options space-y-2">
+                        <div class="option" data-value="A" onclick="selectOption('question8', 'A')">
+                            <span class="font-medium">A.</span> Thực hiện tốt ba chương trình kinh tế: lương thực - thực phẩm, hàng tiêu dùng và hàng xuất khẩu
+                        </div>
+                        <div class="option" data-value="B" onclick="selectOption('question8', 'B')">
+                            <span class="font-medium">B.</span> Kinh tế đối ngoại phát triển nhanh và mở rộng về quy mô và hình thức
+                        </div>
+                        <div class="option" data-value="C" onclick="selectOption('question8', 'C')">
+                            <span class="font-medium">C.</span> Nền kinh tế hàng hóa nhiều thành phần vận hành theo cơ chế thị trường có sự quản lí của Nhà nước bắt đầu hình thành
+                        </div>
+                        <div class="option" data-value="D" onclick="selectOption('question8', 'D')">
+                            <span class="font-medium">D.</span> Cơ bản xóa bỏ tình trạng lạm phát, thiếu việc làm và đời sống khó khăn của nhân dân
+                        </div>
+                    </div>
+                    <div class="explanation" id="explanation8">
+                        <h4 class="font-bold mb-2">Giải thích:</h4>
+                        <p>Đáp án đúng là D. Cơ bản xóa bỏ tình trạng lạm phát, thiếu việc làm và đời sống khó khăn của nhân dân.</p>
+                        <p>Trong giai đoạn 1986-1991, mặc dù đã đạt được nhiều thành tựu, nhưng vẫn còn nhiều hạn chế như:</p>
+                        <ul class="list-disc ml-6 mt-2">
+                            <li>Nền kinh tế vẫn còn mất cân đối.</li>
+                            <li>Lạm phát vẫn còn ở mức cao.</li>
+                            <li>Lao động còn thiếu việc làm, chế độ tiền lương chưa hợp lí.</li>
+                            <li>Đời sống nhân dân ở một số vùng vẫn còn khó khăn.</li>
+                        </ul>
+                        <p>Các thành tựu thực tế trong giai đoạn này bao gồm: thực hiện tốt ba chương trình kinh tế, kinh tế đối ngoại phát triển, và hình thành nền kinh tế hàng hóa nhiều thành phần.</p>
+                    </div>
+                </div>
+
+                <!-- Câu 9 -->
+                <div class="question" id="question9">
+                    <h3 class="font-bold text-lg mb-3">Câu 9: Trong chiến dịch Hồ Chí Minh (1975), sự kiện nào xảy ra đầu tiên?</h3>
+                    <div class="options space-y-2">
+                        <div class="option" data-value="A" onclick="selectOption('question9', 'A')">
+                            <span class="font-medium">A.</span> Xe tăng quân giải phóng tiến vào Dinh Độc Lập
+                        </div>
+                        <div class="option" data-value="B" onclick="selectOption('question9', 'B')">
+                            <span class="font-medium">B.</span> Năm cánh quân giải phóng tiến vào Sài Gòn
+                        </div>
+                        <div class="option" data-value="C" onclick="selectOption('question9', 'C')">
+                            <span class="font-medium">C.</span> Chiến dịch Hồ Chí Minh bắt đầu
+                        </div>
+                        <div class="option" data-value="D" onclick="selectOption('question9', 'D')">
+                            <span class="font-medium">D.</span> Cờ cách mạng tung bay trên nóc Dinh Độc Lập
+                        </div>
+                    </div>
+                    <div class="explanation" id="explanation9">
+                        <h4 class="font-bold mb-2">Giải thích:</h4>
+                        <p>Đáp án đúng là C. Chiến dịch Hồ Chí Minh bắt đầu.</p>
+                        <p>Theo thứ tự thời gian, các sự kiện trong chiến dịch Hồ Chí Minh diễn ra như sau:</p>
+                        <ol class="list-decimal ml-6 mt-2">
+                            <li>17 giờ ngày 26/4/1975: Chiến dịch Hồ Chí Minh bắt đầu.</li>
+                            <li>Sau đó, năm cánh quân giải phóng tiến vào Sài Gòn, chiếm các cơ quan đầu não của chính quyền Sài Gòn.</li>
+                            <li>10 giờ 45 phút ngày 30/4/1975: xe tăng quân giải phóng tiến vào Dinh Độc Lập.</li>
+                            <li>11 giờ 30 phút ngày 30/4/1975: cờ cách mạng tung bay trên nóc Dinh Độc Lập, chính quyền Sài Gòn tuyên bố đầu hàng.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Câu 10 -->
+                <div class="question" id="question10">
+                    <h3 class="font-bold text-lg mb-3">Câu 10: Chủ trương nào không phải là nội dung đổi mới về chính trị ở Việt Nam giai đoạn 1986-1991?</h3>
+                    <div class="options space-y-2">
+                        <div class="option" data-value="A" onclick="selectOption('question10', 'A')">
+                            <span class="font-medium">A.</span> Xây dựng Nhà nước pháp quyền xã hội chủ nghĩa
+                        </div>
+                        <div class="option" data-value="B" onclick="selectOption('question10', 'B')">
+                            <span class="font-medium">B.</span> Xây dựng nền dân chủ xã hội chủ nghĩa
+                        </div>
+                        <div class="option" data-value="C" onclick="selectOption('question10', 'C')">
+                            <span class="font-medium">C.</span> Thực hiện chính sách đại đoàn kết dân tộc
+                        </div>
+                        <div class="option" data-value="D" onclick="selectOption('question10', 'D')">
+                            <span class="font-medium">D.</span> Thực hiện chính sách đa nguyên đa đảng
+                        </div>
+                    </div>
+                    <div class="explanation" id="explanation10">
+                        <h4 class="font-bold mb-2">Giải thích:</h4>
+                        <p>Đáp án đúng là D. Thực hiện chính sách đa nguyên đa đảng.</p>
+                        <p>Nội dung đổi mới về chính trị ở Việt Nam giai đoạn 1986-1991 bao gồm:</p>
+                        <ul class="list-disc ml-6 mt-2">
+                            <li>Xây dựng Nhà nước pháp quyền xã hội chủ nghĩa của dân, do dân và vì dân.</li>
+                            <li>Xây dựng nền dân chủ xã hội chủ nghĩa, đảm bảo quyền lực thuộc về nhân dân.</li>
+                            <li>Thực hiện chính sách đại đoàn kết dân tộc.</li>
+                        </ul>
+                        <p>Việt Nam không chủ trương thực hiện chính sách đa nguyên đa đảng, mà vẫn duy trì vai trò lãnh đạo của Đảng Cộng sản Việt Nam trong hệ thống chính trị.</p>
+                    </div>
+                </div>
+
+                <!-- Câu 11 -->
+                <div class="question" id="question11">
+                    <h3 class="font-bold text-lg mb-3">Câu 11: Ý nghĩa lịch sử nào quan trọng nhất của cuộc kháng chiến chống Mỹ, cứu nước?</h3>
+                    <div class="options space-y-2">
+                        <div class="option" data-value="A" onclick="selectOption('question11', 'A')">
+                            <span class="font-medium">A.</span> Kết thúc thắng lợi cuộc kháng chiến chống Mỹ, cứu nước, hoàn thành sự nghiệp giải phóng dân tộc
+                        </div>
+                        <div class="option" data-value="B" onclick="selectOption('question11', 'B')">
+                            <span class="font-medium">B.</span> Mở ra kỉ nguyên mới cho lịch sử dân tộc - kỉ nguyên đất nước độc lập, thống nhất, đi lên chủ nghĩa xã hội
+                        </div>
+                        <div class="option" data-value="C" onclick="selectOption('question11', 'C')">
+                            <span class="font-medium">C.</span> Tác động lớn đến tình hình nước Mỹ và thế giới
+                        </div>
+                        <div class="option" data-value="D" onclick="selectOption('question11', 'D')">
+                            <span class="font-medium">D.</span> Góp phần vào phong trào giải phóng dân tộc trên thế giới
+                        </div>
+                    </div>
+                    <div class="explanation" id="explanation11">
+                        <h4 class="font-bold mb-2">Giải thích:</h4>
+                        <p>Đáp án đúng là B. Mở ra kỉ nguyên mới cho lịch sử dân tộc - kỉ nguyên đất nước độc lập, thống nhất, đi lên chủ nghĩa xã hội.</p>
+                        <p>Ý nghĩa lịch sử quan trọng nhất của cuộc kháng chiến chống Mỹ, cứu nước là mở ra kỉ nguyên mới cho lịch sử dân tộc - kỉ nguyên đất nước độc lập, thống nhất, đi lên chủ nghĩa xã hội. Đây là ý nghĩa quan trọng nhất vì:</p>
+                        <ul class="list-disc ml-6 mt-2">
+                            <li>Lần đầu tiên sau gần một thế kỷ bị thực dân, đế quốc xâm lược và chia cắt, nước Việt Nam đã hoàn toàn độc lập và thống nhất.</li>
+                            <li>Mở ra cơ hội để toàn dân tộc cùng xây dựng và phát triển đất nước theo con đường xã hội chủ nghĩa.</li>
+                            <li>Tạo tiền đề quan trọng cho công cuộc xây dựng và phát triển đất nước trong thời kỳ mới.</li>
+                        </ul>
+                        <p>Các ý nghĩa khác cũng quan trọng nhưng không quan trọng bằng việc mở ra kỉ nguyên mới cho lịch sử dân tộc.</p>
+                    </div>
+                </div>
+
+                <!-- Câu 12 -->
+                <div class="question" id="question12">
+                    <h3 class="font-bold text-lg mb-3">Câu 12: Trong công cuộc Đổi mới (1986-1991), hạn chế nào là nghiêm trọng nhất?</h3>
+                    <div class="options space-y-2">
+                        <div class="option" data-value="A" onclick="selectOption('question12', 'A')">
+                            <span class="font-medium">A.</span> Nền kinh tế phát triển vẫn mất cân đối
+                        </div>
+                        <div class="option" data-value="B" onclick="selectOption('question12', 'B')">
+                            <span class="font-medium">B.</span> Lạm phát còn ở mức cao
+                        </div>
+                        <div class="option" data-value="C" onclick="selectOption('question12', 'C')">
+                            <span class="font-medium">C.</span> Lao động còn thiếu việc làm, chế độ tiền lương chưa hợp lí
+                        </div>
+                        <div class="option" data-value="D" onclick="selectOption('question12', 'D')">
+                            <span class="font-medium">D.</span> Đời sống nhân dân ở một số vùng vẫn còn khó khăn
+                        </div>
+                    </div>
+                    <div class="explanation" id="explanation12">
+                        <h4 class="font-bold mb-2">Giải thích:</h4>
+                        <p>Đáp án đúng là B. Lạm phát còn ở mức cao.</p>
+                        <p>Trong giai đoạn 1986-1991, mặc dù đã đạt được nhiều thành tựu, nhưng vẫn còn nhiều hạn chế. Trong đó, lạm phát còn ở mức cao là hạn chế nghiêm trọng nhất vì:</p>
+                        <ul class="list-disc ml-6 mt-2">
+                            <li>Lạm phát cao làm giảm giá trị đồng tiền, ảnh hưởng trực tiếp đến đời sống của người dân và hoạt động sản xuất kinh doanh.</li>
+                            <li>Lạm phát cao có thể dẫn đến bất ổn kinh tế vĩ mô, gây khó khăn cho việc hoạch định chính sách kinh tế.</li>
+                            <li>Lạm phát cao làm giảm sức cạnh tranh của nền kinh tế, ảnh hưởng đến môi trường đầu tư và phát triển.</li>
+                            <li>Trong giai đoạn này, lạm phát từng lên đến mức ba con số (trên 100%), gây ảnh hưởng nghiêm trọng đến kinh tế - xã hội.</li>
+                        </ul>
+                        <p>Các hạn chế khác cũng quan trọng nhưng không nghiêm trọng bằng vấn đề lạm phát cao trong giai đoạn này.</p>
+                    </div>
+                </div>
+
+                <!-- Câu 13 -->
+                <div class="question" id="question13">
+                    <h3 class="font-bold text-lg mb-3">Câu 13: Hãn chế duy nhất không thuộc về chính sách đổi mới về kinh tế trong giai đoạn 1986-1991 là gì?</h3>
+                    <div class="options space-y-2">
+                        <div class="option" data-value="A" onclick="selectOption('question13', 'A')">
+                            <span class="font-medium">A.</span> Xóa bỏ cơ chế quản lí kinh tế tập trung, quan liêu bao cấp
+                        </div>
+                        <div class="option" data-value="B" onclick="selectOption('question13', 'B')">
+                            <span class="font-medium">B.</span> Phát triển kinh tế hàng hóa nhiều thành phần theo định hướng XHCN
+                        </div>
+                        <div class="option" data-value="C" onclick="selectOption('question13', 'C')">
+                            <span class="font-medium">C.</span> Mở rộng quan hệ kinh tế đối ngoại
+                        </div>
+                        <div class="option" data-value="D" onclick="selectOption('question13', 'D')">
+                            <span class="font-medium">D.</span> Thực hiện chính sách đại đoàn kết dân tộc
+                        </div>
+                    </div>
+                    <div class="explanation" id="explanation13">
+                        <h4 class="font-bold mb-2">Giải thích:</h4>
+                        <p>Đáp án đúng là D. Thực hiện chính sách đại đoàn kết dân tộc.</p>
+                        <p>Trong giai đoạn 1986-1991, đường lối Đổi mới về kinh tế của Đảng và Nhà nước ta bao gồm:</p>
+                        <ul class="list-disc ml-6 mt-2">
+                            <li>Xóa bỏ cơ chế quản lí kinh tế tập trung, quan liêu bao cấp, hình thành cơ chế thị trường.</li>
+                            <li>Phát triển kinh tế hàng hóa nhiều thành phần theo định hướng XHCN.</li>
+                            <li>Mở rộng quan hệ kinh tế đối ngoại.</li>
+                        </ul>
+                        <p>"Thực hiện chính sách đại đoàn kết dân tộc" là nội dung thuộc về chính sách đổi mới về chính trị, không phải là chính sách đổi mới về kinh tế.</p>
+                    </div>
+                </div>
+
+                <!-- Câu 14 -->
+                <div class="question" id="question14">
+                    <h3 class="font-bold text-lg mb-3">Câu 14: Ý nghĩa quốc tế quan trọng nhất của cuộc kháng chiến chống Mỹ, cứu nước là gì?</h3>
+                    <div class="options space-y-2">
+                        <div class="option" data-value="A" onclick="selectOption('question14', 'A')">
+                            <span class="font-medium">A.</span> Góp phần làm thay đổi so sánh lực lượng giữa các nước xã hội chủ nghĩa và đế quốc
+                        </div>
+                        <div class="option" data-value="B" onclick="selectOption('question14', 'B')">
+                            <span class="font-medium">B.</span> Cổ vũ phong trào giải phóng dân tộc, các cuộc đấu tranh vì hòa bình, dân chủ và tiến bộ trên thế giới
+                        </div>
+                        <div class="option" data-value="C" onclick="selectOption('question14', 'C')">
+                            <span class="font-medium">C.</span> Làm suy yếu nghiêm trọng đế quốc Mỹ, buộc họ phải tuyên bố "Đông Dương hóa" chiến tranh
+                        </div>
+                        <div class="option" data-value="D" onclick="selectOption('question14', 'D')">
+                            <span class="font-medium">D.</span> Mở rộng quan hệ ngoại giao của Việt Nam với các nước trên thế giới
+                        </div>
+                    </div>
+                    <div class="explanation" id="explanation14">
+                        <h4 class="font-bold mb-2">Giải thích:</h4>
+                        <p>Đáp án đúng là B. Cổ vũ phong trào giải phóng dân tộc, các cuộc đấu tranh vì hòa bình, dân chủ và tiến bộ trên thế giới.</p>
+                        <p>Ý nghĩa quốc tế quan trọng nhất của cuộc kháng chiến chống Mỹ, cứu nước là cổ vũ mạnh mẽ phong trào giải phóng dân tộc, các cuộc đấu tranh vì hòa bình, dân chủ và tiến bộ trên thế giới. Thắng lợi của Việt Nam đã:</p>
+                        <ul class="list-disc ml-6 mt-2">
+                            <li>Chứng minh rằng một dân tộc nhỏ bé nhưng đoàn kết và kiên cường có thể đánh bại đế quốc hùng mạnh nhất.</li>
+                            <li>Truyền cảm hứng và tiếp thêm sức mạnh cho các dân tộc đang đấu tranh giành độc lập, tự do.</li>
+                            <li>Thúc đẩy các phong trào đấu tranh vì hòa bình, dân chủ và tiến bộ xã hội trên toàn thế giới.</li>
+                            <li>Góp phần làm thay đổi cục diện thế giới theo hướng có lợi cho các lực lượng cách mạng.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Câu 15 -->
+                <div class="question" id="question15">
+                    <h3 class="font-bold text-lg mb-3">Câu 15: Chiến dịch nào đánh dấu thắng lợi hoàn toàn của cuộc kháng chiến chống Mỹ, cứu nước?</h3>
+                    <div class="options space-y-2">
+                        <div class="option" data-value="A" onclick="selectOption('question15', 'A')">
+                            <span class="font-medium">A.</span> Chiến dịch Đường 9 - Nam Lào (1971)
+                        </div>
+                        <div class="option" data-value="B" onclick="selectOption('question15', 'B')">
+                            <span class="font-medium">B.</span> Chiến dịch Nguyễn Huệ (1972)
+                        </div>
+                        <div class="option" data-value="C" onclick="selectOption('question15', 'C')">
+                            <span class="font-medium">C.</span> Chiến dịch Tây Nguyên (1975)
+                        </div>
+                        <div class="option" data-value="D" onclick="selectOption('question15', 'D')">
+                            <span class="font-medium">D.</span> Chiến dịch Hồ Chí Minh (1975)
+                        </div>
+                    </div>
+                    <div class="explanation" id="explanation15">
+                        <h4 class="font-bold mb-2">Giải thích:</h4>
+                        <p>Đáp án đúng là D. Chiến dịch Hồ Chí Minh (1975).</p>
+                        <p>Chiến dịch Hồ Chí Minh (từ ngày 26/4 đến 30/4/1975) đánh dấu thắng lợi hoàn toàn của cuộc kháng chiến chống Mỹ, cứu nước vì:</p>
+                        <ul class="list-disc ml-6 mt-2">
+                            <li>Chiến dịch Hồ Chí Minh đã tiêu diệt và làm tan rã hoàn toàn quân đội Sài Gòn.</li>
+                            <li>Chiến dịch đã giải phóng Sài Gòn - trung tâm đầu não cuối cùng của chính quyền Việt Nam Cộng hòa.</li>
+                            <li>Kết thúc chiến dịch, lá cờ cách mạng đã tung bay trên nóc Dinh Độc Lập, chính quyền Sài Gòn tuyên bố đầu hàng vô điều kiện.</li>
+                            <li>Chiến dịch Hồ Chí Minh đã hoàn thành sự nghiệp giải phóng miền Nam, thống nhất đất nước, kết thúc 21 năm chiến đấu chống Mỹ, cứu nước.</li>
+                        </ul>
+                        <p>Các chiến dịch khác đều là những chiến dịch quan trọng trong tiến trình kháng chiến chống Mỹ nhưng không phải là chiến dịch cuối cùng đánh dấu thắng lợi hoàn toàn.</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 flex justify-center">
+                    <button id="check-answers" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
+                        Kiểm tra kết quả
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="result-section" class="bg-white p-6 rounded-lg shadow-md hidden">
+            <h2 class="text-2xl font-bold text-blue-800 mb-4">Kết quả kiểm tra</h2>
+            <div id="result-details" class="mb-6">
+                <!-- Kết quả chi tiết sẽ được thêm vào đây -->
+            </div>
+            <div class="flex justify-center">
+                <button id="retry-quiz" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
+                    Làm lại bài kiểm tra
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Lưu trữ đáp án của học sinh
+        const userAnswers = {};
+        // Đáp án đúng
+        const correctAnswers = {
+            'question1': 'D',
+            'question2': 'D',
+            'question3': 'A',
+            'question4': 'D',
+            'question5': 'D',
+            'question6': 'C',
+            'question7': 'B',
+            'question8': 'D',
+            'question9': 'C',
+            'question10': 'D',
+            'question11': 'B',
+            'question12': 'B',
+            'question13': 'D',
+            'question14': 'B',
+            'question15': 'D'
+        };
+
+        // Hàm chọn đáp án
+        function selectOption(questionId, optionValue) {
+            const optionElements = document.querySelectorAll(`#${questionId} .option`);
+            
+            // Bỏ chọn tất cả các đáp án
+            optionElements.forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Chọn đáp án mới
+            const selectedOption = document.querySelector(`#${questionId} .option[data-value="${optionValue}"]`);
+            selectedOption.classList.add('selected');
+            
+            // Lưu đáp án
+            userAnswers[questionId] = optionValue;
+        }
+
+        // Hàm kiểm tra đáp án
+        document.getElementById('check-answers').addEventListener('click', function() {
+            let score = 0;
+            
+            // Kiểm tra từng câu trả lời
+            for (const questionId in correctAnswers) {
+                const correctAnswer = correctAnswers[questionId];
+                const userAnswer = userAnswers[questionId];
+                
+                // Các phần tử DOM liên quan
+                const questionElement = document.getElementById(questionId);
+                const options = questionElement.querySelectorAll('.option');
+                const explanation = document.getElementById(`explanation${questionId.replace('question', '')}`);
+                
+                // Hiển thị giải thích
+                explanation.style.display = 'block';
+                
+                // Nếu người dùng đã trả lời
+                if (userAnswer) {
+                    const selectedOption = questionElement.querySelector(`.option[data-value="${userAnswer}"]`);
+                    
+                    // Kiểm tra đáp án đúng/sai
+                    if (userAnswer === correctAnswer) {
+                        selectedOption.classList.add('correct');
+                        score++;
+                    } else {
+                        selectedOption.classList.add('wrong');
+                        // Đánh dấu đáp án đúng
+                        const correctOption = questionElement.querySelector(`.option[data-value="${correctAnswer}"]`);
+                        correctOption.classList.add('correct');
+                    }
+                } else {
+                    // Nếu người dùng chưa trả lời, đánh dấu đáp án đúng
+                    const correctOption = questionElement.querySelector(`.option[data-value="${correctAnswer}"]`);
+                    correctOption.classList.add('correct');
+                }
+                
+                // Vô hiệu hóa tất cả các tùy chọn
+                options.forEach(option => {
+                    option.style.pointerEvents = 'none';
+                });
+            }
+            
+            // Cập nhật điểm
+            document.getElementById('score').textContent = `Điểm: ${score}/15`;
+            
+            // Vô hiệu hóa nút kiểm tra
+            this.disabled = true;
+            this.classList.add('bg-gray-400');
+            this.classList.remove('hover:bg-blue-700');
+            
+            // Hiển thị kết quả chi tiết
+            const resultSection = document.getElementById('result-section');
+            const resultDetails = document.getElementById('result-details');
+            const quizContainer = document.getElementById('quiz-container');
+            
+            resultDetails.innerHTML = `
+                <p class="text-xl mb-2">Số câu trả lời đúng: <span class="font-bold text-green-600">${score}/15</span></p>
+                <p class="text-xl mb-4">Điểm: <span class="font-bold text-blue-600">${(score * 10 / 15).toFixed(1)}</span></p>
+                <div class="p-4 ${score >= 12 ? 'bg-green-100' : score >= 8 ? 'bg-yellow-100' : 'bg-red-100'} rounded-lg mb-4">
+                    <p class="font-bold mb-2">Đánh giá:</p>
+                    <p>${getEvaluation(score)}</p>
+                </div>
+                <p class="italic text-gray-600">Bạn có thể xem lại các câu hỏi và đáp án giải thích bên trên hoặc bấm nút "Làm lại bài kiểm tra" để thử lại.</p>
+            `;
+            
+            // Hiển thị kết quả
+            resultSection.classList.remove('hidden');
+            
+            // Cuộn đến kết quả
+            resultSection.scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Hàm đánh giá dựa trên điểm số
+        function getEvaluation(score) {
+            const scorePercentage = (score / 15) * 100;
+            if (scorePercentage >= 90) {
+                return "Xuất sắc! Bạn đã nắm vững kiến thức lịch sử.";
+            } else if (scorePercentage >= 80) {
+                return "Giỏi! Bạn đã hiểu rõ phần lớn nội dung bài học.";
+            } else if (scorePercentage >= 70) {
+                return "Khá tốt! Bạn đã nắm được nhiều kiến thức quan trọng.";
+            } else if (scorePercentage >= 50) {
+                return "Trung bình! Bạn cần ôn tập thêm một số phần kiến thức.";
+            } else {
+                return "Bạn cần cố gắng hơn và ôn tập lại kiến thức lịch sử.";
+            }
+        }
+        
+        // Nút làm lại bài kiểm tra
+        document.getElementById('retry-quiz').addEventListener('click', function() {
+            // Xóa tất cả đáp án đã chọn
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => {
+                option.classList.remove('selected', 'correct', 'wrong');
+                option.style.pointerEvents = 'auto';
+            });
+            
+            // Ẩn tất cả giải thích
+            const explanations = document.querySelectorAll('.explanation');
+            explanations.forEach(explanation => {
+                explanation.style.display = 'none';
+            });
+            
+            // Kích hoạt lại nút kiểm tra
+            const checkButton = document.getElementById('check-answers');
+            checkButton.disabled = false;
+            checkButton.classList.remove('bg-gray-400');
+            checkButton.classList.add('hover:bg-blue-700', 'bg-blue-600');
+            
+            // Ẩn kết quả
+            document.getElementById('result-section').classList.add('hidden');
+            
+            // Đặt lại điểm
+            document.getElementById('score').textContent = 'Điểm: 0/15';
+            
+            // Xóa đáp án người dùng
+            Object.keys(userAnswers).forEach(key => {
+                delete userAnswers[key];
+            });
+            
+            // Cuộn lên đầu bài kiểm tra
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
