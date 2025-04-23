@@ -1,0 +1,949 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Địa Lý Lớp 9 - Cuối HK2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .question {
+            margin-bottom: 2rem;
+        }
+        .options {
+            margin-left: 1.5rem;
+        }
+        .explanation {
+            display: none;
+            padding: 1rem;
+            margin-top: 0.5rem;
+            border-radius: 0.5rem;
+            background-color: #f0f9ff;
+        }
+        .correct {
+            background-color: #dcfce7;
+        }
+        .incorrect {
+            background-color: #fee2e2;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-blue-800">Bài Trắc Nghiệm Địa Lý Lớp 9</h1>
+            <p class="text-xl text-gray-600 mt-2">Kiểm tra kiến thức Cuối Học Kỳ 2</p>
+        </header>
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="mb-6">
+                <h2 class="text-2xl font-semibold text-blue-700 mb-4">Hướng dẫn</h2>
+                <p class="mb-2">- Bài kiểm tra gồm 30 câu hỏi trắc nghiệm.</p>
+                <p class="mb-2">- Chọn một đáp án đúng cho mỗi câu hỏi.</p>
+                <p class="mb-2">- Nhấn "Kiểm tra" để xem kết quả và giải thích.</p>
+                <p class="mb-6">- Nhấn "Làm lại" để thực hiện lại bài kiểm tra.</p>
+            </div>
+
+            <form id="quizForm">
+                <!-- I. VÙNG ĐÔNG NAM BỘ -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-200 pb-2 mb-4">I. VÙNG ĐÔNG NAM BỘ</h2>
+
+                <div class="question" id="q1">
+                    <h3 class="font-semibold text-lg">Câu 1: Vùng Đông Nam Bộ bao gồm bao nhiêu tỉnh/thành phố?</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q1" id="q1a" value="a">
+                            <label for="q1a">A. 5 tỉnh/thành phố</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q1" id="q1b" value="b">
+                            <label for="q1b">B. 6 tỉnh/thành phố</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q1" id="q1c" value="c">
+                            <label for="q1c">C. 7 tỉnh/thành phố</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q1" id="q1d" value="d">
+                            <label for="q1d">D. 8 tỉnh/thành phố</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp1">
+                        <strong>Đáp án đúng: B. 6 tỉnh/thành phố</strong>
+                        <p class="mt-2">Vùng Đông Nam Bộ bao gồm 6 tỉnh/thành phố: TP.HCM, Đồng Nai, Bình Dương, Bà Rịa-Vũng Tàu, Bình Phước và Tây Ninh.</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q2">
+                    <h3 class="font-semibold text-lg">Câu 2: Diện tích của vùng Đông Nam Bộ chiếm bao nhiêu phần trăm diện tích cả nước (năm 2021)?</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q2" id="q2a" value="a">
+                            <label for="q2a">A. 5,1%</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q2" id="q2b" value="b">
+                            <label for="q2b">B. 6,3%</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q2" id="q2c" value="c">
+                            <label for="q2c">C. 7,1%</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q2" id="q2d" value="d">
+                            <label for="q2d">D. 8,2%</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp2">
+                        <strong>Đáp án đúng: C. 7,1%</strong>
+                        <p class="mt-2">Theo tài liệu, diện tích vùng Đông Nam Bộ là 23,6 nghìn km², chiếm 7,1% diện tích cả nước (năm 2021).</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q3">
+                    <h3 class="font-semibold text-lg">Câu 3: Các ngành công nghiệp thế mạnh của vùng Đông Nam Bộ là:</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q3" id="q3a" value="a">
+                            <label for="q3a">A. Dệt may, thủy sản, chế biến lương thực</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q3" id="q3b" value="b">
+                            <label for="q3b">B. Khai thác dầu thô, khí tự nhiên, sản xuất ô tô, hóa chất, cơ khí</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q3" id="q3c" value="c">
+                            <label for="q3c">C. Dệt may, thủy sản, khai thác than</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q3" id="q3d" value="d">
+                            <label for="q3d">D. Sản xuất xi măng, phân bón, luyện kim</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp3">
+                        <strong>Đáp án đúng: B. Khai thác dầu thô, khí tự nhiên, sản xuất ô tô, hóa chất, cơ khí</strong>
+                        <p class="mt-2">Theo tài liệu, các ngành công nghiệp thế mạnh của vùng Đông Nam Bộ là khai thác dầu thô, khí tự nhiên, sản xuất ô tô, hóa chất, cơ khí...</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q4">
+                    <h3 class="font-semibold text-lg">Câu 4: Cây cao su ở vùng Đông Nam Bộ được trồng nhiều nhất ở các tỉnh nào?</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q4" id="q4a" value="a">
+                            <label for="q4a">A. Bình Phước, Bình Dương, Tây Ninh</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q4" id="q4b" value="b">
+                            <label for="q4b">B. Đồng Nai, Bà Rịa-Vũng Tàu, TP.HCM</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q4" id="q4c" value="c">
+                            <label for="q4c">C. Tây Ninh, TP.HCM, Đồng Nai</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q4" id="q4d" value="d">
+                            <label for="q4d">D. Bình Dương, Đồng Nai, Bà Rịa-Vũng Tàu</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp4">
+                        <strong>Đáp án đúng: A. Bình Phước, Bình Dương, Tây Ninh</strong>
+                        <p class="mt-2">Theo tài liệu, cây cao su ở vùng Đông Nam Bộ được trồng nhiều nhất ở các tỉnh Bình Phước, Bình Dương, Tây Ninh.</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q5">
+                    <h3 class="font-semibold text-lg">Câu 5: Mật độ dân số của vùng Đông Nam Bộ là bao nhiêu người/km² (năm 2021)?</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q5" id="q5a" value="a">
+                            <label for="q5a">A. 578 người/km²</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q5" id="q5b" value="b">
+                            <label for="q5b">B. 678 người/km²</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q5" id="q5c" value="c">
+                            <label for="q5c">C. 778 người/km²</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q5" id="q5d" value="d">
+                            <label for="q5d">D. 878 người/km²</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp5">
+                        <strong>Đáp án đúng: C. 778 người/km²</strong>
+                        <p class="mt-2">Theo tài liệu, mật độ dân số của vùng Đông Nam Bộ là 778 người/km² (năm 2021).</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q6">
+                    <h3 class="font-semibold text-lg">Câu 6: Cây điều ở vùng Đông Nam Bộ được trồng nhiều nhất ở các tỉnh nào?</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q6" id="q6a" value="a">
+                            <label for="q6a">A. Bình Phước, Bình Dương, Đồng Nai</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q6" id="q6b" value="b">
+                            <label for="q6b">B. Tây Ninh, TP.HCM, Bà Rịa-Vũng Tàu</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q6" id="q6c" value="c">
+                            <label for="q6c">C. Đồng Nai, Tây Ninh, TP.HCM</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q6" id="q6d" value="d">
+                            <label for="q6d">D. Bình Dương, Tây Ninh, Bà Rịa-Vũng Tàu</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp6">
+                        <strong>Đáp án đúng: A. Bình Phước, Bình Dương, Đồng Nai</strong>
+                        <p class="mt-2">Theo tài liệu, cây điều ở vùng Đông Nam Bộ được trồng nhiều nhất ở các tỉnh Bình Phước, Bình Dương, Đồng Nai.</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q7">
+                    <h3 class="font-semibold text-lg">Câu 7: Cây hồ tiêu ở vùng Đông Nam Bộ được trồng nhiều nhất ở các tỉnh nào?</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q7" id="q7a" value="a">
+                            <label for="q7a">A. Tây Ninh, TP.HCM, Đồng Nai</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q7" id="q7b" value="b">
+                            <label for="q7b">B. Bình Phước, Bà Rịa-Vũng Tàu</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q7" id="q7c" value="c">
+                            <label for="q7c">C. Đồng Nai, Bình Dương, TP.HCM</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q7" id="q7d" value="d">
+                            <label for="q7d">D. Bình Dương, Tây Ninh, Đồng Nai</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp7">
+                        <strong>Đáp án đúng: B. Bình Phước, Bà Rịa-Vũng Tàu</strong>
+                        <p class="mt-2">Theo tài liệu, cây hồ tiêu ở vùng Đông Nam Bộ được trồng nhiều nhất ở các tỉnh Bình Phước, Bà Rịa-Vũng Tàu.</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q8">
+                    <h3 class="font-semibold text-lg">Câu 8: Tỉ lệ dân thành thị ở vùng Đông Nam Bộ là bao nhiêu?</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q8" id="q8a" value="a">
+                            <label for="q8a">A. 46,4%</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q8" id="q8b" value="b">
+                            <label for="q8b">B. 56,4%</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q8" id="q8c" value="c">
+                            <label for="q8c">C. 66,4%</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q8" id="q8d" value="d">
+                            <label for="q8d">D. 76,4%</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp8">
+                        <strong>Đáp án đúng: C. 66,4%</strong>
+                        <p class="mt-2">Theo tài liệu, tỉ lệ dân thành thị ở vùng Đông Nam Bộ là 66,4%.</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q9">
+                    <h3 class="font-semibold text-lg">Câu 9: Các cửa khẩu quan trọng của vùng Đông Nam Bộ là:</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q9" id="q9a" value="a">
+                            <label for="q9a">A. Hà Tiên, Tịnh Biên, Vĩnh Xương</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q9" id="q9b" value="b">
+                            <label for="q9b">B. Mộc Bài, Xa Mát, Hoa Lư</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q9" id="q9c" value="c">
+                            <label for="q9c">C. Lào Cai, Móng Cái, Tây Trang</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q9" id="q9d" value="d">
+                            <label for="q9d">D. Bờ Y, Lao Bảo, Cầu Treo</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp9">
+                        <strong>Đáp án đúng: B. Mộc Bài, Xa Mát, Hoa Lư</strong>
+                        <p class="mt-2">Theo tài liệu, các cửa khẩu quan trọng của vùng Đông Nam Bộ là Mộc Bài, Xa Mát, Hoa Lư.</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q10">
+                    <h3 class="font-semibold text-lg">Câu 10: Cây cà phê ở vùng Đông Nam Bộ được trồng nhiều nhất ở các tỉnh nào?</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q10" id="q10a" value="a">
+                            <label for="q10a">A. Bình Phước, Bà Rịa-Vũng Tàu, Đồng Nai</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q10" id="q10b" value="b">
+                            <label for="q10b">B. Tây Ninh, Bình Dương, TP.HCM</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q10" id="q10c" value="c">
+                            <label for="q10c">C. Đồng Nai, Tây Ninh, Bình Dương</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q10" id="q10d" value="d">
+                            <label for="q10d">D. TP.HCM, Tây Ninh, Bà Rịa-Vũng Tàu</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp10">
+                        <strong>Đáp án đúng: A. Bình Phước, Bà Rịa-Vũng Tàu, Đồng Nai</strong>
+                        <p class="mt-2">Theo tài liệu, cây cà phê ở vùng Đông Nam Bộ được trồng nhiều nhất ở các tỉnh Bình Phước, Bà Rịa-Vũng Tàu, Đồng Nai.</p>
+                    </div>
+                </div>
+                </div>
+
+                <!-- II. VÙNG ĐỒNG BẰNG SÔNG CỬU LONG -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-200 pb-2 mb-4">II. VÙNG ĐỒNG BẰNG SÔNG CỬU LONG</h2>
+
+                <div class="question" id="q11">
+                    <h3 class="font-semibold text-lg">Câu 11: Vùng Đồng bằng sông Cửu Long nằm ở phía nào của lãnh thổ Việt Nam?</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q11" id="q11a" value="a">
+                            <label for="q11a">A. Tây Bắc</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q11" id="q11b" value="b">
+                            <label for="q11b">B. Đông Nam</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q11" id="q11c" value="c">
+                            <label for="q11c">C. Tây Nam</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q11" id="q11d" value="d">
+                            <label for="q11d">D. Đông Bắc</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp11">
+                        <strong>Đáp án đúng: C. Tây Nam</strong>
+                        <p class="mt-2">Theo tài liệu, vùng Đồng bằng sông Cửu Long nằm ở phía Tây Nam của lãnh thổ nước ta.</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q12">
+                    <h3 class="font-semibold text-lg">Câu 12: Vùng Đồng bằng sông Cửu Long có diện tích bao nhiêu và chiếm bao nhiêu phần trăm diện tích cả nước (năm 2021)?</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q12" id="q12a" value="a">
+                            <label for="q12a">A. 35,7 nghìn km², chiếm 10,8%</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q12" id="q12b" value="b">
+                            <label for="q12b">B. 40,9 nghìn km², chiếm 12,3%</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q12" id="q12c" value="c">
+                            <label for="q12c">C. 45,3 nghìn km², chiếm 13,7%</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q12" id="q12d" value="d">
+                            <label for="q12d">D. 50,1 nghìn km², chiếm 15,1%</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp12">
+                        <strong>Đáp án đúng: B. 40,9 nghìn km², chiếm 12,3%</strong>
+                        <p class="mt-2">Theo tài liệu, vùng Đồng bằng sông Cửu Long có diện tích 40,9 nghìn km², chiếm 12,3% diện tích cả nước (năm 2021).</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q13">
+                    <h3 class="font-semibold text-lg">Câu 13: Các tỉnh sản xuất nhiều lúa gạo ở Đồng bằng sông Cửu Long bao gồm:</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q13" id="q13a" value="a">
+                            <label for="q13a">A. Bến Tre, Vĩnh Long, Bạc Liêu, Cà Mau</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q13" id="q13b" value="b">
+                            <label for="q13b">B. Kiên Giang, An Giang, Long An, Đồng Tháp, Sóc Trăng, Cần Thơ, Trà Vinh</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q13" id="q13c" value="c">
+                            <label for="q13c">C. Tiền Giang, Hậu Giang, Cà Mau, Bạc Liêu</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q13" id="q13d" value="d">
+                            <label for="q13d">D. Bến Tre, Long An, Vĩnh Long, Hậu Giang</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp13">
+                        <strong>Đáp án đúng: B. Kiên Giang, An Giang, Long An, Đồng Tháp, Sóc Trăng, Cần Thơ, Trà Vinh</strong>
+                        <p class="mt-2">Theo tài liệu, các tỉnh sản xuất nhiều lúa gạo ở Đồng bằng sông Cửu Long bao gồm: Kiên Giang, An Giang, Long An, Đồng Tháp, Sóc Trăng, Cần Thơ, Trà Vinh.</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q14">
+                    <h3 class="font-semibold text-lg">Câu 14: Các tỉnh dẫn đầu về sản lượng thủy sản khai thác ở Đồng bằng sông Cửu Long là:</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q14" id="q14a" value="a">
+                            <label for="q14a">A. Cà Mau, Kiên Giang, Bến Tre</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q14" id="q14b" value="b">
+                            <label for="q14b">B. An Giang, Đồng Tháp, Sóc Trăng</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q14" id="q14c" value="c">
+                            <label for="q14c">C. Tiền Giang, Vĩnh Long, Hậu Giang</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q14" id="q14d" value="d">
+                            <label for="q14d">D. Bạc Liêu, Trà Vinh, Long An</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp14">
+                        <strong>Đáp án đúng: A. Cà Mau, Kiên Giang, Bến Tre</strong>
+                        <p class="mt-2">Theo tài liệu, các tỉnh dẫn đầu về sản lượng thủy sản khai thác ở Đồng bằng sông Cửu Long là: Cà Mau, Kiên Giang, Bến Tre.</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q15">
+                    <h3 class="font-semibold text-lg">Câu 15: Các tỉnh chuyên canh cây ăn quả ở Đồng bằng sông Cửu Long bao gồm:</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q15" id="q15a" value="a">
+                            <label for="q15a">A. Long An, Đồng Tháp, Tiền Giang, Vĩnh Long, Hậu Giang, Cần Thơ</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q15" id="q15b" value="b">
+                            <label for="q15b">B. Cà Mau, Bạc Liêu, Sóc Trăng, Trà Vinh</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q15" id="q15c" value="c">
+                            <label for="q15c">C. An Giang, Kiên Giang, Bến Tre, Cần Thơ</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q15" id="q15d" value="d">
+                            <label for="q15d">D. Kiên Giang, An Giang, Cà Mau, Bạc Liêu</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp15">
+                        <strong>Đáp án đúng: A. Long An, Đồng Tháp, Tiền Giang, Vĩnh Long, Hậu Giang, Cần Thơ</strong>
+                        <p class="mt-2">Theo tài liệu, các tỉnh chuyên canh cây ăn quả ở Đồng bằng sông Cửu Long bao gồm: Long An, Đồng Tháp, Tiền Giang, Vĩnh Long, Hậu Giang, Cần Thơ.</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q16">
+                    <h3 class="font-semibold text-lg">Câu 16: Các tỉnh dẫn đầu về nuôi trồng thủy sản ở Đồng bằng sông Cửu Long là:</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q16" id="q16a" value="a">
+                            <label for="q16a">A. Cà Mau, Bạc Liêu, Sóc Trăng</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q16" id="q16b" value="b">
+                            <label for="q16b">B. An Giang, Đồng Tháp, Long An</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q16" id="q16c" value="c">
+                            <label for="q16c">C. Tiền Giang, Bến Tre, Vĩnh Long</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q16" id="q16d" value="d">
+                            <label for="q16d">D. Kiên Giang, Hậu Giang, Cần Thơ</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp16">
+                        <strong>Đáp án đúng: A. Cà Mau, Bạc Liêu, Sóc Trăng</strong>
+                        <p class="mt-2">Theo tài liệu, các tỉnh dẫn đầu về nuôi trồng thủy sản ở Đồng bằng sông Cửu Long là: Cà Mau, Bạc Liêu, Sóc Trăng.</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q17">
+                    <h3 class="font-semibold text-lg">Câu 17: Các cửa khẩu quan trọng của vùng Đồng bằng sông Cửu Long là:</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q17" id="q17a" value="a">
+                            <label for="q17a">A. Mộc Bài, Xa Mát, Hoa Lư</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q17" id="q17b" value="b">
+                            <label for="q17b">B. Hà Tiên, Tịnh Biên, Vĩnh Xương, Bình Hiệp</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q17" id="q17c" value="c">
+                            <label for="q17c">C. Lào Cai, Móng Cái, Tây Trang</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q17" id="q17d" value="d">
+                            <label for="q17d">D. Bờ Y, Lao Bảo, Cầu Treo</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp17">
+                        <strong>Đáp án đúng: B. Hà Tiên, Tịnh Biên, Vĩnh Xương, Bình Hiệp</strong>
+                        <p class="mt-2">Theo tài liệu, các cửa khẩu quan trọng của vùng Đồng bằng sông Cửu Long là: Hà Tiên, Tịnh Biên, Vĩnh Xương, Bình Hiệp.</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q18">
+                    <h3 class="font-semibold text-lg">Câu 18: Vùng Đồng bằng sông Cửu Long có bao nhiêu tỉnh/thành phố?</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q18" id="q18a" value="a">
+                            <label for="q18a">A. 11 tỉnh/thành phố</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q18" id="q18b" value="b">
+                            <label for="q18b">B. 12 tỉnh/thành phố</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q18" id="q18c" value="c">
+                            <label for="q18c">C. 13 tỉnh/thành phố</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q18" id="q18d" value="d">
+                            <label for="q18d">D. 14 tỉnh/thành phố</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp18">
+                        <strong>Đáp án đúng: C. 13 tỉnh/thành phố</strong>
+                        <p class="mt-2">Theo tài liệu, vùng Đồng bằng sông Cửu Long bao gồm 13 tỉnh/thành phố.</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q19">
+                    <h3 class="font-semibold text-lg">Câu 19: Vùng Đồng bằng sông Cửu Long tiếp giáp với quốc gia nào?</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q19" id="q19a" value="a">
+                            <label for="q19a">A. Trung Quốc</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q19" id="q19b" value="b">
+                            <label for="q19b">B. Lào</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q19" id="q19c" value="c">
+                            <label for="q19c">C. Campuchia</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q19" id="q19d" value="d">
+                            <label for="q19d">D. Thái Lan</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp19">
+                        <strong>Đáp án đúng: C. Campuchia</strong>
+                        <p class="mt-2">Theo tài liệu, vùng Đồng bằng sông Cửu Long tiếp giáp với Campuchia.</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q20">
+                    <h3 class="font-semibold text-lg">Câu 20: Đảo lớn nhất ở vùng Đồng bằng sông Cửu Long là:</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q20" id="q20a" value="a">
+                            <label for="q20a">A. Phú Quốc</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q20" id="q20b" value="b">
+                            <label for="q20b">B. Côn Đảo</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q20" id="q20c" value="c">
+                            <label for="q20c">C. Thổ Chu</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q20" id="q20d" value="d">
+                            <label for="q20d">D. Hòn Khoai</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp20">
+                        <strong>Đáp án đúng: A. Phú Quốc</strong>
+                        <p class="mt-2">Theo tài liệu, đảo lớn nhất ở vùng Đồng bằng sông Cửu Long là Phú Quốc.</p>
+                    </div>
+                </div>
+                </div>
+
+                <!-- III. BIỂN ĐẢO VIỆT NAM -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-200 pb-2 mb-4">III. BIỂN ĐẢO VIỆT NAM</h2>
+
+                <div class="question" id="q21">
+                    <h3 class="font-semibold text-lg">Câu 21: Vùng biển Việt Nam bao gồm những bộ phận nào?</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q21" id="q21a" value="a">
+                            <label for="q21a">A. Nội thủy, lãnh hải, vùng tiếp giáp lãnh hải</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q21" id="q21b" value="b">
+                            <label for="q21b">B. Nội thủy, lãnh hải, vùng đặc quyền kinh tế</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q21" id="q21c" value="c">
+                            <label for="q21c">C. Nội thủy, lãnh hải, vùng tiếp giáp lãnh hải, vùng đặc quyền kinh tế, thềm lục địa</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q21" id="q21d" value="d">
+                            <label for="q21d">D. Lãnh hải, vùng tiếp giáp lãnh hải, vùng đặc quyền kinh tế</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp21">
+                        <strong>Đáp án đúng: C. Nội thủy, lãnh hải, vùng tiếp giáp lãnh hải, vùng đặc quyền kinh tế, thềm lục địa</strong>
+                        <p class="mt-2">Theo tài liệu, vùng biển Việt Nam bao gồm: Nội thủy, lãnh hải, vùng tiếp giáp lãnh hải, vùng đặc quyền kinh tế, thềm lục địa.</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q22">
+                    <h3 class="font-semibold text-lg">Câu 22: Lãnh hải của Việt Nam có giới hạn như thế nào?</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q22" id="q22a" value="a">
+                            <label for="q22a">A. Từ đường cơ sở ra phía biển rộng 12 hải lý</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q22" id="q22b" value="b">
+                            <label for="q22b">B. Từ đường cơ sở ra phía biển rộng 24 hải lý</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q22" id="q22c" value="c">
+                            <label for="q22c">C. Từ đường cơ sở ra phía biển rộng 200 hải lý</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q22" id="q22d" value="d">
+                            <label for="q22d">D. Từ bờ biển ra phía biển rộng 12 hải lý</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp22">
+                        <strong>Đáp án đúng: A. Từ đường cơ sở ra phía biển rộng 12 hải lý</strong>
+                        <p class="mt-2">Theo tài liệu, lãnh hải của Việt Nam được tính từ đường cơ sở ra phía biển rộng 12 hải lý.</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q23">
+                    <h3 class="font-semibold text-lg">Câu 23: Vùng đặc quyền kinh tế của Việt Nam có giới hạn như thế nào?</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q23" id="q23a" value="a">
+                            <label for="q23a">A. Từ đường cơ sở ra phía biển rộng 12 hải lý</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q23" id="q23b" value="b">
+                            <label for="q23b">B. Từ đường cơ sở ra phía biển rộng 24 hải lý</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q23" id="q23c" value="c">
+                            <label for="q23c">C. Từ đường cơ sở ra phía biển rộng 200 hải lý</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q23" id="q23d" value="d">
+                            <label for="q23d">D. Từ bờ biển ra phía biển rộng 200 hải lý</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp23">
+                        <strong>Đáp án đúng: C. Từ đường cơ sở ra phía biển rộng 200 hải lý</strong>
+                        <p class="mt-2">Theo tài liệu, vùng đặc quyền kinh tế của Việt Nam được tính từ đường cơ sở ra phía biển rộng 200 hải lý.</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q24">
+                    <h3 class="font-semibold text-lg">Câu 24: Đâu là đặc điểm của nội thủy?</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q24" id="q24a" value="a">
+                            <label for="q24a">A. Vùng nước nằm ngoài đường cơ sở và tiếp giáp với đất liền</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q24" id="q24b" value="b">
+                            <label for="q24b">B. Vùng nước tiếp giáp với đất liền và ở phía trong đường cơ sở</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q24" id="q24c" value="c">
+                            <label for="q24c">C. Vùng nước nằm ngoài lãnh hải và kéo dài 200 hải lý</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q24" id="q24d" value="d">
+                            <label for="q24d">D. Vùng nước có độ sâu khoảng 200m hoặc hơn</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp24">
+                        <strong>Đáp án đúng: B. Vùng nước tiếp giáp với đất liền và ở phía trong đường cơ sở</strong>
+                        <p class="mt-2">Theo tài liệu, nội thủy là vùng nước tiếp giáp với đất liền và ở phía trong đường cơ sở.</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q25">
+                    <h3 class="font-semibold text-lg">Câu 25: Huyện đảo Trường Sa thuộc tỉnh nào của Việt Nam?</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q25" id="q25a" value="a">
+                            <label for="q25a">A. Quảng Ngãi</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q25" id="q25b" value="b">
+                            <label for="q25b">B. Đà Nẵng</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q25" id="q25c" value="c">
+                            <label for="q25c">C. Khánh Hòa</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q25" id="q25d" value="d">
+                            <label for="q25d">D. Bà Rịa-Vũng Tàu</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp25">
+                        <strong>Đáp án đúng: C. Khánh Hòa</strong>
+                        <p class="mt-2">Theo tài liệu, huyện đảo Trường Sa thuộc tỉnh Khánh Hòa.</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q26">
+                    <h3 class="font-semibold text-lg">Câu 26: Thềm lục địa Việt Nam có đặc điểm như thế nào?</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q26" id="q26a" value="a">
+                            <label for="q26a">A. Có độ sâu khoảng 200m hoặc hơn</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q26" id="q26b" value="b">
+                            <label for="q26b">B. Có độ sâu khoảng 12 hải lý</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q26" id="q26c" value="c">
+                            <label for="q26c">C. Có độ sâu khoảng 200 hải lý</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q26" id="q26d" value="d">
+                            <label for="q26d">D. Có độ sâu khoảng 24 hải lý</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp26">
+                        <strong>Đáp án đúng: A. Có độ sâu khoảng 200m hoặc hơn</strong>
+                        <p class="mt-2">Theo tài liệu, thềm lục địa Việt Nam có độ sâu khoảng 200m hoặc hơn.</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q27">
+                    <h3 class="font-semibold text-lg">Câu 27: Huyện đảo Hoàng Sa thuộc địa phương nào của Việt Nam?</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q27" id="q27a" value="a">
+                            <label for="q27a">A. Quảng Nam</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q27" id="q27b" value="b">
+                            <label for="q27b">B. Đà Nẵng</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q27" id="q27c" value="c">
+                            <label for="q27c">C. Quảng Ngãi</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q27" id="q27d" value="d">
+                            <label for="q27d">D. Khánh Hòa</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp27">
+                        <strong>Đáp án đúng: B. Đà Nẵng</strong>
+                        <p class="mt-2">Theo tài liệu, huyện đảo Hoàng Sa thuộc Đà Nẵng.</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q28">
+                    <h3 class="font-semibold text-lg">Câu 28: Các huyện đảo thuộc tỉnh Kiên Giang là:</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q28" id="q28a" value="a">
+                            <label for="q28a">A. Phú Quốc, Kiên Hải</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q28" id="q28b" value="b">
+                            <label for="q28b">B. Phú Quốc, Côn Đảo</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q28" id="q28c" value="c">
+                            <label for="q28c">C. Lý Sơn, Phú Quý</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q28" id="q28d" value="d">
+                            <label for="q28d">D. Côn Đảo, Kiên Hải</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp28">
+                        <strong>Đáp án đúng: A. Phú Quốc, Kiên Hải</strong>
+                        <p class="mt-2">Theo tài liệu, các huyện đảo thuộc tỉnh Kiên Giang là Phú Quốc và Kiên Hải.</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q29">
+                    <h3 class="font-semibold text-lg">Câu 29: Huyện đảo Côn Đảo thuộc tỉnh nào của Việt Nam?</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q29" id="q29a" value="a">
+                            <label for="q29a">A. Kiên Giang</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q29" id="q29b" value="b">
+                            <label for="q29b">B. Bà Rịa-Vũng Tàu</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q29" id="q29c" value="c">
+                            <label for="q29c">C. Khánh Hòa</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q29" id="q29d" value="d">
+                            <label for="q29d">D. Bình Thuận</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp29">
+                        <strong>Đáp án đúng: B. Bà Rịa-Vũng Tàu</strong>
+                        <p class="mt-2">Theo tài liệu, huyện đảo Côn Đảo thuộc tỉnh Bà Rịa-Vũng Tàu.</p>
+                    </div>
+                </div>
+
+                <div class="question" id="q30">
+                    <h3 class="font-semibold text-lg">Câu 30: Các huyện đảo thuộc tỉnh Quảng Ninh là:</h3>
+                    <div class="options mt-2">
+                        <div class="mb-1">
+                            <input type="radio" name="q30" id="q30a" value="a">
+                            <label for="q30a">A. Cô Tô, Vân Đồn</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q30" id="q30b" value="b">
+                            <label for="q30b">B. Cát Hải, Bạch Long Vĩ</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q30" id="q30c" value="c">
+                            <label for="q30c">C. Lý Sơn, Côn Cỏ</label>
+                        </div>
+                        <div class="mb-1">
+                            <input type="radio" name="q30" id="q30d" value="d">
+                            <label for="q30d">D. Phú Quý, Côn Đảo</label>
+                        </div>
+                    </div>
+                    <div class="explanation" id="exp30">
+                        <strong>Đáp án đúng: A. Cô Tô, Vân Đồn</strong>
+                        <p class="mt-2">Theo tài liệu, các huyện đảo thuộc tỉnh Quảng Ninh là Cô Tô và Vân Đồn.</p>
+                    </div>
+                </div>
+                </div>
+
+                <div class="mt-8 flex justify-between">
+                    <button type="button" id="checkBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">
+                        Kiểm tra
+                    </button>
+                    <button type="button" id="resetBtn" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-6 rounded">
+                        Làm lại
+                    </button>
+                </div>
+
+                <div id="result" class="mt-6 p-4 rounded-lg bg-gray-100 hidden">
+                    <p class="text-xl font-bold">Kết quả: <span id="score">0</span>/30</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkBtn = document.getElementById('checkBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const result = document.getElementById('result');
+            const score = document.getElementById('score');
+            
+            const correctAnswers = {
+                q1: 'b', q2: 'c', q3: 'b', q4: 'a', q5: 'c',
+                q6: 'a', q7: 'b', q8: 'c', q9: 'b', q10: 'a',
+                q11: 'c', q12: 'b', q13: 'b', q14: 'a', q15: 'a',
+                q16: 'a', q17: 'b', q18: 'c', q19: 'c', q20: 'a',
+                q21: 'c', q22: 'a', q23: 'c', q24: 'b', q25: 'c',
+                q26: 'a', q27: 'b', q28: 'a', q29: 'b', q30: 'a'
+            };
+            
+            checkBtn.addEventListener('click', function() {
+                let points = 0;
+                
+                // Check answers
+                for (let i = 1; i <= 30; i++) {
+                    const questionName = `q${i}`;
+                    const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                    const explanation = document.getElementById(`exp${i}`);
+                    
+                    explanation.style.display = 'block';
+                    
+                    if (selectedOption) {
+                        if (selectedOption.value === correctAnswers[questionName]) {
+                            points++;
+                            explanation.classList.add('correct');
+                            explanation.classList.remove('incorrect');
+                        } else {
+                            explanation.classList.add('incorrect');
+                            explanation.classList.remove('correct');
+                        }
+                    } else {
+                        explanation.classList.add('incorrect');
+                        explanation.classList.remove('correct');
+                    }
+                }
+                
+                // Show result
+                score.textContent = points;
+                result.classList.remove('hidden');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
+            
+            resetBtn.addEventListener('click', function() {
+                // Reset form
+                document.getElementById('quizForm').reset();
+                
+                // Hide explanations
+                document.querySelectorAll('.explanation').forEach(function(el) {
+                    el.style.display = 'none';
+                    el.classList.remove('correct', 'incorrect');
+                });
+                
+                // Hide result
+                result.classList.add('hidden');
+            });
+        });
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
