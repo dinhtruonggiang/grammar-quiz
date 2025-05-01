@@ -1,0 +1,443 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Tiếng Anh - ILearn Smart World 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+        }
+        .quiz-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .option-label {
+            transition: all 0.3s ease;
+            border: 2px solid #e2e8f0;
+        }
+        .option-label:hover {
+            border-color: #4299e1;
+            background-color: #ebf8ff;
+        }
+        .selected {
+            border-color: #4299e1;
+            background-color: #ebf8ff;
+        }
+        .correct {
+            border-color: #48bb78;
+            background-color: #f0fff4;
+        }
+        .incorrect {
+            border-color: #f56565;
+            background-color: #fff5f5;
+        }
+        .explanation {
+            border-left: 4px solid #4299e1;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="p-4">
+    <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-blue-800 mb-2">Bài Trắc Nghiệm Tiếng Anh</h1>
+            <p class="text-lg text-gray-700">ILearn Smart World 9 - Choose the Best Word</p>
+        </div>
+        
+        <div id="progress-container" class="mb-4">
+            <div class="flex justify-between mb-2">
+                <span class="text-sm font-medium text-gray-700">Tiến độ: <span id="current-question">1</span>/<span id="total-questions">30</span></span>
+                <span class="text-sm font-medium text-gray-700">Điểm: <span id="score">0</span>/<span id="total-score">30</span></span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full" style="width: 3.33%"></div>
+            </div>
+        </div>
+
+        <div id="quiz-container" class="quiz-container p-6">
+            <!-- Questions will be inserted here by JavaScript -->
+        </div>
+
+        <div class="mt-6 flex justify-between">
+            <button id="prev-btn" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition disabled:opacity-50 disabled:cursor-not-allowed">Câu trước</button>
+            <button id="next-btn" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Câu tiếp theo</button>
+        </div>
+
+        <div id="results-container" class="hidden mt-8 p-6 bg-white rounded-lg shadow-lg">
+            <h2 class="text-2xl font-bold text-center text-blue-800 mb-4">Kết Quả</h2>
+            <div class="text-center mb-4">
+                <p class="text-lg">Bạn đã trả lời đúng <span id="correct-answers" class="font-bold text-green-600">0</span>/<span id="total-questions-result">30</span> câu hỏi</p>
+                <p class="text-lg">Điểm số: <span id="final-score" class="font-bold text-blue-600">0</span>/30</p>
+            </div>
+            <div class="mt-4 text-center">
+                <button id="retry-btn" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Làm lại bài</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "Environmental protection organizations are working to ________ endangered species from extinction.",
+                options: ["save", "rescue", "recover", "preserve"],
+                correctAnswer: "preserve",
+                explanation: "Từ 'preserve' (bảo tồn) là từ phù hợp nhất khi nói đến việc bảo vệ các loài động vật đang bị đe dọa tuyệt chủng. 'Preserve' mang nghĩa duy trì và bảo vệ để không bị mất đi hay bị hủy hoại."
+            },
+            {
+                question: "Scientists have ________ that climate change is accelerating faster than previously thought.",
+                options: ["said", "discovered", "admitted", "realized"],
+                correctAnswer: "discovered",
+                explanation: "Từ 'discovered' (phát hiện) phù hợp với ngữ cảnh khoa học khi các nhà khoa học tìm ra thông tin mới thông qua nghiên cứu và phân tích dữ liệu."
+            },
+            {
+                question: "The government has implemented new regulations ________ reduce plastic waste in the oceans.",
+                options: ["in order to", "so", "for", "because"],
+                correctAnswer: "in order to",
+                explanation: "'In order to' (để) là cụm từ phù hợp nhất để thể hiện mục đích của việc chính phủ đưa ra các quy định mới - nhằm giảm rác thải nhựa trong đại dương."
+            },
+            {
+                question: "Many species of animals are ________ risk of extinction due to habitat loss.",
+                options: ["at", "in", "on", "with"],
+                correctAnswer: "at",
+                explanation: "'At risk' là cụm từ cố định trong tiếng Anh có nghĩa là 'đang gặp nguy hiểm/có nguy cơ'. Chúng ta sử dụng 'at risk of extinction' để nói về các loài có nguy cơ tuyệt chủng."
+            },
+            {
+                question: "Deforestation has a negative ________ on local ecosystems and wildlife.",
+                options: ["effect", "affect", "impact", "influence"],
+                correctAnswer: "impact",
+                explanation: "Từ 'impact' (tác động) phù hợp nhất trong ngữ cảnh này, chỉ sự ảnh hưởng mạnh mẽ và trực tiếp của nạn phá rừng đến hệ sinh thái và động vật hoang dã."
+            },
+            {
+                question: "Renewable energy sources ________ solar and wind power are becoming more affordable.",
+                options: ["as", "like", "such as", "including"],
+                correctAnswer: "such as",
+                explanation: "'Such as' (chẳng hạn như) là cách phù hợp để đưa ra ví dụ cụ thể về các nguồn năng lượng tái tạo. Cụm từ này thường được dùng để liệt kê ví dụ minh họa."
+            },
+            {
+                question: "Many countries are ________ steps to reduce their carbon emissions.",
+                options: ["taking", "making", "doing", "having"],
+                correctAnswer: "taking",
+                explanation: "'Take steps' là cụm từ cố định trong tiếng Anh có nghĩa là 'thực hiện các biện pháp/hành động'. Chúng ta nói 'take steps to do something' khi muốn nói về việc thực hiện các biện pháp để làm điều gì đó."
+            },
+            {
+                question: "The Amazon rainforest is home ________ thousands of unique plant and animal species.",
+                options: ["of", "to", "for", "with"],
+                correctAnswer: "to",
+                explanation: "'Home to' là cụm từ cố định có nghĩa là 'nơi sinh sống của'. Chúng ta dùng 'be home to something/someone' để chỉ nơi mà sinh vật hay người nào đó sinh sống."
+            },
+            {
+                question: "Air pollution can ________ serious health problems such as respiratory diseases.",
+                options: ["cause", "make", "do", "create"],
+                correctAnswer: "cause",
+                explanation: "Từ 'cause' (gây ra) phù hợp nhất khi nói về nguyên nhân gây ra các vấn đề sức khỏe. 'Cause problems/diseases' là cụm từ thường dùng để nói về việc gây ra vấn đề hay bệnh tật."
+            },
+            {
+                question: "Scientists are ________ research on how to combat the effects of climate change.",
+                options: ["conducting", "doing", "making", "working"],
+                correctAnswer: "conducting",
+                explanation: "'Conduct research' (tiến hành nghiên cứu) là cụm từ chuẩn trong ngữ cảnh khoa học. Từ 'conduct' thường đi với các hoạt động chính thức, có tổ chức như nghiên cứu, thí nghiệm, cuộc họp, v.v."
+            },
+            {
+                question: "Many animal species are ________ danger because of human activities.",
+                options: ["at", "in", "on", "with"],
+                correctAnswer: "in",
+                explanation: "'In danger' là cụm từ cố định có nghĩa là 'gặp nguy hiểm'. Chúng ta dùng 'be in danger' để chỉ tình trạng đang bị đe dọa hoặc có nguy cơ bị tổn hại."
+            },
+            {
+                question: "We should try to ________ waste by recycling and reusing materials.",
+                options: ["reduce", "decrease", "lower", "minimize"],
+                correctAnswer: "reduce",
+                explanation: "'Reduce waste' (giảm rác thải) là cụm từ phổ biến trong ngữ cảnh môi trường. 'Reduce' thường được dùng khi nói về giảm lượng rác thải trong các chiến dịch bảo vệ môi trường."
+            },
+            {
+                question: "The World Wildlife Fund works to protect animals ________ extinction.",
+                options: ["of", "from", "against", "for"],
+                correctAnswer: "from",
+                explanation: "'Protect from' là cụm từ cố định có nghĩa là 'bảo vệ khỏi'. Chúng ta dùng 'protect something/someone from danger/harm/extinction' để nói về việc bảo vệ khỏi nguy hiểm."
+            },
+            {
+                question: "Global warming is ________ the polar ice caps to melt at an alarming rate.",
+                options: ["causing", "making", "letting", "having"],
+                correctAnswer: "causing",
+                explanation: "'Cause something to do something' là cấu trúc phù hợp ở đây, có nghĩa là 'khiến cho điều gì xảy ra'. 'Causing to melt' diễn tả đúng mối quan hệ nhân quả giữa hiện tượng nóng lên toàn cầu và việc tan băng."
+            },
+            {
+                question: "People should be more ________ of how their actions affect the environment.",
+                options: ["aware", "conscious", "knowing", "mindful"],
+                correctAnswer: "aware",
+                explanation: "'Be aware of' (nhận thức về) là cụm từ phù hợp nhất trong ngữ cảnh này, chỉ sự hiểu biết hoặc nhận thức về ảnh hưởng của hành động đến môi trường."
+            },
+            {
+                question: "Sustainable development aims to meet present needs ________ compromising future generations.",
+                options: ["except", "besides", "without", "despite"],
+                correctAnswer: "without",
+                explanation: "'Without compromising' (mà không làm tổn hại) là cách diễn đạt đúng với định nghĩa của phát triển bền vững - đáp ứng nhu cầu hiện tại mà không làm ảnh hưởng đến khả năng đáp ứng nhu cầu của các thế hệ tương lai."
+            },
+            {
+                question: "Governments around the world need to cooperate ________ solving environmental problems.",
+                options: ["in", "for", "by", "with"],
+                correctAnswer: "in",
+                explanation: "'Cooperate in doing something' (hợp tác trong việc làm gì) là cấu trúc đúng để diễn tả việc các chính phủ làm việc cùng nhau để giải quyết các vấn đề môi trường."
+            },
+            {
+                question: "Many species are ________ adapted to their specific environments.",
+                options: ["perfectly", "wholly", "thoroughly", "completely"],
+                correctAnswer: "perfectly",
+                explanation: "'Perfectly adapted' (thích nghi hoàn hảo) là cụm từ thường dùng trong sinh học để mô tả sự thích nghi tốt của sinh vật với môi trường sống của chúng."
+            },
+            {
+                question: "Conservationists are working hard to ________ endangered species from extinction.",
+                options: ["prevent", "avoid", "save", "protect"],
+                correctAnswer: "save",
+                explanation: "'Save from extinction' (cứu khỏi tuyệt chủng) là cụm từ phù hợp nhất trong ngữ cảnh này, chỉ nỗ lực của các nhà bảo tồn nhằm ngăn chặn sự tuyệt chủng của các loài đang bị đe dọa."
+            },
+            {
+                question: "Education plays a vital ________ in raising awareness about environmental issues.",
+                options: ["role", "part", "position", "place"],
+                correctAnswer: "role",
+                explanation: "'Play a vital role' (đóng vai trò quan trọng) là cụm từ cố định trong tiếng Anh để nói về tầm quan trọng của điều gì đó. 'Role' kết hợp với 'vital' tạo thành cụm từ phù hợp nhất."
+            },
+            {
+                question: "The ozone layer protects the Earth ________ harmful ultraviolet radiation.",
+                options: ["from", "against", "of", "for"],
+                correctAnswer: "from",
+                explanation: "'Protect from' là cụm từ cố định có nghĩa là 'bảo vệ khỏi'. Chúng ta dùng 'protect something/someone from danger/harm' để nói về việc bảo vệ khỏi tác hại."
+            },
+            {
+                question: "We must take action ________ to prevent further environmental degradation.",
+                options: ["immediately", "suddenly", "quickly", "rapidly"],
+                correctAnswer: "immediately",
+                explanation: "'Take action immediately' (hành động ngay lập tức) là cách diễn đạt phù hợp nhất để nhấn mạnh tính cấp bách của việc ngăn chặn sự xuống cấp môi trường."
+            },
+            {
+                question: "Organic farming is environmentally friendly ________ it doesn't use chemical pesticides.",
+                options: ["because", "since", "as", "for"],
+                correctAnswer: "because",
+                explanation: "'Because' (bởi vì) là liên từ phù hợp nhất để giải thích lý do tại sao canh tác hữu cơ thân thiện với môi trường - vì nó không sử dụng thuốc trừ sâu hóa học."
+            },
+            {
+                question: "The destruction of coral reefs has a negative impact ________ marine biodiversity.",
+                options: ["on", "to", "for", "with"],
+                correctAnswer: "on",
+                explanation: "'Have an impact on' (có tác động đến) là cụm từ cố định trong tiếng Anh. Chúng ta nói 'have an impact/effect on something' để diễn tả ảnh hưởng đến điều gì đó."
+            },
+            {
+                question: "Scientists have ________ concerns about the rate of species extinction.",
+                options: ["expressed", "told", "said", "spoken"],
+                correctAnswer: "expressed",
+                explanation: "'Express concerns' (bày tỏ lo ngại) là cụm từ chuẩn trong tiếng Anh khi nói về việc thể hiện sự lo lắng hay quan ngại về một vấn đề."
+            },
+            {
+                question: "Plastic waste in oceans poses a serious ________ to marine life.",
+                options: ["threat", "risk", "danger", "hazard"],
+                correctAnswer: "threat",
+                explanation: "'Pose a threat to' (gây đe dọa cho) là cụm từ phù hợp nhất để diễn tả mối nguy hiểm mà rác thải nhựa gây ra cho sinh vật biển."
+            },
+            {
+                question: "Governments should ________ stricter regulations to control pollution.",
+                options: ["impose", "apply", "enforce", "implement"],
+                correctAnswer: "implement",
+                explanation: "'Implement regulations' (thực thi quy định) là cụm từ phù hợp nhất khi nói về việc chính phủ đưa các quy định vào thực tiễn để kiểm soát ô nhiễm."
+            },
+            {
+                question: "Many people are unaware ________ the environmental impact of their daily habits.",
+                options: ["of", "about", "on", "with"],
+                correctAnswer: "of",
+                explanation: "'Unaware of' (không nhận thức được về) là cụm từ cố định trong tiếng Anh. Chúng ta nói 'be aware/unaware of something' để nói về việc biết hoặc không biết về điều gì đó."
+            },
+            {
+                question: "Conserving water is essential, ________ during periods of drought.",
+                options: ["especially", "mainly", "primarily", "mostly"],
+                correctAnswer: "especially",
+                explanation: "'Especially' (đặc biệt là) là từ phù hợp nhất để nhấn mạnh tầm quan trọng của việc tiết kiệm nước, nhất là trong thời kỳ hạn hán."
+            },
+            {
+                question: "Renewable energy sources have the potential to ________ traditional fossil fuels.",
+                options: ["replace", "substitute", "change", "exchange"],
+                correctAnswer: "replace",
+                explanation: "'Replace fossil fuels' (thay thế nhiên liệu hóa thạch) là cụm từ phù hợp nhất trong ngữ cảnh năng lượng, chỉ việc sử dụng nguồn năng lượng tái tạo thay cho nhiên liệu hóa thạch truyền thống."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answeredQuestions = Array(questions.length).fill(false);
+
+        const quizContainer = document.getElementById('quiz-container');
+        const resultsContainer = document.getElementById('results-container');
+        const prevButton = document.getElementById('prev-btn');
+        const nextButton = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress-bar');
+
+        function showQuestion(index) {
+            currentQuestion = index;
+            document.getElementById('current-question').textContent = index + 1;
+            
+            // Update progress bar
+            const progressPercentage = ((index + 1) / questions.length) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+            
+            // Update buttons
+            prevButton.disabled = index === 0;
+            if (index === questions.length - 1) {
+                nextButton.textContent = "Hoàn thành";
+            } else {
+                nextButton.textContent = "Câu tiếp theo";
+            }
+
+            // Create question HTML
+            const question = questions[index];
+            let html = `
+                <div class="mb-6">
+                    <h2 class="text-xl font-semibold mb-4">Câu ${index + 1}: ${question.question}</h2>
+                    <div class="space-y-3">
+            `;
+
+            // Add options
+            question.options.forEach((option, i) => {
+                const optionId = `q${index}-option${i}`;
+                const isDisabled = answeredQuestions[index] ? 'disabled' : '';
+                const optionClass = answeredQuestions[index] 
+                    ? (option === question.correctAnswer 
+                        ? 'option-label correct' 
+                        : (document.getElementById(optionId)?.checked 
+                            ? 'option-label incorrect' 
+                            : 'option-label')) 
+                    : 'option-label';
+                
+                html += `
+                    <div class="flex items-center">
+                        <input type="radio" id="${optionId}" name="question${index}" value="${option}" class="hidden" ${isDisabled}>
+                        <label for="${optionId}" class="${optionClass} p-3 rounded-lg w-full cursor-pointer flex items-center">
+                            <span class="w-6 h-6 flex items-center justify-center border border-gray-300 rounded-full mr-3">${String.fromCharCode(65 + i)}</span>
+                            <span>${option}</span>
+                        </label>
+                    </div>
+                `;
+            });
+
+            html += `</div></div>`;
+
+            // Add explanation if question is answered
+            if (answeredQuestions[index]) {
+                html += `
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-lg">
+                        <h3 class="font-medium text-blue-800 mb-2">Giải thích:</h3>
+                        <p>${question.explanation}</p>
+                    </div>
+                `;
+            }
+
+            quizContainer.innerHTML = html;
+
+            // Add event listeners to options
+            if (!answeredQuestions[index]) {
+                question.options.forEach((option, i) => {
+                    const optionId = `q${index}-option${i}`;
+                    document.getElementById(optionId).addEventListener('change', function() {
+                        handleAnswer(this.value);
+                    });
+                    
+                    document.querySelector(`label[for="${optionId}"]`).addEventListener('click', function() {
+                        if (!answeredQuestions[index]) {
+                            document.getElementById(optionId).checked = true;
+                            handleAnswer(option);
+                        }
+                    });
+                });
+            }
+        }
+
+        function handleAnswer(selectedOption) {
+            if (answeredQuestions[currentQuestion]) return;
+            
+            const question = questions[currentQuestion];
+            answeredQuestions[currentQuestion] = true;
+            
+            // Update score
+            if (selectedOption === question.correctAnswer) {
+                score++;
+                document.getElementById('score').textContent = score;
+            }
+            
+            // Show correct/incorrect indicators and explanation
+            showQuestion(currentQuestion);
+        }
+
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultsContainer.classList.remove('hidden');
+            document.getElementById('prev-btn').classList.add('hidden');
+            document.getElementById('next-btn').classList.add('hidden');
+            
+            document.getElementById('correct-answers').textContent = score;
+            document.getElementById('final-score').textContent = score;
+        }
+
+        // Initialize quiz
+        showQuestion(0);
+
+        // Event listeners
+        prevButton.addEventListener('click', function() {
+            if (currentQuestion > 0) {
+                showQuestion(currentQuestion - 1);
+            }
+        });
+
+        nextButton.addEventListener('click', function() {
+            if (currentQuestion < questions.length - 1) {
+                showQuestion(currentQuestion + 1);
+            } else {
+                showResults();
+            }
+        });
+
+        document.getElementById('retry-btn').addEventListener('click', function() {
+            // Reset quiz
+            currentQuestion = 0;
+            score = 0;
+            answeredQuestions = Array(questions.length).fill(false);
+            document.getElementById('score').textContent = score;
+            
+            // Show quiz again
+            quizContainer.classList.remove('hidden');
+            resultsContainer.classList.add('hidden');
+            document.getElementById('prev-btn').classList.remove('hidden');
+            document.getElementById('next-btn').classList.remove('hidden');
+            
+            showQuestion(0);
+        });
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
