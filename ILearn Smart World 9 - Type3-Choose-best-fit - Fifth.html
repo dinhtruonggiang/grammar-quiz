@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Tiếng Anh - ILearn Smart World 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+        }
+        .option {
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .option:hover {
+            background-color: #e0e7ff;
+        }
+        .option.selected {
+            background-color: #818cf8;
+            color: white;
+        }
+        .option.correct {
+            background-color: #86efac;
+            color: #166534;
+        }
+        .option.incorrect {
+            background-color: #fca5a5;
+            color: #7f1d1d;
+        }
+        .explanation {
+            display: none;
+        }
+        .explanation.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h1 class="text-3xl font-bold text-center text-indigo-600 mb-2">Bài Trắc Nghiệm Tiếng Anh</h1>
+            <h2 class="text-xl text-center text-gray-600 mb-6">ILearn Smart World 9 - Choose the best word/phrase</h2>
+            
+            <div id="progress-container" class="w-full bg-gray-200 rounded-full h-4 mb-6">
+                <div id="progress-bar" class="bg-indigo-600 h-4 rounded-full" style="width: 0%"></div>
+            </div>
+            
+            <div id="question-container" class="mb-6">
+                <!-- Questions will be rendered here -->
+            </div>
+            
+            <div class="flex justify-between mt-8">
+                <button id="prev-btn" class="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed">Câu trước</button>
+                <button id="next-btn" class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">Câu tiếp theo</button>
+            </div>
+        </div>
+        
+        <div id="results" class="bg-white rounded-lg shadow-lg p-6 hidden">
+            <h2 class="text-2xl font-bold text-center text-indigo-600 mb-4">Kết Quả</h2>
+            <p class="text-xl text-center mb-4">Bạn đã trả lời đúng <span id="correct-count" class="font-bold text-green-600">0</span>/<span id="total-questions">30</span> câu hỏi.</p>
+            <div class="text-center">
+                <button id="restart-btn" class="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 mt-4">Làm lại bài</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "The Amazon Rainforest is considered the largest tropical forest on Earth and serves as the green _____ of the world.",
+                options: ["liver", "lung", "heart", "kidney"],
+                correct: 1,
+                explanation: "Đáp án đúng là B. lung (lá phổi). Amazon thường được gọi là 'lá phổi xanh' của Trái Đất vì rừng Amazon sản xuất một lượng lớn oxy và hấp thụ carbon dioxide, giống như chức năng của phổi trong cơ thể con người."
+            },
+            {
+                question: "Many species of animals are facing extinction, so protecting the wild places where they _____ is urgent.",
+                options: ["staying", "live", "habitat", "existing"],
+                correct: 1,
+                explanation: "Đáp án đúng là B. live (sống). Động từ 'live' phù hợp nhất trong ngữ cảnh này, nói về việc bảo vệ những nơi động vật đang sinh sống."
+            },
+            {
+                question: "We need to find a solution _____ reduce plastic waste in the oceans.",
+                options: ["for", "to", "of", "with"],
+                correct: 1,
+                explanation: "Đáp án đúng là B. to. Cấu trúc 'a solution to + problem/issue' hoặc 'a solution to + verb' là cách diễn đạt đúng trong tiếng Anh. Khi nói về một giải pháp để làm gì đó, ta dùng 'to + verb'."
+            },
+            {
+                question: "Environmental protection _____ becoming a priority for many countries worldwide.",
+                options: ["are", "is", "were", "be"],
+                correct: 1,
+                explanation: "Đáp án đúng là B. is. 'Environmental protection' là danh từ số ít nên cần động từ số ít 'is'. Đây là sự hòa hợp chủ ngữ - động từ cơ bản trong tiếng Anh."
+            },
+            {
+                question: "Scientists are concerned _____ the rapid loss of biodiversity in rainforests.",
+                options: ["at", "about", "for", "with"],
+                correct: 1,
+                explanation: "Đáp án đúng là B. about. Cấu trúc 'be concerned about something' là cách diễn đạt khi ai đó lo lắng về một vấn đề. Đây là một cụm động từ cố định trong tiếng Anh."
+            },
+            {
+                question: "_____ do you think we should do to protect endangered species?",
+                options: ["How", "What", "Why", "When"],
+                correct: 1,
+                explanation: "Đáp án đúng là B. What. Khi hỏi về hành động nên làm, ta dùng 'What should we do...?' - Chúng ta nên làm gì để bảo vệ các loài động vật có nguy cơ tuyệt chủng?"
+            },
+            {
+                question: "Deforestation has a negative impact _____ local communities and wildlife.",
+                options: ["in", "at", "on", "by"],
+                correct: 2,
+                explanation: "Đáp án đúng là C. on. Cấu trúc cố định 'have an impact on something' được dùng để nói về sự ảnh hưởng đến điều gì đó. Đây là cách diễn đạt chuẩn trong tiếng Anh."
+            },
+            {
+                question: "The government has implemented new policies _____ protect natural resources.",
+                options: ["for", "to", "of", "at"],
+                correct: 1,
+                explanation: "Đáp án đúng là B. to. Cấu trúc này thể hiện mục đích của hành động. 'To + verb' được sử dụng để chỉ mục đích của việc thực hiện các chính sách mới."
+            },
+            {
+                question: "Renewable energy sources, _____ as solar and wind power, are better for the environment.",
+                options: ["like", "such", "including", "example"],
+                correct: 1,
+                explanation: "Đáp án đúng là B. such. Cấu trúc 'such as' được dùng để đưa ra ví dụ trong một danh sách. Trong ngữ cảnh này, 'such as solar and wind power' là cách đúng để liệt kê ví dụ về các nguồn năng lượng tái tạo."
+            },
+            {
+                question: "We should take responsibility _____ our actions that affect the environment.",
+                options: ["of", "for", "with", "to"],
+                correct: 1,
+                explanation: "Đáp án đúng là B. for. Cấu trúc 'take responsibility for something' là cụm từ cố định trong tiếng Anh, dùng để nói về việc chịu trách nhiệm cho điều gì đó."
+            },
+            {
+                question: "Many countries have agreed _____ reduce their carbon emissions by 2030.",
+                options: ["with", "for", "to", "on"],
+                correct: 2,
+                explanation: "Đáp án đúng là C. to. Sau động từ 'agree' khi nói về đồng ý làm việc gì đó, ta dùng 'to + verb'. Đây là cấu trúc cố định 'agree to do something'."
+            },
+            {
+                question: "The documentary raised awareness _____ environmental issues among young people.",
+                options: ["for", "of", "about", "with"],
+                correct: 2,
+                explanation: "Đáp án đúng là C. about. Cấu trúc 'raise awareness about something' là cách diễn đạt khi nói về việc nâng cao nhận thức về một vấn đề nào đó. Đây là cụm động từ cố định trong tiếng Anh."
+            },
+            {
+                question: "If we don't act now, many species _____ extinct in the near future.",
+                options: ["will become", "becoming", "becomes", "became"],
+                correct: 0,
+                explanation: "Đáp án đúng là A. will become. Đây là một câu điều kiện loại 1 (nếu..., thì...) nên vế sau dùng thì tương lai đơn (will + infinitive) để diễn tả kết quả trong tương lai."
+            },
+            {
+                question: "Scientists _____ studying the effects of climate change for many years.",
+                options: ["has been", "have been", "are", "is"],
+                correct: 1,
+                explanation: "Đáp án đúng là B. have been. 'Scientists' là danh từ số nhiều, và hành động nghiên cứu bắt đầu trong quá khứ và vẫn tiếp tục, nên dùng thì hiện tại hoàn thành tiếp diễn (present perfect continuous): 'have been studying'."
+            },
+            {
+                question: "Clean water is a basic necessity _____ all living beings on Earth.",
+                options: ["for", "to", "of", "with"],
+                correct: 0,
+                explanation: "Đáp án đúng là A. for. Cấu trúc 'a necessity for someone/something' được dùng để nói về điều cần thiết cho ai/cái gì. Đây là cách diễn đạt chuẩn trong tiếng Anh."
+            },
+            {
+                question: "We need to find ways to live more sustainably _____ order to protect our planet.",
+                options: ["for", "in", "with", "by"],
+                correct: 1,
+                explanation: "Đáp án đúng là B. in. Cấu trúc 'in order to' là cách diễn đạt mục đích của một hành động. Đây là một cấu trúc cố định trong tiếng Anh, tương đương với 'để mà'."
+            },
+            {
+                question: "The new environmental law aims _____ reducing pollution levels in urban areas.",
+                options: ["for", "at", "to", "in"],
+                correct: 1,
+                explanation: "Đáp án đúng là B. at. Cấu trúc 'aim at doing something' được dùng khi nói về mục tiêu của một hành động. Đây là cụm động từ cố định trong tiếng Anh."
+            },
+            {
+                question: "Despite the challenges, we must continue _____ fight for environmental protection.",
+                options: ["for", "with", "to", "-"],
+                correct: 2,
+                explanation: "Đáp án đúng là C. to. Sau động từ 'continue' khi nói về tiếp tục làm một việc gì đó, ta dùng 'to + verb'. Đây là cấu trúc đúng ngữ pháp: 'continue to do something'."
+            },
+            {
+                question: "Many people are not aware _____ the serious consequences of their daily actions.",
+                options: ["about", "for", "of", "with"],
+                correct: 2,
+                explanation: "Đáp án đúng là C. of. Cấu trúc 'be aware of something' là cụm từ cố định trong tiếng Anh, dùng để nói về việc nhận thức được điều gì đó."
+            },
+            {
+                question: "Sustainable development meets the needs of the present _____ compromising future generations.",
+                options: ["with", "by", "without", "for"],
+                correct: 2,
+                explanation: "Đáp án đúng là C. without. 'Without + V-ing' diễn tả ý nghĩa 'mà không', phù hợp với định nghĩa của phát triển bền vững: đáp ứng nhu cầu hiện tại mà không làm ảnh hưởng đến các thế hệ tương lai."
+            },
+            {
+                question: "Recycling is one of the most effective ways _____ reduce waste.",
+                options: ["for", "to", "of", "in"],
+                correct: 1,
+                explanation: "Đáp án đúng là B. to. Cấu trúc 'ways to do something' được dùng để nói về cách thức để làm việc gì đó. Đây là cấu trúc đúng ngữ pháp trong tiếng Anh."
+            },
+            {
+                question: "The conference focused _____ finding solutions to global warming.",
+                options: ["for", "at", "in", "on"],
+                correct: 3,
+                explanation: "Đáp án đúng là D. on. Cấu trúc 'focus on something' là cụm động từ cố định trong tiếng Anh, dùng để nói về việc tập trung vào điều gì đó."
+            },
+            {
+                question: "We should all make an effort _____ conserve natural resources.",
+                options: ["of", "for", "to", "in"],
+                correct: 2,
+                explanation: "Đáp án đúng là C. to. Cấu trúc 'make an effort to do something' là cách diễn đạt về việc nỗ lực để làm điều gì đó. Đây là cụm từ cố định trong tiếng Anh."
+            },
+            {
+                question: "The pollution in this area is mainly _____ industrial waste.",
+                options: ["because", "due to", "result", "causing"],
+                correct: 1,
+                explanation: "Đáp án đúng là B. due to. Cấu trúc 'due to' được dùng để chỉ nguyên nhân của một tình trạng. Trong trường hợp này, ô nhiễm là do chất thải công nghiệp."
+            },
+            {
+                question: "We need to _____ action now before it's too late to save endangered species.",
+                options: ["make", "do", "take", "have"],
+                correct: 2,
+                explanation: "Đáp án đúng là C. take. Cụm từ cố định 'take action' được dùng để nói về việc hành động. Đây là collocation (từ đi cùng nhau) phổ biến trong tiếng Anh, không dùng 'make action' hay 'do action'."
+            },
+            {
+                question: "Many factors have contributed _____ the decline of bee populations worldwide.",
+                options: ["for", "to", "in", "with"],
+                correct: 1,
+                explanation: "Đáp án đúng là B. to. Cấu trúc 'contribute to something' là cụm động từ cố định trong tiếng Anh, dùng để nói về việc góp phần vào điều gì đó."
+            },
+            {
+                question: "I'm really concerned _____ what will happen to our planet if we don't change our ways.",
+                options: ["to", "with", "about", "for"],
+                correct: 2,
+                explanation: "Đáp án đúng là C. about. Cấu trúc 'be concerned about something' là cách diễn đạt sự lo lắng về điều gì đó. Đây là cụm từ cố định trong tiếng Anh."
+            },
+            {
+                question: "We should invest more money _____ renewable energy research.",
+                options: ["to", "for", "in", "at"],
+                correct: 2,
+                explanation: "Đáp án đúng là C. in. Cấu trúc 'invest in something' là cụm động từ cố định trong tiếng Anh, dùng để nói về việc đầu tư vào điều gì đó."
+            },
+            {
+                question: "The organization is dedicated _____ protecting wildlife in Africa.",
+                options: ["for", "to", "with", "in"],
+                correct: 1,
+                explanation: "Đáp án đúng là B. to. Cấu trúc 'be dedicated to something/doing something' là cách diễn đạt sự tận tâm với việc gì đó. Đây là cụm từ cố định trong tiếng Anh."
+            },
+            {
+                question: "People are becoming more aware _____ the importance of conserving water.",
+                options: ["to", "for", "of", "with"],
+                correct: 2,
+                explanation: "Đáp án đúng là C. of. Cấu trúc 'be aware of something' là cụm từ cố định trong tiếng Anh, dùng để nói về việc nhận thức được điều gì đó."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let selectedAnswers = new Array(questions.length).fill(null);
+        let answeredQuestions = new Array(questions.length).fill(false);
+
+        const questionContainer = document.getElementById("question-container");
+        const nextBtn = document.getElementById("next-btn");
+        const prevBtn = document.getElementById("prev-btn");
+        const progressBar = document.getElementById("progress-bar");
+        const resultsDiv = document.getElementById("results");
+        const correctCountSpan = document.getElementById("correct-count");
+        const totalQuestionsSpan = document.getElementById("total-questions");
+        const restartBtn = document.getElementById("restart-btn");
+
+        function renderQuestion() {
+            const question = questions[currentQuestion];
+            let html = `
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold mb-4">Câu ${currentQuestion + 1}: ${question.question}</h3>
+                    <div class="space-y-3">
+            `;
+
+            question.options.forEach((option, index) => {
+                const isSelected = selectedAnswers[currentQuestion] === index;
+                const isCorrect = answeredQuestions[currentQuestion] && index === question.correct;
+                const isIncorrect = answeredQuestions[currentQuestion] && isSelected && index !== question.correct;
+                
+                let classes = "option p-3 border rounded-lg ";
+                if (isSelected) classes += "selected ";
+                if (isCorrect) classes += "correct ";
+                if (isIncorrect) classes += "incorrect ";
+
+                html += `
+                    <div class="${classes}" data-index="${index}">
+                        <span class="font-medium">${String.fromCharCode(65 + index)}.</span> ${option}
+                    </div>
+                `;
+            });
+
+            html += `
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 border-l-4 border-blue-500 rounded ${answeredQuestions[currentQuestion] ? 'show' : ''}">
+                        <p class="text-gray-800">${question.explanation}</p>
+                    </div>
+                </div>
+            `;
+
+            questionContainer.innerHTML = html;
+
+            // Add event listeners to options
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => {
+                option.addEventListener('click', selectOption);
+            });
+
+            // Update buttons
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.textContent = currentQuestion === questions.length - 1 ? "Hoàn thành" : "Câu tiếp theo";
+
+            // Update progress bar
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        function selectOption(e) {
+            if (answeredQuestions[currentQuestion]) return;
+
+            const selectedIndex = parseInt(e.currentTarget.dataset.index);
+            selectedAnswers[currentQuestion] = selectedIndex;
+            answeredQuestions[currentQuestion] = true;
+
+            // Mark option as selected
+            document.querySelectorAll('.option').forEach((option, index) => {
+                if (index === selectedIndex) {
+                    option.classList.add('selected');
+                    if (index === questions[currentQuestion].correct) {
+                        option.classList.add('correct');
+                    } else {
+                        option.classList.add('incorrect');
+                        // Highlight the correct answer
+                        document.querySelectorAll('.option')[questions[currentQuestion].correct].classList.add('correct');
+                    }
+                }
+            });
+
+            // Show explanation
+            document.querySelector('.explanation').classList.add('show');
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                renderQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderQuestion();
+            }
+        }
+
+        function showResults() {
+            const correctCount = selectedAnswers.filter((answer, index) => answer === questions[index].correct).length;
+            correctCountSpan.textContent = correctCount;
+            totalQuestionsSpan.textContent = questions.length;
+            
+            questionContainer.parentElement.classList.add('hidden');
+            resultsDiv.classList.remove('hidden');
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            selectedAnswers = new Array(questions.length).fill(null);
+            answeredQuestions = new Array(questions.length).fill(false);
+            
+            questionContainer.parentElement.classList.remove('hidden');
+            resultsDiv.classList.add('hidden');
+            
+            renderQuestion();
+        }
+
+        // Set up event listeners
+        nextBtn.addEventListener('click', nextQuestion);
+        prevBtn.addEventListener('click', prevQuestion);
+        restartBtn.addEventListener('click', restartQuiz);
+
+        // Initialize quiz
+        renderQuestion();
+        totalQuestionsSpan.textContent = questions.length;
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
