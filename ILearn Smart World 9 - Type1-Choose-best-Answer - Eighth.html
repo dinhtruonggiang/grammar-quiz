@@ -1,0 +1,552 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ILearn Smart World 9 - English Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .option {
+            transition: all 0.3s;
+        }
+        .option:hover {
+            background-color: #f0f9ff;
+        }
+        .selected {
+            background-color: #dbeafe;
+            border-color: #3b82f6;
+        }
+        .correct {
+            background-color: #dcfce7;
+            border-color: #22c55e;
+        }
+        .incorrect {
+            background-color: #fee2e2;
+            border-color: #ef4444;
+        }
+        .explanation {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-bold text-center text-blue-800 mb-6">ILearn Smart World 9 - Multiple Choice English Quiz</h1>
+        <p class="text-gray-700 mb-6 text-center">Choose the word/phrase/sentence that best fits the space or best answers the question.</p>
+        
+        <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6 mb-6">
+            <div id="quiz-container">
+                <!-- Questions will be inserted here by JavaScript -->
+            </div>
+            
+            <div class="mt-8 flex justify-between">
+                <button id="prev-btn" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed">Previous</button>
+                <span id="question-counter" class="py-2 text-gray-700">Question 1 of 30</span>
+                <button id="next-btn" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Next</button>
+            </div>
+            
+            <div class="mt-8">
+                <button id="check-answers-btn" class="w-full px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">Check Answers</button>
+                <div id="results" class="mt-4 p-4 bg-gray-100 rounded-md hidden">
+                    <p class="text-center font-bold text-xl">Your Score: <span id="score">0</span>/30</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz questions
+        const questions = [
+            {
+                question: "1. Which word has the underlined part pronounced differently from that of the others?",
+                options: [
+                    "A. r<u>ea</u>son", 
+                    "B. s<u>ea</u>son", 
+                    "C. m<u>ea</u>sure", 
+                    "D. pl<u>ea</u>sure"
+                ],
+                answer: "A",
+                explanation: "Đáp án A. Trong từ 'reason', phần gạch dưới 'ea' phát âm là /iː/, trong khi ở các từ còn lại phần 'ea' phát âm là /e/."
+            },
+            {
+                question: "2. Which word has a different stress pattern from that of the others?",
+                options: [
+                    "A. bicycle", 
+                    "B. library", 
+                    "C. different", 
+                    "D. beautiful"
+                ],
+                answer: "A",
+                explanation: "Đáp án A. Từ 'bicycle' có trọng âm ở âm tiết đầu tiên (BI-cy-cle), trong khi các từ còn lại có trọng âm ở âm tiết thứ nhất (li-BRA-ry, DIF-fe-rent, BEAU-ti-ful)."
+            },
+            {
+                question: "3. Which word has the underlined part pronounced differently from that of the others?",
+                options: [
+                    "A. w<u>o</u>rk", 
+                    "B. w<u>o</u>rld", 
+                    "C. w<u>o</u>rd", 
+                    "D. w<u>o</u>rm"
+                ],
+                answer: "D",
+                explanation: "Đáp án D. Trong từ 'worm', phần gạch dưới 'o' phát âm là /ɜː/, trong khi các từ còn lại phát âm là /ɜː/ nhưng với âm /r/ mạnh hơn."
+            },
+            {
+                question: "4. Sarah: \"Would you like to go to the cinema tonight?\" Tom: \"_________\"",
+                options: [
+                    "A. Yes, I'd love to.", 
+                    "B. No, I don't.", 
+                    "C. Yes, I would.", 
+                    "D. No, I wouldn't."
+                ],
+                answer: "A",
+                explanation: "Đáp án A. Khi được mời đi xem phim, câu trả lời lịch sự và tự nhiên nhất là 'Yes, I'd love to' (Vâng, tôi rất thích điều đó)."
+            },
+            {
+                question: "5. Which word has a different stress pattern from that of the others?",
+                options: [
+                    "A. important", 
+                    "B. difficult", 
+                    "C. determine", 
+                    "D. benefit"
+                ],
+                answer: "D",
+                explanation: "Đáp án D. Từ 'benefit' có trọng âm ở âm tiết đầu tiên (BE-ne-fit), trong khi các từ còn lại có trọng âm ở âm tiết thứ hai (im-POR-tant, di-FFI-cult, de-TER-mine)."
+            },
+            {
+                question: "6. John: \"Do you enjoy playing sports?\" Linda: \"_________\"",
+                options: [
+                    "A. No, I prefer reading books.", 
+                    "B. Yes, they're my teammates.", 
+                    "C. Yes, I do.", 
+                    "D. No, I am not."
+                ],
+                answer: "C",
+                explanation: "Đáp án C. Câu hỏi 'Do you enjoy...' cần được trả lời với 'Yes, I do' hoặc 'No, I don't'. Đáp án C là cấu trúc ngữ pháp đúng nhất."
+            },
+            {
+                question: "7. Which word has the underlined part pronounced differently from that of the others?",
+                options: [
+                    "A. h<u>ea</u>lth", 
+                    "B. w<u>ea</u>lth", 
+                    "C. br<u>ea</u>d", 
+                    "D. d<u>ea</u>th"
+                ],
+                answer: "C",
+                explanation: "Đáp án C. Trong từ 'bread', phần gạch dưới 'ea' phát âm là /e/, trong khi các từ còn lại phát âm là /e/ nhưng dài hơn như /eə/ hay /ɛ/."
+            },
+            {
+                question: "8. Tom: \"What do you think about the new environmental policy?\" Jane: \"_________\"",
+                options: [
+                    "A. I think it's a step in the right direction.", 
+                    "B. I don't have any policy.", 
+                    "C. The environment is important.", 
+                    "D. I'm not thinking about it."
+                ],
+                answer: "A",
+                explanation: "Đáp án A. Câu này hỏi ý kiến về chính sách môi trường mới, và câu trả lời A ('Tôi nghĩ đó là bước đi đúng hướng') là phản hồi phù hợp và đầy đủ nhất."
+            },
+            {
+                question: "9. The children are looking forward _________ their grandparents next weekend.",
+                options: [
+                    "A. to see", 
+                    "B. seeing", 
+                    "C. to seeing", 
+                    "D. see"
+                ],
+                answer: "C",
+                explanation: "Đáp án C. Cụm 'look forward to' luôn theo sau bởi danh từ hoặc động từ dạng -ing. Trong trường hợp này, 'to' là giới từ, không phải phần của động từ nguyên mẫu, nên cấu trúc đúng là 'looking forward to seeing'."
+            },
+            {
+                question: "10. Which word has a different stress pattern from that of the others?",
+                options: [
+                    "A. computer", 
+                    "B. telephone", 
+                    "C. interview", 
+                    "D. recommend"
+                ],
+                answer: "D",
+                explanation: "Đáp án D. Từ 'recommend' có trọng âm ở âm tiết thứ ba (re-co-MMEND), trong khi các từ còn lại có trọng âm ở âm tiết đầu tiên (COM-pu-ter, TE-le-phone, IN-ter-view)."
+            },
+            {
+                question: "11. If it _________ tomorrow, we'll postpone the picnic.",
+                options: [
+                    "A. rains", 
+                    "B. will rain", 
+                    "C. is raining", 
+                    "D. rained"
+                ],
+                answer: "A",
+                explanation: "Đáp án A. Trong câu điều kiện loại 1 (diễn tả điều kiện có thể xảy ra ở tương lai), mệnh đề if dùng thì hiện tại đơn (rains), mệnh đề chính dùng tương lai đơn (will postpone)."
+            },
+            {
+                question: "12. Mary: \"I've just passed my driving test!\" Paul: \"_________\"",
+                options: [
+                    "A. Congratulations!", 
+                    "B. Good luck!", 
+                    "C. Have a nice day!", 
+                    "D. Best wishes!"
+                ],
+                answer: "A",
+                explanation: "Đáp án A. Khi ai đó thông báo về một thành công hoặc đạt được điều gì đó, câu trả lời phù hợp nhất là 'Congratulations!' (Chúc mừng!)."
+            },
+            {
+                question: "13. Which word has the underlined part pronounced differently from that of the others?",
+                options: [
+                    "A. ch<u>a</u>nge", 
+                    "B. gr<u>a</u>dual", 
+                    "C. c<u>a</u>mera", 
+                    "D. c<u>a</u>tch"
+                ],
+                answer: "B",
+                explanation: "Đáp án B. Trong từ 'gradual', phần gạch dưới 'a' phát âm là /eɪ/, trong khi các từ còn lại phát âm là /æ/."
+            },
+            {
+                question: "14. _________ her strict parents, she wasn't allowed to attend the party.",
+                options: [
+                    "A. Because of", 
+                    "B. Despite", 
+                    "C. Although", 
+                    "D. In spite"
+                ],
+                answer: "A",
+                explanation: "Đáp án A. 'Because of' (bởi vì) là cách diễn đạt đúng ý nghĩa nguyên nhân tại sao cô ấy không được phép đi dự tiệc. Các lựa chọn khác diễn tả sự đối lập không phù hợp với ngữ cảnh này."
+            },
+            {
+                question: "15. Maria has been studying English _________ five years.",
+                options: [
+                    "A. since", 
+                    "B. for", 
+                    "C. during", 
+                    "D. while"
+                ],
+                answer: "B",
+                explanation: "Đáp án B. 'For' được sử dụng với một khoảng thời gian (five years). 'Since' sẽ được dùng với một thời điểm cụ thể (ví dụ: since 2018)."
+            },
+            {
+                question: "16. Which word has a different stress pattern from that of the others?",
+                options: [
+                    "A. education", 
+                    "B. attention", 
+                    "C. comfortable", 
+                    "D. impossible"
+                ],
+                answer: "C",
+                explanation: "Đáp án C. Từ 'comfortable' có trọng âm ở âm tiết đầu tiên (COM-for-ta-ble), trong khi các từ còn lại có trọng âm ở âm tiết thứ hai (e-DU-ca-tion, a-TTEN-tion, im-POS-si-ble)."
+            },
+            {
+                question: "17. If I _________ you, I would take that job offer.",
+                options: [
+                    "A. am", 
+                    "B. would be", 
+                    "C. were", 
+                    "D. will be"
+                ],
+                answer: "C",
+                explanation: "Đáp án C. Trong câu điều kiện loại 2 (diễn tả điều kiện không có thật ở hiện tại), sau 'if I' ta dùng 'were' cho tất cả các ngôi."
+            },
+            {
+                question: "18. Which word has the underlined part pronounced differently from that of the others?",
+                options: [
+                    "A. t<u>i</u>red", 
+                    "B. adm<u>i</u>red", 
+                    "C. arr<u>i</u>ved", 
+                    "D. l<u>i</u>ved"
+                ],
+                answer: "D",
+                explanation: "Đáp án D. Trong từ 'lived', phần gạch dưới 'i' phát âm là /ɪ/ ngắn, trong khi các từ còn lại phát âm là /aɪ/ (âm dài)."
+            },
+            {
+                question: "19. The movie was _________ boring that we left before it ended.",
+                options: [
+                    "A. such", 
+                    "B. too", 
+                    "C. so", 
+                    "D. very"
+                ],
+                answer: "C",
+                explanation: "Đáp án C. Cấu trúc 'so + tính từ + that' diễn tả kết quả. Đây là cấu trúc đúng trong câu này: 'so boring that...' (quá nhàm chán đến nỗi mà...)."
+            },
+            {
+                question: "20. Jane: \"I think we should recycle more.\" Tom: \"_________\"",
+                options: [
+                    "A. I agree with you completely.", 
+                    "B. I don't think it matters.", 
+                    "C. I'm not sure about that.", 
+                    "D. I don't like recycling."
+                ],
+                answer: "A",
+                explanation: "Đáp án A. Câu này là bày tỏ sự đồng ý hoàn toàn với ý kiến của Jane về việc tái chế nhiều hơn, đây là phản hồi tích cực và phù hợp nhất."
+            },
+            {
+                question: "21. Which word has a different stress pattern from that of the others?",
+                options: [
+                    "A. photographer", 
+                    "B. particular", 
+                    "C. considerate", 
+                    "D. arithmetic"
+                ],
+                answer: "D",
+                explanation: "Đáp án D. Từ 'arithmetic' có trọng âm ở âm tiết thứ hai (a-RITH-me-tic), trong khi các từ còn lại có trọng âm ở âm tiết thứ ba (pho-to-GRA-pher, par-ti-CU-lar, con-si-DE-rate)."
+            },
+            {
+                question: "22. By the time we arrived at the theater, the movie _________ already.",
+                options: [
+                    "A. has started", 
+                    "B. had started", 
+                    "C. was starting", 
+                    "D. would start"
+                ],
+                answer: "B",
+                explanation: "Đáp án B. Khi diễn tả một hành động đã xảy ra trước một hành động khác trong quá khứ, ta dùng thì quá khứ hoàn thành (had started). Câu này nói về việc phim đã bắt đầu trước khi họ đến rạp."
+            },
+            {
+                question: "23. Which sentence has the same meaning as: \"Despite having a headache, she went to work.\"?",
+                options: [
+                    "A. She went to work because she had a headache.", 
+                    "B. She had a headache, so she went to work.", 
+                    "C. Although she had a headache, she went to work.", 
+                    "D. She went to work when she had a headache."
+                ],
+                answer: "C",
+                explanation: "Đáp án C. 'Despite having a headache' có nghĩa là 'mặc dù bị đau đầu', tương đương với 'Although she had a headache' (mặc dù cô ấy bị đau đầu)."
+            },
+            {
+                question: "24. The team _________ by the time we got to the stadium.",
+                options: [
+                    "A. already left", 
+                    "B. has already left", 
+                    "C. had already left", 
+                    "D. was already leaving"
+                ],
+                answer: "C",
+                explanation: "Đáp án C. Khi diễn tả một hành động đã xảy ra trước một hành động khác trong quá khứ, ta dùng thì quá khứ hoàn thành (had already left)."
+            },
+            {
+                question: "25. Which word has the underlined part pronounced differently from that of the others?",
+                options: [
+                    "A. b<u>oo</u>k", 
+                    "B. g<u>oo</u>d", 
+                    "C. f<u>oo</u>d", 
+                    "D. l<u>oo</u>k"
+                ],
+                answer: "C",
+                explanation: "Đáp án C. Trong từ 'food', phần gạch dưới 'oo' phát âm là /uː/ (âm dài), trong khi các từ còn lại phát âm là /ʊ/ (âm ngắn)."
+            },
+            {
+                question: "26. She's known him _________ they were children.",
+                options: [
+                    "A. when", 
+                    "B. since", 
+                    "C. for", 
+                    "D. during"
+                ],
+                answer: "B",
+                explanation: "Đáp án B. 'Since' được sử dụng với một thời điểm bắt đầu cụ thể (since they were children = từ khi họ còn là trẻ con). 'For' sẽ được dùng với một khoảng thời gian."
+            },
+            {
+                question: "27. Which word has a different stress pattern from that of the others?",
+                options: [
+                    "A. calendar", 
+                    "B. character", 
+                    "C. disaster", 
+                    "D. adventure"
+                ],
+                answer: "D",
+                explanation: "Đáp án D. Từ 'adventure' có trọng âm ở âm tiết thứ hai (ad-VEN-ture), trong khi các từ còn lại có trọng âm ở âm tiết đầu tiên (CA-len-dar, CHA-rac-ter, DI-sa-ster)."
+            },
+            {
+                question: "28. If we _________ the environment, future generations will suffer.",
+                options: [
+                    "A. don't protect", 
+                    "B. won't protect", 
+                    "C. didn't protect", 
+                    "D. wouldn't protect"
+                ],
+                answer: "A",
+                explanation: "Đáp án A. Trong câu điều kiện loại 1 (diễn tả điều kiện có thể xảy ra ở tương lai), mệnh đề if dùng thì hiện tại đơn (don't protect), mệnh đề chính dùng tương lai đơn (will suffer)."
+            },
+            {
+                question: "29. The concert was _________ interesting that everyone enjoyed it.",
+                options: [
+                    "A. so", 
+                    "B. such", 
+                    "C. very", 
+                    "D. too"
+                ],
+                answer: "A",
+                explanation: "Đáp án A. Cấu trúc 'so + tính từ + that' diễn tả kết quả. 'So interesting that...' (quá thú vị đến nỗi mà...)."
+            },
+            {
+                question: "30. Which word has the underlined part pronounced differently from that of the others?",
+                options: [
+                    "A. p<u>u</u>t", 
+                    "B. f<u>u</u>ll", 
+                    "C. c<u>u</u>t", 
+                    "D. r<u>u</u>le"
+                ],
+                answer: "D",
+                explanation: "Đáp án D. Trong từ 'rule', phần gạch dưới 'u' phát âm là /uː/ (âm dài), trong khi các từ còn lại phát âm là /ʌ/ hoặc /ʊ/ (âm ngắn)."
+            }
+        ];
+
+        // Variables to track quiz state
+        let currentQuestion = 0;
+        let userAnswers = Array(questions.length).fill(null);
+        let quizSubmitted = false;
+
+        // DOM elements
+        const quizContainer = document.getElementById('quiz-container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const questionCounter = document.getElementById('question-counter');
+        const checkAnswersBtn = document.getElementById('check-answers-btn');
+        const resultsDiv = document.getElementById('results');
+        const scoreSpan = document.getElementById('score');
+
+        // Initialize the quiz
+        function initQuiz() {
+            showQuestion(currentQuestion);
+            updateButtons();
+        }
+
+        // Show current question
+        function showQuestion(index) {
+            const question = questions[index];
+            const questionHTML = `
+                <div class="question-container">
+                    <h2 class="text-lg font-semibold mb-4">${question.question}</h2>
+                    <div class="options-container space-y-3">
+                        ${question.options.map((option, i) => `
+                            <div class="option border rounded-md p-3 cursor-pointer ${userAnswers[index] === String.fromCharCode(65 + i) ? 'selected' : ''}" 
+                                 data-option="${String.fromCharCode(65 + i)}">
+                                ${option}
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="explanation mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>${question.explanation}</p>
+                    </div>
+                </div>
+            `;
+            quizContainer.innerHTML = questionHTML;
+            
+            // Add event listeners to options
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    if (quizSubmitted) return;
+                    
+                    const selectedOption = this.getAttribute('data-option');
+                    userAnswers[currentQuestion] = selectedOption;
+                    
+                    // Update UI to show selected option
+                    document.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                });
+            });
+
+            // Update question counter
+            questionCounter.textContent = `Question ${index + 1} of ${questions.length}`;
+        }
+
+        // Update button states based on current question
+        function updateButtons() {
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.textContent = currentQuestion === questions.length - 1 ? "Finish" : "Next";
+        }
+
+        // Event listeners for buttons
+        prevBtn.addEventListener('click', function() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+                updateButtons();
+            }
+        });
+
+        nextBtn.addEventListener('click', function() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+                updateButtons();
+            }
+        });
+
+        checkAnswersBtn.addEventListener('click', function() {
+            if (quizSubmitted) {
+                // Reset the quiz
+                quizSubmitted = false;
+                userAnswers = Array(questions.length).fill(null);
+                currentQuestion = 0;
+                showQuestion(currentQuestion);
+                updateButtons();
+                resultsDiv.classList.add('hidden');
+                this.textContent = "Check Answers";
+                return;
+            }
+            
+            // Mark the quiz as submitted
+            quizSubmitted = true;
+            this.textContent = "Restart Quiz";
+            
+            // Calculate score
+            let correctAnswers = 0;
+            userAnswers.forEach((answer, index) => {
+                if (answer === questions[index].answer) {
+                    correctAnswers++;
+                }
+            });
+            
+            // Display results
+            scoreSpan.textContent = correctAnswers;
+            resultsDiv.classList.remove('hidden');
+            
+            // Show correct/incorrect answers
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => {
+                const questionIndex = currentQuestion;
+                const optionLetter = option.getAttribute('data-option');
+                
+                if (optionLetter === questions[questionIndex].answer) {
+                    option.classList.add('correct');
+                } else if (optionLetter === userAnswers[questionIndex]) {
+                    option.classList.add('incorrect');
+                }
+            });
+            
+            // Show explanation
+            document.querySelector('.explanation').classList.remove('hidden');
+        });
+
+        // Initialize the quiz when the page loads
+        window.addEventListener('DOMContentLoaded', initQuiz);
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
