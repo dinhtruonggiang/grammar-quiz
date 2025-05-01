@@ -1,0 +1,496 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Tiếng Anh - ILearn Smart World 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f3f4f6;
+        }
+        .question-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .option {
+            cursor: pointer;
+            padding: 0.75rem;
+            border-radius: 0.25rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.2s;
+        }
+        .option:hover {
+            background-color: #e5e7eb;
+        }
+        .selected {
+            background-color: #dbeafe;
+            border: 1px solid #3b82f6;
+        }
+        .correct {
+            background-color: #dcfce7;
+            border: 1px solid #22c55e;
+        }
+        .incorrect {
+            background-color: #fee2e2;
+            border: 1px solid #ef4444;
+        }
+        .explanation {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f8fafc;
+            border-radius: 0.25rem;
+            border-left: 4px solid #3b82f6;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="pt-8 pb-16">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-800">Bài Trắc Nghiệm Tiếng Anh</h1>
+            <p class="text-gray-600 mt-2">ILearn Smart World 9 Student Book - Choose the word/phrase that best fits each space</p>
+        </div>
+
+        <div id="quiz-container">
+            <!-- Questions will be dynamically inserted here -->
+        </div>
+
+        <div class="flex justify-between mt-8">
+            <button id="prev-btn" class="bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 px-6 rounded-lg transition">Câu trước</button>
+            <button id="next-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg transition">Câu tiếp theo</button>
+        </div>
+
+        <div id="results" class="mt-8 p-6 bg-white rounded-lg shadow hidden">
+            <h2 class="text-2xl font-bold text-center mb-4">Kết quả</h2>
+            <p class="text-center text-lg mb-2">Bạn đã đúng <span id="correct-count" class="font-bold text-green-600">0</span>/<span id="total-questions">30</span> câu</p>
+            <p class="text-center text-lg mb-4">Điểm số: <span id="score" class="font-bold text-blue-600">0</span>/10</p>
+            <div class="flex justify-center">
+                <button id="retry-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg transition">Làm lại bài</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "The government has introduced several ________ to reduce traffic congestion in the city center.",
+                options: ["measures", "solutions", "methods", "ways"],
+                correctAnswer: 0,
+                explanation: "Đáp án A. 'measures' (các biện pháp) là từ thích hợp nhất trong ngữ cảnh này. 'Measures' thường được sử dụng khi nói về các hành động chính thức được thực hiện bởi chính phủ hoặc tổ chức để giải quyết vấn đề."
+            },
+            {
+                question: "After the earthquake, many buildings were ________ unsafe and had to be demolished.",
+                options: ["decided", "declared", "announced", "proclaimed"],
+                correctAnswer: 1,
+                explanation: "Đáp án B. 'declared' (tuyên bố) là từ phù hợp nhất. 'Declare something + adj' là cấu trúc phổ biến khi một thông báo chính thức được đưa ra về tình trạng của một thứ gì đó."
+            },
+            {
+                question: "Many young people today ________ great importance to work-life balance when choosing a job.",
+                options: ["attach", "connect", "link", "join"],
+                correctAnswer: 0,
+                explanation: "Đáp án A. 'attach' là từ đúng trong cụm 'attach importance to' (coi trọng). Đây là một cụm từ cố định trong tiếng Anh dùng để diễn đạt việc đánh giá cao hoặc coi trọng điều gì đó."
+            },
+            {
+                question: "The new regulation will come into ________ next month, affecting all businesses in the country.",
+                options: ["action", "effect", "result", "consequence"],
+                correctAnswer: 1,
+                explanation: "Đáp án B. 'come into effect' (có hiệu lực) là cụm từ cố định dùng để nói về luật, quy định hoặc thỏa thuận bắt đầu có hiệu lực hoặc được áp dụng chính thức."
+            },
+            {
+                question: "The company has ________ a new approach to customer service that focuses on personalization.",
+                options: ["adopted", "adapted", "accepted", "approved"],
+                correctAnswer: 0,
+                explanation: "Đáp án A. 'adopted' (áp dụng) là từ thích hợp nhất khi nói về việc chọn và sử dụng một cách tiếp cận, phương pháp hoặc chiến lược mới."
+            },
+            {
+                question: "The local wildlife sanctuary provides a safe ________ for endangered species.",
+                options: ["house", "shelter", "habitat", "residence"],
+                correctAnswer: 2,
+                explanation: "Đáp án C. 'habitat' (môi trường sống) là từ chính xác nhất khi nói về nơi sinh sống tự nhiên của các loài động vật hoang dã."
+            },
+            {
+                question: "Scientists are concerned about the ________ of plastic pollution on marine ecosystems.",
+                options: ["impact", "result", "outcome", "consequence"],
+                correctAnswer: 0,
+                explanation: "Đáp án A. 'impact' (tác động) là từ thích hợp nhất khi nói về ảnh hưởng của một vấn đề môi trường lên hệ sinh thái."
+            },
+            {
+                question: "The museum is ________ renovations and will reopen to the public next year.",
+                options: ["having", "doing", "undergoing", "experiencing"],
+                correctAnswer: 2,
+                explanation: "Đáp án C. 'undergoing' (đang trải qua) là từ phù hợp nhất khi nói về một tòa nhà hoặc tổ chức đang trong quá trình sửa chữa hoặc cải tạo."
+            },
+            {
+                question: "Many companies now ________ flexible working hours to help employees achieve better work-life balance.",
+                options: ["offer", "suggest", "propose", "recommend"],
+                correctAnswer: 0,
+                explanation: "Đáp án A. 'offer' (cung cấp) là từ phù hợp nhất khi nói về một công ty cung cấp một lợi ích hoặc dịch vụ cho nhân viên."
+            },
+            {
+                question: "The government's new environmental policy aims to ________ carbon emissions by 30% by 2030.",
+                options: ["reduce", "decrease", "lower", "diminish"],
+                correctAnswer: 0,
+                explanation: "Đáp án A. 'reduce' (giảm) là từ phổ biến và chính thức nhất khi nói về việc cắt giảm lượng khí thải carbon trong các chính sách môi trường."
+            },
+            {
+                question: "The documentary ________ light on the issues facing indigenous communities in the Amazon rainforest.",
+                options: ["sheds", "throws", "casts", "puts"],
+                correctAnswer: 0,
+                explanation: "Đáp án A. 'sheds light on' (làm sáng tỏ) là cụm từ cố định trong tiếng Anh, dùng để nói về việc cung cấp thông tin hoặc làm rõ một vấn đề."
+            },
+            {
+                question: "The charity ________ awareness about child poverty through its social media campaigns.",
+                options: ["increases", "raises", "lifts", "heightens"],
+                correctAnswer: 1,
+                explanation: "Đáp án B. 'raises awareness' (nâng cao nhận thức) là cụm từ cố định thường được sử dụng khi nói về việc làm cho nhiều người biết đến một vấn đề xã hội."
+            },
+            {
+                question: "Many young people are choosing to ________ their consumption of meat for environmental reasons.",
+                options: ["reduce", "decrease", "lower", "diminish"],
+                correctAnswer: 0,
+                explanation: "Đáp án A. 'reduce consumption' (giảm tiêu thụ) là cụm từ phổ biến nhất khi nói về việc cắt giảm lượng thức ăn hoặc hàng hóa tiêu thụ."
+            },
+            {
+                question: "The company has ________ a strict policy on recycling to reduce its environmental impact.",
+                options: ["implemented", "installed", "introduced", "initiated"],
+                correctAnswer: 0,
+                explanation: "Đáp án A. 'implemented' (thực hiện) là từ thích hợp nhất khi nói về việc đưa một chính sách mới vào hoạt động thực tế."
+            },
+            {
+                question: "Climate change poses a serious ________ to coastal communities around the world.",
+                options: ["danger", "threat", "risk", "hazard"],
+                correctAnswer: 1,
+                explanation: "Đáp án B. 'threat' (mối đe dọa) là từ thường được sử dụng nhất khi nói về biến đổi khí hậu và các tác động tiềm tàng của nó."
+            },
+            {
+                question: "The research team has made a significant ________ in understanding how the virus spreads.",
+                options: ["breakthrough", "discovery", "progress", "advancement"],
+                correctAnswer: 0,
+                explanation: "Đáp án A. 'breakthrough' (bước đột phá) là từ thích hợp nhất khi nói về một phát hiện quan trọng trong nghiên cứu khoa học."
+            },
+            {
+                question: "Many city dwellers ________ from stress-related health problems due to their fast-paced lifestyle.",
+                options: ["endure", "suffer", "undergo", "experience"],
+                correctAnswer: 1,
+                explanation: "Đáp án B. 'suffer from' (mắc phải) là cụm từ phổ biến nhất khi nói về việc bị ảnh hưởng bởi vấn đề sức khỏe."
+            },
+            {
+                question: "The company is ________ to launch its new product line in international markets next year.",
+                options: ["planning", "intending", "considering", "thinking"],
+                correctAnswer: 0,
+                explanation: "Đáp án A. 'planning to' (lên kế hoạch) là cụm từ mạnh mẽ nhất, thể hiện ý định chắc chắn của công ty về việc ra mắt sản phẩm mới."
+            },
+            {
+                question: "The school has ________ a new approach to teaching languages that focuses on real-world communication.",
+                options: ["adopted", "adapted", "accepted", "acquired"],
+                correctAnswer: 0,
+                explanation: "Đáp án A. 'adopted' (áp dụng) là từ thích hợp nhất khi nói về việc chọn và sử dụng một phương pháp hoặc cách tiếp cận mới."
+            },
+            {
+                question: "Regular exercise can help to ________ the risk of heart disease and other health problems.",
+                options: ["reduce", "decrease", "lower", "minimize"],
+                correctAnswer: 0,
+                explanation: "Đáp án A. 'reduce the risk' (giảm nguy cơ) là cụm từ phổ biến nhất trong ngữ cảnh liên quan đến sức khỏe và y học."
+            },
+            {
+                question: "The United Nations has ________ concerns about the humanitarian crisis in the region.",
+                options: ["expressed", "stated", "voiced", "declared"],
+                correctAnswer: 0,
+                explanation: "Đáp án A. 'expressed concerns' (bày tỏ lo ngại) là cụm từ phổ biến trong ngôn ngữ ngoại giao và báo cáo chính thức."
+            },
+            {
+                question: "The historic building has been ________ to its former glory after years of restoration work.",
+                options: ["returned", "restored", "recovered", "reverted"],
+                correctAnswer: 1,
+                explanation: "Đáp án B. 'restored to its former glory' (được khôi phục như xưa) là cụm từ thành ngữ thường dùng khi nói về việc phục hồi các tòa nhà lịch sử."
+            },
+            {
+                question: "Many people find it difficult to ________ a healthy work-life balance in today's fast-paced world.",
+                options: ["maintain", "keep", "hold", "sustain"],
+                correctAnswer: 0,
+                explanation: "Đáp án A. 'maintain a balance' (duy trì sự cân bằng) là cụm từ phổ biến nhất khi nói về việc giữ được sự hài hòa giữa công việc và cuộc sống."
+            },
+            {
+                question: "The company needs to ________ more resources to research and development to stay competitive.",
+                options: ["allocate", "assign", "attribute", "appoint"],
+                correctAnswer: 0,
+                explanation: "Đáp án A. 'allocate resources' (phân bổ nguồn lực) là cụm từ chính xác trong ngữ cảnh kinh doanh khi nói về việc dành nguồn lực cho một mục đích cụ thể."
+            },
+            {
+                question: "The new law aims to ________ the rights of consumers when shopping online.",
+                options: ["protect", "defend", "secure", "safeguard"],
+                correctAnswer: 0,
+                explanation: "Đáp án A. 'protect the rights' (bảo vệ quyền lợi) là cụm từ phổ biến nhất trong ngữ cảnh pháp luật và chính sách bảo vệ người tiêu dùng."
+            },
+            {
+                question: "The city council has ________ a plan to improve public transportation over the next five years.",
+                options: ["developed", "created", "formed", "designed"],
+                correctAnswer: 0,
+                explanation: "Đáp án A. 'developed a plan' (phát triển kế hoạch) là cụm từ thích hợp nhất khi nói về việc chính quyền chuẩn bị một kế hoạch chính thức."
+            },
+            {
+                question: "Scientists are ________ research into new treatments for the disease.",
+                options: ["conducting", "performing", "doing", "making"],
+                correctAnswer: 0,
+                explanation: "Đáp án A. 'conducting research' (tiến hành nghiên cứu) là cụm từ học thuật chính xác khi nói về hoạt động nghiên cứu khoa học."
+            },
+            {
+                question: "The company is trying to ________ its carbon footprint by using renewable energy sources.",
+                options: ["reduce", "decrease", "lower", "minimize"],
+                correctAnswer: 0,
+                explanation: "Đáp án A. 'reduce carbon footprint' (giảm dấu chân carbon) là cụm từ phổ biến nhất trong ngữ cảnh môi trường và phát triển bền vững."
+            },
+            {
+                question: "The government has ________ funding for education by 10% in the latest budget.",
+                options: ["increased", "raised", "enhanced", "expanded"],
+                correctAnswer: 0,
+                explanation: "Đáp án A. 'increased funding' (tăng kinh phí) là cụm từ chính xác nhất trong ngữ cảnh ngân sách và tài chính công."
+            },
+            {
+                question: "Many companies now ________ importance to environmental sustainability in their business practices.",
+                options: ["attach", "give", "place", "put"],
+                correctAnswer: 0,
+                explanation: "Đáp án A. 'attach importance to' (coi trọng) là cụm từ cố định trong tiếng Anh dùng để diễn đạt việc đánh giá cao một điều gì đó."
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(questions.length).fill(null);
+
+        const quizContainer = document.getElementById('quiz-container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const resultsElement = document.getElementById('results');
+        const correctCountElement = document.getElementById('correct-count');
+        const totalQuestionsElement = document.getElementById('total-questions');
+        const scoreElement = document.getElementById('score');
+        const retryBtn = document.getElementById('retry-btn');
+
+        // Function to generate HTML for a question
+        function generateQuestionHTML(questionObj, index) {
+            const { question, options } = questionObj;
+            
+            let html = `
+                <div id="question-${index}" class="question-card ${index === currentQuestionIndex ? '' : 'hidden'}">
+                    <h3 class="text-lg font-semibold mb-4">Câu ${index + 1}: ${question}</h3>
+                    <div class="options-container">
+            `;
+            
+            options.forEach((option, optIndex) => {
+                html += `
+                    <div class="option" id="q${index}-option-${optIndex}" data-index="${optIndex}">
+                        <span class="font-medium">${String.fromCharCode(65 + optIndex)}.</span> ${option}
+                    </div>
+                `;
+            });
+            
+            html += `
+                    </div>
+                    <div id="explanation-${index}" class="explanation hidden"></div>
+                </div>
+            `;
+            
+            return html;
+        }
+
+        // Populate quiz container with questions
+        function initializeQuiz() {
+            quizContainer.innerHTML = '';
+            questions.forEach((question, index) => {
+                quizContainer.innerHTML += generateQuestionHTML(question, index);
+            });
+            
+            // Add event listeners to all options
+            questions.forEach((_, qIndex) => {
+                const optionsElements = document.querySelectorAll(`#question-${qIndex} .option`);
+                optionsElements.forEach(optionElement => {
+                    optionElement.addEventListener('click', function() {
+                        const optionIndex = parseInt(this.getAttribute('data-index'));
+                        selectOption(qIndex, optionIndex);
+                    });
+                });
+            });
+            
+            // Set total questions
+            totalQuestionsElement.textContent = questions.length;
+            
+            // Initialize button states
+            updateButtonStates();
+        }
+
+        // Handle option selection
+        function selectOption(questionIndex, optionIndex) {
+            // If already answered, don't allow changes
+            if (userAnswers[questionIndex] !== null) {
+                return;
+            }
+            
+            userAnswers[questionIndex] = optionIndex;
+            
+            // Get all options for this question
+            const optionsElements = document.querySelectorAll(`#question-${questionIndex} .option`);
+            
+            // Mark selected option
+            optionsElements.forEach((optionElement, index) => {
+                if (index === optionIndex) {
+                    optionElement.classList.add('selected');
+                }
+            });
+            
+            // Check if answer is correct
+            const correctAnswer = questions[questionIndex].correctAnswer;
+            const explanationElement = document.getElementById(`explanation-${questionIndex}`);
+            
+            if (optionIndex === correctAnswer) {
+                optionsElements[optionIndex].classList.add('correct');
+                explanationElement.innerHTML = `
+                    <p class="font-medium text-green-600 mb-2">✓ Đúng!</p>
+                    <p>${questions[questionIndex].explanation}</p>
+                `;
+            } else {
+                optionsElements[optionIndex].classList.add('incorrect');
+                optionsElements[correctAnswer].classList.add('correct');
+                explanationElement.innerHTML = `
+                    <p class="font-medium text-red-600 mb-2">✗ Sai!</p>
+                    <p>${questions[questionIndex].explanation}</p>
+                `;
+            }
+            
+            explanationElement.classList.remove('hidden');
+            
+            // Check if all questions are answered
+            if (!userAnswers.includes(null)) {
+                nextBtn.textContent = 'Xem kết quả';
+            }
+        }
+
+        // Navigate to the next question
+        function goToNextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                // Hide current question
+                document.getElementById(`question-${currentQuestionIndex}`).classList.add('hidden');
+                
+                // Show next question
+                currentQuestionIndex++;
+                document.getElementById(`question-${currentQuestionIndex}`).classList.remove('hidden');
+                
+                updateButtonStates();
+            } else {
+                // If on the last question, show results
+                showResults();
+            }
+        }
+
+        // Navigate to the previous question
+        function goToPrevQuestion() {
+            if (currentQuestionIndex > 0) {
+                // Hide current question
+                document.getElementById(`question-${currentQuestionIndex}`).classList.add('hidden');
+                
+                // Show previous question
+                currentQuestionIndex--;
+                document.getElementById(`question-${currentQuestionIndex}`).classList.remove('hidden');
+                
+                updateButtonStates();
+            }
+        }
+
+        // Update button states based on current question
+        function updateButtonStates() {
+            prevBtn.disabled = currentQuestionIndex === 0;
+            prevBtn.classList.toggle('opacity-50', currentQuestionIndex === 0);
+            
+            if (currentQuestionIndex === questions.length - 1 && !userAnswers.includes(null)) {
+                nextBtn.textContent = 'Xem kết quả';
+            } else {
+                nextBtn.textContent = 'Câu tiếp theo';
+            }
+        }
+
+        // Show quiz results
+        function showResults() {
+            const correctAnswers = userAnswers.filter((answer, index) => answer === questions[index].correctAnswer).length;
+            const score = (correctAnswers / questions.length * 10).toFixed(1);
+            
+            correctCountElement.textContent = correctAnswers;
+            scoreElement.textContent = score;
+            
+            // Hide quiz content and show results
+            quizContainer.classList.add('hidden');
+            prevBtn.classList.add('hidden');
+            nextBtn.classList.add('hidden');
+            resultsElement.classList.remove('hidden');
+        }
+
+        // Reset quiz
+        function resetQuiz() {
+            userAnswers = new Array(questions.length).fill(null);
+            currentQuestionIndex = 0;
+            
+            // Reset all options
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+            });
+            
+            // Hide all explanations
+            document.querySelectorAll('.explanation').forEach(explanation => {
+                explanation.classList.add('hidden');
+            });
+            
+            // Show first question, hide others
+            questions.forEach((_, index) => {
+                const questionElement = document.getElementById(`question-${index}`);
+                questionElement.classList.toggle('hidden', index !== 0);
+            });
+            
+            // Hide results, show quiz content
+            resultsElement.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+            prevBtn.classList.remove('hidden');
+            nextBtn.classList.remove('hidden');
+            
+            updateButtonStates();
+        }
+
+        // Initialize the quiz
+        initializeQuiz();
+
+        // Event listeners
+        prevBtn.addEventListener('click', goToPrevQuestion);
+        nextBtn.addEventListener('click', goToNextQuestion);
+        retryBtn.addEventListener('click', resetQuiz);
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
