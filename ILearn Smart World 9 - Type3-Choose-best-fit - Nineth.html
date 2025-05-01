@@ -1,0 +1,515 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ILearn Smart World 9 - Choose the Word Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+        }
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .option:hover {
+            background-color: #f0f7ff;
+        }
+        .option.selected {
+            background-color: #e3f0ff;
+            border-color: #3b82f6;
+        }
+        .option.correct {
+            background-color: #dcfce7;
+            border-color: #22c55e;
+        }
+        .option.incorrect {
+            background-color: #fee2e2;
+            border-color: #ef4444;
+        }
+        .explanation {
+            display: none;
+            background-color: #fffbeb;
+            border-left: 4px solid #f59e0b;
+        }
+        .progress-bar {
+            height: 8px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="p-4 md:p-8">
+        <div class="quiz-container p-6 md:p-8">
+            <div id="start-screen" class="text-center py-12">
+                <h1 class="text-3xl font-bold text-blue-600 mb-4">ILearn Smart World 9</h1>
+                <h2 class="text-xl mb-8">Bài trắc nghiệm "Choose the best word"</h2>
+                <p class="mb-8 text-gray-600">Hãy chọn từ thích hợp để điền vào chỗ trống trong các câu sau đây.</p>
+                <button id="start-btn" class="bg-blue-600 text-white py-3 px-8 rounded-lg text-lg font-medium hover:bg-blue-700 transition">Bắt đầu</button>
+            </div>
+
+            <div id="quiz-screen" class="hidden">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold text-blue-600">Choose the best word</h2>
+                    <span id="question-counter" class="text-lg font-medium text-gray-600">Câu 1/30</span>
+                </div>
+
+                <div class="mb-4">
+                    <div class="progress-bar">
+                        <div id="progress" class="progress" style="width: 3.33%;"></div>
+                    </div>
+                </div>
+
+                <div id="question-container" class="mb-8">
+                    <p id="question-text" class="text-lg mb-6"></p>
+                    <div id="options-container" class="space-y-3">
+                        <!-- Options will be generated here -->
+                    </div>
+                </div>
+
+                <div id="explanation-container" class="explanation p-4 mb-8 rounded-md">
+                    <h3 class="font-bold mb-2">Giải thích:</h3>
+                    <p id="explanation-text"></p>
+                </div>
+
+                <div class="flex justify-between">
+                    <button id="prev-btn" class="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg font-medium hover:bg-gray-300 transition" disabled>Câu trước</button>
+                    <button id="next-btn" class="bg-blue-600 text-white py-2 px-6 rounded-lg font-medium hover:bg-blue-700 transition" disabled>Câu tiếp theo</button>
+                </div>
+            </div>
+
+            <div id="results-screen" class="hidden text-center py-12">
+                <h2 class="text-2xl font-bold text-blue-600 mb-4">Kết quả</h2>
+                <p class="text-xl mb-6">Bạn đã trả lời đúng <span id="correct-count" class="font-bold text-green-600"></span>/<span id="total-questions"></span> câu!</p>
+                <div id="score-percentage" class="text-3xl font-bold mb-8"></div>
+                <button id="restart-btn" class="bg-blue-600 text-white py-3 px-8 rounded-lg text-lg font-medium hover:bg-blue-700 transition">Làm lại bài</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz data
+        const quizData = [
+            {
+                question: "The school library _____ from Monday to Friday, but it is closed on weekends.",
+                options: ["opens", "opened", "is open", "opening"],
+                correctAnswer: 2,
+                explanation: "Đáp án đúng là 'is open'. Đây là cấu trúc dạng tính từ (open) + động từ to be để diễn tả trạng thái của thư viện. Cấu trúc này phù hợp để chỉ thời gian hoạt động của thư viện."
+            },
+            {
+                question: "Environmental protection is a global issue; _____, many countries have implemented strict regulations.",
+                options: ["therefore", "however", "although", "despite"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'therefore'. Từ này dùng để chỉ mối quan hệ nhân quả. Vì bảo vệ môi trường là vấn đề toàn cầu nên (do đó) nhiều quốc gia đã thực hiện các quy định nghiêm ngặt."
+            },
+            {
+                question: "She _____ her homework before her parents came home from work.",
+                options: ["finishes", "finishing", "has finished", "had finished"],
+                correctAnswer: 3,
+                explanation: "Đáp án đúng là 'had finished'. Đây là thì quá khứ hoàn thành, dùng để diễn tả một hành động đã hoàn thành trước một hành động khác trong quá khứ (trước khi bố mẹ về nhà)."
+            },
+            {
+                question: "Despite _____ rain, the outdoor event continued as planned.",
+                options: ["a", "the", "of", "for"],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là 'the'. Ta dùng mạo từ 'the' trước danh từ 'rain' để chỉ định cụ thể về cơn mưa đó. Cấu trúc 'Despite the + noun' là cách sử dụng phổ biến."
+            },
+            {
+                question: "Our teacher explained the concept _____ detail so that everyone could understand it.",
+                options: ["in", "on", "with", "by"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'in'. Cụm 'in detail' là cách diễn đạt cố định trong tiếng Anh, có nghĩa là 'một cách chi tiết'. Các giới từ khác không phù hợp trong ngữ cảnh này."
+            },
+            {
+                question: "After finishing high school, he plans to _____ to university to study engineering.",
+                options: ["apply", "admit", "accept", "attend"],
+                correctAnswer: 3,
+                explanation: "Đáp án đúng là 'attend'. Động từ 'attend' được dùng khi nói về việc đi học ở một trường học/đại học. 'Apply' nghĩa là nộp đơn xin học, không phải đi học; 'admit' và 'accept' không phù hợp về nghĩa trong câu này."
+            },
+            {
+                question: "The documentary raised _____ about climate change and its impact on our planet.",
+                options: ["awareness", "conscious", "knowledge", "recognition"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'awareness'. Cụm 'raise awareness' là cách diễn đạt thường dùng để nói về việc làm tăng sự nhận thức/hiểu biết về một vấn đề nào đó, trong trường hợp này là biến đổi khí hậu."
+            },
+            {
+                question: "The museum offers free _____ to students who show their school ID cards.",
+                options: ["entry", "permit", "access", "entrance"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'entry'. Từ 'entry' phù hợp nhất khi nói về việc được phép vào một địa điểm mà không phải trả phí. 'Free entry' là cụm từ thông dụng trong ngữ cảnh này."
+            },
+            {
+                question: "The company has _____ an innovative approach to reduce its carbon footprint.",
+                options: ["adopted", "adapted", "adored", "admitted"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'adopted'. Động từ 'adopt' có nghĩa là 'áp dụng' hoặc 'thông qua' một phương pháp, ý tưởng mới, rất phù hợp với ngữ cảnh về việc áp dụng phương pháp đổi mới."
+            },
+            {
+                question: "His presentation was very _____ and kept the audience interested throughout.",
+                options: ["engaged", "engaging", "engagement", "engages"],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là 'engaging'. Đây là tính từ mô tả bài thuyết trình - có khả năng thu hút sự chú ý. Chúng ta cần một tính từ để bổ nghĩa cho danh từ 'presentation'."
+            },
+            {
+                question: "We need to find a sustainable _____ to the plastic pollution problem in our oceans.",
+                options: ["solve", "solution", "solving", "solvent"],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là 'solution'. Chúng ta cần một danh từ sau cụm 'a sustainable' và 'solution' (giải pháp) là từ phù hợp nhất trong ngữ cảnh nói về giải quyết vấn đề ô nhiễm nhựa."
+            },
+            {
+                question: "The teacher asked the students to _____ the results of their science experiment.",
+                options: ["record", "report", "recall", "recite"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'record'. Từ này có nghĩa là 'ghi lại', thích hợp nhất trong ngữ cảnh thí nghiệm khoa học khi học sinh cần ghi lại kết quả thu được."
+            },
+            {
+                question: "She feels very _____ about her upcoming job interview next week.",
+                options: ["nervous", "nervously", "nerve", "nerves"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'nervous'. Chúng ta cần một tính từ để mô tả cảm giác của người nói, và 'nervous' (lo lắng) là tính từ phù hợp. 'Nervously' là trạng từ, không phù hợp sau động từ feel."
+            },
+            {
+                question: "Students must submit their assignments _____ the deadline to avoid penalties.",
+                options: ["by", "until", "since", "during"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'by'. Giới từ 'by' được dùng để chỉ thời hạn cuối cùng mà một việc phải được hoàn thành, có nghĩa là 'trước hoặc vào thời điểm hạn chót'."
+            },
+            {
+                question: "The research findings _____ that there is a strong connection between diet and health.",
+                options: ["indicate", "indicates", "indicating", "indication"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'indicate'. Chủ ngữ 'findings' là danh từ số nhiều nên động từ phải ở dạng số nhiều không có 's'. 'Indicate' là dạng động từ đúng để diễn tả kết quả nghiên cứu cho thấy điều gì."
+            },
+            {
+                question: "Parents should encourage their children to develop good reading _____ from an early age.",
+                options: ["habits", "customs", "manners", "routines"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'habits'. Cụm 'reading habits' (thói quen đọc sách) là cách diễn đạt thông dụng nhất khi nói về hoạt động đọc sách thường xuyên."
+            },
+            {
+                question: "The government has implemented new policies to _____ economic growth in rural areas.",
+                options: ["stimulate", "simulate", "stipulate", "stabilize"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'stimulate'. Từ này có nghĩa là 'kích thích, thúc đẩy', phù hợp với ngữ cảnh nói về việc thúc đẩy tăng trưởng kinh tế."
+            },
+            {
+                question: "The river has been _____ by industrial waste from nearby factories.",
+                options: ["polluted", "populated", "poisoned", "punctuated"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'polluted'. Từ này có nghĩa là 'ô nhiễm', phù hợp nhất để nói về tình trạng của con sông bị ảnh hưởng bởi chất thải công nghiệp."
+            },
+            {
+                question: "She made a _____ to study medicine after volunteering at a local hospital.",
+                options: ["decision", "determination", "dedication", "destiny"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'decision'. Cụm 'make a decision' (đưa ra quyết định) là cách diễn đạt phổ biến khi nói về việc lựa chọn làm điều gì đó, trong trường hợp này là học y khoa."
+            },
+            {
+                question: "The ancient temple is considered a cultural _____ and attracts thousands of tourists each year.",
+                options: ["heritage", "history", "hierarchy", "harmony"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'heritage'. Từ 'heritage' (di sản) thường được dùng để nói về các công trình, tập quán có giá trị văn hóa, lịch sử được bảo tồn từ thế hệ này sang thế hệ khác."
+            },
+            {
+                question: "Despite the _____ of evidence, the police were unable to identify the culprit.",
+                options: ["abundance", "affluence", "alliance", "assurance"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'abundance'. Từ này có nghĩa là 'sự dồi dào, phong phú', phù hợp nhất để nói về việc có nhiều bằng chứng. Cụm 'abundance of evidence' là cách diễn đạt thường gặp."
+            },
+            {
+                question: "Regular exercise is _____ to maintaining good physical and mental health.",
+                options: ["essential", "excessive", "eventual", "exclusive"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'essential'. Từ này có nghĩa là 'thiết yếu, cần thiết', phù hợp để nhấn mạnh tầm quan trọng của việc tập thể dục đối với sức khỏe."
+            },
+            {
+                question: "The company has a strict policy _____ the use of mobile phones during working hours.",
+                options: ["regarding", "remarking", "remaking", "reminding"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'regarding'. Từ này có nghĩa là 'liên quan đến, về', thường được dùng khi nói về các chính sách, quy định về một vấn đề cụ thể."
+            },
+            {
+                question: "The local community has organized a fundraising event to _____ money for the new children's playground.",
+                options: ["raise", "rise", "arise", "arouse"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'raise'. Cụm 'raise money' (gây quỹ) là cách diễn đạt đúng khi nói về việc tổ chức các hoạt động để quyên góp tiền cho một mục đích nào đó."
+            },
+            {
+                question: "The conference provided an excellent _____ for scientists to exchange ideas and research findings.",
+                options: ["opportunity", "opening", "outlet", "option"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'opportunity'. Từ này có nghĩa là 'cơ hội', phù hợp nhất để nói về việc hội nghị tạo điều kiện cho các nhà khoa học trao đổi ý tưởng."
+            },
+            {
+                question: "The main _____ of the new transportation system is to reduce traffic congestion in the city center.",
+                options: ["purpose", "proposal", "project", "premise"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'purpose'. Từ này có nghĩa là 'mục đích', phù hợp nhất để nói về lý do chính hoặc mục tiêu của hệ thống giao thông mới."
+            },
+            {
+                question: "She has a remarkable _____ to learn new languages quickly and effortlessly.",
+                options: ["ability", "aptitude", "attitude", "ambition"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'ability'. Từ này có nghĩa là 'khả năng', dùng để nói về việc ai đó có thể làm được điều gì, trong trường hợp này là học ngôn ngữ mới nhanh chóng."
+            },
+            {
+                question: "The government should take _____ to ensure that all citizens have access to quality healthcare.",
+                options: ["action", "activity", "affair", "advance"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'action'. Cụm 'take action' (hành động) là cách diễn đạt phổ biến khi nói về việc thực hiện các bước cụ thể để giải quyết một vấn đề hoặc đạt được một mục tiêu."
+            },
+            {
+                question: "The new safety regulations have been _____ to protect workers in high-risk environments.",
+                options: ["implemented", "implied", "implicated", "improvised"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'implemented'. Từ này có nghĩa là 'thực hiện, triển khai', thích hợp khi nói về việc đưa các quy định mới vào thực tế."
+            },
+            {
+                question: "The historical building has been _____ to its original condition after years of neglect.",
+                options: ["restored", "resumed", "retained", "retrieved"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'restored'. Từ này có nghĩa là 'phục hồi, trùng tu', thích hợp nhất khi nói về việc đưa một công trình trở lại tình trạng ban đầu của nó."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = Array(quizData.length).fill(null);
+        let answered = false;
+
+        const startScreen = document.getElementById('start-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultsScreen = document.getElementById('results-screen');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const questionCounter = document.getElementById('question-counter');
+        const explanationContainer = document.getElementById('explanation-container');
+        const explanationText = document.getElementById('explanation-text');
+        const progressBar = document.getElementById('progress');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const correctCount = document.getElementById('correct-count');
+        const totalQuestions = document.getElementById('total-questions');
+        const scorePercentage = document.getElementById('score-percentage');
+
+        // Start quiz
+        document.getElementById('start-btn').addEventListener('click', startQuiz);
+        
+        // Navigation buttons
+        prevBtn.addEventListener('click', showPreviousQuestion);
+        nextBtn.addEventListener('click', showNextQuestion);
+        
+        // Restart quiz
+        document.getElementById('restart-btn').addEventListener('click', restartQuiz);
+
+        function startQuiz() {
+            startScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            showQuestion(currentQuestion);
+        }
+
+        function showQuestion(index) {
+            const question = quizData[index];
+            
+            // Update question text and counter
+            questionText.textContent = question.question;
+            questionCounter.textContent = `Câu ${index + 1}/${quizData.length}`;
+            
+            // Update progress bar
+            progressBar.style.width = `${((index + 1) / quizData.length) * 100}%`;
+            
+            // Clear previous options
+            optionsContainer.innerHTML = '';
+            
+            // Add options
+            question.options.forEach((option, i) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option border p-3 rounded-md cursor-pointer';
+                
+                if (userAnswers[index] === i) {
+                    optionElement.classList.add('selected');
+                    
+                    if (i === question.correctAnswer) {
+                        optionElement.classList.add('correct');
+                    } else {
+                        optionElement.classList.add('incorrect');
+                    }
+                }
+                
+                optionElement.innerHTML = `
+                    <label class="flex items-center cursor-pointer">
+                        <input type="radio" name="question" class="hidden" value="${i}" ${userAnswers[index] === i ? 'checked' : ''}>
+                        <span class="font-medium">${String.fromCharCode(65 + i)}. ${option}</span>
+                    </label>
+                `;
+                
+                optionElement.addEventListener('click', () => selectOption(i));
+                optionsContainer.appendChild(optionElement);
+            });
+            
+            // Hide explanation container if not answered
+            explanationContainer.style.display = userAnswers[index] !== null ? 'block' : 'none';
+            
+            if (userAnswers[index] !== null) {
+                explanationText.textContent = question.explanation;
+                answered = true;
+                nextBtn.disabled = false;
+            } else {
+                answered = false;
+                nextBtn.disabled = true;
+            }
+            
+            // Update navigation buttons
+            prevBtn.disabled = index === 0;
+            
+            // If last question, disable next button unless answered
+            if (index === quizData.length - 1 && userAnswers[index] !== null) {
+                nextBtn.textContent = 'Kết thúc';
+            } else {
+                nextBtn.textContent = 'Câu tiếp theo';
+            }
+        }
+
+        function selectOption(optionIndex) {
+            if (userAnswers[currentQuestion] !== null) {
+                return; // Prevent changing answer if already answered
+            }
+            
+            userAnswers[currentQuestion] = optionIndex;
+            
+            if (optionIndex === quizData[currentQuestion].correctAnswer) {
+                score++;
+            }
+            
+            // Show explanation
+            explanationContainer.style.display = 'block';
+            explanationText.textContent = quizData[currentQuestion].explanation;
+            
+            // Update options styling
+            const options = document.querySelectorAll('.option');
+            
+            options.forEach((option, i) => {
+                if (i === optionIndex) {
+                    option.classList.add('selected');
+                    
+                    if (i === quizData[currentQuestion].correctAnswer) {
+                        option.classList.add('correct');
+                    } else {
+                        option.classList.add('incorrect');
+                    }
+                }
+                
+                if (i === quizData[currentQuestion].correctAnswer && i !== optionIndex) {
+                    option.classList.add('correct');
+                }
+            });
+            
+            answered = true;
+            nextBtn.disabled = false;
+            
+            // If last question, change next button to finish
+            if (currentQuestion === quizData.length - 1) {
+                nextBtn.textContent = 'Kết thúc';
+            }
+        }
+
+        function showPreviousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+            }
+        }
+
+        function showNextQuestion() {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+                answered = userAnswers[currentQuestion] !== null;
+                nextBtn.disabled = !answered;
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            quizScreen.classList.add('hidden');
+            resultsScreen.classList.remove('hidden');
+            
+            correctCount.textContent = score;
+            totalQuestions.textContent = quizData.length;
+            
+            const percentage = Math.round((score / quizData.length) * 100);
+            scorePercentage.textContent = `${percentage}%`;
+            
+            let message = '';
+            
+            if (percentage >= 90) {
+                message = 'Xuất sắc! Bạn đã thành thạo bài học!';
+            } else if (percentage >= 80) {
+                message = 'Rất tốt! Bạn đã hiểu hầu hết nội dung!';
+            } else if (percentage >= 70) {
+                message = 'Tốt! Bạn đã nắm được nhiều điểm quan trọng!';
+            } else if (percentage >= 60) {
+                message = 'Khá! Hãy tiếp tục cố gắng!';
+            } else {
+                message = 'Bạn cần cải thiện thêm. Hãy ôn tập lại!';
+            }
+            
+            scorePercentage.innerHTML += `<p class="text-lg mt-2 font-normal text-gray-600">${message}</p>`;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = Array(quizData.length).fill(null);
+            answered = false;
+            
+            resultsScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            
+            showQuestion(currentQuestion);
+        }
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
