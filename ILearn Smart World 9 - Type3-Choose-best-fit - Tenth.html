@@ -1,0 +1,1134 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Tiếng Anh Lớp 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .question-container {
+            display: none;
+        }
+        .question-container.active {
+            display: block;
+        }
+        .option-label {
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .option-label:hover {
+            background-color: #f3f4f6;
+        }
+        .option-radio:checked + .option-label {
+            background-color: #dbeafe;
+            border: 1px solid #3b82f6;
+        }
+        .correct-answer {
+            background-color: #d1fae5 !important;
+            border: 1px solid #10b981 !important;
+        }
+        .wrong-answer {
+            background-color: #fee2e2 !important;
+            border: 1px solid #ef4444 !important;
+        }
+        .explanation {
+            display: none;
+        }
+        .disabled {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-blue-600 mb-2">Bài Trắc Nghiệm Tiếng Anh Lớp 9</h1>
+            <p class="text-gray-600">ILearn Smart World 9 - Choose the word/phrase/sentence or best answer</p>
+        </header>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <div class="text-xl font-medium" id="question-counter">Câu hỏi 1/30</div>
+                <div class="text-blue-600 font-medium" id="score-display">Điểm: 0/30</div>
+            </div>
+
+            <div id="quiz-container">
+                <!-- Câu hỏi 1 -->
+                <div class="question-container active" data-question="1">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">1. _____ is a traditional Vietnamese celebration that honors family ancestors.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q1-a" name="q1" value="A" class="option-radio hidden">
+                                <label for="q1-a" class="option-label w-full">A. Tet</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q1-b" name="q1" value="B" class="option-radio hidden">
+                                <label for="q1-b" class="option-label w-full">B. Halloween</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q1-c" name="q1" value="C" class="option-radio hidden">
+                                <label for="q1-c" class="option-label w-full">C. Christmas</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q1-d" name="q1" value="D" class="option-radio hidden">
+                                <label for="q1-d" class="option-label w-full">D. Easter</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: A</strong></p>
+                        <p><em>Giải thích:</em> Tết là lễ hội truyền thống của Việt Nam để tôn vinh tổ tiên. Halloween, Christmas (Giáng sinh) và Easter (Lễ Phục sinh) là các lễ hội phương Tây không liên quan đến việc tôn vinh tổ tiên trong văn hóa Việt Nam.</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 2 -->
+                <div class="question-container" data-question="2">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">2. The Ha Long Bay is a popular tourist _____ in Vietnam.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q2-a" name="q2" value="A" class="option-radio hidden">
+                                <label for="q2-a" class="option-label w-full">A. city</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q2-b" name="q2" value="B" class="option-radio hidden">
+                                <label for="q2-b" class="option-label w-full">B. destination</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q2-c" name="q2" value="C" class="option-radio hidden">
+                                <label for="q2-c" class="option-label w-full">C. hotel</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q2-d" name="q2" value="D" class="option-radio hidden">
+                                <label for="q2-d" class="option-label w-full">D. trip</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: B</strong></p>
+                        <p><em>Giải thích:</em> "Destination" (điểm đến) là từ phù hợp nhất khi nói về một địa điểm du lịch nổi tiếng. Vịnh Hạ Long là một điểm đến du lịch nổi tiếng, không phải là một thành phố (city), khách sạn (hotel) hay chuyến đi (trip).</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 3 -->
+                <div class="question-container" data-question="3">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">3. She _____ to Ho Chi Minh City many times, but she still hasn't visited Hanoi.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q3-a" name="q3" value="A" class="option-radio hidden">
+                                <label for="q3-a" class="option-label w-full">A. has been</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q3-b" name="q3" value="B" class="option-radio hidden">
+                                <label for="q3-b" class="option-label w-full">B. went</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q3-c" name="q3" value="C" class="option-radio hidden">
+                                <label for="q3-c" class="option-label w-full">C. was going</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q3-d" name="q3" value="D" class="option-radio hidden">
+                                <label for="q3-d" class="option-label w-full">D. is going</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: A</strong></p>
+                        <p><em>Giải thích:</em> "Has been" (đã từng đến) là dạng thì hiện tại hoàn thành, dùng để chỉ kinh nghiệm đã có trong quá khứ và vẫn còn liên quan đến hiện tại. Cấu trúc này phù hợp khi nói về việc một người đã từng đến một địa điểm nhiều lần. Các lựa chọn khác không đúng về ngữ pháp hoặc ngữ nghĩa trong ngữ cảnh này.</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 4 -->
+                <div class="question-container" data-question="4">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">4. If I _____ how to speak Vietnamese, I would be able to communicate better with locals.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q4-a" name="q4" value="A" class="option-radio hidden">
+                                <label for="q4-a" class="option-label w-full">A. know</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q4-b" name="q4" value="B" class="option-radio hidden">
+                                <label for="q4-b" class="option-label w-full">B. knew</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q4-c" name="q4" value="C" class="option-radio hidden">
+                                <label for="q4-c" class="option-label w-full">C. will know</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q4-d" name="q4" value="D" class="option-radio hidden">
+                                <label for="q4-d" class="option-label w-full">D. am knowing</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: B</strong></p>
+                        <p><em>Giải thích:</em> Câu này là câu điều kiện loại 2 (type 2 conditional) diễn tả một giả định trái với thực tế ở hiện tại. Cấu trúc loại này là "If + quá khứ đơn, would + động từ nguyên mẫu". Do đó "knew" (quá khứ của know) là đáp án đúng. Các lựa chọn khác không phù hợp với cấu trúc câu điều kiện loại 2.</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 5 -->
+                <div class="question-container" data-question="5">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">5. Many students find mathematics _____ than literature.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q5-a" name="q5" value="A" class="option-radio hidden">
+                                <label for="q5-a" class="option-label w-full">A. more difficult</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q5-b" name="q5" value="B" class="option-radio hidden">
+                                <label for="q5-b" class="option-label w-full">B. difficulter</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q5-c" name="q5" value="C" class="option-radio hidden">
+                                <label for="q5-c" class="option-label w-full">C. most difficult</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q5-d" name="q5" value="D" class="option-radio hidden">
+                                <label for="q5-d" class="option-label w-full">D. as difficult</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: A</strong></p>
+                        <p><em>Giải thích:</em> Cấu trúc so sánh hơn với tính từ dài (hơn 2 âm tiết) như "difficult" là "more + tính từ". Do đó, "more difficult" (khó hơn) là đáp án đúng. "Difficulter" không tồn tại trong tiếng Anh. "Most difficult" là dạng so sánh nhất, không phù hợp trong câu so sánh với "than". "As difficult" là cấu trúc so sánh bằng, không phù hợp với ngữ cảnh câu.</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 6 -->
+                <div class="question-container" data-question="6">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">6. The ancient temple _____ during the 15th century.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q6-a" name="q6" value="A" class="option-radio hidden">
+                                <label for="q6-a" class="option-label w-full">A. builds</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q6-b" name="q6" value="B" class="option-radio hidden">
+                                <label for="q6-b" class="option-label w-full">B. built</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q6-c" name="q6" value="C" class="option-radio hidden">
+                                <label for="q6-c" class="option-label w-full">C. was built</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q6-d" name="q6" value="D" class="option-radio hidden">
+                                <label for="q6-d" class="option-label w-full">D. has built</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: C</strong></p>
+                        <p><em>Giải thích:</em> "Was built" (được xây dựng) là dạng bị động ở thì quá khứ đơn, phù hợp khi nói về một sự việc đã diễn ra trong quá khứ và người/vật thể là đối tượng chịu tác động của hành động. Ngôi đền không tự xây dựng nên mình, mà được con người xây dựng, do đó cần dùng dạng bị động.</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 7 -->
+                <div class="question-container" data-question="7">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">7. You should _____ warm clothes when visiting Sapa in winter.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q7-a" name="q7" value="A" class="option-radio hidden">
+                                <label for="q7-a" class="option-label w-full">A. wear</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q7-b" name="q7" value="B" class="option-radio hidden">
+                                <label for="q7-b" class="option-label w-full">B. to wear</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q7-c" name="q7" value="C" class="option-radio hidden">
+                                <label for="q7-c" class="option-label w-full">C. wearing</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q7-d" name="q7" value="D" class="option-radio hidden">
+                                <label for="q7-d" class="option-label w-full">D. worn</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: A</strong></p>
+                        <p><em>Giải thích:</em> Sau "should" cần dùng động từ nguyên mẫu không "to" (bare infinitive). Vì vậy, "wear" là đáp án đúng. "To wear" sai vì sau "should" không cần "to". "Wearing" và "worn" không phù hợp về mặt ngữ pháp trong cấu trúc này.</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 8 -->
+                <div class="question-container" data-question="8">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">8. _____ you ever tried Vietnamese street food?</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q8-a" name="q8" value="A" class="option-radio hidden">
+                                <label for="q8-a" class="option-label w-full">A. Do</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q8-b" name="q8" value="B" class="option-radio hidden">
+                                <label for="q8-b" class="option-label w-full">B. Have</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q8-c" name="q8" value="C" class="option-radio hidden">
+                                <label for="q8-c" class="option-label w-full">C. Are</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q8-d" name="q8" value="D" class="option-radio hidden">
+                                <label for="q8-d" class="option-label w-full">D. Did</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: B</strong></p>
+                        <p><em>Giải thích:</em> "Have you ever tried" là cấu trúc của thì hiện tại hoàn thành, dùng để hỏi về kinh nghiệm đã có trong quá khứ cho đến thời điểm hiện tại. Đây là cách chính xác để hỏi về kinh nghiệm ăn đồ ăn đường phố Việt Nam. Các đáp án khác không tạo thành cấu trúc câu hỏi đúng ngữ pháp trong ngữ cảnh này.</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 9 -->
+                <div class="question-container" data-question="9">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">9. The students are looking forward to _____ their field trip to the museum.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q9-a" name="q9" value="A" class="option-radio hidden">
+                                <label for="q9-a" class="option-label w-full">A. go</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q9-b" name="q9" value="B" class="option-radio hidden">
+                                <label for="q9-b" class="option-label w-full">B. to go</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q9-c" name="q9" value="C" class="option-radio hidden">
+                                <label for="q9-c" class="option-label w-full">C. going</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q9-d" name="q9" value="D" class="option-radio hidden">
+                                <label for="q9-d" class="option-label w-full">D. went</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: C</strong></p>
+                        <p><em>Giải thích:</em> Sau cụm "look forward to" phải là danh từ hoặc động từ dạng V-ing (gerund). Vì vậy, "going" là đáp án đúng. "Go", "to go" và "went" không phù hợp với cấu trúc ngữ pháp "look forward to".</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 10 -->
+                <div class="question-container" data-question="10">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">10. She _____ visit her grandparents in the countryside every summer holiday.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q10-a" name="q10" value="A" class="option-radio hidden">
+                                <label for="q10-a" class="option-label w-full">A. use to</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q10-b" name="q10" value="B" class="option-radio hidden">
+                                <label for="q10-b" class="option-label w-full">B. used to</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q10-c" name="q10" value="C" class="option-radio hidden">
+                                <label for="q10-c" class="option-label w-full">C. is used to</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q10-d" name="q10" value="D" class="option-radio hidden">
+                                <label for="q10-d" class="option-label w-full">D. was used to</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: B</strong></p>
+                        <p><em>Giải thích:</em> "Used to + V" là cấu trúc dùng để nói về một thói quen hoặc trạng thái thường xuyên xảy ra trong quá khứ nhưng hiện tại không còn nữa. "Use to" là dạng sai chính tả. "Is used to" và "was used to" là cấu trúc khác, có nghĩa là "quen với việc gì đó" và cần theo sau bởi danh từ hoặc V-ing.</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 11 -->
+                <div class="question-container" data-question="11">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">11. I wish I _____ how to play a traditional Vietnamese musical instrument.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q11-a" name="q11" value="A" class="option-radio hidden">
+                                <label for="q11-a" class="option-label w-full">A. know</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q11-b" name="q11" value="B" class="option-radio hidden">
+                                <label for="q11-b" class="option-label w-full">B. knew</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q11-c" name="q11" value="C" class="option-radio hidden">
+                                <label for="q11-c" class="option-label w-full">C. will know</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q11-d" name="q11" value="D" class="option-radio hidden">
+                                <label for="q11-d" class="option-label w-full">D. am knowing</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: B</strong></p>
+                        <p><em>Giải thích:</em> Sau "wish" khi nói về mong ước không có thực ở hiện tại, ta dùng thì quá khứ đơn. Do đó, "knew" là đáp án đúng. Cấu trúc này tương tự với câu điều kiện loại 2. Các lựa chọn khác không phù hợp với cấu trúc "wish + quá khứ đơn" để diễn tả ước muốn ở hiện tại.</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 12 -->
+                <div class="question-container" data-question="12">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">12. Vietnamese students often participate in _____ activities after school.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q12-a" name="q12" value="A" class="option-radio hidden">
+                                <label for="q12-a" class="option-label w-full">A. extracurricular</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q12-b" name="q12" value="B" class="option-radio hidden">
+                                <label for="q12-b" class="option-label w-full">B. extra-curriculum</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q12-c" name="q12" value="C" class="option-radio hidden">
+                                <label for="q12-c" class="option-label w-full">C. post-school</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q12-d" name="q12" value="D" class="option-radio hidden">
+                                <label for="q12-d" class="option-label w-full">D. after-study</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: A</strong></p>
+                        <p><em>Giải thích:</em> "Extracurricular" (ngoại khóa) là từ chính xác để chỉ các hoạt động diễn ra ngoài chương trình học chính. "Extra-curriculum", "post-school" và "after-study" không phải là các thuật ngữ thông dụng trong tiếng Anh để chỉ các hoạt động ngoại khóa.</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 13 -->
+                <div class="question-container" data-question="13">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">13. The government is taking measures to _____ air pollution in major cities.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q13-a" name="q13" value="A" class="option-radio hidden">
+                                <label for="q13-a" class="option-label w-full">A. increase</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q13-b" name="q13" value="B" class="option-radio hidden">
+                                <label for="q13-b" class="option-label w-full">B. reduce</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q13-c" name="q13" value="C" class="option-radio hidden">
+                                <label for="q13-c" class="option-label w-full">C. produce</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q13-d" name="q13" value="D" class="option-radio hidden">
+                                <label for="q13-d" class="option-label w-full">D. create</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: B</strong></p>
+                        <p><em>Giải thích:</em> "Reduce" (giảm) là động từ hợp lý nhất khi nói về các biện pháp đối phó với ô nhiễm không khí. Chính phủ muốn giảm chứ không phải tăng (increase), tạo ra (produce) hay phát triển (create) ô nhiễm không khí.</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 14 -->
+                <div class="question-container" data-question="14">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">14. She's very keen _____ learning about Vietnamese culture.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q14-a" name="q14" value="A" class="option-radio hidden">
+                                <label for="q14-a" class="option-label w-full">A. on</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q14-b" name="q14" value="B" class="option-radio hidden">
+                                <label for="q14-b" class="option-label w-full">B. in</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q14-c" name="q14" value="C" class="option-radio hidden">
+                                <label for="q14-c" class="option-label w-full">C. at</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q14-d" name="q14" value="D" class="option-radio hidden">
+                                <label for="q14-d" class="option-label w-full">D. for</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: A</strong></p>
+                        <p><em>Giải thích:</em> "Keen on" là cụm từ cố định có nghĩa là "hứng thú với" hoặc "thích". Đây là cách đúng để diễn tả sự quan tâm đến việc học hỏi về văn hóa Việt Nam. Các giới từ khác không đi với "keen" trong ngữ cảnh này.</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 15 -->
+                <div class="question-container" data-question="15">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">15. By the time we arrive, the concert _____.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q15-a" name="q15" value="A" class="option-radio hidden">
+                                <label for="q15-a" class="option-label w-full">A. will start</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q15-b" name="q15" value="B" class="option-radio hidden">
+                                <label for="q15-b" class="option-label w-full">B. starts</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q15-c" name="q15" value="C" class="option-radio hidden">
+                                <label for="q15-c" class="option-label w-full">C. will have started</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q15-d" name="q15" value="D" class="option-radio hidden">
+                                <label for="q15-d" class="option-label w-full">D. is starting</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: C</strong></p>
+                        <p><em>Giải thích:</em> "Will have started" (sẽ đã bắt đầu) là dạng thì tương lai hoàn thành, dùng để diễn tả một hành động sẽ hoàn thành trước một thời điểm trong tương lai. Cấu trúc "By the time + hiện tại đơn, tương lai hoàn thành" là cấu trúc phổ biến trong tiếng Anh. Các lựa chọn khác không phù hợp với ngữ cảnh này.</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 16 -->
+                <div class="question-container" data-question="16">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">16. The teacher suggested _____ a group project about Vietnamese folk tales.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q16-a" name="q16" value="A" class="option-radio hidden">
+                                <label for="q16-a" class="option-label w-full">A. do</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q16-b" name="q16" value="B" class="option-radio hidden">
+                                <label for="q16-b" class="option-label w-full">B. to do</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q16-c" name="q16" value="C" class="option-radio hidden">
+                                <label for="q16-c" class="option-label w-full">C. doing</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q16-d" name="q16" value="D" class="option-radio hidden">
+                                <label for="q16-d" class="option-label w-full">D. we do</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: C</strong></p>
+                        <p><em>Giải thích:</em> Sau động từ "suggest" ta có thể dùng V-ing hoặc that-clause với should (thường bỏ should). Trong trường hợp này, "doing" là lựa chọn đúng vì không có mạo từ "that" đứng trước. "Do", "to do" và "we do" không phù hợp với cấu trúc ngữ pháp của "suggest".</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 17 -->
+                <div class="question-container" data-question="17">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">17. My mother asked me _____ the house while she was away.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q17-a" name="q17" value="A" class="option-radio hidden">
+                                <label for="q17-a" class="option-label w-full">A. take care of</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q17-b" name="q17" value="B" class="option-radio hidden">
+                                <label for="q17-b" class="option-label w-full">B. taking care of</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q17-c" name="q17" value="C" class="option-radio hidden">
+                                <label for="q17-c" class="option-label w-full">C. to take care of</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q17-d" name="q17" value="D" class="option-radio hidden">
+                                <label for="q17-d" class="option-label w-full">D. took care of</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: C</strong></p>
+                        <p><em>Giải thích:</em> Sau động từ "ask someone" (yêu cầu ai đó làm gì), ta dùng động từ nguyên mẫu có "to" (to-infinitive). Vì vậy, "to take care of" là đáp án đúng. Các lựa chọn khác không phù hợp với cấu trúc ngữ pháp của "ask someone to do something".</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 18 -->
+                <div class="question-container" data-question="18">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">18. If I had studied harder, I _____ the English competition last month.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q18-a" name="q18" value="A" class="option-radio hidden">
+                                <label for="q18-a" class="option-label w-full">A. will win</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q18-b" name="q18" value="B" class="option-radio hidden">
+                                <label for="q18-b" class="option-label w-full">B. would win</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q18-c" name="q18" value="C" class="option-radio hidden">
+                                <label for="q18-c" class="option-label w-full">C. would have won</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q18-d" name="q18" value="D" class="option-radio hidden">
+                                <label for="q18-d" class="option-label w-full">D. had won</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: C</strong></p>
+                        <p><em>Giải thích:</em> Đây là câu điều kiện loại 3 (type 3 conditional), diễn tả một điều kiện không thể xảy ra trong quá khứ và hậu quả giả định của nó. Cấu trúc của loại này là "If + quá khứ hoàn thành, would have + quá khứ phân từ". Do đó, "would have won" là đáp án đúng. Các lựa chọn khác không phù hợp với cấu trúc câu điều kiện loại 3.</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 19 -->
+                <div class="question-container" data-question="19">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">19. The Mekong Delta is known for its _____ floating markets.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q19-a" name="q19" value="A" class="option-radio hidden">
+                                <label for="q19-a" class="option-label w-full">A. colorful</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q19-b" name="q19" value="B" class="option-radio hidden">
+                                <label for="q19-b" class="option-label w-full">B. colorfull</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q19-c" name="q19" value="C" class="option-radio hidden">
+                                <label for="q19-c" class="option-label w-full">C. colourful</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q19-d" name="q19" value="D" class="option-radio hidden">
+                                <label for="q19-d" class="option-label w-full">D. A and C are both correct</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: D</strong></p>
+                        <p><em>Giải thích:</em> Cả "colorful" (chính tả Mỹ) và "colourful" (chính tả Anh) đều là cách viết đúng của từ này, tùy thuộc vào hệ thống chính tả bạn đang sử dụng. "Colorfull" là cách viết sai chính tả.</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 20 -->
+                <div class="question-container" data-question="20">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">20. He has been living in Hanoi _____ five years.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q20-a" name="q20" value="A" class="option-radio hidden">
+                                <label for="q20-a" class="option-label w-full">A. since</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q20-b" name="q20" value="B" class="option-radio hidden">
+                                <label for="q20-b" class="option-label w-full">B. for</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q20-c" name="q20" value="C" class="option-radio hidden">
+                                <label for="q20-c" class="option-label w-full">C. during</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q20-d" name="q20" value="D" class="option-radio hidden">
+                                <label for="q20-d" class="option-label w-full">D. until</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: B</strong></p>
+                        <p><em>Giải thích:</em> "For" được dùng với khoảng thời gian (five years). "Since" được dùng với một thời điểm cụ thể (since 2020). "During" và "until" không phù hợp với ngữ cảnh thì hiện tại hoàn thành tiếp diễn (has been living).</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 21 -->
+                <div class="question-container" data-question="21">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">21. She speaks English _____.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q21-a" name="q21" value="A" class="option-radio hidden">
+                                <label for="q21-a" class="option-label w-full">A. fluent</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q21-b" name="q21" value="B" class="option-radio hidden">
+                                <label for="q21-b" class="option-label w-full">B. fluently</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q21-c" name="q21" value="C" class="option-radio hidden">
+                                <label for="q21-c" class="option-label w-full">C. with fluent</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q21-d" name="q21" value="D" class="option-radio hidden">
+                                <label for="q21-d" class="option-label w-full">D. in fluent</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: B</strong></p>
+                        <p><em>Giải thích:</em> Để bổ nghĩa cho động từ "speaks", ta cần dùng trạng từ (adverb). "Fluently" là trạng từ đúng, còn "fluent" là tính từ. "With fluent" và "in fluent" là cách dùng không chính xác trong tiếng Anh.</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 22 -->
+                <div class="question-container" data-question="22">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">22. My sister is _____ than me at playing the piano.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q22-a" name="q22" value="A" class="option-radio hidden">
+                                <label for="q22-a" class="option-label w-full">A. gooder</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q22-b" name="q22" value="B" class="option-radio hidden">
+                                <label for="q22-b" class="option-label w-full">B. more good</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q22-c" name="q22" value="C" class="option-radio hidden">
+                                <label for="q22-c" class="option-label w-full">C. better</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q22-d" name="q22" value="D" class="option-radio hidden">
+                                <label for="q22-d" class="option-label w-full">D. more well</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: C</strong></p>
+                        <p><em>Giải thích:</em> "Better" là dạng so sánh hơn của "good". "Gooder" và "more good" không tồn tại trong tiếng Anh. "More well" không phải là cách diễn đạt đúng trong ngữ cảnh này.</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 23 -->
+                <div class="question-container" data-question="23">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">23. You _____ eat a lot of junk food if you want to stay healthy.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q23-a" name="q23" value="A" class="option-radio hidden">
+                                <label for="q23-a" class="option-label w-full">A. should</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q23-b" name="q23" value="B" class="option-radio hidden">
+                                <label for="q23-b" class="option-label w-full">B. can</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q23-c" name="q23" value="C" class="option-radio hidden">
+                                <label for="q23-c" class="option-label w-full">C. shouldn't</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q23-d" name="q23" value="D" class="option-radio hidden">
+                                <label for="q23-d" class="option-label w-full">D. must</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: C</strong></p>
+                        <p><em>Giải thích:</em> "Shouldn't" (không nên) là lựa chọn hợp lý nhất trong ngữ cảnh này vì đang đưa ra lời khuyên không nên ăn nhiều đồ ăn nhanh nếu muốn khỏe mạnh. "Should" (nên), "can" (có thể) và "must" (phải) đều mang nghĩa ngược lại với ngữ cảnh câu.</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 24 -->
+                <div class="question-container" data-question="24">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">24. You need to hand in your assignment _____ Friday.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q24-a" name="q24" value="A" class="option-radio hidden">
+                                <label for="q24-a" class="option-label w-full">A. in</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q24-b" name="q24" value="B" class="option-radio hidden">
+                                <label for="q24-b" class="option-label w-full">B. on</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q24-c" name="q24" value="C" class="option-radio hidden">
+                                <label for="q24-c" class="option-label w-full">C. at</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q24-d" name="q24" value="D" class="option-radio hidden">
+                                <label for="q24-d" class="option-label w-full">D. by</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: D</strong></p>
+                        <p><em>Giải thích:</em> "By" (trước/chậm nhất là) là giới từ dùng để chỉ thời hạn cuối cùng. "In", "on", và "at" không phù hợp với ngữ cảnh thời hạn nộp bài.</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 25 -->
+                <div class="question-container" data-question="25">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">25. I would rather _____ at home than go to the cinema tonight.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q25-a" name="q25" value="A" class="option-radio hidden">
+                                <label for="q25-a" class="option-label w-full">A. stay</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q25-b" name="q25" value="B" class="option-radio hidden">
+                                <label for="q25-b" class="option-label w-full">B. to stay</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q25-c" name="q25" value="C" class="option-radio hidden">
+                                <label for="q25-c" class="option-label w-full">C. staying</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q25-d" name="q25" value="D" class="option-radio hidden">
+                                <label for="q25-d" class="option-label w-full">D. stayed</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: A</strong></p>
+                        <p><em>Giải thích:</em> Cấu trúc "would rather + V" là cấu trúc cố định, trong đó V là động từ nguyên mẫu không "to". Do đó, "stay" là đáp án đúng. "To stay", "staying" và "stayed" không phù hợp với cấu trúc "would rather".</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 26 -->
+                <div class="question-container" data-question="26">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">26. She denied _____ the window.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q26-a" name="q26" value="A" class="option-radio hidden">
+                                <label for="q26-a" class="option-label w-full">A. break</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q26-b" name="q26" value="B" class="option-radio hidden">
+                                <label for="q26-b" class="option-label w-full">B. breaking</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q26-c" name="q26" value="C" class="option-radio hidden">
+                                <label for="q26-c" class="option-label w-full">C. to break</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q26-d" name="q26" value="D" class="option-radio hidden">
+                                <label for="q26-d" class="option-label w-full">D. broke</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: B</strong></p>
+                        <p><em>Giải thích:</em> Sau động từ "deny" (phủ nhận) cần dùng động từ ở dạng V-ing (gerund). Vì vậy, "breaking" là đáp án đúng. "Break", "to break" và "broke" không phù hợp với cấu trúc ngữ pháp của "deny".</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 27 -->
+                <div class="question-container" data-question="27">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">27. The children were excited _____ their school trip.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q27-a" name="q27" value="A" class="option-radio hidden">
+                                <label for="q27-a" class="option-label w-full">A. with</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q27-b" name="q27" value="B" class="option-radio hidden">
+                                <label for="q27-b" class="option-label w-full">B. about</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q27-c" name="q27" value="C" class="option-radio hidden">
+                                <label for="q27-c" class="option-label w-full">C. on</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q27-d" name="q27" value="D" class="option-radio hidden">
+                                <label for="q27-d" class="option-label w-full">D. by</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: B</strong></p>
+                        <p><em>Giải thích:</em> "Excited about" là cụm từ cố định trong tiếng Anh để diễn tả sự phấn khích về điều gì đó sắp xảy ra. "With", "on" và "by" không phải là giới từ thích hợp để đi với "excited" trong ngữ cảnh này.</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 28 -->
+                <div class="question-container" data-question="28">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">28. The museum is open _____ 9 a.m. _____ 5 p.m. every day.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q28-a" name="q28" value="A" class="option-radio hidden">
+                                <label for="q28-a" class="option-label w-full">A. from / to</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q28-b" name="q28" value="B" class="option-radio hidden">
+                                <label for="q28-b" class="option-label w-full">B. at / to</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q28-c" name="q28" value="C" class="option-radio hidden">
+                                <label for="q28-c" class="option-label w-full">C. from / at</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q28-d" name="q28" value="D" class="option-radio hidden">
+                                <label for="q28-d" class="option-label w-full">D. since / until</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: A</strong></p>
+                        <p><em>Giải thích:</em> "From... to..." là cấu trúc cố định dùng để chỉ khoảng thời gian từ lúc bắt đầu đến lúc kết thúc. "At/to", "from/at" và "since/until" không phải là các cặp giới từ thích hợp để chỉ giờ mở cửa.</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 29 -->
+                <div class="question-container" data-question="29">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">29. She _____ television when her friend called.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q29-a" name="q29" value="A" class="option-radio hidden">
+                                <label for="q29-a" class="option-label w-full">A. watched</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q29-b" name="q29" value="B" class="option-radio hidden">
+                                <label for="q29-b" class="option-label w-full">B. was watching</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q29-c" name="q29" value="C" class="option-radio hidden">
+                                <label for="q29-c" class="option-label w-full">C. has watched</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q29-d" name="q29" value="D" class="option-radio hidden">
+                                <label for="q29-d" class="option-label w-full">D. watches</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: B</strong></p>
+                        <p><em>Giải thích:</em> "Was watching" (đang xem) là thì quá khứ tiếp diễn, dùng để diễn tả một hành động đang diễn ra tại một thời điểm cụ thể trong quá khứ (khi bạn của cô ấy gọi). Các lựa chọn khác không phù hợp với ngữ cảnh câu.</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 30 -->
+                <div class="question-container" data-question="30">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-medium mb-2">30. We should protect the environment _____ future generations.</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="radio" id="q30-a" name="q30" value="A" class="option-radio hidden">
+                                <label for="q30-a" class="option-label w-full">A. for</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q30-b" name="q30" value="B" class="option-radio hidden">
+                                <label for="q30-b" class="option-label w-full">B. to</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q30-c" name="q30" value="C" class="option-radio hidden">
+                                <label for="q30-c" class="option-label w-full">C. with</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="q30-d" name="q30" value="D" class="option-radio hidden">
+                                <label for="q30-d" class="option-label w-full">D. on</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation p-4 mt-2 bg-gray-50 rounded-md border border-gray-200">
+                        <p><strong>Đáp án đúng: A</strong></p>
+                        <p><em>Giải thích:</em> "For" (cho/vì) là giới từ phù hợp nhất khi nói về việc làm điều gì đó vì lợi ích của ai đó. Ở đây, chúng ta bảo vệ môi trường vì lợi ích của các thế hệ tương lai. "To", "with" và "on" không phù hợp trong ngữ cảnh này.</p>
+                    </div>
+                </div>
+
+                <!-- Nút điều hướng -->
+                <div class="flex justify-between mt-6">
+                    <button id="prev-btn" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded transition">Câu trước</button>
+                    <button id="next-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded transition">Câu tiếp theo</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bảng kết quả -->
+        <div id="results" class="bg-white rounded-lg shadow-lg p-6 hidden">
+            <h2 class="text-2xl font-bold text-center mb-6">Kết quả bài kiểm tra</h2>
+            <div class="text-center mb-6">
+                <div class="text-4xl font-bold text-blue-600 mb-2" id="final-score">0/30</div>
+                <div class="text-lg text-gray-600" id="percentage">0%</div>
+            </div>
+            <div class="grid grid-cols-6 gap-2 mb-6">
+                <!-- Các số câu hỏi sẽ được tạo bằng JavaScript -->
+            </div>
+            <div class="text-center">
+                <button id="restart-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg transition">Làm lại bài kiểm tra</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const questions = document.querySelectorAll('.question-container');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const quizContainer = document.getElementById('quiz-container');
+            const resultsContainer = document.getElementById('results');
+            const restartBtn = document.getElementById('restart-btn');
+            const questionCounter = document.getElementById('question-counter');
+            const scoreDisplay = document.getElementById('score-display');
+            const finalScore = document.getElementById('final-score');
+            const percentageDisplay = document.getElementById('percentage');
+            
+            let currentQuestionIndex = 0;
+            let score = 0;
+            let answeredQuestions = new Set();
+            const totalQuestions = questions.length;
+            const answers = {
+                q1: 'A', q2: 'B', q3: 'A', q4: 'B', q5: 'A', 
+                q6: 'C', q7: 'A', q8: 'B', q9: 'C', q10: 'B',
+                q11: 'B', q12: 'A', q13: 'B', q14: 'A', q15: 'C',
+                q16: 'C', q17: 'C', q18: 'C', q19: 'D', q20: 'B',
+                q21: 'B', q22: 'C', q23: 'C', q24: 'D', q25: 'A',
+                q26: 'B', q27: 'B', q28: 'A', q29: 'B', q30: 'A'
+            };
+
+            // Ẩn nút Câu trước ở câu hỏi đầu tiên
+            prevBtn.style.visibility = 'hidden';
+
+            // Hiển thị câu hỏi hiện tại
+            function showQuestion(index) {
+                questions.forEach((question, i) => {
+                    question.classList.remove('active');
+                    if (i === index) {
+                        question.classList.add('active');
+                    }
+                });
+
+                // Cập nhật số câu hiện tại
+                questionCounter.textContent = `Câu hỏi ${index + 1}/${totalQuestions}`;
+
+                // Ẩn/hiện nút điều hướng
+                prevBtn.style.visibility = index === 0 ? 'hidden' : 'visible';
+                
+                if (index === totalQuestions - 1) {
+                    nextBtn.textContent = 'Hoàn thành';
+                } else {
+                    nextBtn.textContent = 'Câu tiếp theo';
+                }
+            }
+
+            // Xử lý sự kiện chọn đáp án
+            questions.forEach((question, questionIndex) => {
+                const options = question.querySelectorAll('.option-radio');
+                const questionId = `q${questionIndex + 1}`;
+                const correctAnswer = answers[questionId];
+                const explanation = question.querySelector('.explanation');
+
+                options.forEach(option => {
+                    option.addEventListener('change', function() {
+                        if (answeredQuestions.has(questionId)) return;
+
+                        answeredQuestions.add(questionId);
+                        const selectedValue = this.value;
+                        const optionLabels = question.querySelectorAll('.option-label');
+                        
+                        // Vô hiệu hóa các tùy chọn khác
+                        options.forEach(opt => {
+                            opt.disabled = true;
+                        });
+
+                        // Hiển thị đáp án đúng/sai
+                        optionLabels.forEach(label => {
+                            const labelFor = label.getAttribute('for');
+                            const radioValue = document.getElementById(labelFor).value;
+                            
+                            if (radioValue === correctAnswer) {
+                                label.classList.add('correct-answer');
+                            } else if (radioValue === selectedValue && radioValue !== correctAnswer) {
+                                label.classList.add('wrong-answer');
+                            }
+                        });
+
+                        // Kiểm tra đáp án và cộng điểm
+                        if (selectedValue === correctAnswer) {
+                            score++;
+                        }
+
+                        // Hiển thị giải thích
+                        explanation.style.display = 'block';
+
+                        // Cập nhật điểm
+                        scoreDisplay.textContent = `Điểm: ${score}/${totalQuestions}`;
+                    });
+                });
+            });
+
+            // Xử lý sự kiện nút Câu trước
+            prevBtn.addEventListener('click', function() {
+                if (currentQuestionIndex > 0) {
+                    currentQuestionIndex--;
+                    showQuestion(currentQuestionIndex);
+                }
+            });
+
+            // Xử lý sự kiện nút Câu tiếp theo / Hoàn thành
+            nextBtn.addEventListener('click', function() {
+                if (currentQuestionIndex < totalQuestions - 1) {
+                    currentQuestionIndex++;
+                    showQuestion(currentQuestionIndex);
+                } else {
+                    showResults();
+                }
+            });
+
+            // Hiển thị kết quả
+            function showResults() {
+                quizContainer.style.display = 'none';
+                resultsContainer.style.display = 'block';
+                
+                finalScore.textContent = `${score}/${totalQuestions}`;
+                const percentage = Math.round((score / totalQuestions) * 100);
+                percentageDisplay.textContent = `${percentage}%`;
+
+                // Tạo các nút số câu hỏi
+                const grid = resultsContainer.querySelector('.grid');
+                grid.innerHTML = '';
+                
+                for (let i = 1; i <= totalQuestions; i++) {
+                    const questionId = `q${i}`;
+                    const button = document.createElement('button');
+                    button.textContent = i;
+                    button.className = 'w-10 h-10 rounded-full font-medium flex items-center justify-center';
+                    
+                    if (!answeredQuestions.has(questionId)) {
+                        button.classList.add('bg-gray-200', 'text-gray-600');
+                    } else if (document.querySelector(`input[name="${questionId}"]:checked`).value === answers[questionId]) {
+                        button.classList.add('bg-green-500', 'text-white');
+                    } else {
+                        button.classList.add('bg-red-500', 'text-white');
+                    }
+                    
+                    grid.appendChild(button);
+                }
+            }
+
+            // Xử lý sự kiện nút Làm lại
+            restartBtn.addEventListener('click', function() {
+                location.reload();
+            });
+
+            // Hiển thị câu hỏi đầu tiên khi tải trang
+            showQuestion(currentQuestionIndex);
+        });
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
