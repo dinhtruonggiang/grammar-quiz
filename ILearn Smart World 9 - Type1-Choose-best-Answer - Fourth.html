@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Multiple Choice Quiz - ILearn Smart World 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hidden {
+            display: none;
+        }
+        .option:hover {
+            background-color: #f3f4f6;
+        }
+        .selected {
+            background-color: #dbeafe;
+        }
+        .correct {
+            background-color: #d1fae5;
+        }
+        .incorrect {
+            background-color: #fee2e2;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <h1 class="text-3xl font-bold text-center mb-8">Bài Tập Trắc Nghiệm Tiếng Anh</h1>
+        <p class="text-center mb-8 text-lg">Dựa theo sách ILearn Smart World 9 Student Book - Phần I: Choose the word/phrase/sentence or best answer</p>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+            <h2 class="text-xl font-semibold mb-4">Hướng dẫn:</h2>
+            <p class="mb-2">- Chọn đáp án đúng cho mỗi câu hỏi.</p>
+            <p class="mb-2">- Nhấn "Kiểm tra" để xem kết quả và giải thích.</p>
+            <p class="mb-4">- Đáp án đúng sẽ hiển thị màu xanh lá, đáp án sai sẽ hiển thị màu đỏ.</p>
+            <button id="startBtn" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">Bắt đầu</button>
+        </div>
+
+        <div id="quizContainer" class="hidden">
+            <div class="mb-4 flex justify-between items-center">
+                <span id="progress" class="text-lg font-medium">Câu hỏi 1/30</span>
+                <span id="score" class="text-lg font-medium">Điểm: 0/30</span>
+            </div>
+
+            <div id="questionContainer" class="bg-white p-6 rounded-lg shadow-md mb-6">
+                <!-- Question will be inserted here -->
+            </div>
+
+            <div class="flex justify-between">
+                <button id="prevBtn" class="bg-gray-600 text-white px-6 py-2 rounded-lg hover:bg-gray-700 transition-colors">Câu trước</button>
+                <button id="checkBtn" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors">Kiểm tra</button>
+                <button id="nextBtn" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">Câu tiếp</button>
+            </div>
+        </div>
+
+        <div id="resultContainer" class="hidden bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-4 text-center">Kết quả</h2>
+            <p id="finalScore" class="text-xl text-center mb-6">Bạn đã đạt: <span class="font-bold">0/30</span> điểm</p>
+            <div class="grid grid-cols-6 gap-2 mb-6">
+                <!-- Question indicators will be inserted here -->
+            </div>
+            <div class="text-center">
+                <button id="restartBtn" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">Làm lại</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "Which word has the underlined part pronounced differently from the others?",
+                options: ["A. ch<u>ai</u>r", "B. st<u>ai</u>r", "C. p<u>ai</u>r", "D. f<u>a</u>ir"],
+                correctAnswer: "D",
+                explanation: "Từ 'fair' có phần gạch chân 'a' được phát âm là /eə/, trong khi các từ còn lại 'chair', 'stair', và 'pair' có phần gạch chân 'ai' được phát âm là /eə/."
+            },
+            {
+                question: "Which word has a different stress pattern from that of the others?",
+                options: ["A. hotel", "B. career", "C. classroom", "D. progress"],
+                correctAnswer: "C",
+                explanation: "Từ 'classroom' có trọng âm rơi vào âm tiết đầu tiên (CLASS-room), trong khi các từ còn lại có trọng âm rơi vào âm tiết thứ hai: ho-TEL, ca-REER, pro-GRESS."
+            },
+            {
+                question: "Which word has the underlined part pronounced differently from that of the others?",
+                options: ["A. s<u>o</u>me", "B. c<u>o</u>me", "C. h<u>o</u>me", "D. d<u>o</u>me"],
+                correctAnswer: "C",
+                explanation: "Từ 'home' có phần gạch chân 'o' được phát âm là /əʊ/, trong khi các từ còn lại 'some', 'come', và 'dome' có phần gạch chân 'o' được phát âm khác nhau (some và come là /ʌ/, dome là /əʊ/)."
+            },
+            {
+                question: "Linda: \"What do you think about the new English teacher?\"<br>Peter: \"I think she is very _____.\"",
+                options: ["A. knowledge", "B. knowing", "C. knowledgeable", "D. knowable"],
+                correctAnswer: "C",
+                explanation: "Từ 'knowledgeable' là tính từ có nghĩa là 'có kiến thức, hiểu biết rộng' - đây là hình thức tính từ đúng trong ngữ cảnh này. 'Knowledge' là danh từ, 'knowing' là động từ dạng -ing, còn 'knowable' ít sử dụng và có nghĩa là 'có thể biết được'."
+            },
+            {
+                question: "Which word has a different stress pattern from that of the others?",
+                options: ["A. comfortable", "B. beautiful", "C. generous", "D. terrible"],
+                correctAnswer: "A",
+                explanation: "Từ 'comfortable' có trọng âm rơi vào âm tiết đầu tiên (COM-for-ta-ble), trong khi các từ còn lại có trọng âm rơi vào âm tiết thứ nhất: BEAU-ti-ful, GE-ne-rous, TER-ri-ble."
+            },
+            {
+                question: "Sarah: \"Would you like to go to the cinema tonight?\"<br>David: \"_____. I have to prepare for my exam.\"",
+                options: ["A. I'd love to", "B. That's a good idea", "C. I'm afraid I can't", "D. Yes, I would"],
+                correctAnswer: "C",
+                explanation: "Trong tình huống này, David không thể đi xem phim vì phải chuẩn bị cho kỳ thi. Câu trả lời 'I'm afraid I can't' (Tôi e rằng tôi không thể) là lựa chọn phù hợp nhất để từ chối lời mời một cách lịch sự."
+            },
+            {
+                question: "Which word has the underlined part pronounced differently from that of the others?",
+                options: ["A. t<u>i</u>cket", "B. m<u>i</u>nute", "C. b<u>i</u>g", "D. s<u>i</u>t"],
+                correctAnswer: "B",
+                explanation: "Từ 'minute' có phần gạch chân 'i' được phát âm là /ɪ/ ở trong từ minute (phút). Các từ còn lại 'ticket', 'big' và 'sit' có phần gạch chân 'i' được phát âm là /ɪ/."
+            },
+            {
+                question: "John: \"Do you mind if I open the window?\"<br>Mary: \"_____\"",
+                options: ["A. Yes, go ahead", "B. No, not at all", "C. Yes, you can", "D. No, you can't"],
+                correctAnswer: "B",
+                explanation: "Khi ai đó hỏi 'Do you mind if...' (Bạn có phiền không nếu...), câu trả lời 'No, not at all' có nghĩa là 'Không, tôi không phiền chút nào' - tức là đồng ý. Câu trả lời 'Yes, go ahead' là không đúng cấu trúc trong tình huống này."
+            },
+            {
+                question: "Which word has a different stress pattern from that of the others?",
+                options: ["A. favorite", "B. cinema", "C. biology", "D. banana"],
+                correctAnswer: "C",
+                explanation: "Từ 'biology' có trọng âm rơi vào âm tiết thứ hai (bi-O-lo-gy), trong khi các từ còn lại có trọng âm rơi vào âm tiết đầu tiên: FA-vo-rite, CI-ne-ma, BA-na-na."
+            },
+            {
+                question: "Tom: \"I've just passed my driving test!\"<br>Jane: \"_____\"",
+                options: ["A. Good luck", "B. Congratulations!", "C. That's a pity", "D. I'm sorry to hear that"],
+                correctAnswer: "B",
+                explanation: "Khi ai đó thông báo một tin tốt (đỗ bài kiểm tra lái xe), cách phản hồi phù hợp là chúc mừng họ. 'Congratulations!' (Xin chúc mừng!) là đáp án đúng."
+            },
+            {
+                question: "This shirt is too small for me. I need to _____ a larger one.",
+                options: ["A. try in", "B. try out", "C. try on", "D. try of"],
+                correctAnswer: "C",
+                explanation: "Cụm 'try on' có nghĩa là 'thử (quần áo)'. Trong ngữ cảnh này, người nói cần thử một chiếc áo lớn hơn, nên 'try on' là đáp án đúng."
+            },
+            {
+                question: "Which word has the underlined part pronounced differently from that of the others?",
+                options: ["A. th<u>ou</u>ght", "B. b<u>ou</u>ght", "C. br<u>ou</u>ght", "D. dr<u>ou</u>ght"],
+                correctAnswer: "D",
+                explanation: "Từ 'drought' có phần gạch chân 'ou' được phát âm là /aʊ/, trong khi các từ còn lại 'thought', 'bought', và 'brought' có phần gạch chân 'ou' được phát âm là /ɔː/."
+            },
+            {
+                question: "If you don't understand the word, you should _____ it in a dictionary.",
+                options: ["A. look up", "B. look for", "C. look after", "D. look at"],
+                correctAnswer: "A",
+                explanation: "Cụm 'look up' có nghĩa là 'tra cứu' - dùng khi tìm kiếm thông tin trong từ điển hay tài liệu tham khảo. 'Look for' là tìm kiếm, 'look after' là chăm sóc, 'look at' là nhìn vào."
+            },
+            {
+                question: "Anna: \"I'm going to take the entrance exam next month.\"<br>Linda: \"_____\"",
+                options: ["A. Well done", "B. Good luck", "C. Congratulations", "D. Have a nice day"],
+                correctAnswer: "B",
+                explanation: "Khi ai đó nói về một sự kiện sắp tới mà họ sẽ đối mặt (như thi đầu vào), câu nói phù hợp là 'Good luck' (Chúc may mắn). 'Congratulations' chỉ dùng khi chúc mừng việc đã hoàn thành."
+            },
+            {
+                question: "Which word has a different stress pattern from that of the others?",
+                options: ["A. hospital", "B. beautiful", "C. important", "D. engineer"],
+                correctAnswer: "D",
+                explanation: "Từ 'engineer' có trọng âm rơi vào âm tiết cuối cùng (en-gi-NEER), trong khi các từ còn lại có trọng âm rơi vào âm tiết đầu tiên: HOS-pi-tal, BEAU-ti-ful, IM-por-tant."
+            },
+            {
+                question: "We need to protect endangered species _____ extinction.",
+                options: ["A. of", "B. from", "C. for", "D. with"],
+                correctAnswer: "B",
+                explanation: "Cụm 'protect... from' là cấu trúc đúng trong tiếng Anh, có nghĩa là 'bảo vệ... khỏi'. Chúng ta bảo vệ các loài động vật khỏi bị tuyệt chủng."
+            },
+            {
+                question: "Which word has the underlined part pronounced differently from that of the others?",
+                options: ["A. c<u>e</u>rtificate", "B. c<u>e</u>remony", "C. d<u>e</u>cide", "D. r<u>e</u>gret"],
+                correctAnswer: "A",
+                explanation: "Từ 'certificate' có phần gạch chân 'e' được phát âm là /ə/, trong khi các từ còn lại 'ceremony', 'decide', và 'regret' có phần gạch chân 'e' được phát âm là /e/ hoặc /ɪ/."
+            },
+            {
+                question: "David: \"I've got a scholarship to Harvard University.\"<br>Mary: \"_____\"",
+                options: ["A. That's too bad", "B. I'm sorry to hear that", "C. That's wonderful news", "D. Better luck next time"],
+                correctAnswer: "C",
+                explanation: "Nhận được học bổng đến Đại học Harvard là một tin tuyệt vời. Câu trả lời thích hợp là 'That's wonderful news' (Đó là tin tuyệt vời). Các lựa chọn khác là những phản hồi dành cho tin xấu."
+            },
+            {
+                question: "She _____ her father. They have the same eyes and smile.",
+                options: ["A. looks like", "B. takes after", "C. resembles", "D. Both B and C"],
+                correctAnswer: "D",
+                explanation: "Cả 'takes after' và 'resembles' đều có nghĩa là 'giống với' khi nói về sự giống nhau giữa các thành viên trong gia đình. Trong ngữ cảnh này, cả hai đều có thể được sử dụng."
+            },
+            {
+                question: "Which word has a different stress pattern from that of the others?",
+                options: ["A. expensive", "B. confident", "C. important", "D. character"],
+                correctAnswer: "D",
+                explanation: "Từ 'character' có trọng âm rơi vào âm tiết đầu tiên (CHA-rac-ter), trong khi các từ còn lại có trọng âm rơi vào âm tiết thứ hai: ex-PEN-sive, con-FI-dent, im-POR-tant."
+            },
+            {
+                question: "If you want to be healthy, you should _____ junk food.",
+                options: ["A. cut down on", "B. cut off", "C. cut out", "D. cut up"],
+                correctAnswer: "A",
+                explanation: "Cụm 'cut down on' có nghĩa là 'giảm bớt' - đây là lựa chọn đúng khi nói về việc giảm tiêu thụ thức ăn nhanh để khỏe mạnh. 'Cut off' là ngắt, 'cut out' là loại bỏ hoàn toàn, 'cut up' là cắt nhỏ."
+            },
+            {
+                question: "Which word has the underlined part pronounced differently from that of the others?",
+                options: ["A. w<u>a</u>sh", "B. w<u>a</u>tch", "C. w<u>a</u>lk", "D. w<u>a</u>nt"],
+                correctAnswer: "C",
+                explanation: "Từ 'walk' có phần gạch chân 'a' được phát âm là /ɔː/, trong khi các từ còn lại 'wash', 'watch', và 'want' có phần gạch chân 'a' được phát âm là /ɒ/ hoặc /ɔ/."
+            },
+            {
+                question: "John: \"Would you like some coffee?\"<br>Linda: \"_____\"",
+                options: ["A. No, I don't", "B. Yes, please", "C. No, I won't", "D. Yes, I do"],
+                correctAnswer: "B",
+                explanation: "Khi được hỏi 'Would you like...?' (Bạn có muốn... không?), câu trả lời đúng là 'Yes, please' (Vâng, làm ơn) nếu bạn muốn chấp nhận lời đề nghị."
+            },
+            {
+                question: "The children were so _____ in the game that they didn't notice it was getting dark.",
+                options: ["A. fascinated", "B. absorbed", "C. interested", "D. engaged"],
+                correctAnswer: "B",
+                explanation: "Từ 'absorbed' (miệt mài, say mê) mô tả tốt nhất trạng thái tập trung cao độ đến mức không để ý xung quanh. Trong ngữ cảnh này, các em bé quá say mê vào trò chơi đến nỗi không nhận ra trời đã tối."
+            },
+            {
+                question: "Which word has a different stress pattern from that of the others?",
+                options: ["A. development", "B. entertainment", "C. environment", "D. government"],
+                correctAnswer: "A",
+                explanation: "Từ 'development' có trọng âm rơi vào âm tiết thứ hai (de-VE-lop-ment), trong khi các từ còn lại có trọng âm rơi vào âm tiết thứ nhất: EN-ter-tain-ment, EN-vi-ron-ment, GO-vern-ment."
+            },
+            {
+                question: "I don't think he will succeed _____ he works harder.",
+                options: ["A. if", "B. unless", "C. when", "D. until"],
+                correctAnswer: "B",
+                explanation: "Cụm 'unless' có nghĩa là 'trừ khi, nếu không'. Câu này có nghĩa là 'Tôi không nghĩ anh ấy sẽ thành công trừ khi anh ấy làm việc chăm chỉ hơn' - thể hiện điều kiện cần thiết để thành công."
+            },
+            {
+                question: "Which word has the underlined part pronounced differently from that of the others?",
+                options: ["A. h<u>ea</u>lth", "B. br<u>ea</u>d", "C. h<u>ea</u>d", "D. m<u>ea</u>n"],
+                correctAnswer: "D",
+                explanation: "Từ 'mean' có phần gạch chân 'ea' được phát âm là /iː/, trong khi các từ còn lại 'health', 'bread', và 'head' có phần gạch chân 'ea' được phát âm là /e/."
+            },
+            {
+                question: "She _____ the entrance exam to the university, so she's very happy.",
+                options: ["A. passed", "B. failed", "C. succeeded", "D. won"],
+                correctAnswer: "A",
+                explanation: "Trong tiếng Anh, chúng ta nói 'pass an exam' (đỗ/vượt qua một kỳ thi). Từ 'passed' là lựa chọn đúng vì người này đã đỗ kỳ thi đầu vào và đang rất vui."
+            },
+            {
+                question: "Peter: \"Thank you for your help.\"<br>Mary: \"_____\"",
+                options: ["A. You're welcome", "B. That's all right", "C. Don't mention it", "D. All of the above"],
+                correctAnswer: "D",
+                explanation: "Tất cả các lựa chọn đều là những cách phù hợp để đáp lại lời cảm ơn trong tiếng Anh. 'You're welcome', 'That's all right', và 'Don't mention it' đều có nghĩa là 'Không có gì'."
+            },
+            {
+                question: "Which word has a different stress pattern from that of the others?",
+                options: ["A. politics", "B. electric", "C. medical", "D. technical"],
+                correctAnswer: "A",
+                explanation: "Từ 'politics' có trọng âm rơi vào âm tiết đầu tiên (PO-li-tics), trong khi các từ còn lại có trọng âm rơi vào âm tiết thứ hai: e-LEC-tric, ME-di-cal, TECH-ni-cal."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = Array(questions.length).fill(null);
+        let questionChecked = Array(questions.length).fill(false);
+
+        // Elements
+        const startBtn = document.getElementById('startBtn');
+        const quizContainer = document.getElementById('quizContainer');
+        const questionContainer = document.getElementById('questionContainer');
+        const progressText = document.getElementById('progress');
+        const scoreText = document.getElementById('score');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const checkBtn = document.getElementById('checkBtn');
+        const resultContainer = document.getElementById('resultContainer');
+        const finalScore = document.getElementById('finalScore');
+        const restartBtn = document.getElementById('restartBtn');
+
+        // Start the quiz
+        startBtn.addEventListener('click', () => {
+            document.querySelector('.bg-white.p-6').classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+            showQuestion(currentQuestion);
+        });
+
+        // Show a question
+        function showQuestion(index) {
+            const question = questions[index];
+            progressText.textContent = `Câu hỏi ${index + 1}/${questions.length}`;
+            
+            let optionsHTML = '';
+            question.options.forEach((option, i) => {
+                const isSelected = userAnswers[index] === option[0];
+                const selectedClass = isSelected ? 'selected' : '';
+                optionsHTML += `
+                    <div class="option ${selectedClass} p-3 border rounded-lg mb-2 cursor-pointer" data-option="${option[0]}">
+                        ${option}
+                    </div>
+                `;
+            });
+
+            let explanationHTML = '';
+            if (questionChecked[index]) {
+                const userAnswer = userAnswers[index];
+                const isCorrect = userAnswer === question.correctAnswer;
+                explanationHTML = `
+                    <div class="mt-4 p-3 ${isCorrect ? 'bg-green-100' : 'bg-red-100'} rounded-lg">
+                        <p class="font-medium ${isCorrect ? 'text-green-800' : 'text-red-800'}">
+                            ${isCorrect ? '✓ Đúng!' : '✗ Sai! Đáp án đúng là ' + question.correctAnswer}
+                        </p>
+                        <p class="mt-2">${question.explanation}</p>
+                    </div>
+                `;
+            }
+
+            questionContainer.innerHTML = `
+                <p class="text-lg font-medium mb-4">${index + 1}. ${question.question}</p>
+                <div class="options mb-4">
+                    ${optionsHTML}
+                </div>
+                ${explanationHTML}
+            `;
+
+            // Add event listeners to options
+            const options = questionContainer.querySelectorAll('.option');
+            options.forEach(option => {
+                option.addEventListener('click', () => {
+                    if (!questionChecked[index]) {
+                        options.forEach(opt => opt.classList.remove('selected'));
+                        option.classList.add('selected');
+                        userAnswers[index] = option.dataset.option;
+                    }
+                });
+            });
+
+            // Update button states
+            prevBtn.disabled = index === 0;
+            prevBtn.style.opacity = index === 0 ? '0.5' : '1';
+            nextBtn.disabled = index === questions.length - 1;
+            nextBtn.style.opacity = index === questions.length - 1 ? '0.5' : '1';
+            checkBtn.textContent = questionChecked[index] ? 'Đã kiểm tra' : 'Kiểm tra';
+            checkBtn.disabled = !userAnswers[index] || questionChecked[index];
+            checkBtn.style.opacity = !userAnswers[index] || questionChecked[index] ? '0.5' : '1';
+        }
+
+        // Navigate to previous question
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+            }
+        });
+
+        // Navigate to next question
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            }
+        });
+
+        // Check answer
+        checkBtn.addEventListener('click', () => {
+            if (userAnswers[currentQuestion]) {
+                questionChecked[currentQuestion] = true;
+                
+                const question = questions[currentQuestion];
+                const userAnswer = userAnswers[currentQuestion];
+                
+                if (userAnswer === question.correctAnswer) {
+                    if (!questionChecked[currentQuestion]) {
+                        score++;
+                    }
+                }
+                
+                scoreText.textContent = `Điểm: ${score}/${questions.length}`;
+                showQuestion(currentQuestion);
+                
+                // Check if all questions are answered
+                const allAnswered = questionChecked.every(checked => checked);
+                if (allAnswered) {
+                    showResults();
+                }
+            }
+        });
+
+        // Show results
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultContainer.classList.remove('hidden');
+            
+            finalScore.innerHTML = `Bạn đã đạt: <span class="font-bold">${score}/${questions.length}</span> điểm`;
+            
+            // Create question indicators
+            const indicatorsContainer = resultContainer.querySelector('.grid');
+            indicatorsContainer.innerHTML = '';
+            
+            for (let i = 0; i < questions.length; i++) {
+                const isCorrect = userAnswers[i] === questions[i].correctAnswer;
+                const indicator = document.createElement('div');
+                indicator.className = `p-2 rounded-lg text-center cursor-pointer ${isCorrect ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`;
+                indicator.textContent = i + 1;
+                
+                indicator.addEventListener('click', () => {
+                    resultContainer.classList.add('hidden');
+                    quizContainer.classList.remove('hidden');
+                    currentQuestion = i;
+                    showQuestion(currentQuestion);
+                });
+                
+                indicatorsContainer.appendChild(indicator);
+            }
+        }
+
+        // Restart quiz
+        restartBtn.addEventListener('click', () => {
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = Array(questions.length).fill(null);
+            questionChecked = Array(questions.length).fill(false);
+            scoreText.textContent = `Điểm: ${score}/${questions.length}`;
+            
+            resultContainer.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+            showQuestion(currentQuestion);
+        });
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
