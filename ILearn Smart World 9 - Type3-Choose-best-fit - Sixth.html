@@ -1,0 +1,447 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ILearn Smart World 9 - Trắc Nghiệm Chọn Từ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .option-btn {
+            transition: all 0.3s ease;
+        }
+        .option-btn:hover:not([disabled]) {
+            transform: translateY(-2px);
+        }
+        .option-btn.correct {
+            background-color: #4ade80 !important;
+            color: white !important;
+        }
+        .option-btn.incorrect {
+            background-color: #f87171 !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-3xl">
+        <header class="mb-8 text-center">
+            <h1 class="text-3xl font-bold text-blue-800 mb-2">Trắc Nghiệm Tiếng Anh</h1>
+            <p class="text-lg text-gray-600">ILearn Smart World 9 - Chọn từ phù hợp</p>
+        </header>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <div id="quiz-container">
+                <div id="progress-container" class="mb-4">
+                    <div class="flex justify-between mb-1">
+                        <span class="text-sm font-medium text-gray-700">Tiến độ</span>
+                        <span id="progress-text" class="text-sm font-medium text-gray-700">1/30</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div id="progress-bar" class="bg-blue-600 h-2 rounded-full" style="width: 3.33%"></div>
+                    </div>
+                </div>
+
+                <div id="question-container" class="mb-6">
+                    <!-- Questions will be inserted here -->
+                </div>
+
+                <div id="options-container" class="grid grid-cols-1 gap-3 mb-6">
+                    <!-- Options will be inserted here -->
+                </div>
+
+                <div id="explanation-container" class="mb-6 hidden p-4 bg-gray-50 rounded-md border border-gray-200">
+                    <!-- Explanation will be inserted here -->
+                </div>
+
+                <div class="flex justify-between">
+                    <button id="prev-btn" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md font-medium hover:bg-gray-300 transition disabled:opacity-50 disabled:cursor-not-allowed" disabled>Câu trước đó</button>
+                    <button id="next-btn" class="px-4 py-2 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed" disabled>Câu tiếp theo</button>
+                </div>
+            </div>
+
+            <div id="results-container" class="hidden text-center">
+                <h2 class="text-2xl font-bold text-blue-800 mb-4">Kết quả</h2>
+                <p class="text-xl mb-4">Điểm số của bạn: <span id="score" class="font-bold"></span>/30</p>
+                <div id="score-details" class="mb-6 bg-gray-50 p-4 rounded-md text-left">
+                    <!-- Score details will be inserted here -->
+                </div>
+                <button id="restart-btn" class="px-6 py-3 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition">Làm lại bài</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                text: "The Amazon Rainforest is a magnificent area. It is considered the largest tropical forest on Earth. The Amazon possesses more than half of our world's tropical forest areas. It is very rich in flora and fauna. The Amazon Rainforest is home to the most biological diversity, serving as the green _____ of the world.",
+                options: ["liver", "lung", "heart", "kidney"],
+                correct: 1,
+                explanation: "Đáp án B. lung (lá phổi). Amazon thường được coi là 'lá phổi xanh' của Trái Đất vì rừng mưa Amazon sản xuất một lượng lớn oxy và hấp thụ CO2, giống như chức năng của phổi trong cơ thể con người."
+            },
+            {
+                text: "Education _____ us with the knowledge and skills we need to succeed in life and contribute to society.",
+                options: ["delivers", "offers", "provides", "gives"],
+                correct: 2,
+                explanation: "Đáp án C. provides (cung cấp). Cụm 'provide someone with something' là cách diễn đạt phổ biến trong tiếng Anh, đặc biệt khi nói về việc cung cấp kiến thức, kỹ năng hoặc nguồn lực."
+            },
+            {
+                text: "Many scientists believe that climate change is the greatest environmental challenge _____ humanity has ever faced.",
+                options: ["who", "which", "what", "that"],
+                correct: 3,
+                explanation: "Đáp án D. that (mà). Trong mệnh đề quan hệ này, 'that' được sử dụng để giới thiệu mệnh đề xác định cho 'challenge'. 'That' có thể thay thế cho cả người và vật trong mệnh đề quan hệ xác định."
+            },
+            {
+                text: "Students should take responsibility _____ their own learning if they want to achieve academic success.",
+                options: ["of", "for", "with", "to"],
+                correct: 1,
+                explanation: "Đáp án B. for (cho). Cụm 'take responsibility for something' là cách diễn đạt chuẩn trong tiếng Anh, có nghĩa là 'chịu trách nhiệm cho điều gì đó'."
+            },
+            {
+                text: "It's important _____ students to develop critical thinking skills in today's rapidly changing world.",
+                options: ["for", "to", "with", "by"],
+                correct: 0,
+                explanation: "Đáp án A. for (cho). Cấu trúc 'It's important for someone to do something' được sử dụng để nhấn mạnh tầm quan trọng của việc làm gì đó đối với một người hoặc nhóm người."
+            },
+            {
+                text: "The new technology _____ make our lives easier, but it also creates new challenges.",
+                options: ["does", "has", "can", "is"],
+                correct: 2,
+                explanation: "Đáp án C. can (có thể). Động từ 'can' diễn tả khả năng - công nghệ có khả năng làm cho cuộc sống dễ dàng hơn, phù hợp với ngữ cảnh của câu."
+            },
+            {
+                text: "My family and I _____ in this neighborhood for over ten years now.",
+                options: ["live", "have lived", "are living", "will live"],
+                correct: 1,
+                explanation: "Đáp án B. have lived (đã sống). Thì hiện tại hoàn thành (have lived) được sử dụng để nói về một hành động bắt đầu trong quá khứ và tiếp tục đến hiện tại, phù hợp với 'for over ten years now'."
+            },
+            {
+                text: "Despite the difficulties, she _____ to achieve her goals through hard work and determination.",
+                options: ["managed", "succeeded", "accomplished", "achieved"],
+                correct: 0,
+                explanation: "Đáp án A. managed (đã cố gắng). 'Manage to do something' nghĩa là thành công trong việc làm điều gì đó, thường là sau khi đã cố gắng rất nhiều hoặc vượt qua khó khăn."
+            },
+            {
+                text: "We need to find ways to reduce waste and _____ more resources if we want to protect the environment.",
+                options: ["recycle", "reuse", "renew", "restore"],
+                correct: 0,
+                explanation: "Đáp án A. recycle (tái chế). Trong ngữ cảnh bảo vệ môi trường, 'reduce waste and recycle resources' (giảm rác thải và tái chế tài nguyên) là cụm từ phổ biến và hợp lý nhất."
+            },
+            {
+                text: "The teacher asked the students to _____ their homework before coming to class the next day.",
+                options: ["complete", "finish", "do", "make"],
+                correct: 2,
+                explanation: "Đáp án C. do (làm). Cụm 'do homework' là cách diễn đạt chuẩn trong tiếng Anh khi nói về việc làm bài tập về nhà."
+            },
+            {
+                text: "She couldn't _____ what the teacher was saying because the classroom was too noisy.",
+                options: ["listen", "hear", "understand", "know"],
+                correct: 1,
+                explanation: "Đáp án B. hear (nghe). 'Hear' được sử dụng để nói về khả năng nghe thấy âm thanh. Trong tình huống lớp học ồn ào, việc không thể nghe thấy là vấn đề chính."
+            },
+            {
+                text: "It's important to _____ healthy eating habits from a young age to prevent health problems later in life.",
+                options: ["develop", "create", "make", "form"],
+                correct: 0,
+                explanation: "Đáp án A. develop (phát triển). 'Develop habits' (phát triển thói quen) là cách diễn đạt phổ biến và tự nhiên nhất trong tiếng Anh khi nói về việc hình thành thói quen."
+            },
+            {
+                text: "The government has introduced new policies _____ at reducing plastic pollution in the oceans.",
+                options: ["aimed", "directed", "pointed", "focused"],
+                correct: 0,
+                explanation: "Đáp án A. aimed (nhằm). 'Aimed at' là cụm từ phổ biến diễn tả mục đích hoặc mục tiêu của hành động, chính sách, v.v. (nhằm mục đích gì)."
+            },
+            {
+                text: "Many students find it difficult to _____ between studying and participating in extracurricular activities.",
+                options: ["balance", "choose", "decide", "manage"],
+                correct: 0,
+                explanation: "Đáp án A. balance (cân bằng). 'Balance between X and Y' nghĩa là phân chia thời gian hoặc nỗ lực một cách hợp lý giữa hai hoạt động - trong trường hợp này là học tập và hoạt động ngoại khóa."
+            },
+            {
+                text: "The school library has a wide _____ of books on various subjects to support students' learning.",
+                options: ["collection", "range", "variety", "selection"],
+                correct: 2,
+                explanation: "Đáp án C. variety (đa dạng). 'A wide variety of' là cụm từ phổ biến chỉ sự đa dạng về loại hoặc kiểu, phù hợp với ngữ cảnh nói về nhiều loại sách khác nhau."
+            },
+            {
+                text: "Scientists are working to _____ new treatments for diseases that have previously been difficult to cure.",
+                options: ["invent", "discover", "develop", "create"],
+                correct: 2,
+                explanation: "Đáp án C. develop (phát triển). 'Develop treatments' (phát triển phương pháp điều trị) là cách diễn đạt chính xác về quá trình nghiên cứu y học để tạo ra phương pháp điều trị mới."
+            },
+            {
+                text: "Regular exercise can help to _____ the risk of developing heart disease and other health problems.",
+                options: ["reduce", "decrease", "lower", "minimize"],
+                correct: 0,
+                explanation: "Đáp án A. reduce (giảm). 'Reduce the risk' (giảm nguy cơ) là cụm từ phổ biến trong ngữ cảnh y tế và sức khỏe."
+            },
+            {
+                text: "Students should always _____ sure they understand the instructions before starting an assignment.",
+                options: ["make", "get", "have", "take"],
+                correct: 0,
+                explanation: "Đáp án A. make (đảm bảo). 'Make sure' là một cụm động từ cố định trong tiếng Anh có nghĩa là 'đảm bảo' hoặc 'chắc chắn'."
+            },
+            {
+                text: "The film was _____ on a true story about a famous explorer who discovered a lost city in the jungle.",
+                options: ["based", "founded", "established", "depended"],
+                correct: 0,
+                explanation: "Đáp án A. based (dựa trên). 'Based on a true story' là cách diễn đạt chuẩn trong tiếng Anh để nói về phim, sách, v.v. được lấy cảm hứng hoặc dựa trên sự kiện thật."
+            },
+            {
+                text: "We should _____ more attention to environmental problems and try to find solutions to them.",
+                options: ["pay", "give", "make", "take"],
+                correct: 0,
+                explanation: "Đáp án A. pay (chú ý). 'Pay attention to' là cụm động từ cố định có nghĩa là 'chú ý đến' trong tiếng Anh."
+            },
+            {
+                text: "The teacher _____ us to work in groups to complete the project by the end of the week.",
+                options: ["told", "said", "asked", "ordered"],
+                correct: 2,
+                explanation: "Đáp án C. asked (yêu cầu). 'Ask someone to do something' là cách diễn đạt phù hợp để nói về việc giáo viên yêu cầu học sinh làm việc theo nhóm."
+            },
+            {
+                text: "It's important to _____ in mind that different cultures have different customs and traditions.",
+                options: ["keep", "hold", "maintain", "bear"],
+                correct: 0,
+                explanation: "Đáp án A. keep (ghi nhớ). 'Keep in mind' là một cụm từ cố định có nghĩa là 'ghi nhớ' hoặc 'luôn nhớ'."
+            },
+            {
+                text: "Many companies now _____ flexible working hours to help employees balance their work and personal lives.",
+                options: ["offer", "give", "provide", "present"],
+                correct: 0,
+                explanation: "Đáp án A. offer (cung cấp). 'Offer flexible working hours' là cách diễn đạt phù hợp nhất khi nói về chính sách của công ty dành cho nhân viên."
+            },
+            {
+                text: "Parents should _____ their children to read regularly to improve their literacy skills and knowledge.",
+                options: ["encourage", "persuade", "convince", "motivate"],
+                correct: 0,
+                explanation: "Đáp án A. encourage (khuyến khích). 'Encourage children to do something' là cách diễn đạt thông dụng khi nói về việc cha mẹ ủng hộ và thúc đẩy con cái làm điều tốt."
+            },
+            {
+                text: "The student was able to _____ the complex math problem by breaking it down into smaller, more manageable parts.",
+                options: ["solve", "resolve", "answer", "fix"],
+                correct: 0,
+                explanation: "Đáp án A. solve (giải quyết). 'Solve a problem' là cụm từ chuẩn khi nói về việc tìm ra giải pháp cho một vấn đề toán học."
+            },
+            {
+                text: "We need to _____ steps to protect endangered species before they become extinct.",
+                options: ["take", "make", "do", "have"],
+                correct: 0,
+                explanation: "Đáp án A. take (thực hiện). 'Take steps' là cụm từ cố định có nghĩa là 'thực hiện các biện pháp' để đạt được một mục tiêu nhất định."
+            },
+            {
+                text: "The new technology will _____ it possible for scientists to study planets outside our solar system in greater detail.",
+                options: ["make", "do", "create", "build"],
+                correct: 0,
+                explanation: "Đáp án A. make (tạo điều kiện). 'Make it possible' là cụm từ cố định có nghĩa là 'tạo điều kiện' hoặc 'làm cho điều gì đó trở nên khả thi'."
+            },
+            {
+                text: "Students should try to _____ their vocabulary by reading widely and learning new words every day.",
+                options: ["expand", "increase", "enlarge", "extend"],
+                correct: 0,
+                explanation: "Đáp án A. expand (mở rộng). 'Expand vocabulary' là cách diễn đạt thông dụng nhất khi nói về việc học thêm từ vựng mới."
+            },
+            {
+                text: "The government has decided to _____ new regulations to control pollution from factories.",
+                options: ["introduce", "present", "begin", "start"],
+                correct: 0,
+                explanation: "Đáp án A. introduce (đưa ra). 'Introduce regulations' là cách diễn đạt phù hợp nhất khi nói về việc chính phủ tạo ra luật lệ hoặc quy định mới."
+            },
+            {
+                text: "It's always best to _____ the truth, even in difficult situations.",
+                options: ["tell", "say", "speak", "talk"],
+                correct: 0,
+                explanation: "Đáp án A. tell (nói). 'Tell the truth' là cụm từ cố định trong tiếng Anh, không dùng 'say/speak/talk the truth'."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let userAnswers = Array(questions.length).fill(null);
+        let questionsAnswered = Array(questions.length).fill(false);
+
+        const quizContainer = document.getElementById('quiz-container');
+        const resultsContainer = document.getElementById('results-container');
+        const questionContainer = document.getElementById('question-container');
+        const optionsContainer = document.getElementById('options-container');
+        const explanationContainer = document.getElementById('explanation-container');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const restartBtn = document.getElementById('restart-btn');
+        const score = document.getElementById('score');
+        const scoreDetails = document.getElementById('score-details');
+
+        function loadQuestion(index) {
+            currentQuestion = index;
+            const question = questions[index];
+            
+            // Update progress
+            progressText.textContent = `${index + 1}/${questions.length}`;
+            progressBar.style.width = `${((index + 1) / questions.length) * 100}%`;
+            
+            // Update question
+            questionContainer.innerHTML = `
+                <h2 class="text-xl font-bold mb-3 text-gray-800">Câu ${index + 1}:</h2>
+                <p class="text-gray-700 leading-relaxed">${question.text}</p>
+            `;
+            
+            // Update options
+            optionsContainer.innerHTML = '';
+            question.options.forEach((option, i) => {
+                const optionBtn = document.createElement('button');
+                optionBtn.className = 'option-btn w-full text-left p-3 rounded-md border border-gray-300 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500';
+                optionBtn.textContent = `${String.fromCharCode(65 + i)}. ${option}`;
+                
+                if (questionsAnswered[index]) {
+                    optionBtn.disabled = true;
+                    if (i === userAnswers[index]) {
+                        if (i === question.correct) {
+                            optionBtn.classList.add('correct');
+                        } else {
+                            optionBtn.classList.add('incorrect');
+                        }
+                    } else if (i === question.correct) {
+                        optionBtn.classList.add('correct');
+                    }
+                }
+                
+                optionBtn.addEventListener('click', () => selectOption(i));
+                optionsContainer.appendChild(optionBtn);
+            });
+            
+            // Update navigation buttons
+            prevBtn.disabled = index === 0;
+            
+            // Show/hide explanation
+            if (questionsAnswered[index]) {
+                explanationContainer.classList.remove('hidden');
+                explanationContainer.innerHTML = `
+                    <h3 class="font-bold text-gray-800 mb-2">Giải thích:</h3>
+                    <p class="text-gray-700">${question.explanation}</p>
+                `;
+                nextBtn.disabled = false;
+            } else {
+                explanationContainer.classList.add('hidden');
+                nextBtn.disabled = true;
+            }
+        }
+        
+        function selectOption(optionIndex) {
+            if (questionsAnswered[currentQuestion]) return;
+            
+            userAnswers[currentQuestion] = optionIndex;
+            questionsAnswered[currentQuestion] = true;
+            
+            // Update option buttons
+            const optionButtons = optionsContainer.querySelectorAll('.option-btn');
+            optionButtons.forEach((btn, i) => {
+                btn.disabled = true;
+                if (i === optionIndex) {
+                    if (i === questions[currentQuestion].correct) {
+                        btn.classList.add('correct');
+                    } else {
+                        btn.classList.add('incorrect');
+                    }
+                } else if (i === questions[currentQuestion].correct) {
+                    btn.classList.add('correct');
+                }
+            });
+            
+            // Show explanation
+            explanationContainer.classList.remove('hidden');
+            explanationContainer.innerHTML = `
+                <h3 class="font-bold text-gray-800 mb-2">Giải thích:</h3>
+                <p class="text-gray-700">${questions[currentQuestion].explanation}</p>
+            `;
+            
+            // Enable next button
+            nextBtn.disabled = false;
+        }
+        
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                loadQuestion(currentQuestion + 1);
+            } else {
+                showResults();
+            }
+        }
+        
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                loadQuestion(currentQuestion - 1);
+            }
+        }
+        
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultsContainer.classList.remove('hidden');
+            
+            // Calculate score
+            const correctAnswers = userAnswers.filter((answer, index) => answer === questions[index].correct).length;
+            score.textContent = correctAnswers;
+            
+            // Generate detailed results
+            let detailsHTML = '<div class="space-y-4">';
+            questions.forEach((question, index) => {
+                const isCorrect = userAnswers[index] === question.correct;
+                const userOption = userAnswers[index] !== null ? String.fromCharCode(65 + userAnswers[index]) : 'Không trả lời';
+                const correctOption = String.fromCharCode(65 + question.correct);
+                
+                detailsHTML += `
+                    <div class="p-3 ${isCorrect ? 'bg-green-50 border-l-4 border-green-500' : 'bg-red-50 border-l-4 border-red-500'}">
+                        <p class="font-medium">Câu ${index + 1}: ${isCorrect ? '✓ Đúng' : '✗ Sai'}</p>
+                        <p class="text-sm text-gray-600 mt-1">Bạn chọn: ${userOption}</p>
+                        <p class="text-sm text-gray-600">Đáp án đúng: ${correctOption}</p>
+                    </div>
+                `;
+            });
+            detailsHTML += '</div>';
+            scoreDetails.innerHTML = detailsHTML;
+        }
+        
+        function restartQuiz() {
+            currentQuestion = 0;
+            userAnswers = Array(questions.length).fill(null);
+            questionsAnswered = Array(questions.length).fill(false);
+            
+            quizContainer.classList.remove('hidden');
+            resultsContainer.classList.add('hidden');
+            
+            loadQuestion(0);
+        }
+        
+        // Event listeners
+        prevBtn.addEventListener('click', prevQuestion);
+        nextBtn.addEventListener('click', nextQuestion);
+        restartBtn.addEventListener('click', restartQuiz);
+        
+        // Initialize quiz
+        loadQuestion(0);
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
