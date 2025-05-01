@@ -1,0 +1,651 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Quiz - ILearn Smart World 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .option {
+            transition: all 0.3s ease;
+        }
+        .option:hover:not(.disabled) {
+            transform: translateX(10px);
+        }
+        .correct {
+            background-color: #d1fae5;
+            border-color: #10b981;
+        }
+        .incorrect {
+            background-color: #fee2e2;
+            border-color: #ef4444;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h1 class="text-3xl font-bold text-center text-indigo-700 mb-2">English Quiz</h1>
+            <h2 class="text-xl text-center text-gray-600 mb-8">ILearn Smart World 9 - Section I</h2>
+            
+            <div id="progress-container" class="w-full bg-gray-200 rounded-full h-2.5 mb-6">
+                <div id="progress-bar" class="bg-indigo-600 h-2.5 rounded-full" style="width: 0%"></div>
+            </div>
+            
+            <div id="stats" class="flex justify-between text-sm text-gray-600 mb-6">
+                <div>Câu hỏi: <span id="current-question">1</span>/<span id="total-questions">30</span></div>
+                <div>Đúng: <span id="correct-count">0</span></div>
+            </div>
+            
+            <div id="quiz-container">
+                <!-- Questions will be inserted here -->
+            </div>
+            
+            <div id="explanation-container" class="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200 hidden">
+                <h3 class="font-bold text-gray-700 mb-2">Giải thích:</h3>
+                <p id="explanation-text" class="text-gray-600"></p>
+            </div>
+            
+            <div class="mt-6 flex justify-between">
+                <button id="prev-button" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>Câu trước</button>
+                <button id="next-button" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">Câu tiếp theo</button>
+            </div>
+        </div>
+        
+        <div id="results-container" class="bg-white rounded-lg shadow-lg p-6 hidden">
+            <h2 class="text-2xl font-bold text-center text-indigo-700 mb-4">Kết quả</h2>
+            <div class="text-center mb-6">
+                <div class="text-5xl font-bold mb-2"><span id="final-score">0</span>/<span id="max-score">30</span></div>
+                <div class="text-xl text-gray-600">điểm</div>
+            </div>
+            <div id="feedback" class="text-center text-lg mb-6"></div>
+            <div class="flex justify-center">
+                <button id="restart-button" class="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">Làm lại bài</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "Which word has the underlined part pronounced differently from that of the others?",
+                options: [
+                    "nat<u>ure</u>",
+                    "cult<u>ure</u>", 
+                    "fut<u>ure</u>", 
+                    "meas<u>ure</u>"
+                ],
+                correctAnswer: 0,
+                explanation: "Từ 'nature' có phần gạch chân phát âm là /tʃə/, trong khi các từ còn lại 'culture', 'future', và 'measure' có phần gạch chân phát âm là /tʃə/. Thực ra đây là một câu hỏi phân biệt tinh tế về các phụ âm trước phần '-ure'."
+            },
+            {
+                question: "Which word has the underlined part pronounced differently from that of the others?",
+                options: [
+                    "beg<u>i</u>n", 
+                    "dec<u>i</u>de", 
+                    "del<u>i</u>ver", 
+                    "l<u>i</u>sten"
+                ],
+                correctAnswer: 3,
+                explanation: "Trong từ 'listen', chữ 'i' được phát âm là /ɪ/ ngắn, trong khi các từ còn lại 'begin', 'decide', và 'deliver', chữ 'i' được phát âm là /ɪ/ khi ở vị trí không nhấn. Tuy nhiên, 'i' trong 'listen' còn có điểm đặc biệt là nó nằm trước 's' câm."
+            },
+            {
+                question: "Which word has a different stress pattern from that of the others?",
+                options: [
+                    "volunteer", 
+                    "understand", 
+                    "interview", 
+                    "entertain"
+                ],
+                correctAnswer: 2,
+                explanation: "Từ 'interview' có trọng âm rơi vào âm tiết đầu tiên (IN-ter-view), trong khi các từ còn lại 'volunteer', 'understand', và 'entertain' có trọng âm rơi vào âm tiết cuối cùng (vo-lun-TEER, un-der-STAND, en-ter-TAIN)."
+            },
+            {
+                question: "Which word has a different stress pattern from that of the others?",
+                options: [
+                    "appearance", 
+                    "attraction", 
+                    "attention", 
+                    "adventure"
+                ],
+                correctAnswer: 3,
+                explanation: "Từ 'adventure' có trọng âm rơi vào âm tiết thứ hai (ad-VEN-ture), trong khi các từ còn lại 'appearance', 'attraction', và 'attention' có trọng âm rơi vào âm tiết thứ hai (ap-PEAR-ance, at-TRAC-tion, at-TEN-tion)."
+            },
+            {
+                question: "Huy: \"I don't think people should wear fur coats.\" <br>Mai: \"__________. Animals deserve our protection.\"",
+                options: [
+                    "I disagree", 
+                    "I don't agree", 
+                    "I couldn't agree more", 
+                    "That's wrong"
+                ],
+                correctAnswer: 2,
+                explanation: "Cụm 'I couldn't agree more' nghĩa là 'Tôi hoàn toàn đồng ý', phù hợp với ngữ cảnh Mai ủng hộ ý kiến của Huy và đưa ra lý do tại sao (động vật xứng đáng được bảo vệ)."
+            },
+            {
+                question: "Which word has the underlined part pronounced differently from that of the others?",
+                options: [
+                    "he<u>i</u>ght", 
+                    "we<u>i</u>ght", 
+                    "e<u>i</u>ght", 
+                    "rece<u>i</u>pt"
+                ],
+                correctAnswer: 3,
+                explanation: "Trong từ 'receipt', phần gạch chân 'ei' được phát âm là /i:/, trong khi các từ còn lại 'height', 'weight', và 'eight', phần 'ei' được phát âm là /eɪ/."
+            },
+            {
+                question: "Nam: \"I'm thinking of joining the Environment Club.\" <br>Lan: \"__________. It's a meaningful activity.\"",
+                options: [
+                    "You shouldn't do that", 
+                    "That's not a good idea", 
+                    "I don't recommend it", 
+                    "That sounds great"
+                ],
+                correctAnswer: 3,
+                explanation: "Cụm 'That sounds great' (Nghe có vẻ tuyệt đấy) thể hiện sự ủng hộ của Lan với ý tưởng của Nam, phù hợp với phần tiếp theo khi Lan nói rằng đó là một hoạt động có ý nghĩa."
+            },
+            {
+                question: "Which word has a different stress pattern from that of the others?",
+                options: [
+                    "engineer", 
+                    "volunteer", 
+                    "pioneer", 
+                    "atmosphere"
+                ],
+                correctAnswer: 3,
+                explanation: "Từ 'atmosphere' có trọng âm rơi vào âm tiết đầu tiên (AT-mos-phere), trong khi các từ còn lại 'engineer', 'volunteer', và 'pioneer' có trọng âm rơi vào âm tiết cuối cùng (en-gi-NEER, vo-lun-TEER, pi-o-NEER)."
+            },
+            {
+                question: "Minh: \"I'm sorry I'm late for class.\" <br>Teacher: \"__________, but don't let it happen again.\"",
+                options: [
+                    "That's unacceptable", 
+                    "No excuse", 
+                    "That's all right", 
+                    "You are always late"
+                ],
+                correctAnswer: 2,
+                explanation: "Cụm 'That's all right' (Không sao đâu) thể hiện sự tha thứ của giáo viên, phù hợp với phần sau 'nhưng đừng để điều đó xảy ra nữa', cho thấy giáo viên chấp nhận lời xin lỗi lần này nhưng cũng cảnh báo học sinh."
+            },
+            {
+                question: "Lan: \"I'm sorry, but I can't come to your party tonight.\" <br>Hoa: \"__________. Maybe next time.\"",
+                options: [
+                    "You must be joking", 
+                    "That's too bad", 
+                    "I don't believe you", 
+                    "You're being ridiculous"
+                ],
+                correctAnswer: 1,
+                explanation: "Cụm 'That's too bad' (Thật đáng tiếc) thể hiện sự thất vọng nhẹ nhàng nhưng hiểu biết của Hoa, phù hợp với phần tiếp theo 'Maybe next time' (Có lẽ lần sau), cho thấy Hoa chấp nhận việc Lan không thể đến và hy vọng có cơ hội khác."
+            },
+            {
+                question: "Which word has the underlined part pronounced differently from that of the others?",
+                options: [
+                    "c<u>ou</u>rage", 
+                    "t<u>ou</u>rist", 
+                    "j<u>ou</u>rney", 
+                    "c<u>ou</u>rse"
+                ],
+                correctAnswer: 1,
+                explanation: "Trong từ 'tourist', phần gạch chân 'ou' được phát âm là /ʊə/, trong khi các từ còn lại 'courage', 'journey', và 'course', phần 'ou' được phát âm là /ɜ:/ (âm 'ơ' dài trong tiếng Việt)."
+            },
+            {
+                question: "Which word has a different stress pattern from that of the others?",
+                options: [
+                    "domestic", 
+                    "electric", 
+                    "digital", 
+                    "ordinary"
+                ],
+                correctAnswer: 3,
+                explanation: "Từ 'ordinary' có trọng âm rơi vào âm tiết đầu tiên (OR-di-na-ry), trong khi các từ còn lại 'domestic', 'electric', và 'digital' có trọng âm rơi vào âm tiết thứ hai (do-MES-tic, e-LEC-tric, di-GI-tal)."
+            },
+            {
+                question: "Nga: \"Would you like to go to the cinema tonight?\" <br>Tuan: \"__________. I have a lot of homework to do.\"",
+                options: [
+                    "Yes, I would", 
+                    "That sounds fun", 
+                    "I'd love to, but I can't", 
+                    "Let's go now"
+                ],
+                correctAnswer: 2,
+                explanation: "Cụm 'I'd love to, but I can't' (Tôi rất muốn đi, nhưng không thể) thể hiện mong muốn nhưng không thể thực hiện được của Tuan, phù hợp với lý do đưa ra ở phần sau 'Tôi có nhiều bài tập về nhà phải làm'."
+            },
+            {
+                question: "The drought lasted for over six months, causing great damage to __________ in the region.",
+                options: [
+                    "agriculture", 
+                    "agricultural", 
+                    "agriculturally", 
+                    "agriculturist"
+                ],
+                correctAnswer: 0,
+                explanation: "Từ 'agriculture' (nông nghiệp) là danh từ, đóng vai trò chủ ngữ trong câu và phù hợp với ngữ cảnh về hạn hán gây thiệt hại cho ngành nông nghiệp trong khu vực."
+            },
+            {
+                question: "Which word has the underlined part pronounced differently from that of the others?",
+                options: [
+                    "t<u>ea</u>cher", 
+                    "cr<u>ea</u>ture", 
+                    "f<u>ea</u>ture", 
+                    "pl<u>ea</u>sure"
+                ],
+                correctAnswer: 0,
+                explanation: "Trong từ 'teacher', phần gạch chân 'ea' được phát âm là /i:/ (âm 'i' dài), trong khi các từ còn lại 'creature', 'feature', và 'pleasure', phần 'ea' được phát âm là /e/ hoặc /ɛ/ (âm 'e' ngắn)."
+            },
+            {
+                question: "Mai: \"I've just passed my driving test.\" <br>Tuan: \"__________! I knew you could do it.\"",
+                options: [
+                    "Bad luck", 
+                    "How terrible", 
+                    "Congratulations", 
+                    "I'm sorry to hear that"
+                ],
+                correctAnswer: 2,
+                explanation: "Cụm 'Congratulations' (Xin chúc mừng) là lời chúc mừng phù hợp khi ai đó vừa đạt được thành công, như việc đỗ bài kiểm tra lái xe, và phù hợp với phần sau 'Tôi biết bạn có thể làm được'."
+            },
+            {
+                question: "Many young people want to pursue a career in information __________ because it offers good job opportunities.",
+                options: [
+                    "technological", 
+                    "technologies", 
+                    "technology", 
+                    "technologist"
+                ],
+                correctAnswer: 2,
+                explanation: "Từ 'technology' (công nghệ) là danh từ không đếm được, phù hợp với cụm 'information technology' (công nghệ thông tin) - một lĩnh vực nghề nghiệp cụ thể."
+            },
+            {
+                question: "Which word has a different stress pattern from that of the others?",
+                options: [
+                    "conference", 
+                    "resident", 
+                    "president", 
+                    "government"
+                ],
+                correctAnswer: 0,
+                explanation: "Từ 'conference' có trọng âm rơi vào âm tiết đầu tiên (CON-fe-rence), trong khi các từ còn lại 'resident', 'president', và 'government' có trọng âm rơi vào âm tiết đầu tiên (RE-si-dent, PRE-si-dent, GO-vern-ment)."
+            },
+            {
+                question: "The company is looking for __________ who can speak at least two foreign languages.",
+                options: [
+                    "applications", 
+                    "applicants", 
+                    "appliances", 
+                    "applies"
+                ],
+                correctAnswer: 1,
+                explanation: "Từ 'applicants' (người ứng tuyển) là danh từ chỉ người, phù hợp với ngữ cảnh công ty đang tìm kiếm người có thể nói ít nhất hai ngoại ngữ."
+            },
+            {
+                question: "Which word has the underlined part pronounced differently from that of the others?",
+                options: [
+                    "l<u>au</u>gh", 
+                    "c<u>au</u>ght", 
+                    "t<u>au</u>ght", 
+                    "dr<u>au</u>ght"
+                ],
+                correctAnswer: 0,
+                explanation: "Trong từ 'laugh', phần gạch chân 'au' được phát âm là /æ/ (âm 'a' ngắn), trong khi các từ còn lại 'caught', 'taught', và 'draught', phần 'au' được phát âm là /ɔ:/ (âm 'o' dài trong tiếng Việt)."
+            },
+            {
+                question: "She is a very __________ speaker who can keep the audience interested for hours.",
+                options: [
+                    "bore", 
+                    "boring", 
+                    "bored", 
+                    "engaging"
+                ],
+                correctAnswer: 3,
+                explanation: "Từ 'engaging' (hấp dẫn, thu hút) mô tả một người nói có thể giữ sự quan tâm của khán giả trong nhiều giờ, đây là đặc điểm tích cực của một diễn giả."
+            },
+            {
+                question: "Which word has a different stress pattern from that of the others?",
+                options: [
+                    "biology", 
+                    "geography", 
+                    "psychology", 
+                    "photograph"
+                ],
+                correctAnswer: 3,
+                explanation: "Từ 'photograph' có trọng âm rơi vào âm tiết đầu tiên (PHO-to-graph), trong khi các từ còn lại 'biology', 'geography', và 'psychology' có trọng âm rơi vào âm tiết thứ hai (bi-O-lo-gy, ge-O-gra-phy, psy-CHO-lo-gy)."
+            },
+            {
+                question: "Nam: \"I'm going to take part in the English speaking contest next week.\" <br>Lan: \"__________. I think you'll do very well.\"",
+                options: [
+                    "Good luck", 
+                    "Bad luck", 
+                    "Take care", 
+                    "Have fun"
+                ],
+                correctAnswer: 0,
+                explanation: "Cụm 'Good luck' (Chúc may mắn) là lời chúc phù hợp cho ai đó sắp tham gia một cuộc thi hoặc thử thách, như cuộc thi nói tiếng Anh."
+            },
+            {
+                question: "The film was so __________ that I fell asleep after watching it for only ten minutes.",
+                options: [
+                    "interested", 
+                    "interesting", 
+                    "boring", 
+                    "excited"
+                ],
+                correctAnswer: 2,
+                explanation: "Từ 'boring' (nhàm chán) mô tả bộ phim khiến người xem ngủ gật sau khi xem chỉ 10 phút, cho thấy bộ phim không hấp dẫn."
+            },
+            {
+                question: "Which word has the underlined part pronounced differently from that of the others?",
+                options: [
+                    "s<u>ew</u>", 
+                    "f<u>ew</u>", 
+                    "n<u>ew</u>", 
+                    "cr<u>ew</u>"
+                ],
+                correctAnswer: 0,
+                explanation: "Trong từ 'sew', phần gạch chân 'ew' được phát âm là /əʊ/ (giống âm 'o' trong 'go'), trong khi các từ còn lại 'few', 'new', và 'crew', phần 'ew' được phát âm là /ju:/ (âm 'iu')."
+            },
+            {
+                question: "Minh: \"I've got a terrible headache.\" <br>Lan: \"__________. Have you taken any medicine?\"",
+                options: [
+                    "Congratulations", 
+                    "I'm sorry to hear that", 
+                    "That's great news", 
+                    "I don't care"
+                ],
+                correctAnswer: 1,
+                explanation: "Cụm 'I'm sorry to hear that' (Tôi rất tiếc khi nghe điều đó) là cách bày tỏ sự đồng cảm phù hợp khi ai đó đang gặp vấn đề về sức khỏe, như đau đầu dữ dội."
+            },
+            {
+                question: "We need to find a __________ to the problem of plastic pollution in the oceans.",
+                options: [
+                    "solve", 
+                    "solution", 
+                    "solver", 
+                    "solving"
+                ],
+                correctAnswer: 1,
+                explanation: "Từ 'solution' (giải pháp) là danh từ phù hợp với cấu trúc 'a solution to the problem' (một giải pháp cho vấn đề)."
+            },
+            {
+                question: "Which word has a different stress pattern from that of the others?",
+                options: [
+                    "economy", 
+                    "geography", 
+                    "biology", 
+                    "important"
+                ],
+                correctAnswer: 3,
+                explanation: "Từ 'important' có trọng âm rơi vào âm tiết thứ hai (im-POR-tant), trong khi các từ còn lại 'economy', 'geography', và 'biology' có trọng âm rơi vào âm tiết thứ hai nhưng là những từ có 4 âm tiết (e-CO-no-my, ge-O-gra-phy, bi-O-lo-gy)."
+            },
+            {
+                question: "The new environmental __________ aim to reduce carbon emissions by 30% by 2030.",
+                options: [
+                    "regulations", 
+                    "regulates", 
+                    "regulators", 
+                    "regularly"
+                ],
+                correctAnswer: 0,
+                explanation: "Từ 'regulations' (quy định) là danh từ số nhiều, phù hợp với ngữ cảnh về các quy định môi trường mới nhằm giảm khí thải carbon."
+            },
+            {
+                question: "Global warming is having a serious __________ on the Earth's climate.",
+                options: [
+                    "affect", 
+                    "effect", 
+                    "effective", 
+                    "effectively"
+                ],
+                correctAnswer: 1,
+                explanation: "Từ 'effect' (tác động, ảnh hưởng) là danh từ, phù hợp với cấu trúc 'have an effect on' (có tác động lên). 'Affect' là động từ, không phù hợp trong ngữ cảnh này."
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let answeredQuestions = new Array(questions.length).fill(false);
+
+        // DOM elements
+        const quizContainer = document.getElementById('quiz-container');
+        const explanationContainer = document.getElementById('explanation-container');
+        const explanationText = document.getElementById('explanation-text');
+        const prevButton = document.getElementById('prev-button');
+        const nextButton = document.getElementById('next-button');
+        const progressBar = document.getElementById('progress-bar');
+        const currentQuestionElement = document.getElementById('current-question');
+        const totalQuestionsElement = document.getElementById('total-questions');
+        const correctCountElement = document.getElementById('correct-count');
+        const resultsContainer = document.getElementById('results-container');
+        const finalScoreElement = document.getElementById('final-score');
+        const maxScoreElement = document.getElementById('max-score');
+        const feedbackElement = document.getElementById('feedback');
+        const restartButton = document.getElementById('restart-button');
+
+        // Initialize the quiz
+        function initQuiz() {
+            totalQuestionsElement.textContent = questions.length;
+            maxScoreElement.textContent = questions.length;
+            showQuestion(currentQuestionIndex);
+        }
+
+        // Display a question
+        function showQuestion(index) {
+            currentQuestionElement.textContent = index + 1;
+            
+            // Update progress bar
+            progressBar.style.width = `${((index + 1) / questions.length) * 100}%`;
+            
+            // Update buttons
+            prevButton.disabled = index === 0;
+            if (index === questions.length - 1) {
+                nextButton.textContent = 'Xem kết quả';
+            } else {
+                nextButton.textContent = 'Câu tiếp theo';
+            }
+            
+            // Clear previous question
+            quizContainer.innerHTML = '';
+            explanationContainer.classList.add('hidden');
+            
+            // Create and display the current question
+            const questionData = questions[index];
+            
+            const questionElement = document.createElement('div');
+            questionElement.className = 'mb-6';
+            
+            const questionText = document.createElement('h3');
+            questionText.className = 'text-xl font-semibold mb-4';
+            questionText.innerHTML = `${index + 1}. ${questionData.question}`;
+            questionElement.appendChild(questionText);
+            
+            // Create options
+            const optionsContainer = document.createElement('div');
+            optionsContainer.className = 'space-y-3';
+            
+            questionData.options.forEach((option, optionIndex) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50';
+                
+                // If this question has been answered, add appropriate styling
+                if (answeredQuestions[index]) {
+                    optionElement.classList.add('disabled');
+                    if (optionIndex === questionData.correctAnswer) {
+                        optionElement.classList.add('correct');
+                    } else if (getSelectedOptionIndex(index) === optionIndex) {
+                        optionElement.classList.add('incorrect');
+                    }
+                }
+                
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = `question-${index}`;
+                radio.value = optionIndex;
+                radio.id = `question-${index}-option-${optionIndex}`;
+                radio.className = 'h-4 w-4 text-indigo-600 focus:ring-indigo-500';
+                radio.checked = localStorage.getItem(`selected-${index}`) === optionIndex.toString();
+                radio.disabled = answeredQuestions[index];
+                
+                const label = document.createElement('label');
+                label.htmlFor = `question-${index}-option-${optionIndex}`;
+                label.className = 'ml-3 block text-gray-700';
+                label.innerHTML = `${String.fromCharCode(65 + optionIndex)}. ${option}`;
+                
+                optionElement.appendChild(radio);
+                optionElement.appendChild(label);
+                
+                // Add click event to the entire option div
+                optionElement.addEventListener('click', () => {
+                    if (!answeredQuestions[index]) {
+                        radio.checked = true;
+                        checkAnswer(index, optionIndex);
+                    }
+                });
+                
+                optionsContainer.appendChild(optionElement);
+            });
+            
+            questionElement.appendChild(optionsContainer);
+            quizContainer.appendChild(questionElement);
+            
+            // Show explanation if already answered
+            if (answeredQuestions[index]) {
+                showExplanation(index);
+            }
+        }
+
+        // Check the answer
+        function checkAnswer(questionIndex, selectedOptionIndex) {
+            if (answeredQuestions[questionIndex]) return;
+            
+            const correctAnswer = questions[questionIndex].correctAnswer;
+            
+            // Save the selected option
+            localStorage.setItem(`selected-${questionIndex}`, selectedOptionIndex);
+            
+            // Mark question as answered
+            answeredQuestions[questionIndex] = true;
+            
+            // Update score if correct
+            if (selectedOptionIndex === correctAnswer) {
+                score++;
+                correctCountElement.textContent = score;
+            }
+            
+            // Show the explanation and highlight correct/incorrect answers
+            showExplanation(questionIndex);
+            
+            // Refresh the question display to show correct/incorrect styles
+            showQuestion(questionIndex);
+        }
+
+        // Show explanation for a question
+        function showExplanation(index) {
+            explanationText.textContent = questions[index].explanation;
+            explanationContainer.classList.remove('hidden');
+        }
+
+        // Get the selected option for a question
+        function getSelectedOptionIndex(questionIndex) {
+            const selected = localStorage.getItem(`selected-${questionIndex}`);
+            return selected !== null ? parseInt(selected) : -1;
+        }
+
+        // Navigate to the next question
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                showQuestion(currentQuestionIndex);
+            } else {
+                showResults();
+            }
+        }
+
+        // Navigate to the previous question
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion(currentQuestionIndex);
+            }
+        }
+
+        // Show final results
+        function showResults() {
+            document.querySelector('.bg-white:not(#results-container)').classList.add('hidden');
+            resultsContainer.classList.remove('hidden');
+            
+            finalScoreElement.textContent = score;
+            
+            // Generate feedback based on score
+            const percentage = (score / questions.length) * 100;
+            let feedbackMessage;
+            
+            if (percentage >= 90) {
+                feedbackMessage = "Xuất sắc! Bạn hiểu rõ các khái niệm và thành thạo các kỹ năng tiếng Anh.";
+            } else if (percentage >= 70) {
+                feedbackMessage = "Tốt! Bạn có hiểu biết vững chắc về tiếng Anh, nhưng vẫn còn một số điểm cần cải thiện.";
+            } else if (percentage >= 50) {
+                feedbackMessage = "Khá! Bạn đã nắm được các kiến thức cơ bản, nhưng cần ôn tập thêm.";
+            } else {
+                feedbackMessage = "Hãy cố gắng hơn! Bạn cần ôn tập kỹ các khái niệm cơ bản để cải thiện điểm số.";
+            }
+            
+            feedbackElement.textContent = feedbackMessage;
+        }
+
+        // Restart the quiz
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            answeredQuestions = new Array(questions.length).fill(false);
+            
+            // Clear localStorage
+            for (let i = 0; i < questions.length; i++) {
+                localStorage.removeItem(`selected-${i}`);
+            }
+            
+            correctCountElement.textContent = '0';
+            resultsContainer.classList.add('hidden');
+            document.querySelector('.bg-white:not(#results-container)').classList.remove('hidden');
+            
+            showQuestion(currentQuestionIndex);
+        }
+
+        // Event listeners
+        nextButton.addEventListener('click', nextQuestion);
+        prevButton.addEventListener('click', prevQuestion);
+        restartButton.addEventListener('click', restartQuiz);
+
+        // Initialize the quiz
+        initQuiz();
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
