@@ -1,0 +1,1022 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập trắc nghiệm tiếng Anh - ILearn Smart World 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .question-container {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .option:hover {
+            background-color: #f0f9ff;
+        }
+        .selected {
+            background-color: #e0f2fe;
+            border-color: #0ea5e9;
+        }
+        .correct {
+            background-color: #dcfce7;
+            border-color: #22c55e;
+        }
+        .incorrect {
+            background-color: #fee2e2;
+            border-color: #ef4444;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">Bài tập trắc nghiệm tiếng Anh</h1>
+        <h2 class="text-xl text-center mb-8">ILearn Smart World 9 - "Choose the word/phrase/sentence that best fits"</h2>
+        
+        <div class="bg-white shadow-md rounded-lg p-6 mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <div>
+                    <span class="font-bold">Câu hỏi: </span>
+                    <span id="current-question">1</span>/<span id="total-questions">30</span>
+                </div>
+                <div>
+                    <span class="font-bold">Điểm: </span>
+                    <span id="score">0</span>
+                </div>
+            </div>
+            
+            <div id="progress-bar" class="w-full bg-gray-200 rounded-full h-2.5 mb-6">
+                <div id="progress" class="bg-blue-600 h-2.5 rounded-full" style="width: 3%;"></div>
+            </div>
+            
+            <div id="questions-container">
+                <!-- Question 1 -->
+                <div class="question-container active" id="question-1">
+                    <p class="text-lg font-medium mb-4">1. Which word has the underlined part pronounced differently from the others?</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. sign<u>ed</u>
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. laugh<u>ed</u>
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. watch<u>ed</u>
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. play<u>ed</u>
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: B. laugh<u>ed</u></p>
+                        <p>Phần gạch chân "ed" trong "laughed" được phát âm là /t/ trong khi các từ còn lại "signed", "watched", "played" được phát âm là /d/. Điều này là do quy tắc phát âm đuôi -ed: nếu động từ kết thúc bằng một âm vô thanh (như âm /f/ trong laugh), đuôi -ed sẽ được phát âm là /t/.</p>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="question-container" id="question-2">
+                    <p class="text-lg font-medium mb-4">2. Which word has a different stress pattern from the others?</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. computer
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. advantage
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. determine
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. beautiful
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: D. beautiful</p>
+                        <p>"Beautiful" có trọng âm ở âm tiết đầu tiên (BEA-u-ti-ful), trong khi các từ còn lại đều có trọng âm ở âm tiết thứ hai: com-PU-ter, ad-VAN-tage, de-TER-mine.</p>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="question-container" id="question-3">
+                    <p class="text-lg font-medium mb-4">3. _______ your homework before you go out to play.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. Finishing
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. Finish
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. To finish
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. Finished
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: B. Finish</p>
+                        <p>Câu này là câu mệnh lệnh (imperative), yêu cầu người nghe làm việc gì đó. Câu mệnh lệnh trong tiếng Anh sử dụng động từ nguyên mẫu không 'to', vì vậy "Finish" là hình thức đúng. Các phương án khác không phù hợp với cấu trúc câu mệnh lệnh.</p>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="question-container" id="question-4">
+                    <p class="text-lg font-medium mb-4">4. If I _______ you, I would apologize to her.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. am
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. was
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. were
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. had been
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: C. were</p>
+                        <p>Đây là câu điều kiện loại 2 (type 2 conditional) diễn tả một tình huống giả định ở hiện tại. Cấu trúc câu điều kiện loại 2 là "If + S + V (quá khứ đơn), S + would/could/might + V (nguyên mẫu)". Với động từ "be", chúng ta sử dụng "were" cho tất cả các ngôi trong câu điều kiện loại 2, vì vậy "were" là hình thức đúng.</p>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="question-container" id="question-5">
+                    <p class="text-lg font-medium mb-4">5. My brother is good _______ playing the guitar.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. at
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. in
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. on
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. with
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: A. at</p>
+                        <p>Cấu trúc "good at + V-ing" dùng để chỉ một người giỏi về một kỹ năng nào đó. Trong tiếng Anh, chúng ta nói "good at playing the guitar" (giỏi chơi guitar) chứ không dùng các giới từ khác.</p>
+                    </div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="question-container" id="question-6">
+                    <p class="text-lg font-medium mb-4">6. His grandfather _______ in that house since 1980.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. is living
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. lives
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. has lived
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. had lived
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: C. has lived</p>
+                        <p>Câu này sử dụng thì hiện tại hoàn thành (present perfect) để nói về một hành động bắt đầu từ quá khứ và tiếp tục đến hiện tại. Cụm từ "since 1980" cho biết thời điểm bắt đầu hành động, nên chúng ta cần dùng "has lived" (đã sống từ 1980 đến nay).</p>
+                    </div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="question-container" id="question-7">
+                    <p class="text-lg font-medium mb-4">7. Which word has the underlined part pronounced differently from the others?</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. ch<u>air</u>
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. p<u>air</u>
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. h<u>air</u>
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. f<u>air</u>y
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: D. f<u>air</u>y</p>
+                        <p>Phần gạch chân trong "fairy" được phát âm là /eə/ trong khi "chair", "pair", và "hair" có phần "air" được phát âm là /eə/. Trong từ "fairy", âm "air" nằm trong âm tiết căng hơn và ngắn hơn do bị ảnh hưởng bởi âm "y" phía sau.</p>
+                    </div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="question-container" id="question-8">
+                    <p class="text-lg font-medium mb-4">8. He plays soccer _______ than his brother.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. good
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. better
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. best
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. more good
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: B. better</p>
+                        <p>Trong câu này, chúng ta cần dùng dạng so sánh hơn để so sánh giữa hai người. "Good" là tính từ bất quy tắc, dạng so sánh hơn của nó là "better" (không phải "more good"). "Best" là dạng so sánh nhất, không phù hợp với ngữ cảnh này.</p>
+                    </div>
+                </div>
+
+                <!-- Question 9 -->
+                <div class="question-container" id="question-9">
+                    <p class="text-lg font-medium mb-4">9. The concert _______ by the time we arrived at the stadium.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. had started
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. has started
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. was starting
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. would start
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: A. had started</p>
+                        <p>Câu này yêu cầu sử dụng thì quá khứ hoàn thành (past perfect) để diễn tả một hành động xảy ra trước một hành động khác trong quá khứ. "By the time we arrived" (vào thời điểm chúng tôi đến) là hành động trong quá khứ đơn, và buổi hòa nhạc đã bắt đầu trước thời điểm đó, nên cần dùng "had started".</p>
+                    </div>
+                </div>
+
+                <!-- Question 10 -->
+                <div class="question-container" id="question-10">
+                    <p class="text-lg font-medium mb-4">10. I wish I _______ to the party last night.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. went
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. go
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. had gone
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. have gone
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: C. had gone</p>
+                        <p>Cấu trúc "wish + quá khứ hoàn thành" được sử dụng để diễn tả một điều ước về quá khứ - điều gì đó không xảy ra trong quá khứ mà người nói mong muốn đã xảy ra. Vì ở đây người nói tiếc là đã không đi dự tiệc đêm qua, nên cần dùng "had gone" (ước gì tôi đã đi).</p>
+                    </div>
+                </div>
+
+                <!-- Question 11 -->
+                <div class="question-container" id="question-11">
+                    <p class="text-lg font-medium mb-4">11. By the end of next year, I _______ in this company for ten years.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. will work
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. will be working
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. will have worked
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. will have been working
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: D. will have been working</p>
+                        <p>Câu này diễn tả một hành động sẽ tiếp tục xảy ra trong một khoảng thời gian đến một thời điểm trong tương lai ("by the end of next year"). Do đó, chúng ta cần dùng thì tương lai hoàn thành tiếp diễn (future perfect continuous): "will have been working" (sẽ đã làm việc được 10 năm).</p>
+                    </div>
+                </div>
+
+                <!-- Question 12 -->
+                <div class="question-container" id="question-12">
+                    <p class="text-lg font-medium mb-4">12. Which word has a different stress pattern from the others?</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. education
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. economic
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. geography
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. popularity
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: B. economic</p>
+                        <p>"Economic" có trọng âm ở âm tiết thứ ba (eco-NO-mic), trong khi các từ còn lại đều có trọng âm ở âm tiết thứ hai: e-DU-ca-tion, ge-O-gra-phy, po-PU-la-ri-ty.</p>
+                    </div>
+                </div>
+
+                <!-- Question 13 -->
+                <div class="question-container" id="question-13">
+                    <p class="text-lg font-medium mb-4">13. She asked me where _______ the day before.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. I had been
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. had I been
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. I have been
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. have I been
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: A. I had been</p>
+                        <p>Câu này là câu tường thuật gián tiếp (reported speech) của một câu hỏi. Trong câu tường thuật gián tiếp, chúng ta sử dụng trật tự từ của câu trần thuật (không đảo ngữ như trong câu hỏi trực tiếp), và lùi thì xuống một bậc (từ hiện tại hoàn thành "have been" sang quá khứ hoàn thành "had been").</p>
+                    </div>
+                </div>
+
+                <!-- Question 14 -->
+                <div class="question-container" id="question-14">
+                    <p class="text-lg font-medium mb-4">14. _______ the heavy rain, the football match was canceled.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. Because
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. Because of
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. Despite
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. Although
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: B. Because of</p>
+                        <p>"Because of" được sử dụng trước danh từ hoặc cụm danh từ để chỉ nguyên nhân. "Heavy rain" là danh từ, vì vậy "Because of" là lựa chọn đúng. "Because" phải được dùng với một mệnh đề (có chủ ngữ và động từ). "Despite" và "Although" không phù hợp vì chúng chỉ sự tương phản, không phải nguyên nhân.</p>
+                    </div>
+                </div>
+
+                <!-- Question 15 -->
+                <div class="question-container" id="question-15">
+                    <p class="text-lg font-medium mb-4">15. The museum is open daily _______ Mondays.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. except
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. except for
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. besides
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. apart
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: A. except</p>
+                        <p>"Except" được sử dụng để loại trừ một thứ khỏi một nhóm. Trong trường hợp này, việc bảo tàng mở cửa tất cả các ngày trừ thứ Hai. "Except for" thường được dùng trong những cấu trúc phức tạp hơn. "Besides" có nghĩa là "ngoài ra", mang nghĩa bổ sung chứ không phải loại trừ. "Apart" cần đi kèm "from" để tạo thành "apart from".</p>
+                    </div>
+                </div>
+
+                <!-- Question 16 -->
+                <div class="question-container" id="question-16">
+                    <p class="text-lg font-medium mb-4">16. You need to hand in your assignment _______ Friday.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. in
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. on
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. at
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. by
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: D. by</p>
+                        <p>Giới từ "by" được sử dụng để chỉ thời hạn chót phải hoàn thành một việc gì đó. Trong trường hợp này, bài tập phải được nộp không muộn hơn ngày thứ Sáu. "In" dùng với khoảng thời gian, "on" dùng với ngày cụ thể (nhưng không biểu thị thời hạn chót), và "at" dùng với thời điểm cụ thể trong ngày.</p>
+                    </div>
+                </div>
+
+                <!-- Question 17 -->
+                <div class="question-container" id="question-17">
+                    <p class="text-lg font-medium mb-4">17. If we _______ earlier, we wouldn't have missed the train.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. leave
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. left
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. had left
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. would leave
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: C. had left</p>
+                        <p>Đây là câu điều kiện loại 3 (type 3 conditional) diễn tả một tình huống không có thật trong quá khứ và kết quả giả định của nó. Cấu trúc câu điều kiện loại 3 là "If + S + had + V3 (quá khứ phân từ), S + would/could/might + have + V3". Do đó, "had left" là hình thức đúng.</p>
+                    </div>
+                </div>
+
+                <!-- Question 18 -->
+                <div class="question-container" id="question-18">
+                    <p class="text-lg font-medium mb-4">18. She's very proud _______ her daughter's achievements.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. in
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. with
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. of
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. about
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: C. of</p>
+                        <p>Tính từ "proud" luôn đi với giới từ "of" khi nói về niềm tự hào về ai đó hoặc điều gì đó. Đây là cụm từ cố định trong tiếng Anh "proud of something/someone" (tự hào về điều gì/ai đó).</p>
+                    </div>
+                </div>
+
+                <!-- Question 19 -->
+                <div class="question-container" id="question-19">
+                    <p class="text-lg font-medium mb-4">19. You should _______ more attention to what your teacher says.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. make
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. pay
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. take
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. get
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: B. pay</p>
+                        <p>"Pay attention" là một cụm động từ cố định trong tiếng Anh có nghĩa là "chú ý". Chúng ta không nói "make attention", "take attention", hay "get attention" khi muốn diễn tả việc một người chú ý đến điều gì đó.</p>
+                    </div>
+                </div>
+
+                <!-- Question 20 -->
+                <div class="question-container" id="question-20">
+                    <p class="text-lg font-medium mb-4">20. Which word has the underlined part pronounced differently from the others?</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. t<u>ou</u>gh
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. en<u>ou</u>gh
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. th<u>ou</u>ght
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. gr<u>ou</u>p
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: D. gr<u>ou</u>p</p>
+                        <p>Phần gạch chân "ou" trong "group" được phát âm là /uː/ (âm u dài), trong khi "ou" trong các từ còn lại "tough", "enough", "thought" được phát âm là /ʌ/ (âm a ngắn).</p>
+                    </div>
+                </div>
+
+                <!-- Question 21 -->
+                <div class="question-container" id="question-21">
+                    <p class="text-lg font-medium mb-4">21. The government has introduced _______ measures to reduce pollution.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. wide
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. large
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. extensive
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. extended
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: C. extensive</p>
+                        <p>"Extensive measures" (các biện pháp toàn diện/rộng khắp) là cụm từ thích hợp nhất khi nói về chính sách của chính phủ. "Extensive" có nghĩa là "bao quát nhiều lĩnh vực" hoặc "rất rộng lớn về phạm vi". "Wide" và "large" ít phù hợp hơn trong ngữ cảnh này, và "extended" thường dùng cho thời gian kéo dài.</p>
+                    </div>
+                </div>
+
+                <!-- Question 22 -->
+                <div class="question-container" id="question-22">
+                    <p class="text-lg font-medium mb-4">22. My sister _______ her final examination next month.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. is taking
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. takes
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. will take
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. has taken
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: A. is taking</p>
+                        <p>Khi nói về kế hoạch đã được sắp xếp trong tương lai, chúng ta thường sử dụng thì hiện tại tiếp diễn (present continuous). Vì kỳ thi cuối kỳ là một sự kiện đã được lên lịch trước trong tương lai (next month), nên "is taking" là lựa chọn đúng.</p>
+                    </div>
+                </div>
+
+                <!-- Question 23 -->
+                <div class="question-container" id="question-23">
+                    <p class="text-lg font-medium mb-4">23. The film was _______ that everyone in the cinema started crying.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. such moving
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. so moving
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. so much moving
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. such a moving
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: B. so moving</p>
+                        <p>Cấu trúc "so + tính từ + that" được sử dụng để diễn tả kết quả của một tính chất. "Moving" là tính từ, nên "so moving" là lựa chọn đúng. "Such" phải đi kèm với danh từ, không phải tính từ. "So much" đi với danh từ không đếm được.</p>
+                    </div>
+                </div>
+
+                <!-- Question 24 -->
+                <div class="question-container" id="question-24">
+                    <p class="text-lg font-medium mb-4">24. We _______ to the beach if the weather improves.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. would go
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. will go
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. went
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. had gone
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: B. will go</p>
+                        <p>Đây là câu điều kiện loại 1 (type 1 conditional) diễn tả một tình huống có thể xảy ra trong tương lai. Cấu trúc của câu điều kiện loại 1 là "If + S + V (hiện tại đơn), S + will/can/may + V (nguyên mẫu)". Do đó, "will go" là hình thức đúng.</p>
+                    </div>
+                </div>
+
+                <!-- Question 25 -->
+                <div class="question-container" id="question-25">
+                    <p class="text-lg font-medium mb-4">25. The manager _______ the contract before signing it.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. looked over
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. looked after
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. looked up
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. looked into
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: A. looked over</p>
+                        <p>"Look over" có nghĩa là xem xét, kiểm tra cái gì đó một cách nhanh chóng. Trong ngữ cảnh này, người quản lý kiểm tra hợp đồng trước khi ký. "Look after" nghĩa là chăm sóc, "look up" nghĩa là tra cứu, và "look into" nghĩa là điều tra.</p>
+                    </div>
+                </div>
+
+                <!-- Question 26 -->
+                <div class="question-container" id="question-26">
+                    <p class="text-lg font-medium mb-4">26. I'd rather you _______ to the party tonight.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. don't come
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. won't come
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. didn't come
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. haven't come
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: C. didn't come</p>
+                        <p>Cấu trúc "I'd rather you + quá khứ đơn" được sử dụng để diễn tả sự mong muốn về hành động của người khác trong hiện tại hoặc tương lai. Mặc dù đang nói về buổi tiệc tối nay (trong tương lai), nhưng với cấu trúc này, chúng ta vẫn sử dụng thì quá khứ đơn "didn't come".</p>
+                    </div>
+                </div>
+
+                <!-- Question 27 -->
+                <div class="question-container" id="question-27">
+                    <p class="text-lg font-medium mb-4">27. Which word has a different stress pattern from the others?</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. biology
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. technology
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. psychology
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. photography
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: A. biology</p>
+                        <p>"Biology" có trọng âm ở âm tiết thứ hai (bi-O-lo-gy), trong khi các từ còn lại đều có trọng âm ở âm tiết thứ ba: tech-no-LO-gy, psy-cho-LO-gy, pho-to-GRA-phy.</p>
+                    </div>
+                </div>
+
+                <!-- Question 28 -->
+                <div class="question-container" id="question-28">
+                    <p class="text-lg font-medium mb-4">28. She _______ working on the project for three hours when her boss called.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. has been
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. had been
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. would be
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. is
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: B. had been</p>
+                        <p>Câu này mô tả một hành động đã bắt đầu trong quá khứ và vẫn đang tiếp tục diễn ra khi một hành động khác xảy ra (sếp gọi điện). Thì quá khứ hoàn thành tiếp diễn (past perfect continuous) được sử dụng để diễn tả một hành động đã bắt đầu và tiếp tục diễn ra cho đến một thời điểm cụ thể trong quá khứ.</p>
+                    </div>
+                </div>
+
+                <!-- Question 29 -->
+                <div class="question-container" id="question-29">
+                    <p class="text-lg font-medium mb-4">29. After the earthquake, the villagers had to _______ their homes.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. rebuild
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. replace
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. restore
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. renovate
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: A. rebuild</p>
+                        <p>"Rebuild" nghĩa là xây dựng lại từ đầu, thích hợp nhất trong tình huống sau động đất (khi nhà cửa bị phá hủy hoàn toàn). "Replace" nghĩa là thay thế, "restore" nghĩa là khôi phục về trạng thái ban đầu, và "renovate" nghĩa là cải tạo, nâng cấp - đều không phù hợp bằng trong ngữ cảnh này.</p>
+                    </div>
+                </div>
+
+                <!-- Question 30 -->
+                <div class="question-container" id="question-30">
+                    <p class="text-lg font-medium mb-4">30. The teacher made us _______ the exercise again.</p>
+                    <div class="space-y-3">
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="A">
+                            A. to do
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="B">
+                            B. doing
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="C">
+                            C. do
+                        </div>
+                        <div class="option border rounded-md p-3 cursor-pointer" data-option="D">
+                            D. done
+                        </div>
+                    </div>
+                    <div class="explanation mt-4 p-4 bg-blue-50 rounded-md hidden">
+                        <p class="font-semibold">Giải thích:</p>
+                        <p>Đáp án đúng: C. do</p>
+                        <p>Cấu trúc "make someone do something" (bắt ai làm gì) sử dụng động từ nguyên mẫu không "to" (bare infinitive) sau động từ "make". Do đó, "do" là hình thức đúng.</p>
+                    </div>
+                </div>
+
+                <!-- Result Container -->
+                <div id="result-container" class="mt-8 p-6 bg-white shadow-md rounded-lg hidden">
+                    <h2 class="text-2xl font-bold text-center mb-4">Kết quả bài làm</h2>
+                    <div class="text-center mb-6">
+                        <p class="text-4xl font-bold text-blue-600"><span id="final-score">0</span>/30</p>
+                        <p class="text-lg mt-2">Điểm số của bạn</p>
+                    </div>
+                    <div class="grid grid-cols-5 gap-2 mb-6">
+                        <!-- Question status indicators will be added here -->
+                    </div>
+                    <div class="flex justify-center">
+                        <button id="restart-button" class="bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition">Làm lại bài</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-6 flex justify-between">
+                <button id="prev-button" class="bg-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-400 transition disabled:opacity-50" disabled>Câu trước</button>
+                <div>
+                    <button id="show-explanation-button" class="bg-blue-100 text-blue-700 py-2 px-4 rounded-md hover:bg-blue-200 transition hidden">Xem giải thích</button>
+                    <button id="next-question-button" class="bg-blue-100 text-blue-700 py-2 px-4 rounded-md hover:bg-blue-200 transition hidden">Câu tiếp theo</button>
+                </div>
+                <button id="next-button" class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition">Câu tiếp theo</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const totalQuestions = 30;
+            let currentQuestion = 1;
+            let score = 0;
+            const answers = {
+                1: 'B', 2: 'D', 3: 'B', 4: 'C', 5: 'A', 
+                6: 'C', 7: 'D', 8: 'B', 9: 'A', 10: 'C',
+                11: 'D', 12: 'B', 13: 'A', 14: 'B', 15: 'A',
+                16: 'D', 17: 'C', 18: 'C', 19: 'B', 20: 'D',
+                21: 'C', 22: 'A', 23: 'B', 24: 'B', 25: 'A',
+                26: 'C', 27: 'A', 28: 'B', 29: 'A', 30: 'C'
+            };
+            const userAnswers = {};
+            
+            const prevButton = document.getElementById('prev-button');
+            const nextButton = document.getElementById('next-button');
+            const showExplanationButton = document.getElementById('show-explanation-button');
+            const nextQuestionButton = document.getElementById('next-question-button');
+            const currentQuestionSpan = document.getElementById('current-question');
+            const scoreSpan = document.getElementById('score');
+            const progressBar = document.getElementById('progress');
+            const resultContainer = document.getElementById('result-container');
+            const questionsContainer = document.getElementById('questions-container');
+            const finalScoreSpan = document.getElementById('final-score');
+            const restartButton = document.getElementById('restart-button');
+            
+            // Initialize
+            updateNavButtons();
+            
+            // Event listeners
+            prevButton.addEventListener('click', goToPreviousQuestion);
+            nextButton.addEventListener('click', goToNextQuestion);
+            showExplanationButton.addEventListener('click', showExplanation);
+            nextQuestionButton.addEventListener('click', goToNextQuestion);
+            restartButton.addEventListener('click', restartQuiz);
+            
+            // Add event listeners to all options
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', selectOption);
+            });
+            
+            function selectOption(event) {
+                const questionId = currentQuestion;
+                const selectedOption = event.currentTarget.dataset.option;
+                const correctOption = answers[questionId];
+                
+                // Remove any existing selections for this question
+                document.querySelectorAll(`#question-${questionId} .option`).forEach(opt => {
+                    opt.classList.remove('selected', 'correct', 'incorrect');
+                });
+                
+                // Mark the selected option
+                event.currentTarget.classList.add('selected');
+                
+                // Store the user's answer
+                userAnswers[questionId] = selectedOption;
+                
+                // Show the explanation button
+                showExplanationButton.classList.remove('hidden');
+                nextQuestionButton.classList.add('hidden');
+                
+                // Disable clicking on other options
+                document.querySelectorAll(`#question-${questionId} .option`).forEach(opt => {
+                    opt.removeEventListener('click', selectOption);
+                });
+                
+                // Mark correct/incorrect
+                if (selectedOption === correctOption) {
+                    event.currentTarget.classList.add('correct');
+                    if (!userAnswers[questionId + '-scored']) {
+                        score++;
+                        scoreSpan.textContent = score;
+                        userAnswers[questionId + '-scored'] = true;
+                    }
+                } else {
+                    event.currentTarget.classList.add('incorrect');
+                    document.querySelector(`#question-${questionId} .option[data-option="${correctOption}"]`).classList.add('correct');
+                }
+            }
+            
+            function showExplanation() {
+                const explanation = document.querySelector(`#question-${currentQuestion} .explanation`);
+                explanation.classList.remove('hidden');
+                showExplanationButton.classList.add('hidden');
+                nextQuestionButton.classList.remove('hidden');
+            }
+            
+            function goToPreviousQuestion() {
+                if (currentQuestion > 1) {
+                    document.querySelector(`#question-${currentQuestion}`).classList.remove('active');
+                    currentQuestion--;
+                    document.querySelector(`#question-${currentQuestion}`).classList.add('active');
+                    currentQuestionSpan.textContent = currentQuestion;
+                    updateNavButtons();
+                    updateProgress();
+                }
+            }
+            
+            function goToNextQuestion() {
+                if (currentQuestion < totalQuestions) {
+                    document.querySelector(`#question-${currentQuestion}`).classList.remove('active');
+                    currentQuestion++;
+                    document.querySelector(`#question-${currentQuestion}`).classList.add('active');
+                    currentQuestionSpan.textContent = currentQuestion;
+                    showExplanationButton.classList.add('hidden');
+                    nextQuestionButton.classList.add('hidden');
+                    
+                    // If this question has been answered, show explanation button
+                    if (userAnswers[currentQuestion]) {
+                        showExplanationButton.classList.remove('hidden');
+                    }
+                    
+                    updateNavButtons();
+                    updateProgress();
+                } else {
+                    showResults();
+                }
+            }
+            
+            function updateNavButtons() {
+                prevButton.disabled = currentQuestion === 1;
+                nextButton.textContent = currentQuestion === totalQuestions ? 'Hoàn thành' : 'Câu tiếp theo';
+            }
+            
+            function updateProgress() {
+                const percentage = (currentQuestion / totalQuestions) * 100;
+                progressBar.style.width = `${percentage}%`;
+            }
+            
+            function showResults() {
+                questionsContainer.classList.add('hidden');
+                document.querySelector('.flex.justify-between').classList.add('hidden');
+                resultContainer.classList.remove('hidden');
+                finalScoreSpan.textContent = score;
+                
+                // Create question status indicators
+                const grid = document.querySelector('#result-container .grid');
+                grid.innerHTML = '';
+                
+                for (let i = 1; i <= totalQuestions; i++) {
+                    const indicator = document.createElement('div');
+                    indicator.className = 'p-2 text-center rounded-md';
+                    
+                    if (!userAnswers[i]) {
+                        indicator.className += ' bg-gray-200';
+                        indicator.textContent = i;
+                    } else if (userAnswers[i] === answers[i]) {
+                        indicator.className += ' bg-green-100 text-green-800';
+                        indicator.textContent = i;
+                    } else {
+                        indicator.className += ' bg-red-100 text-red-800';
+                        indicator.textContent = i;
+                    }
+                    
+                    grid.appendChild(indicator);
+                }
+            }
+            
+            function restartQuiz() {
+                // Reset variables
+                currentQuestion = 1;
+                score = 0;
+                Object.keys(userAnswers).forEach(key => delete userAnswers[key]);
+                
+                // Reset UI
+                scoreSpan.textContent = score;
+                currentQuestionSpan.textContent = currentQuestion;
+                updateProgress();
+                updateNavButtons();
+                
+                // Show first question
+                document.querySelectorAll('.question-container').forEach(q => q.classList.remove('active'));
+                document.querySelector('#question-1').classList.add('active');
+                
+                // Reset options
+                document.querySelectorAll('.option').forEach(option => {
+                    option.classList.remove('selected', 'correct', 'incorrect');
+                    option.addEventListener('click', selectOption);
+                });
+                
+                // Hide result container
+                resultContainer.classList.add('hidden');
+                questionsContainer.classList.remove('hidden');
+                document.querySelector('.flex.justify-between').classList.remove('hidden');
+                
+                // Hide explanations
+                document.querySelectorAll('.explanation').forEach(e => e.classList.add('hidden'));
+                
+                // Reset buttons
+                showExplanationButton.classList.add('hidden');
+                nextQuestionButton.classList.add('hidden');
+            }
+        });
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
