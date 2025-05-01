@@ -1,0 +1,439 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Quiz - ILearn Smart World 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .option-btn {
+            transition: all 0.3s;
+        }
+        .option-btn:hover:not(.disabled) {
+            transform: translateY(-2px);
+        }
+        .option-btn.correct {
+            background-color: #10b981;
+            color: white;
+        }
+        .option-btn.incorrect {
+            background-color: #ef4444;
+            color: white;
+        }
+        .disabled {
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-indigo-700">English Multiple Choice Quiz</h1>
+            <p class="text-xl text-gray-600 mt-2">ILearn Smart World 9 - Phần I: Choose the word/phrase/sentence</p>
+        </header>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <div id="quiz-container">
+                <div id="progress-container" class="mb-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="text-sm text-gray-600">Tiến độ</span>
+                        <span class="text-sm text-gray-600" id="progress-text">0/30</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div id="progress-bar" class="bg-indigo-600 h-2.5 rounded-full" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div id="question-container" class="mb-6">
+                    <h2 id="question-text" class="text-xl font-semibold mb-4"></h2>
+                    <div id="options-container" class="space-y-3"></div>
+                </div>
+
+                <div id="explanation-container" class="mt-6 p-4 bg-indigo-50 rounded-lg hidden">
+                    <h3 class="font-semibold text-indigo-700 mb-2">Giải thích:</h3>
+                    <p id="explanation-text" class="text-gray-700"></p>
+                </div>
+
+                <div class="flex justify-between mt-8">
+                    <button id="prev-btn" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition disabled:opacity-50" disabled>Câu trước</button>
+                    <button id="next-btn" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">Câu tiếp theo</button>
+                </div>
+            </div>
+
+            <div id="results-container" class="text-center py-8 hidden">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-4">Kết quả</h2>
+                <div class="text-5xl font-bold mb-6"><span id="score">0</span>/30</div>
+                <div class="mb-8">
+                    <div class="w-full bg-gray-200 rounded-full h-4 mb-2">
+                        <div id="score-bar" class="bg-indigo-600 h-4 rounded-full" style="width: 0%"></div>
+                    </div>
+                    <p id="performance-text" class="text-gray-600"></p>
+                </div>
+                <button id="review-btn" class="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">Xem lại các câu hỏi</button>
+                <button id="restart-btn" class="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition mt-4">Làm lại bài</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "Which word has the underlined part pronounced differently from the others?",
+                options: ["wAtch", "wAsh", "wAnt", "wAter"],
+                correctAnswer: 3,
+                explanation: "Đáp án là 'wAter'. Trong khi ba từ còn lại 'wAtch', 'wAsh', và 'wAnt' có phần gạch chân 'A' được phát âm là /ɒ/ trong tiếng Anh-Anh hoặc /ɑː/ trong tiếng Anh-Mỹ, thì trong 'wAter', phần 'A' được phát âm là /ɔː/ trong tiếng Anh-Anh hoặc /ɑː/ trong tiếng Anh-Mỹ."
+            },
+            {
+                question: "Which word has a different stress pattern from the others?",
+                options: ["electric", "fantastic", "computer", "important"],
+                correctAnswer: 2,
+                explanation: "Đáp án là 'computer'. Từ 'computer' có trọng âm ở âm tiết thứ hai (com-PU-ter), trong khi các từ còn lại 'electric' (e-LEC-tric), 'fantastic' (fan-TAS-tic), và 'important' (im-POR-tant) đều có trọng âm ở âm tiết thứ hai."
+            },
+            {
+                question: "Choose the correct word to complete the sentence: 'He _____ his homework before his mother came home.'",
+                options: ["finished", "has finished", "was finishing", "had finished"],
+                correctAnswer: 3,
+                explanation: "Đáp án là 'had finished'. Đây là thì quá khứ hoàn thành (Past Perfect), diễn tả một hành động đã hoàn thành trước một hành động khác trong quá khứ. Hành động 'finish homework' xảy ra trước hành động 'mother came home'."
+            },
+            {
+                question: "Which word has the underlined part pronounced differently from the others?",
+                options: ["fOOd", "gOOd", "mOOn", "rOOm"],
+                correctAnswer: 1,
+                explanation: "Đáp án là 'gOOd'. Trong 'gOOd', phần gạch chân 'OO' được phát âm là /ʊ/ (ngắn), trong khi các từ còn lại 'fOOd', 'mOOn', và 'rOOm' đều có 'OO' được phát âm là /uː/ (dài)."
+            },
+            {
+                question: "Tom: 'I've been learning English for 5 years.' Linda: '_____'",
+                options: ["So do I", "So have I", "So am I", "So I have"],
+                correctAnswer: 1,
+                explanation: "Đáp án là 'So have I'. Đây là cách đồng tình với câu nói của người khác theo cấu trúc 'So + trợ động từ + chủ ngữ'. Câu của Tom sử dụng thì hiện tại hoàn thành tiếp diễn với trợ động từ 'have', nên Linda đồng tình bằng 'So have I'."
+            },
+            {
+                question: "Which word has a different stress pattern from that of the others?",
+                options: ["mathematics", "economics", "geography", "biology"],
+                correctAnswer: 2,
+                explanation: "Đáp án là 'geography'. Từ 'geography' có trọng âm ở âm tiết thứ hai (ge-O-gra-phy), trong khi các từ còn lại 'mathematics' (ma-the-MA-tics), 'economics' (e-co-NO-mics), và 'biology' (bi-O-lo-gy) đều có trọng âm ở âm tiết thứ ba."
+            },
+            {
+                question: "If you want to maintain good health, you _____ exercise regularly.",
+                options: ["should", "would", "could", "might"],
+                correctAnswer: 0,
+                explanation: "Đáp án là 'should'. 'Should' được sử dụng để đưa ra lời khuyên hoặc một điều nên làm. Câu này nói về việc nên tập thể dục đều đặn để duy trì sức khỏe tốt, nên 'should' là phù hợp nhất."
+            },
+            {
+                question: "Which word has the underlined part pronounced differently from the others?",
+                options: ["lEArn", "hEAr", "nEAr", "pEAr"],
+                correctAnswer: 0,
+                explanation: "Đáp án là 'lEArn'. Trong 'lEArn', phần gạch chân 'EA' được phát âm là /ɜː/ (dài), trong khi các từ còn lại 'hEAr', 'nEAr', và 'pEAr' đều có 'EA' được phát âm là /ɪə/."
+            },
+            {
+                question: "She is tired _____ doing the same thing every day.",
+                options: ["of", "with", "from", "about"],
+                correctAnswer: 0,
+                explanation: "Đáp án là 'of'. Cấu trúc 'tired of + V-ing' diễn tả cảm giác mệt mỏi/chán ngán về việc làm gì đó lặp đi lặp lại. Đây là cấu trúc cố định trong tiếng Anh."
+            },
+            {
+                question: "The children _____ TV when their mother came home.",
+                options: ["watched", "were watching", "had watched", "have watched"],
+                correctAnswer: 1,
+                explanation: "Đáp án là 'were watching'. Đây là tình huống sử dụng thì quá khứ tiếp diễn (Past Continuous) vì hành động 'watching TV' đang diễn ra tại thời điểm 'their mother came home' trong quá khứ."
+            },
+            {
+                question: "Which word has a different stress pattern from the others?",
+                options: ["determine", "consider", "discover", "remember"],
+                correctAnswer: 2,
+                explanation: "Đáp án là 'discover'. Từ 'discover' có trọng âm ở âm tiết đầu tiên (DIS-co-ver), trong khi các từ còn lại 'determine' (de-TER-mine), 'consider' (con-SI-der), và 'remember' (re-MEM-ber) đều có trọng âm ở âm tiết thứ hai."
+            },
+            {
+                question: "I wish I _____ a doctor.",
+                options: ["am", "was", "were", "have been"],
+                correctAnswer: 2,
+                explanation: "Đáp án là 'were'. Cấu trúc 'I wish + S + were/V2' dùng để diễn tả ước muốn không có thật ở hiện tại. Mặc dù 'was' cũng được chấp nhận trong ngôn ngữ hàng ngày, nhưng 'were' chính xác hơn trong ngữ pháp trang trọng."
+            },
+            {
+                question: "Which of the following is NOT a renewable energy source?",
+                options: ["Solar energy", "Wind power", "Coal", "Hydropower"],
+                correctAnswer: 2,
+                explanation: "Đáp án là 'Coal' (than đá). Than đá là nguồn năng lượng không tái tạo vì nó hình thành từ thực vật hóa thạch sau hàng triệu năm và không thể được tạo ra trong thời gian ngắn. Các nguồn còn lại đều là năng lượng tái tạo."
+            },
+            {
+                question: "If I _____ the answer, I would tell you.",
+                options: ["know", "knew", "would know", "had known"],
+                correctAnswer: 1,
+                explanation: "Đáp án là 'knew'. Đây là câu điều kiện loại 2 (Conditional Type 2) diễn tả điều kiện không có thật ở hiện tại. Cấu trúc: If + S + V2, S + would + V1."
+            },
+            {
+                question: "Which word has the underlined part pronounced differently from the others?",
+                options: ["bOAt", "cOAt", "gOAl", "rOAd"],
+                correctAnswer: 2,
+                explanation: "Đáp án là 'gOAl'. Trong 'gOAl', phần gạch chân 'OA' được phát âm là /əʊ/ trong tiếng Anh-Anh hoặc /oʊ/ trong tiếng Anh-Mỹ, nhưng có cách phát âm hơi khác so với các từ còn lại 'bOAt', 'cOAt', và 'rOAd'."
+            },
+            {
+                question: "She has been working here _____ 2010.",
+                options: ["for", "since", "from", "in"],
+                correctAnswer: 1,
+                explanation: "Đáp án là 'since'. 'Since' được sử dụng với một thời điểm cụ thể (năm 2010) để chỉ thời gian bắt đầu của hành động. 'For' dùng với khoảng thời gian (ví dụ: for 10 years)."
+            },
+            {
+                question: "The more you practice, _____ you will become.",
+                options: ["the better", "the best", "the good", "the well"],
+                correctAnswer: 0,
+                explanation: "Đáp án là 'the better'. Đây là cấu trúc so sánh kép 'the + comparative..., the + comparative...' (càng... càng...). Ở đây 'good' ở dạng so sánh hơn là 'better'."
+            },
+            {
+                question: "Which word has a different stress pattern from the others?",
+                options: ["banana", "exciting", "computer", "dangerous"],
+                correctAnswer: 0,
+                explanation: "Đáp án là 'banana'. Từ 'banana' có trọng âm ở âm tiết thứ hai (ba-NA-na), trong khi các từ còn lại 'exciting' (ex-CI-ting), 'computer' (com-PU-ter), và 'dangerous' (DAN-ge-rous) có các mẫu trọng âm khác."
+            },
+            {
+                question: "The book _____ last year was very interesting.",
+                options: ["publishes", "publishing", "published", "was published"],
+                correctAnswer: 2,
+                explanation: "Đáp án là 'published'. Đây là dạng rút gọn của mệnh đề quan hệ 'which/that was published'. Khi động từ trong mệnh đề quan hệ ở dạng bị động, ta có thể lược bỏ 'which/that + be' và chỉ giữ lại phân từ quá khứ."
+            },
+            {
+                question: "By the time we arrived, the movie _____.",
+                options: ["already started", "has already started", "had already started", "was already starting"],
+                correctAnswer: 2,
+                explanation: "Đáp án là 'had already started'. Đây là thì quá khứ hoàn thành (Past Perfect) diễn tả hành động đã hoàn thành trước một thời điểm trong quá khứ. Bộ phim đã bắt đầu trước khi 'we arrived'."
+            },
+            {
+                question: "Which sentence is grammatically INCORRECT?",
+                options: ["She has been living here for 5 years.", "I've known him since we were children.", "They have gone to the cinema yesterday.", "We haven't seen each other for ages."],
+                correctAnswer: 2,
+                explanation: "Đáp án là 'They have gone to the cinema yesterday'. Câu này sai vì sử dụng thì hiện tại hoàn thành (Present Perfect) với một trạng từ chỉ thời gian cụ thể trong quá khứ (yesterday). Với 'yesterday', ta phải dùng thì quá khứ đơn (Past Simple)."
+            },
+            {
+                question: "He asked me _____ I could help him with his homework.",
+                options: ["that", "what", "if", "when"],
+                correctAnswer: 2,
+                explanation: "Đáp án là 'if'. Trong câu gián tiếp (Reported Speech) của câu hỏi Yes/No, ta sử dụng 'if' hoặc 'whether' để nối với mệnh đề chính."
+            },
+            {
+                question: "Which word has the underlined part pronounced differently from the others?",
+                options: ["hEIght", "wEIght", "nEIghbor", "rEIn"],
+                correctAnswer: 3,
+                explanation: "Đáp án là 'rEIn'. Trong 'rEIn', phần gạch chân 'EI' được phát âm là /eɪ/ (như trong 'day'), trong khi các từ còn lại 'hEIght', 'wEIght', và 'nEIghbor' đều có 'EI' được phát âm là /aɪ/ (như trong 'height')."
+            },
+            {
+                question: "_____ we had planned everything carefully, some things still went wrong.",
+                options: ["Although", "Despite", "However", "In spite"],
+                correctAnswer: 0,
+                explanation: "Đáp án là 'Although'. 'Although' là liên từ phù hợp để bắt đầu một mệnh đề nhượng bộ (concession clause). Nó kết nối hai mệnh đề đối lập nhau và có nghĩa tương đương với 'despite the fact that'."
+            },
+            {
+                question: "I would rather _____ at home than go out tonight.",
+                options: ["stay", "to stay", "staying", "stayed"],
+                correctAnswer: 0,
+                explanation: "Đáp án là 'stay'. Cấu trúc 'would rather + V1 (nguyên thể không to)' diễn tả sở thích hoặc mong muốn làm điều gì đó hơn là một việc khác."
+            },
+            {
+                question: "Which word has a different stress pattern from the others?",
+                options: ["photograph", "geography", "biography", "geology"],
+                correctAnswer: 0,
+                explanation: "Đáp án là 'photograph'. Từ 'photograph' có trọng âm ở âm tiết đầu tiên (PHO-to-graph), trong khi các từ còn lại 'geography' (ge-O-gra-phy), 'biography' (bi-O-gra-phy), và 'geology' (ge-O-lo-gy) đều có trọng âm ở âm tiết thứ hai."
+            },
+            {
+                question: "If I _____ you, I would take that job offer.",
+                options: ["am", "was", "were", "had been"],
+                correctAnswer: 2,
+                explanation: "Đáp án là 'were'. Đây là câu điều kiện loại 2 (Conditional Type 2) với cấu trúc cố định 'If I were you...' để đưa ra lời khuyên, diễn tả điều không có thật ở hiện tại."
+            },
+            {
+                question: "She's one of the most intelligent students _____ has ever studied at this school.",
+                options: ["who", "whom", "whose", "which"],
+                correctAnswer: 0,
+                explanation: "Đáp án là 'who'. Đại từ quan hệ 'who' được sử dụng để thay thế cho chủ ngữ là người trong mệnh đề quan hệ xác định (defining relative clause)."
+            },
+            {
+                question: "Which of the following sentences contains an error?",
+                options: ["Neither of them are going to the party.", "Each of the students has completed the assignment.", "Some of the information is incorrect.", "All of the water has been used."],
+                correctAnswer: 0,
+                explanation: "Đáp án là 'Neither of them are going to the party'. Lỗi ở đây là 'are' thay vì 'is'. 'Neither of + noun/pronoun' luôn đi với động từ số ít. Câu đúng phải là 'Neither of them is going to the party'."
+            },
+            {
+                question: "_____ she was tired, she continued working until midnight.",
+                options: ["Because of", "Although", "Despite", "In spite"],
+                correctAnswer: 1,
+                explanation: "Đáp án là 'Although'. 'Although' là liên từ nhượng bộ đi kèm với một mệnh đề hoàn chỉnh (có chủ ngữ và động từ). Các lựa chọn khác như 'Because of', 'Despite', 'In spite' đều cần theo sau là danh từ hoặc V-ing, không phải một mệnh đề."
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = Array(questions.length).fill(null);
+
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const explanationContainer = document.getElementById('explanation-container');
+        const explanationText = document.getElementById('explanation-text');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const quizContainer = document.getElementById('quiz-container');
+        const resultsContainer = document.getElementById('results-container');
+        const scoreElement = document.getElementById('score');
+        const scoreBar = document.getElementById('score-bar');
+        const performanceText = document.getElementById('performance-text');
+        const reviewBtn = document.getElementById('review-btn');
+        const restartBtn = document.getElementById('restart-btn');
+
+        function showQuestion(index) {
+            currentQuestionIndex = index;
+            explanationContainer.classList.add('hidden');
+            
+            // Update navigation buttons
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.textContent = currentQuestionIndex === questions.length - 1 ? 'Hoàn thành' : 'Câu tiếp theo';
+            
+            // Update progress
+            progressBar.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
+            progressText.textContent = `${currentQuestionIndex + 1}/${questions.length}`;
+            
+            // Display question
+            const question = questions[currentQuestionIndex];
+            questionText.textContent = `${currentQuestionIndex + 1}. ${question.question}`;
+            
+            // Display options
+            optionsContainer.innerHTML = '';
+            question.options.forEach((option, i) => {
+                const button = document.createElement('button');
+                button.className = 'option-btn w-full text-left p-3 border rounded-lg transition';
+                if (userAnswers[currentQuestionIndex] === null) {
+                    button.classList.add('hover:bg-indigo-50', 'border-gray-300');
+                } else {
+                    button.classList.add('disabled');
+                    if (i === userAnswers[currentQuestionIndex]) {
+                        button.classList.add(i === question.correctAnswer ? 'correct' : 'incorrect');
+                    } else if (i === question.correctAnswer) {
+                        button.classList.add('correct');
+                    } else {
+                        button.classList.add('border-gray-300');
+                    }
+                }
+                
+                const optionLabel = String.fromCharCode(65 + i); // A, B, C, D
+                button.innerHTML = `<span class="font-medium">${optionLabel}.</span> ${option}`;
+                
+                button.addEventListener('click', () => selectOption(i));
+                optionsContainer.appendChild(button);
+            });
+            
+            // Show explanation if an answer has been selected
+            if (userAnswers[currentQuestionIndex] !== null) {
+                explanationContainer.classList.remove('hidden');
+                explanationText.textContent = question.explanation;
+            }
+        }
+
+        function selectOption(optionIndex) {
+            if (userAnswers[currentQuestionIndex] !== null) return;
+            
+            userAnswers[currentQuestionIndex] = optionIndex;
+            const correct = optionIndex === questions[currentQuestionIndex].correctAnswer;
+            if (correct) score++;
+            
+            // Update option buttons
+            const optionButtons = optionsContainer.querySelectorAll('.option-btn');
+            optionButtons.forEach((button, i) => {
+                button.classList.add('disabled');
+                if (i === optionIndex) {
+                    button.classList.add(correct ? 'correct' : 'incorrect');
+                } else if (i === questions[currentQuestionIndex].correctAnswer) {
+                    button.classList.add('correct');
+                }
+            });
+            
+            // Show explanation
+            explanationContainer.classList.remove('hidden');
+            explanationText.textContent = questions[currentQuestionIndex].explanation;
+            
+            // Auto proceed to next question after a short delay if not the last question
+            if (currentQuestionIndex < questions.length - 1) {
+                setTimeout(() => {
+                    showQuestion(currentQuestionIndex + 1);
+                }, 500000);
+            }
+        }
+
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultsContainer.classList.remove('hidden');
+            
+            const percentage = (score / questions.length) * 100;
+            scoreElement.textContent = score;
+            scoreBar.style.width = `${percentage}%`;
+            
+            if (percentage >= 90) {
+                performanceText.textContent = 'Xuất sắc! Bạn đã nắm vững kiến thức!';
+            } else if (percentage >= 70) {
+                performanceText.textContent = 'Tốt! Bạn đã hiểu hầu hết các khái niệm.';
+            } else if (percentage >= 50) {
+                performanceText.textContent = 'Khá tốt! Hãy ôn luyện thêm để cải thiện.';
+            } else {
+                performanceText.textContent = 'Cần cố gắng hơn. Hãy xem lại các phần giải thích và thử lại.';
+            }
+        }
+
+        function reviewQuestions() {
+            resultsContainer.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+            showQuestion(0);
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            userAnswers = Array(questions.length).fill(null);
+            resultsContainer.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+            showQuestion(0);
+        }
+
+        // Event listeners
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) showQuestion(currentQuestionIndex - 1);
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestionIndex < questions.length - 1) {
+                showQuestion(currentQuestionIndex + 1);
+            } else {
+                showResults();
+            }
+        });
+        
+        reviewBtn.addEventListener('click', reviewQuestions);
+        restartBtn.addEventListener('click', restartQuiz);
+
+        // Initialize quiz
+        showQuestion(0);
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
