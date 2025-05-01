@@ -1,0 +1,473 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Quiz - ILearn Smart World 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+        }
+        .correct {
+            background-color: #d1fae5;
+            border-color: #10b981;
+        }
+        .incorrect {
+            background-color: #fee2e2;
+            border-color: #ef4444;
+        }
+        .hidden {
+            display: none;
+        }
+        .question-container {
+            transition: all 0.3s ease;
+        }
+        .explanation {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f8fafc;
+            border-left: 4px solid #3b82f6;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="container mx-auto p-4 max-w-3xl">
+        <div class="bg-white shadow-lg rounded-lg p-6 mb-6">
+            <h1 class="text-2xl font-bold text-center text-blue-800 mb-4">English Quiz - ILearn Smart World 9</h1>
+            <p class="text-center text-gray-600 mb-6">Choose the word/phrase/sentence that best fits the space or best answers the question given in each sentence.</p>
+            
+            <div id="quiz-container">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="font-medium text-gray-700">Câu hỏi: <span id="question-number">1</span>/<span id="total-questions">30</span></span>
+                    <span class="font-medium text-blue-700">Điểm: <span id="score">0</span></span>
+                </div>
+                
+                <div id="questions-container" class="mb-6"></div>
+                
+                <div class="flex justify-between">
+                    <button id="prev-btn" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 transition disabled:opacity-50" disabled>
+                        Câu trước
+                    </button>
+                    <button id="next-btn" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition">
+                        Câu tiếp theo
+                    </button>
+                </div>
+            </div>
+            
+            <div id="result-container" class="hidden">
+                <h2 class="text-xl font-bold text-center mb-4">Kết quả</h2>
+                <div class="text-center mb-4">
+                    <p class="text-lg">Số câu đúng: <span id="correct-answers">0</span>/<span id="total-questions2">30</span></p>
+                    <p class="text-lg">Điểm số: <span id="final-score">0</span>/30</p>
+                </div>
+                <div id="result-message" class="text-center mb-6 p-4 rounded-lg"></div>
+                <button id="restart-btn" class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition">
+                    Làm lại bài kiểm tra
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "Which word has the underlined part pronounced differently from that of the others?",
+                options: ["A. ph<u>o</u>tograph", "B. c<u>o</u>nversation", "C. c<u>o</u>llect", "D. c<u>o</u>mputer"],
+                answer: "A",
+                explanation: "Phần gạch chân trong từ 'photograph' phát âm là /ə/ (âm schwa), trong khi phần gạch chân của các từ còn lại phát âm là /ɒ/ (trong tiếng Anh-Anh) hoặc /ɑː/ (trong tiếng Anh-Mỹ)."
+            },
+            {
+                question: "Which word has the underlined part pronounced differently from that of the others?",
+                options: ["A. w<u>a</u>tch", "B. w<u>a</u>sh", "C. w<u>a</u>ter", "D. w<u>a</u>nt"],
+                answer: "C",
+                explanation: "Phần gạch chân 'a' trong từ 'water' phát âm là /ɔː/, trong khi phần gạch chân của các từ còn lại phát âm là /ɒ/ (trong tiếng Anh-Anh) hoặc /ɑː/ (trong tiếng Anh-Mỹ)."
+            },
+            {
+                question: "Which word has a different stress pattern from that of the others?",
+                options: ["A. biology", "B. geography", "C. physics", "D. chemistry"],
+                answer: "C",
+                explanation: "Từ 'physics' có trọng âm ở âm tiết đầu tiên (PHYsics), trong khi các từ còn lại có trọng âm ở âm tiết thứ hai (biOlogy, geOgraphy, CHEmistry)."
+            },
+            {
+                question: "Which word has a different stress pattern from that of the others?",
+                options: ["A. develop", "B. establish", "C. determine", "D. recognize"],
+                answer: "A",
+                explanation: "Từ 'develop' có trọng âm ở âm tiết thứ hai (deVElop), trong khi các từ còn lại có trọng âm ở âm tiết đầu tiên (EStablish, DEtermine, REcognize)."
+            },
+            {
+                question: "Peter: \"What's wrong with you?\"<br>Mary: \"__________. I've got a terrible headache.\"",
+                options: ["A. I'm not feeling well", "B. I'm very happy", "C. I'm doing fine", "D. I'm in a good mood"],
+                answer: "A",
+                explanation: "Mary đang bị đau đầu nên câu trả lời phù hợp nhất là 'I'm not feeling well' (Tôi không cảm thấy khỏe). Các lựa chọn khác đều mô tả trạng thái tốt, không phù hợp với việc bị đau đầu."
+            },
+            {
+                question: "Tom: \"Would you mind if I opened the window?\"<br>Jane: \"__________\"",
+                options: ["A. Yes, go ahead.", "B. No, go ahead.", "C. Yes, I do mind.", "D. Yes, please do."],
+                answer: "B",
+                explanation: "Khi ai đó hỏi 'Would you mind if...' (Bạn có phiền không nếu...), và bạn muốn cho phép họ, câu trả lời đúng là 'No, go ahead' (Không, cứ tự nhiên). Trả lời 'Yes' trong trường hợp này có nghĩa là bạn phiền, không muốn họ làm điều đó."
+            },
+            {
+                question: "Which word has the underlined part pronounced differently from that of the others?",
+                options: ["A. cha<u>ng</u>e", "B. stra<u>ng</u>e", "C. la<u>ng</u>uage", "D. a<u>ng</u>er"],
+                answer: "C",
+                explanation: "Phần gạch chân 'ng' trong từ 'language' phát âm là /ŋɡw/ (có thêm âm /w/ sau), trong khi phần gạch chân của các từ còn lại phát âm chỉ là /ndʒ/."
+            },
+            {
+                question: "John: \"I've passed my driving test.\"<br>Sarah: \"__________\"",
+                options: ["A. That's too bad.", "B. Congratulations!", "C. I'm sorry to hear that.", "D. Better luck next time."],
+                answer: "B",
+                explanation: "John thông báo đã thi đậu bằng lái xe, nên phản ứng phù hợp từ Sarah là 'Congratulations!' (Chúc mừng!). Các lựa chọn khác đều biểu hiện sự tiếc nuối hoặc an ủi, phù hợp khi người khác gặp thất bại, không phải thành công."
+            },
+            {
+                question: "Mark: \"What do you think of the new restaurant?\"<br>Lisa: \"__________\"",
+                options: ["A. Yes, I agree.", "B. It depends on you.", "C. The food is delicious.", "D. I don't know what to think."],
+                answer: "C",
+                explanation: "Mark hỏi ý kiến về nhà hàng mới, nên câu trả lời có nội dung đánh giá nhà hàng như 'The food is delicious' (Thức ăn rất ngon) là phù hợp nhất."
+            },
+            {
+                question: "The doctors advised him to give __________ smoking because it was affecting his health.",
+                options: ["A. up", "B. away", "C. off", "D. over"],
+                answer: "A",
+                explanation: "Cụm từ 'give up + something' có nghĩa là từ bỏ điều gì đó. 'Give up smoking' nghĩa là bỏ thuốc lá. Các lựa chọn khác không tạo thành cụm từ có nghĩa phù hợp."
+            },
+            {
+                question: "Which word has a different stress pattern from that of the others?",
+                options: ["A. comfortable", "B. interesting", "C. beautiful", "D. difficult"],
+                answer: "A",
+                explanation: "Từ 'comfortable' có trọng âm ở âm tiết đầu tiên (COMfortable), trong khi các từ còn lại có trọng âm ở âm tiết thứ nhất (INteresting, BEAUtiful, DIFficult)."
+            },
+            {
+                question: "Tom: \"I've just won a scholarship to Harvard.\"<br>Linda: \"__________\"",
+                options: ["A. That's a shame.", "B. That's amazing news!", "C. I don't believe it.", "D. Better luck next time."],
+                answer: "B",
+                explanation: "Tom thông báo đã giành được học bổng đi Harvard, đây là tin rất tốt, nên phản ứng phù hợp là 'That's amazing news!' (Đó là tin tuyệt vời!). 'That's a shame' và 'Better luck next time' là phản ứng khi nghe tin không tốt, còn 'I don't believe it' có thể hiểu là không tin tưởng Tom."
+            },
+            {
+                question: "Jane: \"Would you like to come to my birthday party next Sunday?\"<br>Peter: \"__________\"",
+                options: ["A. I don't think I can", "B. I think so", "C. I'd love to", "D. I hope not"],
+                answer: "C",
+                explanation: "Khi được mời tham dự tiệc sinh nhật, câu trả lời tích cực và lịch sự nhất là 'I'd love to' (Tôi rất thích điều đó). Đây là cách thể hiện sự vui vẻ đồng ý tham dự."
+            },
+            {
+                question: "Which word has the underlined part pronounced differently from that of the others?",
+                options: ["A. <u>ch</u>air", "B. <u>ch</u>emistry", "C. ma<u>ch</u>ine", "D. <u>ch</u>ild"],
+                answer: "C",
+                explanation: "Phần gạch chân 'ch' trong từ 'machine' phát âm là /ʃ/ (như 'sh' trong 'ship'), trong khi phần gạch chân của các từ còn lại phát âm là /tʃ/ (như 'ch' trong 'church')."
+            },
+            {
+                question: "The hurricane caused serious __________ to coastal areas.",
+                options: ["A. harm", "B. damage", "C. wound", "D. injury"],
+                answer: "B",
+                explanation: "'Damage' (sự thiệt hại) là từ phù hợp nhất khi nói về hậu quả của bão đối với các khu vực. 'Harm' thường dùng cho con người, 'wound' và 'injury' đều chỉ vết thương trên cơ thể."
+            },
+            {
+                question: "Alice: \"I'm going to visit my grandmother this weekend.\"<br>Bob: \"__________\"",
+                options: ["A. Have a good time.", "B. That's a pity.", "C. Sorry to hear that.", "D. I don't agree."],
+                answer: "A",
+                explanation: "Alice thông báo sẽ đi thăm bà, đây là một việc bình thường và tích cực, nên câu trả lời phù hợp nhất là 'Have a good time' (Chúc vui vẻ). Các lựa chọn khác biểu thị sự tiếc nuối hoặc không đồng tình, không phù hợp với ngữ cảnh này."
+            },
+            {
+                question: "Students should pay __________ to what their teachers say in class.",
+                options: ["A. attention", "B. notice", "C. care", "D. watch"],
+                answer: "A",
+                explanation: "Cụm từ 'pay attention to' (chú ý đến) là cách diễn đạt đúng trong ngữ cảnh này. Các lựa chọn khác không tạo thành cụm từ có nghĩa phù hợp với ngữ cảnh."
+            },
+            {
+                question: "Which word has the underlined part pronounced differently from that of the others?",
+                options: ["A. tho<u>ugh</u>t", "B. eno<u>ugh</u>", "C. br<u>ough</u>t", "D. c<u>ough</u>"],
+                answer: "B",
+                explanation: "Phần gạch chân 'ough' trong từ 'enough' phát âm là /ʌf/, trong khi phần gạch chân của các từ còn lại phát âm là /ɔːt/ ('thought', 'brought') hoặc /ɒf/ ('cough')."
+            },
+            {
+                question: "My parents __________ me to study hard when I was at school.",
+                options: ["A. encouraged", "B. suggested", "C. advised", "D. told"],
+                answer: "A",
+                explanation: "'Encourage' (khuyến khích) là từ phù hợp nhất để mô tả việc cha mẹ thúc đẩy, động viên con cái học tập chăm chỉ. 'Suggested' và 'advised' có nghĩa gợi ý, khuyên bảo, còn 'told' mang tính mệnh lệnh hơn."
+            },
+            {
+                question: "The concert was __________ because of the heavy rain.",
+                options: ["A. called out", "B. called off", "C. called up", "D. called in"],
+                answer: "B",
+                explanation: "Cụm động từ 'call off' có nghĩa là hủy bỏ một sự kiện đã được lên kế hoạch. Các cụm từ khác không phù hợp: 'call out' (gọi ra), 'call up' (gọi điện), 'call in' (gọi vào)."
+            },
+            {
+                question: "Which word has a different stress pattern from that of the others?",
+                options: ["A. economic", "B. scientific", "C. geography", "D. technology"],
+                answer: "C",
+                explanation: "Từ 'geography' có trọng âm ở âm tiết thứ hai (geOgraphy), trong khi các từ còn lại có trọng âm ở âm tiết thứ ba (econOMic, scienTIfic, techNOlogy)."
+            },
+            {
+                question: "I can't __________ what she said because there was too much noise.",
+                options: ["A. make up", "B. make out", "C. make over", "D. make off"],
+                answer: "B",
+                explanation: "Cụm động từ 'make out' có nghĩa là nghe rõ hoặc hiểu được điều gì đó khó nhận biết. Các cụm từ khác không phù hợp: 'make up' (bịa ra, hòa giải), 'make over' (cải tạo), 'make off' (chạy trốn)."
+            },
+            {
+                question: "Tom: \"I'm sorry I couldn't come to your party last night.\"<br>Mary: \"__________\"",
+                options: ["A. It's a pleasure.", "B. That's all right.", "C. Don't mention me.", "D. You're welcome."],
+                answer: "B",
+                explanation: "Khi ai đó xin lỗi vì không thể đến dự tiệc, câu trả lời phù hợp là 'That's all right' (Không sao đâu). Các lựa chọn khác không phù hợp với ngữ cảnh xin lỗi này."
+            },
+            {
+                question: "The new shopping mall will be __________ next month.",
+                options: ["A. opened", "B. opening", "C. open", "D. to open"],
+                answer: "A",
+                explanation: "Cấu trúc bị động 'will be opened' (sẽ được khai trương) là đúng trong ngữ cảnh này, khi nói về trung tâm mua sắm sẽ được khai trương vào tháng tới."
+            },
+            {
+                question: "Which word has the underlined part pronounced differently from that of the others?",
+                options: ["A. g<u>ui</u>tar", "B. g<u>ui</u>de", "C. g<u>ui</u>lt", "D. g<u>ui</u>nea"],
+                answer: "A",
+                explanation: "Phần gạch chân 'gui' trong từ 'guitar' phát âm là /ɡɪ/, trong khi phần gạch chân của các từ còn lại phát âm là /ɡaɪ/ ('guide') hoặc /ɡɪ/ với các âm khác nhau ('guilt', 'guinea')."
+            },
+            {
+                question: "She couldn't __________ her tears when she heard the bad news.",
+                options: ["A. prevent", "B. avoid", "C. stop", "D. hold back"],
+                answer: "D",
+                explanation: "Cụm từ 'hold back tears' (kìm nén nước mắt) là cách diễn đạt tự nhiên nhất trong tiếng Anh. 'Prevent', 'avoid', và 'stop' không thường được dùng với 'tears' trong ngữ cảnh này."
+            },
+            {
+                question: "I've been trying to __________ with my homework, but it's too difficult.",
+                options: ["A. get over", "B. get along", "C. get by", "D. get through"],
+                answer: "D",
+                explanation: "Cụm động từ 'get through' có nghĩa là hoàn thành hoặc vượt qua một nhiệm vụ khó khăn. Các cụm từ khác không phù hợp: 'get over' (vượt qua cảm xúc), 'get along' (hòa hợp với ai đó), 'get by' (sống sót, đủ sống)."
+            },
+            {
+                question: "Which word has a different stress pattern from that of the others?",
+                options: ["A. education", "B. recommendation", "C. nationality", "D. university"],
+                answer: "D",
+                explanation: "Từ 'university' có trọng âm ở âm tiết thứ ba (univerSIty), trong khi các từ còn lại có trọng âm ở âm tiết thứ tư (educaTION, recommendaTION, nationaLIty)."
+            },
+            {
+                question: "We should __________ our natural resources for future generations.",
+                options: ["A. preserve", "B. serve", "C. deserve", "D. observe"],
+                answer: "A",
+                explanation: "'Preserve' (bảo tồn) là từ phù hợp nhất khi nói về việc giữ gìn tài nguyên thiên nhiên. 'Serve' (phục vụ), 'deserve' (xứng đáng), và 'observe' (quan sát) không phù hợp trong ngữ cảnh này."
+            },
+            {
+                question: "John: \"I've just been promoted.\"<br>Linda: \"__________\"",
+                options: ["A. Congratulations!", "B. Good luck!", "C. I'm sorry to hear that.", "D. Take care!"],
+                answer: "A",
+                explanation: "John thông báo vừa được thăng chức, đây là tin tốt, nên phản ứng phù hợp nhất là 'Congratulations!' (Chúc mừng!). Các lựa chọn khác không phù hợp với việc thăng chức."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answeredQuestions = Array(questions.length).fill(false);
+        const questionsContainer = document.getElementById('questions-container');
+        const questionNumber = document.getElementById('question-number');
+        const totalQuestions = document.getElementById('total-questions');
+        const totalQuestions2 = document.getElementById('total-questions2');
+        const scoreElement = document.getElementById('score');
+        const nextButton = document.getElementById('next-btn');
+        const prevButton = document.getElementById('prev-btn');
+        const quizContainer = document.getElementById('quiz-container');
+        const resultContainer = document.getElementById('result-container');
+        const correctAnswers = document.getElementById('correct-answers');
+        const finalScore = document.getElementById('final-score');
+        const resultMessage = document.getElementById('result-message');
+        const restartButton = document.getElementById('restart-btn');
+
+        // Initialize quiz
+        totalQuestions.textContent = questions.length;
+        totalQuestions2.textContent = questions.length;
+        
+        function loadQuestion(index) {
+            questionsContainer.innerHTML = '';
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'question-container';
+            
+            const questionText = document.createElement('p');
+            questionText.className = 'font-medium text-gray-800 mb-4';
+            questionText.innerHTML = `${index + 1}. ${questions[index].question}`;
+            questionDiv.appendChild(questionText);
+            
+            const optionsContainer = document.createElement('div');
+            optionsContainer.className = 'space-y-2 mb-4';
+            
+            questions[index].options.forEach((option, i) => {
+                const optionButton = document.createElement('button');
+                optionButton.className = 'w-full text-left p-3 border border-gray-300 rounded hover:bg-gray-50 transition focus:outline-none focus:ring-2 focus:ring-blue-300';
+                optionButton.innerHTML = option;
+                
+                if (answeredQuestions[index]) {
+                    optionButton.disabled = true;
+                    if (option.charAt(0) === questions[index].answer) {
+                        optionButton.classList.add('correct');
+                    } else if (optionButton.classList.contains('selected')) {
+                        optionButton.classList.add('incorrect');
+                    }
+                } else {
+                    optionButton.addEventListener('click', () => selectOption(optionButton, i, index));
+                }
+                
+                optionsContainer.appendChild(optionButton);
+            });
+            
+            questionDiv.appendChild(optionsContainer);
+            
+            // Add explanation div (hidden initially)
+            const explanationDiv = document.createElement('div');
+            explanationDiv.className = 'explanation';
+            explanationDiv.id = `explanation-${index}`;
+            
+            const explanationTitle = document.createElement('h3');
+            explanationTitle.className = 'font-medium text-blue-800 mb-2';
+            explanationTitle.textContent = 'Giải thích:';
+            explanationDiv.appendChild(explanationTitle);
+            
+            const explanationText = document.createElement('p');
+            explanationText.className = 'text-gray-700';
+            explanationText.textContent = questions[index].explanation;
+            explanationDiv.appendChild(explanationText);
+            
+            if (answeredQuestions[index]) {
+                explanationDiv.style.display = 'block';
+            }
+            
+            questionDiv.appendChild(explanationDiv);
+            questionsContainer.appendChild(questionDiv);
+            
+            // Update navigation buttons
+            prevButton.disabled = index === 0;
+            questionNumber.textContent = index + 1;
+            
+            if (index === questions.length - 1) {
+                nextButton.textContent = 'Xem kết quả';
+            } else {
+                nextButton.textContent = 'Câu tiếp theo';
+            }
+            
+            // Disable next button if question is not answered yet
+            nextButton.disabled = !answeredQuestions[index] && nextButton.textContent === 'Câu tiếp theo';
+        }
+        
+        function selectOption(optionButton, optionIndex, questionIndex) {
+            const optionLetter = questions[questionIndex].options[optionIndex].charAt(0);
+            const correctAnswer = questions[questionIndex].answer;
+            
+            // Mark all options as selected or not
+            const optionButtons = questionsContainer.querySelectorAll('button');
+            optionButtons.forEach(button => {
+                button.classList.remove('selected');
+                button.disabled = true;
+            });
+            
+            optionButton.classList.add('selected');
+            
+            // Check if the answer is correct
+            if (optionLetter === correctAnswer) {
+                optionButton.classList.add('correct');
+                score++;
+                scoreElement.textContent = score;
+            } else {
+                optionButton.classList.add('incorrect');
+                // Highlight the correct answer
+                optionButtons.forEach(button => {
+                    if (button.innerHTML.charAt(0) === correctAnswer) {
+                        button.classList.add('correct');
+                    }
+                });
+            }
+            
+            // Show explanation
+            document.getElementById(`explanation-${questionIndex}`).style.display = 'block';
+            
+            // Mark question as answered
+            answeredQuestions[questionIndex] = true;
+            
+            // Enable next button
+            nextButton.disabled = false;
+        }
+        
+        function showResult() {
+            quizContainer.classList.add('hidden');
+            resultContainer.classList.remove('hidden');
+            
+            correctAnswers.textContent = score;
+            finalScore.textContent = score;
+            
+            // Display message based on score
+            let message = '';
+            const percentage = (score / questions.length) * 100;
+            
+            if (percentage >= 90) {
+                message = 'Xuất sắc! Bạn đã làm rất tốt.';
+                resultMessage.className = 'text-center mb-6 p-4 rounded-lg bg-green-100 text-green-800';
+            } else if (percentage >= 70) {
+                message = 'Tốt! Bạn đã làm khá tốt.';
+                resultMessage.className = 'text-center mb-6 p-4 rounded-lg bg-blue-100 text-blue-800';
+            } else if (percentage >= 50) {
+                message = 'Trung bình. Bạn cần cải thiện thêm.';
+                resultMessage.className = 'text-center mb-6 p-4 rounded-lg bg-yellow-100 text-yellow-800';
+            } else {
+                message = 'Cần cố gắng nhiều hơn. Hãy ôn tập lại!';
+                resultMessage.className = 'text-center mb-6 p-4 rounded-lg bg-red-100 text-red-800';
+            }
+            
+            resultMessage.textContent = message;
+        }
+        
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            answeredQuestions = Array(questions.length).fill(false);
+            scoreElement.textContent = score;
+            resultContainer.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+            loadQuestion(currentQuestion);
+        }
+        
+        // Event listeners
+        nextButton.addEventListener('click', () => {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                loadQuestion(currentQuestion);
+            } else {
+                showResult();
+            }
+        });
+        
+        prevButton.addEventListener('click', () => {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion(currentQuestion);
+            }
+        });
+        
+        restartButton.addEventListener('click', restartQuiz);
+        
+        // Start quiz
+        loadQuestion(currentQuestion);
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
