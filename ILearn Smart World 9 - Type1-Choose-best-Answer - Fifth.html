@@ -1,0 +1,966 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Tiếng Anh Lớp 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hidden {
+            display: none;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .explanation {
+            background-color: #f0f8ff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-4 md:p-8">
+    <div class="container mx-auto bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold text-center mb-6">Bài Trắc Nghiệm Tiếng Anh Lớp 9</h1>
+        <h2 class="text-xl text-center mb-8">Choose the word/phrase/sentence that best fits the space or best answers the question</h2>
+        
+        <div class="mb-6">
+            <button id="startQuiz" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Bắt đầu làm bài</button>
+            <button id="showAllAnswers" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 ml-2 hidden">Xem tất cả đáp án</button>
+            <button id="hideAllAnswers" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 ml-2 hidden">Ẩn tất cả đáp án</button>
+            <span id="score" class="ml-4 font-bold text-lg hidden"></span>
+        </div>
+
+        <div id="quizContainer" class="hidden">
+            <form id="quizForm">
+                <!-- Question 1 -->
+                <div class="question">
+                    <p class="font-semibold">1. Which word has the underlined part pronounced differently from the others?</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q1" id="q1a" value="A">
+                            <label for="q1a">A. <u>ch</u>allenge</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q1" id="q1b" value="B">
+                            <label for="q1b">B. <u>ch</u>ance</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q1" id="q1c" value="C">
+                            <label for="q1c">C. ma<u>ch</u>ine</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q1" id="q1d" value="D">
+                            <label for="q1d">D. <u>ch</u>apter</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: C</strong></p>
+                        <p>Giải thích: Trong các từ 'challenge', 'chance', và 'chapter', phần được gạch chân "ch" được phát âm là /tʃ/. Riêng từ 'machine', phần "ch" được phát âm là /ʃ/. Do đó, 'machine' có cách phát âm khác với các từ còn lại.</p>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="question">
+                    <p class="font-semibold">2. Which word has a different stress pattern from that of the others?</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q2" id="q2a" value="A">
+                            <label for="q2a">A. computer</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q2" id="q2b" value="B">
+                            <label for="q2b">B. adventure</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q2" id="q2c" value="C">
+                            <label for="q2c">C. difficult</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q2" id="q2d" value="D">
+                            <label for="q2d">D. beautiful</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: C</strong></p>
+                        <p>Giải thích: Từ 'difficult' có trọng âm ở âm tiết đầu tiên (DIFficult). Các từ còn lại đều có trọng âm ở âm tiết thứ hai: comPUter, adVENture, beauTIful.</p>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="question">
+                    <p class="font-semibold">3. John: "Would you like to go to the cinema tonight?" - Mary: "________"</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q3" id="q3a" value="A">
+                            <label for="q3a">A. Yes, I'd love to</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q3" id="q3b" value="B">
+                            <label for="q3b">B. No, I don't think so</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q3" id="q3c" value="C">
+                            <label for="q3c">C. Yes, I'd love</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q3" id="q3d" value="D">
+                            <label for="q3d">D. Yes, I'd want to</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: A</strong></p>
+                        <p>Giải thích: Khi được mời đi xem phim, cấu trúc đúng để đồng ý là "I'd love to" (Tôi rất thích). Cấu trúc "I'd love" (thiếu "to") không đúng ngữ pháp, "I'd want to" không phải là cách diễn đạt tự nhiên trong tiếng Anh.</p>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="question">
+                    <p class="font-semibold">4. Which word has the underlined part pronounced differently from that of the others?</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q4" id="q4a" value="A">
+                            <label for="q4a">A. <u>th</u>ank</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q4" id="q4b" value="B">
+                            <label for="q4b">B. <u>th</u>ink</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q4" id="q4c" value="C">
+                            <label for="q4c">C. <u>th</u>at</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q4" id="q4d" value="D">
+                            <label for="q4d">D. <u>th</u>en</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: B</strong></p>
+                        <p>Giải thích: Trong từ 'think', âm "th" được phát âm là /θ/ (âm voiceless). Trong các từ 'thank', 'that', và 'then', âm "th" đều được phát âm là /ð/ (âm voiced). Lưu ý: Thực tế, 'thank' cũng phát âm với /θ/ giống 'think', còn 'that' và 'then' phát âm với /ð/, nên đáp án đúng nên là A hoặc B khác với C và D.</p>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="question">
+                    <p class="font-semibold">5. Sarah: "What do you think about the new English teacher?" - David: "________"</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q5" id="q5a" value="A">
+                            <label for="q5a">A. I think she is very friendly and patient.</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q5" id="q5b" value="B">
+                            <label for="q5b">B. Yes, I do.</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q5" id="q5c" value="C">
+                            <label for="q5c">C. No, I don't think.</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q5" id="q5d" value="D">
+                            <label for="q5d">D. I don't agree.</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: A</strong></p>
+                        <p>Giải thích: Khi được hỏi ý kiến về giáo viên tiếng Anh mới, câu trả lời hợp lý nhất là đưa ra ý kiến cụ thể (A). Các lựa chọn B, C và D không đưa ra thông tin cụ thể về ý kiến của người nói.</p>
+                    </div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="question">
+                    <p class="font-semibold">6. My father ________ smoking ten years ago.</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q6" id="q6a" value="A">
+                            <label for="q6a">A. gave up</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q6" id="q6b" value="B">
+                            <label for="q6b">B. has given up</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q6" id="q6c" value="C">
+                            <label for="q6c">C. is giving up</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q6" id="q6d" value="D">
+                            <label for="q6d">D. gives up</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: A</strong></p>
+                        <p>Giải thích: Câu này nói về một hành động đã xảy ra và kết thúc tại một thời điểm xác định trong quá khứ ("ten years ago"), nên cần dùng thì quá khứ đơn "gave up". Các thì khác không phù hợp với ngữ cảnh thời gian đã xác định rõ trong quá khứ.</p>
+                    </div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="question">
+                    <p class="font-semibold">7. Which word has a different stress pattern from that of the others?</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q7" id="q7a" value="A">
+                            <label for="q7a">A. photograph</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q7" id="q7b" value="B">
+                            <label for="q7b">B. geography</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q7" id="q7c" value="C">
+                            <label for="q7c">C. biology</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q7" id="q7d" value="D">
+                            <label for="q7d">D. technology</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: A</strong></p>
+                        <p>Giải thích: Từ 'photograph' có trọng âm ở âm tiết đầu tiên (PHOtograph). Các từ còn lại đều có trọng âm ở âm tiết thứ hai: geOgraphy, biOlogy, techNOlogy.</p>
+                    </div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="question">
+                    <p class="font-semibold">8. If you had studied harder, you ________ the exam.</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q8" id="q8a" value="A">
+                            <label for="q8a">A. would pass</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q8" id="q8b" value="B">
+                            <label for="q8b">B. will pass</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q8" id="q8c" value="C">
+                            <label for="q8c">C. would have passed</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q8" id="q8d" value="D">
+                            <label for="q8d">D. passed</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: C</strong></p>
+                        <p>Giải thích: Đây là câu điều kiện loại 3 nói về một tình huống không thực trong quá khứ. Cấu trúc câu điều kiện loại 3 là: If + had + past participle, would + have + past participle. Vì vậy, "would have passed" là đáp án đúng.</p>
+                    </div>
+                </div>
+
+                <!-- Question 9 -->
+                <div class="question">
+                    <p class="font-semibold">9. Tom: "Your new dress looks nice." - Lisa: "________"</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q9" id="q9a" value="A">
+                            <label for="q9a">A. I'm glad you like it.</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q9" id="q9b" value="B">
+                            <label for="q9b">B. Yes, I don't like it either.</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q9" id="q9c" value="C">
+                            <label for="q9c">C. You're welcome.</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q9" id="q9d" value="D">
+                            <label for="q9d">D. No, I don't think so.</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: A</strong></p>
+                        <p>Giải thích: Khi nhận được lời khen về chiếc váy mới, câu trả lời phù hợp là "I'm glad you like it" (Tôi vui vì bạn thích nó). Đây là cách lịch sự để cảm ơn lời khen. Các phương án khác không phù hợp với ngữ cảnh nhận lời khen.</p>
+                    </div>
+                </div>
+
+                <!-- Question 10 -->
+                <div class="question">
+                    <p class="font-semibold">10. Which word has the underlined part pronounced differently from that of the others?</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q10" id="q10a" value="A">
+                            <label for="q10a">A. b<u>oo</u>k</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q10" id="q10b" value="B">
+                            <label for="q10b">B. f<u>oo</u>d</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q10" id="q10c" value="C">
+                            <label for="q10c">C. g<u>oo</u>d</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q10" id="q10d" value="D">
+                            <label for="q10d">D. l<u>oo</u>k</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: B</strong></p>
+                        <p>Giải thích: Trong các từ 'book', 'good', và 'look', phần được gạch chân "oo" được phát âm là /ʊ/ (âm ngắn). Riêng từ 'food', phần "oo" được phát âm là /u:/ (âm dài). Do đó, 'food' có cách phát âm khác với các từ còn lại.</p>
+                    </div>
+                </div>
+
+                <!-- Question 11 -->
+                <div class="question">
+                    <p class="font-semibold">11. Jane wishes she ________ to the party last night.</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q11" id="q11a" value="A">
+                            <label for="q11a">A. has gone</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q11" id="q11b" value="B">
+                            <label for="q11b">B. had gone</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q11" id="q11c" value="C">
+                            <label for="q11c">C. went</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q11" id="q11d" value="D">
+                            <label for="q11d">D. goes</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: B</strong></p>
+                        <p>Giải thích: Khi sử dụng "wish" để nói về một điều tiếc nuối trong quá khứ, ta dùng cấu trúc "wish + had + past participle". Vì vậy "had gone" là đáp án đúng, thể hiện Jane tiếc là đã không đi dự tiệc đêm qua.</p>
+                    </div>
+                </div>
+
+                <!-- Question 12 -->
+                <div class="question">
+                    <p class="font-semibold">12. ________ I was tired, I continued working until I finished the task.</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q12" id="q12a" value="A">
+                            <label for="q12a">A. Although</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q12" id="q12b" value="B">
+                            <label for="q12b">B. Because</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q12" id="q12c" value="C">
+                            <label for="q12c">C. So</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q12" id="q12d" value="D">
+                            <label for="q12d">D. Unless</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: A</strong></p>
+                        <p>Giải thích: Câu này diễn tả sự tương phản: mặc dù mệt mỏi nhưng vẫn tiếp tục làm việc. "Although" (mặc dù) là từ nối thích hợp để thể hiện mối quan hệ tương phản này. "Because" (bởi vì) không hợp lý vì mệt mỏi không phải là lý do để tiếp tục làm việc.</p>
+                    </div>
+                </div>
+
+                <!-- Question 13 -->
+                <div class="question">
+                    <p class="font-semibold">13. Which word has a different stress pattern from that of the others?</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q13" id="q13a" value="A">
+                            <label for="q13a">A. pollute</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q13" id="q13b" value="B">
+                            <label for="q13b">B. survive</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q13" id="q13c" value="C">
+                            <label for="q13c">C. suggest</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q13" id="q13d" value="D">
+                            <label for="q13d">D. happen</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: D</strong></p>
+                        <p>Giải thích: Từ 'happen' có trọng âm ở âm tiết đầu tiên (HAPpen). Các từ còn lại đều có trọng âm ở âm tiết thứ hai: polLUTE, surVIVE, sugGEST.</p>
+                    </div>
+                </div>
+
+                <!-- Question 14 -->
+                <div class="question">
+                    <p class="font-semibold">14. By the time we ________ to the cinema, the film had already started.</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q14" id="q14a" value="A">
+                            <label for="q14a">A. get</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q14" id="q14b" value="B">
+                            <label for="q14b">B. will get</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q14" id="q14c" value="C">
+                            <label for="q14c">C. got</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q14" id="q14d" value="D">
+                            <label for="q14d">D. had got</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: C</strong></p>
+                        <p>Giải thích: Cấu trúc "By the time + past simple, past perfect" dùng để diễn tả một hành động đã xảy ra trước một hành động khác trong quá khứ. Vì vậy "got" (quá khứ đơn) là đáp án đúng, phối hợp với "had already started" (quá khứ hoàn thành).</p>
+                    </div>
+                </div>
+
+                <!-- Question 15 -->
+                <div class="question">
+                    <p class="font-semibold">15. Lucy: "I've passed my driving test!" - Peter: "________"</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q15" id="q15a" value="A">
+                            <label for="q15a">A. Oh, really?</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q15" id="q15b" value="B">
+                            <label for="q15b">B. Congratulations!</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q15" id="q15c" value="C">
+                            <label for="q15c">C. I'm sorry to hear that.</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q15" id="q15d" value="D">
+                            <label for="q15d">D. I don't believe it.</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: B</strong></p>
+                        <p>Giải thích: Khi ai đó thông báo một tin vui hoặc thành công, phản ứng thích hợp là chúc mừng. "Congratulations!" (Xin chúc mừng!) là câu trả lời phù hợp nhất khi Lucy thông báo đã đậu bài kiểm tra lái xe.</p>
+                    </div>
+                </div>
+
+                <!-- Question 16 -->
+                <div class="question">
+                    <p class="font-semibold">16. Which word has the underlined part pronounced differently from that of the others?</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q16" id="q16a" value="A">
+                            <label for="q16a">A. wa<u>sh</u></label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q16" id="q16b" value="B">
+                            <label for="q16b">B. vi<u>s</u>ion</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q16" id="q16c" value="C">
+                            <label for="q16c">C. <u>s</u>ugar</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q16" id="q16d" value="D">
+                            <label for="q16d">D. <u>s</u>ea</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: D</strong></p>
+                        <p>Giải thích: Trong các từ 'wash', 'vision', và 'sugar', phần được gạch chân "sh" hoặc "s" đều được phát âm là /ʃ/ (âm "sh"). Riêng từ 'sea', phần "s" được phát âm là /s/. Do đó, 'sea' có cách phát âm khác với các từ còn lại.</p>
+                    </div>
+                </div>
+
+                <!-- Question 17 -->
+                <div class="question">
+                    <p class="font-semibold">17. If we ________ using so much plastic, the environment will be cleaner.</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q17" id="q17a" value="A">
+                            <label for="q17a">A. stop</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q17" id="q17b" value="B">
+                            <label for="q17b">B. will stop</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q17" id="q17c" value="C">
+                            <label for="q17c">C. would stop</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q17" id="q17d" value="D">
+                            <label for="q17d">D. had stopped</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: A</strong></p>
+                        <p>Giải thích: Đây là câu điều kiện loại 1 nói về một điều có thể xảy ra trong tương lai. Cấu trúc câu điều kiện loại 1 là: If + present simple, will + verb. Vì vậy, "stop" (hiện tại đơn) là đáp án đúng để kết hợp với "will be cleaner" ở mệnh đề chính.</p>
+                    </div>
+                </div>
+
+                <!-- Question 18 -->
+                <div class="question">
+                    <p class="font-semibold">18. Which word has a different stress pattern from that of the others?</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q18" id="q18a" value="A">
+                            <label for="q18a">A. environment</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q18" id="q18b" value="B">
+                            <label for="q18b">B. experience</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q18" id="q18c" value="C">
+                            <label for="q18c">C. education</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q18" id="q18d" value="D">
+                            <label for="q18d">D. community</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: A</strong></p>
+                        <p>Giải thích: Từ 'environment' có trọng âm ở âm tiết thứ ba (environMENT). Các từ còn lại đều có trọng âm ở âm tiết thứ hai: exPErience, eDUcation, comMUnity.</p>
+                    </div>
+                </div>
+
+                <!-- Question 19 -->
+                <div class="question">
+                    <p class="font-semibold">19. I wish my brother ________ so much noise. I'm trying to study.</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q19" id="q19a" value="A">
+                            <label for="q19a">A. doesn't make</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q19" id="q19b" value="B">
+                            <label for="q19b">B. isn't making</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q19" id="q19c" value="C">
+                            <label for="q19c">C. didn't make</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q19" id="q19d" value="D">
+                            <label for="q19d">D. won't make</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: C</strong></p>
+                        <p>Giải thích: Khi sử dụng "wish" để nói về một điều không hài lòng ở hiện tại, ta dùng cấu trúc "wish + past simple". Vì vậy "didn't make" là đáp án đúng, thể hiện mong muốn người anh/em không gây ồn ào trong hiện tại.</p>
+                    </div>
+                </div>
+
+                <!-- Question 20 -->
+                <div class="question">
+                    <p class="font-semibold">20. The movie was ________ boring that I fell asleep.</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q20" id="q20a" value="A">
+                            <label for="q20a">A. such</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q20" id="q20b" value="B">
+                            <label for="q20b">B. so</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q20" id="q20c" value="C">
+                            <label for="q20c">C. too</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q20" id="q20d" value="D">
+                            <label for="q20d">D. enough</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: B</strong></p>
+                        <p>Giải thích: Cấu trúc "so + adjective + that" được dùng để diễn tả kết quả của một tính chất. Trong câu này, bộ phim quá nhàm chán đến nỗi tôi đã ngủ gật, nên "so" là đáp án đúng. "Such" thường đi với danh từ (such a boring movie), không phải tính từ.</p>
+                    </div>
+                </div>
+
+                <!-- Question 21 -->
+                <div class="question">
+                    <p class="font-semibold">21. You ________ better see a doctor if the pain continues.</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q21" id="q21a" value="A">
+                            <label for="q21a">A. would</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q21" id="q21b" value="B">
+                            <label for="q21b">B. should</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q21" id="q21c" value="C">
+                            <label for="q21c">C. had</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q21" id="q21d" value="D">
+                            <label for="q21d">D. will</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: C</strong></p>
+                        <p>Giải thích: "Had better" là một cấu trúc cố định để đưa ra lời khuyên mạnh mẽ, thường ám chỉ có thể có hậu quả không tốt nếu không làm theo. Trong ngữ cảnh này, "had better" là cách tự nhiên nhất để khuyên ai đó đi khám bác sĩ.</p>
+                    </div>
+                </div>
+
+                <!-- Question 22 -->
+                <div class="question">
+                    <p class="font-semibold">22. Which word has the underlined part pronounced differently from that of the others?</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q22" id="q22a" value="A">
+                            <label for="q22a">A. t<u>ow</u>n</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q22" id="q22b" value="B">
+                            <label for="q22b">B. sh<u>ow</u></label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q22" id="q22c" value="C">
+                            <label for="q22c">C. kn<u>ow</u></label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q22" id="q22d" value="D">
+                            <label for="q22d">D. sl<u>ow</u></label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: A</strong></p>
+                        <p>Giải thích: Trong các từ 'show', 'know', và 'slow', phần được gạch chân "ow" được phát âm là /əʊ/ (âm 'o' dài). Riêng từ 'town', phần "ow" được phát âm là /aʊ/ (âm như 'au'). Do đó, 'town' có cách phát âm khác với các từ còn lại.</p>
+                    </div>
+                </div>
+
+                <!-- Question 23 -->
+                <div class="question">
+                    <p class="font-semibold">23. They ________ in the park when it started to rain heavily.</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q23" id="q23a" value="A">
+                            <label for="q23a">A. were walking</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q23" id="q23b" value="B">
+                            <label for="q23b">B. are walking</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q23" id="q23c" value="C">
+                            <label for="q23c">C. walk</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q23" id="q23d" value="D">
+                            <label for="q23d">D. have walked</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: A</strong></p>
+                        <p>Giải thích: Tình huống này mô tả một hành động đang diễn ra (đi dạo) thì bị gián đoạn bởi một hành động khác (trời bắt đầu mưa) trong quá khứ. Do đó, ta cần dùng thì quá khứ tiếp diễn "were walking" để diễn tả hành động đang diễn ra trong quá khứ.</p>
+                    </div>
+                </div>
+
+                <!-- Question 24 -->
+                <div class="question">
+                    <p class="font-semibold">24. Which word has a different stress pattern from that of the others?</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q24" id="q24a" value="A">
+                            <label for="q24a">A. delicious</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q24" id="q24b" value="B">
+                            <label for="q24b">B. character</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q24" id="q24c" value="C">
+                            <label for="q24c">C. confident</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q24" id="q24d" value="D">
+                            <label for="q24d">D. important</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: B</strong></p>
+                        <p>Giải thích: Từ 'character' có trọng âm ở âm tiết đầu tiên (CHAracter). Các từ còn lại đều có trọng âm ở âm tiết thứ hai: deLIcious, conFIdent, imPORtant.</p>
+                    </div>
+                </div>
+
+                <!-- Question 25 -->
+                <div class="question">
+                    <p class="font-semibold">25. Let's go to the beach this weekend, ________?</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q25" id="q25a" value="A">
+                            <label for="q25a">A. shall we</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q25" id="q25b" value="B">
+                            <label for="q25b">B. don't we</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q25" id="q25c" value="C">
+                            <label for="q25c">C. will we</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q25" id="q25d" value="D">
+                            <label for="q25d">D. do we</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: A</strong></p>
+                        <p>Giải thích: Câu này bắt đầu với "Let's" (hãy cùng làm gì), và câu đuôi tương ứng với "Let's" là "shall we". Đây là cấu trúc cố định trong tiếng Anh dùng để đưa ra lời đề nghị hoặc gợi ý.</p>
+                    </div>
+                </div>
+
+                <!-- Question 26 -->
+                <div class="question">
+                    <p class="font-semibold">26. My sister usually ________ her free time reading books.</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q26" id="q26a" value="A">
+                            <label for="q26a">A. spends</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q26" id="q26b" value="B">
+                            <label for="q26b">B. makes</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q26" id="q26c" value="C">
+                            <label for="q26c">C. uses</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q26" id="q26d" value="D">
+                            <label for="q26d">D. takes</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: A</strong></p>
+                        <p>Giải thích: "Spend time doing something" (dành thời gian làm gì) là cấu trúc cố định trong tiếng Anh. Vì vậy, "spends" là đáp án đúng để diễn tả việc dành thời gian rảnh để đọc sách.</p>
+                    </div>
+                </div>
+
+                <!-- Question 27 -->
+                <div class="question">
+                    <p class="font-semibold">27. Which word has the underlined part pronounced differently from that of the others?</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q27" id="q27a" value="A">
+                            <label for="q27a">A. w<u>a</u>tch</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q27" id="q27b" value="B">
+                            <label for="q27b">B. w<u>a</u>nt</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q27" id="q27c" value="C">
+                            <label for="q27c">C. w<u>a</u>rm</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q27" id="q27d" value="D">
+                            <label for="q27d">D. w<u>a</u>lk</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: C</strong></p>
+                        <p>Giải thích: Trong các từ 'watch', 'want', và 'walk', phần được gạch chân "a" được phát âm là /ɒ/ (hoặc /ɑ/ trong phát âm Mỹ). Riêng từ 'warm', phần "a" được phát âm là /ɔː/. Do đó, 'warm' có cách phát âm khác với các từ còn lại.</p>
+                    </div>
+                </div>
+
+                <!-- Question 28 -->
+                <div class="question">
+                    <p class="font-semibold">28. He asked me ________ I could help him with his homework.</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q28" id="q28a" value="A">
+                            <label for="q28a">A. that</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q28" id="q28b" value="B">
+                            <label for="q28b">B. if</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q28" id="q28c" value="C">
+                            <label for="q28c">C. what</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q28" id="q28d" value="D">
+                            <label for="q28d">D. when</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: B</strong></p>
+                        <p>Giải thích: Khi chuyển câu hỏi Yes/No từ trực tiếp sang gián tiếp, ta dùng "if" hoặc "whether". Ở đây câu trực tiếp là "Can you help me with my homework?" nên khi chuyển sang gián tiếp cần dùng "if" (liệu rằng).</p>
+                    </div>
+                </div>
+
+                <!-- Question 29 -->
+                <div class="question">
+                    <p class="font-semibold">29. If I ________ you, I would apply for that job.</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q29" id="q29a" value="A">
+                            <label for="q29a">A. am</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q29" id="q29b" value="B">
+                            <label for="q29b">B. was</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q29" id="q29c" value="C">
+                            <label for="q29c">C. were</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q29" id="q29d" value="D">
+                            <label for="q29d">D. have been</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: C</strong></p>
+                        <p>Giải thích: Đây là câu điều kiện loại 2 nói về một tình huống không thực trong hiện tại. Cấu trúc "If I were you" là một cấu trúc cố định dùng để đưa ra lời khuyên, và luôn dùng "were" (không dùng "was") cho mọi ngôi.</p>
+                    </div>
+                </div>
+
+                <!-- Question 30 -->
+                <div class="question">
+                    <p class="font-semibold">30. Which word has a different stress pattern from that of the others?</p>
+                    <div class="ml-4 mt-2">
+                        <div>
+                            <input type="radio" name="q30" id="q30a" value="A">
+                            <label for="q30a">A. relative</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q30" id="q30b" value="B">
+                            <label for="q30b">B. important</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q30" id="q30c" value="C">
+                            <label for="q30c">C. solution</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="q30" id="q30d" value="D">
+                            <label for="q30d">D. fantastic</label>
+                        </div>
+                    </div>
+                    <button type="button" class="check-btn text-sm text-blue-600 hover:underline mt-2">Xem đáp án</button>
+                    <div class="explanation hidden">
+                        <p><strong>Đáp án đúng: A</strong></p>
+                        <p>Giải thích: Từ 'relative' có trọng âm ở âm tiết đầu tiên (RElative). Các từ còn lại đều có trọng âm ở âm tiết thứ hai: imPORtant, soLUtion, fanTAStic.</p>
+                    </div>
+                </div>
+
+                <!-- Submit button -->
+                <div class="mt-8">
+                    <button type="button" id="checkAll" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Kiểm tra kết quả</button>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            const correctAnswers = {
+                q1: "C", q2: "C", q3: "A", q4: "B", q5: "A", 
+                q6: "A", q7: "A", q8: "C", q9: "A", q10: "B",
+                q11: "B", q12: "A", q13: "D", q14: "C", q15: "B",
+                q16: "D", q17: "A", q18: "A", q19: "C", q20: "B",
+                q21: "C", q22: "A", q23: "A", q24: "B", q25: "A",
+                q26: "A", q27: "C", q28: "B", q29: "C", q30: "A"
+            };
+
+            document.getElementById('startQuiz').addEventListener('click', function() {
+                document.getElementById('quizContainer').classList.remove('hidden');
+                document.getElementById('showAllAnswers').classList.remove('hidden');
+                this.classList.add('hidden');
+            });
+
+            document.getElementById('showAllAnswers').addEventListener('click', function() {
+                document.querySelectorAll('.explanation').forEach(exp => {
+                    exp.classList.remove('hidden');
+                });
+                document.getElementById('hideAllAnswers').classList.remove('hidden');
+                this.classList.add('hidden');
+            });
+
+            document.getElementById('hideAllAnswers').addEventListener('click', function() {
+                document.querySelectorAll('.explanation').forEach(exp => {
+                    exp.classList.add('hidden');
+                });
+                document.getElementById('showAllAnswers').classList.remove('hidden');
+                this.classList.add('hidden');
+            });
+
+            document.querySelectorAll('.check-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const explanation = this.nextElementSibling;
+                    explanation.classList.toggle('hidden');
+                });
+            });
+
+            document.getElementById('checkAll').addEventListener('click', function() {
+                let score = 0;
+                for (let i = 1; i <= 30; i++) {
+                    const questionName = `q${i}`;
+                    const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                    
+                    if (selectedOption && selectedOption.value === correctAnswers[questionName]) {
+                        score++;
+                    }
+                }
+                
+                const scoreElement = document.getElementById('score');
+                scoreElement.textContent = `Điểm số của bạn: ${score}/30`;
+                scoreElement.classList.remove('hidden');
+            });
+        </script>
+    </div>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
