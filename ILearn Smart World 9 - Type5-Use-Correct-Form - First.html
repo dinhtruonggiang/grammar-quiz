@@ -1,0 +1,600 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Chuyển Đổi Dạng Từ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+        }
+        .quiz-container {
+            max-width: 800px;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .option {
+            transition: all 0.3s ease;
+        }
+        .option:hover:not(.selected) {
+            background-color: #f0f7ff;
+        }
+        .option.selected {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+        }
+        .option.correct {
+            border-color: #10b981;
+            background-color: #ecfdf5;
+        }
+        .option.incorrect {
+            border-color: #ef4444;
+            background-color: #fef2f2;
+        }
+        .hidden {
+            display: none;
+        }
+        .progress-bar {
+            height: 8px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        .explanation {
+            border-left: 4px solid #3b82f6;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-6">
+    <div class="quiz-container mx-auto p-4 md:p-6">
+        <h1 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-6">Bài Trắc Nghiệm Chuyển Đổi Dạng Từ</h1>
+        <p class="text-gray-600 mb-4 text-center">Dựa vào nội dung sách ILearn Smart World 9 Student Book</p>
+        
+        <!-- Progress Bar -->
+        <div class="mb-6">
+            <div class="flex justify-between text-sm text-gray-600 mb-1">
+                <span>Câu hỏi: <span id="current-question">1</span>/<span id="total-questions">30</span></span>
+                <span>Điểm: <span id="score">0</span>/<span id="max-score">30</span></span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress" style="width: 3.33%"></div>
+            </div>
+        </div>
+
+        <div id="quiz-content">
+            <!-- Questions will be loaded here -->
+        </div>
+
+        <div class="mt-6 flex flex-col-reverse md:flex-row justify-between">
+            <button id="prev-btn" class="mt-3 md:mt-0 px-6 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed md:order-1" disabled>Câu trước</button>
+            <button id="next-btn" class="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors md:order-2">Câu tiếp theo</button>
+        </div>
+
+        <div id="results" class="hidden">
+            <h2 class="text-xl font-bold text-center text-gray-800 my-4">Kết Quả</h2>
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+                <p class="text-center text-lg">Bạn đã đạt được <span id="final-score" class="font-bold text-blue-600">0</span>/<span id="final-max-score">30</span> điểm</p>
+                <p class="text-center text-gray-600 mt-2">Tỉ lệ đúng: <span id="percentage" class="font-semibold">0%</span></p>
+            </div>
+            
+            <div class="grid grid-cols-5 gap-2 mb-6">
+                <div class="col-span-5 font-semibold text-gray-700">Di chuyển đến câu hỏi:</div>
+                <!-- Question navigation buttons will be generated here -->
+            </div>
+
+            <button id="restart-btn" class="w-full px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">Làm Lại Bài Kiểm Tra</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "Tom là một người rất sáng tạo. Anh ấy luôn có những ý tưởng ___________ (CREATE) khi làm dự án nhóm.",
+                options: ["creating", "creation", "creative", "creatively"],
+                correctIndex: 2,
+                explanation: "Câu này cần một tính từ để mô tả cho 'ý tưởng'. Từ gốc 'create' (động từ) chuyển thành 'creative' (tính từ) = sáng tạo. Các lựa chọn khác: 'creating' (đang sáng tạo - hiện tại phân từ), 'creation' (sự sáng tạo - danh từ), 'creatively' (một cách sáng tạo - trạng từ) không phù hợp ngữ cảnh."
+            },
+            {
+                question: "Việc ___________ (PROTECT) môi trường là trách nhiệm của tất cả mọi người.",
+                options: ["protection", "protective", "protectively", "protect"],
+                correctIndex: 0,
+                explanation: "Câu này cần một danh từ làm chủ ngữ. Từ gốc 'protect' (động từ) chuyển thành 'protection' (danh từ) = sự bảo vệ. Các lựa chọn khác: 'protective' (bảo vệ - tính từ), 'protectively' (một cách bảo vệ - trạng từ), 'protect' (bảo vệ - động từ nguyên thể) không phù hợp vị trí chủ ngữ."
+            },
+            {
+                question: "Hòa Bình là một tỉnh ___________ (MOUNTAIN) của Việt Nam.",
+                options: ["mountain", "mountainous", "mounting", "mounted"],
+                correctIndex: 1,
+                explanation: "Câu này cần một tính từ để mô tả tỉnh Hòa Bình. Từ gốc 'mountain' (danh từ - núi) chuyển thành 'mountainous' (tính từ) = nhiều núi non. Các lựa chọn khác: 'mountain' (núi - danh từ), 'mounting' (đang gắn/tăng lên - hiện tại phân từ), 'mounted' (đã gắn - quá khứ phân từ) không phù hợp về nghĩa."
+            },
+            {
+                question: "Phụ huynh nên khuyến khích tính ___________ (DEPEND) của con cái.",
+                options: ["dependent", "dependence", "independence", "independently"],
+                correctIndex: 2,
+                explanation: "Trong ngữ cảnh này, phụ huynh muốn con cái tự lập, nên cần dùng danh từ 'independence' (sự độc lập) từ gốc 'depend'. Tiền tố 'in-' thêm vào để tạo nghĩa đối lập. Các lựa chọn khác: 'dependent' (phụ thuộc - tính từ), 'dependence' (sự phụ thuộc - danh từ), 'independently' (một cách độc lập - trạng từ) không phù hợp về nghĩa và ngữ cảnh."
+            },
+            {
+                question: "Mai nói tiếng Anh rất ___________ (FLUENT).",
+                options: ["fluent", "fluently", "fluence", "fluential"],
+                correctIndex: 1,
+                explanation: "Câu này cần một trạng từ để bổ nghĩa cho động từ 'nói'. Từ gốc 'fluent' (tính từ) chuyển thành 'fluently' (trạng từ) = trôi chảy. Các lựa chọn khác: 'fluent' (trôi chảy - tính từ), 'fluence' (không tồn tại), 'fluential' (không tồn tại) không phù hợp ngữ pháp."
+            },
+            {
+                question: "Phim kinh dị đó thực sự rất ___________ (FRIGHTEN).",
+                options: ["frightening", "frightened", "frighten", "fright"],
+                correctIndex: 0,
+                explanation: "Câu này cần một tính từ để mô tả phim kinh dị. Từ gốc 'frighten' (động từ) chuyển thành 'frightening' (tính từ hiện tại phân từ) = đáng sợ. Các lựa chọn khác: 'frightened' (sợ hãi - tính từ quá khứ phân từ, chỉ trạng thái người xem), 'frighten' (làm sợ hãi - động từ), 'fright' (sự sợ hãi - danh từ) không phù hợp ngữ cảnh."
+            },
+            {
+                question: "Tất cả người tham gia đều được yêu cầu ký vào giấy ___________ (AGREE).",
+                options: ["agreeing", "agreeable", "agreement", "agreeably"],
+                correctIndex: 2,
+                explanation: "Câu này cần một danh từ để chỉ loại giấy tờ. Từ gốc 'agree' (động từ) chuyển thành 'agreement' (danh từ) = thỏa thuận, hợp đồng. Các lựa chọn khác: 'agreeing' (đang đồng ý - hiện tại phân từ), 'agreeable' (dễ chịu/dễ đồng ý - tính từ), 'agreeably' (một cách dễ chịu - trạng từ) không phù hợp ngữ cảnh."
+            },
+            {
+                question: "Cô ấy đã tổ chức một cuộc họp thành ___________ (SUCCESS).",
+                options: ["success", "successful", "successfully", "successive"],
+                correctIndex: 2,
+                explanation: "Câu này cần một trạng từ để bổ nghĩa cho động từ 'tổ chức'. Từ gốc 'success' (danh từ) chuyển thành 'successfully' (trạng từ) = một cách thành công. Các lựa chọn khác: 'success' (thành công - danh từ), 'successful' (thành công - tính từ), 'successive' (liên tiếp - tính từ) không phù hợp ngữ pháp."
+            },
+            {
+                question: "Lễ hội Trung Thu là một sự kiện có ___________ (TRADITION) lâu đời ở Việt Nam.",
+                options: ["tradition", "traditional", "traditionally", "traditionalism"],
+                correctIndex: 0,
+                explanation: "Cấu trúc 'có + danh từ' yêu cầu danh từ ở vị trí này. Từ gốc 'tradition' đã là danh từ = truyền thống. Các lựa chọn khác: 'traditional' (truyền thống - tính từ), 'traditionally' (theo truyền thống - trạng từ), 'traditionalism' (chủ nghĩa truyền thống - danh từ) không phù hợp cấu trúc ngữ pháp."
+            },
+            {
+                question: "Giáo viên đã ___________ (COURAGE) học sinh tham gia vào cuộc thi khoa học.",
+                options: ["courage", "courageous", "courageously", "encourage"],
+                correctIndex: 3,
+                explanation: "Câu này cần một động từ. Từ gốc 'courage' (danh từ - lòng can đảm) cần thêm tiền tố 'en-' để tạo thành động từ 'encourage' = khuyến khích. Các lựa chọn khác: 'courage' (lòng can đảm - danh từ), 'courageous' (can đảm - tính từ), 'courageously' (một cách can đảm - trạng từ) không phù hợp vị trí động từ."
+            },
+            {
+                question: "Học sinh cần có thái độ ___________ (RESPECT) đối với giáo viên.",
+                options: ["respect", "respectful", "respectfully", "respecting"],
+                correctIndex: 1,
+                explanation: "Câu này cần một tính từ để mô tả 'thái độ'. Từ gốc 'respect' (danh từ/động từ) chuyển thành 'respectful' (tính từ) = tôn trọng. Các lựa chọn khác: 'respect' (sự tôn trọng - danh từ), 'respectfully' (một cách tôn trọng - trạng từ), 'respecting' (đang tôn trọng - hiện tại phân từ) không phù hợp ngữ cảnh."
+            },
+            {
+                question: "Các nhà khoa học đang nghiên cứu sự ___________ (WARM) toàn cầu.",
+                options: ["warm", "warming", "warmth", "warmly"],
+                correctIndex: 1,
+                explanation: "Câu này cần một danh từ chỉ hiện tượng. Từ gốc 'warm' (tính từ) chuyển thành 'warming' (danh từ) = sự nóng lên (trong cụm 'global warming' - hiện tượng nóng lên toàn cầu). Các lựa chọn khác: 'warm' (ấm - tính từ), 'warmth' (sự ấm áp - danh từ, nhưng không dùng để chỉ hiện tượng toàn cầu), 'warmly' (một cách ấm áp - trạng từ) không phù hợp ngữ cảnh."
+            },
+            {
+                question: "Chính phủ đang thực hiện nhiều biện pháp để ___________ (MODERN) hệ thống giao thông.",
+                options: ["modern", "modernize", "modernization", "modernly"],
+                correctIndex: 1,
+                explanation: "Câu này cần một động từ theo sau 'để'. Từ gốc 'modern' (tính từ) chuyển thành 'modernize' (động từ) = hiện đại hóa. Các lựa chọn khác: 'modern' (hiện đại - tính từ), 'modernization' (sự hiện đại hóa - danh từ), 'modernly' (không tồn tại) không phù hợp vị trí động từ."
+            },
+            {
+                question: "Học sinh nên phát triển kỹ năng tư duy ___________ (CRITIC).",
+                options: ["critic", "critical", "criticism", "critically"],
+                correctIndex: 1,
+                explanation: "Câu này cần một tính từ để mô tả loại tư duy. Từ gốc 'critic' (danh từ) chuyển thành 'critical' (tính từ) = phản biện. Các lựa chọn khác: 'critic' (nhà phê bình - danh từ), 'criticism' (sự phê bình - danh từ), 'critically' (một cách phản biện - trạng từ) không phù hợp ngữ cảnh."
+            },
+            {
+                question: "Bộ phim đó thật sự rất ___________ (IMPRESS).",
+                options: ["impress", "impressed", "impressive", "impressively"],
+                correctIndex: 2,
+                explanation: "Câu này cần một tính từ để mô tả bộ phim. Từ gốc 'impress' (động từ) chuyển thành 'impressive' (tính từ) = ấn tượng. Các lựa chọn khác: 'impress' (gây ấn tượng - động từ), 'impressed' (bị ấn tượng - tính từ quá khứ phân từ, thường dùng cho người), 'impressively' (một cách ấn tượng - trạng từ) không phù hợp ngữ cảnh."
+            },
+            {
+                question: "Sự ___________ (POLLUTE) không khí đang trở thành vấn đề nghiêm trọng ở các thành phố lớn.",
+                options: ["pollute", "pollutant", "polluting", "pollution"],
+                correctIndex: 3,
+                explanation: "Câu này cần một danh từ làm chủ ngữ. Từ gốc 'pollute' (động từ) chuyển thành 'pollution' (danh từ) = ô nhiễm. Các lựa chọn khác: 'pollute' (làm ô nhiễm - động từ), 'pollutant' (chất gây ô nhiễm - danh từ), 'polluting' (đang gây ô nhiễm - hiện tại phân từ) không phù hợp ngữ cảnh."
+            },
+            {
+                question: "Việc khám phá ___________ (SCIENCE) này đã làm thay đổi cách chúng ta nhìn về vũ trụ.",
+                options: ["science", "scientific", "scientifically", "scientist"],
+                correctIndex: 1,
+                explanation: "Câu này cần một tính từ để mô tả loại khám phá. Từ gốc 'science' (danh từ) chuyển thành 'scientific' (tính từ) = khoa học. Các lựa chọn khác: 'science' (khoa học - danh từ), 'scientifically' (một cách khoa học - trạng từ), 'scientist' (nhà khoa học - danh từ) không phù hợp ngữ cảnh."
+            },
+            {
+                question: "Chính sách mới đã ___________ (STRENGTH) nền kinh tế của đất nước.",
+                options: ["strength", "strengthen", "strong", "strongly"],
+                correctIndex: 1,
+                explanation: "Câu này cần một động từ ở thì quá khứ. Từ gốc 'strength' (danh từ) chuyển thành 'strengthen' (động từ) = củng cố, tăng cường. Các lựa chọn khác: 'strength' (sức mạnh - danh từ), 'strong' (mạnh mẽ - tính từ), 'strongly' (mạnh mẽ - trạng từ) không phù hợp vị trí động từ."
+            },
+            {
+                question: "Cô ấy làm việc ___________ (EFFICIENT) hơn những người khác trong nhóm.",
+                options: ["efficient", "efficiency", "efficiently", "efficiencing"],
+                correctIndex: 2,
+                explanation: "Câu này cần một trạng từ để so sánh cách làm việc. Từ gốc 'efficient' (tính từ) chuyển thành 'efficiently' (trạng từ) = hiệu quả. Các lựa chọn khác: 'efficient' (hiệu quả - tính từ), 'efficiency' (hiệu suất - danh từ), 'efficiencing' (không tồn tại) không phù hợp ngữ pháp."
+            },
+            {
+                question: "Các quốc gia phải hợp tác để đảm bảo hòa bình và ___________ (STABLE) trong khu vực.",
+                options: ["stable", "stabilize", "stability", "stably"],
+                correctIndex: 2,
+                explanation: "Câu này cần một danh từ phối hợp với danh từ 'hòa bình'. Từ gốc 'stable' (tính từ) chuyển thành 'stability' (danh từ) = sự ổn định. Các lựa chọn khác: 'stable' (ổn định - tính từ), 'stabilize' (làm ổn định - động từ), 'stably' (một cách ổn định - trạng từ) không phù hợp ngữ cảnh."
+            },
+            {
+                question: "Chúng ta cần tìm giải pháp ___________ (PRACTICE) cho vấn đề này.",
+                options: ["practice", "practical", "practicality", "practically"],
+                correctIndex: 1,
+                explanation: "Câu này cần một tính từ để mô tả loại giải pháp. Từ gốc 'practice' (danh từ/động từ) chuyển thành 'practical' (tính từ) = thực tế, khả thi. Các lựa chọn khác: 'practice' (thực hành - danh từ/động từ), 'practicality' (tính thực tế - danh từ), 'practically' (về mặt thực tế - trạng từ) không phù hợp ngữ cảnh."
+            },
+            {
+                question: "Tình ___________ (FRIEND) giữa hai quốc gia đã kéo dài nhiều thế kỷ.",
+                options: ["friend", "friendly", "friendship", "friendliness"],
+                correctIndex: 2,
+                explanation: "Câu này cần một danh từ trừu tượng chỉ mối quan hệ. Từ gốc 'friend' (danh từ) chuyển thành 'friendship' (danh từ) = tình bạn. Các lựa chọn khác: 'friend' (bạn - danh từ chỉ người), 'friendly' (thân thiện - tính từ), 'friendliness' (sự thân thiện - danh từ) không phù hợp ngữ cảnh."
+            },
+            {
+                question: "Việc bảo tồn các loài động vật đang bị đe dọa là ___________ (NECESSITY).",
+                options: ["necessary", "necessity", "necessitate", "necessarily"],
+                correctIndex: 1,
+                explanation: "Câu này cần một danh từ làm vị ngữ. Từ gốc 'necessary' (tính từ) chuyển thành 'necessity' (danh từ) = sự cần thiết. Các lựa chọn khác: 'necessary' (cần thiết - tính từ), 'necessitate' (đòi hỏi - động từ), 'necessarily' (nhất thiết - trạng từ) không phù hợp vị trí vị ngữ danh từ."
+            },
+            {
+                question: "Cuộc thi này nhằm ___________ (COURAGE) tinh thần học tập của học sinh.",
+                options: ["courage", "courageous", "courageously", "encourage"],
+                correctIndex: 3,
+                explanation: "Câu này cần một động từ theo sau 'nhằm'. Từ gốc 'courage' (danh từ) cần thêm tiền tố 'en-' để tạo thành động từ 'encourage' = khuyến khích. Các lựa chọn khác: 'courage' (lòng can đảm - danh từ), 'courageous' (can đảm - tính từ), 'courageously' (một cách can đảm - trạng từ) không phù hợp vị trí động từ."
+            },
+            {
+                question: "Khí hậu ở vùng này rất ___________ (CHANGE) theo mùa.",
+                options: ["change", "changing", "changeable", "changeably"],
+                correctIndex: 2,
+                explanation: "Câu này cần một tính từ để mô tả khí hậu. Từ gốc 'change' (động từ/danh từ) chuyển thành 'changeable' (tính từ) = hay thay đổi. Các lựa chọn khác: 'change' (thay đổi - động từ/danh từ), 'changing' (đang thay đổi - hiện tại phân từ), 'changeably' (một cách thay đổi - trạng từ) không phù hợp ngữ cảnh."
+            },
+            {
+                question: "Dù cô ấy rất ___________ (KNOW) về lĩnh vực này, cô vẫn tiếp tục học hỏi thêm.",
+                options: ["know", "known", "knowledge", "knowledgeable"],
+                correctIndex: 3,
+                explanation: "Câu này cần một tính từ để mô tả trạng thái của cô ấy. Từ gốc 'know' (động từ) chuyển thành 'knowledgeable' (tính từ) = có kiến thức, hiểu biết. Các lựa chọn khác: 'know' (biết - động từ), 'known' (được biết đến - quá khứ phân từ), 'knowledge' (kiến thức - danh từ) không phù hợp ngữ cảnh."
+            },
+            {
+                question: "Việc sử dụng ___________ (WASTE) năng lượng góp phần gây ra biến đổi khí hậu.",
+                options: ["waste", "wasting", "wasteful", "wastefully"],
+                correctIndex: 2,
+                explanation: "Câu này cần một tính từ để mô tả cách sử dụng năng lượng. Từ gốc 'waste' (lãng phí - động từ/danh từ) chuyển thành 'wasteful' (tính từ) = lãng phí. Các lựa chọn khác: 'waste' (lãng phí/rác thải - động từ/danh từ), 'wasting' (đang lãng phí - hiện tại phân từ), 'wastefully' (một cách lãng phí - trạng từ) không phù hợp ngữ cảnh."
+            },
+            {
+                question: "Chúng tôi cần ___________ (CLEAR) thông tin này với ban giám hiệu.",
+                options: ["clear", "clearing", "clearance", "clarify"],
+                correctIndex: 3,
+                explanation: "Câu này cần một động từ chỉ hành động liên quan đến thông tin. Từ gốc 'clear' (rõ ràng - tính từ/động từ) chuyển thành 'clarify' (động từ) = làm rõ. Các lựa chọn khác: 'clear' (làm sạch/rõ ràng - động từ/tính từ, không phù hợp ngữ cảnh), 'clearing' (đang làm sạch - hiện tại phân từ), 'clearance' (sự thông qua/giải phóng - danh từ) không phù hợp về nghĩa."
+            },
+            {
+                question: "Việt Nam là một đất nước giàu ___________ (DIVERSE) văn hóa.",
+                options: ["diverse", "diversity", "diversify", "diversely"],
+                correctIndex: 1,
+                explanation: "Cấu trúc 'giàu + danh từ' yêu cầu danh từ ở vị trí này. Từ gốc 'diverse' (tính từ) chuyển thành 'diversity' (danh từ) = sự đa dạng. Các lựa chọn khác: 'diverse' (đa dạng - tính từ), 'diversify' (đa dạng hóa - động từ), 'diversely' (một cách đa dạng - trạng từ) không phù hợp cấu trúc ngữ pháp."
+            },
+            {
+                question: "Nhân viên mới làm việc rất ___________ (ENTHUSIASM).",
+                options: ["enthusiasm", "enthusiast", "enthusiastic", "enthusiastically"],
+                correctIndex: 3,
+                explanation: "Câu này cần một trạng từ để bổ nghĩa cho động từ 'làm việc'. Từ gốc 'enthusiasm' (danh từ) chuyển thành 'enthusiastically' (trạng từ) = nhiệt tình. Các lựa chọn khác: 'enthusiasm' (sự nhiệt tình - danh từ), 'enthusiast' (người nhiệt tình - danh từ), 'enthusiastic' (nhiệt tình - tính từ) không phù hợp ngữ pháp."
+            },
+            {
+                question: "Kỳ thi này là một ___________ (ASSESS) quan trọng để đánh giá năng lực học sinh.",
+                options: ["assess", "assessor", "assessment", "assessing"],
+                correctIndex: 2,
+                explanation: "Câu này cần một danh từ theo sau mạo từ 'một'. Từ gốc 'assess' (động từ) chuyển thành 'assessment' (danh từ) = sự đánh giá. Các lựa chọn khác: 'assess' (đánh giá - động từ), 'assessor' (người đánh giá - danh từ), 'assessing' (đang đánh giá - hiện tại phân từ) không phù hợp ngữ cảnh."
+            }
+        ];
+
+        // State variables
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let answeredQuestions = new Array(questions.length).fill(false);
+        let userAnswers = new Array(questions.length).fill(-1);
+
+        // DOM elements
+        const quizContent = document.getElementById('quiz-content');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const currentQuestionEl = document.getElementById('current-question');
+        const totalQuestionsEl = document.getElementById('total-questions');
+        const scoreEl = document.getElementById('score');
+        const maxScoreEl = document.getElementById('max-score');
+        const progressBar = document.querySelector('.progress');
+        const resultsDiv = document.getElementById('results');
+        const finalScoreEl = document.getElementById('final-score');
+        const finalMaxScoreEl = document.getElementById('final-max-score');
+        const percentageEl = document.getElementById('percentage');
+        const restartBtn = document.getElementById('restart-btn');
+        
+        // Set total questions
+        totalQuestionsEl.textContent = questions.length;
+        maxScoreEl.textContent = questions.length;
+        finalMaxScoreEl.textContent = questions.length;
+
+        // Initialize the quiz
+        function initQuiz() {
+            loadQuestion(currentQuestionIndex);
+            createQuestionNavigation();
+        }
+
+        // Load a question
+        function loadQuestion(index) {
+            const question = questions[index];
+            currentQuestionEl.textContent = index + 1;
+            
+            // Update progress bar
+            progressBar.style.width = `${((index + 1) / questions.length) * 100}%`;
+            
+            // Create question HTML
+            let questionHTML = `
+                <div class="mb-6">
+                    <h2 class="text-lg font-medium text-gray-800 mb-3">Câu ${index + 1}: ${question.question}</h2>
+                    <div class="space-y-3">
+            `;
+            
+            // Add options
+            question.options.forEach((option, optionIndex) => {
+                const isSelected = userAnswers[index] === optionIndex;
+                const isCorrect = answeredQuestions[index] && optionIndex === question.correctIndex;
+                const isIncorrect = answeredQuestions[index] && isSelected && optionIndex !== question.correctIndex;
+                
+                let optionClass = "option p-3 border rounded-md cursor-pointer";
+                
+                if (isSelected) {
+                    optionClass += " selected";
+                }
+                if (isCorrect) {
+                    optionClass += " correct";
+                }
+                if (isIncorrect) {
+                    optionClass += " incorrect";
+                }
+                
+                questionHTML += `
+                    <div class="${optionClass}" data-index="${optionIndex}">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-5 h-5 mt-0.5">
+                                ${isSelected ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${isIncorrect ? 'text-red-500' : isCorrect ? 'text-green-500' : 'text-blue-500'}" viewBox="0 0 20 20" fill="currentColor">
+                                    <circle cx="10" cy="10" r="8" />
+                                </svg>` : `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-300" viewBox="0 0 20 20" fill="currentColor">
+                                    <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none" />
+                                </svg>`}
+                            </div>
+                            <div class="ml-3 text-gray-700">
+                                ${option}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            questionHTML += `</div>`;
+            
+            // Add explanation if question is answered
+            if (answeredQuestions[index]) {
+                questionHTML += `
+                    <div class="explanation bg-blue-50 p-4 mt-4 rounded-md">
+                        <p class="text-sm font-semibold text-blue-700 mb-1">Giải thích:</p>
+                        <p class="text-sm text-blue-700">${question.explanation}</p>
+                    </div>
+                `;
+            }
+            
+            questionHTML += `</div>`;
+            
+            quizContent.innerHTML = questionHTML;
+            
+            // Add event listeners to options
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => {
+                if (!answeredQuestions[index]) {
+                    option.addEventListener('click', selectOption);
+                }
+            });
+            
+            // Update button states
+            prevBtn.disabled = index === 0;
+            
+            if (index === questions.length - 1) {
+                if (answeredQuestions.every(Boolean)) {
+                    nextBtn.textContent = "Xem kết quả";
+                } else if (answeredQuestions[index]) {
+                    nextBtn.disabled = true;
+                } else {
+                    nextBtn.disabled = false;
+                    nextBtn.textContent = "Câu tiếp theo";
+                }
+            } else {
+                nextBtn.textContent = "Câu tiếp theo";
+                nextBtn.disabled = false;
+            }
+        }
+
+        // Handle option selection
+        function selectOption(e) {
+            const selectedOption = e.currentTarget;
+            const optionIndex = parseInt(selectedOption.dataset.index);
+            const question = questions[currentQuestionIndex];
+            
+            // Record user's answer
+            userAnswers[currentQuestionIndex] = optionIndex;
+            answeredQuestions[currentQuestionIndex] = true;
+            
+            // Check if answer is correct
+            const isCorrect = optionIndex === question.correctIndex;
+            if (isCorrect) {
+                score++;
+                scoreEl.textContent = score;
+            }
+            
+            // Update UI to show correct/incorrect status
+            const options = document.querySelectorAll('.option');
+            options.forEach((option, index) => {
+                option.removeEventListener('click', selectOption);
+                
+                const optionIsSelected = index === optionIndex;
+                const optionIsCorrect = index === question.correctIndex;
+                
+                if (optionIsSelected) {
+                    option.classList.add('selected');
+                    if (isCorrect) {
+                        option.classList.add('correct');
+                    } else {
+                        option.classList.add('incorrect');
+                    }
+                } else if (optionIsCorrect) {
+                    option.classList.add('correct');
+                }
+                
+                // Update the SVG for the selected option
+                const svg = option.querySelector('svg');
+                if (optionIsSelected) {
+                    svg.innerHTML = `<circle cx="10" cy="10" r="8" />`;
+                    svg.classList.remove('text-gray-300');
+                    if (isCorrect) {
+                        svg.classList.add('text-green-500');
+                    } else {
+                        svg.classList.add('text-red-500');
+                    }
+                } else if (optionIsCorrect) {
+                    svg.innerHTML = `<circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none" />`;
+                    svg.classList.remove('text-gray-300');
+                    svg.classList.add('text-green-500');
+                }
+            });
+            
+            // Show explanation
+            const explanationHTML = `
+                <div class="explanation bg-blue-50 p-4 mt-4 rounded-md">
+                    <p class="text-sm font-semibold text-blue-700 mb-1">Giải thích:</p>
+                    <p class="text-sm text-blue-700">${question.explanation}</p>
+                </div>
+            `;
+            
+            quizContent.querySelector('.mb-6').insertAdjacentHTML('beforeend', explanationHTML);
+            
+            // Enable next button if we're at the last question
+            if (currentQuestionIndex === questions.length - 1) {
+                if (answeredQuestions.every(Boolean)) {
+                    nextBtn.textContent = "Xem kết quả";
+                    nextBtn.disabled = false;
+                } else {
+                    nextBtn.disabled = true;
+                }
+            }
+            
+            // Update the question navigation buttons if they exist
+            updateQuestionNavigationButtons();
+        }
+
+        // Create question navigation buttons
+        function createQuestionNavigation() {
+            const navigation = document.querySelector('.grid');
+            navigation.innerHTML = `<div class="col-span-5 font-semibold text-gray-700">Di chuyển đến câu hỏi:</div>`;
+            
+            for (let i = 0; i < questions.length; i++) {
+                const button = document.createElement('button');
+                button.className = `p-2 text-sm border rounded-md ${answeredQuestions[i] ? (userAnswers[i] === questions[i].correctIndex ? 'bg-green-100 border-green-300 text-green-800' : 'bg-red-100 border-red-300 text-red-800') : 'bg-gray-100 border-gray-300 text-gray-800'}`;
+                button.textContent = i + 1;
+                button.addEventListener('click', () => {
+                    currentQuestionIndex = i;
+                    loadQuestion(currentQuestionIndex);
+                    resultsDiv.classList.add('hidden');
+                    document.getElementById('quiz-content').classList.remove('hidden');
+                    document.getElementById('prev-btn').classList.remove('hidden');
+                    document.getElementById('next-btn').classList.remove('hidden');
+                });
+                navigation.appendChild(button);
+            }
+        }
+
+        // Update question navigation buttons
+        function updateQuestionNavigationButtons() {
+            const buttons = document.querySelectorAll('.grid button');
+            if (buttons.length > 0) {
+                for (let i = 0; i < questions.length; i++) {
+                    if (answeredQuestions[i]) {
+                        buttons[i].className = `p-2 text-sm border rounded-md ${userAnswers[i] === questions[i].correctIndex ? 'bg-green-100 border-green-300 text-green-800' : 'bg-red-100 border-red-300 text-red-800'}`;
+                    }
+                }
+            }
+        }
+
+        // Show results
+        function showResults() {
+            quizContent.classList.add('hidden');
+            prevBtn.classList.add('hidden');
+            nextBtn.classList.add('hidden');
+            resultsDiv.classList.remove('hidden');
+            
+            finalScoreEl.textContent = score;
+            const percentage = Math.round((score / questions.length) * 100);
+            percentageEl.textContent = `${percentage}%`;
+            
+            createQuestionNavigation();
+        }
+
+        // Event listeners
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion(currentQuestionIndex);
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (nextBtn.textContent === "Xem kết quả") {
+                showResults();
+            } else if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion(currentQuestionIndex);
+            }
+        });
+
+        restartBtn.addEventListener('click', () => {
+            // Reset state
+            currentQuestionIndex = 0;
+            score = 0;
+            answeredQuestions = new Array(questions.length).fill(false);
+            userAnswers = new Array(questions.length).fill(-1);
+            
+            // Update UI
+            scoreEl.textContent = score;
+            resultsDiv.classList.add('hidden');
+            quizContent.classList.remove('hidden');
+            prevBtn.classList.remove('hidden');
+            nextBtn.classList.remove('hidden');
+            
+            // Load first question
+            loadQuestion(currentQuestionIndex);
+        });
+
+        // Initialize the quiz
+        initQuiz();
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
