@@ -1,0 +1,663 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Tiếng Anh - Choose the best word</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+        }
+        .option-label {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .option-label:hover {
+            background-color: #e2e8f0;
+        }
+        .option-selected {
+            background-color: #bfdbfe !important;
+        }
+        .option-correct {
+            background-color: #86efac !important;
+        }
+        .option-incorrect {
+            background-color: #fca5a5 !important;
+        }
+        .explanation {
+            display: none;
+            border-left: 4px solid #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <header class="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-lg shadow-lg mb-8 p-6 text-white">
+            <h1 class="text-3xl font-bold text-center">Bài Trắc Nghiệm Tiếng Anh</h1>
+            <p class="text-center mt-2">ILearn Smart World 9 - Choose the word that best fits each space</p>
+        </header>
+
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <div class="flex justify-between mb-4">
+                <div>
+                    <span class="font-semibold">Câu hỏi: </span>
+                    <span id="current-question">1</span>/<span id="total-questions">30</span>
+                </div>
+                <div>
+                    <span class="font-semibold">Điểm: </span>
+                    <span id="score">0</span>/<span id="total-score">30</span>
+                </div>
+            </div>
+            
+            <div id="progress-bar" class="w-full h-2 bg-gray-200 rounded-full mb-6">
+                <div id="progress" class="h-2 bg-blue-600 rounded-full" style="width: 3.33%"></div>
+            </div>
+
+            <div id="quiz-container">
+                <!-- Questions will be inserted here by JavaScript -->
+            </div>
+
+            <div class="explanation p-4 mt-4 bg-blue-50 rounded-lg" id="explanation-box">
+                <h3 class="font-semibold text-blue-700 mb-2">Giải thích:</h3>
+                <p id="explanation-text"></p>
+            </div>
+
+            <div class="mt-6 flex justify-between">
+                <button id="prev-btn" class="bg-gray-500 text-white px-4 py-2 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed">Câu trước</button>
+                <button id="next-btn" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Câu tiếp theo</button>
+            </div>
+        </div>
+
+        <div id="results-container" class="bg-white rounded-lg shadow-md p-6 hidden">
+            <h2 class="text-2xl font-bold text-center mb-4">Kết quả</h2>
+            <p class="text-center text-lg mb-4">Bạn đã đạt được <span id="final-score" class="font-bold text-blue-600">0</span> trên <span id="final-total">30</span> điểm.</p>
+            <div class="grid grid-cols-5 gap-2 mb-6">
+                <!-- Question numbers will be inserted here -->
+            </div>
+            <div class="text-center">
+                <button id="retry-btn" class="bg-blue-600 text-white px-6 py-2 rounded-lg">Làm lại bài</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                id: 1,
+                text: "The government has ________ new laws to protect endangered species.",
+                options: [
+                    { id: "A", text: "introduced" },
+                    { id: "B", text: "increased" },
+                    { id: "C", text: "invented" },
+                    { id: "D", text: "inspired" }
+                ],
+                correctAnswer: "A",
+                explanation: "Đáp án đúng là A (introduced). 'Introduce' có nghĩa là 'giới thiệu, đưa ra' và thường được dùng khi nói về việc đưa ra luật mới. 'The government has introduced new laws' nghĩa là 'Chính phủ đã đưa ra luật mới'. Các đáp án khác không phù hợp với ngữ cảnh: 'increased' (tăng), 'invented' (phát minh), 'inspired' (truyền cảm hứng)."
+            },
+            {
+                id: 2,
+                text: "Environmental issues are ________ serious concern for many young people today.",
+                options: [
+                    { id: "A", text: "the" },
+                    { id: "B", text: "a" },
+                    { id: "C", text: "an" },
+                    { id: "D", text: "some" }
+                ],
+                correctAnswer: "B",
+                explanation: "Đáp án đúng là B (a). Trước từ 'serious concern' (một mối quan tâm nghiêm trọng) cần dùng mạo từ không xác định 'a'. 'Concern' là danh từ đếm được, số ít, bắt đầu bằng phụ âm nên dùng 'a'. Đáp án A không đúng vì không nói về một mối quan tâm cụ thể, C không đúng vì 'concern' bắt đầu bằng phụ âm, D không đúng nghĩa."
+            },
+            {
+                id: 3,
+                text: "Plastic waste has become ________ global problem that affects marine life worldwide.",
+                options: [
+                    { id: "A", text: "the" },
+                    { id: "B", text: "a" },
+                    { id: "C", text: "an" },
+                    { id: "D", text: "any" }
+                ],
+                correctAnswer: "B",
+                explanation: "Đáp án đúng là B (a). 'Global problem' là danh từ đếm được số ít bắt đầu bằng phụ âm, nên cần mạo từ không xác định 'a'. Chúng ta đang nói về một vấn đề toàn cầu nói chung, không phải một vấn đề cụ thể nên không dùng 'the'. 'An' chỉ dùng trước các từ bắt đầu bằng nguyên âm. 'Any' không phù hợp trong câu này."
+            },
+            {
+                id: 4,
+                text: "Forests play an important role ________ reducing carbon dioxide in the atmosphere.",
+                options: [
+                    { id: "A", text: "at" },
+                    { id: "B", text: "in" },
+                    { id: "C", text: "for" },
+                    { id: "D", text: "with" }
+                ],
+                correctAnswer: "B",
+                explanation: "Đáp án đúng là B (in). Cấu trúc 'play a role in something' nghĩa là 'đóng một vai trò trong việc gì'. Đây là cụm từ cố định trong tiếng Anh. Các giới từ khác không phù hợp: không dùng 'at', 'for' hay 'with' trong cấu trúc này."
+            },
+            {
+                id: 5,
+                text: "Renewable energy sources ________ solar and wind power are becoming more popular.",
+                options: [
+                    { id: "A", text: "which" },
+                    { id: "B", text: "such as" },
+                    { id: "C", text: "like as" },
+                    { id: "D", text: "for example as" }
+                ],
+                correctAnswer: "B",
+                explanation: "Đáp án đúng là B (such as). 'Such as' dùng để đưa ra ví dụ về một nhóm đối tượng - trong trường hợp này là các nguồn năng lượng tái tạo. 'Such as' tương đương với 'for example' (ví dụ như). 'Which' không phù hợp vì nó bắt đầu một mệnh đề quan hệ. 'Like as' và 'for example as' không phải là cấu trúc đúng trong tiếng Anh."
+            },
+            {
+                id: 6,
+                text: "Many species are in danger of ________ extinct if we don't take action soon.",
+                options: [
+                    { id: "A", text: "go" },
+                    { id: "B", text: "goes" },
+                    { id: "C", text: "going" },
+                    { id: "D", text: "to go" }
+                ],
+                correctAnswer: "C",
+                explanation: "Đáp án đúng là C (going). Sau giới từ 'of' cần dùng danh từ hoặc động từ dạng V-ing (gerund). Cụm 'in danger of + V-ing' nghĩa là 'có nguy cơ làm gì'. Các dạng động từ khác không phù hợp với cấu trúc ngữ pháp này."
+            },
+            {
+                id: 7,
+                text: "If we don't reduce pollution, it will ________ serious health problems for future generations.",
+                options: [
+                    { id: "A", text: "cause" },
+                    { id: "B", text: "make" },
+                    { id: "C", text: "do" },
+                    { id: "D", text: "create" }
+                ],
+                correctAnswer: "A",
+                explanation: "Đáp án đúng là A (cause). 'Cause problems' là cụm từ phổ biến và chính xác nhất trong ngữ cảnh này, nghĩa là 'gây ra vấn đề'. Mặc dù 'create problems' (đáp án D) cũng có thể chấp nhận được, nhưng 'cause problems' là cách diễn đạt tự nhiên hơn khi nói về tác động tiêu cực. 'Make problems' và 'do problems' không phải là cách diễn đạt thông dụng trong tiếng Anh."
+            },
+            {
+                id: 8,
+                text: "Conservationists are working hard to ________ endangered species from extinction.",
+                options: [
+                    { id: "A", text: "save" },
+                    { id: "B", text: "defend" },
+                    { id: "C", text: "guard" },
+                    { id: "D", text: "secure" }
+                ],
+                correctAnswer: "A",
+                explanation: "Đáp án đúng là A (save). 'Save... from extinction' (cứu khỏi sự tuyệt chủng) là cụm từ phổ biến nhất khi nói về việc bảo vệ các loài đang bị đe dọa. Các từ khác mặc dù có nghĩa bảo vệ nhưng không phù hợp với ngữ cảnh này: 'defend' (bảo vệ khỏi cuộc tấn công), 'guard' (canh gác), 'secure' (bảo đảm an toàn)."
+            },
+            {
+                id: 9,
+                text: "The rainforest is home ________ thousands of unique plant and animal species.",
+                options: [
+                    { id: "A", text: "of" },
+                    { id: "B", text: "for" },
+                    { id: "C", text: "to" },
+                    { id: "D", text: "with" }
+                ],
+                correctAnswer: "C",
+                explanation: "Đáp án đúng là C (to). 'Home to' là cụm từ cố định trong tiếng Anh, có nghĩa là 'là nơi sinh sống của'. Ví dụ: 'The ocean is home to many marine species' (Đại dương là nơi sinh sống của nhiều loài sinh vật biển). Các giới từ khác không được dùng trong cấu trúc này."
+            },
+            {
+                id: 10,
+                text: "Deforestation has a negative impact ________ the local climate and wildlife.",
+                options: [
+                    { id: "A", text: "on" },
+                    { id: "B", text: "at" },
+                    { id: "C", text: "in" },
+                    { id: "D", text: "for" }
+                ],
+                correctAnswer: "A",
+                explanation: "Đáp án đúng là A (on). 'Impact on' là cụm từ cố định trong tiếng Anh, có nghĩa là 'tác động lên, ảnh hưởng đến'. Cấu trúc 'have an impact on something' nghĩa là 'có tác động lên điều gì'. Các giới từ khác không được dùng trong cụm từ này."
+            },
+            {
+                id: 11,
+                text: "Scientists are ________ to find solutions to environmental problems.",
+                options: [
+                    { id: "A", text: "looking" },
+                    { id: "B", text: "working" },
+                    { id: "C", text: "trying" },
+                    { id: "D", text: "making" }
+                ],
+                correctAnswer: "C",
+                explanation: "Đáp án đúng là C (trying). 'Try to do something' nghĩa là 'cố gắng làm gì'. Trong ngữ cảnh này, các nhà khoa học đang cố gắng tìm ra giải pháp. 'Looking to find' không tự nhiên bằng 'looking for'. 'Working' thường đi với 'on', không phải 'to find'. 'Making' không phù hợp với ngữ cảnh."
+            },
+            {
+                id: 12,
+                text: "We should take ________ to reduce our carbon footprint and help protect the environment.",
+                options: [
+                    { id: "A", text: "action" },
+                    { id: "B", text: "measure" },
+                    { id: "C", text: "step" },
+                    { id: "D", text: "way" }
+                ],
+                correctAnswer: "A",
+                explanation: "Đáp án đúng là A (action). 'Take action' là cụm từ phổ biến có nghĩa là 'hành động, thực hiện biện pháp'. Trong ngữ cảnh về bảo vệ môi trường, 'take action' là cách diễn đạt tự nhiên nhất. 'Take measure' không phải là cụm từ thông dụng, thường dùng 'take measures' (số nhiều). 'Take step' không đúng, phải là 'take steps'. 'Take way' không phải là cụm từ có nghĩa trong tiếng Anh."
+            },
+            {
+                id: 13,
+                text: "People should ________ more attention to environmental issues.",
+                options: [
+                    { id: "A", text: "make" },
+                    { id: "B", text: "pay" },
+                    { id: "C", text: "take" },
+                    { id: "D", text: "give" }
+                ],
+                correctAnswer: "B",
+                explanation: "Đáp án đúng là B (pay). 'Pay attention to' là cụm từ cố định có nghĩa là 'chú ý đến'. Các động từ khác không đi với 'attention' theo cách này: không nói 'make attention', 'take attention' hay 'give attention' trong tiếng Anh."
+            },
+            {
+                id: 14,
+                text: "Electric cars produce ________ pollution than traditional gasoline-powered vehicles.",
+                options: [
+                    { id: "A", text: "fewer" },
+                    { id: "B", text: "less" },
+                    { id: "C", text: "little" },
+                    { id: "D", text: "small" }
+                ],
+                correctAnswer: "B",
+                explanation: "Đáp án đúng là B (less). 'Pollution' là danh từ không đếm được nên dùng 'less' để so sánh, không dùng 'fewer' (dùng cho danh từ đếm được). 'Little pollution' có nghĩa là 'ít ô nhiễm' nhưng không diễn tả sự so sánh. 'Small pollution' không phải là cách diễn đạt đúng trong tiếng Anh."
+            },
+            {
+                id: 15,
+                text: "The wildlife sanctuary has been ________ since 1995 to protect endangered species.",
+                options: [
+                    { id: "A", text: "existing" },
+                    { id: "B", text: "presenting" },
+                    { id: "C", text: "operating" },
+                    { id: "D", text: "working" }
+                ],
+                correctAnswer: "C",
+                explanation: "Đáp án đúng là C (operating). 'Operating' có nghĩa là 'hoạt động, vận hành' và là từ phù hợp nhất khi nói về một khu bảo tồn đã được thành lập và hoạt động từ một thời điểm trong quá khứ. 'Existing' chỉ nói về sự tồn tại mà không nhấn mạnh sự hoạt động. 'Presenting' và 'working' không phù hợp với ngữ cảnh này."
+            },
+            {
+                id: 16,
+                text: "Recycling helps to ________ natural resources and reduce waste.",
+                options: [
+                    { id: "A", text: "keep" },
+                    { id: "B", text: "reserve" },
+                    { id: "C", text: "conserve" },
+                    { id: "D", text: "hold" }
+                ],
+                correctAnswer: "C",
+                explanation: "Đáp án đúng là C (conserve). 'Conserve' có nghĩa là 'bảo tồn, bảo vệ' và thường được dùng khi nói về việc sử dụng tài nguyên thiên nhiên một cách cẩn thận. 'Keep' và 'hold' không phù hợp trong ngữ cảnh này. 'Reserve' thường dùng để nói về việc đặt trước hoặc để dành, không phải bảo tồn tài nguyên."
+            },
+            {
+                id: 17,
+                text: "The government has implemented stricter regulations to ________ water pollution.",
+                options: [
+                    { id: "A", text: "combat" },
+                    { id: "B", text: "fight" },
+                    { id: "C", text: "attack" },
+                    { id: "D", text: "hit" }
+                ],
+                correctAnswer: "A",
+                explanation: "Đáp án đúng là A (combat). 'Combat pollution' là cách diễn đạt phổ biến và chính thức, có nghĩa là 'đấu tranh chống lại ô nhiễm'. Mặc dù 'fight pollution' cũng có thể chấp nhận được, nhưng 'combat' phù hợp hơn trong ngữ cảnh chính thức như các quy định của chính phủ. 'Attack pollution' và 'hit pollution' không phải là cách diễn đạt thông dụng."
+            },
+            {
+                id: 18,
+                text: "Many animal species are ________ the risk of extinction due to habitat loss.",
+                options: [
+                    { id: "A", text: "on" },
+                    { id: "B", text: "in" },
+                    { id: "C", text: "at" },
+                    { id: "D", text: "under" }
+                ],
+                correctAnswer: "C",
+                explanation: "Đáp án đúng là C (at). 'At risk' là cụm từ cố định có nghĩa là 'có nguy cơ'. Cấu trúc đầy đủ là 'at risk of + noun' (có nguy cơ gì). Các giới từ khác không được dùng trong cụm từ này: không nói 'on risk', 'in risk' hay 'under risk'."
+            },
+            {
+                id: 19,
+                text: "We need to take immediate ________ to protect the ozone layer.",
+                options: [
+                    { id: "A", text: "activity" },
+                    { id: "B", text: "movement" },
+                    { id: "C", text: "action" },
+                    { id: "D", text: "motion" }
+                ],
+                correctAnswer: "C",
+                explanation: "Đáp án đúng là C (action). 'Take action' là cụm từ cố định có nghĩa là 'hành động, thực hiện biện pháp'. 'Take immediate action' nghĩa là 'thực hiện biện pháp ngay lập tức'. 'Activity', 'movement' và 'motion' không đi với 'take' theo nghĩa này."
+            },
+            {
+                id: 20,
+                text: "Climate change has a significant ________ on global ecosystems.",
+                options: [
+                    { id: "A", text: "affect" },
+                    { id: "B", text: "effect" },
+                    { id: "C", text: "influence" },
+                    { id: "D", text: "impact" }
+                ],
+                correctAnswer: "D",
+                explanation: "Đáp án đúng là D (impact). Trong câu này, cần một danh từ và 'impact' (tác động) là từ phù hợp nhất để nói về ảnh hưởng mạnh mẽ của biến đổi khí hậu. 'Effect' cũng là danh từ và có thể chấp nhận được, nhưng 'impact' mạnh hơn và phù hợp hơn với tính từ 'significant'. 'Affect' là động từ, không phải danh từ. 'Influence' ít được dùng với 'significant' hơn so với 'impact'."
+            },
+            {
+                id: 21,
+                text: "Sustainable development aims to meet the needs of the present without ________ the ability of future generations.",
+                options: [
+                    { id: "A", text: "damaging" },
+                    { id: "B", text: "compromising" },
+                    { id: "C", text: "hurting" },
+                    { id: "D", text: "harming" }
+                ],
+                correctAnswer: "B",
+                explanation: "Đáp án đúng là B (compromising). Trong định nghĩa chuẩn về phát triển bền vững, 'compromising' là từ thường được sử dụng, có nghĩa là 'làm tổn hại, gây nguy hiểm'. Cụm 'without compromising the ability of future generations' là cách diễn đạt chính thống trong các tài liệu về phát triển bền vững. Các từ khác cũng có nghĩa tương tự nhưng không phải là thuật ngữ chuẩn trong ngữ cảnh này."
+            },
+            {
+                id: 22,
+                text: "The local community has ________ efforts to clean up the beach.",
+                options: [
+                    { id: "A", text: "made" },
+                    { id: "B", text: "done" },
+                    { id: "C", text: "taken" },
+                    { id: "D", text: "gave" }
+                ],
+                correctAnswer: "A",
+                explanation: "Đáp án đúng là A (made). 'Make efforts' là cụm từ cố định có nghĩa là 'nỗ lực, cố gắng'. Không dùng 'do efforts', 'take efforts' hay 'gave efforts' trong tiếng Anh."
+            },
+            {
+                id: 23,
+                text: "Governments worldwide are ________ agreements to reduce greenhouse gas emissions.",
+                options: [
+                    { id: "A", text: "signing" },
+                    { id: "B", text: "writing" },
+                    { id: "C", text: "making" },
+                    { id: "D", text: "creating" }
+                ],
+                correctAnswer: "A",
+                explanation: "Đáp án đúng là A (signing). 'Sign agreements' là cụm từ phù hợp nhất khi nói về việc ký kết các thỏa thuận chính thức. Các từ khác không chính xác: không dùng 'write agreements', 'make agreements' (mặc dù có thể nói 'make an agreement with someone') hay 'create agreements' khi nói về việc ký kết thỏa thuận quốc tế."
+            },
+            {
+                id: 24,
+                text: "Many companies are now ________ more eco-friendly packaging for their products.",
+                options: [
+                    { id: "A", text: "using" },
+                    { id: "B", text: "spending" },
+                    { id: "C", text: "making" },
+                    { id: "D", text: "taking" }
+                ],
+                correctAnswer: "A",
+                explanation: "Đáp án đúng là A (using). 'Use packaging' có nghĩa là 'sử dụng bao bì' và là cách diễn đạt tự nhiên nhất trong ngữ cảnh này. 'Spend packaging', 'make packaging' (trừ khi là công ty sản xuất bao bì) và 'take packaging' không phải là cách diễn đạt phù hợp trong trường hợp này."
+            },
+            {
+                id: 25,
+                text: "Environmentalists are concerned ________ the rapid rate of deforestation in the Amazon.",
+                options: [
+                    { id: "A", text: "for" },
+                    { id: "B", text: "with" },
+                    { id: "C", text: "about" },
+                    { id: "D", text: "of" }
+                ],
+                correctAnswer: "C",
+                explanation: "Đáp án đúng là C (about). 'Be concerned about something' là cụm từ cố định có nghĩa là 'lo lắng về điều gì'. Không dùng 'concerned for', 'concerned with' hay 'concerned of' trong ngữ cảnh này."
+            },
+            {
+                id: 26,
+                text: "The conservation project aims to ________ awareness about endangered species.",
+                options: [
+                    { id: "A", text: "rise" },
+                    { id: "B", text: "raise" },
+                    { id: "C", text: "lift" },
+                    { id: "D", text: "increase" }
+                ],
+                correctAnswer: "B",
+                explanation: "Đáp án đúng là B (raise). 'Raise awareness' là cụm từ cố định có nghĩa là 'nâng cao nhận thức'. 'Rise' là động từ nội động từ (không có tân ngữ), trong khi 'raise' là ngoại động từ (cần tân ngữ). 'Lift awareness' và 'increase awareness' không phải là cách diễn đạt thông dụng, mặc dù 'increase awareness' có thể chấp nhận được trong một số ngữ cảnh."
+            },
+            {
+                id: 27,
+                text: "Solar energy is a renewable resource that doesn't ________ harmful emissions.",
+                options: [
+                    { id: "A", text: "produce" },
+                    { id: "B", text: "make" },
+                    { id: "C", text: "generate" },
+                    { id: "D", text: "create" }
+                ],
+                correctAnswer: "A",
+                explanation: "Đáp án đúng là A (produce). Mặc dù tất cả các đáp án đều có thể chấp nhận được về mặt ngữ nghĩa, 'produce emissions' là cách diễn đạt phổ biến và chính thức nhất khi nói về khí thải. Trong ngữ cảnh khoa học và môi trường, 'produce' thường được sử dụng nhiều hơn 'make', 'generate' hay 'create' khi nói về khí thải."
+            },
+            {
+                id: 28,
+                text: "We should ________ every effort to reduce our ecological footprint.",
+                options: [
+                    { id: "A", text: "take" },
+                    { id: "B", text: "make" },
+                    { id: "C", text: "do" },
+                    { id: "D", text: "have" }
+                ],
+                correctAnswer: "B",
+                explanation: "Đáp án đúng là B (make). 'Make every effort' là cụm từ cố định có nghĩa là 'nỗ lực hết sức'. Không dùng 'take every effort', 'do every effort' hay 'have every effort' trong tiếng Anh."
+            },
+            {
+                id: 29,
+                text: "Governments need to ________ strict laws against illegal logging.",
+                options: [
+                    { id: "A", text: "enforce" },
+                    { id: "B", text: "force" },
+                    { id: "C", text: "strength" },
+                    { id: "D", text: "powerful" }
+                ],
+                correctAnswer: "A",
+                explanation: "Đáp án đúng là A (enforce). 'Enforce laws' có nghĩa là 'thực thi pháp luật' và là cụm từ phù hợp nhất trong ngữ cảnh này. 'Force laws' không phải là cách diễn đạt đúng. 'Strength' là danh từ, không phải động từ (động từ là 'strengthen'). 'Powerful' là tính từ, không phải động từ."
+            },
+            {
+                id: 30,
+                text: "Many species will soon become extinct if we don't take ________ to protect their habitats.",
+                options: [
+                    { id: "A", text: "methods" },
+                    { id: "B", text: "ways" },
+                    { id: "C", text: "measures" },
+                    { id: "D", text: "roads" }
+                ],
+                correctAnswer: "C",
+                explanation: "Đáp án đúng là C (measures). 'Take measures' là cụm từ cố định có nghĩa là 'thực hiện các biện pháp'. Đây là cách diễn đạt phù hợp nhất khi nói về các hành động để bảo vệ môi trường. 'Methods', 'ways' và đặc biệt là 'roads' không đi với động từ 'take' theo nghĩa này."
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let selectedAnswers = new Array(questions.length).fill(null);
+        let answerSubmitted = new Array(questions.length).fill(false);
+        let score = 0;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuestion(currentQuestionIndex);
+            updateProgressBar();
+            document.getElementById('prev-btn').disabled = true;
+
+            document.getElementById('next-btn').addEventListener('click', function() {
+                if (currentQuestionIndex < questions.length - 1) {
+                    currentQuestionIndex++;
+                    loadQuestion(currentQuestionIndex);
+                    updateProgressBar();
+                    document.getElementById('prev-btn').disabled = false;
+                } else {
+                    // Show results when all questions are answered
+                    showResults();
+                }
+            });
+
+            document.getElementById('prev-btn').addEventListener('click', function() {
+                if (currentQuestionIndex > 0) {
+                    currentQuestionIndex--;
+                    loadQuestion(currentQuestionIndex);
+                    updateProgressBar();
+                    document.getElementById('prev-btn').disabled = currentQuestionIndex === 0;
+                }
+            });
+
+            document.getElementById('retry-btn').addEventListener('click', function() {
+                // Reset the quiz
+                currentQuestionIndex = 0;
+                selectedAnswers = new Array(questions.length).fill(null);
+                answerSubmitted = new Array(questions.length).fill(false);
+                score = 0;
+                document.getElementById('score').textContent = score;
+                document.getElementById('quiz-container').style.display = 'block';
+                document.getElementById('results-container').style.display = 'none';
+                document.getElementById('prev-btn').disabled = true;
+                document.getElementById('next-btn').style.display = 'block';
+                loadQuestion(currentQuestionIndex);
+                updateProgressBar();
+            });
+        });
+
+        function loadQuestion(index) {
+            const quizContainer = document.getElementById('quiz-container');
+            const question = questions[index];
+            document.getElementById('current-question').textContent = index + 1;
+            document.getElementById('explanation-box').style.display = 'none';
+
+            let questionHTML = `
+                <div class="mb-6">
+                    <h2 class="text-xl font-semibold mb-4">Câu ${index + 1}:</h2>
+                    <p class="mb-4">${question.text}</p>
+                    <div class="space-y-2">
+            `;
+
+            question.options.forEach(option => {
+                const isSelected = selectedAnswers[index] === option.id;
+                const isCorrect = answerSubmitted[index] && option.id === question.correctAnswer;
+                const isIncorrect = answerSubmitted[index] && isSelected && option.id !== question.correctAnswer;
+                
+                let optionClass = "option-label p-3 rounded-lg border";
+                if (isSelected) optionClass += " option-selected";
+                if (isCorrect) optionClass += " option-correct";
+                if (isIncorrect) optionClass += " option-incorrect";
+
+                questionHTML += `
+                    <label class="${optionClass}" data-option="${option.id}">
+                        <input type="radio" name="question-${question.id}" value="${option.id}" 
+                            ${isSelected ? 'checked' : ''} 
+                            ${answerSubmitted[index] ? 'disabled' : ''} class="mr-2">
+                        ${option.id}. ${option.text}
+                    </label>
+                `;
+            });
+
+            questionHTML += `
+                    </div>
+                </div>
+                <button id="submit-btn" class="bg-green-600 text-white px-4 py-2 rounded-lg mb-4 ${answerSubmitted[index] ? 'hidden' : ''}">Kiểm tra</button>
+            `;
+
+            quizContainer.innerHTML = questionHTML;
+
+            // Show explanation if answer is submitted
+            if (answerSubmitted[index]) {
+                document.getElementById('explanation-box').style.display = 'block';
+                document.getElementById('explanation-text').textContent = question.explanation;
+            }
+
+            // Add event listeners for options
+            const optionLabels = document.querySelectorAll('.option-label');
+            optionLabels.forEach(label => {
+                label.addEventListener('click', function() {
+                    if (!answerSubmitted[index]) {
+                        const radio = this.querySelector('input[type="radio"]');
+                        radio.checked = true;
+                        
+                        // Remove selected class from all options
+                        optionLabels.forEach(opt => opt.classList.remove('option-selected'));
+                        
+                        // Add selected class to clicked option
+                        this.classList.add('option-selected');
+                        
+                        selectedAnswers[index] = radio.value;
+                    }
+                });
+            });
+
+            // Add event listener for submit button
+            const submitBtn = document.getElementById('submit-btn');
+            if (submitBtn) {
+                submitBtn.addEventListener('click', function() {
+                    if (selectedAnswers[index] !== null) {
+                        checkAnswer(index);
+                    }
+                });
+            }
+        }
+
+        function checkAnswer(index) {
+            const question = questions[index];
+            const selectedOption = selectedAnswers[index];
+            
+            answerSubmitted[index] = true;
+            
+            const optionLabels = document.querySelectorAll('.option-label');
+            optionLabels.forEach(label => {
+                const optionId = label.getAttribute('data-option');
+                
+                if (optionId === question.correctAnswer) {
+                    label.classList.add('option-correct');
+                } else if (optionId === selectedOption) {
+                    label.classList.add('option-incorrect');
+                }
+                
+                // Disable all options
+                const radio = label.querySelector('input[type="radio"]');
+                radio.disabled = true;
+            });
+            
+            // Update score if correct
+            if (selectedOption === question.correctAnswer) {
+                score++;
+                document.getElementById('score').textContent = score;
+            }
+            
+            // Hide submit button
+            document.getElementById('submit-btn').style.display = 'none';
+            
+            // Show explanation
+            document.getElementById('explanation-box').style.display = 'block';
+            document.getElementById('explanation-text').textContent = question.explanation;
+        }
+
+        function updateProgressBar() {
+            const progressPercentage = ((currentQuestionIndex + 1) / questions.length) * 100;
+            document.getElementById('progress').style.width = `${progressPercentage}%`;
+        }
+
+        function showResults() {
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('results-container').style.display = 'block';
+            document.getElementById('final-score').textContent = score;
+            document.getElementById('next-btn').style.display = 'none';
+            document.getElementById('prev-btn').style.display = 'none';
+            
+            // Generate question numbers with results
+            const resultsGrid = document.querySelector('#results-container .grid');
+            resultsGrid.innerHTML = '';
+            
+            for (let i = 0; i < questions.length; i++) {
+                const isCorrect = selectedAnswers[i] === questions[i].correctAnswer;
+                const bgColor = isCorrect ? 'bg-green-200' : 'bg-red-200';
+                const textColor = isCorrect ? 'text-green-800' : 'text-red-800';
+                
+                resultsGrid.innerHTML += `
+                    <div class="p-2 rounded ${bgColor} ${textColor} text-center">
+                        ${i + 1}
+                    </div>
+                `;
+            }
+        }
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
