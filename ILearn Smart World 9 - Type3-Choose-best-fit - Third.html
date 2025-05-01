@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài trắc nghiệm tiếng Anh lớp 9 - Chọn từ thích hợp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        .option-label {
+            cursor: pointer;
+            display: block;
+            transition: all 0.3s;
+        }
+        .option-label:hover {
+            transform: translateX(5px);
+        }
+        .correct {
+            background-color: rgba(0, 255, 0, 0.2);
+            border-color: green !important;
+        }
+        .incorrect {
+            background-color: rgba(255, 0, 0, 0.1);
+            border-color: red !important;
+        }
+        .explanation {
+            display: none;
+        }
+        .progress-bar {
+            transition: width 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container max-w-3xl mx-auto p-4">
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h1 class="text-2xl font-bold text-center text-indigo-700 mb-4">Bài trắc nghiệm tiếng Anh lớp 9</h1>
+            <h2 class="text-xl font-semibold text-center text-gray-700 mb-6">Chọn từ thích hợp điền vào chỗ trống</h2>
+            
+            <div class="bg-indigo-100 rounded-lg p-4 mb-6">
+                <div class="flex justify-between items-center mb-2">
+                    <p class="font-semibold text-indigo-800">Tiến độ làm bài:</p>
+                    <span id="progress-text" class="text-indigo-800">0/30</span>
+                </div>
+                <div class="w-full bg-gray-300 rounded-full h-2.5">
+                    <div id="progress-bar" class="progress-bar bg-indigo-600 h-2.5 rounded-full" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <div id="quiz-container">
+                <!-- Các câu hỏi sẽ được thêm vào đây bằng JavaScript -->
+            </div>
+
+            <div id="result-container" class="hidden bg-indigo-50 p-6 rounded-lg border border-indigo-200 mt-6">
+                <h3 class="text-xl font-bold text-indigo-800 mb-4">Kết quả</h3>
+                <p class="mb-4">Bạn đã đúng <span id="correct-count" class="font-bold text-indigo-700">0</span>/<span id="total-count">30</span> câu.</p>
+                <p class="mb-4">Điểm số: <span id="score" class="font-bold text-2xl text-indigo-700">0</span>/10</p>
+                <button id="retry-button" class="mt-4 bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">Làm lại bài</button>
+            </div>
+
+            <div class="flex justify-between mt-6">
+                <button id="prev-button" class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition" disabled>Câu trước</button>
+                <button id="next-button" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">Câu tiếp theo</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "The Amazon Rainforest is ____ to be the largest tropical forest on Earth.",
+                options: ["considered", "thought", "known", "recognized"],
+                correctAnswer: 0,
+                explanation: "Từ 'considered' (được coi là) thích hợp nhất trong ngữ cảnh này. Cấu trúc 'be considered to be' là cách diễn đạt phổ biến khi nói về điều được nhiều người công nhận."
+            },
+            {
+                question: "We must take ____ of the environment to protect our planet.",
+                options: ["care", "attention", "notice", "regard"],
+                correctAnswer: 0,
+                explanation: "Cụm 'take care of' có nghĩa là 'chăm sóc, bảo vệ', phù hợp với ngữ cảnh bảo vệ môi trường."
+            },
+            {
+                question: "Global warming is ____ serious threat to our environment.",
+                options: ["the", "a", "an", "one"],
+                correctAnswer: 1,
+                explanation: "Trong câu này cần mạo từ không xác định 'a' trước cụm danh từ 'serious threat' bắt đầu bằng phụ âm."
+            },
+            {
+                question: "Scientists are working ____ solutions to environmental problems.",
+                options: ["for", "at", "on", "with"],
+                correctAnswer: 2,
+                explanation: "Giới từ 'on' được dùng với động từ 'work' khi nói về việc tập trung vào một nhiệm vụ hoặc dự án. Cấu trúc 'work on solutions' là cách diễn đạt đúng."
+            },
+            {
+                question: "The government has implemented new policies ____ reduce pollution.",
+                options: ["for", "to", "at", "with"],
+                correctAnswer: 1,
+                explanation: "'To' được sử dụng để chỉ mục đích của hành động. Trong câu này, mục đích của việc thực hiện chính sách mới là để giảm ô nhiễm."
+            },
+            {
+                question: "Many animal species are ____ danger of extinction.",
+                options: ["at", "in", "on", "with"],
+                correctAnswer: 1,
+                explanation: "Cụm 'in danger of' là cách diễn đạt cố định trong tiếng Anh có nghĩa là 'đang gặp nguy hiểm về'."
+            },
+            {
+                question: "The ozone layer ____ the Earth from harmful ultraviolet radiation.",
+                options: ["covers", "defends", "protects", "shields"],
+                correctAnswer: 2,
+                explanation: "Từ 'protects' (bảo vệ) là phù hợp nhất khi nói về chức năng của tầng ozone trong việc bảo vệ Trái đất khỏi bức xạ tia cực tím có hại."
+            },
+            {
+                question: "Recycling helps to ____ our natural resources.",
+                options: ["preserve", "maintain", "sustain", "conserve"],
+                correctAnswer: 3,
+                explanation: "'Conserve' (bảo tồn) là từ thích hợp nhất khi nói về việc sử dụng tài nguyên một cách thận trọng để tránh lãng phí."
+            },
+            {
+                question: "Many people are not ____ of the impact their actions have on the environment.",
+                options: ["conscious", "aware", "knowing", "mindful"],
+                correctAnswer: 1,
+                explanation: "'Aware of' (nhận thức về) là cụm từ phù hợp nhất trong ngữ cảnh này, chỉ sự hiểu biết và nhận thức về một vấn đề."
+            },
+            {
+                question: "Industrial activities have ____ to increased levels of pollution.",
+                options: ["caused", "led", "resulted", "contributed"],
+                correctAnswer: 3,
+                explanation: "'Contributed to' (góp phần vào) là cách diễn đạt chính xác khi nói về một yếu tố đã tham gia gây ra một vấn đề, nhưng không phải là nguyên nhân duy nhất."
+            },
+            {
+                question: "The factory was fined for ____ waste into the river.",
+                options: ["throwing", "dumping", "disposing", "discarding"],
+                correctAnswer: 1,
+                explanation: "'Dumping waste' (đổ rác/chất thải) là cụm từ phổ biến được sử dụng khi nói về việc xả thải trái phép vào môi trường."
+            },
+            {
+                question: "Sustainable development meets the needs of the present without ____ the ability of future generations to meet their own needs.",
+                options: ["affecting", "compromising", "changing", "reducing"],
+                correctAnswer: 1,
+                explanation: "'Compromising' (làm tổn hại/ảnh hưởng đến) là từ chính xác trong định nghĩa chuẩn về phát triển bền vững, chỉ việc không gây hại đến khả năng đáp ứng nhu cầu của các thế hệ tương lai."
+            },
+            {
+                question: "Several countries have signed an agreement to ____ deforestation.",
+                options: ["reduce", "decrease", "cut", "lower"],
+                correctAnswer: 0,
+                explanation: "'Reduce deforestation' (giảm nạn phá rừng) là cách diễn đạt phổ biến nhất trong các văn bản và thỏa thuận chính thức về vấn đề môi trường."
+            },
+            {
+                question: "Solar energy is a ____ source of power that doesn't pollute the environment.",
+                options: ["renewable", "sustainable", "clean", "alternative"],
+                correctAnswer: 0,
+                explanation: "'Renewable' (tái tạo được) là thuật ngữ chính xác khi nói về nguồn năng lượng có thể tự làm mới như năng lượng mặt trời, không bị cạn kiệt khi sử dụng."
+            },
+            {
+                question: "Climate change will have a significant ____ on global ecosystems.",
+                options: ["result", "outcome", "impact", "consequence"],
+                correctAnswer: 2,
+                explanation: "'Impact on' (tác động đến) là cụm từ phù hợp nhất khi nói về ảnh hưởng mạnh mẽ của biến đổi khí hậu đối với hệ sinh thái toàn cầu."
+            },
+            {
+                question: "Many animal species ____ extinct in the last century.",
+                options: ["went", "became", "got", "turned"],
+                correctAnswer: 0,
+                explanation: "'Went extinct' (tuyệt chủng) là cách diễn đạt chuẩn trong tiếng Anh khi nói về loài động vật biến mất hoàn toàn."
+            },
+            {
+                question: "We should ____ efforts to protect endangered species.",
+                options: ["make", "do", "take", "give"],
+                correctAnswer: 0,
+                explanation: "Cụm 'make efforts' (nỗ lực) là cách diễn đạt đúng trong tiếng Anh khi nói về việc cố gắng làm điều gì đó."
+            },
+            {
+                question: "The conference aims to ____ awareness about environmental issues.",
+                options: ["rise", "raise", "arise", "lift"],
+                correctAnswer: 1,
+                explanation: "'Raise awareness' (nâng cao nhận thức) là cụm từ chính xác khi nói về việc làm tăng sự hiểu biết và quan tâm của mọi người về một vấn đề."
+            },
+            {
+                question: "Many organizations are working to find a ____ to the problem of plastic pollution.",
+                options: ["solution", "resolution", "answer", "result"],
+                correctAnswer: 0,
+                explanation: "'Solution to a problem' (giải pháp cho vấn đề) là cách diễn đạt phổ biến và chính xác nhất trong ngữ cảnh này."
+            },
+            {
+                question: "Governments worldwide need to ____ strict regulations to protect the environment.",
+                options: ["enforce", "force", "apply", "implement"],
+                correctAnswer: 0,
+                explanation: "'Enforce regulations' (thực thi quy định) là thuật ngữ đúng khi nói về việc đảm bảo mọi người tuân thủ luật pháp và quy định."
+            },
+            {
+                question: "The destruction of natural habitats has a negative ____ on biodiversity.",
+                options: ["result", "impact", "effect", "outcome"],
+                correctAnswer: 1,
+                explanation: "'Impact on' (tác động đến) là cụm từ phù hợp nhất khi nói về hậu quả của một hành động đối với một khía cạnh cụ thể."
+            },
+            {
+                question: "We need to ____ action now to prevent further environmental damage.",
+                options: ["make", "do", "take", "have"],
+                correctAnswer: 2,
+                explanation: "'Take action' (hành động) là cụm từ cố định trong tiếng Anh, dùng khi nói về việc làm điều gì đó để giải quyết một vấn đề."
+            },
+            {
+                question: "Many fish species are ____ risk of disappearing due to overfishing.",
+                options: ["in", "at", "on", "under"],
+                correctAnswer: 1,
+                explanation: "'At risk of' (có nguy cơ) là cụm từ cố định trong tiếng Anh khi nói về khả năng xảy ra điều gì đó không mong muốn."
+            },
+            {
+                question: "Scientists are concerned ____ the rapid rate of ice melting in the Arctic.",
+                options: ["with", "for", "about", "of"],
+                correctAnswer: 2,
+                explanation: "'Concerned about' (lo ngại về) là cách diễn đạt đúng khi nói về sự lo lắng đối với một vấn đề."
+            },
+            {
+                question: "Environmental education plays a key ____ in teaching people about sustainability.",
+                options: ["part", "role", "position", "character"],
+                correctAnswer: 1,
+                explanation: "'Play a role in' (đóng vai trò trong) là cụm từ phù hợp nhất khi nói về tầm quan trọng của điều gì đó trong một quá trình."
+            },
+            {
+                question: "Farmers are encouraged to use methods that have less ____ on the environment.",
+                options: ["harm", "damage", "impact", "effect"],
+                correctAnswer: 2,
+                explanation: "'Impact on the environment' (tác động đến môi trường) là cách diễn đạt phổ biến khi nói về ảnh hưởng của các hoạt động đối với thiên nhiên."
+            },
+            {
+                question: "The government has ____ a new environmental protection law.",
+                options: ["passed", "approved", "accepted", "allowed"],
+                correctAnswer: 0,
+                explanation: "'Pass a law' (thông qua luật) là thuật ngữ chính xác khi nói về việc một đạo luật được chính thức chấp thuận và trở thành luật."
+            },
+            {
+                question: "Renewable energy sources such as wind and solar power do not ____ harmful emissions.",
+                options: ["create", "make", "produce", "generate"],
+                correctAnswer: 3,
+                explanation: "'Generate emissions' (tạo ra khí thải) là cách diễn đạt chuyên môn khi nói về việc phát ra chất ô nhiễm vào khí quyển."
+            },
+            {
+                question: "Environmental activists are fighting ____ stricter pollution controls.",
+                options: ["for", "to", "with", "by"],
+                correctAnswer: 0,
+                explanation: "'Fight for' (đấu tranh cho) là cụm từ đúng khi nói về việc nỗ lực để đạt được một mục tiêu cụ thể."
+            },
+            {
+                question: "Many young people are passionate ____ environmental issues.",
+                options: ["on", "with", "for", "about"],
+                correctAnswer: 3,
+                explanation: "'Passionate about' (đam mê về) là cách diễn đạt đúng khi nói về sự quan tâm mạnh mẽ đối với một chủ đề."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answeredQuestions = new Array(quizData.length).fill(false);
+        const quizContainer = document.getElementById('quiz-container');
+        const resultContainer = document.getElementById('result-container');
+        const nextButton = document.getElementById('next-button');
+        const prevButton = document.getElementById('prev-button');
+        const retryButton = document.getElementById('retry-button');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const correctCount = document.getElementById('correct-count');
+        const totalCount = document.getElementById('total-count');
+        const scoreElement = document.getElementById('score');
+
+        function showQuestion(questionIndex) {
+            quizContainer.innerHTML = '';
+            const questionData = quizData[questionIndex];
+
+            const questionElement = document.createElement('div');
+            questionElement.className = 'mb-6';
+            questionElement.innerHTML = `
+                <p class="text-lg font-semibold mb-4">Câu ${questionIndex + 1}: ${questionData.question}</p>
+                <div class="space-y-2">
+                    ${questionData.options.map((option, index) => `
+                        <div class="option border rounded-lg p-3 transition-all ${answeredQuestions[questionIndex] && index === questionData.correctAnswer ? 'correct' : ''}${answeredQuestions[questionIndex] && document.querySelector(`input[name="q${questionIndex}"]:checked`)?.value == index && index !== questionData.correctAnswer ? 'incorrect' : ''}">
+                            <label class="option-label flex items-center">
+                                <input type="radio" name="q${questionIndex}" value="${index}" class="mr-3 h-4 w-4" ${answeredQuestions[questionIndex] ? 'disabled' : ''}>
+                                <span>${String.fromCharCode(65 + index)}. ${option}</span>
+                            </label>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="explanation mt-4 p-4 bg-yellow-50 border border-yellow-300 rounded-lg ${answeredQuestions[questionIndex] ? 'block' : 'hidden'}">
+                    <p class="text-sm"><strong>Giải thích:</strong> ${questionData.explanation}</p>
+                </div>
+            `;
+
+            quizContainer.appendChild(questionElement);
+
+            // Disable/enable navigation buttons
+            prevButton.disabled = questionIndex === 0;
+            nextButton.textContent = questionIndex === quizData.length - 1 ? 'Xem kết quả' : 'Câu tiếp theo';
+
+            // Add event listeners to radio inputs
+            const radioInputs = document.querySelectorAll(`input[name="q${questionIndex}"]`);
+            radioInputs.forEach(input => {
+                input.addEventListener('change', () => {
+                    if (!answeredQuestions[questionIndex]) {
+                        const selectedOption = parseInt(input.value);
+                        const correctOption = questionData.correctAnswer;
+                        
+                        // Mark as answered
+                        answeredQuestions[questionIndex] = true;
+                        
+                        // Update scores if this is the first time answering
+                        if (selectedOption === correctOption) {
+                            score++;
+                        }
+                        
+                        // Highlight correct and incorrect answers
+                        document.querySelectorAll('.option').forEach((opt, idx) => {
+                            if (idx === correctOption) {
+                                opt.classList.add('correct');
+                            } else if (idx === selectedOption && selectedOption !== correctOption) {
+                                opt.classList.add('incorrect');
+                            }
+                        });
+                        
+                        // Show explanation
+                        document.querySelector('.explanation').style.display = 'block';
+                        
+                        // Disable all options for this question
+                        radioInputs.forEach(radio => {
+                            radio.disabled = true;
+                        });
+                        
+                        updateProgress();
+                    }
+                });
+            });
+
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const answeredCount = answeredQuestions.filter(Boolean).length;
+            progressBar.style.width = `${(answeredCount / quizData.length) * 100}%`;
+            progressText.textContent = `${answeredCount}/${quizData.length}`;
+        }
+
+        function showResults() {
+            quizContainer.style.display = 'none';
+            resultContainer.classList.remove('hidden');
+            correctCount.textContent = score;
+            totalCount.textContent = quizData.length;
+            scoreElement.textContent = (score / quizData.length * 10).toFixed(1);
+            nextButton.style.display = 'none';
+            prevButton.style.display = 'none';
+        }
+
+        nextButton.addEventListener('click', () => {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            } else {
+                showResults();
+            }
+        });
+
+        prevButton.addEventListener('click', () => {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+            }
+        });
+
+        retryButton.addEventListener('click', () => {
+            currentQuestion = 0;
+            score = 0;
+            answeredQuestions = new Array(quizData.length).fill(false);
+            quizContainer.style.display = 'block';
+            resultContainer.classList.add('hidden');
+            nextButton.style.display = 'block';
+            prevButton.style.display = 'block';
+            showQuestion(currentQuestion);
+        });
+
+        // Initialize quiz
+        showQuestion(currentQuestion);
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
