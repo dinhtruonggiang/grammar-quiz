@@ -1,0 +1,559 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Quiz - ILearn Smart World 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .option-label {
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .option-label:hover {
+            background-color: #f0f9ff;
+        }
+        .selected {
+            background-color: #dbeafe;
+        }
+        .correct {
+            background-color: #dcfce7;
+        }
+        .incorrect {
+            background-color: #fee2e2;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen font-sans">
+
+<div class="container mx-auto px-4 py-8 max-w-4xl">
+    <header class="text-center mb-10">
+        <h1 class="text-3xl font-bold text-blue-800 mb-3">Bài Kiểm Tra Tiếng Anh</h1>
+        <p class="text-lg text-gray-600">Dựa trên sách ILearn Smart World 9 Student Book</p>
+        <p class="text-md text-gray-500 mt-2">Phần I: Choose the word/phrase/sentence that best fits the space or best answers the question</p>
+    </header>
+
+    <div id="quiz-container" class="bg-white rounded-lg shadow-lg p-6 mb-8">
+        <div id="question-container">
+            <!-- Questions will be inserted here -->
+        </div>
+
+        <div class="mt-6 flex justify-between">
+            <button id="prev-btn" class="bg-gray-500 text-white py-2 px-6 rounded-lg hover:bg-gray-600 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">Câu trước</button>
+            <button id="next-btn" class="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300">Câu tiếp theo</button>
+        </div>
+    </div>
+
+    <div id="results-container" class="bg-white rounded-lg shadow-lg p-6 hidden">
+        <h2 class="text-2xl font-bold text-center mb-4">Kết Quả</h2>
+        <p class="text-lg text-center mb-2">Số câu đúng: <span id="correct-count" class="font-bold text-green-600">0</span>/<span id="total-questions">30</span></p>
+        <p class="text-lg text-center mb-4">Điểm số: <span id="score" class="font-bold text-blue-600">0</span>/10</p>
+        <div class="text-center">
+            <button id="restart-btn" class="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300">Làm lại bài kiểm tra</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const questions = [
+        {
+            question: "Which word has the underlined part pronounced differently from that of the others?",
+            options: [
+                "A. w<u>a</u>tch",
+                "B. w<u>a</u>sh",
+                "C. w<u>a</u>nt",
+                "D. w<u>a</u>ffle"
+            ],
+            correctAnswer: "D",
+            explanation: "Đáp án D. waffle - chữ 'a' trong 'waffle' được phát âm là /ɒ/ khác với các từ còn lại (watch, wash, want) có chữ 'a' được phát âm là /ɔ:/."
+        },
+        {
+            question: "Which word has a different stress pattern from that of the others?",
+            options: [
+                "A. biology",
+                "B. geography",
+                "C. technology",
+                "D. environment"
+            ],
+            correctAnswer: "D",
+            explanation: "Đáp án D. environment - từ 'environment' có trọng âm ở âm tiết thứ 3 (en-vi-RON-ment), trong khi các từ còn lại có trọng âm ở âm tiết thứ 2 (bi-O-logy, ge-O-graphy, tech-NO-logy)."
+        },
+        {
+            question: "Which word has the underlined part pronounced differently from that of the others?",
+            options: [
+                "A. c<u>ou</u>ld",
+                "B. w<u>ou</u>ld",
+                "C. sh<u>ou</u>ld",
+                "D. m<u>ou</u>ld"
+            ],
+            correctAnswer: "D",
+            explanation: "Đáp án D. mould - chữ 'ou' trong 'mould' phát âm là /əʊ/, trong khi 'ou' trong các từ could, would, should phát âm là /ʊ/."
+        },
+        {
+            question: "Sam: \"Do you want to come to the cinema tonight?\" <br>Lucy: \"I can't. I _____________ finish my project by tomorrow.\"",
+            options: [
+                "A. had to",
+                "B. will be",
+                "C. have to",
+                "D. must to"
+            ],
+            correctAnswer: "C",
+            explanation: "Đáp án C. have to - diễn tả nghĩa vụ/bắt buộc ở hiện tại. 'Must to' không đúng ngữ pháp, 'had to' thuộc quá khứ, và 'will be' không diễn tả nghĩa vụ/bắt buộc trong ngữ cảnh này."
+        },
+        {
+            question: "Which word has a different stress pattern from that of the others?",
+            options: [
+                "A. determine",
+                "B. establish",
+                "C. recognize",
+                "D. calculate"
+            ],
+            correctAnswer: "D",
+            explanation: "Đáp án D. calculate - từ 'calculate' có trọng âm ở âm tiết đầu tiên (CAL-cu-late), trong khi các từ còn lại có trọng âm ở âm tiết thứ 2 (de-TER-mine, es-TAB-lish, re-COG-nize)."
+        },
+        {
+            question: "John: \"How about going camping this weekend?\" <br>Mary: \"_____________. The weather forecast says it's going to rain.\"",
+            options: [
+                "A. I'd love to",
+                "B. I don't think it's a good idea",
+                "C. Yes, let's do that",
+                "D. That sounds wonderful"
+            ],
+            correctAnswer: "B",
+            explanation: "Đáp án B. I don't think it's a good idea - phù hợp với ngữ cảnh, vì Mary từ chối đề nghị đi cắm trại với lý do thời tiết xấu. Các đáp án còn lại đều là những câu đồng ý, không phù hợp với ngữ cảnh."
+        },
+        {
+            question: "Which word has the underlined part pronounced differently from that of the others?",
+            options: [
+                "A. ch<u>e</u>mistry",
+                "B. t<u>e</u>chnical",
+                "C. m<u>e</u>thod",
+                "D. r<u>e</u>search"
+            ],
+            correctAnswer: "D",
+            explanation: "Đáp án D. research - chữ 'e' trong 'research' được phát âm là /ɪ/ (ri-search), trong khi 'e' trong chemistry, technical và method phát âm là /e/."
+        },
+        {
+            question: "The doctor advised that he _____________ smoking immediately.",
+            options: [
+                "A. stops",
+                "B. stop",
+                "C. stopped",
+                "D. will stop"
+            ],
+            correctAnswer: "B",
+            explanation: "Đáp án B. stop - Sau cấu trúc \"advise that...\" trong mệnh đề giả định, động từ ở dạng nguyên thể không 'to'. Đây là cấu trúc subjunctive (câu giả định) trong tiếng Anh."
+        },
+        {
+            question: "Which word has a different stress pattern from that of the others?",
+            options: [
+                "A. independent",
+                "B. intelligent",
+                "C. certificate",
+                "D. photography"
+            ],
+            correctAnswer: "A",
+            explanation: "Đáp án A. independent - từ 'independent' có trọng âm ở âm tiết thứ 3 (in-de-PEN-dent), trong khi các từ còn lại có trọng âm ở âm tiết thứ 2 (in-TEL-li-gent, cer-TI-fi-cate, pho-TO-gra-phy)."
+        },
+        {
+            question: "We need to _____________ our natural resources for future generations.",
+            options: [
+                "A. consume",
+                "B. exploit",
+                "C. conserve",
+                "D. exhaust"
+            ],
+            correctAnswer: "C",
+            explanation: "Đáp án C. conserve - có nghĩa là 'bảo tồn', phù hợp với ngữ cảnh bảo vệ tài nguyên thiên nhiên cho thế hệ tương lai. Các đáp án khác: consume (tiêu thụ), exploit (khai thác), exhaust (làm cạn kiệt) đều mang nghĩa tiêu cực trong ngữ cảnh này."
+        },
+        {
+            question: "If we _____________ harder, we would have won the competition.",
+            options: [
+                "A. tried",
+                "B. had tried",
+                "C. have tried",
+                "D. would try"
+            ],
+            correctAnswer: "B",
+            explanation: "Đáp án B. had tried - đây là câu điều kiện loại 3 (nói về việc giả định ở quá khứ), có dạng: If + past perfect, would/could/might + have + past participle."
+        },
+        {
+            question: "Which word has the underlined part pronounced differently from that of the others?",
+            options: [
+                "A. <u>ch</u>oir",
+                "B. <u>ch</u>arge",
+                "C. <u>ch</u>at",
+                "D. <u>ch</u>eck"
+            ],
+            correctAnswer: "A",
+            explanation: "Đáp án A. choir - 'ch' trong 'choir' phát âm là /kw/ (như trong 'quire'), trong khi 'ch' trong charge, chat, check đều phát âm là /tʃ/."
+        },
+        {
+            question: "Alex: \"I'm sorry I couldn't attend your birthday party yesterday.\" <br>Sophia: \"_____________. There will be other opportunities.\"",
+            options: [
+                "A. You are welcome",
+                "B. I'm glad you couldn't come",
+                "C. Don't mention it",
+                "D. That's all right"
+            ],
+            correctAnswer: "D",
+            explanation: "Đáp án D. That's all right - là cách đáp lại lời xin lỗi một cách lịch sự, thông cảm. 'Don't mention it' thường dùng để đáp lại lời cảm ơn, không phải lời xin lỗi. 'You are welcome' cũng vậy. 'I'm glad you couldn't come' có nghĩa tiêu cực không phù hợp."
+        },
+        {
+            question: "The company decided to _____________ production of their outdated smartphone model.",
+            options: [
+                "A. upgrade",
+                "B. promote",
+                "C. discontinue",
+                "D. increase"
+            ],
+            correctAnswer: "C",
+            explanation: "Đáp án C. discontinue - có nghĩa là 'ngừng sản xuất', phù hợp với ngữ cảnh nói về model điện thoại đã lỗi thời. Các đáp án còn lại: upgrade (nâng cấp), promote (quảng bá), increase (tăng) không phù hợp với ngữ cảnh sản phẩm lỗi thời."
+        },
+        {
+            question: "Which word has a different stress pattern from that of the others?",
+            options: [
+                "A. communicate",
+                "B. participate",
+                "C. certificate",
+                "D. atmosphere"
+            ],
+            correctAnswer: "D",
+            explanation: "Đáp án D. atmosphere - từ 'atmosphere' có trọng âm ở âm tiết đầu tiên (AT-mos-phere), trong khi các từ còn lại có trọng âm ở âm tiết thứ 2 (com-MU-ni-cate, par-TI-ci-pate, cer-TI-fi-cate)."
+        },
+        {
+            question: "By the time we arrived, the conference _____________ for nearly an hour.",
+            options: [
+                "A. has started",
+                "B. had been starting",
+                "C. was starting",
+                "D. had been going on"
+            ],
+            correctAnswer: "D",
+            explanation: "Đáp án D. had been going on - đây là thì quá khứ hoàn thành tiếp diễn (past perfect continuous), diễn tả hành động đã bắt đầu trong quá khứ và tiếp tục đến một thời điểm khác trong quá khứ. Phù hợp với cấu trúc 'By the time... had been + Ving'."
+        },
+        {
+            question: "We need to raise awareness _____________ the importance of environmental protection.",
+            options: [
+                "A. for",
+                "B. of",
+                "C. with",
+                "D. about"
+            ],
+            correctAnswer: "D",
+            explanation: "Đáp án D. about - cụm từ 'raise awareness about something' là cụm từ cố định trong tiếng Anh, có nghĩa là 'nâng cao nhận thức về điều gì đó'."
+        },
+        {
+            question: "Which word has the underlined part pronounced differently from that of the others?",
+            options: [
+                "A. h<u>ea</u>d",
+                "B. br<u>ea</u>d",
+                "C. spr<u>ea</u>d",
+                "D. gr<u>ea</u>t"
+            ],
+            correctAnswer: "D",
+            explanation: "Đáp án D. great - 'ea' trong 'great' phát âm là /eɪ/, trong khi 'ea' trong head, bread, spread đều phát âm là /e/."
+        },
+        {
+            question: "_____________ the storm, the fishing boats returned to the harbor.",
+            options: [
+                "A. Because",
+                "B. Due to",
+                "C. Although",
+                "D. Despite"
+            ],
+            correctAnswer: "B",
+            explanation: "Đáp án B. Due to - 'Due to the storm' nghĩa là 'do bão/vì bão' phù hợp nhất với ngữ cảnh. 'Because' cần có mệnh đề theo sau. 'Although' và 'Despite' diễn tả ý nghĩa đối lập, không phù hợp với ngữ cảnh."
+        },
+        {
+            question: "If you had told me about the problem earlier, I _____________ you.",
+            options: [
+                "A. would help",
+                "B. will have helped",
+                "C. would have helped",
+                "D. had helped"
+            ],
+            correctAnswer: "C",
+            explanation: "Đáp án C. would have helped - đây là câu điều kiện loại 3 (nói về việc giả định ở quá khứ), có dạng: If + past perfect, would/could/might + have + past participle."
+        },
+        {
+            question: "Which word has a different stress pattern from that of the others?",
+            options: [
+                "A. telescope",
+                "B. microscope",
+                "C. interview",
+                "D. calculate"
+            ],
+            correctAnswer: "C",
+            explanation: "Đáp án C. interview - từ 'interview' có trọng âm ở âm tiết đầu tiên (IN-ter-view), trong khi các từ còn lại có trọng âm ở âm tiết đầu tiên nhưng âm tiết cuối cũng được nhấn một phần (TE-le-scope, MI-cro-scope, CAL-cu-late)."
+        },
+        {
+            question: "Lisa: \"I think we should reduce our use of plastic bags.\" <br>Tom: \"_____________. They cause serious environmental problems.\"",
+            options: [
+                "A. I couldn't agree more",
+                "B. I don't think so",
+                "C. You must be kidding",
+                "D. That's not true"
+            ],
+            correctAnswer: "A",
+            explanation: "Đáp án A. I couldn't agree more - nghĩa là 'tôi hoàn toàn đồng ý', phù hợp với câu tiếp theo của Tom khi anh ấy ủng hộ ý kiến của Lisa về việc giảm sử dụng túi nhựa. Các đáp án còn lại đều thể hiện sự không đồng ý."
+        },
+        {
+            question: "The government has implemented several measures _____________ air pollution in the city.",
+            options: [
+                "A. to reduce",
+                "B. reducing",
+                "C. reduced",
+                "D. reduce"
+            ],
+            correctAnswer: "A",
+            explanation: "Đáp án A. to reduce - cấu trúc 'measures to do something' (các biện pháp để làm gì) là cấu trúc cố định, trong đó 'to' + động từ nguyên thể diễn tả mục đích."
+        },
+        {
+            question: "Which word has the underlined part pronounced differently from that of the others?",
+            options: [
+                "A. t<u>ou</u>gh",
+                "B. en<u>ou</u>gh",
+                "C. r<u>ou</u>gh",
+                "D. thr<u>ou</u>gh"
+            ],
+            correctAnswer: "D",
+            explanation: "Đáp án D. through - 'ou' trong 'through' phát âm là /u:/, trong khi 'ou' trong tough, enough, rough đều phát âm là /ʌ/."
+        },
+        {
+            question: "Scientists are concerned about the _____________ effects of climate change on marine ecosystems.",
+            options: [
+                "A. advantageous",
+                "B. beneficial",
+                "C. detrimental",
+                "D. favorable"
+            ],
+            correctAnswer: "C",
+            explanation: "Đáp án C. detrimental - có nghĩa là 'gây hại', phù hợp với ngữ cảnh về sự lo ngại của các nhà khoa học đối với biến đổi khí hậu. Các đáp án còn lại: advantageous (có lợi), beneficial (có ích), favorable (thuận lợi) đều mang nghĩa tích cực, không phù hợp với ngữ cảnh."
+        },
+        {
+            question: "By 2050, scientists predict that renewable energy _____________ fossil fuels as the primary source of energy.",
+            options: [
+                "A. will replace",
+                "B. will have replaced",
+                "C. replaces",
+                "D. has replaced"
+            ],
+            correctAnswer: "B",
+            explanation: "Đáp án B. will have replaced - đây là thì tương lai hoàn thành, diễn tả một hành động sẽ hoàn thành trước một thời điểm trong tương lai (ở đây là năm 2050). Cấu trúc: will have + past participle."
+        },
+        {
+            question: "Jack: \"I've just passed my driving test!\" <br>Jill: \"_____________! You've worked so hard for it.\"",
+            options: [
+                "A. Better luck next time",
+                "B. Congratulations",
+                "C. That's too bad",
+                "D. I don't believe it"
+            ],
+            correctAnswer: "B",
+            explanation: "Đáp án B. Congratulations - là cách đáp lại phù hợp khi ai đó đạt được thành công, trong trường hợp này là Jack vừa vượt qua bài kiểm tra lái xe. Các đáp án còn lại không phù hợp với tình huống chúc mừng."
+        },
+        {
+            question: "Which word has a different stress pattern from that of the others?",
+            options: [
+                "A. opportunity",
+                "B. university",
+                "C. responsibility",
+                "D. documentary"
+            ],
+            correctAnswer: "C",
+            explanation: "Đáp án C. responsibility - từ 'responsibility' có trọng âm ở âm tiết thứ 3 (res-pon-SI-bi-li-ty), trong khi các từ còn lại có trọng âm ở âm tiết thứ 2 (op-POR-tu-ni-ty, u-NI-ver-si-ty, do-CU-men-ta-ry)."
+        },
+        {
+            question: "_____________ his poor health, he managed to complete the marathon.",
+            options: [
+                "A. Because of",
+                "B. Due to",
+                "C. Despite",
+                "D. Since"
+            ],
+            correctAnswer: "C",
+            explanation: "Đáp án C. Despite - nghĩa là 'mặc dù', diễn tả ý nghĩa đối lập giữa sức khỏe kém và việc hoàn thành cuộc đua marathon. 'Because of' và 'Due to' nghĩa là 'vì/do', 'Since' nghĩa là 'kể từ khi/vì', đều không phù hợp với ngữ cảnh."
+        },
+        {
+            question: "Which word has the underlined part pronounced differently from that of the others?",
+            options: [
+                "A. s<u>ew</u>",
+                "B. f<u>ew</u>",
+                "C. n<u>ew</u>",
+                "D. d<u>ew</u>"
+            ],
+            correctAnswer: "A",
+            explanation: "Đáp án A. sew - 'ew' trong 'sew' phát âm là /əʊ/, trong khi 'ew' trong few, new, dew đều phát âm là /ju:/."
+        }
+    ];
+
+    let currentQuestion = 0;
+    let answeredQuestions = Array(questions.length).fill(false);
+    let userAnswers = Array(questions.length).fill(null);
+    let correctAnswers = 0;
+
+    const questionContainer = document.getElementById("question-container");
+    const nextBtn = document.getElementById("next-btn");
+    const prevBtn = document.getElementById("prev-btn");
+    const restartBtn = document.getElementById("restart-btn");
+    const resultsContainer = document.getElementById("results-container");
+    const quizContainer = document.getElementById("quiz-container");
+
+    function displayQuestion(index) {
+        questionContainer.innerHTML = '';
+        
+        const questionEl = document.createElement("div");
+        questionEl.classList.add("mb-6");
+        
+        questionEl.innerHTML = `
+            <h2 class="text-xl font-semibold mb-3">Câu ${index + 1}:</h2>
+            <p class="text-lg mb-4">${questions[index].question}</p>
+        `;
+        
+        const optionsEl = document.createElement("div");
+        optionsEl.classList.add("space-y-3");
+        
+        questions[index].options.forEach((option, i) => {
+            const optionLabel = document.createElement("label");
+            optionLabel.classList.add("option-label", "block", "p-3", "border", "rounded-lg", "border-gray-300");
+            
+            if (userAnswers[index] === option.charAt(0)) {
+                optionLabel.classList.add("selected");
+                
+                if (answeredQuestions[index]) {
+                    if (option.charAt(0) === questions[index].correctAnswer) {
+                        optionLabel.classList.add("correct");
+                    } else {
+                        optionLabel.classList.add("incorrect");
+                    }
+                }
+            }
+            
+            if (answeredQuestions[index] && option.charAt(0) === questions[index].correctAnswer) {
+                optionLabel.classList.add("correct");
+            }
+            
+            optionLabel.innerHTML = `
+                <input type="radio" name="q${index}" id="q${index}option${i}" value="${option.charAt(0)}" 
+                ${userAnswers[index] === option.charAt(0) ? 'checked' : ''} 
+                ${answeredQuestions[index] ? 'disabled' : ''} class="mr-2">
+                ${option}
+            `;
+            
+            optionLabel.addEventListener("click", () => {
+                if (!answeredQuestions[index]) {
+                    selectOption(index, option.charAt(0));
+                }
+            });
+            
+            optionsEl.appendChild(optionLabel);
+        });
+        
+        questionEl.appendChild(optionsEl);
+        
+        if (answeredQuestions[index]) {
+            const explanationEl = document.createElement("div");
+            explanationEl.classList.add("mt-4", "p-4", "bg-blue-50", "rounded-lg", "border", "border-blue-200");
+            explanationEl.innerHTML = `
+                <p class="font-medium text-blue-800">Giải thích:</p>
+                <p class="text-blue-700">${questions[index].explanation}</p>
+            `;
+            questionEl.appendChild(explanationEl);
+        }
+        
+        questionContainer.appendChild(questionEl);
+        
+        prevBtn.disabled = index === 0;
+        
+        if (index === questions.length - 1) {
+            nextBtn.textContent = "Xem kết quả";
+        } else {
+            nextBtn.textContent = "Câu tiếp theo";
+        }
+    }
+
+    function selectOption(questionIndex, selectedOption) {
+        userAnswers[questionIndex] = selectedOption;
+        answeredQuestions[questionIndex] = true;
+        
+        if (selectedOption === questions[questionIndex].correctAnswer) {
+            correctAnswers++;
+        }
+        
+        displayQuestion(questionIndex);
+    }
+
+    function showResults() {
+        quizContainer.classList.add("hidden");
+        resultsContainer.classList.remove("hidden");
+        
+        document.getElementById("correct-count").textContent = correctAnswers;
+        document.getElementById("total-questions").textContent = questions.length;
+        document.getElementById("score").textContent = (correctAnswers / questions.length * 10).toFixed(2);
+    }
+
+    function restartQuiz() {
+        currentQuestion = 0;
+        answeredQuestions = Array(questions.length).fill(false);
+        userAnswers = Array(questions.length).fill(null);
+        correctAnswers = 0;
+        
+        quizContainer.classList.remove("hidden");
+        resultsContainer.classList.add("hidden");
+        
+        displayQuestion(currentQuestion);
+    }
+
+    nextBtn.addEventListener("click", () => {
+        if (currentQuestion < questions.length - 1) {
+            currentQuestion++;
+            displayQuestion(currentQuestion);
+        } else {
+            showResults();
+        }
+    });
+
+    prevBtn.addEventListener("click", () => {
+        if (currentQuestion > 0) {
+            currentQuestion--;
+            displayQuestion(currentQuestion);
+        }
+    });
+
+    restartBtn.addEventListener("click", restartQuiz);
+
+    // Initialize the first question
+    displayQuestion(currentQuestion);
+</script>
+
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
