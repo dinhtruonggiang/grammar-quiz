@@ -1,0 +1,478 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Tiếng Anh - Lớp 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .option {
+            transition: all 0.3s ease;
+        }
+        .option:hover {
+            background-color: #e9ecef;
+        }
+        .option.selected {
+            background-color: #cfe2ff;
+            border-color: #0d6efd;
+        }
+        .option.correct {
+            background-color: #d1e7dd;
+            border-color: #198754;
+        }
+        .option.incorrect {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+        }
+        .explanation {
+            display: none;
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body class="min-h-screen py-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-blue-700 mb-2">Bài Trắc Nghiệm Tiếng Anh</h1>
+            <p class="text-gray-600">Chọn từ thích hợp điền vào chỗ trống - ILearn Smart World 9</p>
+        </header>
+
+        <div class="bg-white shadow-md rounded-lg p-6 mb-6">
+            <div id="progress-container" class="mb-6">
+                <div class="flex justify-between mb-2">
+                    <span class="text-sm font-medium text-gray-700">Tiến độ</span>
+                    <span id="progress-text" class="text-sm font-medium text-blue-600">0/30</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <div id="quiz-container">
+                <!-- Các câu hỏi sẽ được thêm vào đây bằng JavaScript -->
+            </div>
+
+            <div class="flex justify-between mt-6">
+                <button id="prev-btn" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition disabled:opacity-50 disabled:cursor-not-allowed">Câu trước</button>
+                <button id="next-btn" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Câu tiếp theo</button>
+            </div>
+        </div>
+
+        <div id="results" class="bg-white shadow-md rounded-lg p-6 mb-6 hidden">
+            <h2 class="text-2xl font-bold text-center mb-4">Kết quả</h2>
+            <div class="text-center mb-4">
+                <span id="score" class="text-4xl font-bold text-blue-600">0</span>
+                <span class="text-xl">/30</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-4 mb-4">
+                <div id="score-bar" class="bg-blue-600 h-4 rounded-full" style="width: 0%"></div>
+            </div>
+            <div id="feedback" class="text-center text-lg mb-6"></div>
+            <button id="restart-btn" class="w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Làm lại bài</button>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "She has been working on this project _____ three months.",
+                options: ["for", "since", "in", "at"],
+                correct: 0,
+                explanation: "Đáp án đúng là 'for'. Chúng ta sử dụng 'for' để chỉ khoảng thời gian (for three months), trong khi 'since' dùng để chỉ thời điểm bắt đầu."
+            },
+            {
+                question: "The concert was so boring that many people fell _____ during the performance.",
+                options: ["sleeping", "to sleep", "asleep", "sleep"],
+                correct: 2,
+                explanation: "Đáp án đúng là 'asleep'. 'Fall asleep' là một cụm động từ cố định trong tiếng Anh có nghĩa là 'ngủ thiếp đi'."
+            },
+            {
+                question: "It's important to keep _____ touch with old friends, even when you're busy.",
+                options: ["in", "on", "at", "with"],
+                correct: 0,
+                explanation: "Đáp án đúng là 'in'. 'Keep in touch' là một cụm từ cố định có nghĩa là 'giữ liên lạc'."
+            },
+            {
+                question: "The film was quite different _____ the book it was based on.",
+                options: ["with", "from", "than", "of"],
+                correct: 1,
+                explanation: "Đáp án đúng là 'from'. Tính từ 'different' đi với giới từ 'from' (different from) khi so sánh hai đối tượng."
+            },
+            {
+                question: "We need to _____ a decision about our summer vacation soon.",
+                options: ["do", "take", "make", "have"],
+                correct: 2,
+                explanation: "Đáp án đúng là 'make'. 'Make a decision' là cụm từ cố định có nghĩa là 'đưa ra quyết định'."
+            },
+            {
+                question: "I think we should _____ advantage of the good weather and go for a picnic.",
+                options: ["make", "take", "do", "have"],
+                correct: 1,
+                explanation: "Đáp án đúng là 'take'. 'Take advantage of' là cụm từ cố định có nghĩa là 'tận dụng'."
+            },
+            {
+                question: "She always _____ attention to details when she's working on a project.",
+                options: ["gives", "takes", "pays", "makes"],
+                correct: 2,
+                explanation: "Đáp án đúng là 'pays'. 'Pay attention' là cụm từ cố định có nghĩa là 'chú ý'."
+            },
+            {
+                question: "The students were asked to _____ up their hands if they knew the answer.",
+                options: ["take", "get", "put", "make"],
+                correct: 2,
+                explanation: "Đáp án đúng là 'put'. 'Put up one's hand' là cụm động từ cố định có nghĩa là 'giơ tay lên'."
+            },
+            {
+                question: "My grandmother has a great _____ for telling stories that captivate everyone.",
+                options: ["skill", "ability", "talent", "power"],
+                correct: 2,
+                explanation: "Đáp án đúng là 'talent'. 'Talent' (tài năng) phù hợp nhất trong ngữ cảnh này, chỉ khả năng tự nhiên của một người."
+            },
+            {
+                question: "They've been _____ a lot of effort into preparing for the competition.",
+                options: ["making", "doing", "taking", "putting"],
+                correct: 3,
+                explanation: "Đáp án đúng là 'putting'. 'Put effort into' là cụm từ cố định có nghĩa là 'nỗ lực, cố gắng cho việc gì'."
+            },
+            {
+                question: "I can't _____ out what this word means. Could you help me?",
+                options: ["take", "find", "figure", "look"],
+                correct: 2,
+                explanation: "Đáp án đúng là 'figure'. 'Figure out' là cụm động từ có nghĩa là 'tìm hiểu, hiểu ra'."
+            },
+            {
+                question: "The teacher asked us to _____ our books to page 45.",
+                options: ["turn", "go", "move", "change"],
+                correct: 0,
+                explanation: "Đáp án đúng là 'turn'. 'Turn to page' là cách diễn đạt thông dụng để chỉ việc lật đến một trang trong sách."
+            },
+            {
+                question: "I'm sorry, but I don't _____ with your opinion on this matter.",
+                options: ["accept", "agree", "approve", "allow"],
+                correct: 1,
+                explanation: "Đáp án đúng là 'agree'. 'Agree with' là cụm từ thích hợp để diễn tả đồng ý với ý kiến của ai đó."
+            },
+            {
+                question: "The government has introduced a new law to _____ down on pollution.",
+                options: ["put", "crack", "break", "take"],
+                correct: 1,
+                explanation: "Đáp án đúng là 'crack'. 'Crack down on' là một cụm động từ có nghĩa là 'trấn áp, ngăn chặn' một điều gì đó tiêu cực."
+            },
+            {
+                question: "We need to _____ into account all the factors before making a decision.",
+                options: ["put", "take", "get", "bring"],
+                correct: 1,
+                explanation: "Đáp án đúng là 'take'. 'Take into account' là cụm từ cố định có nghĩa là 'xem xét, cân nhắc'."
+            },
+            {
+                question: "She finally _____ up the courage to speak in front of the whole class.",
+                options: ["made", "took", "plucked", "brought"],
+                correct: 2,
+                explanation: "Đáp án đúng là 'plucked'. 'Pluck up courage' là một cụm từ thành ngữ có nghĩa là 'lấy hết can đảm'."
+            },
+            {
+                question: "The company has decided to _____ down production due to falling demand.",
+                options: ["put", "get", "cut", "take"],
+                correct: 2,
+                explanation: "Đáp án đúng là 'cut'. 'Cut down' là cụm động từ phù hợp khi nói về việc giảm sản xuất."
+            },
+            {
+                question: "I need to _____ up on my reading before the exam next week.",
+                options: ["make", "catch", "take", "do"],
+                correct: 1,
+                explanation: "Đáp án đúng là 'catch'. 'Catch up on' là cụm động từ có nghĩa là 'học bù, làm bù' những việc còn thiếu."
+            },
+            {
+                question: "The flight was delayed _____ to bad weather conditions.",
+                options: ["because", "due", "owing", "thanks"],
+                correct: 1,
+                explanation: "Đáp án đúng là 'due'. 'Due to' là cách diễn đạt thích hợp trong ngữ cảnh này, có nghĩa là 'do, vì'."
+            },
+            {
+                question: "You should _____ advantage of the special offers while they last.",
+                options: ["make", "have", "take", "do"],
+                correct: 2,
+                explanation: "Đáp án đúng là 'take'. 'Take advantage of' là cụm từ cố định có nghĩa là 'tận dụng'."
+            },
+            {
+                question: "His new novel has _____ a lot of attention from literary critics.",
+                options: ["attracted", "gained", "caught", "received"],
+                correct: 0,
+                explanation: "Đáp án đúng là 'attracted'. 'Attract attention' là cụm từ phù hợp trong ngữ cảnh này, diễn tả việc thu hút sự chú ý."
+            },
+            {
+                question: "The police are _____ into the cause of the accident.",
+                options: ["looking", "searching", "investigating", "examining"],
+                correct: 2,
+                explanation: "Đáp án đúng là 'investigating'. 'Investigate into' là cụm từ thích hợp khi nói về việc điều tra nguyên nhân."
+            },
+            {
+                question: "The children were _____ forward to their summer vacation.",
+                options: ["waiting", "looking", "seeing", "going"],
+                correct: 1,
+                explanation: "Đáp án đúng là 'looking'. 'Look forward to' là cụm từ cố định có nghĩa là 'mong đợi, mong chờ'."
+            },
+            {
+                question: "She managed to _____ with her work despite the noise from the construction site.",
+                options: ["go on", "carry on", "keep on", "move on"],
+                correct: 1,
+                explanation: "Đáp án đúng là 'carry on'. 'Carry on with something' có nghĩa là 'tiếp tục làm việc gì đó' mặc dù có khó khăn."
+            },
+            {
+                question: "The team needs to _____ up with a new strategy to win the championship.",
+                options: ["think", "come", "make", "get"],
+                correct: 1,
+                explanation: "Đáp án đúng là 'come'. 'Come up with' là cụm động từ có nghĩa là 'nghĩ ra, đưa ra' một ý tưởng hay giải pháp mới."
+            },
+            {
+                question: "We should _____ into consideration the needs of everyone involved.",
+                options: ["put", "take", "bring", "get"],
+                correct: 1,
+                explanation: "Đáp án đúng là 'take'. 'Take into consideration' là cụm từ cố định có nghĩa là 'xem xét, cân nhắc'."
+            },
+            {
+                question: "I'm trying to _____ up with the latest developments in technology.",
+                options: ["catch", "follow", "keep", "get"],
+                correct: 2,
+                explanation: "Đáp án đúng là 'keep'. 'Keep up with' là cụm động từ phù hợp khi nói về việc cập nhật, theo kịp các xu hướng mới."
+            },
+            {
+                question: "The magazine article _____ light on the environmental issues we're facing.",
+                options: ["brings", "sheds", "gives", "throws"],
+                correct: 1,
+                explanation: "Đáp án đúng là 'sheds'. 'Shed light on' là thành ngữ có nghĩa là 'làm sáng tỏ, làm rõ' một vấn đề nào đó."
+            },
+            {
+                question: "The meeting was _____ off due to the absence of several key participants.",
+                options: ["called", "taken", "put", "broken"],
+                correct: 0,
+                explanation: "Đáp án đúng là 'called'. 'Call off' là cụm động từ có nghĩa là 'hủy bỏ'."
+            },
+            {
+                question: "After the storm, it took several days to _____ up the damage.",
+                options: ["clear", "clean", "tidy", "pick"],
+                correct: 1,
+                explanation: "Đáp án đúng là 'clean'. 'Clean up damage' là cách diễn đạt thích hợp để nói về việc dọn dẹp sau thiệt hại."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answeredQuestions = new Array(quizData.length).fill(false);
+
+        const quizContainer = document.getElementById('quiz-container');
+        const resultsContainer = document.getElementById('results');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const scoreElement = document.getElementById('score');
+        const scoreBar = document.getElementById('score-bar');
+        const feedbackElement = document.getElementById('feedback');
+        const restartBtn = document.getElementById('restart-btn');
+
+        // Hiển thị câu hỏi
+        function showQuestion(index) {
+            quizContainer.innerHTML = '';
+            
+            const questionDiv = document.createElement('div');
+            questionDiv.classList.add('mb-6');
+            
+            questionDiv.innerHTML = `
+                <h2 class="text-xl font-semibold mb-4">Câu ${index + 1}: ${quizData[index].question}</h2>
+                <div class="space-y-3">
+                    ${quizData[index].options.map((option, i) => `
+                        <div class="option ${answeredQuestions[index] && i === quizData[index].correct ? 'correct' : ''}
+                                      ${answeredQuestions[index] && quizData[index].selectedOption === i && i !== quizData[index].correct ? 'incorrect' : ''}
+                                      ${!answeredQuestions[index] && 'cursor-pointer'} 
+                                      ${!answeredQuestions[index] ? '' : quizData[index].selectedOption === i ? 'selected' : ''}
+                                      border rounded-lg p-3"
+                             data-index="${i}" ${answeredQuestions[index] ? 'disabled' : ''}>
+                            <div class="flex items-start">
+                                <span class="inline-flex items-center justify-center w-6 h-6 rounded-full border border-gray-300 mr-3">
+                                    ${String.fromCharCode(65 + i)}
+                                </span>
+                                <span>${option}</span>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="explanation mt-4 ${answeredQuestions[index] ? 'block' : 'hidden'}">
+                    <p class="text-gray-700"><strong>Giải thích:</strong> ${quizData[index].explanation}</p>
+                </div>
+            `;
+            
+            quizContainer.appendChild(questionDiv);
+            
+            // Thêm sự kiện click cho các option nếu câu hỏi chưa được trả lời
+            if (!answeredQuestions[index]) {
+                const options = quizContainer.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.addEventListener('click', selectOption);
+                });
+            }
+            
+            updateNavButtons();
+            updateProgressBar();
+        }
+
+        // Xử lý khi người dùng chọn đáp án
+        function selectOption(e) {
+            if (answeredQuestions[currentQuestion]) return;
+            
+            const selectedOption = parseInt(e.currentTarget.dataset.index);
+            quizData[currentQuestion].selectedOption = selectedOption;
+            answeredQuestions[currentQuestion] = true;
+            
+            const options = quizContainer.querySelectorAll('.option');
+            options.forEach(option => {
+                option.removeEventListener('click', selectOption);
+                const optionIndex = parseInt(option.dataset.index);
+                
+                if (optionIndex === quizData[currentQuestion].correct) {
+                    option.classList.add('correct');
+                } else if (optionIndex === selectedOption) {
+                    option.classList.add('incorrect', 'selected');
+                }
+            });
+            
+            if (selectedOption === quizData[currentQuestion].correct) {
+                score++;
+            }
+            
+            const explanation = quizContainer.querySelector('.explanation');
+            explanation.style.display = 'block';
+            
+            updateProgressBar();
+            checkCompletion();
+        }
+
+        // Cập nhật nút điều hướng
+        function updateNavButtons() {
+            prevBtn.disabled = currentQuestion === 0;
+            
+            if (currentQuestion === quizData.length - 1) {
+                nextBtn.textContent = 'Hoàn thành';
+            } else {
+                nextBtn.textContent = 'Câu tiếp theo';
+            }
+        }
+
+        // Cập nhật thanh tiến độ
+        function updateProgressBar() {
+            const answeredCount = answeredQuestions.filter(Boolean).length;
+            const percentage = (answeredCount / quizData.length) * 100;
+            progressBar.style.width = `${percentage}%`;
+            progressText.textContent = `${answeredCount}/${quizData.length}`;
+        }
+
+        // Kiểm tra xem đã hoàn thành tất cả câu hỏi chưa
+        function checkCompletion() {
+            const allAnswered = answeredQuestions.every(Boolean);
+            
+            if (allAnswered) {
+                nextBtn.onclick = showResults;
+            }
+        }
+
+        // Hiển thị kết quả
+        function showResults() {
+            quizContainer.parentElement.classList.add('hidden');
+            resultsContainer.classList.remove('hidden');
+            
+            scoreElement.textContent = score;
+            scoreBar.style.width = `${(score / quizData.length) * 100}%`;
+            
+            let feedbackMessage = '';
+            const percentage = (score / quizData.length) * 100;
+            
+            if (percentage >= 90) {
+                feedbackMessage = 'Xuất sắc! Bạn đã nắm vững kiến thức này.';
+            } else if (percentage >= 70) {
+                feedbackMessage = 'Tốt! Bạn đã hiểu phần lớn nội dung.';
+            } else if (percentage >= 50) {
+                feedbackMessage = 'Khá! Hãy ôn tập thêm nhé.';
+            } else {
+                feedbackMessage = 'Bạn cần ôn tập thêm nhiều hơn.';
+            }
+            
+            feedbackElement.textContent = feedbackMessage;
+        }
+
+        // Làm lại bài
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            answeredQuestions = new Array(quizData.length).fill(false);
+            quizData.forEach(q => delete q.selectedOption);
+            
+            resultsContainer.classList.add('hidden');
+            quizContainer.parentElement.classList.remove('hidden');
+            
+            showQuestion(currentQuestion);
+            updateProgressBar();
+        }
+
+        // Khởi tạo
+        function init() {
+            showQuestion(currentQuestion);
+            
+            prevBtn.onclick = () => {
+                if (currentQuestion > 0) {
+                    currentQuestion--;
+                    showQuestion(currentQuestion);
+                }
+            };
+            
+            nextBtn.onclick = () => {
+                if (currentQuestion < quizData.length - 1) {
+                    currentQuestion++;
+                    showQuestion(currentQuestion);
+                } else {
+                    // Kiểm tra xem đã trả lời tất cả câu hỏi chưa
+                    const allAnswered = answeredQuestions.every(Boolean);
+                    if (allAnswered) {
+                        showResults();
+                    }
+                }
+            };
+            
+            restartBtn.onclick = restartQuiz;
+        }
+
+        init();
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
