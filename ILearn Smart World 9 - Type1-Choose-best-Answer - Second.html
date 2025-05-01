@@ -1,0 +1,497 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ILearn Smart World 9 - Choose the Best Answer Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .option {
+            transition: all 0.3s ease;
+        }
+        .option:hover {
+            background-color: #f3f4f6;
+        }
+        .correct {
+            background-color: #d1fae5 !important;
+            border-color: #10b981 !important;
+        }
+        .incorrect {
+            background-color: #fee2e2 !important;
+            border-color: #ef4444 !important;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <h1 class="text-3xl font-bold text-center mb-8 text-blue-800">Choose the word/phrase/sentence that best fits the space or best answers the question</h1>
+        
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <div class="flex justify-between mb-4">
+                <div class="text-lg font-semibold">Total Questions: <span id="totalQuestions">30</span></div>
+                <div class="text-lg font-semibold">Score: <span id="score">0</span> / <span id="totalAnswered">0</span></div>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div id="progressBar" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <div id="quiz-container" class="space-y-8">
+            <!-- Quiz questions will be generated here -->
+        </div>
+
+        <div class="mt-10 text-center">
+            <button id="showResults" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300 hidden">
+                Xem Kết Quả
+            </button>
+            <div id="finalScore" class="mt-6 text-xl font-bold hidden"></div>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "1. Which word has the underlined part pronounced differently from that of the others?",
+                options: [
+                    { text: "explor<u>ed</u>", correct: true },
+                    { text: "look<u>ed</u>", correct: false },
+                    { text: "increas<u>ed</u>", correct: false },
+                    { text: "produc<u>ed</u>", correct: false }
+                ],
+                explanation: "Đáp án A (explored) là đúng vì phần gạch chân 'ed' trong từ này được phát âm là /d/, trong khi các từ còn lại 'ed' được phát âm là /t/. Lý do là vì 'explore' kết thúc bằng âm thanh hữu thanh (voiced sound)."
+            },
+            {
+                question: "2. Which word has the underlined part pronounced differently from that of the others?",
+                options: [
+                    { text: "or<u>g</u>an", correct: false },
+                    { text: "ob<u>es</u>e", correct: true },
+                    { text: "pr<u>o</u>mote", correct: false },
+                    { text: "l<u>o</u>cation", correct: false }
+                ],
+                explanation: "Đáp án B (obese) là đúng vì phần gạch chân 'es' được phát âm là /iːs/, trong khi các từ còn lại phần gạch chân đều có âm /ə/ hoặc /oʊ/."
+            },
+            {
+                question: "3. Which word has a different stress pattern from that of the others?",
+                options: [
+                    { text: "mineral", correct: false },
+                    { text: "rainforest", correct: false },
+                    { text: "vitamin", correct: false },
+                    { text: "discover", correct: true }
+                ],
+                explanation: "Đáp án D (discover) là đúng vì từ này có trọng âm ở âm tiết thứ hai (dis-CO-ver), trong khi các từ còn lại có trọng âm ở âm tiết đầu tiên (MI-ne-ral, RAIN-fo-rest, VI-ta-min)."
+            },
+            {
+                question: "4. Which word has a different stress pattern from that of the others?",
+                options: [
+                    { text: "detox", correct: true },
+                    { text: "advise", correct: false },
+                    { text: "create", correct: false },
+                    { text: "disturb", correct: false }
+                ],
+                explanation: "Đáp án A (detox) là đúng vì từ này có trọng âm ở âm tiết đầu tiên (DE-tox), trong khi các từ còn lại có trọng âm ở âm tiết thứ hai (ad-VISE, cre-ATE, dis-TURB)."
+            },
+            {
+                question: "5. Mike: \"The trail to the __________ of Mount Everest is really challenging but rewarding.\" Tony: \"Yeah, you're right.\"",
+                options: [
+                    { text: "summit", correct: true },
+                    { text: "height", correct: false },
+                    { text: "head", correct: false },
+                    { text: "roof", correct: false }
+                ],
+                explanation: "Đáp án A (summit) là đúng vì 'summit' có nghĩa là 'đỉnh núi' - điểm cao nhất của một ngọn núi. Đây là từ thích hợp nhất để nói về việc leo lên đỉnh núi Everest."
+            },
+            {
+                question: "6. Hannah: \"What is the matter with you Alicia?\" Alicia: \"I'm so upset. I saw Tom take my book, but he __________ doing that.\"",
+                options: [
+                    { text: "agreed", correct: false },
+                    { text: "denied", correct: true },
+                    { text: "decided", correct: false },
+                    { text: "wanted", correct: false }
+                ],
+                explanation: "Đáp án B (denied) là đúng vì trong tình huống này, Tom đã không thừa nhận việc lấy cuốn sách. 'Deny' nghĩa là 'phủ nhận', phù hợp với ngữ cảnh Alicia đang bực tức vì Tom không thừa nhận hành động của mình."
+            },
+            {
+                question: "7. Lily: \"What should the local council do to protect Deer Cave ecosystem?\" Johan: \"I think they should __________ the number of visitors every year.\"",
+                options: [
+                    { text: "increase", correct: false },
+                    { text: "limit", correct: true },
+                    { text: "raise", correct: false },
+                    { text: "promote", correct: false }
+                ],
+                explanation: "Đáp án B (limit) là đúng vì để bảo vệ hệ sinh thái hang Deer Cave, việc giới hạn số lượng khách tham quan là biện pháp hiệu quả. 'Limit' nghĩa là 'giới hạn', phù hợp với bối cảnh bảo vệ môi trường."
+            },
+            {
+                question: "8. Amy: \"You shouldn't eat too much fatty food. It's really harmful __________ your health.\" Peter: \"Thanks. I'll follow your advice.\"",
+                options: [
+                    { text: "on", correct: false },
+                    { text: "at", correct: false },
+                    { text: "for", correct: false },
+                    { text: "to", correct: true }
+                ],
+                explanation: "Đáp án D (to) là đúng vì cấu trúc 'harmful to something' là cách dùng đúng trong tiếng Anh. 'Harmful to your health' (có hại cho sức khỏe của bạn) là cách diễn đạt chuẩn."
+            },
+            {
+                question: "9. Ted: \"What did your teacher want you to do before the exam?\" Tom: \"He wanted us __________ enough sleep. That sounds strange.\"",
+                options: [
+                    { text: "getting", correct: false },
+                    { text: "get", correct: false },
+                    { text: "to get", correct: true },
+                    { text: "got", correct: false }
+                ],
+                explanation: "Đáp án C (to get) là đúng vì sau cấu trúc 'want someone to do something' phải dùng động từ nguyên mẫu có 'to'. Cấu trúc hoàn chỉnh là 'He wanted us to get enough sleep'."
+            },
+            {
+                question: "10. Hellen: \"What happens to teenagers who regularly consume fast food?\" Alex: \"They will be at a higher __________ of becoming obese.\"",
+                options: [
+                    { text: "fear", correct: false },
+                    { text: "threat", correct: false },
+                    { text: "likelihood", correct: true },
+                    { text: "risk", correct: false }
+                ],
+                explanation: "Đáp án C (likelihood) là đúng vì 'likelihood' nghĩa là 'khả năng xảy ra'. Cụm từ 'higher likelihood of' (khả năng cao hơn) phù hợp với ngữ cảnh nói về nguy cơ béo phì do ăn đồ ăn nhanh."
+            },
+            {
+                question: "11. Josh: \"Why should teenagers avoid going on detox diets?\" Linda: \"As they can harm their overall health.\"",
+                options: [
+                    { text: "suggest", correct: true },
+                    { text: "reconsider", correct: false },
+                    { text: "enjoy", correct: false },
+                    { text: "love", correct: false }
+                ],
+                explanation: "Đáp án A (suggest) là đúng vì trong ngữ cảnh này, từ 'suggest' (đề nghị, khuyên) phù hợp với câu trả lời của Linda, người đang đưa ra lời khuyên về lý do tại sao thanh thiếu niên nên tránh chế độ ăn kiêng detox."
+            },
+            {
+                question: "12. Which word has the underlined part pronounced differently from that of the others?",
+                options: [
+                    { text: "wa<u>sh</u>", correct: false },
+                    { text: "ca<u>sh</u>", correct: false },
+                    { text: "pu<u>sh</u>", correct: false },
+                    { text: "cra<u>sh</u>ing", correct: true }
+                ],
+                explanation: "Đáp án D (crashing) là đúng vì phần gạch chân 'sh' trong từ này được phát âm là /ʃ/ nhưng nó đứng trong âm tiết không nhận trọng âm, trong khi các từ còn lại phần 'sh' được phát âm là /ʃ/ trong âm tiết nhận trọng âm."
+            },
+            {
+                question: "13. Which word has a different stress pattern from that of the others?",
+                options: [
+                    { text: "photography", correct: false },
+                    { text: "geography", correct: false },
+                    { text: "biography", correct: false },
+                    { text: "philosophy", correct: true }
+                ],
+                explanation: "Đáp án D (philosophy) là đúng vì từ này có trọng âm ở âm tiết thứ nhất (PHI-lo-sophy), trong khi các từ còn lại có trọng âm ở âm tiết thứ hai (pho-TO-graphy, ge-O-graphy, bi-O-graphy)."
+            },
+            {
+                question: "14. Sarah: \"Do you know about the new environmental protection law?\" David: \"Yes, it __________ into effect next month.\"",
+                options: [
+                    { text: "comes", correct: true },
+                    { text: "arrives", correct: false },
+                    { text: "reaches", correct: false },
+                    { text: "starts", correct: false }
+                ],
+                explanation: "Đáp án A (comes) là đúng vì 'come into effect' là cụm từ cố định trong tiếng Anh, có nghĩa là 'có hiệu lực'. Cách diễn đạt đúng là 'it comes into effect' (nó sẽ có hiệu lực)."
+            },
+            {
+                question: "15. Which word has the underlined part pronounced differently from that of the others?",
+                options: [
+                    { text: "t<u>oo</u>th", correct: false },
+                    { text: "b<u>oo</u>k", correct: true },
+                    { text: "m<u>oo</u>n", correct: false },
+                    { text: "f<u>oo</u>d", correct: false }
+                ],
+                explanation: "Đáp án B (book) là đúng vì phần gạch chân 'oo' trong từ này được phát âm là /ʊ/, ngắn, trong khi các từ còn lại phần 'oo' được phát âm là /uː/, dài."
+            },
+            {
+                question: "16. Nina: \"I've been feeling really tired lately.\" Doctor: \"You should try to __________ your stress levels and get more sleep.\"",
+                options: [
+                    { text: "reduce", correct: true },
+                    { text: "decline", correct: false },
+                    { text: "descend", correct: false },
+                    { text: "decrease", correct: false }
+                ],
+                explanation: "Đáp án A (reduce) là đúng vì 'reduce stress levels' (giảm mức độ căng thẳng) là cách diễn đạt phổ biến và tự nhiên nhất trong ngữ cảnh lời khuyên y tế."
+            },
+            {
+                question: "17. Which word has a different stress pattern from that of the others?",
+                options: [
+                    { text: "example", correct: false },
+                    { text: "exception", correct: true },
+                    { text: "exercise", correct: false },
+                    { text: "experiment", correct: false }
+                ],
+                explanation: "Đáp án B (exception) là đúng vì từ này có trọng âm ở âm tiết thứ hai (ex-CEP-tion), trong khi các từ còn lại có trọng âm ở âm tiết đầu tiên (EX-am-ple, EX-er-cise, EX-pe-ri-ment)."
+            },
+            {
+                question: "18. Teacher: \"How does recycling __________ to environmental protection?\" Student: \"It helps reduce waste and conserves natural resources.\"",
+                options: [
+                    { text: "contribute", correct: true },
+                    { text: "offer", correct: false },
+                    { text: "present", correct: false },
+                    { text: "provide", correct: false }
+                ],
+                explanation: "Đáp án A (contribute) là đúng vì 'contribute to' là cụm động từ phù hợp nhất trong ngữ cảnh này, có nghĩa là 'đóng góp vào'. 'How does recycling contribute to environmental protection?' (Làm thế nào việc tái chế đóng góp vào bảo vệ môi trường?)."
+            },
+            {
+                question: "19. Tom: \"The hikers were __________ when they reached the mountain peak after 12 hours of climbing.\" Jerry: \"I can imagine that!\"",
+                options: [
+                    { text: "exhausted", correct: true },
+                    { text: "tired", correct: false },
+                    { text: "weak", correct: false },
+                    { text: "sleepy", correct: false }
+                ],
+                explanation: "Đáp án A (exhausted) là đúng vì 'exhausted' (kiệt sức, vô cùng mệt mỏi) là từ mạnh nhất và phù hợp nhất để mô tả tình trạng của người leo núi sau 12 giờ leo núi liên tục."
+            },
+            {
+                question: "20. Which word has the underlined part pronounced differently from that of the others?",
+                options: [
+                    { text: "wa<u>tch</u>", correct: false },
+                    { text: "ma<u>tch</u>", correct: false },
+                    { text: "ca<u>tch</u>", correct: false },
+                    { text: "ma<u>ch</u>ine", correct: true }
+                ],
+                explanation: "Đáp án D (machine) là đúng vì phần gạch chân 'ch' trong từ này được phát âm là /ʃ/, trong khi các từ còn lại phần 'tch' được phát âm là /tʃ/."
+            },
+            {
+                question: "21. John: \"What's your plan for the summer?\" Mary: \"I'm __________ forward to visiting my grandparents in the countryside.\"",
+                options: [
+                    { text: "looking", correct: true },
+                    { text: "seeing", correct: false },
+                    { text: "watching", correct: false },
+                    { text: "viewing", correct: false }
+                ],
+                explanation: "Đáp án A (looking) là đúng vì 'look forward to' là cụm từ cố định trong tiếng Anh, có nghĩa là 'mong đợi'. Các từ khác không kết hợp với 'forward to' để tạo thành cụm từ có nghĩa tương tự."
+            },
+            {
+                question: "22. Which word has a different stress pattern from that of the others?",
+                options: [
+                    { text: "importance", correct: false },
+                    { text: "attendance", correct: false },
+                    { text: "appearance", correct: false },
+                    { text: "engineer", correct: true }
+                ],
+                explanation: "Đáp án D (engineer) là đúng vì từ này có trọng âm ở âm tiết cuối cùng (en-gi-NEER), trong khi các từ còn lại có trọng âm ở âm tiết thứ hai (im-POR-tance, at-TEN-dance, ap-PEAR-ance)."
+            },
+            {
+                question: "23. Teacher: \"Can anyone explain how photosynthesis __________?\" Student: \"It's the process by which plants make their own food using sunlight.\"",
+                options: [
+                    { text: "works", correct: true },
+                    { text: "functions", correct: false },
+                    { text: "operates", correct: false },
+                    { text: "acts", correct: false }
+                ],
+                explanation: "Đáp án A (works) là đúng vì trong ngữ cảnh này, 'how photosynthesis works' (quá trình quang hợp hoạt động như thế nào) là cách diễn đạt tự nhiên và phổ biến nhất trong tiếng Anh."
+            },
+            {
+                question: "24. Sara: \"Did you enjoy the documentary about marine life?\" Tim: \"Yes, it was very __________ . I learned a lot about different species.\"",
+                options: [
+                    { text: "informative", correct: true },
+                    { text: "informed", correct: false },
+                    { text: "informational", correct: false },
+                    { text: "informing", correct: false }
+                ],
+                explanation: "Đáp án A (informative) là đúng vì 'informative' (giàu thông tin, bổ ích) là tính từ thích hợp nhất để mô tả một bộ phim tài liệu mang lại nhiều kiến thức cho người xem."
+            },
+            {
+                question: "25. Which word has the underlined part pronounced differently from that of the others?",
+                options: [
+                    { text: "<u>ch</u>ef", correct: false },
+                    { text: "<u>ch</u>ampion", correct: false },
+                    { text: "<u>ch</u>orus", correct: false },
+                    { text: "<u>ch</u>eap", correct: true }
+                ],
+                explanation: "Đáp án D (cheap) là đúng vì phần gạch chân 'ch' trong từ này được phát âm là /tʃ/, trong khi các từ còn lại phần 'ch' được phát âm là /ʃ/ trong 'chef' và /k/ trong 'champion' và 'chorus'."
+            },
+            {
+                question: "26. Which word has a different stress pattern from that of the others?",
+                options: [
+                    { text: "physical", correct: false },
+                    { text: "mental", correct: false },
+                    { text: "social", correct: false },
+                    { text: "environment", correct: true }
+                ],
+                explanation: "Đáp án D (environment) là đúng vì từ này có trọng âm ở âm tiết thứ ba (en-vi-RON-ment), trong khi các từ còn lại có trọng âm ở âm tiết đầu tiên (PHY-si-cal, MEN-tal, SO-cial)."
+            },
+            {
+                question: "27. Jane: \"How often do you __________ exercise?\" Paul: \"I try to go to the gym at least three times a week.\"",
+                options: [
+                    { text: "do", correct: true },
+                    { text: "make", correct: false },
+                    { text: "play", correct: false },
+                    { text: "take", correct: false }
+                ],
+                explanation: "Đáp án A (do) là đúng vì 'do exercise' là cụm từ cố định trong tiếng Anh, có nghĩa là 'tập thể dục'. 'Make exercise', 'play exercise' và 'take exercise' không phải là cách diễn đạt chuẩn."
+            },
+            {
+                question: "28. Teacher: \"What's the difference between weather and climate?\" Student: \"Weather refers to short-term atmospheric conditions, while climate describes long-term __________ .\"",
+                options: [
+                    { text: "patterns", correct: true },
+                    { text: "situations", correct: false },
+                    { text: "occasions", correct: false },
+                    { text: "events", correct: false }
+                ],
+                explanation: "Đáp án A (patterns) là đúng vì trong khí hậu học, 'long-term patterns' (kiểu mẫu dài hạn) là cách mô tả đúng về khí hậu - những kiểu mẫu thời tiết duy trì trong thời gian dài."
+            },
+            {
+                question: "29. Which word has the underlined part pronounced differently from that of the others?",
+                options: [
+                    { text: "r<u>ea</u>d (past tense)", correct: true },
+                    { text: "br<u>ea</u>d", correct: false },
+                    { text: "h<u>ea</u>d", correct: false },
+                    { text: "d<u>ea</u>d", correct: false }
+                ],
+                explanation: "Đáp án A (read - past tense) là đúng vì phần gạch chân 'ea' trong từ này (khi là quá khứ) được phát âm là /ɛ/, giống 'red', trong khi các từ còn lại phần 'ea' được phát âm là /ɛ/ nhưng với ngữ điệu khác."
+            },
+            {
+                question: "30. Emma: \"I've been trying to __________ plastic usage in my daily life.\" Ben: \"That's great! Every small action helps the environment.\"",
+                options: [
+                    { text: "reduce", correct: true },
+                    { text: "lower", correct: false },
+                    { text: "lessen", correct: false },
+                    { text: "diminish", correct: false }
+                ],
+                explanation: "Đáp án A (reduce) là đúng vì 'reduce plastic usage' (giảm sử dụng nhựa) là cách diễn đạt phổ biến và tự nhiên nhất trong ngữ cảnh bảo vệ môi trường."
+            }
+        ];
+
+        let score = 0;
+        let answeredQuestions = 0;
+        const totalQuestions = quizData.length;
+
+        function createQuizElements() {
+            const quizContainer = document.getElementById('quiz-container');
+            
+            quizData.forEach((question, index) => {
+                const questionElement = document.createElement('div');
+                questionElement.className = 'bg-white rounded-lg shadow-md p-6';
+                questionElement.dataset.questionIndex = index;
+
+                const questionTitle = document.createElement('h2');
+                questionTitle.className = 'text-xl font-semibold mb-4';
+                questionTitle.textContent = question.question;
+
+                const optionsContainer = document.createElement('div');
+                optionsContainer.className = 'space-y-3';
+
+                question.options.forEach((option, optionIndex) => {
+                    const optionElement = document.createElement('div');
+                    optionElement.className = 'option border border-gray-300 rounded-md p-4 cursor-pointer flex items-start';
+                    
+                    const radioButton = document.createElement('input');
+                    radioButton.type = 'radio';
+                    radioButton.name = `question-${index}`;
+                    radioButton.id = `q${index}-option${optionIndex}`;
+                    radioButton.className = 'mr-3 mt-1';
+                    
+                    const label = document.createElement('label');
+                    label.htmlFor = `q${index}-option${optionIndex}`;
+                    label.innerHTML = `${String.fromCharCode(65 + optionIndex)}. ${option.text}`;
+                    label.className = 'cursor-pointer flex-1';
+                    
+                    optionElement.appendChild(radioButton);
+                    optionElement.appendChild(label);
+                    
+                    optionElement.addEventListener('click', () => {
+                        // Check if this question was already answered
+                        if (questionElement.classList.contains('answered')) return;
+                        
+                        // Mark the radio button as checked
+                        radioButton.checked = true;
+                        
+                        // Mark all options as either correct or incorrect
+                        const allOptions = optionsContainer.querySelectorAll('.option');
+                        allOptions.forEach((opt, idx) => {
+                            if (question.options[idx].correct) {
+                                opt.classList.add('correct');
+                            } else if (idx === optionIndex && !question.options[idx].correct) {
+                                opt.classList.add('incorrect');
+                            }
+                        });
+                        
+                        // Show explanation
+                        explanationElement.classList.remove('hidden');
+                        
+                        // Update score
+                        if (question.options[optionIndex].correct) {
+                            score++;
+                        }
+                        
+                        // Mark question as answered
+                        questionElement.classList.add('answered');
+                        answeredQuestions++;
+                        
+                        // Update UI
+                        updateUI();
+                    });
+                    
+                    optionsContainer.appendChild(optionElement);
+                });
+                
+                // Create explanation element
+                const explanationElement = document.createElement('div');
+                explanationElement.className = 'mt-4 p-4 bg-blue-50 rounded-md hidden';
+                explanationElement.innerHTML = `<strong>Giải thích:</strong> ${question.explanation}`;
+                
+                questionElement.appendChild(questionTitle);
+                questionElement.appendChild(optionsContainer);
+                questionElement.appendChild(explanationElement);
+                quizContainer.appendChild(questionElement);
+            });
+        }
+
+        function updateUI() {
+            document.getElementById('score').textContent = score;
+            document.getElementById('totalAnswered').textContent = answeredQuestions;
+            
+            const progressPercentage = (answeredQuestions / totalQuestions) * 100;
+            document.getElementById('progressBar').style.width = `${progressPercentage}%`;
+            
+            // Show results button if all questions are answered
+            if (answeredQuestions === totalQuestions) {
+                document.getElementById('showResults').classList.remove('hidden');
+            }
+        }
+
+        // Initialize quiz
+        createQuizElements();
+
+        // Results button event listener
+        document.getElementById('showResults').addEventListener('click', function() {
+            const percentage = Math.round((score / totalQuestions) * 100);
+            const resultMessage = `Bạn đã trả lời đúng ${score}/${totalQuestions} câu (${percentage}%)`;
+            
+            document.getElementById('finalScore').textContent = resultMessage;
+            document.getElementById('finalScore').classList.remove('hidden');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
