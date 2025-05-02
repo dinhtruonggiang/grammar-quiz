@@ -1,0 +1,443 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Multiple Choice Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .option {
+            transition: all 0.3s ease;
+        }
+        .option:hover:not(.selected) {
+            background-color: #e2e8f0;
+        }
+        .option.selected {
+            pointer-events: none;
+        }
+        .option.correct {
+            background-color: #10b981;
+            color: white;
+        }
+        .option.incorrect {
+            background-color: #ef4444;
+            color: white;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+            <div class="bg-blue-600 px-6 py-4">
+                <h1 class="text-white text-2xl font-bold">ILearn Smart World 9 - Bài Tập Trắc Nghiệm</h1>
+                <p class="text-blue-100">Choose the word/phrase/sentence that best fits the space or best answers the question</p>
+            </div>
+
+            <div class="px-6 py-4">
+                <div id="quiz-container">
+                    <div id="quiz-progress" class="mb-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm text-gray-600">Tiến độ:</span>
+                            <span id="progress-text" class="text-sm font-medium">Câu 1/30</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                            <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full" style="width: 3.33%"></div>
+                        </div>
+                    </div>
+
+                    <div id="question-container" class="mb-6">
+                        <p id="question-text" class="text-lg font-medium mb-4"></p>
+                        <div id="options-container" class="space-y-3"></div>
+                    </div>
+
+                    <div id="explanation-container" class="mb-6 hidden p-4 bg-gray-100 rounded-lg">
+                        <h3 class="font-bold text-lg mb-2">Giải thích:</h3>
+                        <p id="explanation-text" class="text-gray-700"></p>
+                    </div>
+
+                    <div class="flex justify-between">
+                        <button id="prev-btn" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 disabled:opacity-50" disabled>Câu trước</button>
+                        <button id="next-btn" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50" disabled>Câu tiếp theo</button>
+                    </div>
+                </div>
+
+                <div id="result-container" class="hidden">
+                    <h2 class="text-2xl font-bold mb-4 text-center">Kết quả</h2>
+                    <div class="mb-6 p-6 bg-blue-50 rounded-lg">
+                        <div class="text-center mb-4">
+                            <span id="score-text" class="text-3xl font-bold text-blue-600"></span>
+                            <p class="text-gray-600">điểm</p>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-4 mb-4">
+                            <div id="result-progress-bar" class="bg-blue-600 h-4 rounded-full"></div>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-600">
+                            <span>0 điểm</span>
+                            <span>30 điểm</span>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button id="restart-btn" class="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Làm lại bài</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="text-center text-gray-600 text-sm">© 2025 ILearn Smart World 9 - Bài tập luyện tập</p>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "Which word has the underlined part pronounced differently from that of the others?",
+                options: ["tEAcher", "rEAder", "grEAt", "mEAn"],
+                correctAnswer: 2,
+                explanation: "Đáp án đúng là C. 'grEAt' /ɡreɪt/ có phần gạch chân phát âm là /eɪ/ trong khi các từ còn lại: 'tEAcher' /ˈtiːtʃə/, 'rEAder' /ˈriːdə/, 'mEAn' /miːn/ có phần gạch chân phát âm là /iː/."
+            },
+            {
+                question: "Which word has the underlined part pronounced differently from that of the others?",
+                options: ["lisTEN", "ofTEN", "kiTCHen", "garDEN"],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là B. 'ofTEN' có phần gạch chân 'ten' đôi khi được phát âm là /tən/, trong khi các từ còn lại: 'lisTEN', 'kiTCHen', 'garDEN' có phần gạch chân không phát âm /t/ hoặc phát âm khác."
+            },
+            {
+                question: "Which word has a different stress pattern from that of the others?",
+                options: ["hotel", "invite", "begin", "decide"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là A. 'hotel' có trọng âm ở âm tiết thứ hai (ho-TEL) trong khi các từ còn lại: 'invite', 'begin', 'decide' đều có trọng âm ở âm tiết thứ hai."
+            },
+            {
+                question: "Which word has a different stress pattern from that of the others?",
+                options: ["biology", "geography", "technology", "psychology"],
+                correctAnswer: 2,
+                explanation: "Đáp án đúng là C. 'technology' có trọng âm chính ở âm tiết thứ hai (tech-NO-lo-gy) trong khi các từ còn lại: 'biology', 'geography', 'psychology' đều có trọng âm chính ở âm tiết thứ hai."
+            },
+            {
+                question: "Sarah: \"Would you like to go to the cinema this weekend?\" Tom: \"______.\"",
+                options: ["I'd love to, but I'm busy", "I don't like cinema", "Yes, I like cinema", "I'm going to the cinema"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là A. 'I'd love to, but I'm busy'. Khi được mời đi xem phim, câu trả lời lịch sự là 'I'd love to' (Tôi rất muốn) nhưng kèm theo lý do từ chối 'but I'm busy' (nhưng tôi bận). Đây là cách từ chối lịch sự trong tiếng Anh."
+            },
+            {
+                question: "Which word has the underlined part pronounced differently from that of the others?",
+                options: ["plOUgh", "enOUgh", "thOUght", "rOUgh"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là A. 'plOUgh' /plaʊ/ có phần gạch chân phát âm là /aʊ/ trong khi các từ còn lại: 'enOUgh' /ɪˈnʌf/, 'thOUght' /θɔːt/, 'rOUgh' /rʌf/ có phần gạch chân phát âm khác."
+            },
+            {
+                question: "John: \"I've passed my driving test.\" Mary: \"______!\"",
+                options: ["Good luck", "Congratulations", "Have a good time", "That's a pity"],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là B. 'Congratulations'. Khi ai đó thông báo một tin tốt (đỗ bài kiểm tra lái xe), câu phản hồi phù hợp là chúc mừng họ. 'Congratulations' dùng để chúc mừng thành công của người khác."
+            },
+            {
+                question: "Alice: \"I think students should wear uniforms to school.\" Betty: \"______. It creates equality among students.\"",
+                options: ["I don't agree", "I'm not sure about that", "I couldn't agree more", "I have no idea"],
+                correctAnswer: 2,
+                explanation: "Đáp án đúng là C. 'I couldn't agree more' (Tôi hoàn toàn đồng ý). Betty nói thêm 'It creates equality among students' (Nó tạo ra sự bình đẳng giữa học sinh) cho thấy cô ấy đồng ý với ý kiến của Alice về việc học sinh nên mặc đồng phục."
+            },
+            {
+                question: "Which word has a different stress pattern from that of the others?",
+                options: ["familiar", "important", "necessary", "difficult"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là A. 'familiar' có trọng âm ở âm tiết thứ hai (fa-MI-liar) trong khi các từ còn lại: 'important', 'necessary', 'difficult' đều có trọng âm ở âm tiết đầu tiên."
+            },
+            {
+                question: "The doctor advised him ______ smoking immediately.",
+                options: ["stopping", "to stop", "stop", "stopped"],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là B. 'to stop'. Cấu trúc 'advise + object + to-infinitive' được sử dụng để đưa ra lời khuyên. Bác sĩ khuyên anh ta nên ngừng hút thuốc ngay lập tức."
+            },
+            {
+                question: "If I ______ the lottery, I would travel around the world.",
+                options: ["win", "won", "winning", "would win"],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là B. 'won'. Đây là câu điều kiện loại 2 (câu điều kiện không có thật ở hiện tại), có cấu trúc: 'If + S + V (quá khứ đơn), S + would + V (nguyên thể)'. 'If I won the lottery' (Nếu tôi trúng xổ số) → thì tôi sẽ đi du lịch khắp thế giới."
+            },
+            {
+                question: "She ______ in this company since 2010.",
+                options: ["works", "is working", "has worked", "worked"],
+                correctAnswer: 2,
+                explanation: "Đáp án đúng là C. 'has worked'. Đây là thì hiện tại hoàn thành, diễn tả một hành động bắt đầu trong quá khứ và tiếp tục đến hiện tại. Cấu trúc: 'have/has + V-ed/V3'. Cô ấy đã làm việc trong công ty này từ năm 2010 (và vẫn đang làm)."
+            },
+            {
+                question: "The book ______ last year was very interesting.",
+                options: ["published", "publishing", "is published", "was published"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là A. 'published'. Trong cấu trúc này, 'published' là một phân từ quá khứ đóng vai trò như một tính từ để mô tả 'the book' (cuốn sách được xuất bản năm ngoái). Đây là dạng rút gọn của mệnh đề quan hệ 'which was published'."
+            },
+            {
+                question: "Students are looking forward to ______ their summer holiday.",
+                options: ["have", "having", "has", "had"],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là B. 'having'. Sau 'look forward to' phải dùng danh từ hoặc động từ dạng V-ing. 'Look forward to' là một cụm giới từ, nên theo sau 'to' (là giới từ) phải là danh từ hoặc V-ing."
+            },
+            {
+                question: "My sister ______ to Ho Chi Minh City next week.",
+                options: ["will travel", "travels", "is traveling", "traveled"],
+                correctAnswer: 2,
+                explanation: "Đáp án đúng là C. 'is traveling'. Đây là thì tương lai gần, diễn tả kế hoạch đã được sắp xếp trước. Cấu trúc: 'be + V-ing'. Chị tôi sẽ đi đến thành phố Hồ Chí Minh vào tuần tới (đã có kế hoạch cụ thể)."
+            },
+            {
+                question: "If only I ______ harder for my exams.",
+                options: ["study", "studies", "will study", "had studied"],
+                correctAnswer: 3,
+                explanation: "Đáp án đúng là D. 'had studied'. Cấu trúc 'If only + S + had + V3/V-ed' dùng để diễn tả điều ước không thể thực hiện được trong quá khứ, có nghĩa là ước gì tôi đã học chăm chỉ hơn cho các kỳ thi của tôi (nhưng thực tế là không)."
+            },
+            {
+                question: "______ he arrived at the station, the train had already left.",
+                options: ["By the time", "When", "While", "Before"],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là B. 'When'. Câu này diễn tả hành động 'the train had already left' (đã xảy ra trước) khi hành động 'he arrived at the station' xảy ra. 'When' được dùng để nối hai hành động, một ở quá khứ đơn, một ở quá khứ hoàn thành."
+            },
+            {
+                question: "You ______ wear a seatbelt when driving a car. It's the law.",
+                options: ["should", "must", "might", "could"],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là B. 'must'. 'Must' dùng để diễn tả nghĩa vụ, bắt buộc phải làm. Câu này nói về luật bắt buộc phải thắt dây an toàn khi lái xe. 'It's the law' (Đó là luật) nhấn mạnh tính bắt buộc."
+            },
+            {
+                question: "The film wasn't ______ interesting as I expected.",
+                options: ["such", "as", "so", "more"],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là B. 'as'. Cấu trúc so sánh bằng 'as + adj + as' (thường đi với phủ định) có nghĩa là 'không... như'. Bộ phim không thú vị như tôi mong đợi."
+            },
+            {
+                question: "We should protect endangered species ______ they don't become extinct.",
+                options: ["so that", "in order", "because", "although"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là A. 'so that'. 'So that' dùng để diễn tả mục đích. Chúng ta nên bảo vệ các loài đang bị đe dọa để chúng không bị tuyệt chủng."
+            },
+            {
+                question: "Despite ______ very tired, she continued working.",
+                options: ["be", "being", "is", "was"],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là B. 'being'. Sau 'despite' cần một danh từ hoặc cụm danh từ. 'Being very tired' là cụm danh động từ (gerund phrase) đóng vai trò như một danh từ trong câu. Mặc dù rất mệt, cô ấy vẫn tiếp tục làm việc."
+            },
+            {
+                question: "The teacher asked us ______ during the test.",
+                options: ["not to talk", "not talking", "don't talk", "to not talk"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là A. 'not to talk'. Cấu trúc 'ask + object + to-infinitive' được sử dụng để diễn tả yêu cầu. Phủ định của to-infinitive là 'not to + V'. Giáo viên yêu cầu chúng tôi không nói chuyện trong bài kiểm tra."
+            },
+            {
+                question: "The building ______ last year was destroyed in the fire.",
+                options: ["built", "which built", "was built", "that built"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là A. 'built'. Tương tự câu 13, đây là dạng rút gọn của mệnh đề quan hệ 'which was built'. 'Built' là phân từ quá khứ đóng vai trò như tính từ mô tả 'the building'. Tòa nhà được xây dựng năm ngoái đã bị phá hủy trong đám cháy."
+            },
+            {
+                question: "If you ______ to the party, you would have met my brother.",
+                options: ["came", "coming", "had come", "would come"],
+                correctAnswer: 2,
+                explanation: "Đáp án đúng là C. 'had come'. Đây là câu điều kiện loại 3 (không có thật trong quá khứ). Cấu trúc: 'If + S + had + V3/V-ed, S + would have + V3/V-ed'. Nếu bạn đã đến bữa tiệc, bạn đã gặp anh trai tôi (nhưng thực tế bạn đã không đến)."
+            },
+            {
+                question: "I wish I ______ to the doctor sooner.",
+                options: ["go", "went", "had gone", "would go"],
+                correctAnswer: 2,
+                explanation: "Đáp án đúng là C. 'had gone'. Cấu trúc 'wish + S + had + V3/V-ed' dùng để diễn tả điều ước không thể thực hiện được trong quá khứ. Tôi ước mình đã đi khám bác sĩ sớm hơn (nhưng thực tế là không)."
+            },
+            {
+                question: "She suggested ______ to the museum.",
+                options: ["go", "to go", "going", "went"],
+                correctAnswer: 2,
+                explanation: "Đáp án đúng là C. 'going'. Sau động từ 'suggest' dùng V-ing (gerund). Cô ấy đề nghị đi đến bảo tàng."
+            },
+            {
+                question: "The man ______ next to me on the plane was very friendly.",
+                options: ["sits", "sitting", "sat", "was sitting"],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là B. 'sitting'. Đây là mệnh đề quan hệ rút gọn, dùng phân từ hiện tại (V-ing) để thay thế cho mệnh đề quan hệ chủ động (who was sitting). Người đàn ông ngồi cạnh tôi trên máy bay rất thân thiện."
+            },
+            {
+                question: "They ______ their new house by the end of this month.",
+                options: ["will finish", "finish", "will have finished", "are finishing"],
+                correctAnswer: 2,
+                explanation: "Đáp án đúng là C. 'will have finished'. Đây là thì tương lai hoàn thành, diễn tả một hành động sẽ hoàn thành trước một thời điểm trong tương lai. Cấu trúc: 'will have + V3/V-ed'. Họ sẽ hoàn thành ngôi nhà mới của họ vào cuối tháng này."
+            },
+            {
+                question: "Most students find Mathematics ______ than Physics.",
+                options: ["difficult", "more difficult", "most difficult", "the most difficult"],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là B. 'more difficult'. Đây là dạng so sánh hơn. Hầu hết học sinh thấy Toán học khó hơn Vật lý."
+            },
+            {
+                question: "______ I get home, I'll call you.",
+                options: ["While", "As soon as", "During", "For"],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là B. 'As soon as'. 'As soon as' có nghĩa là 'ngay khi'. Ngay khi tôi về nhà, tôi sẽ gọi cho bạn."
+            },
+            {
+                question: "He bought a ______ car last week.",
+                options: ["new red Japanese", "Japanese new red", "red new Japanese", "new Japanese red"],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là A. 'new red Japanese'. Trong tiếng Anh, thứ tự của tính từ là: opinion/quality (new) → size → age → shape → color (red) → origin (Japanese) → material → purpose + NOUN (car). Anh ấy đã mua một chiếc xe Nhật Bản màu đỏ mới vào tuần trước."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let questionsAnswered = 0;
+        const totalQuestions = quizData.length;
+
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const explanationContainer = document.getElementById('explanation-container');
+        const explanationText = document.getElementById('explanation-text');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const quizContainer = document.getElementById('quiz-container');
+        const resultContainer = document.getElementById('result-container');
+        const scoreText = document.getElementById('score-text');
+        const resultProgressBar = document.getElementById('result-progress-bar');
+        const restartBtn = document.getElementById('restart-btn');
+
+        // Load the first question
+        loadQuestion();
+
+        function loadQuestion() {
+            const current = quizData[currentQuestion];
+            questionText.textContent = `${currentQuestion + 1}. ${current.question}`;
+            
+            // Clear previous options
+            optionsContainer.innerHTML = '';
+            
+            // Add new options
+            current.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option p-3 border rounded cursor-pointer hover:bg-gray-100';
+                optionElement.innerHTML = `
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-6 h-6 mr-2 text-center bg-blue-100 rounded-full">
+                            ${String.fromCharCode(65 + index)}
+                        </div>
+                        <div>${option}</div>
+                    </div>
+                `;
+                optionElement.setAttribute('data-index', index);
+                optionsContainer.appendChild(optionElement);
+                
+                // Add click event to option
+                optionElement.addEventListener('click', () => selectOption(index));
+            });
+            
+            // Reset explanation
+            explanationContainer.classList.add('hidden');
+            
+            // Update progress
+            updateProgress();
+            
+            // Disable next button until an option is selected
+            nextBtn.disabled = true;
+            
+            // Enable/disable prev button
+            prevBtn.disabled = currentQuestion === 0;
+        }
+
+        function selectOption(selectedIndex) {
+            const current = quizData[currentQuestion];
+            const options = document.querySelectorAll('.option');
+            
+            // Mark all options as selected so they can't be clicked again
+            options.forEach(option => {
+                option.classList.add('selected');
+            });
+            
+            // Mark the correct and incorrect options
+            options.forEach((option, index) => {
+                if (index === current.correctAnswer) {
+                    option.classList.add('correct');
+                } else if (index === selectedIndex) {
+                    option.classList.add('incorrect');
+                }
+            });
+            
+            // Show explanation
+            explanationText.textContent = current.explanation;
+            explanationContainer.classList.remove('hidden');
+            
+            // Update score if correct
+            if (selectedIndex === current.correctAnswer) {
+                score++;
+            }
+            
+            // Enable next button
+            nextBtn.disabled = false;
+            
+            // Increment questions answered
+            questionsAnswered++;
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / totalQuestions) * 100;
+            progressBar.style.width = `${progress}%`;
+            progressText.textContent = `Câu ${currentQuestion + 1}/${totalQuestions}`;
+        }
+
+        // Event listeners for buttons
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestion < totalQuestions - 1) {
+                currentQuestion++;
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        });
+
+        restartBtn.addEventListener('click', () => {
+            currentQuestion = 0;
+            score = 0;
+            questionsAnswered = 0;
+            quizContainer.classList.remove('hidden');
+            resultContainer.classList.add('hidden');
+            loadQuestion();
+        });
+
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultContainer.classList.remove('hidden');
+            scoreText.textContent = `${score}/${totalQuestions}`;
+            const percentage = (score / totalQuestions) * 100;
+            resultProgressBar.style.width = `${percentage}%`;
+        }
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>

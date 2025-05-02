@@ -1,0 +1,642 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ILearn Smart World 9 - Multiple Choice Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fb;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .quiz-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            background-color: #4f46e5;
+            color: white;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        
+        .btn-primary:hover:not(:disabled) {
+            background-color: #4338ca;
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary:disabled {
+            background-color: #c7d2fe;
+            cursor: not-allowed;
+        }
+        
+        .option-label {
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .option-label:hover:not(.correct, .incorrect) {
+            border-color: #818cf8;
+            background-color: #f5f7ff;
+        }
+        
+        .correct {
+            background-color: #dcfce7;
+            border-color: #86efac;
+        }
+        
+        .incorrect {
+            background-color: #fee2e2;
+            border-color: #fca5a5;
+        }
+        
+        .explanation {
+            background-color: #f8fafc;
+            border-left: 4px solid #4f46e5;
+        }
+        
+        .progress-container {
+            height: 8px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, #4f46e5, #8b5cf6);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        
+        .quiz-header {
+            background: linear-gradient(135deg, #4f46e5 0%, #8b5cf6 100%);
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            animation: confetti-fall 3s linear infinite;
+        }
+        
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen py-8 px-4 sm:px-6">
+    <!-- Intro Screen -->
+    <div id="intro-container" class="max-w-3xl mx-auto text-center">
+        <div class="quiz-container p-8">
+            <h1 class="text-3xl font-bold text-indigo-600 mb-4">ILearn Smart World 9 - Multiple Choice Quiz</h1>
+            <p class="text-lg mb-6">Choose the word/phrase/sentence or best answer</p>
+            
+            <div class="bg-indigo-50 p-5 rounded-lg mb-6">
+                <h3 class="text-xl font-semibold mb-3">Instructions:</h3>
+                <ul class="space-y-2 text-left list-disc list-inside">
+                    <li>Choose the correct answer for each question</li>
+                    <li>Click "Check Answer" to see if you're right</li>
+                    <li>View the explanation to understand why</li>
+                    <li>Once answered, you can't change your answer</li>
+                    <li>Use the "Next Question" button to continue</li>
+                </ul>
+            </div>
+            
+            <button id="start-btn" class="btn-primary py-3 px-8 text-lg">
+                Start Quiz <i class="fas fa-play ml-2"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Quiz Screen -->
+    <div id="quiz-container" class="max-w-3xl mx-auto hidden">
+        <div class="quiz-container">
+            <!-- Quiz Header -->
+            <div class="quiz-header text-white p-6 rounded-t-lg flex flex-col sm:flex-row justify-between items-center">
+                <h2 id="question-number" class="text-xl font-bold mb-2 sm:mb-0">Question 1/30</h2>
+                <div class="text-center sm:text-right">
+                    <p id="score" class="font-semibold">Score: 0/30</p>
+                </div>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="progress-container mx-6 mt-3">
+                <div id="progress-bar" class="progress-bar" style="width: 3.33%"></div>
+            </div>
+            
+            <!-- Question Content -->
+            <div id="question-container" class="p-6"></div>
+            
+            <!-- Navigation Buttons -->
+            <div class="flex justify-between p-6 pt-0">
+                <button id="prev-btn" class="btn-primary py-2 px-4 disabled:opacity-50" disabled>
+                    <i class="fas fa-arrow-left mr-2"></i> Previous
+                </button>
+                <button id="check-btn" class="btn-primary py-2 px-4">
+                    Check Answer <i class="fas fa-check ml-2"></i>
+                </button>
+                <button id="next-btn" class="btn-primary py-2 px-4 disabled:opacity-50" disabled>
+                    Next Question <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="result-container" class="max-w-3xl mx-auto text-center hidden">
+        <div class="quiz-container p-8">
+            <h2 class="text-3xl font-bold text-indigo-600 mb-6">Quiz Completed!</h2>
+            <div class="flex justify-center mb-6">
+                <div class="w-32 h-32 rounded-full bg-indigo-100 flex items-center justify-center">
+                    <span id="final-percentage" class="text-4xl font-bold text-indigo-600">0%</span>
+                </div>
+            </div>
+            <p id="final-score" class="text-xl mb-8">You scored: 0/30 points</p>
+            <div id="result-message" class="p-4 rounded-lg mb-8 text-lg"></div>
+            <button id="restart-btn" class="btn-primary py-3 px-8 text-lg">
+                Try Again <i class="fas fa-redo ml-2"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "Choose the word that has the underlined part pronounced differently from the others. <br> a. ch<u>a</u>nge b. c<u>a</u>tch c. b<u>a</u>ck d. w<u>a</u>rm",
+                options: ["a. change", "b. catch", "c. back", "d. warm"],
+                correct: "d. warm",
+                explanation: "Phần gạch chân ở từ 'warm' phát âm là /ɔ:/ (âm dài), trong khi các từ còn lại 'change', 'catch', 'back' phát âm là /æ/ (âm ngắn)."
+            },
+            {
+                question: "Choose the word that has a different stress pattern from the others. <br> a. answer b. cousin c. appear d. invite",
+                options: ["a. answer", "b. cousin", "c. appear", "d. invite"],
+                correct: "a. answer",
+                explanation: "Từ 'answer' có trọng âm ở âm tiết thứ nhất /'ɑːnsər/, trong khi các từ còn lại 'cousin', 'appear', 'invite' có trọng âm ở âm tiết thứ hai /ˈkʌzən/, /əˈpɪər/, /ɪnˈvaɪt/."
+            },
+            {
+                question: "That is the man _______ I met at our school last week. <br> a. who b. whom c. whose d. which",
+                options: ["a. who", "b. whom", "c. whose", "d. which"],
+                correct: "a. who",
+                explanation: "Đại từ quan hệ 'who' được dùng để thay thế cho người và đóng vai trò làm chủ ngữ trong mệnh đề quan hệ."
+            },
+            {
+                question: "The police _______ that man since last week. <br> a. arrested b. has arrested c. have arrested d. were arrested",
+                options: ["a. arrested", "b. has arrested", "c. have arrested", "d. were arrested"],
+                correct: "c. have arrested",
+                explanation: "Chủ ngữ 'The police' trong tiếng Anh được xem là danh từ số nhiều, nên động từ phải chia ở dạng số nhiều. Thì hiện tại hoàn thành được dùng với 'since last week'."
+            },
+            {
+                question: "Choose the answer which is not correct:<br>a. He told me that it was raining heavily that day.<br>b. He asked me how old my son had been.<br>c. He told me he was so happy to meet me.<br>d. He asked me if I came from London.",
+                options: ["a. He told me that it was raining heavily that day.", 
+                          "b. He asked me how old my son had been.", 
+                          "c. He told me he was so happy to meet me.", 
+                          "d. He asked me if I came from London."],
+                correct: "d. He asked me if I came from London.",
+                explanation: "Câu gián tiếp sai là: 'He asked me if I came from London.'. Động từ trong mệnh đề sau 'if' phải là quá khứ hoàn thành (had come) hoặc quá khứ tiếp diễn (was coming), không phải quá khứ đơn (came)."
+            },
+            {
+                question: "Choose the correct sentence:<br>a. There were too much people at the conference yesterday.<br>b. There were too many peoples at the conference yesterday.<br>c. There were too many people at the conference yesterday.<br>d. There was too many people at the conference yesterday.",
+                options: ["a. There were too much people at the conference yesterday.",
+                          "b. There were too many peoples at the conference yesterday.",
+                          "c. There were too many people at the conference yesterday.",
+                          "d. There was too many people at the conference yesterday."],
+                correct: "c. There were too many people at the conference yesterday.",
+                explanation: "'People' là danh từ không đếm được số nhiều, nên cần dùng 'many' (không phải 'much'). Động từ phải chia ở dạng số nhiều 'were' để phù hợp với chủ ngữ số nhiều."
+            },
+            {
+                question: "Choose the best option to fill in the blank.<br>Our plan for the future is to try _______ money for our retirement.<br>a. saving b. save c. to be saved d. to save",
+                options: ["a. saving", "b. save", "c. to be saved", "d. to save"],
+                correct: "d. to save",
+                explanation: "Sau cụm từ 'to try' (cố gắng) nên dùng động từ nguyên mẫu có 'to' (to-infinitive). Cấu trúc: 'try to do something' = cố gắng làm gì."
+            },
+            {
+                question: "Johnny hasn't seen his father _______ three months.<br>a. in b. since c. for d. at",
+                options: ["a. in", "b. since", "c. for", "d. at"],
+                correct: "c. for",
+                explanation: "Với khoảng thời gian (three months), ta dùng 'for'. Nếu là mốc thời gian cụ thể (ví dụ: June), ta dùng 'since'."
+            },
+            {
+                question: "I don't mind _______ the shopping, but I hate cooking.<br>a. to do b. doing c. is doing d. does",
+                options: ["a. to do", "b. doing", "c. is doing", "d. does"],
+                correct: "b. doing",
+                explanation: "Sau cụm 'don't mind' (không ngại/không phiền) ta dùng động từ dạng V-ing (gerund). Cấu trúc: 'mind + V-ing' = ngại/phiền làm gì."
+            },
+            {
+                question: "If I _______ the snake, I would have killed it.<br>a. saw b. seen c. had seen d. would see",
+                options: ["a. saw", "b. seen", "c. had seen", "d. would see"],
+                correct: "c. had seen",
+                explanation: "Đây là câu điều kiện loại 3 (tình huống giả định trong quá khứ), ta dùng cấu trúc: If + S + had + P.P..., S + would/could/might + have + P.P..."
+            },
+            {
+                question: "Janet has been watching television _______ 7 o'clock.<br>a. since b. for c. at d. in",
+                options: ["a. since", "b. for", "c. at", "d. in"],
+                correct: "a. since",
+                explanation: "Với mốc thời gian cụ thể (7 o'clock), ta dùng 'since'. Nếu là khoảng thời gian, ta dùng 'for'."
+            },
+            {
+                question: "Anna: \"What do you think of the book?\" - Mary: \"_______ .<br>a. I think it is boring b. I think to be very boring c. I am thinking it to be boring d. I think it to be boring",
+                options: ["a. I think it is boring", "b. I think to be very boring", "c. I am thinking it to be boring", "d. I think it to be boring"],
+                correct: "a. I think it is boring",
+                explanation: "Cấu trúc đúng là 'think + that-clause', nghĩa là 'I think (that) + S + V'. Câu này 'I think (that) it is boring'."
+            },
+            {
+                question: "Can you tell me _______ ?<br>a. where she lives b. where does she live c. where is she living d. where she has lived",
+                options: ["a. where she lives", "b. where does she live", "c. where is she living", "d. where she has lived"],
+                correct: "a. where she lives",
+                explanation: "Trong câu hỏi gián tiếp (indirect question), chúng ta sử dụng trật tự từ của câu trần thuật (không đảo ngữ). Cấu trúc: Can you tell me + wh-word + S + V."
+            },
+            {
+                question: "The higher the price of petrol, _______ for gasoline.<br>a. the cost more b. more the cost c. the more the cost d. the more cost",
+                options: ["a. the cost more", "b. more the cost", "c. the more the cost", "d. the more cost"],
+                correct: "c. the more the cost",
+                explanation: "Cấu trúc so sánh kép: 'The + so sánh hơn..., the + so sánh hơn...'. Trong trường hợp này: 'The higher..., the more the cost...'"
+            },
+            {
+                question: "We have lived in this city _______ 2005.<br>a. for b. since c. during d. over",
+                options: ["a. for", "b. since", "c. during", "d. over"],
+                correct: "b. since",
+                explanation: "Mốc thời gian cụ thể (2005) cần dùng 'since'. Nếu là khoảng thời gian (ví dụ: 5 năm), ta dùng 'for'."
+            },
+            {
+                question: "Had she been older, she _______ the job, but she was too young.<br>a. would get b. would have gotten c. had gotten d. will get",
+                options: ["a. would get", "b. would have gotten", "c. had gotten", "d. will get"],
+                correct: "b. would have gotten",
+                explanation: "Đây là câu điều kiện loại 3 diễn tả tình huống giả định trong quá khứ, nên dùng cấu trúc: If + S + had + P.P..., S + would have + P.P..."
+            },
+            {
+                question: "Choose the answer which is not correct. <br>I don't agree with you. You are quite in the wrong.<br>a. I don't agree with you. You're absolutely wrong.<br>b. I don't agree with you. You're completely wrong.<br>c. I don't agree with you. You're completely in the wrong.<br>d. I don't agree with you. You're quite wrong.",
+                options: ["a. I don't agree with you. You're absolutely wrong.",
+                          "b. I don't agree with you. You're completely wrong.",
+                          "c. I don't agree with you. You're completely in the wrong.",
+                          "d. I don't agree with you. You're quite wrong."],
+                correct: "a. I don't agree with you. You're absolutely wrong.",
+                explanation: "Cách diễn đạt 'You are quite in the wrong' có thể được thay thế bằng 'You're quite wrong' hoặc 'You're completely in the wrong', nhưng không phù hợp với 'You're absolutely wrong'."
+            },
+            {
+                question: "_______ animals become more active at night than during the day.<br>a. Most of b. Most c. Almost d. The most",
+                options: ["a. Most of", "b. Most", "c. Almost", "d. The most"],
+                correct: "b. Most",
+                explanation: "Khi đề cập đến phần lớn của một nhóm không xác định, ta dùng 'Most + danh từ số nhiều'. 'Most of' được dùng khi đi với danh từ xác định (most of the animals)."
+            },
+            {
+                question: "_______ different cultures, I have come to appreciate my own much more.<br>a. To expose b. Having been exposed to c. Being exposing d. Having exposed to",
+                options: ["a. To expose", "b. Having been exposed to", "c. Being exposing", "d. Having exposed to"],
+                correct: "b. Having been exposed to",
+                explanation: "Cấu trúc đúng là 'Having been exposed to' (hình thức perfect participle). Nghĩa là 'Sau khi đã được tiếp xúc với các nền văn hóa khác nhau'."
+            },
+            {
+                question: "If you knew the answer, why _______ us?<br>a. don't you tell b. didn't you tell c. hadn't you told d. don't you telling",
+                options: ["a. don't you tell", "b. didn't you tell", "c. hadn't you told", "d. don't you telling"],
+                correct: "b. didn't you tell",
+                explanation: "Câu điều kiện loại 2 (giả định không có thật ở hiện tại), sử dụng thì quá khứ đơn. Vì vậy, dạng nghi vấn phải là 'didn't you tell'."
+            },
+            {
+                question: "I called _______ she wasn't at home.<br>a. and b. though c. but d. because",
+                options: ["a. and", "b. though", "c. but", "d. because"],
+                correct: "c. but",
+                explanation: "Cần một liên từ thể hiện sự đối lập giữa hai mệnh đề: 'Tôi đã gọi' nhưng 'cô ấy không có nhà'."
+            },
+            {
+                question: "Is Mike going on holiday next weekend? - He _______ be as he's just started a new job.<br>a. must b. might not c. can't d. has to",
+                options: ["a. must", "b. might not", "c. can't", "d. has to"],
+                correct: "c. can't",
+                explanation: "Đây là cách dùng modal verb để diễn tả sự chắc chắn cao về việc một điều gì đó không thể xảy ra. 'Can't' = không thể nào."
+            },
+            {
+                question: "I suggested _______ by bus.<br>a. that we should go b. that we went c. to go d. going",
+                options: ["a. that we should go", "b. that we went", "c. to go", "d. going"],
+                correct: "a. that we should go",
+                explanation: "Sau 'suggest', có thể dùng cấu trúc 'suggest + that + subject + should + V (nguyên thể)' hoặc 'suggest + V-ing'."
+            },
+            {
+                question: "He used to _______ TV every evening, but now he's too busy.<br>a. watching b. watched c. watch d. watches",
+                options: ["a. watching", "b. watched", "c. watch", "d. watches"],
+                correct: "c. watch",
+                explanation: "Cấu trúc 'used to + V (nguyên thể)' diễn tả thói quen trong quá khứ không còn nữa. 'He used to watch TV' = Trước đây anh ấy thường xem TV."
+            },
+            {
+                question: "I just found _______ my brother had already paid the bill.<br>a. out b. off c. away d. up",
+                options: ["a. out", "b. off", "c. away", "d. up"],
+                correct: "a. out",
+                explanation: "Phrasal verb 'find out' = phát hiện ra, tìm ra. 'I found out that my brother had already paid the bill' = Tôi vừa phát hiện ra rằng anh trai tôi đã trả hóa đơn rồi."
+            },
+            {
+                question: "_______ their big house, they have a small apartment at the seaside.<br>a. As well as b. In addition c. As good as d. As soon as",
+                options: ["a. As well as", "b. In addition", "c. As good as", "d. As soon as"],
+                correct: "a. As well as",
+                explanation: "'As well as' = ngoài ra còn, được dùng để thêm thông tin. 'As well as their big house, they have a small apartment...' = Ngoài ngôi nhà lớn ra, họ còn có một căn hộ nhỏ ở bờ biển."
+            },
+            {
+                question: "I'm sorry for _______ your book.<br>a. loosing b. losing c. missed d. missing",
+                options: ["a. loosing", "b. losing", "c. missed", "d. missing"],
+                correct: "b. losing",
+                explanation: "Sau giới từ 'for', ta dùng danh động từ (-ing form). 'Lose' = làm mất, phù hợp với ngữ cảnh, nên 'losing' là đáp án đúng."
+            },
+            {
+                question: "She can't lift that heavy box, _______?<br>a. can't she b. can she c. she can d. she can't",
+                options: ["a. can't she", "b. can she", "c. she can", "d. she can't"],
+                correct: "b. can she",
+                explanation: "Trong câu hỏi đuôi, nếu mệnh đề chính phủ định (can't) thì phần đuôi phải ở dạng khẳng định (can she)."
+            },
+            {
+                question: "The children ran around the playground until they _______ exhausted.<br>a. had b. were c. are d. had been",
+                options: ["a. had", "b. were", "c. are", "d. had been"],
+                correct: "b. were",
+                explanation: "Câu diễn tả một hành động trong quá khứ ('ran') dẫn đến một trạng thái ('exhausted'). Cấu trúc đúng là '... until they were exhausted'."
+            },
+            {
+                question: "The bad weather is the reason _______ the train being late.<br>a. to b. in c. for d. with",
+                options: ["a. to", "b. in", "c. for", "d. with"],
+                correct: "c. for",
+                explanation: "Cấu trúc 'the reason for + noun/gerund phrase' = lý do cho... 'The reason for the train being late' = lý do cho việc tàu bị trễ."
+            },
+            {
+                question: "The crowd became increasingly restless as they waited _______ the singer to appear.<br>a. to b. on c. from d. for",
+                options: ["a. to", "b. on", "c. from", "d. for"],
+                correct: "d. for",
+                explanation: "Cấu trúc 'wait for + someone/something' = chờ đợi ai/cái gì. 'Waited for the singer to appear' = chờ đợi ca sĩ xuất hiện."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answeredQuestions = new Array(quizData.length).fill(false);
+        
+        const startBtn = document.getElementById('start-btn');
+        const quizContainer = document.getElementById('quiz-container');
+        const introContainer = document.getElementById('intro-container');
+        const questionContainer = document.getElementById('question-container');
+        const questionNumber = document.getElementById('question-number');
+        const scoreElement = document.getElementById('score');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const checkBtn = document.getElementById('check-btn');
+        const resultContainer = document.getElementById('result-container');
+        const finalScore = document.getElementById('final-score');
+        const finalPercentage = document.getElementById('final-percentage');
+        const resultMessage = document.getElementById('result-message');
+        const restartBtn = document.getElementById('restart-btn');
+        const progressBar = document.getElementById('progress-bar');
+        
+        startBtn.addEventListener('click', startQuiz);
+        prevBtn.addEventListener('click', showPreviousQuestion);
+        nextBtn.addEventListener('click', showNextQuestion);
+        checkBtn.addEventListener('click', checkAnswer);
+        restartBtn.addEventListener('click', restartQuiz);
+        
+        function startQuiz() {
+            introContainer.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+            loadQuestion();
+        }
+        
+        function updateProgressBar() {
+            const progress = ((currentQuestion + 1) / quizData.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+        
+        function loadQuestion() {
+            const currentQuizData = quizData[currentQuestion];
+            questionNumber.innerText = `Question ${currentQuestion + 1}/${quizData.length}`;
+            updateProgressBar();
+            
+            const questionHTML = `
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold mb-4">${currentQuizData.question}</h3>
+                    <div class="space-y-3">
+                        ${currentQuizData.options.map((option, index) => `
+                            <div>
+                                <label class="option-label p-3 flex items-center ${answeredQuestions[currentQuestion] ? 
+                                    (option === currentQuizData.correct ? 'correct' : 
+                                    document.querySelector(`input[name="answer-${currentQuestion}"]:checked`)?.value === option ? 'incorrect' : '') : ''}">
+                                    <input type="radio" name="answer-${currentQuestion}" value="${option}" class="mr-3 h-4 w-4 text-indigo-600" 
+                                        ${answeredQuestions[currentQuestion] ? 'disabled' : ''}>
+                                    <span>${option}</span>
+                                    ${answeredQuestions[currentQuestion] && option === currentQuizData.correct ? 
+                                        '<span class="ml-auto"><i class="fas fa-check text-green-600"></i></span>' : ''}
+                                    ${answeredQuestions[currentQuestion] && option !== currentQuizData.correct && 
+                                        document.querySelector(`input[name="answer-${currentQuestion}"]:checked`)?.value === option ? 
+                                        '<span class="ml-auto"><i class="fas fa-times text-red-600"></i></span>' : ''}
+                                </label>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div id="explanation-${currentQuestion}" class="explanation p-4 mt-4 rounded ${answeredQuestions[currentQuestion] ? 'block' : 'hidden'}">
+                        <div class="flex items-start mb-2">
+                            <i class="fas fa-lightbulb text-indigo-600 mt-1 mr-2"></i>
+                            <h4 class="font-semibold">Explanation:</h4>
+                        </div>
+                        <p>${currentQuizData.explanation}</p>
+                    </div>
+                </div>
+            `;
+            
+            questionContainer.innerHTML = questionHTML;
+            
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.disabled = !answeredQuestions[currentQuestion] || currentQuestion === quizData.length - 1;
+            checkBtn.disabled = answeredQuestions[currentQuestion];
+            
+            // Restore previously selected answer
+            if (answeredQuestions[currentQuestion]) {
+                const previousAnswer = document.querySelector(`input[name="answer-${currentQuestion}"]:checked`);
+                if (previousAnswer) {
+                    previousAnswer.checked = true;
+                }
+            }
+        }
+        
+        function showPreviousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion();
+            }
+        }
+        
+        function showNextQuestion() {
+            if (currentQuestion < quizData.length - 1 && answeredQuestions[currentQuestion]) {
+                currentQuestion++;
+                loadQuestion();
+                
+                // Check if we've reached the last question and all questions are answered
+                if (currentQuestion === quizData.length - 1 && allQuestionsAnswered()) {
+                    nextBtn.innerText = "Show Results";
+                    nextBtn.disabled = false;
+                }
+            } else if (currentQuestion === quizData.length - 1 && allQuestionsAnswered()) {
+                showResults();
+            }
+        }
+        
+        function checkAnswer() {
+            const selectedOption = document.querySelector(`input[name="answer-${currentQuestion}"]:checked`);
+            
+            if (!selectedOption) {
+                // Add gentle shake animation to unanswered question
+                questionContainer.classList.add('animate-shake');
+                setTimeout(() => {
+                    questionContainer.classList.remove('animate-shake');
+                }, 500);
+                
+                return;
+            }
+            
+            const answer = selectedOption.value;
+            const correct = quizData[currentQuestion].correct;
+            
+            if (answer === correct) {
+                score++;
+                scoreElement.innerText = `Score: ${score}/${quizData.length}`;
+            }
+            
+            answeredQuestions[currentQuestion] = true;
+            
+            // Mark the option as correct or incorrect
+            const labels = document.querySelectorAll('.option-label');
+            labels.forEach(label => {
+                const radio = label.querySelector(`input[name="answer-${currentQuestion}"]`);
+                if (radio.value === correct) {
+                    label.classList.add('correct');
+                    label.innerHTML += '<span class="ml-auto"><i class="fas fa-check text-green-600"></i></span>';
+                } else if (radio.checked) {
+                    label.classList.add('incorrect');
+                    label.innerHTML += '<span class="ml-auto"><i class="fas fa-times text-red-600"></i></span>';
+                }
+                radio.disabled = true;
+            });
+            
+            // Show explanation
+            document.getElementById(`explanation-${currentQuestion}`).classList.remove('hidden');
+            
+            // Enable next button if not on last question
+            if (currentQuestion < quizData.length - 1) {
+                nextBtn.disabled = false;
+            } else if (allQuestionsAnswered()) {
+                nextBtn.innerText = "Show Results";
+                nextBtn.disabled = false;
+            }
+            
+            checkBtn.disabled = true;
+        }
+        
+        function allQuestionsAnswered() {
+            return answeredQuestions.every(answered => answered);
+        }
+        
+        function createConfetti() {
+            const confettiContainer = document.createElement('div');
+            confettiContainer.style.position = 'fixed';
+            confettiContainer.style.top = '0';
+            confettiContainer.style.left = '0';
+            confettiContainer.style.width = '100%';
+            confettiContainer.style.height = '100%';
+            confettiContainer.style.pointerEvents = 'none';
+            confettiContainer.style.zIndex = '9999';
+            document.body.appendChild(confettiContainer);
+            
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = -20 + 'px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = Math.random() * 10 + 5 + 'px';
+                confetti.style.opacity = Math.random() + 0.5;
+                confetti.style.animation = `confetti-fall ${Math.random() * 3 + 2}s linear`;
+                confettiContainer.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+            
+            setTimeout(() => {
+                confettiContainer.remove();
+            }, 5000);
+        }
+        
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultContainer.classList.remove('hidden');
+            
+            const percentage = Math.round((score / quizData.length) * 100);
+            finalScore.innerText = `You scored: ${score}/${quizData.length} points`;
+            finalPercentage.innerText = `${percentage}%`;
+            
+            // Determine message based on score
+            let message;
+            if (percentage >= 90) {
+                message = '<div class="bg-green-100 p-3 rounded-lg"><b class="text-green-600">Excellent!</b> You have a very strong understanding of English grammar and vocabulary.</div>';
+                createConfetti();
+            } else if (percentage >= 70) {
+                message = '<div class="bg-blue-100 p-3 rounded-lg"><b class="text-blue-600">Good job!</b> You have a good grasp of English, but there\'s still room for improvement.</div>';
+            } else if (percentage >= 50) {
+                message = '<div class="bg-yellow-100 p-3 rounded-lg"><b class="text-yellow-700">Not bad!</b> You have a basic understanding of English, but need more practice.</div>';
+            } else {
+                message = '<div class="bg-red-100 p-3 rounded-lg"><b class="text-red-600">Keep practicing!</b> You need to work more on your English skills.</div>';
+            }
+            
+            resultMessage.innerHTML = message;
+        }
+        
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            answeredQuestions = new Array(quizData.length).fill(false);
+            scoreElement.innerText = `Score: ${score}/${quizData.length}`;
+            nextBtn.innerText = "Next Question";
+            resultContainer.classList.add('hidden');
+            introContainer.classList.remove('hidden');
+        }
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
