@@ -1,0 +1,440 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Forms Quiz - ILearn Smart World 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f9ff;
+        }
+        .option-btn {
+            transition: all 0.3s ease;
+        }
+        .option-btn:hover:not(.selected, .disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .correct {
+            background-color: #d1fae5 !important;
+            border-color: #34d399 !important;
+        }
+        .incorrect {
+            background-color: #fee2e2 !important;
+            border-color: #f87171 !important;
+        }
+        .explanation {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        .explanation.show {
+            max-height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-blue-800 mb-2">Word Forms Quiz</h1>
+            <p class="text-gray-600">Dựa trên sách ILearn Smart World 9 Student Book</p>
+            <p class="text-sm text-gray-500 mt-2">Hãy chọn dạng đúng của từ để điền vào chỗ trống trong mỗi câu</p>
+        </header>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <div id="progress-container" class="mb-4">
+                <div class="flex justify-between mb-1">
+                    <span class="text-sm text-gray-600">Tiến độ:</span>
+                    <span id="progress-text" class="text-sm font-medium text-blue-600">1/30</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full" style="width: 3.33%"></div>
+                </div>
+            </div>
+
+            <div id="quiz-container">
+                <!-- Quiz content will be loaded here -->
+            </div>
+
+            <div id="quiz-navigation" class="mt-6 flex justify-between">
+                <button id="prev-btn" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hidden">Câu trước</button>
+                <button id="next-btn" class="px-4 py-2 bg-blue-600 text-white rounded-md ml-auto">Câu tiếp theo</button>
+            </div>
+        </div>
+
+        <div id="results-container" class="bg-white rounded-lg shadow-lg p-6 text-center hidden">
+            <h2 class="text-2xl font-bold text-blue-800 mb-4">Kết quả của bạn</h2>
+            <div class="text-5xl font-bold text-blue-600 mb-4"><span id="score">0</span>/30</div>
+            <div class="mb-6">
+                <div class="w-full bg-gray-200 rounded-full h-4 mb-2">
+                    <div id="result-progress" class="bg-blue-600 h-4 rounded-full" style="width: 0%"></div>
+                </div>
+                <p class="text-gray-600" id="result-message"></p>
+            </div>
+            <button id="restart-btn" class="px-6 py-3 bg-blue-600 text-white rounded-md">Làm lại bài</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const quizContainer = document.getElementById('quiz-container');
+            const nextBtn = document.getElementById('next-btn');
+            const prevBtn = document.getElementById('prev-btn');
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+            const resultsContainer = document.getElementById('results-container');
+            const scoreElement = document.getElementById('score');
+            const resultProgress = document.getElementById('result-progress');
+            const resultMessage = document.getElementById('result-message');
+            const restartBtn = document.getElementById('restart-btn');
+
+            let currentQuestion = 0;
+            let score = 0;
+            let userAnswers = new Array(30).fill(null);
+            let answeredQuestions = new Array(30).fill(false);
+
+            const questions = [
+                {
+                    question: "Environmental ________ is a major concern in many developing countries. (pollute)",
+                    options: ["pollution", "pollutant", "polluted", "pollutive"],
+                    answer: 0,
+                    explanation: "Cần danh từ để chỉ sự ô nhiễm. 'Pollution' là danh từ của động từ 'pollute'."
+                },
+                {
+                    question: "The movie was very ________ and made everyone in the theater cry. (emotion)",
+                    options: ["emotional", "emotionally", "emotions", "emotionize"],
+                    answer: 0,
+                    explanation: "Cần tính từ để mô tả bộ phim. 'Emotional' là tính từ của danh từ 'emotion'."
+                },
+                {
+                    question: "Scientists are working on ________ solutions to combat climate change. (innovate)",
+                    options: ["innovation", "innovative", "innovating", "innovatively"],
+                    answer: 1,
+                    explanation: "Cần tính từ để mô tả 'solutions'. 'Innovative' là tính từ của động từ 'innovate'."
+                },
+                {
+                    question: "Many students find mathematics extremely ________. (challenge)",
+                    options: ["challenge", "challenged", "challenging", "challenger"],
+                    answer: 2,
+                    explanation: "Cần tính từ để mô tả môn toán. 'Challenging' là dạng tính từ V-ing của 'challenge'."
+                },
+                {
+                    question: "There was great ________ when the team won the championship. (excite)",
+                    options: ["exciting", "excites", "excited", "excitement"],
+                    answer: 3,
+                    explanation: "Cần danh từ sau 'great'. 'Excitement' là danh từ của động từ 'excite'."
+                },
+                {
+                    question: "His ________ to the problem impressed the teachers. (solve)",
+                    options: ["solvable", "solving", "solved", "solution"],
+                    answer: 3,
+                    explanation: "Cần danh từ sau 'his'. 'Solution' là danh từ chỉ lời giải từ động từ 'solve'."
+                },
+                {
+                    question: "She spoke ________ about her experiences in the foreign country. (confidence)",
+                    options: ["confidential", "confident", "confidently", "confidence"],
+                    answer: 2,
+                    explanation: "Cần trạng từ để mô tả cách cô ấy nói. 'Confidently' là trạng từ của tính từ 'confident'."
+                },
+                {
+                    question: "The new policy led to ________ changes in the education system. (signify)",
+                    options: ["significance", "significant", "significantly", "signification"],
+                    answer: 1,
+                    explanation: "Cần tính từ để mô tả 'changes'. 'Significant' là tính từ của danh từ 'significance'."
+                },
+                {
+                    question: "Many people were ________ with the government's new regulations. (satisfy)",
+                    options: ["satisfaction", "satisfied", "satisfying", "satisfactory"],
+                    answer: 1,
+                    explanation: "Cần tính từ chỉ trạng thái sau were. 'Satisfied' là tính từ chỉ trạng thái từ 'satisfy'."
+                },
+                {
+                    question: "The company achieved ________ success with its latest product. (remark)",
+                    options: ["remarkably", "remarkable", "remarked", "remark"],
+                    answer: 1,
+                    explanation: "Cần tính từ để mô tả 'success'. 'Remarkable' là tính từ của danh từ 'remark'."
+                },
+                {
+                    question: "His ________ of the situation was completely incorrect. (interpret)",
+                    options: ["interpreter", "interpretive", "interpreting", "interpretation"],
+                    answer: 3,
+                    explanation: "Cần danh từ sau 'his'. 'Interpretation' là danh từ của động từ 'interpret'."
+                },
+                {
+                    question: "She has always shown great ________ in her work. (determine)",
+                    options: ["determinant", "determining", "determined", "determination"],
+                    answer: 3,
+                    explanation: "Cần danh từ sau 'great'. 'Determination' là danh từ của động từ 'determine'."
+                },
+                {
+                    question: "The instructions were very ________ and easy to follow. (clear)",
+                    options: ["clarity", "clearing", "clearly", "clear"],
+                    answer: 3,
+                    explanation: "Cần tính từ sau 'very'. 'Clear' là tính từ cơ bản."
+                },
+                {
+                    question: "Some people have a natural ________ for learning languages. (able)",
+                    options: ["ability", "abler", "ably", "ableness"],
+                    answer: 0,
+                    explanation: "Cần danh từ sau 'natural'. 'Ability' là danh từ của tính từ 'able'."
+                },
+                {
+                    question: "It is ________ to complete the project before the deadline. (possible)",
+                    options: ["possibility", "possibly", "possible", "impossibility"],
+                    answer: 2,
+                    explanation: "Cần tính từ sau 'is'. 'Possible' là tính từ từ danh từ 'possibility'."
+                },
+                {
+                    question: "There is growing ________ about the effects of social media on teenagers. (concern)",
+                    options: ["concerned", "concerning", "concern", "concerningly"],
+                    answer: 2,
+                    explanation: "Cần danh từ sau 'growing'. 'Concern' là danh từ cơ bản."
+                },
+                {
+                    question: "The new technology provides a more ________ way to solve the problem. (effect)",
+                    options: ["effectual", "effective", "effect", "effectually"],
+                    answer: 1,
+                    explanation: "Cần tính từ sau 'more'. 'Effective' là tính từ của danh từ 'effect'."
+                },
+                {
+                    question: "He made a ________ recovery after the serious illness. (miracle)",
+                    options: ["miraculous", "miraculously", "miracle", "miraculousness"],
+                    answer: 0,
+                    explanation: "Cần tính từ để mô tả 'recovery'. 'Miraculous' là tính từ của danh từ 'miracle'."
+                },
+                {
+                    question: "The audience showed their ________ by giving a standing ovation. (appreciate)",
+                    options: ["appreciated", "appreciative", "appreciatively", "appreciation"],
+                    answer: 3,
+                    explanation: "Cần danh từ sau 'their'. 'Appreciation' là danh từ của động từ 'appreciate'."
+                },
+                {
+                    question: "Many young people are ________ about starting their own businesses. (enthusiasm)",
+                    options: ["enthusiasm", "enthusiast", "enthusiastic", "enthusiastically"],
+                    answer: 2,
+                    explanation: "Cần tính từ sau 'are'. 'Enthusiastic' là tính từ của danh từ 'enthusiasm'."
+                },
+                {
+                    question: "She expressed ________ in her son's ability to solve the problem. (confident)",
+                    options: ["confidently", "confidence", "confident", "confidential"],
+                    answer: 1,
+                    explanation: "Cần danh từ sau 'expressed'. 'Confidence' là danh từ của tính từ 'confident'."
+                },
+                {
+                    question: "The government has introduced a new ________ to reduce poverty. (initiate)",
+                    options: ["initiator", "initial", "initiative", "initially"],
+                    answer: 2,
+                    explanation: "Cần danh từ sau 'new'. 'Initiative' là danh từ của động từ 'initiate'."
+                },
+                {
+                    question: "His ________ to music inspired many young artists. (contribute)",
+                    options: ["contributor", "contribution", "contributory", "contributing"],
+                    answer: 1,
+                    explanation: "Cần danh từ sau 'his'. 'Contribution' là danh từ của động từ 'contribute'."
+                },
+                {
+                    question: "The ________ of the ancient city attracts many tourists every year. (beautify)",
+                    options: ["beautification", "beautiful", "beautifully", "beauty"],
+                    answer: 3,
+                    explanation: "Cần danh từ sau 'the'. 'Beauty' là danh từ cơ bản của tính từ 'beautiful'."
+                },
+                {
+                    question: "It is ________ to drive a car without a valid license. (legal)",
+                    options: ["legally", "legality", "legal", "illegal"],
+                    answer: 3,
+                    explanation: "Cần tính từ sau 'is'. 'Illegal' là dạng phủ định (có tiền tố il-) của tính từ 'legal'."
+                },
+                {
+                    question: "The company provided ________ training for all new employees. (comprehend)",
+                    options: ["comprehending", "comprehensive", "comprehensively", "comprehension"],
+                    answer: 1,
+                    explanation: "Cần tính từ để mô tả 'training'. 'Comprehensive' là tính từ từ động từ 'comprehend'."
+                },
+                {
+                    question: "The teacher asked the students to write a ________ of the novel. (summarize)",
+                    options: ["summary", "summarizing", "summarized", "summarization"],
+                    answer: 0,
+                    explanation: "Cần danh từ sau 'a'. 'Summary' là danh từ của động từ 'summarize'."
+                },
+                {
+                    question: "The film was both ________ and thought-provoking. (entertain)",
+                    options: ["entertainment", "entertained", "entertaining", "entertainer"],
+                    answer: 2,
+                    explanation: "Cần tính từ trong cấu trúc 'both ... and'. 'Entertaining' là tính từ dạng V-ing của 'entertain'."
+                },
+                {
+                    question: "The ________ of the new hospital will benefit the entire community. (construct)",
+                    options: ["constructor", "constructed", "constructive", "construction"],
+                    answer: 3,
+                    explanation: "Cần danh từ sau 'the'. 'Construction' là danh từ của động từ 'construct'."
+                },
+                {
+                    question: "We need a more ________ approach to solving this complex problem. (create)",
+                    options: ["creation", "creating", "created", "creative"],
+                    answer: 3,
+                    explanation: "Cần tính từ sau 'more'. 'Creative' là tính từ của động từ 'create'."
+                }
+            ];
+
+            function loadQuestion(index) {
+                const question = questions[index];
+                let optionsHTML = '';
+                
+                for (let i = 0; i < question.options.length; i++) {
+                    const isSelected = userAnswers[index] === i;
+                    const isDisabled = answeredQuestions[index] ? 'disabled' : '';
+                    const selectedClass = isSelected ? 'selected' : '';
+                    const correctClass = answeredQuestions[index] && i === question.answer ? 'correct' : '';
+                    const incorrectClass = answeredQuestions[index] && isSelected && i !== question.answer ? 'incorrect' : '';
+                    
+                    optionsHTML += `
+                        <button class="option-btn w-full text-left px-4 py-3 mb-2 border rounded-md ${isDisabled} ${selectedClass} ${correctClass} ${incorrectClass}" 
+                                data-index="${i}" 
+                                ${answeredQuestions[index] ? 'disabled' : ''}>
+                            ${String.fromCharCode(65 + i)}. ${question.options[i]}
+                        </button>
+                    `;
+                }
+
+                quizContainer.innerHTML = `
+                    <div class="question-container">
+                        <h3 class="text-xl font-semibold mb-4">Câu ${index + 1}</h3>
+                        <p class="text-gray-800 mb-4">${question.question}</p>
+                        <div class="options-container mb-4">
+                            ${optionsHTML}
+                        </div>
+                        <div class="explanation p-4 rounded-md bg-blue-50 border border-blue-200 ${answeredQuestions[index] ? 'show' : ''}">
+                            <p class="text-gray-700"><strong>Giải thích:</strong> ${question.explanation}</p>
+                        </div>
+                    </div>
+                `;
+
+                // Add event listeners to options
+                const optionBtns = document.querySelectorAll('.option-btn');
+                optionBtns.forEach(btn => {
+                    if (!answeredQuestions[index]) {
+                        btn.addEventListener('click', function() {
+                            const optionIndex = parseInt(this.getAttribute('data-index'));
+                            selectAnswer(optionIndex);
+                        });
+                    }
+                });
+
+                // Update navigation buttons
+                prevBtn.classList.toggle('hidden', index === 0);
+                nextBtn.textContent = index === questions.length - 1 ? 'Xem kết quả' : 'Câu tiếp theo';
+                
+                // Update progress
+                const progress = ((index + 1) / questions.length) * 100;
+                progressBar.style.width = `${progress}%`;
+                progressText.textContent = `${index + 1}/${questions.length}`;
+            }
+
+            function selectAnswer(optionIndex) {
+                if (answeredQuestions[currentQuestion]) return;
+                
+                userAnswers[currentQuestion] = optionIndex;
+                answeredQuestions[currentQuestion] = true;
+                
+                if (optionIndex === questions[currentQuestion].answer) {
+                    score++;
+                }
+                
+                // Show explanation
+                const explanation = document.querySelector('.explanation');
+                explanation.classList.add('show');
+                
+                // Mark correct and incorrect options
+                const options = document.querySelectorAll('.option-btn');
+                options.forEach((opt, idx) => {
+                    opt.disabled = true;
+                    if (idx === questions[currentQuestion].answer) {
+                        opt.classList.add('correct');
+                    } else if (idx === optionIndex && optionIndex !== questions[currentQuestion].answer) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+            }
+
+            function showResults() {
+                const percentage = (score / questions.length) * 100;
+                
+                document.querySelector('.bg-white.rounded-lg').classList.add('hidden');
+                resultsContainer.classList.remove('hidden');
+                
+                scoreElement.textContent = score;
+                resultProgress.style.width = `${percentage}%`;
+                
+                if (percentage >= 90) {
+                    resultMessage.textContent = 'Xuất sắc! Bạn thật giỏi về ngữ pháp tiếng Anh!';
+                } else if (percentage >= 70) {
+                    resultMessage.textContent = 'Rất tốt! Bạn đã nắm vững phần lớn các dạng từ!';
+                } else if (percentage >= 50) {
+                    resultMessage.textContent = 'Khá tốt! Hãy tiếp tục luyện tập để cải thiện thêm!';
+                } else {
+                    resultMessage.textContent = 'Bạn cần luyện tập thêm về dạng từ. Đừng nản lòng!';
+                }
+            }
+
+            // Load first question
+            loadQuestion(0);
+
+            // Event listeners
+            nextBtn.addEventListener('click', function() {
+                if (currentQuestion < questions.length - 1) {
+                    currentQuestion++;
+                    loadQuestion(currentQuestion);
+                } else {
+                    showResults();
+                }
+            });
+
+            prevBtn.addEventListener('click', function() {
+                if (currentQuestion > 0) {
+                    currentQuestion--;
+                    loadQuestion(currentQuestion);
+                }
+            });
+
+            restartBtn.addEventListener('click', function() {
+                currentQuestion = 0;
+                score = 0;
+                userAnswers = new Array(30).fill(null);
+                answeredQuestions = new Array(30).fill(false);
+                
+                resultsContainer.classList.add('hidden');
+                document.querySelector('.bg-white.rounded-lg').classList.remove('hidden');
+                
+                loadQuestion(0);
+            });
+        });
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>

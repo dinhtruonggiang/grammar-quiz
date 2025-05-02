@@ -1,0 +1,548 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Formation Quiz - ILearn Smart World 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f9fc;
+        }
+        .option {
+            transition: all 0.2s ease;
+        }
+        .option:hover {
+            transform: translateX(5px);
+        }
+        .correct {
+            background-color: #d1fae5 !important;
+            border-color: #10b981 !important;
+        }
+        .wrong {
+            background-color: #fee2e2 !important;
+            border-color: #ef4444 !important;
+        }
+        .explanation {
+            display: none;
+            max-height: 0;
+            transition: max-height 0.5s ease;
+        }
+        .show-explanation {
+            display: block;
+            max-height: 500px;
+            transition: max-height 0.5s ease;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-white">
+                <h1 class="text-3xl font-bold mb-2">Bài Trắc Nghiệm Word Formation</h1>
+                <p class="text-lg">Sử dụng đúng dạng của từ cho sẵn trong mỗi câu</p>
+                <p class="text-sm mt-2 italic">Dựa trên sách ILearn Smart World 9 Student Book</p>
+            </div>
+
+            <!-- Progress -->
+            <div class="p-4 bg-gray-50 border-b">
+                <div class="flex justify-between items-center mb-1">
+                    <span class="text-sm font-medium text-gray-700">Tiến độ</span>
+                    <span id="progress-text" class="text-sm font-medium text-blue-600">0/30</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div id="progress-bar" class="bg-blue-600 h-2 rounded-full" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- Quiz Container -->
+            <div id="quiz-container" class="p-6">
+                <!-- Questions will be inserted here -->
+            </div>
+
+            <!-- Navigation -->
+            <div class="p-6 border-t bg-gray-50 flex justify-between">
+                <button id="prev-btn" class="px-5 py-2 bg-gray-300 text-gray-700 rounded-lg font-medium hidden hover:bg-gray-400 transition">Câu trước</button>
+                <button id="next-btn" class="px-5 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition">Câu tiếp theo</button>
+            </div>
+
+            <!-- Results -->
+            <div id="results" class="p-6 hidden">
+                <h2 class="text-2xl font-bold text-center mb-4">Kết Quả Của Bạn</h2>
+                <div class="text-center mb-4">
+                    <span id="score" class="text-4xl font-bold text-blue-600">0/30</span>
+                </div>
+                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200 mb-6">
+                    <p id="feedback" class="text-blue-800 text-center"></p>
+                </div>
+                <div class="flex justify-center">
+                    <button id="restart-btn" class="px-5 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition">Làm Lại Bài Kiểm Tra</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                id: 1,
+                text: "The government has implemented new policies to increase environmental __________ among citizens.",
+                wordHint: "(aware)",
+                options: ["aware", "awareness", "awaring", "awareful"],
+                correctAnswer: "awareness",
+                explanation: "Cần danh từ sau 'environmental'. Từ 'aware' (tính từ) → 'awareness' (danh từ) = sự nhận thức, nhận biết."
+            },
+            {
+                id: 2,
+                text: "The __________ of plastics from our oceans is a major environmental challenge.",
+                wordHint: "(remove)",
+                options: ["removement", "removal", "removing", "removation"],
+                correctAnswer: "removal",
+                explanation: "Cần danh từ làm chủ ngữ của câu. Từ 'remove' (động từ) → 'removal' (danh từ) = sự loại bỏ, sự di dời."
+            },
+            {
+                id: 3,
+                text: "Scientists discovered a __________ link between deforestation and climate change.",
+                wordHint: "(significance)",
+                options: ["significance", "significant", "significantly", "significize"],
+                correctAnswer: "significant",
+                explanation: "Cần tính từ để bổ nghĩa cho danh từ 'link'. Từ 'significance' (danh từ) → 'significant' (tính từ) = đáng kể, quan trọng."
+            },
+            {
+                id: 4,
+                text: "The new technology has __________ improved the efficiency of solar panels.",
+                wordHint: "(drama)",
+                options: ["drama", "dramatic", "dramatically", "dramatize"],
+                correctAnswer: "dramatically",
+                explanation: "Cần trạng từ để bổ nghĩa cho động từ 'improved'. Từ 'drama' (danh từ) → 'dramatically' (trạng từ) = một cách đáng kể, đột ngột."
+            },
+            {
+                id: 5,
+                text: "His __________ to help others has made him popular in the community.",
+                wordHint: "(willing)",
+                options: ["willing", "willingly", "willingness", "will"],
+                correctAnswer: "willingness",
+                explanation: "Cần danh từ làm chủ ngữ của câu. Từ 'willing' (tính từ) → 'willingness' (danh từ) = sự sẵn lòng, sự tự nguyện."
+            },
+            {
+                id: 6,
+                text: "The city council has made __________ improvements to public transportation.",
+                wordHint: "(substance)",
+                options: ["substance", "substantial", "substantively", "substantiality"],
+                correctAnswer: "substantial",
+                explanation: "Cần tính từ để bổ nghĩa cho danh từ 'improvements'. Từ 'substance' (danh từ) → 'substantial' (tính từ) = đáng kể, lớn."
+            },
+            {
+                id: 7,
+                text: "The teacher spoke __________ when explaining the complex topic to students.",
+                wordHint: "(clear)",
+                options: ["clear", "clearly", "clearance", "clearness"],
+                correctAnswer: "clearly",
+                explanation: "Cần trạng từ để bổ nghĩa cho động từ 'spoke'. Từ 'clear' (tính từ) → 'clearly' (trạng từ) = một cách rõ ràng."
+            },
+            {
+                id: 8,
+                text: "There is growing __________ about the effects of social media on teenagers.",
+                wordHint: "(concern)",
+                options: ["concern", "concerned", "concerning", "concernment"],
+                correctAnswer: "concern",
+                explanation: "Cần danh từ sau từ 'growing'. 'Concern' là danh từ = sự lo ngại, quan tâm."
+            },
+            {
+                id: 9,
+                text: "The book provides a __________ analysis of Vietnam's economic development.",
+                wordHint: "(comprehend)",
+                options: ["comprehend", "comprehension", "comprehensive", "comprehensively"],
+                correctAnswer: "comprehensive",
+                explanation: "Cần tính từ để bổ nghĩa cho danh từ 'analysis'. Từ 'comprehend' (động từ) → 'comprehensive' (tính từ) = toàn diện, đầy đủ."
+            },
+            {
+                id: 10,
+                text: "His __________ to work hard impressed his new employers.",
+                wordHint: "(determine)",
+                options: ["determine", "determined", "determination", "determinative"],
+                correctAnswer: "determination",
+                explanation: "Cần danh từ làm chủ ngữ của câu. Từ 'determine' (động từ) → 'determination' (danh từ) = sự quyết tâm."
+            },
+            {
+                id: 11,
+                text: "The scientist made a __________ discovery that changed our understanding of physics.",
+                wordHint: "(revolution)",
+                options: ["revolution", "revolutionary", "revolutionize", "revolutionist"],
+                correctAnswer: "revolutionary",
+                explanation: "Cần tính từ để bổ nghĩa cho danh từ 'discovery'. Từ 'revolution' (danh từ) → 'revolutionary' (tính từ) = mang tính cách mạng."
+            },
+            {
+                id: 12,
+                text: "Air pollution can cause serious __________ problems for many people.",
+                wordHint: "(breathe)",
+                options: ["breathe", "breathable", "breath", "breathing"],
+                correctAnswer: "breathing",
+                explanation: "Cần danh từ làm tính từ để bổ nghĩa cho 'problems'. Từ 'breathe' (động từ) → 'breathing' (danh từ làm tính từ) = hô hấp, thở."
+            },
+            {
+                id: 13,
+                text: "The government plans to __________ the education system over the next five years.",
+                wordHint: "(modern)",
+                options: ["modern", "modernism", "modernize", "modernly"],
+                correctAnswer: "modernize",
+                explanation: "Cần động từ sau 'to'. Từ 'modern' (tính từ) → 'modernize' (động từ) = hiện đại hóa."
+            },
+            {
+                id: 14,
+                text: "The __________ of smartphones has changed how we communicate with each other.",
+                wordHint: "(popular)",
+                options: ["popular", "popularly", "popularity", "popularize"],
+                correctAnswer: "popularity",
+                explanation: "Cần danh từ làm chủ ngữ của câu. Từ 'popular' (tính từ) → 'popularity' (danh từ) = sự phổ biến."
+            },
+            {
+                id: 15,
+                text: "She spoke to me __________, explaining why she couldn't attend the meeting.",
+                wordHint: "(apologize)",
+                options: ["apologize", "apology", "apologetic", "apologetically"],
+                correctAnswer: "apologetically",
+                explanation: "Cần trạng từ để bổ nghĩa cho động từ 'spoke'. Từ 'apologize' (động từ) → 'apologetically' (trạng từ) = một cách xin lỗi."
+            },
+            {
+                id: 16,
+                text: "Global __________ leads to rising sea levels and extreme weather events.",
+                wordHint: "(warm)",
+                options: ["warm", "warmth", "warming", "warmness"],
+                correctAnswer: "warming",
+                explanation: "Cần danh từ trong thuật ngữ 'global warming'. Từ 'warm' (tính từ) → 'warming' (danh từ) = sự nóng lên."
+            },
+            {
+                id: 17,
+                text: "The teacher emphasized the __________ of regular practice when learning a new language.",
+                wordHint: "(important)",
+                options: ["important", "importance", "importantly", "importancy"],
+                correctAnswer: "importance",
+                explanation: "Cần danh từ sau 'the'. Từ 'important' (tính từ) → 'importance' (danh từ) = tầm quan trọng."
+            },
+            {
+                id: 18,
+                text: "Students need to develop __________ thinking skills to succeed in the modern world.",
+                wordHint: "(create)",
+                options: ["create", "creative", "creativity", "creatively"],
+                correctAnswer: "creative",
+                explanation: "Cần tính từ để bổ nghĩa cho danh từ 'thinking'. Từ 'create' (động từ) → 'creative' (tính từ) = sáng tạo."
+            },
+            {
+                id: 19,
+                text: "The __________ of the ancient temple attracts thousands of tourists every year.",
+                wordHint: "(beautiful)",
+                options: ["beautiful", "beautify", "beauty", "beautifully"],
+                correctAnswer: "beauty",
+                explanation: "Cần danh từ làm chủ ngữ của câu. Từ 'beautiful' (tính từ) → 'beauty' (danh từ) = vẻ đẹp."
+            },
+            {
+                id: 20,
+                text: "He was able to explain the complex theory in a very __________ way.",
+                wordHint: "(simplify)",
+                options: ["simplification", "simplified", "simplify", "simple"],
+                correctAnswer: "simplified",
+                explanation: "Cần tính từ để bổ nghĩa cho danh từ 'way'. Từ 'simplify' (động từ) → 'simplified' (tính từ) = đơn giản hóa."
+            },
+            {
+                id: 21,
+                text: "Regular exercise can lead to __________ improvements in your health.",
+                wordHint: "(signify)",
+                options: ["signify", "significance", "significant", "significantly"],
+                correctAnswer: "significant",
+                explanation: "Cần tính từ để bổ nghĩa cho danh từ 'improvements'. Từ 'signify' (động từ) → 'significant' (tính từ) = đáng kể, quan trọng."
+            },
+            {
+                id: 22,
+                text: "The company's new policy on remote work has increased employee __________.",
+                wordHint: "(satisfy)",
+                options: ["satisfy", "satisfied", "satisfaction", "satisfying"],
+                correctAnswer: "satisfaction",
+                explanation: "Cần danh từ sau 'employee'. Từ 'satisfy' (động từ) → 'satisfaction' (danh từ) = sự hài lòng."
+            },
+            {
+                id: 23,
+                text: "The movie was extremely __________ and made me laugh throughout.",
+                wordHint: "(humor)",
+                options: ["humor", "humorous", "humorously", "humoristic"],
+                correctAnswer: "humorous",
+                explanation: "Cần tính từ sau 'extremely'. Từ 'humor' (danh từ) → 'humorous' (tính từ) = hài hước."
+            },
+            {
+                id: 24,
+                text: "The festival celebrates the cultural __________ of Vietnam's ethnic groups.",
+                wordHint: "(diverse)",
+                options: ["diverse", "diversely", "diversity", "diversification"],
+                correctAnswer: "diversity",
+                explanation: "Cần danh từ sau 'cultural'. Từ 'diverse' (tính từ) → 'diversity' (danh từ) = sự đa dạng."
+            },
+            {
+                id: 25,
+                text: "The researchers conducted a __________ study of marine life in the South China Sea.",
+                wordHint: "(science)",
+                options: ["science", "scientific", "scientifically", "scientist"],
+                correctAnswer: "scientific",
+                explanation: "Cần tính từ để bổ nghĩa cho danh từ 'study'. Từ 'science' (danh từ) → 'scientific' (tính từ) = khoa học."
+            },
+            {
+                id: 26,
+                text: "Environmental __________ is essential for protecting our planet for future generations.",
+                wordHint: "(conserve)",
+                options: ["conserve", "conservation", "conservative", "conserving"],
+                correctAnswer: "conservation",
+                explanation: "Cần danh từ làm chủ ngữ của câu. Từ 'conserve' (động từ) → 'conservation' (danh từ) = sự bảo tồn."
+            },
+            {
+                id: 27,
+                text: "The team worked __________ to complete the project before the deadline.",
+                wordHint: "(collaborate)",
+                options: ["collaborate", "collaboration", "collaborative", "collaboratively"],
+                correctAnswer: "collaboratively",
+                explanation: "Cần trạng từ để bổ nghĩa cho động từ 'worked'. Từ 'collaborate' (động từ) → 'collaboratively' (trạng từ) = một cách hợp tác."
+            },
+            {
+                id: 28,
+                text: "After the storm, local communities showed remarkable __________ in rebuilding their homes.",
+                wordHint: "(resilient)",
+                options: ["resilient", "resiliently", "resilience", "resiliency"],
+                correctAnswer: "resilience",
+                explanation: "Cần danh từ sau 'remarkable'. Từ 'resilient' (tính từ) → 'resilience' (danh từ) = sự kiên cường, khả năng phục hồi."
+            },
+            {
+                id: 29,
+                text: "The __________ of the Mekong Delta region is facing threats from climate change.",
+                wordHint: "(fertile)",
+                options: ["fertile", "fertility", "fertilize", "fertilization"],
+                correctAnswer: "fertility",
+                explanation: "Cần danh từ làm chủ ngữ của câu. Từ 'fertile' (tính từ) → 'fertility' (danh từ) = độ màu mỡ."
+            },
+            {
+                id: 30,
+                text: "The teacher gave us very __________ feedback on our essays.",
+                wordHint: "(construct)",
+                options: ["construct", "constructed", "constructive", "construction"],
+                correctAnswer: "constructive",
+                explanation: "Cần tính từ để bổ nghĩa cho danh từ 'feedback'. Từ 'construct' (động từ) → 'constructive' (tính từ) = mang tính xây dựng."
+            }
+        ];
+
+        // Quiz State
+        let currentQuestion = 0;
+        let score = 0;
+        let answeredQuestions = new Array(questions.length).fill(false);
+
+        // DOM Elements
+        const quizContainer = document.getElementById('quiz-container');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const resultsContainer = document.getElementById('results');
+        const scoreElement = document.getElementById('score');
+        const feedbackElement = document.getElementById('feedback');
+        const restartBtn = document.getElementById('restart-btn');
+
+        // Initialize the quiz
+        function initQuiz() {
+            showQuestion(currentQuestion);
+            updateProgress();
+            updateNavButtons();
+        }
+
+        // Show the current question
+        function showQuestion(questionIndex) {
+            const question = questions[questionIndex];
+            
+            quizContainer.innerHTML = `
+                <div class="mb-6">
+                    <h2 class="text-xl font-bold mb-3">Câu ${question.id} / 30</h2>
+                    <p class="text-lg mb-1">${question.text}</p>
+                    <p class="text-sm text-gray-500 italic mb-4">Dạng đúng của từ: ${question.wordHint}</p>
+                </div>
+                <div class="space-y-3 mb-6">
+                    ${question.options.map((option, index) => `
+                        <div class="option cursor-pointer p-3 border rounded-lg hover:bg-gray-50 transition ${answeredQuestions[questionIndex] && option === question.correctAnswer ? 'correct' : ''} ${answeredQuestions[questionIndex] && option !== question.correctAnswer && document.querySelector(`input[name="q${questionIndex}"]:checked`)?.value === option ? 'wrong' : ''}" data-option="${option}">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q${questionIndex}" value="${option}" class="mr-3 h-4 w-4 text-blue-600" ${answeredQuestions[questionIndex] ? 'disabled' : ''} ${answeredQuestions[questionIndex] && document.querySelector(`input[name="q${questionIndex}"]:checked`)?.value === option ? 'checked' : ''}>
+                                <span>${option}</span>
+                            </label>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="explanation p-4 rounded-lg bg-blue-50 border border-blue-200 mt-4 ${answeredQuestions[questionIndex] ? 'show-explanation' : ''}">
+                    <h3 class="font-medium text-blue-800 mb-1">Giải thích:</h3>
+                    <p class="text-blue-700">${question.explanation}</p>
+                </div>
+            `;
+
+            // Add event listeners to options
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => {
+                option.addEventListener('click', () => {
+                    if (!answeredQuestions[questionIndex]) {
+                        const selectedOption = option.dataset.option;
+                        checkAnswer(questionIndex, selectedOption);
+                    }
+                });
+            });
+        }
+
+        // Check the selected answer
+        function checkAnswer(questionIndex, selectedOption) {
+            const question = questions[questionIndex];
+            
+            if (selectedOption === question.correctAnswer) {
+                score++;
+            }
+            
+            answeredQuestions[questionIndex] = true;
+            
+            // Show correct/wrong answer
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => {
+                const optionValue = option.dataset.option;
+                
+                if (optionValue === question.correctAnswer) {
+                    option.classList.add('correct');
+                } else if (optionValue === selectedOption && selectedOption !== question.correctAnswer) {
+                    option.classList.add('wrong');
+                }
+                
+                // Disable all options
+                const radio = option.querySelector('input[type="radio"]');
+                radio.disabled = true;
+                
+                if (optionValue === selectedOption) {
+                    radio.checked = true;
+                }
+            });
+            
+            // Show explanation
+            const explanation = document.querySelector('.explanation');
+            explanation.classList.add('show-explanation');
+            
+            updateProgress();
+            updateNavButtons();
+        }
+
+        // Update progress bar and text
+        function updateProgress() {
+            const answeredCount = answeredQuestions.filter(Boolean).length;
+            const progressPercentage = (answeredCount / questions.length) * 100;
+            
+            progressBar.style.width = `${progressPercentage}%`;
+            progressText.textContent = `${answeredCount}/${questions.length}`;
+        }
+
+        // Update navigation buttons
+        function updateNavButtons() {
+            prevBtn.classList.toggle('hidden', currentQuestion === 0);
+            
+            if (currentQuestion === questions.length - 1) {
+                if (answeredQuestions[currentQuestion]) {
+                    nextBtn.textContent = 'Xem kết quả';
+                } else {
+                    nextBtn.textContent = 'Câu tiếp theo';
+                }
+            } else {
+                nextBtn.textContent = 'Câu tiếp theo';
+            }
+        }
+
+        // Navigate to the previous question
+        function goToPreviousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+                updateNavButtons();
+            }
+        }
+
+        // Navigate to the next question or show results
+        function goToNextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+                updateNavButtons();
+            } else if (answeredQuestions[currentQuestion]) {
+                showResults();
+            }
+        }
+
+        // Show the quiz results
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultsContainer.classList.remove('hidden');
+            document.getElementById('prev-btn').classList.add('hidden');
+            document.getElementById('next-btn').classList.add('hidden');
+            
+            scoreElement.textContent = `${score}/${questions.length}`;
+            
+            // Generate feedback based on score
+            let feedback;
+            const percentage = (score / questions.length) * 100;
+            
+            if (percentage >= 90) {
+                feedback = "Xuất sắc! Bạn đã nắm vững cách sử dụng các dạng từ khác nhau.";
+            } else if (percentage >= 75) {
+                feedback = "Rất tốt! Bạn đã hiểu hầu hết các quy tắc về dạng từ.";
+            } else if (percentage >= 60) {
+                feedback = "Khá tốt! Hãy tiếp tục luyện tập để hoàn thiện hơn.";
+            } else if (percentage >= 40) {
+                feedback = "Cần cố gắng thêm! Hãy ôn lại các quy tắc về chuyển đổi dạng từ.";
+            } else {
+                feedback = "Bạn cần học lại phần này và luyện tập nhiều hơn để cải thiện.";
+            }
+            
+            feedbackElement.textContent = feedback;
+        }
+
+        // Restart the quiz
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            answeredQuestions = new Array(questions.length).fill(false);
+            
+            quizContainer.classList.remove('hidden');
+            resultsContainer.classList.add('hidden');
+            
+            initQuiz();
+        }
+
+        // Event listeners
+        prevBtn.addEventListener('click', goToPreviousQuestion);
+        nextBtn.addEventListener('click', goToNextQuestion);
+        restartBtn.addEventListener('click', restartQuiz);
+
+        // Initialize the quiz on page load
+        initQuiz();
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>

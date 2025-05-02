@@ -1,0 +1,567 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Word Forms Quiz - ILearn Smart World 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+        }
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .option {
+            transition: all 0.3s ease;
+        }
+        .option:hover {
+            background-color: #f0f4f8;
+        }
+        .option.selected {
+            background-color: #dbeafe;
+            border-color: #3b82f6;
+        }
+        .option.correct {
+            background-color: #dcfce7;
+            border-color: #22c55e;
+        }
+        .option.incorrect {
+            background-color: #fee2e2;
+            border-color: #ef4444;
+        }
+        .explanation {
+            background-color: #f8fafc;
+            border-left: 4px solid #3b82f6;
+        }
+        .button {
+            transition: all 0.3s ease;
+        }
+        .button:hover {
+            transform: translateY(-2px);
+        }
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e5e7eb;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body class="p-4">
+    <div class="quiz-container p-6 my-8">
+        <h1 class="text-3xl font-bold text-center mb-2 text-blue-700">English Word Forms Quiz</h1>
+        <h2 class="text-xl text-center mb-6 text-gray-600">ILearn Smart World 9</h2>
+        
+        <div class="progress-bar mb-6">
+            <div class="progress" id="progress" style="width: 0%"></div>
+        </div>
+        
+        <div id="quiz-info" class="mb-4 flex justify-between items-center">
+            <div class="text-gray-700">
+                <span id="current-question">1</span>/<span id="total-questions">30</span> questions
+            </div>
+            <div class="text-gray-700">
+                Time: <span id="timer">00:00</span>
+            </div>
+        </div>
+        
+        <div id="question-container">
+            <!-- Questions will be inserted here dynamically -->
+        </div>
+        
+        <div id="navigation" class="mt-6 flex justify-between">
+            <button id="prev-btn" class="button px-4 py-2 bg-gray-200 text-gray-700 rounded-lg font-semibold hidden">Previous</button>
+            <button id="next-btn" class="button px-4 py-2 bg-blue-600 text-white rounded-lg font-semibold">Next Question</button>
+        </div>
+        
+        <div id="results" class="mt-8 text-center hidden">
+            <h2 class="text-2xl font-bold mb-4">Results</h2>
+            <p class="text-xl mb-2">Your score: <span id="score" class="font-bold"></span>/30</p>
+            <p class="mb-4">Completion time: <span id="completion-time" class="font-semibold"></span></p>
+            <div id="score-analysis" class="mt-4 p-4 bg-gray-50 rounded-lg">
+                <h3 class="font-bold mb-2">Score Analysis:</h3>
+                <div id="score-details" class="text-left"></div>
+            </div>
+            <button id="restart-btn" class="button mt-6 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold">Restart Quiz</button>
+        </div>
+    </div>
+
+    <script>
+        // Quiz data
+        const quizData = [
+            {
+                question: "Students must give an _______________ when they arrive late to class.",
+                word: "explanation",
+                options: ["explain", "explanatory", "explainable", "explanation"],
+                correct: "explanation",
+                explanation: "Cần một danh từ (explanation) sau từ 'an' trong tiếng Anh. Từ gốc 'explain' (giải thích) → 'explanation' (lời giải thích/sự giải thích) là danh từ."
+            },
+            {
+                question: "Health _______________ should be a daily concern for everyone.",
+                word: "maintenance",
+                options: ["maintain", "maintenance", "maintainable", "maintaining"],
+                correct: "maintenance",
+                explanation: "Cần một danh từ làm chủ ngữ của câu. Từ gốc 'maintain' (duy trì) → 'maintenance' (sự duy trì/việc bảo dưỡng) là danh từ."
+            },
+            {
+                question: "All students must _______________ follow the school rules.",
+                word: "serious",
+                options: ["serious", "seriously", "seriousness", "seriousing"],
+                correct: "seriously",
+                explanation: "Cần một trạng từ để bổ nghĩa cho động từ 'follow'. Từ gốc 'serious' (nghiêm túc) → 'seriously' (một cách nghiêm túc) là trạng từ."
+            },
+            {
+                question: "The teacher was very _______________ with the students who came late.",
+                word: "dissatisfaction",
+                options: ["dissatisfy", "dissatisfied", "dissatisfying", "dissatisfaction"],
+                correct: "dissatisfied",
+                explanation: "Cần một tính từ sau 'very'. Từ gốc 'dissatisfaction' (sự bất mãn) → 'dissatisfied' (không hài lòng/bất mãn) là tính từ."
+            },
+            {
+                question: "Scientists are _______________ new methods to protect the environment.",
+                word: "development",
+                options: ["develop", "developing", "development", "developable"],
+                correct: "developing",
+                explanation: "Sau 'are' cần một động từ dạng V-ing. Từ gốc 'develop' (phát triển) → 'developing' (đang phát triển) là dạng hiện tại phân từ."
+            },
+            {
+                question: "The _______________ of fast food can lead to many health problems.",
+                word: "consumption",
+                options: ["consume", "consumer", "consuming", "consumption"],
+                correct: "consumption",
+                explanation: "Cần một danh từ sau 'the'. Từ gốc 'consume' (tiêu thụ) → 'consumption' (sự tiêu thụ) là danh từ."
+            },
+            {
+                question: "This is a very _______________ issue that needs to be addressed immediately.",
+                word: "serious",
+                options: ["serious", "seriously", "seriousness", "seriality"],
+                correct: "serious",
+                explanation: "Cần một tính từ sau 'very'. Từ gốc 'serious' là tính từ có nghĩa 'nghiêm trọng'."
+            },
+            {
+                question: "We have _______________ tried to complete the project on time.",
+                word: "continuous",
+                options: ["continue", "continuous", "continuously", "continuation"],
+                correct: "continuously",
+                explanation: "Cần một trạng từ để bổ nghĩa cho động từ 'tried'. Từ gốc 'continuous' (liên tục) → 'continuously' (một cách liên tục) là trạng từ."
+            },
+            {
+                question: "The _______________ of technology has changed our lives.",
+                word: "development",
+                options: ["develop", "developing", "developed", "development"],
+                correct: "development",
+                explanation: "Cần một danh từ sau 'the'. Từ gốc 'develop' (phát triển) → 'development' (sự phát triển) là danh từ."
+            },
+            {
+                question: "Trang An is a _______________ tourist destination in Ninh Binh.",
+                word: "famous",
+                options: ["fame", "famous", "famously", "famousness"],
+                correct: "famous",
+                explanation: "Cần một tính từ để mô tả 'tourist destination'. Từ gốc 'fame' (danh tiếng) → 'famous' (nổi tiếng) là tính từ."
+            },
+            {
+                question: "Many young people nowadays are becoming _______________ to social media.",
+                word: "addict",
+                options: ["addict", "addicted", "addiction", "addicting"],
+                correct: "addicted",
+                explanation: "Cần một tính từ sau 'are becoming'. Từ gốc 'addict' (người nghiện) → 'addicted' (nghiện) là tính từ."
+            },
+            {
+                question: "We need to _______________ protect forests to reduce climate change.",
+                word: "active",
+                options: ["active", "actively", "activation", "activity"],
+                correct: "actively",
+                explanation: "Cần một trạng từ để bổ nghĩa cho động từ 'protect'. Từ gốc 'active' (tích cực) → 'actively' (một cách tích cực) là trạng từ."
+            },
+            {
+                question: "Hoi An is a very _______________ city for foreign tourists.",
+                word: "attract",
+                options: ["attract", "attractive", "attractively", "attraction"],
+                correct: "attractive",
+                explanation: "Cần một tính từ sau 'very'. Từ gốc 'attract' (thu hút) → 'attractive' (hấp dẫn) là tính từ."
+            },
+            {
+                question: "Scientists have _______________ many new animal species in the forest.",
+                word: "discovery",
+                options: ["discover", "discovered", "discovery", "discovering"],
+                correct: "discovered",
+                explanation: "Cần một động từ dạng quá khứ phân từ (V3) sau 'have'. Từ gốc 'discover' → 'discovered' là dạng quá khứ phân từ của động từ 'phát hiện'."
+            },
+            {
+                question: "_______________ regularly helps improve your health.",
+                word: "exercise",
+                options: ["exercise", "exercising", "exercised", "exercisable"],
+                correct: "Exercising",
+                explanation: "Cần một danh động từ (gerund) làm chủ ngữ của câu. Từ gốc 'exercise' (tập thể dục) → 'exercising' (việc tập thể dục) là danh động từ."
+            },
+            {
+                question: "My grandfather has _______________ thousands of trees in his lifetime.",
+                word: "plant",
+                options: ["plant", "planted", "planting", "plantation"],
+                correct: "planted",
+                explanation: "Cần một động từ dạng quá khứ phân từ (V3) sau 'has'. Từ gốc 'plant' (trồng) → 'planted' (đã trồng) là dạng quá khứ phân từ của động từ."
+            },
+            {
+                question: "This road _______________ leads to the city center.",
+                word: "direct",
+                options: ["direct", "directing", "directed", "directly"],
+                correct: "directly",
+                explanation: "Cần một trạng từ để bổ nghĩa cho động từ 'leads'. Từ gốc 'direct' (trực tiếp) → 'directly' (một cách trực tiếp) là trạng từ."
+            },
+            {
+                question: "The government has introduced many _______________ to reduce air pollution.",
+                word: "solve",
+                options: ["solve", "solvable", "solving", "solutions"],
+                correct: "solutions",
+                explanation: "Cần một danh từ sau 'many'. Từ gốc 'solve' (giải quyết) → 'solution' (giải pháp) là danh từ, và ở đây cần dạng số nhiều 'solutions'."
+            },
+            {
+                question: "Schools need to create a _______________ environment for students.",
+                word: "safe",
+                options: ["safe", "safely", "safety", "safeness"],
+                correct: "safe",
+                explanation: "Cần một tính từ để mô tả 'environment'. Từ gốc 'safe' là tính từ có nghĩa 'an toàn'."
+            },
+            {
+                question: "We were very _______________ when we heard the good news.",
+                word: "happy",
+                options: ["happy", "happily", "happiness", "happening"],
+                correct: "happy",
+                explanation: "Cần một tính từ sau 'very'. Từ gốc 'happy' là tính từ có nghĩa 'vui mừng'."
+            },
+            {
+                question: "Ha Long Bay is an internationally _______________ tourist attraction.",
+                word: "famous",
+                options: ["fame", "famous", "famously", "famed"],
+                correct: "famous",
+                explanation: "Cần một tính từ để mô tả 'tourist attraction'. Từ gốc 'fame' (danh tiếng) → 'famous' (nổi tiếng) là tính từ."
+            },
+            {
+                question: "Students need to _______________ prepare for their final exams.",
+                word: "careful",
+                options: ["care", "careful", "carefully", "carefulness"],
+                correct: "carefully",
+                explanation: "Cần một trạng từ để bổ nghĩa cho động từ 'prepare'. Từ gốc 'careful' (cẩn thận) → 'carefully' (một cách cẩn thận) là trạng từ."
+            },
+            {
+                question: "The _______________ of computers has changed the way we learn.",
+                word: "invention",
+                options: ["invent", "invented", "inventing", "invention"],
+                correct: "invention",
+                explanation: "Cần một danh từ sau 'the'. Từ gốc 'invent' (phát minh) → 'invention' (sự phát minh) là danh từ."
+            },
+            {
+                question: "The football team _______________ won the match.",
+                word: "success",
+                options: ["success", "successful", "successfully", "successive"],
+                correct: "successfully",
+                explanation: "Cần một trạng từ để bổ nghĩa cho động từ 'won'. Từ gốc 'success' (thành công) → 'successfully' (một cách thành công) là trạng từ."
+            },
+            {
+                question: "My mother always cooks _______________ to make delicious meals.",
+                word: "creative",
+                options: ["create", "creator", "creative", "creatively"],
+                correct: "creatively",
+                explanation: "Cần một trạng từ để bổ nghĩa cho động từ 'cooks'. Từ gốc 'creative' (sáng tạo) → 'creatively' (một cách sáng tạo) là trạng từ."
+            },
+            {
+                question: "_______________ the environment is everyone's responsibility.",
+                word: "protect",
+                options: ["protect", "protecting", "protection", "protective"],
+                correct: "Protecting",
+                explanation: "Cần một danh động từ (gerund) làm chủ ngữ của câu. Từ gốc 'protect' (bảo vệ) → 'protecting' (việc bảo vệ) là danh động từ."
+            },
+            {
+                question: "Dalat has a very _______________ climate in winter.",
+                word: "cold",
+                options: ["cold", "coldly", "coldness", "cooling"],
+                correct: "cold",
+                explanation: "Cần một tính từ sau 'very'. Từ gốc 'cold' là tính từ có nghĩa 'lạnh'."
+            },
+            {
+                question: "I have _______________ to complete my homework on time.",
+                word: "try",
+                options: ["try", "tried", "trying", "tryable"],
+                correct: "tried",
+                explanation: "Cần một động từ dạng quá khứ phân từ (V3) sau 'have'. Từ gốc 'try' (cố gắng) → 'tried' (đã cố gắng) là dạng quá khứ phân từ của động từ."
+            },
+            {
+                question: "The _______________ of technology has changed the way we communicate.",
+                word: "develop",
+                options: ["develop", "developed", "developing", "development"],
+                correct: "development",
+                explanation: "Cần một danh từ sau 'the'. Từ gốc 'develop' (phát triển) → 'development' (sự phát triển) là danh từ."
+            },
+            {
+                question: "We have _______________ overcome many difficulties to achieve success.",
+                word: "patient",
+                options: ["patient", "patiently", "patience", "patienting"],
+                correct: "patiently",
+                explanation: "Cần một trạng từ để bổ nghĩa cho động từ 'overcome'. Từ gốc 'patient' (kiên nhẫn) → 'patiently' (một cách kiên nhẫn) là trạng từ."
+            }
+        ];
+
+        // Variables to track quiz state
+        let currentQuestion = 0;
+        let score = 0;
+        let answeredQuestions = new Array(quizData.length).fill(false);
+        let startTime = null;
+        let timerInterval = null;
+
+        // DOM Elements
+        const questionContainer = document.getElementById('question-container');
+        const progressBar = document.getElementById('progress');
+        const currentQuestionElement = document.getElementById('current-question');
+        const totalQuestionsElement = document.getElementById('total-questions');
+        const prevButton = document.getElementById('prev-btn');
+        const nextButton = document.getElementById('next-btn');
+        const resultsContainer = document.getElementById('results');
+        const scoreElement = document.getElementById('score');
+        const completionTimeElement = document.getElementById('completion-time');
+        const scoreDetailsElement = document.getElementById('score-details');
+        const restartButton = document.getElementById('restart-btn');
+        const timerElement = document.getElementById('timer');
+
+        // Initialize the quiz
+        function initQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            answeredQuestions = new Array(quizData.length).fill(false);
+            
+            totalQuestionsElement.textContent = quizData.length;
+            loadQuestion();
+            
+            startTime = new Date();
+            startTimer();
+            
+            resultsContainer.classList.add('hidden');
+            restartButton.addEventListener('click', restartQuiz);
+        }
+
+        // Load a question
+        function loadQuestion() {
+            const question = quizData[currentQuestion];
+            currentQuestionElement.textContent = currentQuestion + 1;
+            progressBar.style.width = `${((currentQuestion + 1) / quizData.length) * 100}%`;
+            
+            // Create HTML for the question
+            let questionHTML = `
+                <div class="question mb-6">
+                    <h3 class="text-xl font-semibold mb-2">Question ${currentQuestion + 1}: ${question.question}</h3>
+                    <p class="text-gray-600 mb-4">Root word: <span class="font-semibold">${question.word}</span></p>
+                    <div class="options space-y-3">
+            `;
+            
+            question.options.forEach((option, index) => {
+                questionHTML += `
+                    <div class="option p-3 border rounded-lg cursor-pointer flex items-center" data-option="${option}">
+                        <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center mr-3">
+                            <div class="option-indicator hidden w-3 h-3 rounded-full bg-blue-600"></div>
+                        </div>
+                        <span>${option}</span>
+                    </div>
+                `;
+            });
+            
+            questionHTML += `
+                    </div>
+                </div>
+                <div class="explanation p-4 mt-4 hidden"></div>
+            `;
+            
+            questionContainer.innerHTML = questionHTML;
+            
+            // Add event listeners to options
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => {
+                option.addEventListener('click', selectOption);
+            });
+            
+            // Update navigation buttons
+            updateNavigation();
+        }
+
+        // Select an option
+        function selectOption(e) {
+            if (answeredQuestions[currentQuestion]) return;
+            
+            const selectedOption = e.currentTarget;
+            const question = quizData[currentQuestion];
+            const userAnswer = selectedOption.getAttribute('data-option');
+            
+            // Mark as answered
+            answeredQuestions[currentQuestion] = true;
+            
+            // Add selected class to the option
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => {
+                option.classList.remove('selected');
+                option.removeEventListener('click', selectOption);
+            });
+            selectedOption.classList.add('selected');
+            
+            // Show the indicator
+            selectedOption.querySelector('.option-indicator').classList.remove('hidden');
+            
+            // Check if the answer is correct
+            if (userAnswer === question.correct) {
+                selectedOption.classList.add('correct');
+                score++;
+            } else {
+                selectedOption.classList.add('incorrect');
+                // Also highlight the correct answer
+                options.forEach(option => {
+                    if (option.getAttribute('data-option') === question.correct) {
+                        option.classList.add('correct');
+                        option.querySelector('.option-indicator').classList.remove('hidden');
+                    }
+                });
+            }
+            
+            // Show explanation
+            const explanationContainer = document.querySelector('.explanation');
+            explanationContainer.innerHTML = `
+                <p class="font-semibold">Giải thích:</p>
+                <p>${question.explanation}</p>
+            `;
+            explanationContainer.classList.remove('hidden');
+            
+            // Update navigation
+            updateNavigation();
+            
+            // Check if quiz is completed
+            if (allQuestionsAnswered()) {
+                finishQuiz();
+            }
+        }
+
+        // Update navigation buttons
+        function updateNavigation() {
+            prevButton.classList.toggle('hidden', currentQuestion === 0);
+            
+            if (currentQuestion === quizData.length - 1) {
+                if (answeredQuestions[currentQuestion]) {
+                    nextButton.textContent = 'Finish';
+                } else {
+                    nextButton.textContent = 'Next Question';
+                }
+            } else {
+                nextButton.textContent = 'Next Question';
+            }
+        }
+
+        // Navigate to next question
+        function nextQuestion() {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                loadQuestion();
+            } else if (allQuestionsAnswered()) {
+                finishQuiz();
+            }
+        }
+
+        // Navigate to previous question
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion();
+            }
+        }
+
+        // Check if all questions are answered
+        function allQuestionsAnswered() {
+            return answeredQuestions.every(answered => answered);
+        }
+
+        // Finish the quiz
+        function finishQuiz() {
+            clearInterval(timerInterval);
+            
+            // Calculate elapsed time
+            const endTime = new Date();
+            const timeDiff = endTime - startTime;
+            const minutes = Math.floor(timeDiff / 60000);
+            const seconds = Math.floor((timeDiff % 60000) / 1000);
+            
+            // Hide question container
+            questionContainer.innerHTML = '';
+            document.getElementById('navigation').classList.add('hidden');
+            
+            // Update results
+            scoreElement.textContent = score;
+            completionTimeElement.textContent = `${minutes} minutes ${seconds} seconds`;
+            
+            // Generate score analysis
+            let scoreDetails = '';
+            quizData.forEach((question, index) => {
+                scoreDetails += `<p class="mb-1">Question ${index + 1}: <span class="${answeredQuestions[index] ? (quizData[index].userAnswer === quizData[index].correct ? 'text-green-600 font-semibold' : 'text-red-600 font-semibold') : 'text-gray-600'}">
+                    ${answeredQuestions[index] ? (quizData[index].userAnswer === quizData[index].correct ? 'Correct' : 'Incorrect') : 'Not answered'}
+                </span></p>`;
+            });
+            scoreDetailsElement.innerHTML = scoreDetails;
+            
+            // Show results
+            resultsContainer.classList.remove('hidden');
+        }
+
+        // Restart the quiz
+        function restartQuiz() {
+            initQuiz();
+        }
+
+        // Start the timer
+        function startTimer() {
+            let seconds = 0;
+            timerInterval = setInterval(() => {
+                seconds++;
+                const minutes = Math.floor(seconds / 60);
+                const remainingSeconds = seconds % 60;
+                timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        // Event listeners
+        nextButton.addEventListener('click', nextQuestion);
+        prevButton.addEventListener('click', prevQuestion);
+
+        // Initialize the quiz
+        initQuiz();
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>

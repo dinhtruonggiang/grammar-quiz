@@ -1,0 +1,476 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Tiếng Anh - Word Forms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+        }
+        .option {
+            transition: all 0.3s ease;
+        }
+        .option:hover {
+            background-color: #e2e8f0;
+        }
+        .option.correct {
+            background-color: #c6f6d5;
+            border-color: #38a169;
+        }
+        .option.incorrect {
+            background-color: #fed7d7;
+            border-color: #e53e3e;
+        }
+        .explanation {
+            display: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+    <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="p-6 bg-blue-600 text-white">
+            <h1 class="text-2xl font-bold text-center">Bài Trắc Nghiệm Tiếng Anh - Word Forms</h1>
+            <p class="text-center mt-2">ILearn Smart World 9 - Use the correct form of the word given</p>
+        </div>
+
+        <div id="quiz-container" class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <div class="font-medium">Question: <span id="current-question">1</span>/<span id="total-questions">30</span></div>
+                <div class="font-medium">Score: <span id="score">0</span>/<span id="total-score">30</span></div>
+            </div>
+
+            <div id="question-container" class="mb-6">
+                <!-- Question will be inserted here -->
+            </div>
+
+            <div id="options-container" class="space-y-3 mb-6">
+                <!-- Options will be inserted here -->
+            </div>
+
+            <div id="explanation-container" class="p-4 bg-gray-100 rounded-lg mb-6 explanation">
+                <!-- Explanation will be inserted here -->
+            </div>
+
+            <div class="flex justify-between">
+                <button id="prev-btn" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md disabled:opacity-50 disabled:cursor-not-allowed">Câu trước</button>
+                <button id="next-btn" class="px-4 py-2 bg-blue-600 text-white rounded-md disabled:opacity-50 disabled:cursor-not-allowed">Câu tiếp theo</button>
+            </div>
+        </div>
+
+        <div id="result-container" class="p-6 hidden">
+            <h2 class="text-xl font-bold mb-4 text-center">Kết quả của bạn</h2>
+            <div class="text-center text-4xl font-bold mb-6">
+                <span id="final-score">0</span>/<span id="final-total">30</span>
+            </div>
+            <div class="text-center mb-6">
+                <span id="result-message" class="text-lg font-medium"></span>
+            </div>
+            <button id="restart-btn" class="w-full px-4 py-2 bg-blue-600 text-white rounded-md">Làm lại bài trắc nghiệm</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "Environmental _______ are working to save endangered species. (PROTECT)",
+                options: ["protections", "protectors", "protective", "protectively"],
+                correctAnswer: 1,
+                explanation: "Đáp án: protectors. Ở đây cần một danh từ chỉ người (người bảo vệ môi trường). Từ gốc PROTECT (bảo vệ) → protector (người bảo vệ) là danh từ chỉ người phù hợp với ngữ cảnh câu."
+            },
+            {
+                question: "The new technology will _______ the way we communicate. (REVOLUTION)",
+                options: ["revolutionize", "revolutionary", "revolution", "revolutionist"],
+                correctAnswer: 0,
+                explanation: "Đáp án: revolutionize. Câu cần một động từ. Từ gốc REVOLUTION (cuộc cách mạng) → revolutionize (cách mạng hóa) là dạng động từ phù hợp trong câu này."
+            },
+            {
+                question: "Her _______ to detail makes her an excellent editor. (ATTEND)",
+                options: ["attendance", "attention", "attentive", "attentively"],
+                correctAnswer: 1,
+                explanation: "Đáp án: attention. Cấu trúc 'attention to detail' (sự chú ý đến chi tiết) là cụm danh từ phổ biến. Từ gốc ATTEND (tham dự, chú ý) → attention (sự chú ý) là danh từ cần thiết trong ngữ cảnh này."
+            },
+            {
+                question: "The government has implemented _______ measures to reduce pollution. (EFFECT)",
+                options: ["effects", "effective", "effectiveness", "effectively"],
+                correctAnswer: 1,
+                explanation: "Đáp án: effective. Câu cần một tính từ bổ nghĩa cho danh từ 'measures'. Từ gốc EFFECT (hiệu quả, tác động) → effective (hiệu quả) là tính từ phù hợp để mô tả các biện pháp."
+            },
+            {
+                question: "The recycling program has led to a significant _______ in waste. (REDUCE)",
+                options: ["reducer", "reduced", "reducing", "reduction"],
+                correctAnswer: 3,
+                explanation: "Đáp án: reduction. Câu cần một danh từ theo sau 'a significant'. Từ gốc REDUCE (giảm) → reduction (sự giảm) là danh từ phù hợp trong ngữ cảnh này."
+            },
+            {
+                question: "The team worked _______ to finish the project before the deadline. (DILIGENT)",
+                options: ["diligence", "diligent", "diligently", "diligentness"],
+                correctAnswer: 2,
+                explanation: "Đáp án: diligently. Câu cần một trạng từ để bổ nghĩa cho động từ 'worked'. Từ gốc DILIGENT (chăm chỉ) → diligently (một cách chăm chỉ) là dạng trạng từ phù hợp."
+            },
+            {
+                question: "Her _______ of three languages helped her get the job. (KNOW)",
+                options: ["knowing", "knowledge", "knowledgeable", "knowingly"],
+                correctAnswer: 1,
+                explanation: "Đáp án: knowledge. Cấu trúc 'knowledge of + something' (kiến thức về điều gì) cần một danh từ. Từ gốc KNOW (biết) → knowledge (kiến thức, sự hiểu biết) là danh từ phù hợp."
+            },
+            {
+                question: "Scientists are concerned about the rapid _______ of the polar ice caps. (MELT)",
+                options: ["melting", "melted", "meltable", "meltdown"],
+                correctAnswer: 0,
+                explanation: "Đáp án: melting. Câu cần một danh từ theo sau 'the rapid'. Từ gốc MELT (tan chảy) → melting (sự tan chảy) là danh động từ (gerund) được dùng như danh từ, phù hợp với ngữ cảnh."
+            },
+            {
+                question: "We need to find a _______ solution to this complex problem. (PRACTICE)",
+                options: ["practice", "practical", "practicing", "practicality"],
+                correctAnswer: 1,
+                explanation: "Đáp án: practical. Câu cần một tính từ bổ nghĩa cho danh từ 'solution'. Từ gốc PRACTICE (thực hành) → practical (thực tế, khả thi) là tính từ phù hợp."
+            },
+            {
+                question: "The company is seeking _______ people to join their team. (CREATE)",
+                options: ["creation", "creative", "creator", "creatively"],
+                correctAnswer: 1,
+                explanation: "Đáp án: creative. Câu cần một tính từ để mô tả 'people'. Từ gốc CREATE (sáng tạo) → creative (sáng tạo) là tính từ phù hợp để mô tả người."
+            },
+            {
+                question: "His _______ to the community was recognized at the ceremony. (CONTRIBUTE)",
+                options: ["contribution", "contributor", "contributing", "contributive"],
+                correctAnswer: 0,
+                explanation: "Đáp án: contribution. Câu cần một danh từ chỉ hành động đóng góp. Từ gốc CONTRIBUTE (đóng góp) → contribution (sự đóng góp) là danh từ phù hợp với ngữ cảnh."
+            },
+            {
+                question: "The museum displays the _______ works of famous artists. (ORIGIN)",
+                options: ["origin", "original", "originally", "originate"],
+                correctAnswer: 1,
+                explanation: "Đáp án: original. Câu cần một tính từ bổ nghĩa cho danh từ 'works'. Từ gốc ORIGIN (nguồn gốc) → original (nguyên bản, gốc) là tính từ phù hợp."
+            },
+            {
+                question: "The documentary provides a _______ look at ocean pollution. (DEPTH)",
+                options: ["deep", "deepen", "depth", "deeply"],
+                correctAnswer: 0,
+                explanation: "Đáp án: deep. Câu cần một tính từ bổ nghĩa cho danh từ 'look'. Từ gốc DEPTH (độ sâu) → deep (sâu sắc) là tính từ phù hợp trong ngữ cảnh này."
+            },
+            {
+                question: "The newspaper published an _______ article about climate change. (INFORM)",
+                options: ["informer", "informative", "information", "informatively"],
+                correctAnswer: 1,
+                explanation: "Đáp án: informative. Câu cần một tính từ bổ nghĩa cho danh từ 'article'. Từ gốc INFORM (thông báo) → informative (cung cấp nhiều thông tin) là tính từ phù hợp."
+            },
+            {
+                question: "Children need proper _______ to develop healthy habits. (GUIDE)",
+                options: ["guidance", "guiding", "guide", "guided"],
+                correctAnswer: 0,
+                explanation: "Đáp án: guidance. Câu cần một danh từ không đếm được. Từ gốc GUIDE (hướng dẫn) → guidance (sự hướng dẫn, chỉ dẫn) là danh từ không đếm được phù hợp với ngữ cảnh."
+            },
+            {
+                question: "The _______ of the ancient temple attracts thousands of tourists. (BEAUTIFUL)",
+                options: ["beautify", "beautiful", "beauty", "beautifully"],
+                correctAnswer: 2,
+                explanation: "Đáp án: beauty. Câu cần một danh từ làm chủ ngữ. Từ gốc BEAUTIFUL (đẹp) → beauty (vẻ đẹp) là danh từ phù hợp với vị trí chủ ngữ trong câu."
+            },
+            {
+                question: "The company announced the _______ of a new smartphone model. (DEVELOP)",
+                options: ["developer", "developing", "development", "developed"],
+                correctAnswer: 2,
+                explanation: "Đáp án: development. Câu cần một danh từ theo sau 'the'. Từ gốc DEVELOP (phát triển) → development (sự phát triển) là danh từ phù hợp trong ngữ cảnh này."
+            },
+            {
+                question: "Regular exercise is _______ for maintaining good health. (ESSENCE)",
+                options: ["essential", "essentially", "essence", "essentiality"],
+                correctAnswer: 0,
+                explanation: "Đáp án: essential. Câu cần một tính từ sau động từ 'is'. Từ gốc ESSENCE (bản chất) → essential (thiết yếu, cần thiết) là tính từ phù hợp."
+            },
+            {
+                question: "Students should develop _______ thinking skills. (CRITIC)",
+                options: ["criticism", "critical", "critically", "critique"],
+                correctAnswer: 1,
+                explanation: "Đáp án: critical. Cấu trúc 'critical thinking' (tư duy phản biện) là cụm từ phổ biến, cần một tính từ bổ nghĩa cho danh từ 'thinking'. Từ gốc CRITIC (nhà phê bình) → critical (phản biện) là tính từ phù hợp."
+            },
+            {
+                question: "The science experiment was a great _______ for the students. (LEARN)",
+                options: ["learner", "learning", "learned", "learnable"],
+                correctAnswer: 1,
+                explanation: "Đáp án: learning. Câu cần một danh từ theo sau 'a great'. Từ gốc LEARN (học) → learning (việc học, sự học tập) là danh động từ được dùng như danh từ, phù hợp trong ngữ cảnh này."
+            },
+            {
+                question: "There has been a _______ increase in online shopping this year. (SIGNIFY)",
+                options: ["significant", "significance", "signification", "significantly"],
+                correctAnswer: 0,
+                explanation: "Đáp án: significant. Câu cần một tính từ bổ nghĩa cho danh từ 'increase'. Từ gốc SIGNIFY (biểu thị) → significant (đáng kể, quan trọng) là tính từ phù hợp."
+            },
+            {
+                question: "Her _______ to the field of medicine will never be forgotten. (CONTRIBUTE)",
+                options: ["contribution", "contributory", "contributor", "contributing"],
+                correctAnswer: 0,
+                explanation: "Đáp án: contribution. Câu cần một danh từ chỉ hành động đóng góp. Từ gốc CONTRIBUTE (đóng góp) → contribution (sự đóng góp) là danh từ phù hợp với ngữ cảnh."
+            },
+            {
+                question: "We need to find a more _______ way to use our natural resources. (SUSTAIN)",
+                options: ["sustained", "sustainability", "sustainable", "sustainably"],
+                correctAnswer: 2,
+                explanation: "Đáp án: sustainable. Câu cần một tính từ bổ nghĩa cho danh từ 'way'. Từ gốc SUSTAIN (duy trì) → sustainable (bền vững) là tính từ phù hợp."
+            },
+            {
+                question: "The _______ of the ancient manuscripts requires specialized skills. (PRESERVE)",
+                options: ["preserved", "preservative", "preservation", "preserving"],
+                correctAnswer: 2,
+                explanation: "Đáp án: preservation. Câu cần một danh từ theo sau 'the'. Từ gốc PRESERVE (bảo quản) → preservation (sự bảo quản, bảo tồn) là danh từ phù hợp."
+            },
+            {
+                question: "The teacher gave us _______ instructions for the assignment. (DETAIL)",
+                options: ["detailed", "details", "detailing", "detailer"],
+                correctAnswer: 0,
+                explanation: "Đáp án: detailed. Câu cần một tính từ bổ nghĩa cho danh từ 'instructions'. Từ gốc DETAIL (chi tiết) → detailed (chi tiết) là tính từ phù hợp."
+            },
+            {
+                question: "Regular _______ is important for maintaining a healthy lifestyle. (ACTIVE)",
+                options: ["active", "activity", "actively", "activation"],
+                correctAnswer: 1,
+                explanation: "Đáp án: activity. Câu cần một danh từ làm chủ ngữ. Từ gốc ACTIVE (hoạt động) → activity (hoạt động) là danh từ phù hợp."
+            },
+            {
+                question: "The scientists made an important _______ about climate change. (DISCOVER)",
+                options: ["discoverer", "discovered", "discovering", "discovery"],
+                correctAnswer: 3,
+                explanation: "Đáp án: discovery. Câu cần một danh từ sau 'an important'. Từ gốc DISCOVER (khám phá) → discovery (sự khám phá) là danh từ phù hợp với ngữ cảnh."
+            },
+            {
+                question: "She speaks English _______, even though it's not her first language. (FLUENT)",
+                options: ["fluently", "fluence", "fluency", "fluent"],
+                correctAnswer: 0,
+                explanation: "Đáp án: fluently. Câu cần một trạng từ bổ nghĩa cho động từ 'speaks'. Từ gốc FLUENT (lưu loát) → fluently (một cách lưu loát) là trạng từ phù hợp."
+            },
+            {
+                question: "Her _______ explanation helped us understand the complex theory. (CLEAR)",
+                options: ["clarity", "clearing", "clearly", "clear"],
+                correctAnswer: 3,
+                explanation: "Đáp án: clear. Câu cần một tính từ bổ nghĩa cho danh từ 'explanation'. Từ gốc CLEAR (rõ ràng) → clear (rõ ràng) là tính từ phù hợp."
+            },
+            {
+                question: "Many farmers have switched to _______ farming methods. (ORGAN)",
+                options: ["organ", "organic", "organically", "organism"],
+                correctAnswer: 1,
+                explanation: "Đáp án: organic. Câu cần một tính từ bổ nghĩa cho danh từ 'farming methods'. Từ gốc ORGAN (cơ quan) nhưng ở đây ám chỉ đến ORGANIC (hữu cơ) → organic (hữu cơ) là tính từ phù hợp."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answeredQuestions = Array(questions.length).fill(false);
+
+        const questionContainer = document.getElementById('question-container');
+        const optionsContainer = document.getElementById('options-container');
+        const explanationContainer = document.getElementById('explanation-container');
+        const currentQuestionElement = document.getElementById('current-question');
+        const totalQuestionsElement = document.getElementById('total-questions');
+        const scoreElement = document.getElementById('score');
+        const totalScoreElement = document.getElementById('total-score');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const quizContainer = document.getElementById('quiz-container');
+        const resultContainer = document.getElementById('result-container');
+        const finalScoreElement = document.getElementById('final-score');
+        const finalTotalElement = document.getElementById('final-total');
+        const resultMessageElement = document.getElementById('result-message');
+        const restartBtn = document.getElementById('restart-btn');
+
+        function loadQuestion() {
+            const question = questions[currentQuestion];
+            questionContainer.innerHTML = `<p class="text-lg font-medium">${currentQuestion + 1}. ${question.question}</p>`;
+            
+            optionsContainer.innerHTML = '';
+            question.options.forEach((option, index) => {
+                const isAnswered = answeredQuestions[currentQuestion];
+                const isCorrect = index === question.correctAnswer;
+                const isSelected = isAnswered && (isCorrect || selectedWrong === index);
+                let className = "option p-3 border rounded-md cursor-pointer";
+                
+                if (isAnswered) {
+                    if (isSelected) {
+                        className += isCorrect ? " correct" : " incorrect";
+                    }
+                    if (isCorrect && !isSelected) {
+                        className += " correct";
+                    }
+                }
+                
+                optionsContainer.innerHTML += `
+                    <div class="${className}" data-index="${index}">
+                        <span class="font-medium">${String.fromCharCode(65 + index)}.</span> ${option}
+                    </div>
+                `;
+            });
+
+            // Add event listeners to options
+            if (!answeredQuestions[currentQuestion]) {
+                document.querySelectorAll('.option').forEach(option => {
+                    option.addEventListener('click', selectOption);
+                });
+            }
+
+            // Update explanation visibility
+            if (answeredQuestions[currentQuestion]) {
+                explanationContainer.style.display = 'block';
+                explanationContainer.innerHTML = `<p class="font-medium text-gray-800">${question.explanation}</p>`;
+            } else {
+                explanationContainer.style.display = 'none';
+            }
+
+            // Update buttons
+            prevBtn.disabled = currentQuestion === 0;
+            if (currentQuestion === questions.length - 1) {
+                const allAnswered = answeredQuestions.every(answered => answered);
+                nextBtn.textContent = allAnswered ? "Xem kết quả" : "Câu tiếp theo";
+                nextBtn.disabled = !answeredQuestions[currentQuestion];
+            } else {
+                nextBtn.textContent = "Câu tiếp theo";
+                nextBtn.disabled = !answeredQuestions[currentQuestion];
+            }
+
+            // Update question count
+            currentQuestionElement.textContent = currentQuestion + 1;
+            totalQuestionsElement.textContent = questions.length;
+        }
+
+        let selectedWrong = -1;
+
+        function selectOption() {
+            if (answeredQuestions[currentQuestion]) return;
+
+            const selectedIndex = parseInt(this.dataset.index);
+            const correctIndex = questions[currentQuestion].correctAnswer;
+
+            // Mark question as answered
+            answeredQuestions[currentQuestion] = true;
+
+            // Update score
+            if (selectedIndex === correctIndex) {
+                score++;
+                scoreElement.textContent = score;
+            } else {
+                selectedWrong = selectedIndex;
+            }
+
+            // Show explanation
+            explanationContainer.style.display = 'block';
+            explanationContainer.innerHTML = `<p class="font-medium text-gray-800">${questions[currentQuestion].explanation}</p>`;
+
+            // Update styles for all options
+            document.querySelectorAll('.option').forEach((option, index) => {
+                option.removeEventListener('click', selectOption);
+                if (index === correctIndex) {
+                    option.classList.add('correct');
+                } else if (index === selectedIndex && selectedIndex !== correctIndex) {
+                    option.classList.add('incorrect');
+                }
+            });
+
+            // Enable next button
+            nextBtn.disabled = false;
+
+            // Check if this is the last question and all questions are answered
+            if (currentQuestion === questions.length - 1 && answeredQuestions.every(answered => answered)) {
+                nextBtn.textContent = "Xem kết quả";
+            }
+        }
+
+        function showNextQuestion() {
+            if (currentQuestion === questions.length - 1) {
+                // Check if all questions are answered
+                if (answeredQuestions.every(answered => answered)) {
+                    showResults();
+                }
+                return;
+            }
+            
+            currentQuestion++;
+            selectedWrong = -1;
+            loadQuestion();
+        }
+
+        function showPreviousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                selectedWrong = -1;
+                loadQuestion();
+            }
+        }
+
+        function showResults() {
+            quizContainer.style.display = 'none';
+            resultContainer.style.display = 'block';
+            
+            finalScoreElement.textContent = score;
+            finalTotalElement.textContent = questions.length;
+            
+            let message = '';
+            const percentage = (score / questions.length) * 100;
+            
+            if (percentage >= 90) {
+                message = 'Xuất sắc! Bạn thực sự hiểu rõ về cách sử dụng các dạng từ!';
+            } else if (percentage >= 75) {
+                message = 'Rất tốt! Bạn nắm vững phần lớn kiến thức về các dạng từ.';
+            } else if (percentage >= 60) {
+                message = 'Khá tốt! Bạn đã nắm được các kiến thức cơ bản.';
+            } else if (percentage >= 40) {
+                message = 'Bạn cần cố gắng hơn. Hãy xem lại phần giải thích để hiểu rõ hơn.';
+            } else {
+                message = 'Bạn cần học kỹ lại các quy tắc về dạng từ. Đừng nản lòng, hãy tiếp tục cố gắng!';
+            }
+            
+            resultMessageElement.textContent = message;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            answeredQuestions = Array(questions.length).fill(false);
+            selectedWrong = -1;
+            
+            scoreElement.textContent = score;
+            resultContainer.style.display = 'none';
+            quizContainer.style.display = 'block';
+            
+            loadQuestion();
+        }
+
+        // Event listeners
+        prevBtn.addEventListener('click', showPreviousQuestion);
+        nextBtn.addEventListener('click', showNextQuestion);
+        restartBtn.addEventListener('click', restartQuiz);
+
+        // Initialize quiz
+        totalQuestionsElement.textContent = questions.length;
+        totalScoreElement.textContent = questions.length;
+        finalTotalElement.textContent = questions.length;
+        loadQuestion();
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>

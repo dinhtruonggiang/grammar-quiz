@@ -1,0 +1,474 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Tập Hình Thức Từ - ILearn Smart World 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+        }
+        .option-label {
+            transition: all 0.3s;
+            border: 2px solid #e2e8f0;
+        }
+        .option-label:hover {
+            border-color: #4299e1;
+        }
+        .correct {
+            background-color: #c6f6d5;
+            border-color: #48bb78;
+        }
+        .incorrect {
+            background-color: #fed7d7;
+            border-color: #f56565;
+        }
+        .explanation {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        .explanation.show {
+            max-height: 500px;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4">
+    <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-6">
+        <h1 class="text-2xl font-bold text-center text-blue-700 mb-6">Bài Tập Chọn Hình Thức Đúng Của Từ</h1>
+        <p class="text-gray-600 text-center mb-8">ILearn Smart World 9 Student Book - Use the correct form of the word given in each sentence</p>
+        
+        <div id="quiz-container">
+            <div id="progress-container" class="mb-4">
+                <div class="flex justify-between mb-1">
+                    <span class="text-sm font-medium">Tiến độ</span>
+                    <span id="progress-text" class="text-sm font-medium">0/30</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+                </div>
+            </div>
+            
+            <div id="question-container" class="mb-6">
+                <!-- Questions will be loaded here -->
+            </div>
+            
+            <div id="navigation" class="flex justify-between mt-6">
+                <button id="prev-btn" class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed" disabled>Câu trước</button>
+                <button id="next-btn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed" disabled>Câu tiếp theo</button>
+            </div>
+        </div>
+        
+        <div id="results-container" class="hidden">
+            <h2 class="text-xl font-bold text-center mb-4">Kết quả</h2>
+            <div class="text-center mb-6">
+                <p class="text-lg">Điểm của bạn: <span id="score" class="font-bold text-blue-700"></span>/30</p>
+                <p class="text-lg">Số câu đúng: <span id="correct-answers" class="font-bold text-green-600"></span></p>
+            </div>
+            <div id="answers-review" class="mt-6 border-t pt-4">
+                <h3 class="font-bold mb-2">Xem lại các câu trả lời:</h3>
+                <ul id="answers-list" class="list-disc pl-5 space-y-2">
+                    <!-- Answers will be displayed here -->
+                </ul>
+            </div>
+            <div class="text-center mt-8">
+                <button id="retry-btn" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">Làm lại bài tập</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "Many people are trying to raise public __________ about climate change. (aware)",
+                options: ["aware", "awareness", "awaring", "awarefully"],
+                correct: 1,
+                explanation: "Cần dùng danh từ 'awareness' (sự nhận thức) sau cụm từ 'raise public'. 'Aware' là tính từ, không phù hợp trong ngữ cảnh này. Đây là danh từ được tạo thành bằng cách thêm hậu tố -ness vào tính từ aware."
+            },
+            {
+                question: "The government is investing in renewable energy to reduce __________ on fossil fuels. (depend)",
+                options: ["depend", "dependency", "depending", "dependent"],
+                correct: 1,
+                explanation: "Cần dùng danh từ 'dependency' (sự phụ thuộc) sau động từ 'reduce'. 'Depend' là động từ, không phù hợp với vị trí đối tượng của động từ 'reduce'. Danh từ được tạo bằng cách thêm hậu tố -ency vào động từ depend."
+            },
+            {
+                question: "Scientists have made a significant __________ in cancer research. (discover)",
+                options: ["discover", "discovery", "discovering", "discoverable"],
+                correct: 1,
+                explanation: "Cần dùng danh từ 'discovery' (sự khám phá) sau tính từ 'significant'. 'Discover' là động từ và không phù hợp trong ngữ cảnh này. Danh từ được tạo bằng cách thêm hậu tố -y vào động từ discover."
+            },
+            {
+                question: "It is __________ to see wild elephants in their natural habitat. (impress)",
+                options: ["impress", "impression", "impressive", "impressively"],
+                correct: 2,
+                explanation: "Cần dùng tính từ 'impressive' (ấn tượng) sau động từ 'is'. Vị trí này cần một tính từ để bổ nghĩa cho câu. Tính từ được tạo bằng cách thêm hậu tố -ive vào từ gốc impress."
+            },
+            {
+                question: "The __________ of the ancient temple attracts thousands of tourists every year. (beautiful)",
+                options: ["beautiful", "beautify", "beauty", "beautifully"],
+                correct: 2,
+                explanation: "Cần dùng danh từ 'beauty' (vẻ đẹp) làm chủ ngữ của câu. 'Beautiful' là tính từ nên không thể làm chủ ngữ. Danh từ được tạo bằng cách thay đổi hậu tố -iful thành -y."
+            },
+            {
+                question: "The books were arranged in __________ order on the shelf. (alphabet)",
+                options: ["alphabet", "alphabetize", "alphabetical", "alphabetically"],
+                correct: 2,
+                explanation: "Cần dùng tính từ 'alphabetical' (theo thứ tự bảng chữ cái) để mô tả từ 'order'. Vị trí này cần một tính từ để bổ nghĩa cho danh từ. Tính từ được tạo bằng cách thêm hậu tố -ical vào danh từ alphabet."
+            },
+            {
+                question: "Students should develop __________ skills through teamwork activities. (communicate)",
+                options: ["communicate", "communication", "communicative", "communicatively"],
+                correct: 1,
+                explanation: "Cần dùng danh từ 'communication' (giao tiếp) trước danh từ 'skills'. Đây là cụm danh từ ghép, trong đó danh từ đầu tiên bổ nghĩa cho danh từ thứ hai. Danh từ được tạo bằng cách thêm hậu tố -ation vào động từ communicate."
+            },
+            {
+                question: "The hotel offers __________ accommodations for all guests. (luxury)",
+                options: ["luxury", "luxurious", "luxuriate", "luxuriously"],
+                correct: 1,
+                explanation: "Cần dùng tính từ 'luxurious' (sang trọng) để mô tả danh từ 'accommodations'. Vị trí này cần một tính từ để bổ nghĩa cho danh từ. Tính từ được tạo bằng cách thêm hậu tố -ious vào danh từ luxury."
+            },
+            {
+                question: "There has been a __________ in the number of wild tigers in recent years. (reduce)",
+                options: ["reduce", "reduction", "reducing", "reduced"],
+                correct: 1,
+                explanation: "Cần dùng danh từ 'reduction' (sự giảm) sau 'a'. Vị trí này cần một danh từ, không phải động từ 'reduce'. Danh từ được tạo bằng cách thêm hậu tố -tion vào động từ reduce."
+            },
+            {
+                question: "Many people find it __________ to speak in front of large audiences. (nerve)",
+                options: ["nerve", "nervous", "nervously", "nervousness"],
+                correct: 1,
+                explanation: "Cần dùng tính từ 'nervous' (lo lắng) sau 'it'. Vị trí này cần một tính từ để mô tả cảm giác. Tính từ được tạo bằng cách thêm hậu tố -ous vào danh từ nerve."
+            },
+            {
+                question: "Recycling helps to protect the __________ for future generations. (environ)",
+                options: ["environ", "environmental", "environmentally", "environment"],
+                correct: 3,
+                explanation: "Cần dùng danh từ 'environment' (môi trường) là đối tượng của động từ 'protect'. Vị trí này cần một danh từ. Danh từ được tạo bằng cách thêm hậu tố -ment vào từ gốc environ."
+            },
+            {
+                question: "The company made a __________ to develop more eco-friendly products. (decide)",
+                options: ["decide", "decision", "decisive", "decisively"],
+                correct: 1,
+                explanation: "Cần dùng danh từ 'decision' (quyết định) sau 'a'. Vị trí này cần một danh từ, không phải động từ 'decide'. Danh từ được tạo bằng cách thêm hậu tố -sion vào động từ decide."
+            },
+            {
+                question: "Regular exercise is __________ to maintaining good health. (essence)",
+                options: ["essence", "essential", "essentially", "essentialness"],
+                correct: 1,
+                explanation: "Cần dùng tính từ 'essential' (cần thiết) sau động từ 'is'. Vị trí này cần một tính từ. Tính từ được tạo bằng cách thêm hậu tố -tial vào danh từ essence."
+            },
+            {
+                question: "The teacher asked students to write a __________ of the story they read. (summarize)",
+                options: ["summarize", "summarizing", "summary", "summarization"],
+                correct: 2,
+                explanation: "Cần dùng danh từ 'summary' (bản tóm tắt) sau 'a'. Vị trí này cần một danh từ, không phải động từ 'summarize'. Danh từ được tạo bằng cách thay đổi hậu tố -ize thành -y."
+            },
+            {
+                question: "Plastic pollution has a harmful __________ on marine life. (affect)",
+                options: ["affect", "affectation", "affective", "effect"],
+                correct: 3,
+                explanation: "Cần dùng danh từ 'effect' (tác động, ảnh hưởng) sau tính từ 'harmful'. Lưu ý 'affect' là động từ còn 'effect' là danh từ. Đây là sự thay đổi từ loại từ động từ sang danh từ."
+            },
+            {
+                question: "The ancient ruins are of great __________ to archaeologists. (important)",
+                options: ["important", "importance", "importantly", "importantness"],
+                correct: 1,
+                explanation: "Cần dùng danh từ 'importance' (tầm quan trọng) sau 'great'. Vị trí này cần một danh từ, không phải tính từ 'important'. Danh từ được tạo bằng cách thêm hậu tố -ance vào tính từ important."
+            },
+            {
+                question: "Her __________ to become a doctor motivated her to study hard. (determine)",
+                options: ["determine", "determining", "determiner", "determination"],
+                correct: 3,
+                explanation: "Cần dùng danh từ 'determination' (quyết tâm) làm chủ ngữ của câu. Vị trí này cần một danh từ. Danh từ được tạo bằng cách thêm hậu tố -ation vào động từ determine."
+            },
+            {
+                question: "The company is working on an __________ solution to the problem. (innovate)",
+                options: ["innovate", "innovation", "innovative", "innovatively"],
+                correct: 2,
+                explanation: "Cần dùng tính từ 'innovative' (đổi mới, sáng tạo) để mô tả danh từ 'solution'. Vị trí này cần một tính từ. Tính từ được tạo bằng cách thêm hậu tố -ive vào động từ innovate."
+            },
+            {
+                question: "His __________ for photography started when he was just a child. (passionate)",
+                options: ["passionate", "passion", "passionately", "passioning"],
+                correct: 1,
+                explanation: "Cần dùng danh từ 'passion' (niềm đam mê) làm chủ ngữ của câu. 'Passionate' là tính từ nên không thể làm chủ ngữ. Danh từ được tạo bằng cách bỏ hậu tố -ate từ tính từ passionate."
+            },
+            {
+                question: "Regular __________ to the museum helps children learn about art. (visit)",
+                options: ["visit", "visitor", "visits", "visitation"],
+                correct: 2,
+                explanation: "Cần dùng danh từ số nhiều 'visits' (những lần thăm) vì đây là một hoạt động thường xuyên. Lưu ý cần biến đổi danh từ 'visit' sang dạng số nhiều bằng cách thêm -s."
+            },
+            {
+                question: "We need to find a __________ solution to this complex problem. (practice)",
+                options: ["practice", "practicality", "practical", "practically"],
+                correct: 2,
+                explanation: "Cần dùng tính từ 'practical' (thực tế) để mô tả danh từ 'solution'. Vị trí này cần một tính từ. Tính từ được tạo bằng cách thêm hậu tố -al vào danh từ practice."
+            },
+            {
+                question: "The __________ of the ancient city was a significant historical event. (destroy)",
+                options: ["destroy", "destroyer", "destructive", "destruction"],
+                correct: 3,
+                explanation: "Cần dùng danh từ 'destruction' (sự phá hủy) làm chủ ngữ của câu. Vị trí này cần một danh từ. Danh từ được tạo bằng cách thêm hậu tố -tion vào động từ destroy và có sự thay đổi spelling."
+            },
+            {
+                question: "The company is making __________ efforts to reduce its carbon footprint. (continue)",
+                options: ["continue", "continuance", "continuous", "continually"],
+                correct: 2,
+                explanation: "Cần dùng tính từ 'continuous' (liên tục) để mô tả danh từ 'efforts'. Vị trí này cần một tính từ. Tính từ được tạo bằng cách thêm hậu tố -ous vào từ gốc continue, với sự thay đổi về spelling."
+            },
+            {
+                question: "The __________ of the internet has transformed the way we live and work. (develop)",
+                options: ["develop", "developer", "developing", "development"],
+                correct: 3,
+                explanation: "Cần dùng danh từ 'development' (sự phát triển) làm chủ ngữ của câu. Vị trí này cần một danh từ. Danh từ được tạo bằng cách thêm hậu tố -ment vào động từ develop."
+            },
+            {
+                question: "It is __________ to drive without a seatbelt in most countries. (legal)",
+                options: ["legal", "legally", "legalize", "illegal"],
+                correct: 3,
+                explanation: "Cần dùng tính từ 'illegal' (bất hợp pháp) sau động từ 'is'. Vị trí này cần một tính từ. Tính từ được tạo bằng cách thêm tiếp đầu ngữ il- (có nghĩa là 'not') vào tính từ legal."
+            },
+            {
+                question: "Scientists are studying the __________ effects of climate change. (environment)",
+                options: ["environment", "environmental", "environmentally", "environmentalism"],
+                correct: 1,
+                explanation: "Cần dùng tính từ 'environmental' (liên quan đến môi trường) để mô tả danh từ 'effects'. Vị trí này cần một tính từ. Tính từ được tạo bằng cách thêm hậu tố -al vào danh từ environment."
+            },
+            {
+                question: "The concert was a huge __________ with tickets selling out in minutes. (succeed)",
+                options: ["succeed", "successful", "successfully", "success"],
+                correct: 3,
+                explanation: "Cần dùng danh từ 'success' (thành công) sau tính từ 'huge'. Vị trí này cần một danh từ. Danh từ được tạo từ động từ succeed bằng cách thay đổi -eed thành -ess."
+            },
+            {
+                question: "Many people find it __________ to learn a new language as adults. (challenge)",
+                options: ["challenge", "challenger", "challenging", "challenged"],
+                correct: 2,
+                explanation: "Cần dùng tính từ 'challenging' (thách thức) sau 'it'. Vị trí này cần một tính từ. Tính từ được tạo bằng cách thêm hậu tố -ing vào động từ challenge."
+            },
+            {
+                question: "Regular __________ is important for maintaining physical health. (active)",
+                options: ["active", "activity", "activate", "actively"],
+                correct: 1,
+                explanation: "Cần dùng danh từ 'activity' (hoạt động) làm chủ ngữ của câu. Vị trí này cần một danh từ. Danh từ được tạo bằng cách thêm hậu tố -ity vào tính từ active."
+            },
+            {
+                question: "The __________ of electricity revolutionized modern life. (invent)",
+                options: ["invent", "inventor", "inventive", "invention"],
+                correct: 3,
+                explanation: "Cần dùng danh từ 'invention' (sự phát minh) làm chủ ngữ của câu. Vị trí này cần một danh từ. Danh từ được tạo bằng cách thêm hậu tố -tion vào động từ invent."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answeredQuestions = 0;
+        const answered = new Array(questions.length).fill(false);
+        
+        const questionContainer = document.getElementById('question-container');
+        const nextBtn = document.getElementById('next-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const resultsContainer = document.getElementById('results-container');
+        const quizContainer = document.getElementById('quiz-container');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        
+        function showQuestion(index) {
+            const question = questions[index];
+            let questionHTML = `
+                <div class="p-4 border rounded-lg bg-blue-50">
+                    <p class="text-lg font-semibold mb-3">Câu ${index + 1}: ${question.question}</p>
+                    <div class="space-y-2">
+            `;
+            
+            question.options.forEach((option, i) => {
+                const disabled = answered[index] ? 'disabled' : '';
+                const checked = answered[index] && i === question.selected ? 'checked' : '';
+                let labelClass = 'option-label flex items-center p-3 rounded-lg cursor-pointer';
+                
+                if (answered[index]) {
+                    if (i === question.selected && i === question.correct) {
+                        labelClass += ' correct';
+                    } else if (i === question.selected && i !== question.correct) {
+                        labelClass += ' incorrect';
+                    } else if (i === question.correct) {
+                        labelClass += ' correct';
+                    }
+                }
+                
+                questionHTML += `
+                    <label class="${labelClass}">
+                        <input type="radio" name="question${index}" value="${i}" ${checked} ${disabled} class="mr-2" onclick="selectOption(${index}, ${i})">
+                        <span>${option}</span>
+                    </label>
+                `;
+            });
+            
+            questionHTML += `
+                    </div>
+                    <div class="explanation mt-4 p-3 bg-yellow-50 rounded border border-yellow-200 ${answered[index] ? 'show' : ''}">
+                        <p class="font-semibold text-yellow-800">Giải thích:</p>
+                        <p class="text-yellow-700">${question.explanation}</p>
+                    </div>
+                </div>
+            `;
+            
+            questionContainer.innerHTML = questionHTML;
+            
+            // Update buttons
+            prevBtn.disabled = index === 0;
+            nextBtn.disabled = !answered[index] || (index === questions.length - 1 && answeredQuestions < questions.length);
+            
+            // Show "Xem kết quả" text on the next button when at the last question
+            if (index === questions.length - 1 && answeredQuestions === questions.length) {
+                nextBtn.textContent = "Xem kết quả";
+                nextBtn.disabled = false;
+            } else {
+                nextBtn.textContent = "Câu tiếp theo";
+            }
+            
+            // Update progress
+            updateProgress();
+        }
+        
+        function selectOption(questionIndex, optionIndex) {
+            if (answered[questionIndex]) return;
+            
+            questions[questionIndex].selected = optionIndex;
+            answered[questionIndex] = true;
+            answeredQuestions++;
+            
+            if (optionIndex === questions[questionIndex].correct) {
+                score++;
+            }
+            
+            // Show explanation
+            const explanationElement = document.querySelector('.explanation');
+            explanationElement.classList.add('show');
+            
+            // Enable next button
+            nextBtn.disabled = questionIndex === questions.length - 1 && answeredQuestions < questions.length;
+            
+            // Show "Xem kết quả" text when at the last question and all questions answered
+            if (questionIndex === questions.length - 1 && answeredQuestions === questions.length) {
+                nextBtn.textContent = "Xem kết quả";
+                nextBtn.disabled = false;
+            }
+            
+            // Highlight correct and incorrect options
+            const options = document.querySelectorAll('.option-label');
+            options.forEach((option, i) => {
+                if (i === questions[questionIndex].correct) {
+                    option.classList.add('correct');
+                } else if (i === optionIndex && optionIndex !== questions[questionIndex].correct) {
+                    option.classList.add('incorrect');
+                }
+            });
+            
+            // Update progress
+            updateProgress();
+        }
+        
+        function updateProgress() {
+            const percentage = (answeredQuestions / questions.length) * 100;
+            progressBar.style.width = `${percentage}%`;
+            progressText.textContent = `${answeredQuestions}/${questions.length}`;
+        }
+        
+        function navigateNext() {
+            if (currentQuestion === questions.length - 1 && answeredQuestions === questions.length) {
+                showResults();
+            } else if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            }
+        }
+        
+        function navigatePrev() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+            }
+        }
+        
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultsContainer.classList.remove('hidden');
+            
+            document.getElementById('score').textContent = score;
+            document.getElementById('correct-answers').textContent = score;
+            
+            const answersList = document.getElementById('answers-list');
+            answersList.innerHTML = '';
+            
+            questions.forEach((question, index) => {
+                const listItem = document.createElement('li');
+                const isCorrect = question.selected === question.correct;
+                
+                listItem.innerHTML = `
+                    <span class="font-medium">Câu ${index + 1}:</span> 
+                    <span class="${isCorrect ? 'text-green-600' : 'text-red-600'}">
+                        ${isCorrect ? 'Đúng' : 'Sai'} - Bạn chọn "${question.options[question.selected]}", 
+                        ${!isCorrect ? `đáp án đúng là "${question.options[question.correct]}"` : ''}
+                    </span>
+                `;
+                
+                answersList.appendChild(listItem);
+            });
+        }
+        
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            answeredQuestions = 0;
+            questions.forEach(q => delete q.selected);
+            answered.fill(false);
+            
+            quizContainer.classList.remove('hidden');
+            resultsContainer.classList.add('hidden');
+            
+            nextBtn.textContent = "Câu tiếp theo";
+            showQuestion(currentQuestion);
+        }
+        
+        // Initialize quiz
+        document.addEventListener('DOMContentLoaded', () => {
+            showQuestion(currentQuestion);
+            nextBtn.addEventListener('click', navigateNext);
+            prevBtn.addEventListener('click', navigatePrev);
+            document.getElementById('retry-btn').addEventListener('click', restartQuiz);
+            
+            // Add event listeners for radio inputs
+            window.selectOption = selectOption;
+        });
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>

@@ -1,0 +1,465 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Formation Quiz - ILearn Smart World 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .option {
+            transition: all 0.3s ease;
+        }
+        .option:hover:not(.disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .correct {
+            background-color: #d1fae5 !important;
+            border-color: #10b981 !important;
+        }
+        .incorrect {
+            background-color: #fee2e2 !important;
+            border-color: #ef4444 !important;
+        }
+        .disabled {
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto p-4 max-w-4xl">
+        <!-- Header -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h1 class="text-2xl font-bold text-center text-blue-800">Bài tập Word Formation</h1>
+            <p class="text-center text-gray-600">ILearn Smart World 9 Student Book</p>
+            <p class="text-center mt-2 text-sm text-gray-500">Điền từ đúng vào chỗ trống dựa trên từ gốc được cho trong ngoặc.</p>
+        </div>
+
+        <!-- Quiz Container -->
+        <div id="quiz-container" class="bg-white rounded-lg shadow-md p-6">
+            <!-- Progress Bar -->
+            <div class="mb-6">
+                <div class="flex justify-between mb-1">
+                    <span class="text-sm font-medium text-blue-700" id="progress-text">Câu 1/30</span>
+                    <span class="text-sm font-medium text-blue-700" id="score-display">Điểm: 0/30</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full" style="width: 3.33%"></div>
+                </div>
+            </div>
+
+            <!-- Question Container -->
+            <div id="question-container" class="mb-6">
+                <p id="question-text" class="text-lg font-medium mb-4"></p>
+                <div id="options-container" class="space-y-3"></div>
+            </div>
+
+            <!-- Explanation Container (Initially Hidden) -->
+            <div id="explanation-container" class="mb-6 p-4 bg-blue-50 rounded-md border border-blue-200 hidden">
+                <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                <p id="explanation-text" class="text-gray-700"></p>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="flex justify-between">
+                <button id="prev-btn" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md font-medium hover:bg-gray-300 transition disabled:opacity-50" disabled>Câu trước</button>
+                <button id="next-btn" class="px-4 py-2 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition disabled:opacity-50" disabled>Câu tiếp theo</button>
+            </div>
+        </div>
+
+        <!-- Results Container (Initially Hidden) -->
+        <div id="results-container" class="bg-white rounded-lg shadow-md p-6 mt-6 hidden">
+            <h2 class="text-xl font-bold text-center text-blue-800 mb-4">Kết quả</h2>
+            <div class="flex justify-center mb-4">
+                <div class="w-32 h-32 rounded-full flex items-center justify-center border-4 border-blue-500">
+                    <span id="final-score" class="text-2xl font-bold text-blue-800"></span>
+                </div>
+            </div>
+            <p id="performance-message" class="text-center text-gray-700 mb-4"></p>
+            <div class="flex justify-center">
+                <button id="restart-btn" class="px-6 py-2 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition">Làm lại bài</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz Data
+        const quizData = [
+            {
+                question: "The _______ (introduce) of new technology has changed the way we communicate.",
+                options: ["introduce", "introduction", "introductive", "introducing"],
+                correct: "introduction",
+                explanation: "Ta cần một danh từ trong câu này. 'Introduction' là danh từ của động từ 'introduce', có nghĩa là 'sự giới thiệu, sự đưa vào'."
+            },
+            {
+                question: "Scientists are concerned about the _______ (warm) of the Earth's atmosphere.",
+                options: ["warming", "warmth", "warmer", "warm"],
+                correct: "warming",
+                explanation: "Ta cần danh từ chỉ quá trình. 'Warming' là danh động từ của 'warm', biểu thị quá trình làm ấm lên, phù hợp với ngữ cảnh về sự nóng lên của khí quyển."
+            },
+            {
+                question: "She's a very _______ (create) artist who always thinks outside the box.",
+                options: ["create", "creation", "creature", "creative"],
+                correct: "creative",
+                explanation: "Ta cần một tính từ để bổ nghĩa cho danh từ 'artist'. 'Creative' là tính từ của 'create', có nghĩa là 'sáng tạo'."
+            },
+            {
+                question: "The government is investing in renewable energy to ensure _______ (sustain) development.",
+                options: ["sustain", "sustained", "sustainable", "sustainability"],
+                correct: "sustainable",
+                explanation: "Ta cần một tính từ bổ nghĩa cho danh từ 'development'. 'Sustainable' là tính từ có nghĩa là 'bền vững', phù hợp với cụm 'phát triển bền vững'."
+            },
+            {
+                question: "Regular _______ (exercise) can help improve your physical and mental health.",
+                options: ["exercise", "exercising", "exercised", "exercises"],
+                correct: "exercise",
+                explanation: "Ta cần một danh từ làm chủ ngữ của câu. 'Exercise' đã là danh từ, có nghĩa là 'sự tập luyện, bài tập'."
+            },
+            {
+                question: "Many teenagers find it _______ (challenge) to balance schoolwork and social activities.",
+                options: ["challenge", "challenging", "challenged", "challenger"],
+                correct: "challenging",
+                explanation: "Ta cần một tính từ sau 'find it'. 'Challenging' là tính từ có nghĩa là 'đầy thách thức, khó khăn'."
+            },
+            {
+                question: "The book provides a _______ (describe) account of life in ancient Rome.",
+                options: ["describe", "description", "descriptive", "describing"],
+                correct: "descriptive",
+                explanation: "Ta cần một tính từ bổ nghĩa cho danh từ 'account'. 'Descriptive' là tính từ có nghĩa là 'mô tả chi tiết'."
+            },
+            {
+                question: "There has been a significant _______ (improve) in air quality since the new regulations.",
+                options: ["improve", "improvement", "improved", "improving"],
+                correct: "improvement",
+                explanation: "Ta cần một danh từ sau 'a significant'. 'Improvement' là danh từ từ động từ 'improve', có nghĩa là 'sự cải thiện, sự tiến bộ'."
+            },
+            {
+                question: "The city council made an _______ (announce) about the new park project.",
+                options: ["announce", "announcement", "announcing", "announced"],
+                correct: "announcement",
+                explanation: "Ta cần một danh từ sau mạo từ 'an'. 'Announcement' là danh từ từ động từ 'announce', có nghĩa là 'thông báo, tuyên bố'."
+            },
+            {
+                question: "Solar power is an _______ (environment) friendly source of energy.",
+                options: ["environment", "environmental", "environmentally", "environments"],
+                correct: "environmentally",
+                explanation: "Ta cần một trạng từ để bổ nghĩa cho tính từ 'friendly'. 'Environmentally' là trạng từ có nghĩa là 'về mặt môi trường'."
+            },
+            {
+                question: "She has always been _______ (passion) about music and the arts.",
+                options: ["passion", "passionate", "passioned", "passionless"],
+                correct: "passionate",
+                explanation: "Ta cần một tính từ sau 'been'. 'Passionate' là tính từ có nghĩa là 'đam mê, nhiệt tình'."
+            },
+            {
+                question: "Air pollution can cause _______ (breath) problems in children and the elderly.",
+                options: ["breath", "breathing", "breathe", "breathless"],
+                correct: "breathing",
+                explanation: "Ta cần một tính từ bổ nghĩa cho 'problems'. 'Breathing' ở đây là dạng V-ing đóng vai trò tính từ, có nghĩa là 'liên quan đến hơi thở'."
+            },
+            {
+                question: "The _______ (discover) of penicillin was a major breakthrough in medicine.",
+                options: ["discover", "discovery", "discoverable", "discoverer"],
+                correct: "discovery",
+                explanation: "Ta cần một danh từ làm chủ ngữ. 'Discovery' là danh từ từ động từ 'discover', có nghĩa là 'sự khám phá, phát hiện'."
+            },
+            {
+                question: "The company provides _______ (train) for all new employees.",
+                options: ["train", "trainer", "training", "trained"],
+                correct: "training",
+                explanation: "Ta cần một danh từ làm tân ngữ của 'provides'. 'Training' là danh từ có nghĩa là 'sự đào tạo, huấn luyện'."
+            },
+            {
+                question: "There was a _______ (discuss) about climate change at the conference.",
+                options: ["discuss", "discussed", "discussion", "discussing"],
+                correct: "discussion",
+                explanation: "Ta cần một danh từ sau 'a'. 'Discussion' là danh từ từ động từ 'discuss', có nghĩa là 'cuộc thảo luận'."
+            },
+            {
+                question: "The museum has an _______ (impress) collection of ancient artifacts.",
+                options: ["impress", "impressive", "impression", "impressed"],
+                correct: "impressive",
+                explanation: "Ta cần một tính từ bổ nghĩa cho danh từ 'collection'. 'Impressive' là tính từ có nghĩa là 'ấn tượng, gây ấn tượng mạnh'."
+            },
+            {
+                question: "The government has implemented new _______ (regulate) on plastic usage.",
+                options: ["regulate", "regulated", "regulations", "regulatory"],
+                correct: "regulations",
+                explanation: "Ta cần một danh từ số nhiều sau 'new'. 'Regulations' là danh từ số nhiều có nghĩa là 'các quy định'."
+            },
+            {
+                question: "She made a _______ (decide) to study abroad next year.",
+                options: ["decide", "decision", "decisive", "decidedly"],
+                correct: "decision",
+                explanation: "Ta cần một danh từ sau 'a'. 'Decision' là danh từ từ động từ 'decide', có nghĩa là 'quyết định'."
+            },
+            {
+                question: "The chef's _______ (create) dishes have won several awards.",
+                options: ["create", "creative", "creation", "creativity"],
+                correct: "creative",
+                explanation: "Ta cần một tính từ bổ nghĩa cho danh từ 'dishes'. 'Creative' là tính từ có nghĩa là 'sáng tạo'."
+            },
+            {
+                question: "The _______ (destroy) of the rainforest has led to loss of biodiversity.",
+                options: ["destroy", "destroyed", "destruction", "destructive"],
+                correct: "destruction",
+                explanation: "Ta cần một danh từ làm chủ ngữ. 'Destruction' là danh từ từ động từ 'destroy', có nghĩa là 'sự phá hủy, hủy diệt'."
+            },
+            {
+                question: "There has been a _______ (grow) interest in organic farming recently.",
+                options: ["grow", "growing", "growth", "grown"],
+                correct: "growing",
+                explanation: "Ta cần một tính từ bổ nghĩa cho danh từ 'interest'. 'Growing' là dạng V-ing đóng vai trò tính từ, có nghĩa là 'ngày càng tăng'."
+            },
+            {
+                question: "The experiment was _______ (success) and provided valuable data.",
+                options: ["success", "successful", "succession", "successively"],
+                correct: "successful",
+                explanation: "Ta cần một tính từ sau động từ 'was'. 'Successful' là tính từ có nghĩa là 'thành công'."
+            },
+            {
+                question: "We need to find a _______ (solve) to the problem of plastic pollution.",
+                options: ["solve", "solvable", "solution", "solvent"],
+                correct: "solution",
+                explanation: "Ta cần một danh từ sau 'a'. 'Solution' là danh từ từ động từ 'solve', có nghĩa là 'giải pháp, cách giải quyết'."
+            },
+            {
+                question: "His _______ (perform) in the competition was outstanding.",
+                options: ["perform", "performance", "performer", "performing"],
+                correct: "performance",
+                explanation: "Ta cần một danh từ làm chủ ngữ. 'Performance' là danh từ từ động từ 'perform', có nghĩa là 'buổi biểu diễn, màn trình diễn'."
+            },
+            {
+                question: "The company is committed to _______ (reduce) its carbon footprint.",
+                options: ["reduce", "reduced", "reducing", "reduction"],
+                correct: "reducing",
+                explanation: "Ta cần một danh động từ (gerund) sau 'committed to'. 'Reducing' là dạng -ing của động từ 'reduce', được dùng sau giới từ 'to'."
+            },
+            {
+                question: "Many students find mathematics _______ (confuse) at first.",
+                options: ["confuse", "confused", "confusing", "confusion"],
+                correct: "confusing",
+                explanation: "Ta cần một tính từ sau 'find mathematics'. 'Confusing' là tính từ có nghĩa là 'gây bối rối, khó hiểu'."
+            },
+            {
+                question: "The _______ (develop) of new technologies has revolutionized communication.",
+                options: ["develop", "developer", "development", "developing"],
+                correct: "development",
+                explanation: "Ta cần một danh từ làm chủ ngữ. 'Development' là danh từ từ động từ 'develop', có nghĩa là 'sự phát triển'."
+            },
+            {
+                question: "She has a _______ (collect) of rare coins from around the world.",
+                options: ["collect", "collecting", "collection", "collective"],
+                correct: "collection",
+                explanation: "Ta cần một danh từ sau 'a'. 'Collection' là danh từ từ động từ 'collect', có nghĩa là 'bộ sưu tập'."
+            },
+            {
+                question: "It's important to have _______ (patient) when learning a new skill.",
+                options: ["patient", "patients", "patience", "patiently"],
+                correct: "patience",
+                explanation: "Ta cần một danh từ trừu tượng không đếm được. 'Patience' là danh từ không đếm được từ tính từ 'patient', có nghĩa là 'sự kiên nhẫn'."
+            },
+            {
+                question: "The _______ (appear) of the new smartphone has generated a lot of excitement.",
+                options: ["appear", "appearance", "appearing", "appeared"],
+                correct: "appearance",
+                explanation: "Ta cần một danh từ làm chủ ngữ. 'Appearance' là danh từ từ động từ 'appear', có nghĩa là 'sự xuất hiện'."
+            }
+        ];
+
+        // Variables
+        let currentQuestion = 0;
+        let score = 0;
+        let answeredQuestions = Array(quizData.length).fill(false);
+
+        // DOM Elements
+        const quizContainer = document.getElementById('quiz-container');
+        const resultsContainer = document.getElementById('results-container');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const scoreDisplay = document.getElementById('score-display');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const explanationContainer = document.getElementById('explanation-container');
+        const explanationText = document.getElementById('explanation-text');
+        const finalScore = document.getElementById('final-score');
+        const performanceMessage = document.getElementById('performance-message');
+        const restartBtn = document.getElementById('restart-btn');
+
+        // Function to display a question
+        function displayQuestion() {
+            // Reset
+            explanationContainer.classList.add('hidden');
+            
+            // Update progress
+            progressText.textContent = `Câu ${currentQuestion + 1}/${quizData.length}`;
+            progressBar.style.width = `${((currentQuestion + 1) / quizData.length) * 100}%`;
+            
+            // Display question
+            const questionData = quizData[currentQuestion];
+            questionText.innerHTML = questionData.question;
+            
+            // Clear options
+            optionsContainer.innerHTML = '';
+            
+            // Add options
+            questionData.options.forEach((option, index) => {
+                const optionBtn = document.createElement('button');
+                optionBtn.classList.add(
+                    'option',
+                    'w-full',
+                    'text-left',
+                    'p-3',
+                    'border',
+                    'border-gray-300',
+                    'rounded-md',
+                    'bg-white',
+                    'hover:bg-gray-50'
+                );
+                optionBtn.textContent = option;
+                
+                // If question is already answered
+                if (answeredQuestions[currentQuestion]) {
+                    optionBtn.classList.add('disabled');
+                    if (option === questionData.correct) {
+                        optionBtn.classList.add('correct');
+                    } else if (option === answeredQuestions[currentQuestion]) {
+                        optionBtn.classList.add('incorrect');
+                    }
+                } else {
+                    optionBtn.addEventListener('click', () => selectOption(option));
+                }
+                
+                optionsContainer.appendChild(optionBtn);
+            });
+            
+            // Update buttons
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.disabled = !answeredQuestions[currentQuestion];
+        }
+
+        // Function to handle option selection
+        function selectOption(selected) {
+            const questionData = quizData[currentQuestion];
+            
+            // Update answered questions
+            answeredQuestions[currentQuestion] = selected;
+            
+            // Update score
+            if (selected === questionData.correct) {
+                score++;
+                scoreDisplay.textContent = `Điểm: ${score}/${quizData.length}`;
+            }
+            
+            // Show explanation
+            explanationContainer.classList.remove('hidden');
+            explanationText.textContent = questionData.explanation;
+            
+            // Update UI
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => {
+                option.classList.add('disabled');
+                if (option.textContent === questionData.correct) {
+                    option.classList.add('correct');
+                } else if (option.textContent === selected && selected !== questionData.correct) {
+                    option.classList.add('incorrect');
+                }
+            });
+            
+            // Enable next button
+            nextBtn.disabled = false;
+            
+            // Check if quiz is complete
+            if (answeredQuestions.every(item => item !== false)) {
+                // Set timeout to allow user to see the last answer before showing results
+                setTimeout(() => {
+                    showResults();
+                }, 1000);
+            }
+        }
+
+        // Function to show results
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultsContainer.classList.remove('hidden');
+            
+            // Update score
+            finalScore.textContent = `${score}/${quizData.length}`;
+            
+            // Set performance message
+            const percentage = (score / quizData.length) * 100;
+            if (percentage >= 90) {
+                performanceMessage.textContent = 'Xuất sắc! Con đã nắm vững phần word formation.';
+            } else if (percentage >= 70) {
+                performanceMessage.textContent = 'Tốt! Con đã hiểu khá tốt phần word formation.';
+            } else if (percentage >= 50) {
+                performanceMessage.textContent = 'Khá! Con nên ôn lại một số quy tắc word formation.';
+            } else {
+                performanceMessage.textContent = 'Con cần ôn tập thêm phần word formation.';
+            }
+        }
+
+        // Event Listeners
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                displayQuestion();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                displayQuestion();
+            }
+        });
+
+        restartBtn.addEventListener('click', () => {
+            // Reset variables
+            currentQuestion = 0;
+            score = 0;
+            answeredQuestions = Array(quizData.length).fill(false);
+            
+            // Update display
+            scoreDisplay.textContent = `Điểm: ${score}/${quizData.length}`;
+            
+            // Show quiz container and hide results
+            quizContainer.classList.remove('hidden');
+            resultsContainer.classList.add('hidden');
+            
+            // Display first question
+            displayQuestion();
+        });
+
+        // Initialize quiz
+        displayQuestion();
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
