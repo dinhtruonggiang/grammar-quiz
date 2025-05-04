@@ -1,0 +1,507 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Công Nghệ - Chi Tiết Lắp Ghép</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .option-label:hover {
+            background-color: #f0f9ff;
+        }
+        .option-label.selected {
+            background-color: #bfdbfe;
+        }
+        .option-label.correct {
+            background-color: #bbf7d0;
+        }
+        .option-label.incorrect {
+            background-color: #fecaca;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-blue-600 mb-2">Bài Trắc Nghiệm Công Nghệ</h1>
+            <p class="text-lg text-gray-600">Chi Tiết Lắp Ghép - Xe Đẩy Hàng, Ô Tô Tải và Cánh Quạt Gió</p>
+        </header>
+
+        <div id="quiz-container" class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <div id="progress-container" class="mb-4">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm text-gray-600">Tiến độ:</span>
+                    <span id="progress-text" class="text-sm font-medium">1/20</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full" style="width: 5%"></div>
+                </div>
+            </div>
+
+            <div id="question-container" class="mb-6">
+                <h2 id="question-number" class="text-xl font-semibold text-gray-800 mb-2">Câu hỏi 1:</h2>
+                <p id="question-text" class="text-lg text-gray-700 mb-4"></p>
+                
+                <div id="options-container" class="space-y-3">
+                    <!-- Options will be inserted here -->
+                </div>
+            </div>
+
+            <div id="explanation-container" class="mb-6 p-4 bg-blue-50 rounded-lg hidden">
+                <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                <p id="explanation-text" class="text-gray-700"></p>
+            </div>
+
+            <div class="flex justify-between">
+                <button id="prev-btn" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed">Câu trước</button>
+                <button id="next-btn" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed">Câu tiếp theo</button>
+            </div>
+        </div>
+
+        <div id="results-container" class="bg-white rounded-lg shadow-lg p-6 hidden">
+            <h2 class="text-2xl font-bold text-blue-600 mb-4 text-center">Kết quả của bạn</h2>
+            <div class="text-center mb-6">
+                <p class="text-4xl font-bold text-blue-700 mb-2"><span id="score">0</span>/20</p>
+                <p id="score-message" class="text-lg text-gray-700"></p>
+            </div>
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Thống kê chi tiết:</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <p class="text-green-800 font-medium">Số câu đúng: <span id="correct-count">0</span></p>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <p class="text-red-800 font-medium">Số câu sai: <span id="incorrect-count">0</span></p>
+                    </div>
+                </div>
+            </div>
+            <button id="restart-btn" class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Làm lại bài trắc nghiệm</button>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "Xe đẩy hàng có bao nhiêu loại tấm khác nhau?",
+                options: [
+                    "1 loại tấm",
+                    "2 loại tấm",
+                    "3 loại tấm",
+                    "4 loại tấm"
+                ],
+                answer: 1,
+                explanation: "Xe đẩy hàng có 2 loại tấm khác nhau, đó là: tấm lớn và tấm nhỏ. Đây là các chi tiết cơ bản để lắp ghép xe đẩy hàng như được đề cập trong nội dung câu 9a."
+            },
+            {
+                question: "Thanh thẳng trong xe đẩy hàng có mấy loại?",
+                options: [
+                    "1 loại",
+                    "2 loại",
+                    "3 loại",
+                    "4 loại"
+                ],
+                answer: 2,
+                explanation: "Theo nội dung câu 9a, xe đẩy hàng có 3 loại thanh thẳng, đó là: thanh thẳng 11 lỗ, thanh thẳng 7 lỗ và thanh thẳng 6 lỗ. Đây là các chi tiết quan trọng để lắp ghép khung xe đẩy hàng."
+            },
+            {
+                question: "Đâu là dụng cụ cần thiết để lắp ghép xe đẩy hàng?",
+                options: [
+                    "Búa và kìm",
+                    "Tua-vít và cờ lê",
+                    "Kìm và đục",
+                    "Búa và cưa"
+                ],
+                answer: 1,
+                explanation: "Theo nội dung câu 9a, dụng cụ cần thiết để lắp ghép xe đẩy hàng là: tua-vít và cờ lê. Đây là những dụng cụ cơ bản để vặn và siết chặt các chi tiết lắp ghép với nhau."
+            },
+            {
+                question: "Thanh chữ U trong xe đẩy hàng có đặc điểm gì?",
+                options: [
+                    "Ngắn",
+                    "Dài",
+                    "Vừa",
+                    "Cong"
+                ],
+                answer: 1,
+                explanation: "Theo nội dung câu 9a, thanh chữ U trong xe đẩy hàng có đặc điểm là 'dài' (thanh chữ U dài). Đây là một chi tiết quan trọng trong cấu trúc xe đẩy hàng."
+            },
+            {
+                question: "Vít trong các chi tiết lắp ghép xe đẩy hàng có đặc điểm gì?",
+                options: [
+                    "Dài",
+                    "Ngắn",
+                    "Vừa",
+                    "Tròn"
+                ],
+                answer: 1,
+                explanation: "Theo nội dung câu 9a, vít trong các chi tiết lắp ghép xe đẩy hàng có đặc điểm là 'ngắn' (vít ngắn). Loại vít này phù hợp để lắp ghép các chi tiết của xe đẩy hàng."
+            },
+            {
+                question: "Chi tiết nào sau đây KHÔNG thuộc xe đẩy hàng?",
+                options: [
+                    "Tấm lớn",
+                    "Thanh thẳng 11 lỗ",
+                    "Tấm 25 lỗ",
+                    "Vòng hãm"
+                ],
+                answer: 2,
+                explanation: "Tấm 25 lỗ không được đề cập trong danh sách chi tiết lắp ghép xe đẩy hàng (câu 9a), mà là chi tiết của ô tô tải (câu 9b) và cánh quạt gió (câu 9c). Xe đẩy hàng chỉ có tấm lớn, tấm nhỏ, thanh thẳng 11 lỗ, thanh thẳng 7 lỗ, thanh thẳng 6 lỗ, thanh chữ U dài, đai ốc, vít ngắn, bánh xe, vòng hãm,..."
+            },
+            {
+                question: "Ô tô tải có bao nhiêu loại tấm khác nhau?",
+                options: [
+                    "2 loại",
+                    "4 loại",
+                    "6 loại",
+                    "8 loại"
+                ],
+                answer: 2,
+                explanation: "Theo nội dung câu 9b, ô tô tải có 6 loại tấm khác nhau, đó là: tấm lớn, tấm nhỏ, tấm 25 lỗ, tấm mặt ca bin, hai tấm bên cabin, tấm sau ca bin, tấm chữ L, tấm 3 lỗ. Đây là các chi tiết quan trọng để lắp ghép ô tô tải."
+            },
+            {
+                question: "Đâu là chi tiết đặc trưng của ô tô tải mà các thiết bị khác không có?",
+                options: [
+                    "Thanh thẳng 7 lỗ",
+                    "Tấm mặt ca bin",
+                    "Vít ngắn",
+                    "Bánh xe"
+                ],
+                answer: 1,
+                explanation: "Tấm mặt ca bin là chi tiết đặc trưng của ô tô tải mà xe đẩy hàng và cánh quạt gió không có. Chi tiết này được liệt kê trong câu 9b và đặc biệt dùng để tạo nên phần cabin của ô tô tải."
+            },
+            {
+                question: "Thanh chữ U trong ô tô tải có mấy loại?",
+                options: [
+                    "1 loại",
+                    "2 loại",
+                    "3 loại",
+                    "4 loại"
+                ],
+                answer: 1,
+                explanation: "Theo nội dung câu 9b, thanh chữ U trong ô tô tải có 2 loại, đó là: thanh chữ U dài và thanh chữ U dài. Đây là các chi tiết quan trọng để lắp ghép khung ô tô tải."
+            },
+            {
+                question: "Tấm chữ L là chi tiết lắp ghép của thiết bị nào?",
+                options: [
+                    "Xe đẩy hàng",
+                    "Ô tô tải",
+                    "Cánh quạt gió",
+                    "Cả ba thiết bị"
+                ],
+                answer: 1,
+                explanation: "Theo nội dung câu 9b, tấm chữ L là chi tiết lắp ghép của ô tô tải. Chi tiết này không được đề cập trong danh sách chi tiết của xe đẩy hàng (câu 9a) hoặc cánh quạt gió (câu 9c)."
+            },
+            {
+                question: "Dụng cụ nào cần thiết để lắp ghép ô tô tải?",
+                options: [
+                    "Kìm và búa",
+                    "Tua-vít và cờ lê",
+                    "Cưa và đục",
+                    "Kìm và cờ lê"
+                ],
+                answer: 1,
+                explanation: "Theo nội dung câu 9b, dụng cụ cần thiết để lắp ghép ô tô tải là: tua-vít và cờ lê. Đây là những dụng cụ cơ bản để vặn và siết chặt các chi tiết lắp ghép với nhau."
+            },
+            {
+                question: "Chi tiết nào xuất hiện trong cả ba thiết bị (xe đẩy hàng, ô tô tải và cánh quạt gió)?",
+                options: [
+                    "Tấm 25 lỗ",
+                    "Tấm lớn",
+                    "Trục quay",
+                    "Thanh thẳng 5 lỗ"
+                ],
+                answer: 1,
+                explanation: "Tấm lớn là chi tiết xuất hiện trong cả ba thiết bị: xe đẩy hàng (câu 9a), ô tô tải (câu 9b) và cánh quạt gió (câu 9c). Đây là chi tiết cơ bản và đa năng được sử dụng trong nhiều cấu trúc lắp ghép khác nhau."
+            },
+            {
+                question: "Cánh quạt gió có mấy loại trục?",
+                options: [
+                    "1 loại",
+                    "2 loại",
+                    "3 loại",
+                    "4 loại"
+                ],
+                answer: 2,
+                explanation: "Theo nội dung câu 9c, cánh quạt gió có 3 loại trục, đó là: trục thẳng dài, trục thẳng ngắn và trục quay. Đây là các chi tiết quan trọng để lắp ghép cánh quạt gió."
+            },
+            {
+                question: "Đâu là chi tiết đặc trưng của cánh quạt gió?",
+                options: [
+                    "Thanh thẳng 5 lỗ",
+                    "Trục quay",
+                    "Vòng hãm",
+                    "Tấm 25 lỗ"
+                ],
+                answer: 1,
+                explanation: "Trục quay là chi tiết đặc trưng của cánh quạt gió mà xe đẩy hàng và ô tô tải không có. Chi tiết này được liệt kê trong câu 9c và đặc biệt quan trọng cho cơ chế quay của cánh quạt gió."
+            },
+            {
+                question: "Chi tiết nào sau đây có trong cánh quạt gió và xe đẩy hàng nhưng không có trong ô tô tải?",
+                options: [
+                    "Thanh thẳng 11 lỗ",
+                    "Bánh xe",
+                    "Vít ngắn",
+                    "Tấm lớn"
+                ],
+                answer: 0,
+                explanation: "Thanh thẳng 11 lỗ có trong cả cánh quạt gió (câu 9c) và xe đẩy hàng (câu 9a), nhưng không được đề cập trong danh sách chi tiết của ô tô tải (câu 9b)."
+            },
+            {
+                question: "Bánh nào có trong cấu tạo của cánh quạt gió?",
+                options: [
+                    "Bánh xe",
+                    "Bánh đai",
+                    "Bánh răng",
+                    "Bánh lớn"
+                ],
+                answer: 1,
+                explanation: "Theo nội dung câu 9c, bánh đai là chi tiết có trong cấu tạo của cánh quạt gió. Chi tiết này đặc biệt quan trọng để truyền chuyển động trong cơ cấu của cánh quạt gió."
+            },
+            {
+                question: "Dây đai truyền là chi tiết lắp ghép của thiết bị nào?",
+                options: [
+                    "Xe đẩy hàng",
+                    "Ô tô tải",
+                    "Cánh quạt gió",
+                    "Cả xe đẩy hàng và ô tô tải"
+                ],
+                answer: 2,
+                explanation: "Theo nội dung câu 9c, dây đai truyền là chi tiết lắp ghép của cánh quạt gió. Chi tiết này đặc biệt quan trọng để truyền chuyển động từ trục quay đến bánh đai trong cơ cấu của cánh quạt gió."
+            },
+            {
+                question: "Thanh nào có trong cả xe đẩy hàng và cánh quạt gió?",
+                options: [
+                    "Thanh thẳng 5 lỗ",
+                    "Thanh thẳng 6 lỗ",
+                    "Thanh thẳng 11 lỗ",
+                    "Thanh chữ L"
+                ],
+                answer: 2,
+                explanation: "Thanh thẳng 11 lỗ có trong cả xe đẩy hàng (câu 9a) và cánh quạt gió (câu 9c). Đây là chi tiết chung được sử dụng trong cấu trúc của cả hai thiết bị."
+            },
+            {
+                question: "Để lắp ghép cánh quạt gió, cần những dụng cụ nào?",
+                options: [
+                    "Búa và kìm",
+                    "Tua vít và cờ lê",
+                    "Cưa và đục",
+                    "Kìm và cờ lê"
+                ],
+                answer: 1,
+                explanation: "Theo nội dung câu 9c, dụng cụ cần thiết để lắp ghép cánh quạt gió là: tua vít và cờ lê. Đây là những dụng cụ cơ bản để vặn và siết chặt các chi tiết lắp ghép với nhau."
+            },
+            {
+                question: "Tấm 25 lỗ là chi tiết lắp ghép của những thiết bị nào?",
+                options: [
+                    "Chỉ xe đẩy hàng",
+                    "Chỉ ô tô tải",
+                    "Chỉ cánh quạt gió",
+                    "Cả ô tô tải và cánh quạt gió"
+                ],
+                answer: 3,
+                explanation: "Tấm 25 lỗ là chi tiết lắp ghép của cả ô tô tải (câu 9b) và cánh quạt gió (câu 9c). Chi tiết này không có trong danh sách chi tiết của xe đẩy hàng (câu 9a)."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let answers = Array(quizData.length).fill(null);
+        let prevBtn = document.getElementById('prev-btn');
+        let nextBtn = document.getElementById('next-btn');
+        let questionContainer = document.getElementById('question-container');
+        let optionsContainer = document.getElementById('options-container');
+        let questionText = document.getElementById('question-text');
+        let questionNumber = document.getElementById('question-number');
+        let explanationContainer = document.getElementById('explanation-container');
+        let explanationText = document.getElementById('explanation-text');
+        let progressBar = document.getElementById('progress-bar');
+        let progressText = document.getElementById('progress-text');
+        let quizContainer = document.getElementById('quiz-container');
+        let resultsContainer = document.getElementById('results-container');
+        let scoreElement = document.getElementById('score');
+        let scoreMessage = document.getElementById('score-message');
+        let correctCount = document.getElementById('correct-count');
+        let incorrectCount = document.getElementById('incorrect-count');
+        let restartBtn = document.getElementById('restart-btn');
+
+        function loadQuestion() {
+            let q = quizData[currentQuestion];
+            questionNumber.textContent = `Câu hỏi ${currentQuestion + 1}:`;
+            questionText.textContent = q.question;
+            optionsContainer.innerHTML = '';
+            
+            q.options.forEach((option, index) => {
+                let optionDiv = document.createElement('div');
+                optionDiv.className = 'option';
+                
+                let label = document.createElement('label');
+                label.className = 'option-label flex items-center p-3 border rounded-lg cursor-pointer transition-colors';
+                if (answers[currentQuestion] === index) {
+                    label.classList.add('selected');
+                    if (index === q.answer) {
+                        label.classList.add('correct');
+                    } else {
+                        label.classList.add('incorrect');
+                    }
+                }
+                
+                let radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = 'option';
+                radio.value = index;
+                radio.className = 'hidden';
+                radio.checked = answers[currentQuestion] === index;
+                
+                let radioSpan = document.createElement('span');
+                radioSpan.className = 'inline-block w-5 h-5 mr-3 rounded-full border border-gray-300 flex-shrink-0';
+                if (answers[currentQuestion] === index) {
+                    radioSpan.className += ' bg-blue-500 border-blue-500';
+                }
+                
+                let textSpan = document.createElement('span');
+                textSpan.textContent = option;
+                textSpan.className = 'text-gray-700';
+                
+                label.appendChild(radio);
+                label.appendChild(radioSpan);
+                label.appendChild(textSpan);
+                
+                if (answers[currentQuestion] === null) {
+                    label.addEventListener('click', () => selectOption(index));
+                }
+                
+                optionDiv.appendChild(label);
+                optionsContainer.appendChild(optionDiv);
+            });
+            
+            // Update the explanation container
+            if (answers[currentQuestion] !== null) {
+                explanationContainer.classList.remove('hidden');
+                explanationText.textContent = q.explanation;
+            } else {
+                explanationContainer.classList.add('hidden');
+            }
+            
+            // Update progress
+            progressBar.style.width = `${((currentQuestion + 1) / quizData.length) * 100}%`;
+            progressText.textContent = `${currentQuestion + 1}/${quizData.length}`;
+            
+            // Update buttons
+            prevBtn.disabled = currentQuestion === 0;
+            if (answers[currentQuestion] === null) {
+                nextBtn.disabled = true;
+            } else {
+                nextBtn.disabled = false;
+            }
+            
+            // Change next button text on last question
+            if (currentQuestion === quizData.length - 1) {
+                nextBtn.textContent = 'Xem kết quả';
+            } else {
+                nextBtn.textContent = 'Câu tiếp theo';
+            }
+        }
+
+        function selectOption(index) {
+            answers[currentQuestion] = index;
+            loadQuestion();
+            
+            // Enable next button after selecting an option
+            nextBtn.disabled = false;
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion();
+            }
+        }
+
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultsContainer.classList.remove('hidden');
+            
+            let score = 0;
+            let correct = 0;
+            let incorrect = 0;
+            
+            answers.forEach((answer, index) => {
+                if (answer === quizData[index].answer) {
+                    score++;
+                    correct++;
+                } else {
+                    incorrect++;
+                }
+            });
+            
+            scoreElement.textContent = score;
+            correctCount.textContent = correct;
+            incorrectCount.textContent = incorrect;
+            
+            // Set score message
+            let percentage = (score / quizData.length) * 100;
+            if (percentage >= 90) {
+                scoreMessage.textContent = 'Xuất sắc! Bạn đã nắm vững kiến thức về các chi tiết lắp ghép.';
+            } else if (percentage >= 70) {
+                scoreMessage.textContent = 'Tốt! Bạn đã hiểu hầu hết các chi tiết lắp ghép.';
+            } else if (percentage >= 50) {
+                scoreMessage.textContent = 'Khá! Hãy tiếp tục ôn tập để ghi nhớ tốt hơn.';
+            } else {
+                scoreMessage.textContent = 'Cần cố gắng hơn! Hãy ôn tập lại các chi tiết lắp ghép cơ bản.';
+            }
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            answers = Array(quizData.length).fill(null);
+            quizContainer.classList.remove('hidden');
+            resultsContainer.classList.add('hidden');
+            loadQuestion();
+        }
+
+        // Event listeners
+        prevBtn.addEventListener('click', prevQuestion);
+        nextBtn.addEventListener('click', nextQuestion);
+        restartBtn.addEventListener('click', restartQuiz);
+
+        // Initialize the quiz
+        loadQuestion();
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
