@@ -1,0 +1,1122 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Các Thì Tiếng Anh - ILearn Smart World 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .answer-explanation {
+            display: none;
+        }
+        .question-container {
+            display: none;
+        }
+        .question-container.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h1 class="text-2xl font-bold text-center text-blue-700 mb-6">Bài Trắc Nghiệm Các Thì Tiếng Anh</h1>
+            <h2 class="text-xl text-center text-gray-700 mb-8">Dựa trên sách ILearn Smart World 9 Student Book</h2>
+            
+            <div id="intro" class="text-center mb-8">
+                <p class="mb-4">Bài trắc nghiệm gồm 30 câu hỏi về các thì tiếng Anh.</p>
+                <p class="mb-6">Hãy chọn đáp án đúng và nhấn "Câu tiếp theo" để tiếp tục.</p>
+                <button id="start-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition duration-300">
+                    Bắt đầu
+                </button>
+            </div>
+
+            <div id="quiz-container" class="hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="text-lg font-semibold">Câu hỏi <span id="current-question">1</span>/<span id="total-questions">30</span></div>
+                    <div class="text-lg font-semibold">Điểm: <span id="score">0</span></div>
+                </div>
+
+                <div id="questions">
+                    <!-- Question 1 -->
+                    <div class="question-container" data-question="1">
+                        <p class="text-lg font-medium mb-4">1. By the time they arrive, we _______ dinner.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q1-a" name="q1" value="A" class="answer-input h-4 w-4">
+                                <label for="q1-a" class="ml-2 w-full cursor-pointer">A. will have finished</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q1-b" name="q1" value="B" class="answer-input h-4 w-4">
+                                <label for="q1-b" class="ml-2 w-full cursor-pointer">B. will finish</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q1-c" name="q1" value="C" class="answer-input h-4 w-4">
+                                <label for="q1-c" class="ml-2 w-full cursor-pointer">C. are finishing</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q1-d" name="q1" value="D" class="answer-input h-4 w-4">
+                                <label for="q1-d" class="ml-2 w-full cursor-pointer">D. finish</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: A. will have finished</p>
+                            <p class="mt-2">Câu này sử dụng thì tương lai hoàn thành (Future Perfect). Cấu trúc "By the time + chia động từ ở thì hiện tại đơn, chủ ngữ + will have + past participle" diễn tả một hành động sẽ hoàn thành trước một hành động khác trong tương lai. Nghĩa là chúng ta sẽ ăn xong bữa tối trước khi họ đến.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="question-container" data-question="2">
+                        <p class="text-lg font-medium mb-4">2. I _______ English for five years by the end of next month.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q2-a" name="q2" value="A" class="answer-input h-4 w-4">
+                                <label for="q2-a" class="ml-2 w-full cursor-pointer">A. will learn</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q2-b" name="q2" value="B" class="answer-input h-4 w-4">
+                                <label for="q2-b" class="ml-2 w-full cursor-pointer">B. will have been learning</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q2-c" name="q2" value="C" class="answer-input h-4 w-4">
+                                <label for="q2-c" class="ml-2 w-full cursor-pointer">C. have learned</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q2-d" name="q2" value="D" class="answer-input h-4 w-4">
+                                <label for="q2-d" class="ml-2 w-full cursor-pointer">D. had learned</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: B. will have been learning</p>
+                            <p class="mt-2">Câu này sử dụng thì tương lai hoàn thành tiếp diễn (Future Perfect Continuous). Cấu trúc "will have been + V-ing" diễn tả một hành động bắt đầu trong quá khứ, tiếp tục đến tương lai và vẫn còn tiếp diễn tại một thời điểm cụ thể trong tương lai (cuối tháng sau) với khoảng thời gian cụ thể (năm năm).</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="question-container" data-question="3">
+                        <p class="text-lg font-medium mb-4">3. _______ the book by the time the movie comes out?</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q3-a" name="q3" value="A" class="answer-input h-4 w-4">
+                                <label for="q3-a" class="ml-2 w-full cursor-pointer">A. Will you be reading</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q3-b" name="q3" value="B" class="answer-input h-4 w-4">
+                                <label for="q3-b" class="ml-2 w-full cursor-pointer">B. Will you read</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q3-c" name="q3" value="C" class="answer-input h-4 w-4">
+                                <label for="q3-c" class="ml-2 w-full cursor-pointer">C. Will you have read</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q3-d" name="q3" value="D" class="answer-input h-4 w-4">
+                                <label for="q3-d" class="ml-2 w-full cursor-pointer">D. Do you read</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: C. Will you have read</p>
+                            <p class="mt-2">Câu này sử dụng thì tương lai hoàn thành (Future Perfect) ở dạng câu hỏi. Cấu trúc "Will + chủ ngữ + have + past participle" diễn tả một câu hỏi về việc liệu một hành động có hoàn thành trước một mốc thời gian cụ thể trong tương lai hay không (trước khi bộ phim ra mắt).</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="question-container" data-question="4">
+                        <p class="text-lg font-medium mb-4">4. I _______ TV when she called me yesterday.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q4-a" name="q4" value="A" class="answer-input h-4 w-4">
+                                <label for="q4-a" class="ml-2 w-full cursor-pointer">A. watched</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q4-b" name="q4" value="B" class="answer-input h-4 w-4">
+                                <label for="q4-b" class="ml-2 w-full cursor-pointer">B. was watching</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q4-c" name="q4" value="C" class="answer-input h-4 w-4">
+                                <label for="q4-c" class="ml-2 w-full cursor-pointer">C. had watched</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q4-d" name="q4" value="D" class="answer-input h-4 w-4">
+                                <label for="q4-d" class="ml-2 w-full cursor-pointer">D. have watched</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: B. was watching</p>
+                            <p class="mt-2">Câu này sử dụng thì quá khứ tiếp diễn (Past Continuous). Cấu trúc "was/were + V-ing" diễn tả một hành động đang diễn ra tại một thời điểm cụ thể trong quá khứ. Hành động xem TV đang diễn ra tại thời điểm cô ấy gọi điện ngày hôm qua.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="question-container" data-question="5">
+                        <p class="text-lg font-medium mb-4">5. After I _______ my homework, I went to bed.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q5-a" name="q5" value="A" class="answer-input h-4 w-4">
+                                <label for="q5-a" class="ml-2 w-full cursor-pointer">A. finished</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q5-b" name="q5" value="B" class="answer-input h-4 w-4">
+                                <label for="q5-b" class="ml-2 w-full cursor-pointer">B. have finished</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q5-c" name="q5" value="C" class="answer-input h-4 w-4">
+                                <label for="q5-c" class="ml-2 w-full cursor-pointer">C. was finishing</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q5-d" name="q5" value="D" class="answer-input h-4 w-4">
+                                <label for="q5-d" class="ml-2 w-full cursor-pointer">D. had finished</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: A. finished</p>
+                            <p class="mt-2">Câu này sử dụng thì quá khứ đơn (Past Simple). Sau "after" có thể dùng thì quá khứ đơn khi diễn tả hai hành động xảy ra liên tiếp trong quá khứ. Trường hợp này, việc làm bài tập về nhà xong là hành động đầu tiên, sau đó là việc đi ngủ.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 6 -->
+                    <div class="question-container" data-question="6">
+                        <p class="text-lg font-medium mb-4">6. This time next week, I _______ on a beach in Thailand.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q6-a" name="q6" value="A" class="answer-input h-4 w-4">
+                                <label for="q6-a" class="ml-2 w-full cursor-pointer">A. will lie</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q6-b" name="q6" value="B" class="answer-input h-4 w-4">
+                                <label for="q6-b" class="ml-2 w-full cursor-pointer">B. lie</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q6-c" name="q6" value="C" class="answer-input h-4 w-4">
+                                <label for="q6-c" class="ml-2 w-full cursor-pointer">C. will be lying</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q6-d" name="q6" value="D" class="answer-input h-4 w-4">
+                                <label for="q6-d" class="ml-2 w-full cursor-pointer">D. am lying</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: C. will be lying</p>
+                            <p class="mt-2">Câu này sử dụng thì tương lai tiếp diễn (Future Continuous). Cấu trúc "will be + V-ing" diễn tả một hành động sẽ đang diễn ra tại một thời điểm cụ thể trong tương lai. Cụm "this time next week" chỉ ra thời điểm cụ thể trong tương lai khi hành động "lying on a beach" sẽ đang diễn ra.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 7 -->
+                    <div class="question-container" data-question="7">
+                        <p class="text-lg font-medium mb-4">7. She _______ at the company since 2015.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q7-a" name="q7" value="A" class="answer-input h-4 w-4">
+                                <label for="q7-a" class="ml-2 w-full cursor-pointer">A. is working</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q7-b" name="q7" value="B" class="answer-input h-4 w-4">
+                                <label for="q7-b" class="ml-2 w-full cursor-pointer">B. worked</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q7-c" name="q7" value="C" class="answer-input h-4 w-4">
+                                <label for="q7-c" class="ml-2 w-full cursor-pointer">C. has been working</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q7-d" name="q7" value="D" class="answer-input h-4 w-4">
+                                <label for="q7-d" class="ml-2 w-full cursor-pointer">D. works</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: C. has been working</p>
+                            <p class="mt-2">Câu này sử dụng thì hiện tại hoàn thành tiếp diễn (Present Perfect Continuous). Cấu trúc "has/have been + V-ing" diễn tả một hành động bắt đầu trong quá khứ (2015) và tiếp tục đến hiện tại, với từ "since" chỉ thời điểm bắt đầu hành động.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 8 -->
+                    <div class="question-container" data-question="8">
+                        <p class="text-lg font-medium mb-4">8. By the time we got to the cinema, the film _______.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q8-a" name="q8" value="A" class="answer-input h-4 w-4">
+                                <label for="q8-a" class="ml-2 w-full cursor-pointer">A. already started</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q8-b" name="q8" value="B" class="answer-input h-4 w-4">
+                                <label for="q8-b" class="ml-2 w-full cursor-pointer">B. was already starting</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q8-c" name="q8" value="C" class="answer-input h-4 w-4">
+                                <label for="q8-c" class="ml-2 w-full cursor-pointer">C. had already started</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q8-d" name="q8" value="D" class="answer-input h-4 w-4">
+                                <label for="q8-d" class="ml-2 w-full cursor-pointer">D. has already started</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: C. had already started</p>
+                            <p class="mt-2">Câu này sử dụng thì quá khứ hoàn thành (Past Perfect). Cấu trúc "had + past participle" diễn tả một hành động xảy ra và hoàn thành trước một hành động khác trong quá khứ. Phim đã bắt đầu chiếu trước khi chúng tôi đến rạp.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 9 -->
+                    <div class="question-container" data-question="9">
+                        <p class="text-lg font-medium mb-4">9. I _______ a headache since I woke up this morning.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q9-a" name="q9" value="A" class="answer-input h-4 w-4">
+                                <label for="q9-a" class="ml-2 w-full cursor-pointer">A. have</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q9-b" name="q9" value="B" class="answer-input h-4 w-4">
+                                <label for="q9-b" class="ml-2 w-full cursor-pointer">B. am having</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q9-c" name="q9" value="C" class="answer-input h-4 w-4">
+                                <label for="q9-c" class="ml-2 w-full cursor-pointer">C. had</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q9-d" name="q9" value="D" class="answer-input h-4 w-4">
+                                <label for="q9-d" class="ml-2 w-full cursor-pointer">D. have had</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: D. have had</p>
+                            <p class="mt-2">Câu này sử dụng thì hiện tại hoàn thành (Present Perfect). Cấu trúc "have/has + past participle" diễn tả một hành động bắt đầu từ quá khứ (sáng nay) và có ảnh hưởng đến hiện tại, với từ "since" chỉ thời điểm bắt đầu. "Have" là động từ chính trong cụm "have a headache" (bị đau đầu).</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 10 -->
+                    <div class="question-container" data-question="10">
+                        <p class="text-lg font-medium mb-4">10. When I was a child, I _______ to the beach every summer.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q10-a" name="q10" value="A" class="answer-input h-4 w-4">
+                                <label for="q10-a" class="ml-2 w-full cursor-pointer">A. was going</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q10-b" name="q10" value="B" class="answer-input h-4 w-4">
+                                <label for="q10-b" class="ml-2 w-full cursor-pointer">B. would go</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q10-c" name="q10" value="C" class="answer-input h-4 w-4">
+                                <label for="q10-c" class="ml-2 w-full cursor-pointer">C. used to go</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q10-d" name="q10" value="D" class="answer-input h-4 w-4">
+                                <label for="q10-d" class="ml-2 w-full cursor-pointer">D. B và C đều đúng</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: D. B và C đều đúng</p>
+                            <p class="mt-2">Cả "would go" và "used to go" đều có thể dùng để diễn tả thói quen trong quá khứ. "Would go" dùng để diễn tả một hành động lặp đi lặp lại trong quá khứ. "Used to go" cũng diễn tả một thói quen trong quá khứ đã không còn nữa. Cả hai đều phù hợp trong trường hợp này.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 11 -->
+                    <div class="question-container" data-question="11">
+                        <p class="text-lg font-medium mb-4">11. Look at those clouds. It _______ soon.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q11-a" name="q11" value="A" class="answer-input h-4 w-4">
+                                <label for="q11-a" class="ml-2 w-full cursor-pointer">A. rains</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q11-b" name="q11" value="B" class="answer-input h-4 w-4">
+                                <label for="q11-b" class="ml-2 w-full cursor-pointer">B. will rain</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q11-c" name="q11" value="C" class="answer-input h-4 w-4">
+                                <label for="q11-c" class="ml-2 w-full cursor-pointer">C. is going to rain</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q11-d" name="q11" value="D" class="answer-input h-4 w-4">
+                                <label for="q11-d" class="ml-2 w-full cursor-pointer">D. is raining</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: C. is going to rain</p>
+                            <p class="mt-2">Câu này sử dụng thì tương lai gần (Be going to). Cấu trúc "is/are going to + V" diễn tả dự đoán về tương lai dựa trên bằng chứng ở hiện tại. Khi nói "Look at those clouds" (Nhìn những đám mây kia), chúng ta đang nhìn thấy dấu hiệu rõ ràng về việc trời sắp mưa.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 12 -->
+                    <div class="question-container" data-question="12">
+                        <p class="text-lg font-medium mb-4">12. If you _______ harder, you would have passed the exam.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q12-a" name="q12" value="A" class="answer-input h-4 w-4">
+                                <label for="q12-a" class="ml-2 w-full cursor-pointer">A. study</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q12-b" name="q12" value="B" class="answer-input h-4 w-4">
+                                <label for="q12-b" class="ml-2 w-full cursor-pointer">B. studied</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q12-c" name="q12" value="C" class="answer-input h-4 w-4">
+                                <label for="q12-c" class="ml-2 w-full cursor-pointer">C. had studied</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q12-d" name="q12" value="D" class="answer-input h-4 w-4">
+                                <label for="q12-d" class="ml-2 w-full cursor-pointer">D. would study</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: C. had studied</p>
+                            <p class="mt-2">Câu này sử dụng câu điều kiện loại 3 (Type 3 conditional) diễn tả điều không có thật trong quá khứ. Cấu trúc "If + chủ ngữ + had + past participle, chủ ngữ + would have + past participle" diễn tả một tình huống không thể xảy ra trong quá khứ và kết quả giả định của nó.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 13 -->
+                    <div class="question-container" data-question="13">
+                        <p class="text-lg font-medium mb-4">13. She _______ to music while she was doing her homework.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q13-a" name="q13" value="A" class="answer-input h-4 w-4">
+                                <label for="q13-a" class="ml-2 w-full cursor-pointer">A. listened</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q13-b" name="q13" value="B" class="answer-input h-4 w-4">
+                                <label for="q13-b" class="ml-2 w-full cursor-pointer">B. was listening</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q13-c" name="q13" value="C" class="answer-input h-4 w-4">
+                                <label for="q13-c" class="ml-2 w-full cursor-pointer">C. had listened</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q13-d" name="q13" value="D" class="answer-input h-4 w-4">
+                                <label for="q13-d" class="ml-2 w-full cursor-pointer">D. has listened</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: B. was listening</p>
+                            <p class="mt-2">Câu này sử dụng thì quá khứ tiếp diễn (Past Continuous). Cấu trúc "was/were + V-ing" diễn tả một hành động đang diễn ra trong quá khứ. Hai hành động "listening to music" và "doing homework" xảy ra đồng thời trong quá khứ.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 14 -->
+                    <div class="question-container" data-question="14">
+                        <p class="text-lg font-medium mb-4">14. We _______ to the party if we had known about it.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q14-a" name="q14" value="A" class="answer-input h-4 w-4">
+                                <label for="q14-a" class="ml-2 w-full cursor-pointer">A. will go</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q14-b" name="q14" value="B" class="answer-input h-4 w-4">
+                                <label for="q14-b" class="ml-2 w-full cursor-pointer">B. would have gone</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q14-c" name="q14" value="C" class="answer-input h-4 w-4">
+                                <label for="q14-c" class="ml-2 w-full cursor-pointer">C. would go</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q14-d" name="q14" value="D" class="answer-input h-4 w-4">
+                                <label for="q14-d" class="ml-2 w-full cursor-pointer">D. went</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: B. would have gone</p>
+                            <p class="mt-2">Câu này sử dụng câu điều kiện loại 3 (Type 3 conditional) diễn tả điều không có thật trong quá khứ. Cấu trúc "If + quá khứ hoàn thành (had known), would have + past participle (gone)" diễn tả một tình huống đã không xảy ra trong quá khứ và kết quả giả định của nó.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 15 -->
+                    <div class="question-container" data-question="15">
+                        <p class="text-lg font-medium mb-4">15. I _______ a new phone last week because my old one was broken.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q15-a" name="q15" value="A" class="answer-input h-4 w-4">
+                                <label for="q15-a" class="ml-2 w-full cursor-pointer">A. have bought</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q15-b" name="q15" value="B" class="answer-input h-4 w-4">
+                                <label for="q15-b" class="ml-2 w-full cursor-pointer">B. had bought</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q15-c" name="q15" value="C" class="answer-input h-4 w-4">
+                                <label for="q15-c" class="ml-2 w-full cursor-pointer">C. bought</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q15-d" name="q15" value="D" class="answer-input h-4 w-4">
+                                <label for="q15-d" class="ml-2 w-full cursor-pointer">D. was buying</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: C. bought</p>
+                            <p class="mt-2">Câu này sử dụng thì quá khứ đơn (Past Simple). Cấu trúc "V-ed/V2" diễn tả một hành động đã xảy ra và kết thúc trong quá khứ với thời gian xác định (last week - tuần trước).</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 16 -->
+                    <div class="question-container" data-question="16">
+                        <p class="text-lg font-medium mb-4">16. I _______ in London for three years, but now I live in Paris.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q16-a" name="q16" value="A" class="answer-input h-4 w-4">
+                                <label for="q16-a" class="ml-2 w-full cursor-pointer">A. lived</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q16-b" name="q16" value="B" class="answer-input h-4 w-4">
+                                <label for="q16-b" class="ml-2 w-full cursor-pointer">B. have lived</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q16-c" name="q16" value="C" class="answer-input h-4 w-4">
+                                <label for="q16-c" class="ml-2 w-full cursor-pointer">C. had lived</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q16-d" name="q16" value="D" class="answer-input h-4 w-4">
+                                <label for="q16-d" class="ml-2 w-full cursor-pointer">D. was living</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: A. lived</p>
+                            <p class="mt-2">Câu này sử dụng thì quá khứ đơn (Past Simple). Diễn tả một hành động đã kết thúc trong quá khứ và không còn tiếp tục đến hiện tại. Cụm "but now I live in Paris" chỉ ra rằng người nói không còn ở London nữa mà đã chuyển đến Paris.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 17 -->
+                    <div class="question-container" data-question="17">
+                        <p class="text-lg font-medium mb-4">17. He _______ his arm when he fell off his bike.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q17-a" name="q17" value="A" class="answer-input h-4 w-4">
+                                <label for="q17-a" class="ml-2 w-full cursor-pointer">A. breaks</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q17-b" name="q17" value="B" class="answer-input h-4 w-4">
+                                <label for="q17-b" class="ml-2 w-full cursor-pointer">B. broke</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q17-c" name="q17" value="C" class="answer-input h-4 w-4">
+                                <label for="q17-c" class="ml-2 w-full cursor-pointer">C. had broken</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q17-d" name="q17" value="D" class="answer-input h-4 w-4">
+                                <label for="q17-d" class="ml-2 w-full cursor-pointer">D. has broken</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: B. broke</p>
+                            <p class="mt-2">Câu này sử dụng thì quá khứ đơn (Past Simple). Cấu trúc "V-ed/V2" diễn tả một hành động xảy ra tại một thời điểm cụ thể trong quá khứ. Việc gãy tay xảy ra cùng lúc với việc ngã xe đạp.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 18 -->
+                    <div class="question-container" data-question="18">
+                        <p class="text-lg font-medium mb-4">18. I _______ to the cinema twice this week.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q18-a" name="q18" value="A" class="answer-input h-4 w-4">
+                                <label for="q18-a" class="ml-2 w-full cursor-pointer">A. go</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q18-b" name="q18" value="B" class="answer-input h-4 w-4">
+                                <label for="q18-b" class="ml-2 w-full cursor-pointer">B. went</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q18-c" name="q18" value="C" class="answer-input h-4 w-4">
+                                <label for="q18-c" class="ml-2 w-full cursor-pointer">C. have gone</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q18-d" name="q18" value="D" class="answer-input h-4 w-4">
+                                <label for="q18-d" class="ml-2 w-full cursor-pointer">D. have been</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: D. have been</p>
+                            <p class="mt-2">Câu này sử dụng thì hiện tại hoàn thành (Present Perfect). Khi nói về việc đi đến một nơi và trở về, chúng ta dùng "have/has been to". Cụm "this week" chỉ một khoảng thời gian chưa kết thúc, nên thì hiện tại hoàn thành là phù hợp.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 19 -->
+                    <div class="question-container" data-question="19">
+                        <p class="text-lg font-medium mb-4">19. If I _______ rich, I would buy a big house.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q19-a" name="q19" value="A" class="answer-input h-4 w-4">
+                                <label for="q19-a" class="ml-2 w-full cursor-pointer">A. am</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q19-b" name="q19" value="B" class="answer-input h-4 w-4">
+                                <label for="q19-b" class="ml-2 w-full cursor-pointer">B. were</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q19-c" name="q19" value="C" class="answer-input h-4 w-4">
+                                <label for="q19-c" class="ml-2 w-full cursor-pointer">C. will be</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q19-d" name="q19" value="D" class="answer-input h-4 w-4">
+                                <label for="q19-d" class="ml-2 w-full cursor-pointer">D. would be</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: B. were</p>
+                            <p class="mt-2">Câu này sử dụng câu điều kiện loại 2 (Type 2 conditional) diễn tả điều không có thật ở hiện tại. Cấu trúc "If + chủ ngữ + were/V-ed (past simple), chủ ngữ + would + V" diễn tả một tình huống giả định không có thật ở hiện tại và kết quả giả định của nó.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 20 -->
+                    <div class="question-container" data-question="20">
+                        <p class="text-lg font-medium mb-4">20. When I arrived at the party, most people _______.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q20-a" name="q20" value="A" class="answer-input h-4 w-4">
+                                <label for="q20-a" class="ml-2 w-full cursor-pointer">A. had already left</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q20-b" name="q20" value="B" class="answer-input h-4 w-4">
+                                <label for="q20-b" class="ml-2 w-full cursor-pointer">B. have already left</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q20-c" name="q20" value="C" class="answer-input h-4 w-4">
+                                <label for="q20-c" class="ml-2 w-full cursor-pointer">C. already left</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q20-d" name="q20" value="D" class="answer-input h-4 w-4">
+                                <label for="q20-d" class="ml-2 w-full cursor-pointer">D. were already leaving</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: A. had already left</p>
+                            <p class="mt-2">Câu này sử dụng thì quá khứ hoàn thành (Past Perfect). Cấu trúc "had + past participle" diễn tả một hành động xảy ra và kết thúc trước một hành động khác trong quá khứ. Hầu hết mọi người rời đi trước khi người nói đến bữa tiệc.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 21 -->
+                    <div class="question-container" data-question="21">
+                        <p class="text-lg font-medium mb-4">21. I _______ my homework before I went to the party last night.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q21-a" name="q21" value="A" class="answer-input h-4 w-4">
+                                <label for="q21-a" class="ml-2 w-full cursor-pointer">A. finish</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q21-b" name="q21" value="B" class="answer-input h-4 w-4">
+                                <label for="q21-b" class="ml-2 w-full cursor-pointer">B. had finished</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q21-c" name="q21" value="C" class="answer-input h-4 w-4">
+                                <label for="q21-c" class="ml-2 w-full cursor-pointer">C. finished</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q21-d" name="q21" value="D" class="answer-input h-4 w-4">
+                                <label for="q21-d" class="ml-2 w-full cursor-pointer">D. have finished</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: B. had finished</p>
+                            <p class="mt-2">Câu này sử dụng thì quá khứ hoàn thành (Past Perfect). Cấu trúc "had + past participle" diễn tả một hành động xảy ra và kết thúc trước một hành động khác trong quá khứ. Việc làm bài tập về nhà xảy ra và hoàn thành trước khi đi đến bữa tiệc tối qua.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 22 -->
+                    <div class="question-container" data-question="22">
+                        <p class="text-lg font-medium mb-4">22. I hope you _______ better soon.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q22-a" name="q22" value="A" class="answer-input h-4 w-4">
+                                <label for="q22-a" class="ml-2 w-full cursor-pointer">A. will feel</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q22-b" name="q22" value="B" class="answer-input h-4 w-4">
+                                <label for="q22-b" class="ml-2 w-full cursor-pointer">B. are feeling</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q22-c" name="q22" value="C" class="answer-input h-4 w-4">
+                                <label for="q22-c" class="ml-2 w-full cursor-pointer">C. feel</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q22-d" name="q22" value="D" class="answer-input h-4 w-4">
+                                <label for="q22-d" class="ml-2 w-full cursor-pointer">D. would feel</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: A. will feel</p>
+                            <p class="mt-2">Câu này sử dụng thì tương lai đơn (Future Simple). Sau "hope" (hy vọng), khi nói về một tình huống trong tương lai, chúng ta thường dùng "will + V" để diễn tả một hy vọng hoặc mong muốn về điều sẽ xảy ra trong tương lai.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 23 -->
+                    <div class="question-container" data-question="23">
+                        <p class="text-lg font-medium mb-4">23. He _______ his car when the accident happened.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q23-a" name="q23" value="A" class="answer-input h-4 w-4">
+                                <label for="q23-a" class="ml-2 w-full cursor-pointer">A. drove</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q23-b" name="q23" value="B" class="answer-input h-4 w-4">
+                                <label for="q23-b" class="ml-2 w-full cursor-pointer">B. was driving</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q23-c" name="q23" value="C" class="answer-input h-4 w-4">
+                                <label for="q23-c" class="ml-2 w-full cursor-pointer">C. had driven</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q23-d" name="q23" value="D" class="answer-input h-4 w-4">
+                                <label for="q23-d" class="ml-2 w-full cursor-pointer">D. has driven</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: B. was driving</p>
+                            <p class="mt-2">Câu này sử dụng thì quá khứ tiếp diễn (Past Continuous). Cấu trúc "was/were + V-ing" diễn tả một hành động đang diễn ra tại một thời điểm cụ thể trong quá khứ. Anh ấy đang lái xe tại thời điểm tai nạn xảy ra.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 24 -->
+                    <div class="question-container" data-question="24">
+                        <p class="text-lg font-medium mb-4">24. I _______ French for six years now.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q24-a" name="q24" value="A" class="answer-input h-4 w-4">
+                                <label for="q24-a" class="ml-2 w-full cursor-pointer">A. study</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q24-b" name="q24" value="B" class="answer-input h-4 w-4">
+                                <label for="q24-b" class="ml-2 w-full cursor-pointer">B. am studying</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q24-c" name="q24" value="C" class="answer-input h-4 w-4">
+                                <label for="q24-c" class="ml-2 w-full cursor-pointer">C. have been studying</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q24-d" name="q24" value="D" class="answer-input h-4 w-4">
+                                <label for="q24-d" class="ml-2 w-full cursor-pointer">D. studied</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: C. have been studying</p>
+                            <p class="mt-2">Câu này sử dụng thì hiện tại hoàn thành tiếp diễn (Present Perfect Continuous). Cấu trúc "have/has been + V-ing" diễn tả một hành động bắt đầu trong quá khứ và tiếp tục đến hiện tại, với khoảng thời gian cụ thể (six years) và từ "now" chỉ ra rằng hành động vẫn đang tiếp tục.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 25 -->
+                    <div class="question-container" data-question="25">
+                        <p class="text-lg font-medium mb-4">25. If you _______ to help, I can do it myself.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q25-a" name="q25" value="A" class="answer-input h-4 w-4">
+                                <label for="q25-a" class="ml-2 w-full cursor-pointer">A. don't want</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q25-b" name="q25" value="B" class="answer-input h-4 w-4">
+                                <label for="q25-b" class="ml-2 w-full cursor-pointer">B. didn't want</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q25-c" name="q25" value="C" class="answer-input h-4 w-4">
+                                <label for="q25-c" class="ml-2 w-full cursor-pointer">C. wouldn't want</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q25-d" name="q25" value="D" class="answer-input h-4 w-4">
+                                <label for="q25-d" class="ml-2 w-full cursor-pointer">D. won't want</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: A. don't want</p>
+                            <p class="mt-2">Câu này sử dụng câu điều kiện loại 1 (Type 1 conditional) diễn tả điều có thể xảy ra ở hiện tại hoặc tương lai. Cấu trúc "If + hiện tại đơn, chủ ngữ + can/will + V" diễn tả một tình huống có thể xảy ra và kết quả của nó. Trong câu này, nếu người nghe không muốn giúp đỡ (hiện tại), thì người nói có thể tự làm việc đó.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 26 -->
+                    <div class="question-container" data-question="26">
+                        <p class="text-lg font-medium mb-4">26. By 2030, scientists _______ a cure for cancer.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q26-a" name="q26" value="A" class="answer-input h-4 w-4">
+                                <label for="q26-a" class="ml-2 w-full cursor-pointer">A. will find</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q26-b" name="q26" value="B" class="answer-input h-4 w-4">
+                                <label for="q26-b" class="ml-2 w-full cursor-pointer">B. will have found</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q26-c" name="q26" value="C" class="answer-input h-4 w-4">
+                                <label for="q26-c" class="ml-2 w-full cursor-pointer">C. are going to find</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q26-d" name="q26" value="D" class="answer-input h-4 w-4">
+                                <label for="q26-d" class="ml-2 w-full cursor-pointer">D. will be finding</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: B. will have found</p>
+                            <p class="mt-2">Câu này sử dụng thì tương lai hoàn thành (Future Perfect). Cấu trúc "will have + past participle" diễn tả một hành động sẽ hoàn thành trước một thời điểm cụ thể trong tương lai. Từ "By 2030" (Đến năm 2030) chỉ ra thời điểm trong tương lai mà hành động tìm ra thuốc chữa ung thư sẽ hoàn thành.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 27 -->
+                    <div class="question-container" data-question="27">
+                        <p class="text-lg font-medium mb-4">27. The plane _______ at 10 PM tonight.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q27-a" name="q27" value="A" class="answer-input h-4 w-4">
+                                <label for="q27-a" class="ml-2 w-full cursor-pointer">A. arrives</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q27-b" name="q27" value="B" class="answer-input h-4 w-4">
+                                <label for="q27-b" class="ml-2 w-full cursor-pointer">B. will arrive</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q27-c" name="q27" value="C" class="answer-input h-4 w-4">
+                                <label for="q27-c" class="ml-2 w-full cursor-pointer">C. is arriving</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q27-d" name="q27" value="D" class="answer-input h-4 w-4">
+                                <label for="q27-d" class="ml-2 w-full cursor-pointer">D. Cả A và C đều đúng</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: D. Cả A và C đều đúng</p>
+                            <p class="mt-2">Cả thì hiện tại đơn (Present Simple) "arrives" và thì hiện tại tiếp diễn (Present Continuous) "is arriving" đều có thể được sử dụng để diễn tả một kế hoạch hoặc lịch trình cố định trong tương lai. Vì chuyến bay có lịch trình cố định, cả hai thì đều phù hợp trong trường hợp này.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 28 -->
+                    <div class="question-container" data-question="28">
+                        <p class="text-lg font-medium mb-4">28. I _______ for my keys for an hour before I found them in my pocket.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q28-a" name="q28" value="A" class="answer-input h-4 w-4">
+                                <label for="q28-a" class="ml-2 w-full cursor-pointer">A. looked</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q28-b" name="q28" value="B" class="answer-input h-4 w-4">
+                                <label for="q28-b" class="ml-2 w-full cursor-pointer">B. was looking</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q28-c" name="q28" value="C" class="answer-input h-4 w-4">
+                                <label for="q28-c" class="ml-2 w-full cursor-pointer">C. had been looking</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q28-d" name="q28" value="D" class="answer-input h-4 w-4">
+                                <label for="q28-d" class="ml-2 w-full cursor-pointer">D. have been looking</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: C. had been looking</p>
+                            <p class="mt-2">Câu này sử dụng thì quá khứ hoàn thành tiếp diễn (Past Perfect Continuous). Cấu trúc "had been + V-ing" diễn tả một hành động bắt đầu và tiếp diễn trong quá khứ cho đến khi một hành động khác xảy ra, với khoảng thời gian cụ thể (một giờ). Việc tìm kiếm chìa khóa diễn ra liên tục trong một giờ trước khi tìm thấy chúng.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 29 -->
+                    <div class="question-container" data-question="29">
+                        <p class="text-lg font-medium mb-4">29. She _______ dinner by the time we arrived.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q29-a" name="q29" value="A" class="answer-input h-4 w-4">
+                                <label for="q29-a" class="ml-2 w-full cursor-pointer">A. had cooked</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q29-b" name="q29" value="B" class="answer-input h-4 w-4">
+                                <label for="q29-b" class="ml-2 w-full cursor-pointer">B. cooked</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q29-c" name="q29" value="C" class="answer-input h-4 w-4">
+                                <label for="q29-c" class="ml-2 w-full cursor-pointer">C. has cooked</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q29-d" name="q29" value="D" class="answer-input h-4 w-4">
+                                <label for="q29-d" class="ml-2 w-full cursor-pointer">D. was cooking</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: A. had cooked</p>
+                            <p class="mt-2">Câu này sử dụng thì quá khứ hoàn thành (Past Perfect). Cấu trúc "had + past participle" diễn tả một hành động xảy ra và hoàn thành trước một hành động khác trong quá khứ. Cô ấy nấu xong bữa tối trước khi chúng tôi đến.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 30 -->
+                    <div class="question-container" data-question="30">
+                        <p class="text-lg font-medium mb-4">30. I _______ the same car for more than ten years. I think it's time to buy a new one.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q30-a" name="q30" value="A" class="answer-input h-4 w-4">
+                                <label for="q30-a" class="ml-2 w-full cursor-pointer">A. have had</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q30-b" name="q30" value="B" class="answer-input h-4 w-4">
+                                <label for="q30-b" class="ml-2 w-full cursor-pointer">B. had</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q30-c" name="q30" value="C" class="answer-input h-4 w-4">
+                                <label for="q30-c" class="ml-2 w-full cursor-pointer">C. has had</label>
+                            </div>
+                            <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <input type="radio" id="q30-d" name="q30" value="D" class="answer-input h-4 w-4">
+                                <label for="q30-d" class="ml-2 w-full cursor-pointer">D. am having</label>
+                            </div>
+                        </div>
+                        <div class="answer-explanation p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <p class="font-semibold text-blue-800">Đáp án đúng: A. have had</p>
+                            <p class="mt-2">Câu này sử dụng thì hiện tại hoàn thành (Present Perfect). Cấu trúc "have/has + past participle" diễn tả một hành động bắt đầu trong quá khứ và tiếp tục đến hiện tại, với khoảng thời gian cụ thể (more than ten years). "Have" là động từ chính trong cụm "have a car" (sở hữu một chiếc xe).</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mt-6 flex justify-between">
+                    <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                        Câu trước
+                    </button>
+                    <button id="next-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">
+                        Câu tiếp theo
+                    </button>
+                </div>
+            </div>
+
+            <div id="results-container" class="hidden">
+                <h2 class="text-2xl font-bold text-center mb-6">Kết quả</h2>
+                <div class="text-center mb-6">
+                    <p class="text-xl">Điểm của bạn: <span id="final-score" class="font-bold">0</span>/<span id="total-score">30</span></p>
+                    <p class="mt-2 text-lg">Số câu đúng: <span id="correct-answers" class="font-bold">0</span></p>
+                </div>
+                <div id="results-breakdown" class="mt-8">
+                    <h3 class="text-xl font-semibold mb-4">Chi tiết kết quả:</h3>
+                    <div id="results-list" class="space-y-3"></div>
+                </div>
+                <button id="restart-btn" class="mt-8 mx-auto block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition duration-300">
+                    Làm lại bài trắc nghiệm
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const totalQuestions = 30;
+            let currentQuestion = 1;
+            let score = 0;
+            let answeredQuestions = [];
+            
+            const startBtn = document.getElementById('start-btn');
+            const introDiv = document.getElementById('intro');
+            const quizContainer = document.getElementById('quiz-container');
+            const resultsContainer = document.getElementById('results-container');
+            const questionContainers = document.querySelectorAll('.question-container');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const currentQuestionSpan = document.getElementById('current-question');
+            const totalQuestionsSpan = document.getElementById('total-questions');
+            const scoreSpan = document.getElementById('score');
+            const finalScoreSpan = document.getElementById('final-score');
+            const totalScoreSpan = document.getElementById('total-score');
+            const correctAnswersSpan = document.getElementById('correct-answers');
+            const resultsListDiv = document.getElementById('results-list');
+            const restartBtn = document.getElementById('restart-btn');
+
+            // Answers key
+            const correctAnswers = {
+                'q1': 'A',
+                'q2': 'B',
+                'q3': 'C',
+                'q4': 'B',
+                'q5': 'A',
+                'q6': 'C',
+                'q7': 'C',
+                'q8': 'C',
+                'q9': 'D',
+                'q10': 'D',
+                'q11': 'C',
+                'q12': 'C',
+                'q13': 'B',
+                'q14': 'B',
+                'q15': 'C',
+                'q16': 'A',
+                'q17': 'B',
+                'q18': 'D',
+                'q19': 'B',
+                'q20': 'A',
+                'q21': 'B',
+                'q22': 'A',
+                'q23': 'B',
+                'q24': 'C',
+                'q25': 'A',
+                'q26': 'B',
+                'q27': 'D',
+                'q28': 'C',
+                'q29': 'A',
+                'q30': 'A'
+            };
+
+            // Initialize
+            totalQuestionsSpan.textContent = totalQuestions;
+            prevBtn.disabled = true;
+
+            // Start the quiz
+            startBtn.addEventListener('click', function() {
+                introDiv.classList.add('hidden');
+                quizContainer.classList.remove('hidden');
+                showQuestion(currentQuestion);
+            });
+
+            // Show question by number
+            function showQuestion(num) {
+                questionContainers.forEach(container => {
+                    container.classList.remove('active');
+                });
+                
+                document.querySelector(`.question-container[data-question="${num}"]`).classList.add('active');
+                currentQuestionSpan.textContent = num;
+                
+                prevBtn.disabled = num === 1;
+                
+                if (num === totalQuestions) {
+                    nextBtn.textContent = 'Xem kết quả';
+                } else {
+                    nextBtn.textContent = 'Câu tiếp theo';
+                }
+            }
+
+            // Handle next button
+            nextBtn.addEventListener('click', function() {
+                const currentQuestionElement = document.querySelector(`.question-container[data-question="${currentQuestion}"]`);
+                const selectedAnswer = currentQuestionElement.querySelector('input[type="radio"]:checked');
+                
+                if (!selectedAnswer) {
+                    alert('Vui lòng chọn một đáp án!');
+                    return;
+                }
+                
+                // Check if question already answered
+                if (!answeredQuestions.includes(currentQuestion)) {
+                    // Check answer
+                    const questionId = `q${currentQuestion}`;
+                    const selectedValue = selectedAnswer.value;
+                    
+                    if (selectedValue === correctAnswers[questionId]) {
+                        score++;
+                        scoreSpan.textContent = score;
+                    }
+                    
+                    // Show explanation
+                    currentQuestionElement.querySelector('.answer-explanation').style.display = 'block';
+                    
+                    // Disable radio buttons for this question
+                    currentQuestionElement.querySelectorAll('input[type="radio"]').forEach(radio => {
+                        radio.disabled = true;
+                    });
+                    
+                    answeredQuestions.push(currentQuestion);
+                }
+                
+                // Move to next question or show results
+                if (currentQuestion < totalQuestions) {
+                    currentQuestion++;
+                    showQuestion(currentQuestion);
+                } else {
+                    showResults();
+                }
+            });
+
+            // Handle previous button
+            prevBtn.addEventListener('click', function() {
+                if (currentQuestion > 1) {
+                    currentQuestion--;
+                    showQuestion(currentQuestion);
+                }
+            });
+
+            // Show results
+            function showResults() {
+                quizContainer.classList.add('hidden');
+                resultsContainer.classList.remove('hidden');
+                
+                finalScoreSpan.textContent = score;
+                totalScoreSpan.textContent = totalQuestions;
+                correctAnswersSpan.textContent = score;
+                
+                // Create results breakdown
+                resultsListDiv.innerHTML = '';
+                for (let i = 1; i <= totalQuestions; i++) {
+                    const questionId = `q${i}`;
+                    const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`);
+                    const selectedValue = selectedAnswer ? selectedAnswer.value : 'Không trả lời';
+                    const isCorrect = selectedValue === correctAnswers[questionId];
+                    
+                    const resultItem = document.createElement('div');
+                    resultItem.className = `p-3 rounded-lg ${isCorrect ? 'bg-green-100 border border-green-200' : 'bg-red-100 border border-red-200'}`;
+                    
+                    resultItem.innerHTML = `
+                        <p class="font-medium">Câu ${i}: ${isCorrect ? 'Đúng ✓' : 'Sai ✗'}</p>
+                        <p>Đáp án của bạn: ${selectedValue}</p>
+                        <p>Đáp án đúng: ${correctAnswers[questionId]}</p>
+                    `;
+                    
+                    resultsListDiv.appendChild(resultItem);
+                }
+            }
+
+            // Restart quiz
+            restartBtn.addEventListener('click', function() {
+                // Reset variables
+                currentQuestion = 1;
+                score = 0;
+                answeredQuestions = [];
+                scoreSpan.textContent = score;
+                
+                // Reset UI
+                questionContainers.forEach(container => {
+                    container.querySelectorAll('input[type="radio"]').forEach(radio => {
+                        radio.checked = false;
+                        radio.disabled = false;
+                    });
+                    container.querySelector('.answer-explanation').style.display = 'none';
+                });
+                
+                // Show first question
+                resultsContainer.classList.add('hidden');
+                quizContainer.classList.remove('hidden');
+                showQuestion(currentQuestion);
+            });
+
+            // Handle radio button clicks
+            document.querySelectorAll('.answer-input').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const questionNum = parseInt(this.name.replace('q', ''));
+                    if (!answeredQuestions.includes(questionNum)) {
+                        const questionContainer = document.querySelector(`.question-container[data-question="${questionNum}"]`);
+                        questionContainer.querySelector('.answer-explanation').style.display = 'block';
+                        
+                        // Disable all radio buttons in this question
+                        questionContainer.querySelectorAll('input[type="radio"]').forEach(r => {
+                            r.disabled = true;
+                        });
+                        
+                        // Check answer
+                        const questionId = `q${questionNum}`;
+                        const selectedValue = this.value;
+                        
+                        if (selectedValue === correctAnswers[questionId]) {
+                            score++;
+                            scoreSpan.textContent = score;
+                        }
+                        
+                        answeredQuestions.push(questionNum);
+                    }
+                });
+            });
+        });
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>

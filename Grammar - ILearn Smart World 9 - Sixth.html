@@ -1,0 +1,499 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Các Thì Tiếng Anh - ILearn Smart World 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hidden {
+            display: none;
+        }
+        .option-button {
+            transition: all 0.3s ease;
+        }
+        .option-button:hover:not(.selected) {
+            transform: translateX(5px);
+        }
+        .correct {
+            background-color: #d1fae5;
+            border-color: #10b981;
+        }
+        .incorrect {
+            background-color: #fee2e2;
+            border-color: #ef4444;
+        }
+        .selected {
+            border-width: 2px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-blue-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-3xl">
+        <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white rounded-lg p-6 shadow-lg mb-8">
+            <h1 class="text-2xl md:text-3xl font-bold text-center">Bài Trắc Nghiệm Các Thì Tiếng Anh</h1>
+            <p class="text-center mt-2">ILearn Smart World 9 Student Book</p>
+        </header>
+
+        <div id="quiz-container" class="bg-white rounded-lg shadow-lg p-6">
+            <div id="progress-container" class="mb-6">
+                <div class="flex justify-between mb-2">
+                    <span id="question-number" class="font-medium">Câu hỏi 1/30</span>
+                    <span id="score-display" class="font-medium">Điểm: 0/30</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full" style="width: 3%"></div>
+                </div>
+            </div>
+
+            <div id="question-container" class="mb-6">
+                <!-- Questions will be dynamically inserted here -->
+            </div>
+
+            <div id="explanation-container" class="mb-6 p-4 bg-gray-50 rounded-lg hidden">
+                <!-- Explanation will be shown here -->
+            </div>
+
+            <div id="navigation" class="flex justify-between">
+                <button id="prev-btn" class="px-5 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition disabled:opacity-50" disabled>Câu trước</button>
+                <button id="next-btn" class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition disabled:opacity-50">Câu tiếp theo</button>
+            </div>
+        </div>
+
+        <div id="results-container" class="bg-white rounded-lg shadow-lg p-6 mt-8 hidden">
+            <h2 class="text-2xl font-bold text-center mb-4">Kết Quả</h2>
+            <div id="final-score" class="text-center text-xl mb-4">Điểm của bạn: 0/30</div>
+            <div class="grid grid-cols-5 gap-2 mb-6">
+                <!-- Question number indicators will be inserted here -->
+            </div>
+            <div id="question-summary" class="space-y-4">
+                <!-- Summary of questions will be inserted here -->
+            </div>
+            <div class="mt-6 text-center">
+                <button id="retry-btn" class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Làm lại bài kiểm tra</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "She _____ to school every day.",
+                options: ["go", "goes", "going", "went"],
+                correctIndex: 1,
+                explanation: "Đáp án đúng là 'goes'. Đây là thì hiện tại đơn (Present Simple) với chủ ngữ ngôi thứ 3 số ít (she), nên động từ phải thêm 's'."
+            },
+            {
+                question: "They _____ a new project at the moment.",
+                options: ["work on", "works on", "are working on", "working on"],
+                correctIndex: 2,
+                explanation: "Đáp án đúng là 'are working on'. Cụm 'at the moment' là dấu hiệu của thì hiện tại tiếp diễn (Present Continuous), diễn tả hành động đang xảy ra tại thời điểm nói."
+            },
+            {
+                question: "My father _____ as a doctor for 20 years.",
+                options: ["works", "worked", "has worked", "had worked"],
+                correctIndex: 2,
+                explanation: "Đáp án đúng là 'has worked'. Câu này sử dụng thì hiện tại hoàn thành (Present Perfect) để diễn tả hành động bắt đầu trong quá khứ và tiếp tục đến hiện tại, với khoảng thời gian cụ thể 'for 20 years'."
+            },
+            {
+                question: "By the time I arrived, the meeting _____.",
+                options: ["already started", "has already started", "had already started", "was already starting"],
+                correctIndex: 2,
+                explanation: "Đáp án đúng là 'had already started'. Cấu trúc 'By the time + past tense, + past perfect' sử dụng thì quá khứ hoàn thành (Past Perfect) để diễn tả hành động xảy ra trước một hành động khác trong quá khứ."
+            },
+            {
+                question: "Look! The bus _____. We need to run!",
+                options: ["comes", "is coming", "has come", "came"],
+                correctIndex: 1,
+                explanation: "Đáp án đúng là 'is coming'. Từ 'Look!' và ngữ cảnh cho thấy đây là một hành động đang diễn ra ngay lúc nói, nên sử dụng thì hiện tại tiếp diễn (Present Continuous)."
+            },
+            {
+                question: "I _____ my homework yet. I'll do it after dinner.",
+                options: ["don't do", "didn't do", "haven't done", "am not doing"],
+                correctIndex: 2,
+                explanation: "Đáp án đúng là 'haven't done'. Từ 'yet' là dấu hiệu của thì hiện tại hoàn thành (Present Perfect), diễn tả hành động chưa hoàn thành tính đến thời điểm hiện tại."
+            },
+            {
+                question: "We _____ to the cinema last weekend.",
+                options: ["go", "goes", "went", "have gone"],
+                correctIndex: 2,
+                explanation: "Đáp án đúng là 'went'. Cụm 'last weekend' là dấu hiệu của thì quá khứ đơn (Past Simple), diễn tả hành động đã hoàn thành trong quá khứ."
+            },
+            {
+                question: "They _____ for three hours when it started to rain.",
+                options: ["hiked", "were hiking", "had been hiking", "have been hiking"],
+                correctIndex: 2,
+                explanation: "Đáp án đúng là 'had been hiking'. Câu này sử dụng thì quá khứ hoàn thành tiếp diễn (Past Perfect Continuous) để diễn tả hành động đã diễn ra liên tục trong một khoảng thời gian trước một hành động khác trong quá khứ."
+            },
+            {
+                question: "This time next week, I _____ on the beach in Nha Trang.",
+                options: ["will lie", "will be lying", "am lying", "lie"],
+                correctIndex: 1,
+                explanation: "Đáp án đúng là 'will be lying'. Cụm 'This time next week' cho thấy đây là hành động sẽ đang diễn ra tại một thời điểm cụ thể trong tương lai, nên sử dụng thì tương lai tiếp diễn (Future Continuous)."
+            },
+            {
+                question: "I _____ English since I was ten years old.",
+                options: ["learn", "learned", "have learned", "have been learning"],
+                correctIndex: 3,
+                explanation: "Đáp án đúng là 'have been learning'. Câu này sử dụng thì hiện tại hoàn thành tiếp diễn (Present Perfect Continuous) để diễn tả hành động bắt đầu trong quá khứ và vẫn tiếp tục đến hiện tại, nhấn mạnh tính liên tục của hành động."
+            },
+            {
+                question: "By the end of this year, she _____ at the company for 10 years.",
+                options: ["will work", "will be working", "will have worked", "works"],
+                correctIndex: 2,
+                explanation: "Đáp án đúng là 'will have worked'. Cấu trúc 'By + thời gian tương lai' sử dụng thì tương lai hoàn thành (Future Perfect) để diễn tả hành động sẽ hoàn thành trước một thời điểm trong tương lai."
+            },
+            {
+                question: "When I was young, I _____ to the park every Sunday.",
+                options: ["go", "went", "had gone", "used to go"],
+                correctIndex: 3,
+                explanation: "Đáp án đúng là 'used to go'. Cấu trúc 'used to + V' diễn tả thói quen trong quá khứ không còn tiếp tục ở hiện tại, phù hợp với ngữ cảnh 'When I was young'."
+            },
+            {
+                question: "I _____ TV when the phone rang.",
+                options: ["watched", "was watching", "had watched", "have watched"],
+                correctIndex: 1,
+                explanation: "Đáp án đúng là 'was watching'. Câu này sử dụng thì quá khứ tiếp diễn (Past Continuous) để diễn tả hành động đang diễn ra thì bị gián đoạn bởi một hành động khác (the phone rang) trong quá khứ."
+            },
+            {
+                question: "They promised they _____ the project on time.",
+                options: ["will finish", "would finish", "finished", "had finished"],
+                correctIndex: 1,
+                explanation: "Đáp án đúng là 'would finish'. Đây là câu tường thuật (reported speech) của câu trực tiếp 'We will finish the project on time', và khi chuyển sang tường thuật, 'will' sẽ chuyển thành 'would'."
+            },
+            {
+                question: "The train _____ at 10 PM tonight according to the schedule.",
+                options: ["leaves", "is leaving", "will leave", "left"],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'leaves'. Tuy câu nói về tương lai, nhưng đây là thời gian biểu đã lên lịch (theo schedule), nên sử dụng thì hiện tại đơn (Present Simple) để diễn tả lịch trình cố định."
+            },
+            {
+                question: "She _____ her keys. She can't find them anywhere.",
+                options: ["loses", "lost", "has lost", "had lost"],
+                correctIndex: 2,
+                explanation: "Đáp án đúng là 'has lost'. Câu này sử dụng thì hiện tại hoàn thành (Present Perfect) để diễn tả hành động đã xảy ra trong quá khứ nhưng có kết quả ở hiện tại (không tìm thấy chìa khóa ở hiện tại)."
+            },
+            {
+                question: "If it _____ tomorrow, we'll cancel the picnic.",
+                options: ["rains", "will rain", "rained", "would rain"],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'rains'. Trong câu điều kiện loại 1 (Type 1 Conditional), mệnh đề if sử dụng thì hiện tại đơn (Present Simple) mặc dù nói về tương lai, theo cấu trúc: If + Present Simple, will + Infinitive."
+            },
+            {
+                question: "By the time we reach the station, the train _____.",
+                options: ["leaves", "will leave", "will have left", "left"],
+                correctIndex: 2,
+                explanation: "Đáp án đúng là 'will have left'. Cấu trúc 'By the time + present tense, future perfect' sử dụng thì tương lai hoàn thành (Future Perfect) để diễn tả hành động sẽ hoàn thành trước một hành động khác trong tương lai."
+            },
+            {
+                question: "He _____ to music while he was doing his homework.",
+                options: ["listens", "listened", "was listening", "had listened"],
+                correctIndex: 2,
+                explanation: "Đáp án đúng là 'was listening'. Câu này sử dụng thì quá khứ tiếp diễn (Past Continuous) để diễn tả hành động đang diễn ra song song với một hành động khác trong quá khứ (was doing his homework)."
+            },
+            {
+                question: "We _____ each other for years before we got married.",
+                options: ["know", "knew", "had known", "have known"],
+                correctIndex: 2,
+                explanation: "Đáp án đúng là 'had known'. Câu này sử dụng thì quá khứ hoàn thành (Past Perfect) để diễn tả hành động xảy ra trong quá khứ và kéo dài đến một thời điểm khác trong quá khứ (before we got married)."
+            },
+            {
+                question: "I hope you _____ to visit us next summer.",
+                options: ["come", "will come", "came", "coming"],
+                correctIndex: 1,
+                explanation: "Đáp án đúng là 'will come'. Sau 'hope' khi nói về tương lai, ta sử dụng thì tương lai đơn (Future Simple) với 'will'."
+            },
+            {
+                question: "When we arrived at the cinema, the film _____.",
+                options: ["already started", "has already started", "had already started", "already starts"],
+                correctIndex: 2,
+                explanation: "Đáp án đúng là 'had already started'. Câu này sử dụng thì quá khứ hoàn thành (Past Perfect) để diễn tả hành động xảy ra trước một hành động khác trong quá khứ (arrived)."
+            },
+            {
+                question: "I _____ the dishes while my sister was cooking dinner.",
+                options: ["wash", "washed", "was washing", "had washed"],
+                correctIndex: 2,
+                explanation: "Đáp án đúng là 'was washing'. Câu này sử dụng thì quá khứ tiếp diễn (Past Continuous) để diễn tả hai hành động đang diễn ra đồng thời trong quá khứ."
+            },
+            {
+                question: "By 2030, scientists _____ a cure for many types of cancer.",
+                options: ["find", "will find", "will have found", "found"],
+                correctIndex: 2,
+                explanation: "Đáp án đúng là 'will have found'. Cụm 'By 2030' là dấu hiệu của thì tương lai hoàn thành (Future Perfect), diễn tả hành động sẽ hoàn thành trước một thời điểm cụ thể trong tương lai."
+            },
+            {
+                question: "She told me that she _____ her exam.",
+                options: ["passes", "passed", "had passed", "would pass"],
+                correctIndex: 2,
+                explanation: "Đáp án đúng là 'had passed'. Đây là câu tường thuật (reported speech) về một sự kiện đã hoàn thành trước thời điểm nói (told), nên cần sử dụng thì quá khứ hoàn thành (Past Perfect)."
+            },
+            {
+                question: "This is the first time I _____ sushi.",
+                options: ["eat", "ate", "have eaten", "had eaten"],
+                correctIndex: 2,
+                explanation: "Đáp án đúng là 'have eaten'. Cấu trúc 'This is the first time' thường đi với thì hiện tại hoàn thành (Present Perfect) để diễn tả kinh nghiệm tính đến thời điểm hiện tại."
+            },
+            {
+                question: "After they _____ dinner, they went for a walk.",
+                options: ["have", "had", "had had", "having"],
+                correctIndex: 2,
+                explanation: "Đáp án đúng là 'had had'. Câu này sử dụng thì quá khứ hoàn thành (Past Perfect) với động từ 'have' để diễn tả hành động xảy ra trước một hành động khác trong quá khứ (went for a walk)."
+            },
+            {
+                question: "I can't go out tonight because I _____ my homework yet.",
+                options: ["don't finish", "didn't finish", "haven't finished", "won't finish"],
+                correctIndex: 2,
+                explanation: "Đáp án đúng là 'haven't finished'. Từ 'yet' là dấu hiệu của thì hiện tại hoàn thành (Present Perfect), diễn tả hành động chưa hoàn thành tính đến thời điểm hiện tại."
+            },
+            {
+                question: "She _____ from her illness by next week.",
+                options: ["recovers", "will recover", "will have recovered", "recovered"],
+                correctIndex: 2,
+                explanation: "Đáp án đúng là 'will have recovered'. Cụm 'by next week' là dấu hiệu của thì tương lai hoàn thành (Future Perfect), diễn tả hành động sẽ hoàn thành trước một thời điểm cụ thể trong tương lai."
+            },
+            {
+                question: "While we _____ in Paris, we visited the Eiffel Tower.",
+                options: ["are", "were", "have been", "had been"],
+                correctIndex: 1,
+                explanation: "Đáp án đúng là 'were'. Cấu trúc 'While + past continuous/past simple' sử dụng thì quá khứ đơn (Past Simple) khi nói về một trạng thái (không phải hành động) trong quá khứ."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answeredQuestions = Array(quizData.length).fill(false);
+        
+        const questionContainer = document.getElementById('question-container');
+        const explanationContainer = document.getElementById('explanation-container');
+        const questionNumber = document.getElementById('question-number');
+        const progressBar = document.getElementById('progress-bar');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const scoreDisplay = document.getElementById('score-display');
+        const resultsContainer = document.getElementById('results-container');
+        const quizContainer = document.getElementById('quiz-container');
+        const finalScore = document.getElementById('final-score');
+        const questionSummary = document.getElementById('question-summary');
+        const retryBtn = document.getElementById('retry-btn');
+
+        function showQuestion(index) {
+            questionContainer.innerHTML = '';
+            explanationContainer.innerHTML = '';
+            explanationContainer.classList.add('hidden');
+            
+            const question = quizData[index];
+            
+            const questionElement = document.createElement('div');
+            questionElement.classList.add('mb-4');
+            questionElement.innerHTML = `<h2 class="text-xl font-semibold mb-4">Câu ${index + 1}: ${question.question}</h2>`;
+            questionContainer.appendChild(questionElement);
+            
+            const optionsElement = document.createElement('div');
+            optionsElement.classList.add('space-y-3');
+            
+            question.options.forEach((option, i) => {
+                const button = document.createElement('button');
+                button.classList.add('option-button', 'w-full', 'text-left', 'p-3', 'rounded-lg', 'border', 'border-gray-300', 'hover:bg-gray-100', 'transition');
+                
+                if (answeredQuestions[index]) {
+                    if (i === question.correctIndex) {
+                        button.classList.add('correct');
+                    } else if (selectedOptions[index] === i) {
+                        button.classList.add('incorrect');
+                    }
+                    button.classList.add('selected');
+                }
+                
+                button.innerHTML = `
+                    <span class="inline-block w-8 h-8 rounded-full bg-blue-100 text-blue-800 text-center font-medium mr-3">${String.fromCharCode(65 + i)}</span>
+                    ${option}
+                `;
+                
+                button.addEventListener('click', () => selectOption(i));
+                optionsElement.appendChild(button);
+            });
+            
+            questionContainer.appendChild(optionsElement);
+            
+            questionNumber.textContent = `Câu hỏi ${index + 1}/${quizData.length}`;
+            progressBar.style.width = `${((index + 1) / quizData.length) * 100}%`;
+            
+            prevBtn.disabled = index === 0;
+            
+            if (answeredQuestions[index]) {
+                showExplanation(index);
+                nextBtn.disabled = index === quizData.length - 1;
+            } else {
+                nextBtn.disabled = true;
+            }
+        }
+
+        let selectedOptions = Array(quizData.length).fill(null);
+
+        function selectOption(optionIndex) {
+            if (answeredQuestions[currentQuestion]) return;
+            
+            answeredQuestions[currentQuestion] = true;
+            selectedOptions[currentQuestion] = optionIndex;
+            
+            const options = questionContainer.querySelectorAll('.option-button');
+            
+            options.forEach((option, i) => {
+                option.classList.add('selected');
+                if (i === quizData[currentQuestion].correctIndex) {
+                    option.classList.add('correct');
+                } else if (i === optionIndex && optionIndex !== quizData[currentQuestion].correctIndex) {
+                    option.classList.add('incorrect');
+                }
+            });
+            
+            if (optionIndex === quizData[currentQuestion].correctIndex) {
+                score++;
+                scoreDisplay.textContent = `Điểm: ${score}/${quizData.length}`;
+            }
+            
+            showExplanation(currentQuestion);
+            
+            nextBtn.disabled = currentQuestion === quizData.length - 1;
+        }
+
+        function showExplanation(index) {
+            explanationContainer.innerHTML = `
+                <h3 class="font-medium mb-2">Giải thích:</h3>
+                <p>${quizData[index].explanation}</p>
+            `;
+            explanationContainer.classList.remove('hidden');
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            } else {
+                showResults();
+            }
+        });
+
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultsContainer.classList.remove('hidden');
+            
+            finalScore.textContent = `Điểm của bạn: ${score}/${quizData.length}`;
+            
+            // Create question number indicators
+            const indicatorsContainer = document.querySelector('.grid');
+            indicatorsContainer.innerHTML = '';
+            
+            for (let i = 0; i < quizData.length; i++) {
+                const indicator = document.createElement('div');
+                indicator.classList.add('flex', 'items-center', 'justify-center', 'h-10', 'rounded-md', 'font-medium', 'text-sm', 'cursor-pointer');
+                
+                if (selectedOptions[i] === quizData[i].correctIndex) {
+                    indicator.classList.add('bg-green-100', 'text-green-800');
+                } else {
+                    indicator.classList.add('bg-red-100', 'text-red-800');
+                }
+                
+                indicator.textContent = i + 1;
+                indicator.addEventListener('click', () => {
+                    questionSummary.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('.question-detail').forEach(q => q.classList.add('hidden'));
+                    document.getElementById(`question-${i}`).classList.remove('hidden');
+                });
+                
+                indicatorsContainer.appendChild(indicator);
+            }
+            
+            // Create question details
+            questionSummary.innerHTML = '';
+            
+            for (let i = 0; i < quizData.length; i++) {
+                const question = quizData[i];
+                const detailDiv = document.createElement('div');
+                detailDiv.id = `question-${i}`;
+                detailDiv.classList.add('question-detail', 'p-4', 'bg-gray-50', 'rounded-lg');
+                
+                if (i !== 0) {
+                    detailDiv.classList.add('hidden');
+                }
+                
+                let optionsHTML = '';
+                question.options.forEach((option, j) => {
+                    let optionClass = '';
+                    if (j === question.correctIndex) {
+                        optionClass = 'text-green-700';
+                    } else if (selectedOptions[i] === j) {
+                        optionClass = 'text-red-700';
+                    }
+                    
+                    optionsHTML += `
+                        <div class="flex items-start mb-2">
+                            <span class="inline-block w-6 h-6 rounded-full ${j === question.correctIndex ? 'bg-green-100 text-green-800' : selectedOptions[i] === j ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-gray-800'} text-center font-medium mr-2">${String.fromCharCode(65 + j)}</span>
+                            <span class="${optionClass}">${option}</span>
+                        </div>
+                    `;
+                });
+                
+                detailDiv.innerHTML = `
+                    <h3 class="font-medium mb-3">Câu ${i + 1}: ${question.question}</h3>
+                    <div class="ml-2 mb-3">
+                        ${optionsHTML}
+                    </div>
+                    <div class="bg-blue-50 p-3 rounded">
+                        <p class="text-sm"><strong>Giải thích:</strong> ${question.explanation}</p>
+                    </div>
+                `;
+                
+                questionSummary.appendChild(detailDiv);
+            }
+        }
+
+        retryBtn.addEventListener('click', () => {
+            currentQuestion = 0;
+            score = 0;
+            answeredQuestions = Array(quizData.length).fill(false);
+            selectedOptions = Array(quizData.length).fill(null);
+            scoreDisplay.textContent = `Điểm: ${score}/${quizData.length}`;
+            resultsContainer.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+            showQuestion(currentQuestion);
+        });
+
+        // Initialize the quiz
+        showQuestion(currentQuestion);
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>

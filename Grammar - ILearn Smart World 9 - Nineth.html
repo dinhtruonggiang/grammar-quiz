@@ -1,0 +1,1013 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Các Thì Tiếng Anh - ILearn Smart World 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .question-container {
+            display: none;
+        }
+        .question-container.active {
+            display: block;
+        }
+        .selected {
+            background-color: #bfdbfe;
+        }
+        .correct {
+            background-color: #bbf7d0;
+        }
+        .incorrect {
+            background-color: #fecaca;
+        }
+    </style>
+</head>
+<body class="bg-blue-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-3xl">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-blue-800 mb-2">Bài Trắc Nghiệm Các Thì Tiếng Anh</h1>
+            <p class="text-lg text-blue-600">ILearn Smart World 9 Student Book</p>
+        </header>
+
+        <div id="intro" class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold text-blue-700 mb-4">Hướng Dẫn</h2>
+            <ul class="list-disc pl-6 mb-4 text-gray-700">
+                <li>Bài trắc nghiệm gồm 30 câu hỏi về các thì trong tiếng Anh.</li>
+                <li>Mỗi câu có 4 lựa chọn, chỉ có 1 đáp án đúng.</li>
+                <li>Sau khi chọn đáp án, bạn sẽ thấy giải thích chi tiết.</li>
+                <li>Bạn không thể thay đổi đáp án sau khi đã chọn.</li>
+                <li>Bấm "Câu tiếp theo" để di chuyển đến câu hỏi kế tiếp.</li>
+            </ul>
+            <button id="start-btn" class="w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700 transition">Bắt Đầu Làm Bài</button>
+        </div>
+
+        <div id="quiz-container" class="hidden">
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 id="question-number" class="text-xl font-semibold text-blue-700">Câu hỏi 1/30</h2>
+                    <span id="score-display" class="text-lg font-medium text-blue-600">Điểm: 0/30</span>
+                </div>
+                <div id="progress-bar" class="w-full bg-gray-200 rounded-full h-2.5 mb-6">
+                    <div id="progress" class="bg-blue-600 h-2.5 rounded-full" style="width: 3%"></div>
+                </div>
+
+                <!-- Questions containers -->
+                <div id="question-1" class="question-container active">
+                    <p class="text-lg font-medium mb-4">1. They __________ to the museum last weekend.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. go</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">B. went</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">C. are going</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. have gone</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là B. went</p>
+                        <p>Câu này sử dụng thì Quá khứ đơn (Past Simple) vì có cụm từ chỉ thời gian xác định trong quá khứ "last weekend". Khi nói về một hành động đã xảy ra và kết thúc ở một thời điểm xác định trong quá khứ, chúng ta sử dụng thì quá khứ đơn với động từ ở dạng quá khứ (went là dạng quá khứ của go).</p>
+                    </div>
+                </div>
+
+                <div id="question-2" class="question-container">
+                    <p class="text-lg font-medium mb-4">2. By the time we arrived at the party, most of the guests __________ home.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. go</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. went</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">C. had gone</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. have gone</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là C. had gone</p>
+                        <p>Câu này sử dụng thì Quá khứ hoàn thành (Past Perfect) vì đang mô tả một hành động đã xảy ra và hoàn thành trước một hành động khác trong quá khứ. Cấu trúc "By the time we arrived" (Vào lúc chúng tôi đến) là mốc thời gian trong quá khứ, và hành động "most of the guests had gone home" đã xảy ra trước mốc thời gian đó. Thì quá khứ hoàn thành được dùng để diễn tả hành động xảy ra trước một hành động khác trong quá khứ.</p>
+                    </div>
+                </div>
+
+                <div id="question-3" class="question-container">
+                    <p class="text-lg font-medium mb-4">3. She __________ English for five years now.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. studies</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. studied</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">C. is studying</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">D. has been studying</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là D. has been studying</p>
+                        <p>Câu này sử dụng thì Hiện tại hoàn thành tiếp diễn (Present Perfect Continuous) vì đang nói về một hành động bắt đầu trong quá khứ, tiếp tục đến hiện tại và có thể tiếp tục trong tương lai. Cụm "for five years now" cho thấy hành động học tiếng Anh bắt đầu từ 5 năm trước và vẫn đang tiếp tục đến hiện tại. Thì hiện tại hoàn thành tiếp diễn nhấn mạnh tính liên tục của hành động trong một khoảng thời gian.</p>
+                    </div>
+                </div>
+
+                <div id="question-4" class="question-container">
+                    <p class="text-lg font-medium mb-4">4. I __________ TV when my friend called me yesterday.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. watch</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. watched</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">C. was watching</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. had watched</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là C. was watching</p>
+                        <p>Câu này sử dụng thì Quá khứ tiếp diễn (Past Continuous) vì đang mô tả một hành động đang diễn ra tại một thời điểm cụ thể trong quá khứ. Khi bạn đang xem TV (hành động kéo dài), thì bạn nhận được cuộc gọi từ bạn (hành động xảy ra trong thời gian ngắn). Thì quá khứ tiếp diễn được sử dụng để diễn tả hành động đang diễn ra thì bị một hành động khác xen vào.</p>
+                    </div>
+                </div>
+
+                <div id="question-5" class="question-container">
+                    <p class="text-lg font-medium mb-4">5. This time tomorrow, we __________ on the beach in Nha Trang.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. relax</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. will relax</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">C. will be relaxing</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. are relaxing</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là C. will be relaxing</p>
+                        <p>Câu này sử dụng thì Tương lai tiếp diễn (Future Continuous) vì đang nói về một hành động sẽ đang diễn ra tại một thời điểm cụ thể trong tương lai. Cụm "This time tomorrow" (Vào thời điểm này ngày mai) là một thời điểm xác định trong tương lai, và chúng ta đang dự đoán rằng tại thời điểm đó, hành động "relaxing on the beach" sẽ đang diễn ra. Thì tương lai tiếp diễn được dùng để diễn tả hành động sẽ đang xảy ra tại một thời điểm cụ thể trong tương lai.</p>
+                    </div>
+                </div>
+
+                <div id="question-6" class="question-container">
+                    <p class="text-lg font-medium mb-4">6. If I __________ enough money, I would buy a new laptop.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">A. had</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. have</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">C. will have</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. am having</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là A. had</p>
+                        <p>Câu này sử dụng cấu trúc câu điều kiện loại 2 (Second Conditional), được dùng để nói về tình huống giả định không có thực hoặc khó có thể xảy ra ở hiện tại. Trong câu điều kiện loại 2, mệnh đề "if" sử dụng thì Quá khứ đơn (Past Simple) và mệnh đề chính sử dụng "would + V". Vì vậy, "If I had enough money" (Nếu tôi có đủ tiền - nhưng thực tế là không có) thì "I would buy a new laptop" (tôi sẽ mua một laptop mới).</p>
+                    </div>
+                </div>
+
+                <div id="question-7" class="question-container">
+                    <p class="text-lg font-medium mb-4">7. The plane __________ at 10:30 pm tonight.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. arrives</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">B. is arriving</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">C. will arrive</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. arrived</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là B. is arriving</p>
+                        <p>Câu này sử dụng thì Hiện tại tiếp diễn với nghĩa tương lai (Present Continuous with future meaning). Khi nói về các sự kiện được lên lịch hoặc đã được sắp xếp trước trong tương lai gần, đặc biệt là các lịch trình như chuyến bay, chuyến tàu, v.v., chúng ta thường sử dụng thì hiện tại tiếp diễn. "The plane is arriving at 10:30 pm tonight" diễn tả chuyến bay đã được lên lịch và dự kiến sẽ đến vào 10:30 tối nay. Tuy cả A và C cũng đúng về ngữ pháp, nhưng với lịch trình đã được định sẵn như thời gian chuyến bay, thì hiện tại tiếp diễn được ưu tiên sử dụng trong tiếng Anh.</p>
+                    </div>
+                </div>
+
+                <div id="question-8" class="question-container">
+                    <p class="text-lg font-medium mb-4">8. She told me that she __________ in London for five years.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. lives</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. has lived</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">C. had lived</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. is living</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là C. had lived</p>
+                        <p>Câu này sử dụng lối nói gián tiếp (Reported Speech), và khi động từ trong mệnh đề chính ở quá khứ (told), thì các động từ trong mệnh đề sau cũng phải lùi thì. Ở đây, câu trực tiếp ban đầu có thể là "I have lived in London for five years" (thì hiện tại hoàn thành), khi chuyển sang gián tiếp, thì hiện tại hoàn thành sẽ chuyển thành thì quá khứ hoàn thành: "had lived". Vì vậy, "She told me that she had lived in London for five years" là cách diễn đạt đúng trong lối nói gián tiếp.</p>
+                    </div>
+                </div>
+
+                <div id="question-9" class="question-container">
+                    <p class="text-lg font-medium mb-4">9. My brother __________ his homework by the time I got home.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. finishes</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. finished</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">C. had finished</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. has finished</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là C. had finished</p>
+                        <p>Câu này sử dụng thì Quá khứ hoàn thành (Past Perfect) vì đang mô tả một hành động đã hoàn thành trước một hành động khác trong quá khứ. Hành động "finish homework" (hoàn thành bài tập về nhà) xảy ra trước hành động "I got home" (tôi về nhà), và cả hai hành động đều xảy ra trong quá khứ. Trong trường hợp này, cấu trúc "by the time" (vào lúc) giúp xác định trình tự thời gian giữa hai hành động, và chúng ta sử dụng thì quá khứ hoàn thành cho hành động xảy ra trước.</p>
+                    </div>
+                </div>
+
+                <div id="question-10" class="question-container">
+                    <p class="text-lg font-medium mb-4">10. We __________ to the cinema this weekend if the weather is nice.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. go</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. are going</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">C. went</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">D. might go</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là D. might go</p>
+                        <p>Câu này sử dụng động từ khiếm khuyết "might" để diễn đạt một khả năng trong tương lai phụ thuộc vào một điều kiện. Cụm "if the weather is nice" (nếu thời tiết đẹp) cho thấy đây là một dự định còn phụ thuộc vào yếu tố thời tiết, không chắc chắn 100%. "Might go" diễn tả khả năng có thể sẽ đi xem phim nếu điều kiện thời tiết thuận lợi. Đây là cách diễn đạt phù hợp cho một kế hoạch không chắc chắn trong tương lai.</p>
+                    </div>
+                </div>
+
+                <div id="question-11" class="question-container">
+                    <p class="text-lg font-medium mb-4">11. John __________ in that company since 2010.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. works</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. is working</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">C. has been working</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. worked</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là C. has been working</p>
+                        <p>Câu này sử dụng thì Hiện tại hoàn thành tiếp diễn (Present Perfect Continuous) vì đang mô tả một hành động bắt đầu trong quá khứ (năm 2010), tiếp tục đến hiện tại và có thể tiếp tục trong tương lai. Cụm "since 2010" chỉ điểm bắt đầu của hành động, và thì hiện tại hoàn thành tiếp diễn được sử dụng để nhấn mạnh tính liên tục của hành động làm việc từ năm 2010 đến hiện tại.</p>
+                    </div>
+                </div>
+
+                <div id="question-12" class="question-container">
+                    <p class="text-lg font-medium mb-4">12. By the end of next year, I __________ in this city for ten years.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. will live</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. am living</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">C. have lived</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">D. will have lived</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là D. will have lived</p>
+                        <p>Câu này sử dụng thì Tương lai hoàn thành (Future Perfect) vì đang nói về một hành động sẽ hoàn thành trước một thời điểm cụ thể trong tương lai. Cụm "by the end of next year" (vào cuối năm sau) là mốc thời gian trong tương lai, và hành động "sống ở thành phố này" sẽ đạt đến cột mốc 10 năm vào thời điểm đó. Thì tương lai hoàn thành được dùng để diễn tả hành động sẽ hoàn thành trước một mốc thời gian trong tương lai.</p>
+                    </div>
+                </div>
+
+                <div id="question-13" class="question-container">
+                    <p class="text-lg font-medium mb-4">13. I __________ to the gym every day last month, but now I'm too busy.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. go</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">B. went</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">C. have gone</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. had gone</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là B. went</p>
+                        <p>Câu này sử dụng thì Quá khứ đơn (Past Simple) vì đang nói về một thói quen đã diễn ra thường xuyên trong một khoảng thời gian đã kết thúc trong quá khứ. Cụm "every day last month" (mỗi ngày tháng trước) chỉ một khoảng thời gian đã qua, và phần sau câu "but now I'm too busy" (nhưng bây giờ tôi quá bận) cho thấy rõ thói quen đó đã không còn tiếp tục. Vì vậy, thì quá khứ đơn được sử dụng để diễn tả thói quen trong quá khứ không còn tiếp tục đến hiện tại.</p>
+                    </div>
+                </div>
+
+                <div id="question-14" class="question-container">
+                    <p class="text-lg font-medium mb-4">14. We __________ dinner when the power went out.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. are having</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. have</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">C. were having</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. had</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là C. were having</p>
+                        <p>Câu này sử dụng thì Quá khứ tiếp diễn (Past Continuous) vì đang mô tả một hành động đang diễn ra tại một thời điểm cụ thể trong quá khứ thì bị một hành động khác xen vào. Hành động "having dinner" (ăn tối) đang diễn ra thì bị gián đoạn bởi hành động "the power went out" (mất điện). Thì quá khứ tiếp diễn được sử dụng để diễn tả hành động đang diễn ra trong quá khứ khi một hành động khác xảy ra.</p>
+                    </div>
+                </div>
+
+                <div id="question-15" class="question-container">
+                    <p class="text-lg font-medium mb-4">15. I __________ my keys. I can't find them anywhere!</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. lose</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. am losing</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">C. have lost</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. had lost</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là C. have lost</p>
+                        <p>Câu này sử dụng thì Hiện tại hoàn thành (Present Perfect) vì đang nói về một hành động đã xảy ra trong quá khứ nhưng có kết quả hoặc ảnh hưởng đến hiện tại. Hành động "lose keys" (đánh mất chìa khóa) đã xảy ra ở một thời điểm không xác định trong quá khứ, nhưng kết quả của việc đó vẫn còn ảnh hưởng đến hiện tại ("I can't find them anywhere" - Tôi không thể tìm thấy chúng ở đâu cả). Thì hiện tại hoàn thành được sử dụng để liên kết quá khứ với hiện tại.</p>
+                    </div>
+                </div>
+
+                <div id="question-16" class="question-container">
+                    <p class="text-lg font-medium mb-4">16. When I arrived at the party, everyone __________.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. dances</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">B. was dancing</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">C. danced</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. has danced</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là B. was dancing</p>
+                        <p>Câu này sử dụng thì Quá khứ tiếp diễn (Past Continuous) vì đang mô tả một hành động đang diễn ra tại một thời điểm cụ thể trong quá khứ. Khi người nói đến bữa tiệc (một hành động xảy ra trong thời gian ngắn - arrived), mọi người đang nhảy múa (một hành động đang diễn ra - was dancing). Thì quá khứ tiếp diễn được sử dụng để diễn tả hành động đang diễn ra trong quá khứ khi một hành động khác xảy ra.</p>
+                    </div>
+                </div>
+
+                <div id="question-17" class="question-container">
+                    <p class="text-lg font-medium mb-4">17. We __________ to Thailand next summer if we save enough money.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. go</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. are going</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">C. will go</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. went</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là C. will go</p>
+                        <p>Câu này sử dụng thì Tương lai đơn (Future Simple) trong một câu điều kiện loại 1 (First Conditional). Câu điều kiện loại 1 được dùng để nói về tình huống có thể xảy ra trong tương lai nếu một điều kiện nào đó được thỏa mãn. Trong câu điều kiện loại 1, mệnh đề "if" sử dụng thì hiện tại đơn (present simple) và mệnh đề chính sử dụng thì tương lai đơn với "will + V". Ở đây, "if we save enough money" (nếu chúng ta tiết kiệm đủ tiền) là điều kiện, và "we will go to Thailand" (chúng ta sẽ đi Thái Lan) là kết quả sẽ xảy ra nếu điều kiện được thỏa mãn.</p>
+                    </div>
+                </div>
+
+                <div id="question-18" class="question-container">
+                    <p class="text-lg font-medium mb-4">18. She __________ with her friends when her mother called.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. chats</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. chatted</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">C. was chatting</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. has chatted</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là C. was chatting</p>
+                        <p>Câu này sử dụng thì Quá khứ tiếp diễn (Past Continuous) vì đang mô tả một hành động đang diễn ra tại một thời điểm cụ thể trong quá khứ khi một hành động khác xảy ra. Khi cô ấy đang trò chuyện với bạn bè (hành động kéo dài), thì mẹ cô ấy gọi điện (hành động ngắn xen vào). Thì quá khứ tiếp diễn được sử dụng để diễn tả hành động đang diễn ra trong quá khứ khi bị gián đoạn bởi một hành động khác.</p>
+                    </div>
+                </div>
+
+                <div id="question-19" class="question-container">
+                    <p class="text-lg font-medium mb-4">19. By the time we graduate, we __________ six years of English.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. study</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. will study</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">C. are studying</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">D. will have studied</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là D. will have studied</p>
+                        <p>Câu này sử dụng thì Tương lai hoàn thành (Future Perfect) vì đang nói về một hành động sẽ hoàn thành trước một thời điểm cụ thể trong tương lai. Cụm "by the time we graduate" (vào thời điểm chúng ta tốt nghiệp) là mốc thời gian trong tương lai, và hành động "study English" sẽ đạt đến cột mốc 6 năm vào thời điểm đó. Thì tương lai hoàn thành được dùng để diễn tả hành động sẽ hoàn thành trước một mốc thời gian trong tương lai.</p>
+                    </div>
+                </div>
+
+                <div id="question-20" class="question-container">
+                    <p class="text-lg font-medium mb-4">20. I __________ that movie three times already.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. see</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. saw</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">C. have seen</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. had seen</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là C. have seen</p>
+                        <p>Câu này sử dụng thì Hiện tại hoàn thành (Present Perfect) vì đang nói về một trải nghiệm đã xảy ra trong quá khứ mà không chỉ rõ thời gian cụ thể. Từ "already" (đã) và cụm "three times" (ba lần) cho thấy hành động xem phim đã xảy ra nhiều lần trong quá khứ và có thể tiếp tục trong tương lai. Thì hiện tại hoàn thành thường được sử dụng để nói về kinh nghiệm, thành tựu mà không cần chỉ rõ thời gian cụ thể.</p>
+                    </div>
+                </div>
+
+                <div id="question-21" class="question-container">
+                    <p class="text-lg font-medium mb-4">21. While I __________ dinner, my sister was doing her homework.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. cook</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. cooked</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">C. was cooking</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. had cooked</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là C. was cooking</p>
+                        <p>Câu này sử dụng thì Quá khứ tiếp diễn (Past Continuous) vì đang mô tả hai hành động đang diễn ra song song trong quá khứ. Từ "while" (trong khi) gợi ý rằng cả hai hành động "cook dinner" (nấu bữa tối) và "do homework" (làm bài tập về nhà) đều đang diễn ra cùng lúc trong quá khứ. Thì quá khứ tiếp diễn được sử dụng cho cả hai hành động để diễn tả sự song song này.</p>
+                    </div>
+                </div>
+
+                <div id="question-22" class="question-container">
+                    <p class="text-lg font-medium mb-4">22. I __________ to Hanoi three times since 2015.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. go</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. went</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">C. have been</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. had been</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là C. have been</p>
+                        <p>Câu này sử dụng thì Hiện tại hoàn thành (Present Perfect) vì đang nói về một trải nghiệm đã lặp lại nhiều lần từ một điểm trong quá khứ đến hiện tại. Cụm "since 2015" (kể từ năm 2015) chỉ một khoảng thời gian từ quá khứ đến hiện tại, và "three times" (ba lần) cho thấy hành động đã lặp lại nhiều lần trong khoảng thời gian đó. "Have been to" được sử dụng để nói rằng một người đã từng đến thăm một nơi nào đó và đã trở về.</p>
+                    </div>
+                </div>
+
+                <div id="question-23" class="question-container">
+                    <p class="text-lg font-medium mb-4">23. I promise I __________ you as soon as I get the results.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. call</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">B. will call</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">C. am calling</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. would call</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là B. will call</p>
+                        <p>Câu này sử dụng thì Tương lai đơn (Future Simple) vì đang nói về một lời hứa hoặc quyết định được đưa ra vào thời điểm nói. Từ "promise" (hứa) cho thấy đây là một cam kết về hành động trong tương lai. Cấu trúc "as soon as I get the results" (ngay khi tôi nhận được kết quả) chỉ một điều kiện trong tương lai, và "I will call you" (tôi sẽ gọi cho bạn) là hành động sẽ xảy ra sau điều kiện đó. Thì tương lai đơn thường được sử dụng cho các lời hứa, quyết định ngay lập tức, và dự đoán trong tương lai.</p>
+                    </div>
+                </div>
+
+                <div id="question-24" class="question-container">
+                    <p class="text-lg font-medium mb-4">24. I __________ for three hours before I finally found my keys.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. search</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. searched</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">C. had been searching</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. have been searching</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là C. had been searching</p>
+                        <p>Câu này sử dụng thì Quá khứ hoàn thành tiếp diễn (Past Perfect Continuous) vì đang mô tả một hành động đã diễn ra liên tục trong một khoảng thời gian trước một hành động khác trong quá khứ. Hành động "search for keys" (tìm kiếm chìa khóa) diễn ra liên tục trong 3 giờ và kết thúc khi hành động "found my keys" (tìm thấy chìa khóa) xảy ra. Thì quá khứ hoàn thành tiếp diễn nhấn mạnh tính liên tục hoặc kéo dài của hành động trước một mốc thời gian khác trong quá khứ.</p>
+                    </div>
+                </div>
+
+                <div id="question-25" class="question-container">
+                    <p class="text-lg font-medium mb-4">25. Look at those dark clouds. It __________ soon.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. rains</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. rained</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">C. has rained</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">D. is going to rain</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là D. is going to rain</p>
+                        <p>Câu này sử dụng cấu trúc "be going to" để diễn tả dự đoán dựa trên bằng chứng hiện tại hoặc dấu hiệu có thể nhìn thấy. Cụm "look at those dark clouds" (nhìn những đám mây đen kia) là một dấu hiệu có thể nhìn thấy gợi ý rằng trời sắp mưa. Cấu trúc "be going to" thường được sử dụng khi có dấu hiệu cho thấy điều gì đó sắp xảy ra.</p>
+                    </div>
+                </div>
+
+                <div id="question-26" class="question-container">
+                    <p class="text-lg font-medium mb-4">26. She __________ on the project since early this morning.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. works</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. worked</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">C. is working</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">D. has been working</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là D. has been working</p>
+                        <p>Câu này sử dụng thì Hiện tại hoàn thành tiếp diễn (Present Perfect Continuous) vì đang mô tả một hành động bắt đầu trong quá khứ (early this morning - sáng sớm hôm nay), tiếp tục đến hiện tại và có thể tiếp tục trong tương lai. Cụm "since early this morning" chỉ điểm bắt đầu của hành động, và thì hiện tại hoàn thành tiếp diễn được sử dụng để nhấn mạnh tính liên tục của hành động từ sáng sớm đến hiện tại.</p>
+                    </div>
+                </div>
+
+                <div id="question-27" class="question-container">
+                    <p class="text-lg font-medium mb-4">27. If I __________ rich, I would travel around the world.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">A. were</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. am</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">C. will be</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. would be</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là A. were</p>
+                        <p>Câu này sử dụng cấu trúc câu điều kiện loại 2 (Second Conditional), được dùng để nói về tình huống giả định không có thực hoặc khó có thể xảy ra ở hiện tại. Trong câu điều kiện loại 2, mệnh đề "if" sử dụng thì Quá khứ đơn (Past Simple) và mệnh đề chính sử dụng "would + V". Vì vậy, "If I were rich" (Nếu tôi giàu có - nhưng thực tế là không giàu) thì "I would travel around the world" (tôi sẽ đi du lịch khắp thế giới). Lưu ý rằng với động từ "to be" trong câu điều kiện loại 2, chúng ta thường dùng "were" cho tất cả các ngôi.</p>
+                    </div>
+                </div>
+
+                <div id="question-28" class="question-container">
+                    <p class="text-lg font-medium mb-4">28. I __________ her since we graduated from high school.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. don't see</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. didn't see</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">C. haven't seen</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. hadn't seen</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là C. haven't seen</p>
+                        <p>Câu này sử dụng thì Hiện tại hoàn thành (Present Perfect) vì đang nói về một tình trạng bắt đầu trong quá khứ và tiếp tục đến hiện tại. Cụm "since we graduated from high school" (kể từ khi chúng tôi tốt nghiệp trung học) chỉ điểm bắt đầu của tình trạng "not see her" (không gặp cô ấy), và tình trạng này tiếp tục đến hiện tại. Thì hiện tại hoàn thành thường được sử dụng với "since" hoặc "for" để nói về tình trạng hoặc hành động bắt đầu trong quá khứ và vẫn tiếp tục đến hiện tại.</p>
+                    </div>
+                </div>
+
+                <div id="question-29" class="question-container">
+                    <p class="text-lg font-medium mb-4">29. This time next week, we __________ on the beach in Danang.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. are</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. will be</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">C. will be lying</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. would be</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là C. will be lying</p>
+                        <p>Câu này sử dụng thì Tương lai tiếp diễn (Future Continuous) vì đang nói về một hành động sẽ đang diễn ra tại một thời điểm cụ thể trong tương lai. Cụm "This time next week" (Vào thời điểm này tuần sau) là một thời điểm xác định trong tương lai, và chúng ta đang dự đoán rằng tại thời điểm đó, hành động "lying on the beach" (nằm trên bãi biển) sẽ đang diễn ra. Thì tương lai tiếp diễn được dùng để diễn tả hành động sẽ đang xảy ra tại một thời điểm cụ thể trong tương lai.</p>
+                    </div>
+                </div>
+
+                <div id="question-30" class="question-container">
+                    <p class="text-lg font-medium mb-4">30. After she __________ her homework, she went to bed.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">A. finishes</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">B. finished</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="true">
+                            <span class="font-medium">C. had finished</span>
+                        </div>
+                        <div class="option p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-50" data-correct="false">
+                            <span class="font-medium">D. has finished</span>
+                        </div>
+                    </div>
+                    <div class="explanation hidden bg-blue-50 p-4 rounded-md mb-4">
+                        <h3 class="font-semibold text-blue-800 mb-2">Giải thích:</h3>
+                        <p>Đáp án đúng là C. had finished</p>
+                        <p>Câu này sử dụng thì Quá khứ hoàn thành (Past Perfect) vì đang mô tả một hành động đã xảy ra và hoàn thành trước một hành động khác trong quá khứ. Từ "after" (sau khi) trong câu này giúp xác định trình tự thời gian của hai hành động: "finish homework" (hoàn thành bài tập về nhà) và "go to bed" (đi ngủ). Thì quá khứ hoàn thành "had finished" được sử dụng cho hành động xảy ra trước (hoàn thành bài tập về nhà), và thì quá khứ đơn "went" được sử dụng cho hành động xảy ra sau (đi ngủ) trong quá khứ.</p>
+                    </div>
+                </div>
+
+                <!-- Results container -->
+                <div id="results" class="question-container">
+                    <h2 class="text-2xl font-bold text-blue-700 mb-6 text-center">Kết Quả Bài Trắc Nghiệm</h2>
+                    <div class="mb-6 text-center">
+                        <span id="final-score" class="text-3xl font-bold text-blue-800">0/30</span>
+                        <p class="text-lg text-gray-700 mt-2">câu trả lời đúng</p>
+                    </div>
+                    <div class="grid grid-cols-5 gap-2 mb-6">
+                        <!-- Question status indicators will be added here dynamically -->
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-md mb-6">
+                        <h3 class="font-semibold text-blue-800 mb-2">Nhận xét:</h3>
+                        <p id="score-comment" class="text-gray-700"></p>
+                    </div>
+                    <button id="restart-btn" class="w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700 transition">Làm Lại Bài</button>
+                </div>
+
+                <div class="mt-6 flex justify-between">
+                    <button id="prev-btn" class="hidden bg-gray-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-gray-600 transition">Câu Trước</button>
+                    <button id="next-btn" class="hidden bg-blue-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700 transition">Câu Tiếp Theo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const startBtn = document.getElementById('start-btn');
+            const introSection = document.getElementById('intro');
+            const quizContainer = document.getElementById('quiz-container');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const restartBtn = document.getElementById('restart-btn');
+            const questionNumber = document.getElementById('question-number');
+            const progress = document.getElementById('progress');
+            const scoreDisplay = document.getElementById('score-display');
+            const finalScore = document.getElementById('final-score');
+            const scoreComment = document.getElementById('score-comment');
+            
+            let currentQuestion = 1;
+            let totalQuestions = 30;
+            let score = 0;
+            let answered = new Array(totalQuestions + 1).fill(false);
+            
+            // Start quiz
+            startBtn.addEventListener('click', function() {
+                introSection.classList.add('hidden');
+                quizContainer.classList.remove('hidden');
+                updateButtons();
+            });
+            
+            // Next question
+            nextBtn.addEventListener('click', function() {
+                if (currentQuestion < totalQuestions) {
+                    document.getElementById(`question-${currentQuestion}`).classList.remove('active');
+                    currentQuestion++;
+                    document.getElementById(`question-${currentQuestion}`).classList.add('active');
+                    questionNumber.textContent = `Câu hỏi ${currentQuestion}/${totalQuestions}`;
+                    progress.style.width = `${(currentQuestion / totalQuestions) * 100}%`;
+                    updateButtons();
+                } else if (currentQuestion === totalQuestions) {
+                    document.getElementById(`question-${currentQuestion}`).classList.remove('active');
+                    showResults();
+                }
+            });
+            
+            // Previous question
+            prevBtn.addEventListener('click', function() {
+                if (currentQuestion > 1) {
+                    document.getElementById(`question-${currentQuestion}`).classList.remove('active');
+                    currentQuestion--;
+                    document.getElementById(`question-${currentQuestion}`).classList.add('active');
+                    questionNumber.textContent = `Câu hỏi ${currentQuestion}/${totalQuestions}`;
+                    progress.style.width = `${(currentQuestion / totalQuestions) * 100}%`;
+                    updateButtons();
+                }
+            });
+            
+            // Restart quiz
+            restartBtn.addEventListener('click', function() {
+                // Reset variables
+                currentQuestion = 1;
+                score = 0;
+                answered = new Array(totalQuestions + 1).fill(false);
+                
+                // Reset UI
+                document.getElementById('results').classList.remove('active');
+                document.getElementById('question-1').classList.add('active');
+                questionNumber.textContent = `Câu hỏi ${currentQuestion}/${totalQuestions}`;
+                progress.style.width = `${(currentQuestion / totalQuestions) * 100}%`;
+                scoreDisplay.textContent = `Điểm: ${score}/${totalQuestions}`;
+                
+                // Reset options and explanations
+                const options = document.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.classList.remove('selected', 'correct', 'incorrect');
+                    option.style.pointerEvents = 'auto';
+                });
+                
+                const explanations = document.querySelectorAll('.explanation');
+                explanations.forEach(explanation => {
+                    explanation.classList.add('hidden');
+                });
+                
+                updateButtons();
+            });
+            
+            // Handle option selection
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => {
+                option.addEventListener('click', function() {
+                    const questionId = this.closest('.question-container').id;
+                    const questionIndex = parseInt(questionId.split('-')[1]);
+                    
+                    if (answered[questionIndex]) return;
+                    
+                    answered[questionIndex] = true;
+                    
+                    // Disable further selection for this question
+                    const questionOptions = document.querySelectorAll(`#${questionId} .option`);
+                    questionOptions.forEach(opt => {
+                        opt.style.pointerEvents = 'none';
+                    });
+                    
+                    // Mark selected option
+                    this.classList.add('selected');
+                    
+                    // Check if correct
+                    const isCorrect = this.getAttribute('data-correct') === 'true';
+                    if (isCorrect) {
+                        this.classList.add('correct');
+                        score++;
+                        scoreDisplay.textContent = `Điểm: ${score}/${totalQuestions}`;
+                    } else {
+                        this.classList.add('incorrect');
+                        
+                        // Show correct answer
+                        questionOptions.forEach(opt => {
+                            if (opt.getAttribute('data-correct') === 'true') {
+                                opt.classList.add('correct');
+                            }
+                        });
+                    }
+                    
+                    // Show explanation
+                    const explanation = document.querySelector(`#${questionId} .explanation`);
+                    explanation.classList.remove('hidden');
+                    
+                    // Enable next button if this is the current question
+                    if (questionIndex === currentQuestion) {
+                        nextBtn.disabled = false;
+                        nextBtn.classList.remove('bg-gray-400');
+                        nextBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+                    }
+                });
+            });
+            
+            // Update prev/next buttons
+            function updateButtons() {
+                // Update prev button
+                if (currentQuestion === 1) {
+                    prevBtn.classList.add('hidden');
+                } else {
+                    prevBtn.classList.remove('hidden');
+                }
+                
+                // Update next button
+                if (currentQuestion === totalQuestions) {
+                    nextBtn.textContent = 'Xem Kết Quả';
+                } else {
+                    nextBtn.textContent = 'Câu Tiếp Theo';
+                }
+                
+                nextBtn.classList.remove('hidden');
+                
+                // Disable next button if current question not answered
+                if (!answered[currentQuestion]) {
+                    nextBtn.disabled = true;
+                    nextBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                    nextBtn.classList.add('bg-gray-400');
+                } else {
+                    nextBtn.disabled = false;
+                    nextBtn.classList.remove('bg-gray-400');
+                    nextBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+                }
+            }
+            
+            // Show results
+            function showResults() {
+                document.getElementById('results').classList.add('active');
+                finalScore.textContent = `${score}/${totalQuestions}`;
+                
+                // Create question status indicators
+                const indicatorsContainer = document.querySelector('#results .grid');
+                indicatorsContainer.innerHTML = '';
+                
+                for (let i = 1; i <= totalQuestions; i++) {
+                    const questionEl = document.getElementById(`question-${i}`);
+                    const correctOption = questionEl.querySelector('.option[data-correct="true"]');
+                    const selectedOption = questionEl.querySelector('.option.selected');
+                    
+                    let isCorrect = false;
+                    if (selectedOption && selectedOption.getAttribute('data-correct') === 'true') {
+                        isCorrect = true;
+                    }
+                    
+                    const indicator = document.createElement('div');
+                    indicator.className = `flex items-center justify-center h-10 rounded-md font-bold ${isCorrect ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'}`;
+                    indicator.textContent = i;
+                    indicatorsContainer.appendChild(indicator);
+                }
+                
+                // Add comment based on score
+                const percentage = (score / totalQuestions) * 100;
+                let comment = '';
+                
+                if (percentage >= 90) {
+                    comment = 'Xuất sắc! Bạn đã nắm vững các thì trong tiếng Anh.';
+                } else if (percentage >= 80) {
+                    comment = 'Rất tốt! Bạn đã hiểu hầu hết các thì tiếng Anh.';
+                } else if (percentage >= 70) {
+                    comment = 'Khá tốt! Bạn đã nắm được phần lớn các thì tiếng Anh, nhưng vẫn còn một số lỗi nhỏ.';
+                } else if (percentage >= 60) {
+                    comment = 'Khá! Bạn đã hiểu cơ bản về các thì tiếng Anh, nhưng cần ôn tập thêm.';
+                } else if (percentage >= 50) {
+                    comment = 'Trung bình! Bạn hiểu được một nửa các thì tiếng Anh, cần ôn tập nhiều hơn.';
+                } else {
+                    comment = 'Cần cố gắng hơn! Bạn nên ôn tập lại các thì tiếng Anh cơ bản.';
+                }
+                
+                scoreComment.textContent = comment;
+                
+                // Hide navigation buttons
+                prevBtn.classList.add('hidden');
+                nextBtn.classList.add('hidden');
+            }
+            
+            // Initialize buttons
+            updateButtons();
+        });
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
