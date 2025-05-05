@@ -1,0 +1,494 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công cụ tính thuế TNCN</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f5ff;
+        }
+        .input-group {
+            transition: all 0.3s ease;
+        }
+        .input-group:hover {
+            transform: translateY(-2px);
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .result-value {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <header class="text-center mb-8">
+            <div class="flex justify-center items-center mb-2">
+                <div class="bg-red-600 w-16 h-12 relative overflow-hidden rounded-sm">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-yellow-300 text-2xl">★</div>
+                    </div>
+                </div>
+            </div>
+            <h1 class="text-3xl font-bold text-blue-800">Công cụ tính quyết toán thuế TNCN</h1>
+            <p class="text-gray-600 mt-2">Tính toán chính xác số thuế TNCN phải nộp thêm hoặc được hoàn lại</p>
+        </header>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Thu nhập section -->
+                <div class="col-span-1 md:col-span-2">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-4 pb-2 border-b border-gray-200">
+                        <span class="bg-blue-100 px-2 py-1 rounded mr-2">1</span>Thông tin thu nhập
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="input-group">
+                            <label class="block text-gray-700 font-medium mb-2" for="income1">
+                                Thu nhập chịu thuế tại nơi làm việc thứ nhất (VNĐ/năm)
+                            </label>
+                            <input type="number" id="income1" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="input-group">
+                            <label class="block text-gray-700 font-medium mb-2" for="income2">
+                                Thu nhập chịu thuế tại nơi làm việc thứ hai (VNĐ/năm)
+                            </label>
+                            <input type="number" id="income2" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Người phụ thuộc section -->
+                <div>
+                    <h2 class="text-xl font-semibold text-blue-700 mb-4 pb-2 border-b border-gray-200">
+                        <span class="bg-blue-100 px-2 py-1 rounded mr-2">2</span>Người phụ thuộc
+                    </h2>
+                    <div id="dependentsContainer">
+                        <div class="dependent-row mb-4 flex flex-col sm:flex-row sm:space-x-2">
+                            <div class="flex-1 input-group">
+                                <label class="block text-gray-700 font-medium mb-2">
+                                    Người phụ thuộc 1
+                                </label>
+                                <input type="number" class="dependent-months w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Số tháng" min="1" max="12">
+                            </div>
+                        </div>
+                    </div>
+                    <button id="addDependentBtn" class="mt-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md transition-colors flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                        </svg>
+                        Thêm người phụ thuộc
+                    </button>
+                </div>
+
+                <!-- Bảo hiểm section -->
+                <div>
+                    <h2 class="text-xl font-semibold text-blue-700 mb-4 pb-2 border-b border-gray-200">
+                        <span class="bg-blue-100 px-2 py-1 rounded mr-2">3</span>Bảo hiểm đã đóng
+                    </h2>
+                    <div class="space-y-4">
+                        <div class="input-group">
+                            <label class="block text-gray-700 font-medium mb-2" for="insurance1">
+                                BHXH, BHYT, BHTN tại nơi làm việc thứ nhất (VNĐ/năm)
+                            </label>
+                            <input type="number" id="insurance1" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="input-group">
+                            <label class="block text-gray-700 font-medium mb-2" for="insurance2">
+                                BHXH, BHYT, BHTN tại nơi làm việc thứ hai (VNĐ/năm)
+                            </label>
+                            <input type="number" id="insurance2" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Thuế đã khấu trừ section -->
+                <div class="col-span-1 md:col-span-2">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-4 pb-2 border-b border-gray-200">
+                        <span class="bg-blue-100 px-2 py-1 rounded mr-2">4</span>Thuế đã khấu trừ
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="input-group">
+                            <label class="block text-gray-700 font-medium mb-2" for="taxWithheld1">
+                                Thuế TNCN đã khấu trừ tại nơi làm việc thứ nhất (VNĐ/năm)
+                            </label>
+                            <input type="number" id="taxWithheld1" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="input-group">
+                            <label class="block text-gray-700 font-medium mb-2" for="taxWithheld2">
+                                Thuế TNCN đã khấu trừ tại nơi làm việc thứ hai (VNĐ/năm)
+                            </label>
+                            <input type="number" id="taxWithheld2" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Các khoản giảm trừ khác section -->
+                <div class="col-span-1 md:col-span-2">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-4 pb-2 border-b border-gray-200">
+                        <span class="bg-blue-100 px-2 py-1 rounded mr-2">5</span>Các khoản giảm trừ khác
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="input-group">
+                            <label class="block text-gray-700 font-medium mb-2" for="charity">
+                                Đóng góp từ thiện, nhân đạo, khuyến học (VNĐ/năm)
+                            </label>
+                            <input type="number" id="charity" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="input-group">
+                            <label class="block text-gray-700 font-medium mb-2" for="otherDeductions">
+                                Các khoản giảm trừ đặc biệt khác (VNĐ/năm)
+                            </label>
+                            <input type="number" id="otherDeductions" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 text-center">
+                <button id="calculateBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-md text-lg font-medium transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-1">
+                    Tính toán thuế TNCN
+                </button>
+            </div>
+        </div>
+
+        <!-- Kết quả section -->
+        <div id="resultSection" class="bg-white rounded-lg shadow-lg p-6 hidden">
+            <h2 class="text-2xl font-bold text-blue-800 mb-6 text-center">Kết quả tính toán</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h3 class="text-lg font-semibold text-blue-700 mb-3">Thu nhập và giảm trừ</h3>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-700">Tổng thu nhập chịu thuế:</span>
+                            <span id="totalIncome" class="font-medium result-value">0 VNĐ</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-700">Giảm trừ gia cảnh bản thân:</span>
+                            <span id="personalDeduction" class="font-medium result-value">0 VNĐ</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-700">Giảm trừ người phụ thuộc:</span>
+                            <span id="dependentDeduction" class="font-medium result-value">0 VNĐ</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-700">Bảo hiểm đã đóng:</span>
+                            <span id="insuranceDeduction" class="font-medium result-value">0 VNĐ</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-700">Các khoản giảm trừ khác:</span>
+                            <span id="otherDeduction" class="font-medium result-value">0 VNĐ</span>
+                        </div>
+                        <div class="flex justify-between items-center text-blue-700 font-semibold border-t border-blue-200 pt-2 mt-2">
+                            <span>Thu nhập tính thuế:</span>
+                            <span id="taxableIncome" class="result-value">0 VNĐ</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h3 class="text-lg font-semibold text-blue-700 mb-3">Thuế TNCN</h3>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-700">Thu nhập tính thuế tháng:</span>
+                            <span id="monthlyTaxableIncome" class="font-medium result-value">0 VNĐ</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-blue-200 pb-2 mb-2">
+                            <span class="text-gray-700">Thuế TNCN cả năm:</span>
+                            <span id="yearlyTax" class="font-medium result-value">0 VNĐ</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-700">Thuế đã khấu trừ:</span>
+                            <span id="withheldTax" class="font-medium result-value">0 VNĐ</span>
+                        </div>
+                        <div id="finalResultContainer" class="flex justify-between items-center font-bold text-lg border-t border-blue-200 pt-2 mt-2">
+                            <span>Kết quả quyết toán:</span>
+                            <span id="finalResult" class="result-value">0 VNĐ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 p-4 border-l-4 border-yellow-400 bg-yellow-50 rounded">
+                <h3 class="text-lg font-semibold text-yellow-700 mb-2">Bảng thuế lũy tiến từng phần:</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full text-sm">
+                        <thead>
+                            <tr class="bg-yellow-100">
+                                <th class="px-4 py-2 text-left">Bậc</th>
+                                <th class="px-4 py-2 text-left">Thu nhập tính thuế/tháng (triệu VNĐ)</th>
+                                <th class="px-4 py-2 text-left">Thuế suất</th>
+                                <th class="px-4 py-2 text-left">Áp dụng (VNĐ)</th>
+                                <th class="px-4 py-2 text-left">Thuế (VNĐ)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="taxBracketDetails">
+                            <!-- Dữ liệu bảng thuế lũy tiến sẽ được thêm vào đây bằng JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="mt-6 text-center">
+                <button id="recalculateBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md transition-colors">
+                    Tính toán lại
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-8 text-center text-gray-600 pb-8">
+        <p>&copy; 2025 Công cụ tính thuế TNCN. Hỗ trợ tính toán thuế thu nhập cá nhân Việt Nam.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Constants
+            const PERSONAL_DEDUCTION = 11000000 * 12; // 11 triệu đồng/tháng * 12 tháng
+            const DEPENDENT_DEDUCTION_MONTHLY = 4400000; // 4.4 triệu đồng/tháng/người
+            
+            // Tax brackets (monthly income in VND)
+            const TAX_BRACKETS = [
+                { max: 5000000, rate: 0.05 },
+                { max: 10000000, rate: 0.1 },
+                { max: 18000000, rate: 0.15 },
+                { max: 32000000, rate: 0.2 },
+                { max: 52000000, rate: 0.25 },
+                { max: 80000000, rate: 0.3 },
+                { max: Infinity, rate: 0.35 }
+            ];
+
+            // Elements
+            const addDependentBtn = document.getElementById('addDependentBtn');
+            const dependentsContainer = document.getElementById('dependentsContainer');
+            const calculateBtn = document.getElementById('calculateBtn');
+            const recalculateBtn = document.getElementById('recalculateBtn');
+            const resultSection = document.getElementById('resultSection');
+            
+            // Format currency function
+            function formatCurrency(value) {
+                return new Intl.NumberFormat('vi-VN').format(value) + ' VNĐ';
+            }
+
+            // Add dependent button click handler
+            let dependentCount = 1;
+            addDependentBtn.addEventListener('click', function() {
+                dependentCount++;
+                const newRow = document.createElement('div');
+                newRow.className = 'dependent-row mb-4 flex flex-col sm:flex-row sm:space-x-2';
+                newRow.innerHTML = `
+                    <div class="flex-1 input-group">
+                        <label class="block text-gray-700 font-medium mb-2">
+                            Người phụ thuộc ${dependentCount}
+                        </label>
+                        <input type="number" class="dependent-months w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Số tháng" min="1" max="12">
+                    </div>
+                    <button class="remove-dependent-btn mt-2 sm:mt-8 bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded-md transition-colors flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                `;
+                dependentsContainer.appendChild(newRow);
+
+                // Add event listener to remove button
+                const removeBtn = newRow.querySelector('.remove-dependent-btn');
+                removeBtn.addEventListener('click', function() {
+                    dependentsContainer.removeChild(newRow);
+                });
+            });
+
+            // Calculate tax function
+            function calculateTax() {
+                // Get input values
+                const income1 = Number(document.getElementById('income1').value) || 0;
+                const income2 = Number(document.getElementById('income2').value) || 0;
+                const insurance1 = Number(document.getElementById('insurance1').value) || 0;
+                const insurance2 = Number(document.getElementById('insurance2').value) || 0;
+                const taxWithheld1 = Number(document.getElementById('taxWithheld1').value) || 0;
+                const taxWithheld2 = Number(document.getElementById('taxWithheld2').value) || 0;
+                const charity = Number(document.getElementById('charity').value) || 0;
+                const otherDeductions = Number(document.getElementById('otherDeductions').value) || 0;
+
+                // Calculate dependent deduction
+                let dependentDeduction = 0;
+                const dependentInputs = document.querySelectorAll('.dependent-months');
+                dependentInputs.forEach(input => {
+                    const months = Number(input.value) || 0;
+                    if (months > 0 && months <= 12) {
+                        dependentDeduction += DEPENDENT_DEDUCTION_MONTHLY * months;
+                    }
+                });
+
+                // Calculate total income and deductions
+                const totalIncome = income1 + income2;
+                const totalInsurance = insurance1 + insurance2;
+                const totalDeductions = PERSONAL_DEDUCTION + dependentDeduction + totalInsurance + charity + otherDeductions;
+                
+                // Calculate taxable income
+                let taxableIncome = totalIncome - totalDeductions;
+                if (taxableIncome < 0) taxableIncome = 0;
+                
+                // Calculate monthly taxable income
+                const monthlyTaxableIncome = taxableIncome / 12;
+                
+                // Calculate tax using progressive tax rates
+                let remainingIncome = monthlyTaxableIncome;
+                let monthlyTax = 0;
+                let taxDetails = [];
+                
+                // Calculate tax for each bracket
+                let prevMax = 0;
+                for (const bracket of TAX_BRACKETS) {
+                    if (remainingIncome <= 0) break;
+                    
+                    const bracketWidth = bracket.max - prevMax;
+                    const taxableAmount = Math.min(remainingIncome, bracketWidth);
+                    const bracketTax = taxableAmount * bracket.rate;
+                    
+                    monthlyTax += bracketTax;
+                    remainingIncome -= taxableAmount;
+                    
+                    taxDetails.push({
+                        min: prevMax,
+                        max: bracket.max,
+                        rate: bracket.rate,
+                        taxableAmount: taxableAmount,
+                        tax: bracketTax
+                    });
+                    
+                    prevMax = bracket.max;
+                    
+                    if (bracket.max === Infinity) break;
+                }
+                
+                // Calculate yearly tax
+                const yearlyTax = monthlyTax * 12;
+                
+                // Calculate total withheld tax
+                const totalWithheldTax = taxWithheld1 + taxWithheld2;
+                
+                // Calculate final result (amount to pay or refund)
+                const finalResult = yearlyTax - totalWithheldTax;
+                
+                // Update result section
+                document.getElementById('totalIncome').textContent = formatCurrency(totalIncome);
+                document.getElementById('personalDeduction').textContent = formatCurrency(PERSONAL_DEDUCTION);
+                document.getElementById('dependentDeduction').textContent = formatCurrency(dependentDeduction);
+                document.getElementById('insuranceDeduction').textContent = formatCurrency(totalInsurance);
+                document.getElementById('otherDeduction').textContent = formatCurrency(charity + otherDeductions);
+                document.getElementById('taxableIncome').textContent = formatCurrency(taxableIncome);
+                document.getElementById('monthlyTaxableIncome').textContent = formatCurrency(monthlyTaxableIncome);
+                document.getElementById('yearlyTax').textContent = formatCurrency(yearlyTax);
+                document.getElementById('withheldTax').textContent = formatCurrency(totalWithheldTax);
+                
+                const finalResultElement = document.getElementById('finalResult');
+                const finalResultContainer = document.getElementById('finalResultContainer');
+                
+                if (finalResult > 0) {
+                    finalResultElement.textContent = formatCurrency(finalResult);
+                    finalResultElement.className = 'text-red-600 font-bold result-value';
+                    finalResultContainer.innerHTML = `
+                        <span>Thuế cần nộp thêm:</span>
+                        <span id="finalResult" class="text-red-600 font-bold result-value">${formatCurrency(finalResult)}</span>
+                    `;
+                } else if (finalResult < 0) {
+                    finalResultElement.textContent = formatCurrency(Math.abs(finalResult));
+                    finalResultElement.className = 'text-green-600 font-bold result-value';
+                    finalResultContainer.innerHTML = `
+                        <span>Thuế được hoàn lại:</span>
+                        <span id="finalResult" class="text-green-600 font-bold result-value">${formatCurrency(Math.abs(finalResult))}</span>
+                    `;
+                } else {
+                    finalResultElement.textContent = formatCurrency(0);
+                    finalResultElement.className = 'text-blue-700 font-bold result-value';
+                    finalResultContainer.innerHTML = `
+                        <span>Không phải nộp thêm hoặc được hoàn thuế:</span>
+                        <span id="finalResult" class="text-blue-700 font-bold result-value">${formatCurrency(0)}</span>
+                    `;
+                }
+                
+                // Update tax bracket details
+                const taxBracketTable = document.getElementById('taxBracketDetails');
+                taxBracketTable.innerHTML = '';
+                
+                taxDetails.forEach((detail, index) => {
+                    const row = document.createElement('tr');
+                    row.className = index % 2 === 0 ? 'bg-white' : 'bg-yellow-50';
+                    
+                    let rangeText;
+                    if (detail.max === Infinity) {
+                        rangeText = `Trên ${detail.min / 1000000}`;
+                    } else if (detail.min === 0) {
+                        rangeText = `Đến ${detail.max / 1000000}`;
+                    } else {
+                        rangeText = `Trên ${detail.min / 1000000} đến ${detail.max / 1000000}`;
+                    }
+                    
+                    row.innerHTML = `
+                        <td class="px-4 py-2">${index + 1}</td>
+                        <td class="px-4 py-2">${rangeText}</td>
+                        <td class="px-4 py-2">${(detail.rate * 100)}%</td>
+                        <td class="px-4 py-2">${formatCurrency(detail.taxableAmount)}</td>
+                        <td class="px-4 py-2">${formatCurrency(detail.tax)}</td>
+                    `;
+                    
+                    taxBracketTable.appendChild(row);
+                });
+                
+                // Show result section
+                resultSection.classList.remove('hidden');
+                resultSection.scrollIntoView({ behavior: 'smooth' });
+            }
+
+            // Calculate button click handler
+            calculateBtn.addEventListener('click', calculateTax);
+            
+            // Recalculate button click handler
+            recalculateBtn.addEventListener('click', function() {
+                resultSection.classList.add('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
