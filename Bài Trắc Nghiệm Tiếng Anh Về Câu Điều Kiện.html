@@ -1,0 +1,649 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Tiếng Anh - Câu Điều Kiện</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hide {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .option-selected {
+            background-color: #e0e7ff;
+        }
+        .option-correct {
+            background-color: #dcfce7;
+        }
+        .option-wrong {
+            background-color: #fee2e2;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen font-sans">
+    <div class="container mx-auto p-4 max-w-4xl">
+        <header class="bg-blue-600 text-white rounded-lg p-6 mb-6 shadow-lg">
+            <h1 class="text-3xl font-bold text-center">Bài Trắc Nghiệm Tiếng Anh - Câu Điều Kiện</h1>
+            <p class="text-center mt-2">Luyện tập về câu điều kiện và cách đảo ngữ trong tiếng Anh</p>
+        </header>
+
+        <div class="intro bg-white p-6 rounded-lg shadow-md mb-6">
+            <h2 class="text-xl font-semibold mb-2">Hướng dẫn làm bài:</h2>
+            <ul class="list-disc pl-6 space-y-1">
+                <li>Bài trắc nghiệm gồm 30 câu hỏi về câu điều kiện và cách đảo ngữ</li>
+                <li>Chọn đáp án đúng cho mỗi câu</li>
+                <li>Sau khi chọn đáp án, bạn sẽ thấy giải thích chi tiết</li>
+                <li>Nhấn "Câu tiếp theo" để tiếp tục làm bài</li>
+                <li>Kết quả sẽ hiển thị khi hoàn thành bài kiểm tra</li>
+            </ul>
+            <button id="start-quiz" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Bắt Đầu Làm Bài
+            </button>
+        </div>
+
+        <div id="quiz-container" class="hide">
+            <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-semibold">Câu hỏi <span id="current-question">1</span>/30</h2>
+                    <p class="text-sm text-gray-600">Điểm: <span id="score">0</span>/30</p>
+                </div>
+                
+                <div id="question-container" class="mb-6">
+                    <!-- Question will be loaded here -->
+                </div>
+                
+                <div id="options-container" class="space-y-3 mb-6">
+                    <!-- Options will be loaded here -->
+                </div>
+                
+                <div id="explanation-container" class="bg-blue-50 p-4 rounded-lg mb-6 hide">
+                    <!-- Explanation will be loaded here -->
+                </div>
+                
+                <div class="flex justify-between">
+                    <button id="prev-btn" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:opacity-50">
+                        Câu trước
+                    </button>
+                    <button id="next-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:opacity-50">
+                        Câu tiếp theo
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="results-container" class="hide bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-4 text-center">Kết Quả Bài Kiểm Tra</h2>
+            <div class="text-center mb-6">
+                <p class="text-4xl font-bold text-blue-600"><span id="final-score">0</span>/30</p>
+                <p class="text-gray-600 mt-2">Số câu đúng: <span id="correct-answers">0</span>/30</p>
+            </div>
+            
+            <div id="score-feedback" class="mb-6 p-4 rounded-lg text-center">
+                <!-- Feedback based on score will be shown here -->
+            </div>
+            
+            <div class="text-center">
+                <button id="restart-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Làm Lại Bài Kiểm Tra
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz questions
+        const questions = [
+            {
+                question: "Chọn câu đúng dạng điều kiện loại 2 với đảo ngữ:",
+                options: [
+                    "Were I rich, I would travel around the world.",
+                    "Would I rich, I were travel around the world.",
+                    "If I were rich, I travel around the world.",
+                    "Were I rich, I travel around the world."
+                ],
+                correctAnswer: 0,
+                explanation: "Đáp án A là đúng. Đây là dạng đảo ngữ của điều kiện loại 2 'If I were rich, I would travel around the world'. Khi đảo ngữ, ta bỏ 'if' và đưa 'were' lên đầu câu, còn phần sau vẫn giữ nguyên 'would + V'."
+            },
+            {
+                question: "Hoàn thành câu điều kiện loại 3 với đảo ngữ: '_______ they arrived earlier, they would have caught the train.'",
+                options: [
+                    "If had",
+                    "Had",
+                    "Were",
+                    "Should"
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án B là đúng. Đây là cấu trúc điều kiện loại 3 với đảo ngữ, thay vì 'If they had arrived earlier', ta dùng 'Had they arrived earlier'. Với điều kiện loại 3, ta sử dụng 'Had + S + V_PP' khi đảo ngữ."
+            },
+            {
+                question: "Chọn câu có cấu trúc đảo ngữ với 'should' đúng:",
+                options: [
+                    "Should you need any help, call me.",
+                    "You should need any help, call me.",
+                    "If you should need any help, you call me.",
+                    "Should you need any help, you calling me."
+                ],
+                correctAnswer: 0,
+                explanation: "Đáp án A là đúng. Cấu trúc đảo ngữ với 'should' là 'Should + S + V (nguyên thể), S + V...'. Câu này tương đương với 'If you should need any help, call me'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng của câu 'If it weren't for your support, I couldn't finish this project.'",
+                options: [
+                    "Were not it for your support, I couldn't finish this project.",
+                    "Were it not for your support, I couldn't finish this project.",
+                    "Weren't it for your support, I couldn't finish this project.",
+                    "Not were it for your support, I couldn't finish this project."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án B là đúng. Cấu trúc 'If it weren't for...' khi đảo ngữ thành 'Were it not for...'. Đây là cấu trúc cố định trong tiếng Anh dùng để diễn tả 'nếu không có...'."
+            },
+            {
+                question: "Hoàn thành câu với dạng đảo ngữ điều kiện loại 3: '_______ more carefully, she wouldn't have made so many mistakes.'",
+                options: [
+                    "Had she worked",
+                    "If she had worked",
+                    "She had worked",
+                    "Would she worked"
+                ],
+                correctAnswer: 0,
+                explanation: "Đáp án A là đúng. Trong điều kiện loại 3 với đảo ngữ, ta dùng 'Had + S + V_PP' thay cho 'If + S + had + V_PP'. Câu đầy đủ sẽ là 'Had she worked more carefully, she wouldn't have made so many mistakes'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng của câu 'If you should happen to see him, tell him to call me.'",
+                options: [
+                    "You should happen to see him, tell him to call me.",
+                    "Happen you should to see him, tell him to call me.",
+                    "Should you happen to see him, tell him to call me.",
+                    "If you happen to see him, should tell him to call me."
+                ],
+                correctAnswer: 2,
+                explanation: "Đáp án C là đúng. Khi đảo ngữ câu điều kiện với 'should', ta đặt 'should' lên đầu câu và bỏ 'if': 'Should + S + V (nguyên thể)...'. Câu hoàn chỉnh là 'Should you happen to see him, tell him to call me'."
+            },
+            {
+                question: "Chọn đáp án đúng để hoàn thành câu điều kiện loại 2 với đảo ngữ: '_______ the opportunity, I would study abroad.'",
+                options: [
+                    "If I had",
+                    "Had I",
+                    "Were I to have",
+                    "Were I given"
+                ],
+                correctAnswer: 3,
+                explanation: "Đáp án D là đúng. Trong điều kiện loại 2, cấu trúc 'Were + S + V_PP/adj/noun' được sử dụng để đảo ngữ. Câu này tương đương với 'If I were given the opportunity, I would study abroad'."
+            },
+            {
+                question: "Chọn câu có đảo ngữ đúng:",
+                options: [
+                    "Had I known earlier, I will tell you.",
+                    "Had I known earlier, I would tell you.",
+                    "Had I known earlier, I would have told you.",
+                    "Had I known earlier, I had told you."
+                ],
+                correctAnswer: 2,
+                explanation: "Đáp án C là đúng. Câu này thuộc điều kiện loại 3 (việc đã xảy ra trong quá khứ), nên sau mệnh đề điều kiện phải dùng 'would have + V_PP'. Cấu trúc đúng là 'Had + S + V_PP, S + would have + V_PP'."
+            },
+            {
+                question: "Chọn dạng điều kiện đảo ngữ đúng của câu 'If I could live anywhere, I would choose Paris.'",
+                options: [
+                    "Could I live anywhere, I would choose Paris.",
+                    "I could live anywhere, would I choose Paris.",
+                    "Would I choose Paris, I could live anywhere.",
+                    "Could I live anywhere, I choose Paris."
+                ],
+                correctAnswer: 0,
+                explanation: "Đáp án A là đúng. Trong điều kiện loại 2, khi có 'could' trong mệnh đề if, ta đảo 'could' lên đầu câu. Cấu trúc là 'Could + S + V (nguyên thể), S + would + V (nguyên thể)'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu 'If my parents hadn't encouraged me, I wouldn't have taken the exam.'",
+                options: [
+                    "Hadn't my parents encouraged me, I wouldn't have taken the exam.",
+                    "My parents hadn't encouraged me, I wouldn't have taken the exam.",
+                    "Didn't my parents encourage me, I wouldn't have taken the exam.",
+                    "Had not encouraged my parents me, I wouldn't have taken the exam."
+                ],
+                correctAnswer: 0,
+                explanation: "Đáp án A là đúng. Trong điều kiện loại 3 phủ định, ta đảo 'hadn't' lên đầu câu: 'Hadn't + S + V_PP' thay cho 'If + S + hadn't + V_PP'. Cấu trúc đúng là 'Hadn't my parents encouraged me, I wouldn't have taken the exam'."
+            },
+            {
+                question: "Hoàn thành câu điều kiện đảo ngữ: '_______ for the bad weather, we would have gone to the beach.'",
+                options: [
+                    "Had it not been",
+                    "Were it not been",
+                    "Had not been it",
+                    "Hadn't been it"
+                ],
+                correctAnswer: 0,
+                explanation: "Đáp án A là đúng. Đây là dạng đảo ngữ của 'If it had not been for the bad weather'. Cấu trúc 'Had it not been for' là dạng cố định dùng trong điều kiện loại 3 để diễn tả 'nếu không phải vì...'."
+            },
+            {
+                question: "Chọn câu đảo ngữ tương đương với 'If she finishes the work, she can go home.'",
+                options: [
+                    "Finished she the work, she can go home.",
+                    "Should she finish the work, she can go home.",
+                    "Were she finish the work, she can go home.",
+                    "Did she finish the work, she can go home."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án B là đúng. Đây là điều kiện loại 1 (có thể xảy ra trong tương lai). Để đảo ngữ, ta dùng 'Should + S + V (nguyên thể)' thay cho 'If + S + V (hiện tại đơn)'. Cấu trúc đúng là 'Should she finish the work, she can go home'."
+            },
+            {
+                question: "Chọn câu đảo ngữ đúng cho: 'If the weather improves, we'll go for a picnic.'",
+                options: [
+                    "Improves the weather, we'll go for a picnic.",
+                    "Will the weather improve, we'll go for a picnic.",
+                    "Should the weather improve, we'll go for a picnic.",
+                    "Were the weather to improve, we'll go for a picnic."
+                ],
+                correctAnswer: 2,
+                explanation: "Đáp án C là đúng. Đây là điều kiện loại 1, và khi đảo ngữ ta dùng 'Should + S + V (nguyên thể)'. Câu hoàn chỉnh sẽ là 'Should the weather improve, we'll go for a picnic'."
+            },
+            {
+                question: "Hoàn thành câu với dạng đảo ngữ đúng: '_______ they offered me the job, I'd definitely accept it.'",
+                options: [
+                    "Did",
+                    "Would",
+                    "Had",
+                    "Were"
+                ],
+                correctAnswer: 3,
+                explanation: "Đáp án D là đúng. Đây là điều kiện loại 2, khi đảo ngữ ta dùng 'Were + S + to + V'. Câu hoàn chỉnh là 'Were they to offer me the job, I'd definitely accept it' hoặc 'Were they offered me the job, I'd definitely accept it', tương đương với 'If they offered me the job, I'd definitely accept it'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng của câu 'If you need any assistance, please let me know.'",
+                options: [
+                    "Need you any assistance, please let me know.",
+                    "Did you need any assistance, please let me know.",
+                    "Should you need any assistance, please let me know.",
+                    "You need any assistance, please let me know."
+                ],
+                correctAnswer: 2,
+                explanation: "Đáp án C là đúng. Đây là điều kiện loại 1 với khả năng xảy ra trong tương lai. Khi đảo ngữ, ta dùng 'Should + S + V (nguyên thể)' thay cho 'If + S + V (hiện tại đơn)'. Câu đúng là 'Should you need any assistance, please let me know'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng của câu 'If I were you, I would apologize to her.'",
+                options: [
+                    "Would I be you, I would apologize to her.",
+                    "Were I you, I would apologize to her.",
+                    "I were you, I would apologize to her.",
+                    "Was I you, I would apologize to her."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án B là đúng. Trong điều kiện loại 2, ta dùng 'Were + S' khi đảo ngữ, bất kể ngôi nào. Cấu trúc đúng là 'Were I you, I would apologize to her'."
+            },
+            {
+                question: "Chọn câu đảo ngữ đúng cho: 'If it rains tomorrow, we will cancel the picnic.'",
+                options: [
+                    "Rains it tomorrow, we will cancel the picnic.",
+                    "Should it rain tomorrow, we will cancel the picnic.",
+                    "Were it to rain tomorrow, we will cancel the picnic.",
+                    "Did it rain tomorrow, we will cancel the picnic."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án B là đúng. Đây là điều kiện loại 1 nói về khả năng có thể xảy ra trong tương lai. Cấu trúc đảo ngữ đúng là 'Should + S + V (nguyên thể), S + will + V'."
+            },
+            {
+                question: "Hoàn thành câu điều kiện đảo ngữ: '_______ you told me earlier, I wouldn't have made such a mistake.'",
+                options: [
+                    "Should",
+                    "Were",
+                    "Had",
+                    "Did"
+                ],
+                correctAnswer: 2,
+                explanation: "Đáp án C là đúng. Đây là điều kiện loại 3 nói về việc đã xảy ra trong quá khứ. Khi đảo ngữ, ta dùng 'Had + S + V_PP' thay cho 'If + S + had + V_PP'. Câu hoàn chỉnh là 'Had you told me earlier, I wouldn't have made such a mistake'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng của câu 'If my alarm hadn't gone off, I would have been late for work.'",
+                options: [
+                    "Didn't my alarm go off, I would have been late for work.",
+                    "Had my alarm not gone off, I would have been late for work.",
+                    "Not had my alarm gone off, I would have been late for work.",
+                    "Would my alarm not gone off, I have been late for work."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án B là đúng. Trong điều kiện loại 3 phủ định, ta đảo 'had' lên đầu câu và đặt 'not' sau chủ ngữ. Cấu trúc đúng là 'Had + S + not + V_PP, S + would have + V_PP'."
+            },
+            {
+                question: "Chọn câu điều kiện loại 2 với đảo ngữ đúng:",
+                options: [
+                    "Were she to win the competition, her parents would be proud.",
+                    "Had she to win the competition, her parents would be proud.",
+                    "Would she win the competition, her parents would be proud.",
+                    "She were to win the competition, her parents would be proud."
+                ],
+                correctAnswer: 0,
+                explanation: "Đáp án A là đúng. Trong điều kiện loại 2 về khả năng trong tương lai, ta có thể dùng cấu trúc 'Were + S + to + V (nguyên thể)' thay cho 'If + S + V (quá khứ đơn)'. Câu đúng là 'Were she to win the competition, her parents would be proud'."
+            },
+            {
+                question: "Hoàn thành câu điều kiện đảo ngữ: '_______ to the party last night, you would have met my brother.'",
+                options: [
+                    "Went you",
+                    "You had gone",
+                    "Had you gone",
+                    "Would you go"
+                ],
+                correctAnswer: 2,
+                explanation: "Đáp án C là đúng. Đây là điều kiện loại 3 nói về việc đã không xảy ra trong quá khứ. Cấu trúc đảo ngữ đúng là 'Had + S + V_PP'. Câu hoàn chỉnh là 'Had you gone to the party last night, you would have met my brother'."
+            },
+            {
+                question: "Chọn câu đảo ngữ đúng của 'If she speaks English well, she will get the job.'",
+                options: [
+                    "Speak she English well, she will get the job.",
+                    "Did she speak English well, she will get the job.",
+                    "Should she speak English well, she will get the job.",
+                    "Would she speak English well, she will get the job."
+                ],
+                correctAnswer: 2,
+                explanation: "Đáp án C là đúng. Đây là điều kiện loại 1 nói về khả năng trong tương lai. Khi đảo ngữ, ta dùng 'Should + S + V (nguyên thể)' thay cho 'If + S + V (hiện tại đơn)'. Câu đúng là 'Should she speak English well, she will get the job'."
+            },
+            {
+                question: "Chọn đảo ngữ tương đương với câu 'If the children behaved better, we could take them to the restaurant.'",
+                options: [
+                    "Did the children behave better, we could take them to the restaurant.",
+                    "Behaved the children better, we could take them to the restaurant.",
+                    "Would the children behave better, we could take them to the restaurant.",
+                    "Were the children to behave better, we could take them to the restaurant."
+                ],
+                correctAnswer: 3,
+                explanation: "Đáp án D là đúng. Đây là điều kiện loại 2. Cấu trúc đảo ngữ là 'Were + S + to + V (nguyên thể)'. Câu đúng là 'Were the children to behave better, we could take them to the restaurant'."
+            },
+            {
+                question: "Hoàn thành câu điều kiện đảo ngữ: '_______ you not helped me, I would have failed the exam.'",
+                options: [
+                    "Did",
+                    "Had",
+                    "Were",
+                    "Should"
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án B là đúng. Đây là điều kiện loại 3 phủ định. Cấu trúc đảo ngữ là 'Had + S + not + V_PP'. Câu hoàn chỉnh là 'Had you not helped me, I would have failed the exam', tương đương với 'If you had not helped me, I would have failed the exam'."
+            },
+            {
+                question: "Chọn câu đảo ngữ đúng cho 'If they had followed the instructions, the accident wouldn't have happened.'",
+                options: [
+                    "Had followed they the instructions, the accident wouldn't have happened.",
+                    "Had they followed the instructions, the accident wouldn't have happened.",
+                    "They had followed the instructions, the accident wouldn't have happened.",
+                    "Would they have followed the instructions, the accident wouldn't have happened."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án B là đúng. Đây là điều kiện loại 3. Cấu trúc đảo ngữ đúng là 'Had + S + V_PP, S + would not have + V_PP'. Câu đúng là 'Had they followed the instructions, the accident wouldn't have happened'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho 'If she were here now, she would help us.'",
+                options: [
+                    "Was she here now, she would help us.",
+                    "Would she be here now, she would help us.",
+                    "Were she here now, she would help us.",
+                    "Did she be here now, she would help us."
+                ],
+                correctAnswer: 2,
+                explanation: "Đáp án C là đúng. Trong điều kiện loại 2, khi đảo ngữ, ta dùng 'Were + S' (cho tất cả các ngôi) thay vì 'If + S + were'. Cấu trúc đúng là 'Were she here now, she would help us'."
+            },
+            {
+                question: "Hoàn thành câu đảo ngữ: '_______ they invited me, I would certainly join the party.'",
+                options: [
+                    "Did",
+                    "Had",
+                    "Were",
+                    "Should"
+                ],
+                correctAnswer: 2,
+                explanation: "Đáp án C là đúng. Đây là điều kiện loại 2 nói về một tình huống không có thật ở hiện tại. Khi đảo ngữ, ta dùng 'Were + S + to + V'. Câu hoàn chỉnh sẽ là 'Were they to invite me, I would certainly join the party', tương đương với 'If they invited me, I would certainly join the party'."
+            },
+            {
+                question: "Chọn đảo ngữ đúng của câu 'If I could change one thing in my life, I would be my attitude.'",
+                options: [
+                    "Could I change one thing in my life, I would be my attitude.",
+                    "Can I change one thing in my life, I would be my attitude.",
+                    "Would I change one thing in my life, it be my attitude.",
+                    "I could change one thing in my life, it would be my attitude."
+                ],
+                correctAnswer: 0,
+                explanation: "Đáp án A là đúng. Đây là điều kiện loại 2. Khi có 'could' trong mệnh đề if, ta đảo 'could' lên đầu câu. Cấu trúc đúng là 'Could + S + V (nguyên thể), S + would + V'."
+            },
+            {
+                question: "Chọn câu đảo ngữ cho câu 'If you should have any questions, please call me.'",
+                options: [
+                    "Have you should any questions, please call me.",
+                    "Should you have any questions, please call me.",
+                    "You should have any questions, please call me.",
+                    "Would you have any questions, please call me."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án B là đúng. Đây là cấu trúc đặc biệt với 'should' trong mệnh đề if để diễn tả khả năng có thể xảy ra. Khi đảo ngữ, ta đặt 'should' lên đầu câu. Cấu trúc đúng là 'Should + S + V (nguyên thể), ...'."
+            },
+            {
+                question: "Hoàn thành câu điều kiện đảo ngữ loại 3: '_______ the truth, they wouldn't have been so upset.'",
+                options: [
+                    "Did they know",
+                    "Had they known",
+                    "They had known",
+                    "Known they had"
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án B là đúng. Đây là điều kiện loại 3. Cấu trúc đảo ngữ là 'Had + S + V_PP'. Câu hoàn chỉnh là 'Had they known the truth, they wouldn't have been so upset', tương đương với 'If they had known the truth, they wouldn't have been so upset'."
+            },
+            {
+                question: "Chọn câu đúng dạng điều kiện đảo ngữ:",
+                options: [
+                    "Were John to arrive late, we would start without him.",
+                    "John were to arrive late, we would start without him.",
+                    "Were to arrive John late, we would start without him.",
+                    "Were John arrive late, we would start without him."
+                ],
+                correctAnswer: 0,
+                explanation: "Đáp án A là đúng. Đây là điều kiện loại 2 với cấu trúc đảo ngữ 'Were + S + to + V (nguyên thể)' thay cho 'If + S + V (quá khứ đơn)'. Câu đúng là 'Were John to arrive late, we would start without him'."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = new Array(questions.length).fill(null);
+        let answeredQuestions = new Array(questions.length).fill(false);
+
+        const startBtn = document.getElementById('start-quiz');
+        const quizContainer = document.getElementById('quiz-container');
+        const introContainer = document.querySelector('.intro');
+        const resultsContainer = document.getElementById('results-container');
+        const questionContainer = document.getElementById('question-container');
+        const optionsContainer = document.getElementById('options-container');
+        const explanationContainer = document.getElementById('explanation-container');
+        const currentQuestionEl = document.getElementById('current-question');
+        const scoreEl = document.getElementById('score');
+        const finalScoreEl = document.getElementById('final-score');
+        const correctAnswersEl = document.getElementById('correct-answers');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const restartBtn = document.getElementById('restart-btn');
+        
+        // Start quiz
+        startBtn.addEventListener('click', startQuiz);
+        nextBtn.addEventListener('click', nextQuestion);
+        prevBtn.addEventListener('click', prevQuestion);
+        restartBtn.addEventListener('click', restartQuiz);
+        
+        function startQuiz() {
+            introContainer.classList.add('hide');
+            quizContainer.classList.remove('hide');
+            loadQuestion(currentQuestion);
+            updateNavButtons();
+        }
+        
+        function loadQuestion(index) {
+            const question = questions[index];
+            questionContainer.innerHTML = `<p class="text-lg font-medium">${index + 1}. ${question.question}</p>`;
+            
+            optionsContainer.innerHTML = '';
+            question.options.forEach((option, i) => {
+                const isDisabled = answeredQuestions[index] ? 'disabled' : '';
+                const optionClass = getOptionClass(index, i);
+                
+                optionsContainer.innerHTML += `
+                    <div class="option ${optionClass} p-3 border rounded-lg cursor-pointer ${isDisabled ? 'opacity-80' : 'hover:bg-gray-100'}" data-index="${i}">
+                        <label class="flex items-start cursor-pointer w-full">
+                            <input type="radio" name="question${index}" value="${i}" class="mt-1 mr-2" ${userAnswers[index] === i ? 'checked' : ''} ${isDisabled ? 'disabled' : ''}>
+                            <span>${String.fromCharCode(65 + i)}. ${option}</span>
+                        </label>
+                    </div>
+                `;
+            });
+            
+            currentQuestionEl.textContent = index + 1;
+            
+            // Show or hide explanation
+            if (answeredQuestions[index]) {
+                explanationContainer.innerHTML = `
+                    <h3 class="font-semibold mb-2">Giải thích:</h3>
+                    <p>${question.explanation}</p>
+                `;
+                explanationContainer.classList.remove('hide');
+            } else {
+                explanationContainer.classList.add('hide');
+            }
+            
+            // Add event listeners to options
+            document.querySelectorAll('.option').forEach(option => {
+                if (!answeredQuestions[index]) {
+                    option.addEventListener('click', () => selectOption(option.dataset.index));
+                }
+            });
+        }
+        
+        function getOptionClass(questionIndex, optionIndex) {
+            if (!answeredQuestions[questionIndex]) return '';
+            
+            if (optionIndex === questions[questionIndex].correctAnswer) {
+                return 'option-correct';
+            } else if (userAnswers[questionIndex] === optionIndex) {
+                return 'option-wrong';
+            }
+            return '';
+        }
+        
+        function selectOption(optionIndex) {
+            const questionIndex = currentQuestion;
+            
+            if (answeredQuestions[questionIndex]) return;
+            
+            userAnswers[questionIndex] = parseInt(optionIndex);
+            answeredQuestions[questionIndex] = true;
+            
+            if (parseInt(optionIndex) === questions[questionIndex].correctAnswer) {
+                score++;
+                scoreEl.textContent = score;
+            }
+            
+            loadQuestion(questionIndex);
+            updateNavButtons();
+        }
+        
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                loadQuestion(currentQuestion);
+                updateNavButtons();
+            } else if (currentQuestion === questions.length - 1 && allQuestionsAnswered()) {
+                showResults();
+            }
+        }
+        
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion(currentQuestion);
+                updateNavButtons();
+            }
+        }
+        
+        function updateNavButtons() {
+            prevBtn.disabled = currentQuestion === 0;
+            
+            if (currentQuestion === questions.length - 1) {
+                if (allQuestionsAnswered()) {
+                    nextBtn.textContent = 'Xem Kết Quả';
+                } else {
+                    nextBtn.textContent = 'Câu Tiếp Theo';
+                    nextBtn.disabled = true;
+                }
+            } else {
+                nextBtn.textContent = 'Câu Tiếp Theo';
+                nextBtn.disabled = !answeredQuestions[currentQuestion];
+            }
+        }
+        
+        function allQuestionsAnswered() {
+            return answeredQuestions.every(answered => answered);
+        }
+        
+        function showResults() {
+            quizContainer.classList.add('hide');
+            resultsContainer.classList.remove('hide');
+            
+            finalScoreEl.textContent = score;
+            correctAnswersEl.textContent = score;
+            
+            const scoreFeedback = document.getElementById('score-feedback');
+            let feedbackMessage = '';
+            let feedbackClass = '';
+            
+            const percentage = (score / questions.length) * 100;
+            
+            if (percentage >= 90) {
+                feedbackMessage = 'Xuất sắc! Bạn đã nắm vững kiến thức về câu điều kiện và đảo ngữ.';
+                feedbackClass = 'bg-green-100 text-green-800';
+            } else if (percentage >= 70) {
+                feedbackMessage = 'Tốt! Bạn đã hiểu khá rõ về câu điều kiện và đảo ngữ.';
+                feedbackClass = 'bg-blue-100 text-blue-800';
+            } else if (percentage >= 50) {
+                feedbackMessage = 'Đạt yêu cầu. Hãy ôn tập thêm để hiểu rõ hơn về câu điều kiện và đảo ngữ.';
+                feedbackClass = 'bg-yellow-100 text-yellow-800';
+            } else {
+                feedbackMessage = 'Bạn cần ôn tập lại kiến thức về câu điều kiện và đảo ngữ để nắm vững hơn.';
+                feedbackClass = 'bg-red-100 text-red-800';
+            }
+            
+            scoreFeedback.innerHTML = `<p class="font-medium">${feedbackMessage}</p>`;
+            scoreFeedback.className = `mb-6 p-4 rounded-lg text-center ${feedbackClass}`;
+        }
+        
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = new Array(questions.length).fill(null);
+            answeredQuestions = new Array(questions.length).fill(false);
+            
+            scoreEl.textContent = score;
+            resultsContainer.classList.add('hide');
+            introContainer.classList.remove('hide');
+        }
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
