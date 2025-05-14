@@ -1,0 +1,511 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Tiếng Anh - So/Such/Too/Enough</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f7fb;
+        }
+        .option-label {
+            display: block;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .option-label:hover {
+            background-color: #e9ecef;
+        }
+        input[type="radio"]:checked + .option-label {
+            background-color: #d1e7ff;
+            border-color: #3182ce;
+        }
+        .correct-answer {
+            background-color: #d4edda !important;
+            border-color: #28a745 !important;
+        }
+        .wrong-answer {
+            background-color: #f8d7da !important;
+            border-color: #dc3545 !important;
+        }
+        .explanation {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+        }
+        .disabled {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-blue-50">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <header class="mb-8 text-center">
+            <h1 class="text-2xl md:text-3xl font-bold text-blue-800 mb-2">Bài Trắc Nghiệm Tiếng Anh</h1>
+            <h2 class="text-xl md:text-2xl font-semibold text-blue-700">Cấu trúc So/Such/Too/Enough</h2>
+        </header>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <div id="quiz-container">
+                <div id="progress-container" class="mb-4">
+                    <div class="flex justify-between mb-2">
+                        <span class="text-sm text-gray-600">Tiến độ: <span id="current-question">1</span>/<span id="total-questions">30</span></span>
+                        <span class="text-sm text-gray-600">Điểm: <span id="score">0</span>/<span id="max-score">30</span></span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full" style="width: 3.33%"></div>
+                    </div>
+                </div>
+
+                <div id="question-container" class="mb-6"></div>
+                
+                <div class="flex justify-between mt-6">
+                    <button id="prev-btn" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">Câu trước</button>
+                    <button id="next-btn" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">Câu tiếp theo</button>
+                </div>
+            </div>
+
+            <div id="results-container" class="hidden text-center">
+                <h2 class="text-2xl font-bold text-blue-800 mb-4">Kết quả</h2>
+                <p class="text-lg mb-4">Bạn đã hoàn thành bài trắc nghiệm!</p>
+                <div class="mb-6">
+                    <p class="text-xl font-bold">Điểm số: <span id="final-score">0</span>/<span id="final-max-score">30</span></p>
+                    <p class="text-lg">Tỷ lệ: <span id="percentage">0</span>%</p>
+                </div>
+                <div id="feedback" class="mb-6 p-4 rounded-lg"></div>
+                <button id="restart-btn" class="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">Làm lại bài</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "The book was ________ interesting that I couldn't put it down.",
+                options: ["so", "such", "too", "enough"],
+                answer: "so",
+                explanation: "Đáp án đúng là 'so'. Cấu trúc 'so + tính từ + that' được sử dụng để diễn tả kết quả của một điều gì đó quá mức. Ở đây, 'interesting' là tính từ nên ta dùng 'so' trước nó."
+            },
+            {
+                question: "I have ________ many assignments that I can't go out tonight.",
+                options: ["so", "such", "too", "enough"],
+                answer: "so",
+                explanation: "Đáp án đúng là 'so'. Chúng ta sử dụng cấu trúc 'so + many/much/few/little + danh từ số nhiều/không đếm được + that' để diễn tả số lượng lớn dẫn đến một hệ quả. Ở đây, 'many assignments' là danh từ số nhiều."
+            },
+            {
+                question: "She bought ________ an expensive car that everyone was surprised.",
+                options: ["so", "such", "too", "enough"],
+                answer: "such",
+                explanation: "Đáp án đúng là 'such'. Cấu trúc 'such + a/an + tính từ + danh từ đếm được số ít + that' được sử dụng để nhấn mạnh đặc tính của danh từ dẫn đến một kết quả. Ở đây, 'an expensive car' là cụm danh từ có tính từ."
+            },
+            {
+                question: "It was ________ a beautiful day that we decided to go hiking.",
+                options: ["so", "such", "too", "enough"],
+                answer: "such",
+                explanation: "Đáp án đúng là 'such'. Cấu trúc 'such + a/an + tính từ + danh từ đếm được số ít + that' được sử dụng khi muốn nhấn mạnh đặc tính của danh từ. Ở đây, 'a beautiful day' là cụm có danh từ đếm được số ít."
+            },
+            {
+                question: "The coffee was ________ hot for me to drink immediately.",
+                options: ["so", "such", "too", "enough"],
+                answer: "too",
+                explanation: "Đáp án đúng là 'too'. Cấu trúc 'too + tính từ/trạng từ + for + đối tượng + to-infinitive' diễn tả mức độ quá cao đến nỗi không thể thực hiện được hành động. Ở đây, cà phê quá nóng nên không thể uống ngay được."
+            },
+            {
+                question: "There are ________ a lot of people here that I can't find my friends.",
+                options: ["so", "such", "too", "enough"],
+                answer: "such",
+                explanation: "Đáp án đúng là 'such'. Cấu trúc 'such + a lot of + danh từ số nhiều/không đếm được + that' được sử dụng để nhấn mạnh số lượng lớn dẫn đến một kết quả. Ở đây, 'a lot of people' là cụm danh từ số nhiều."
+            },
+            {
+                question: "She speaks ________ fast for elderly people to understand.",
+                options: ["so", "such", "too", "enough"],
+                answer: "too",
+                explanation: "Đáp án đúng là 'too'. Cấu trúc 'too + tính từ/trạng từ + for + đối tượng + to-infinitive' diễn tả mức độ quá cao đến nỗi không thể thực hiện được hành động. 'Fast' là trạng từ mô tả cách cô ấy nói."
+            },
+            {
+                question: "They had ________ much work that they stayed at the office until midnight.",
+                options: ["so", "such", "too", "enough"],
+                answer: "so",
+                explanation: "Đáp án đúng là 'so'. Cấu trúc 'so + much/many/few/little + danh từ + that' được sử dụng khi nhấn mạnh số lượng lớn dẫn đến một hệ quả. 'Much work' là cụm danh từ không đếm được."
+            },
+            {
+                question: "The child was ________ young to stay home alone.",
+                options: ["so", "such", "too", "enough"],
+                answer: "too",
+                explanation: "Đáp án đúng là 'too'. Cấu trúc 'too + tính từ/trạng từ + to-infinitive' diễn tả mức độ quá cao đến nỗi không thể thực hiện được hành động. Ở đây, đứa trẻ quá nhỏ nên không thể ở nhà một mình."
+            },
+            {
+                question: "The problem was ________ complicated for a beginner to solve.",
+                options: ["so", "such", "too", "enough"],
+                answer: "too",
+                explanation: "Đáp án đúng là 'too'. Cấu trúc 'too + tính từ/trạng từ + for + đối tượng + to-infinitive' diễn tả mức độ quá cao đến nỗi không thể thực hiện được hành động. Ở đây, vấn đề quá phức tạp cho người mới bắt đầu."
+            },
+            {
+                question: "He is ________ experienced enough to handle this situation.",
+                options: ["not", "so", "such", "too"],
+                answer: "not",
+                explanation: "Đáp án đúng là 'not'. Cấu trúc 'not + tính từ/trạng từ + enough + to-infinitive' diễn tả sự thiếu đủ mức độ để thực hiện một hành động. Ở đây, anh ấy không đủ kinh nghiệm để xử lý tình huống này."
+            },
+            {
+                question: "It's ________ a difficult problem that no one can solve it.",
+                options: ["so", "such", "too", "enough"],
+                answer: "such",
+                explanation: "Đáp án đúng là 'such'. Cấu trúc 'such + a/an + tính từ + danh từ đếm được số ít + that' được sử dụng khi muốn nhấn mạnh đặc tính của danh từ dẫn đến một kết quả. Ở đây, 'a difficult problem' là cụm danh từ có tính từ."
+            },
+            {
+                question: "We don't have ________ money enough to buy a new car this year.",
+                options: ["so", "such", "too", "enough"],
+                answer: "enough",
+                explanation: "Đáp án đúng là câu này cần sửa lại thành 'We don't have enough money to buy a new car this year'. Cấu trúc đúng là 'enough + danh từ + to-infinitive' hoặc 'danh từ + enough + to-infinitive', không phải 'money enough'."
+            },
+            {
+                question: "The box is ________ heavy for one person to carry.",
+                options: ["so", "such", "too", "enough"],
+                answer: "too",
+                explanation: "Đáp án đúng là 'too'. Cấu trúc 'too + tính từ/trạng từ + for + đối tượng + to-infinitive' diễn tả mức độ quá cao đến nỗi không thể thực hiện được hành động. Ở đây, chiếc hộp quá nặng cho một người mang."
+            },
+            {
+                question: "We arrived ________ early that the restaurant wasn't open yet.",
+                options: ["so", "such", "too", "enough"],
+                answer: "so",
+                explanation: "Đáp án đúng là 'so'. Cấu trúc 'so + tính từ/trạng từ + that' được sử dụng để diễn tả kết quả của một điều gì đó quá mức. Ở đây, 'early' là trạng từ."
+            },
+            {
+                question: "She had ________ beautiful voice that everyone was impressed.",
+                options: ["so a", "such a", "too a", "enough a"],
+                answer: "such a",
+                explanation: "Đáp án đúng là 'such a'. Cấu trúc 'such + a/an + tính từ + danh từ đếm được số ít + that' được sử dụng khi muốn nhấn mạnh đặc tính của danh từ. Ở đây, 'a beautiful voice' là cụm danh từ đếm được số ít có tính từ."
+            },
+            {
+                question: "There were ________ people at the concert that we couldn't find seats.",
+                options: ["so many", "such many", "too many", "enough many"],
+                answer: "so many",
+                explanation: "Đáp án đúng là 'so many'. Cấu trúc 'so + many/much/few/little + danh từ + that' được sử dụng khi muốn nhấn mạnh số lượng dẫn đến một kết quả. 'Many people' là cụm danh từ đếm được số nhiều."
+            },
+            {
+                question: "The weather was ________ cold that the lake froze over.",
+                options: ["so", "such", "too", "enough"],
+                answer: "so",
+                explanation: "Đáp án đúng là 'so'. Cấu trúc 'so + tính từ + that' được sử dụng để diễn tả kết quả của một điều gì đó quá mức. Ở đây, 'cold' là tính từ."
+            },
+            {
+                question: "We need to find ________ skilled workers to complete this project on time.",
+                options: ["so", "such", "enough", "too"],
+                answer: "enough",
+                explanation: "Đáp án đúng là 'enough'. Cấu trúc 'enough + danh từ số nhiều + to-infinitive' diễn tả số lượng đủ để thực hiện một hành động. Ở đây cần đủ công nhân lành nghề để hoàn thành dự án đúng hạn."
+            },
+            {
+                question: "The hotel room was ________ small that we couldn't fit all our luggage.",
+                options: ["so", "such", "too", "enough"],
+                answer: "so",
+                explanation: "Đáp án đúng là 'so'. Cấu trúc 'so + tính từ + that' được sử dụng để diễn tả kết quả của một điều gì đó quá mức. Ở đây, 'small' là tính từ."
+            },
+            {
+                question: "She didn't run ________ fast to win the race.",
+                options: ["so", "such", "too", "enough"],
+                answer: "enough",
+                explanation: "Đáp án đúng là 'enough'. Cấu trúc 'tính từ/trạng từ + enough + to-infinitive' diễn tả mức độ đủ để thực hiện hành động, ở đây là phủ định 'didn't run enough fast' nghĩa là cô ấy chạy không đủ nhanh để thắng cuộc đua."
+            },
+            {
+                question: "It was ________ a boring lecture that several students fell asleep.",
+                options: ["so", "such", "too", "enough"],
+                answer: "such",
+                explanation: "Đáp án đúng là 'such'. Cấu trúc 'such + a/an + tính từ + danh từ đếm được số ít + that' được sử dụng khi muốn nhấn mạnh đặc tính của danh từ. Ở đây, 'a boring lecture' là cụm danh từ có tính từ."
+            },
+            {
+                question: "The soup is ________ hot for me to eat right now.",
+                options: ["so", "such", "too", "enough"],
+                answer: "too",
+                explanation: "Đáp án đúng là 'too'. Cấu trúc 'too + tính từ/trạng từ + for + đối tượng + to-infinitive' diễn tả mức độ quá cao đến nỗi không thể thực hiện được hành động. Ở đây, súp quá nóng nên không thể ăn ngay được."
+            },
+            {
+                question: "He has ________ much confidence that nothing seems to discourage him.",
+                options: ["so", "such", "too", "enough"],
+                answer: "so",
+                explanation: "Đáp án đúng là 'so'. Cấu trúc 'so + much/many/few/little + danh từ + that' được sử dụng khi muốn nhấn mạnh số lượng lớn dẫn đến một kết quả. 'Much confidence' là cụm danh từ không đếm được."
+            },
+            {
+                question: "They arrived ________ late that they missed the beginning of the movie.",
+                options: ["so", "such", "too", "enough"],
+                answer: "so",
+                explanation: "Đáp án đúng là 'so'. Cấu trúc 'so + tính từ/trạng từ + that' được sử dụng để diễn tả kết quả của một điều gì đó quá mức. Ở đây, 'late' là trạng từ."
+            },
+            {
+                question: "The instructions were ________ complicated that I couldn't follow them.",
+                options: ["so", "such", "too", "enough"],
+                answer: "so",
+                explanation: "Đáp án đúng là 'so'. Cấu trúc 'so + tính từ + that' được sử dụng để diễn tả kết quả của một điều gì đó quá mức. Ở đây, 'complicated' là tính từ."
+            },
+            {
+                question: "We didn't have ________ information to make a decision.",
+                options: ["so", "such", "too", "enough"],
+                answer: "enough",
+                explanation: "Đáp án đúng là 'enough'. Cấu trúc 'enough + danh từ + to-infinitive' diễn tả số lượng đủ để thực hiện một hành động. Ở đây là phủ định 'didn't have enough information' nghĩa là không có đủ thông tin để đưa ra quyết định."
+            },
+            {
+                question: "There was ________ much noise that I couldn't concentrate on my work.",
+                options: ["so", "such", "too", "enough"],
+                answer: "so",
+                explanation: "Đáp án đúng là 'so'. Cấu trúc 'so + much/many/few/little + danh từ + that' được sử dụng khi muốn nhấn mạnh số lượng lớn dẫn đến một kết quả. 'Much noise' là cụm danh từ không đếm được."
+            },
+            {
+                question: "She speaks English ________ well that people think she's a native speaker.",
+                options: ["so", "such", "too", "enough"],
+                answer: "so",
+                explanation: "Đáp án đúng là 'so'. Cấu trúc 'so + trạng từ + that' được sử dụng để diễn tả kết quả của một điều gì đó quá mức. Ở đây, 'well' là trạng từ mô tả cách cô ấy nói tiếng Anh."
+            },
+            {
+                question: "This backpack is ________ heavy for a child to carry.",
+                options: ["so", "such", "too", "enough"],
+                answer: "too",
+                explanation: "Đáp án đúng là 'too'. Cấu trúc 'too + tính từ/trạng từ + for + đối tượng + to-infinitive' diễn tả mức độ quá cao đến nỗi không thể thực hiện được hành động. Ở đây, ba lô quá nặng cho một đứa trẻ mang."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answeredQuestions = [];
+
+        const questionContainer = document.getElementById('question-container');
+        const progressBar = document.getElementById('progress-bar');
+        const currentQuestionElement = document.getElementById('current-question');
+        const totalQuestionsElement = document.getElementById('total-questions');
+        const scoreElement = document.getElementById('score');
+        const maxScoreElement = document.getElementById('max-score');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const resultsContainer = document.getElementById('results-container');
+        const quizContainer = document.getElementById('quiz-container');
+        const finalScoreElement = document.getElementById('final-score');
+        const finalMaxScoreElement = document.getElementById('final-max-score');
+        const percentageElement = document.getElementById('percentage');
+        const feedbackElement = document.getElementById('feedback');
+        const restartBtn = document.getElementById('restart-btn');
+
+        // Initialize the quiz
+        function initQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            answeredQuestions = Array(questions.length).fill(false);
+            
+            totalQuestionsElement.textContent = questions.length;
+            maxScoreElement.textContent = questions.length;
+            finalMaxScoreElement.textContent = questions.length;
+            
+            displayQuestion();
+            updateProgress();
+            prevBtn.disabled = true;
+        }
+
+        // Display the current question
+        function displayQuestion() {
+            const question = questions[currentQuestion];
+            currentQuestionElement.textContent = currentQuestion + 1;
+            
+            let questionHTML = `
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Câu ${currentQuestion + 1}: ${question.question}</h3>
+                    <div class="options-container">
+            `;
+            
+            question.options.forEach((option, index) => {
+                const optionId = `q${currentQuestion}_option${index}`;
+                questionHTML += `
+                    <div class="option-wrapper mb-2">
+                        <input type="radio" id="${optionId}" name="question${currentQuestion}" value="${option}" class="hidden option-input" ${answeredQuestions[currentQuestion] ? 'disabled' : ''}>
+                        <label for="${optionId}" class="option-label ${getOptionClass(option)}">${option}</label>
+                    </div>
+                `;
+            });
+            
+            questionHTML += `</div>`;
+            
+            // Add explanation if question has been answered
+            if (answeredQuestions[currentQuestion]) {
+                questionHTML += `
+                    <div class="explanation mt-4">
+                        <h4 class="font-medium text-yellow-800 mb-1">Giải thích:</h4>
+                        <p>${question.explanation}</p>
+                    </div>
+                `;
+            }
+            
+            questionHTML += `</div>`;
+            
+            questionContainer.innerHTML = questionHTML;
+            
+            // Add event listeners to options
+            if (!answeredQuestions[currentQuestion]) {
+                const options = document.querySelectorAll(`input[name="question${currentQuestion}"]`);
+                options.forEach(option => {
+                    option.addEventListener('change', handleOptionSelect);
+                });
+            }
+            
+            // Update button states
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.textContent = currentQuestion === questions.length - 1 ? "Hoàn thành" : "Câu tiếp theo";
+        }
+
+        // Determine the class for an option based on the user's answer
+        function getOptionClass(option) {
+            if (!answeredQuestions[currentQuestion]) return "";
+            
+            const correctAnswer = questions[currentQuestion].answer;
+            
+            if (option === correctAnswer) {
+                return "correct-answer";
+            } else {
+                // Check if this is the option the user selected
+                const selectedOption = document.querySelector(`input[name="question${currentQuestion}"]:checked`);
+                if (selectedOption && selectedOption.value === option) {
+                    return "wrong-answer";
+                }
+            }
+            
+            return "";
+        }
+
+        // Handle option selection
+        function handleOptionSelect(e) {
+            const selectedOption = e.target.value;
+            const correctAnswer = questions[currentQuestion].answer;
+            
+            answeredQuestions[currentQuestion] = true;
+            
+            if (selectedOption === correctAnswer) {
+                score++;
+                scoreElement.textContent = score;
+            }
+            
+            // Disable all options for this question
+            const options = document.querySelectorAll(`input[name="question${currentQuestion}"]`);
+            options.forEach(option => {
+                option.disabled = true;
+            });
+            
+            // Add classes to show correct/wrong answers
+            const labels = document.querySelectorAll('.option-label');
+            labels.forEach(label => {
+                if (label.textContent === correctAnswer) {
+                    label.classList.add('correct-answer');
+                } else if (label.textContent === selectedOption && selectedOption !== correctAnswer) {
+                    label.classList.add('wrong-answer');
+                }
+            });
+            
+            // Show explanation
+            const explanationHTML = `
+                <div class="explanation mt-4">
+                    <h4 class="font-medium text-yellow-800 mb-1">Giải thích:</h4>
+                    <p>${questions[currentQuestion].explanation}</p>
+                </div>
+            `;
+            
+            questionContainer.insertAdjacentHTML('beforeend', explanationHTML);
+        }
+
+        // Update the progress bar
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // Go to the next question
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                displayQuestion();
+                updateProgress();
+            } else {
+                showResults();
+            }
+        }
+
+        // Go to the previous question
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                displayQuestion();
+                updateProgress();
+            }
+        }
+
+        // Show the final results
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultsContainer.classList.remove('hidden');
+            
+            finalScoreElement.textContent = score;
+            const percentage = Math.round((score / questions.length) * 100);
+            percentageElement.textContent = percentage;
+            
+            let feedbackMessage = "";
+            if (percentage >= 90) {
+                feedbackMessage = "Xuất sắc! Bạn đã nắm vững cấu trúc ngữ pháp này.";
+                feedbackElement.className = "mb-6 p-4 rounded-lg bg-green-100 text-green-800";
+            } else if (percentage >= 70) {
+                feedbackMessage = "Tốt! Bạn đã hiểu khá tốt cấu trúc ngữ pháp này.";
+                feedbackElement.className = "mb-6 p-4 rounded-lg bg-blue-100 text-blue-800";
+            } else if (percentage >= 50) {
+                feedbackMessage = "Khá! Bạn đã hiểu cơ bản về cấu trúc này nhưng cần luyện tập thêm.";
+                feedbackElement.className = "mb-6 p-4 rounded-lg bg-yellow-100 text-yellow-800";
+            } else {
+                feedbackMessage = "Bạn cần ôn tập lại cấu trúc ngữ pháp này và thử lại.";
+                feedbackElement.className = "mb-6 p-4 rounded-lg bg-red-100 text-red-800";
+            }
+            
+            feedbackElement.textContent = feedbackMessage;
+        }
+
+        // Restart the quiz
+        function restartQuiz() {
+            resultsContainer.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+            initQuiz();
+        }
+
+        // Add event listeners
+        prevBtn.addEventListener('click', prevQuestion);
+        nextBtn.addEventListener('click', nextQuestion);
+        restartBtn.addEventListener('click', restartQuiz);
+
+        // Initialize the quiz when the page loads
+        initQuiz();
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
