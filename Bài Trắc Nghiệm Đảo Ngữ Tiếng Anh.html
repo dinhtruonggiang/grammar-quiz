@@ -1,0 +1,643 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Đảo Ngữ - Lớp 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .option-label {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .option-label:hover {
+            background-color: #f0f4f8;
+        }
+        .option-input:checked + .option-label {
+            background-color: #e0e7ff;
+            border-color: #818cf8;
+        }
+        .correct-answer {
+            background-color: #dcfce7 !important;
+            border-color: #22c55e !important;
+        }
+        .wrong-answer {
+            background-color: #fee2e2 !important;
+            border-color: #ef4444 !important;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-6">
+    <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+        <div class="bg-indigo-600 p-4 text-white">
+            <h1 class="text-xl md:text-2xl font-bold text-center">Bài Trắc Nghiệm Đảo Ngữ Tiếng Anh - Lớp 9</h1>
+            <p class="text-center mt-1 text-indigo-100">Thang Tien Thang Long Education JSC</p>
+        </div>
+        
+        <div class="p-4 md:p-6">
+            <div id="intro" class="mb-6">
+                <p class="mb-4">Bài trắc nghiệm gồm 30 câu hỏi về cấu trúc đảo ngữ (Inversion Form) trong tiếng Anh. Hãy đọc kỹ và chọn đáp án đúng.</p>
+                <button id="start-btn" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition">Bắt đầu làm bài</button>
+            </div>
+            
+            <div id="quiz-container" class="hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 id="question-number" class="text-lg font-semibold">Câu hỏi 1/30</h2>
+                    <span id="score-display" class="bg-indigo-100 text-indigo-800 py-1 px-3 rounded-full text-sm font-medium">Điểm: 0/30</span>
+                </div>
+                
+                <div id="question-content" class="mb-6">
+                    <!-- Nội dung câu hỏi sẽ được thêm vào đây -->
+                </div>
+                
+                <div id="explanation" class="mb-6 p-4 bg-gray-50 rounded-md hidden">
+                    <!-- Giải thích sẽ được thêm vào đây -->
+                </div>
+                
+                <div class="flex justify-between">
+                    <button id="prev-btn" class="bg-gray-200 text-gray-800 py-2 px-4 rounded-md hover:bg-gray-300 transition hidden">Câu trước</button>
+                    <button id="next-btn" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition">Câu tiếp theo</button>
+                </div>
+            </div>
+            
+            <div id="results" class="hidden">
+                <h2 class="text-xl font-bold mb-4 text-center">Kết quả bài làm</h2>
+                <div id="score-summary" class="text-center mb-6">
+                    <!-- Kết quả sẽ được thêm vào đây -->
+                </div>
+                <div class="flex justify-center">
+                    <button id="restart-btn" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition mr-4">Làm lại bài</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Danh sách câu hỏi
+        const questions = [
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'There is a lot of furniture in this room so we don't have enough space for the meeting.'",
+                options: [
+                    "So many furniture is there in this room that we don't have enough space for the meeting.",
+                    "So much furniture is there in this room that we don't have enough space for the meeting.",
+                    "Such is a lot of furniture in this room that we don't have enough space for the meeting.",
+                    "Such furniture is there in this room that we don't have enough space for the meeting."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là 'So much furniture is there in this room that we don't have enough space for the meeting.' vì 'furniture' là danh từ không đếm được, nên ta phải dùng 'so much + danh từ không đếm được'. Sau đó áp dụng cấu trúc đảo ngữ 'So much + U.N + be/aux + S + V...'"
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'The concert was boring so it made me sleepy.'",
+                options: [
+                    "So boring was the concert that it made me sleepy.",
+                    "Such was the concert boring that it made me sleepy.",
+                    "Such a boring concert was it that it made me sleepy.",
+                    "So was the concert boring that it made me sleepy."
+                ],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'So boring was the concert that it made me sleepy.' vì ta sử dụng cấu trúc 'So + adj + be/aux + S + that...' để đảo ngữ. Tính từ 'boring' đứng trước trợ động từ 'was' và chủ ngữ 'the concert'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'The children were so excited that they talked about the show all night long.'",
+                options: [
+                    "So excited were the children that they talked about the show all night long.",
+                    "Such excited were the children that they talked about the show all night long.",
+                    "Such were the excited children that they talked about the show all night long.",
+                    "So were the children excited that they talked about the show all night long."
+                ],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'So excited were the children that they talked about the show all night long.' vì ta sử dụng cấu trúc 'So + adj + be/aux + S + that...' để đảo ngữ. Tính từ 'excited' đứng trước trợ động từ 'were' và chủ ngữ 'the children'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'Mary was so disappointed that she couldn't keep working.'",
+                options: [
+                    "Such disappointed was Mary that she couldn't keep working.",
+                    "So disappointed was Mary that she couldn't keep working.",
+                    "So was Mary disappointed that she couldn't keep working.",
+                    "Such was Mary disappointed that she couldn't keep working."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là 'So disappointed was Mary that she couldn't keep working.' vì ta sử dụng cấu trúc 'So + adj + be/aux + S + that...' để đảo ngữ. Tính từ 'disappointed' đứng trước trợ động từ 'was' và chủ ngữ 'Mary'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'These suitcases are too heavy for me to carry.'",
+                options: [
+                    "So heavy are these suitcases that I can't carry them.",
+                    "Such heavy suitcases are these that I can't carry them.",
+                    "So heavy these suitcases are that I can't carry them.",
+                    "So are these suitcases heavy that I can't carry them."
+                ],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'So heavy are these suitcases that I can't carry them.' vì ta sử dụng cấu trúc 'So + adj + be/aux + S + that...' để đảo ngữ. Tính từ 'heavy' đứng trước trợ động từ 'are' và chủ ngữ 'these suitcases'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'The actor is so popular that everyone recognizes him wherever he comes.'",
+                options: [
+                    "So popular the actor is that everyone recognizes him wherever he comes.",
+                    "So popular is the actor that everyone recognizes him wherever he comes.",
+                    "Such a popular actor is he that everyone recognizes him wherever he comes.",
+                    "Such popular is the actor that everyone recognizes him wherever he comes."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là 'So popular is the actor that everyone recognizes him wherever he comes.' vì ta sử dụng cấu trúc 'So + adj + be/aux + S + that...' để đảo ngữ. Tính từ 'popular' đứng trước trợ động từ 'is' và chủ ngữ 'the actor'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'He bought such a lot of books that he couldn't read them all.'",
+                options: [
+                    "So many books did he buy that he couldn't read them all.",
+                    "Such books did he buy that he couldn't read them all.",
+                    "So many books he bought that he couldn't read them all.",
+                    "Such a lot of books did he buy that he couldn't read them all."
+                ],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'So many books did he buy that he couldn't read them all.' vì 'books' là danh từ đếm được số nhiều, nên ta dùng 'so many + danh từ đếm được số nhiều'. Ngoài ra, trong câu gốc không có động từ 'be' nên ta phải dùng trợ động từ 'did' khi đảo ngữ theo cấu trúc 'So many + N + aux + S + V...'"
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'It rained so heavily that he couldn't go to the party.'",
+                options: [
+                    "So heavily it rained that he couldn't go to the party.",
+                    "So heavily did it rain that he couldn't go to the party.",
+                    "Such heavily did it rain that he couldn't go to the party.",
+                    "Such heavy rain was it that he couldn't go to the party."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là 'So heavily did it rain that he couldn't go to the party.' vì 'heavily' là trạng từ, nên ta dùng cấu trúc 'So + adv + aux + S + V...' để đảo ngữ. Vì động từ chính là 'rain' (quá khứ) nên ta dùng trợ động từ 'did'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'Mr. Green got sick because he drank much wine.'",
+                options: [
+                    "So much wine did Mr. Green drink that he got sick.",
+                    "So much did Mr. Green drink wine that he got sick.",
+                    "Such wine did Mr. Green drink that he got sick.",
+                    "So did Mr. Green drink much wine that he got sick."
+                ],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'So much wine did Mr. Green drink that he got sick.' vì 'wine' là danh từ không đếm được, nên ta dùng 'so much + danh từ không đếm được'. Cấu trúc đảo ngữ là 'So much + U.N + aux + S + V...'. Vì động từ chính là 'drink' (quá khứ) nên ta dùng trợ động từ 'did'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'My sister bought a lot of things. She couldn't bring them home at a time.'",
+                options: [
+                    "So many things did my sister buy that she couldn't bring them home at a time.",
+                    "So did my sister buy a lot of things that she couldn't bring them home at a time.",
+                    "Such a lot of things did my sister buy that she couldn't bring them home at a time.",
+                    "So much things did my sister buy that she couldn't bring them home at a time."
+                ],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'So many things did my sister buy that she couldn't bring them home at a time.' vì 'things' là danh từ đếm được số nhiều, nên ta dùng 'so many + danh từ đếm được số nhiều'. Cấu trúc đảo ngữ là 'So many + N + aux + S + V...' và vì động từ chính là 'buy' (quá khứ) nên ta dùng trợ động từ 'did'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'The movie was so interesting that I watched it three times.'",
+                options: [
+                    "So interesting the movie was that I watched it three times.",
+                    "So interesting was the movie that I watched it three times.",
+                    "Such was the interesting movie that I watched it three times.",
+                    "Such interesting was the movie that I watched it three times."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là 'So interesting was the movie that I watched it three times.' vì ta áp dụng cấu trúc 'So + adj + be/aux + S + that...' để đảo ngữ. Tính từ 'interesting' đứng trước trợ động từ 'was' và chủ ngữ 'the movie'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'The homework was so difficult that nobody could finish it on time.'",
+                options: [
+                    "Such difficult was the homework that nobody could finish it on time.",
+                    "Such difficult homework was it that nobody could finish it on time.",
+                    "So difficult was the homework that nobody could finish it on time.",
+                    "So was the homework difficult that nobody could finish it on time."
+                ],
+                correctAnswer: 2,
+                explanation: "Đáp án đúng là 'So difficult was the homework that nobody could finish it on time.' vì ta áp dụng cấu trúc 'So + adj + be/aux + S + that...' để đảo ngữ. Tính từ 'difficult' đứng trước trợ động từ 'was' và chủ ngữ 'the homework'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'She has such a beautiful voice that everyone stops to listen.'",
+                options: [
+                    "So beautiful a voice does she have that everyone stops to listen.",
+                    "Such a beautiful voice does she have that everyone stops to listen.",
+                    "So beautiful voice has she that everyone stops to listen.",
+                    "Such beautiful is her voice that everyone stops to listen."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là 'Such a beautiful voice does she have that everyone stops to listen.' vì trong câu gốc đã dùng 'such a + adj + N' nên khi đảo ngữ ta giữ nguyên cấu trúc này và áp dụng đảo ngữ 'Such a + adj + N + aux + S + V...'. Vì động từ chính là 'have' (hiện tại) nên ta dùng trợ động từ 'does'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'The storm was so strong that it destroyed many houses.'",
+                options: [
+                    "So strong the storm was that it destroyed many houses.",
+                    "So strong was the storm that it destroyed many houses.",
+                    "Such a strong storm was it that it destroyed many houses.",
+                    "Such strong was the storm that it destroyed many houses."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là 'So strong was the storm that it destroyed many houses.' vì ta áp dụng cấu trúc 'So + adj + be/aux + S + that...' để đảo ngữ. Tính từ 'strong' đứng trước trợ động từ 'was' và chủ ngữ 'the storm'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'He has made so many mistakes that he failed the exam.'",
+                options: [
+                    "So many mistakes has he made that he failed the exam.",
+                    "Such many mistakes has he made that he failed the exam.",
+                    "So many has he made mistakes that he failed the exam.",
+                    "Such a lot of mistakes has he made that he failed the exam."
+                ],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'So many mistakes has he made that he failed the exam.' vì 'mistakes' là danh từ đếm được số nhiều, nên ta dùng cấu trúc 'So many + N + aux + S + V...'. Vì động từ chính là 'make' ở thì hiện tại hoàn thành nên ta dùng trợ động từ 'has'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'The teacher spoke so softly that the students couldn't hear her.'",
+                options: [
+                    "So softly did the teacher speak that the students couldn't hear her.",
+                    "So softly the teacher spoke that the students couldn't hear her.",
+                    "Such softly did the teacher speak that the students couldn't hear her.",
+                    "So did the teacher speak softly that the students couldn't hear her."
+                ],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'So softly did the teacher speak that the students couldn't hear her.' vì 'softly' là trạng từ, nên ta dùng cấu trúc 'So + adv + aux + S + V...' để đảo ngữ. Vì động từ chính là 'speak' (quá khứ) nên ta dùng trợ động từ 'did'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'We had so little time that we couldn't complete the project.'",
+                options: [
+                    "So little time we had that we couldn't complete the project.",
+                    "So little time did we have that we couldn't complete the project.",
+                    "Such little time did we have that we couldn't complete the project.",
+                    "So little did we have time that we couldn't complete the project."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là 'So little time did we have that we couldn't complete the project.' vì 'time' là danh từ không đếm được, và ta đang nói về số lượng ít, nên dùng 'so little + U.N'. Cấu trúc đảo ngữ là 'So little + U.N + aux + S + V...'. Vì động từ chính là 'have' (quá khứ) nên ta dùng trợ động từ 'did'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'The boy ran so fast that no one could catch him.'",
+                options: [
+                    "So fast did the boy run that no one could catch him.",
+                    "So fast the boy ran that no one could catch him.",
+                    "Such fast did the boy run that no one could catch him.",
+                    "So did the boy run fast that no one could catch him."
+                ],
+                correctAnswer: 0,
+                explanation: "Đáp án đúng là 'So fast did the boy run that no one could catch him.' vì 'fast' là trạng từ, nên ta dùng cấu trúc 'So + adv + aux + S + V...' để đảo ngữ. Vì động từ chính là 'run' (quá khứ) nên ta dùng trợ động từ 'did'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'The water was so cold that we couldn't swim.'",
+                options: [
+                    "So was the water cold that we couldn't swim.",
+                    "Such cold was the water that we couldn't swim.",
+                    "So cold was the water that we couldn't swim.",
+                    "So the water was cold that we couldn't swim."
+                ],
+                correctAnswer: 2,
+                explanation: "Đáp án đúng là 'So cold was the water that we couldn't swim.' vì ta áp dụng cấu trúc 'So + adj + be/aux + S + that...' để đảo ngữ. Tính từ 'cold' đứng trước trợ động từ 'was' và chủ ngữ 'the water'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'He told us such an amazing story that we all believed him.'",
+                options: [
+                    "So amazing a story did he tell us that we all believed him.",
+                    "Such an amazing story did he tell us that we all believed him.",
+                    "So amazing did he tell us a story that we all believed him.",
+                    "Such amazing story did he tell us that we all believed him."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là 'Such an amazing story did he tell us that we all believed him.' vì trong câu gốc đã dùng 'such an + adj + N' nên khi đảo ngữ ta giữ nguyên cấu trúc này và áp dụng đảo ngữ 'Such an + adj + N + aux + S + V...'. Vì động từ chính là 'tell' (quá khứ) nên ta dùng trợ động từ 'did'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'The coffee was so hot that I couldn't drink it immediately.'",
+                options: [
+                    "So hot the coffee was that I couldn't drink it immediately.",
+                    "So hot was the coffee that I couldn't drink it immediately.",
+                    "Such hot coffee was it that I couldn't drink it immediately.",
+                    "Such was the hot coffee that I couldn't drink it immediately."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là 'So hot was the coffee that I couldn't drink it immediately.' vì ta áp dụng cấu trúc 'So + adj + be/aux + S + that...' để đảo ngữ. Tính từ 'hot' đứng trước trợ động từ 'was' và chủ ngữ 'the coffee'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'She prepared so much food that we couldn't eat it all.'",
+                options: [
+                    "So much food she prepared that we couldn't eat it all.",
+                    "So much food did she prepare that we couldn't eat it all.",
+                    "Such much food did she prepare that we couldn't eat it all.",
+                    "So she prepared much food that we couldn't eat it all."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là 'So much food did she prepare that we couldn't eat it all.' vì 'food' là danh từ không đếm được, nên ta dùng cấu trúc 'So much + U.N + aux + S + V...'. Vì động từ chính là 'prepare' (quá khứ) nên ta dùng trợ động từ 'did'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'The teacher gave us such difficult exercises that most students gave up.'",
+                options: [
+                    "So difficult exercises did the teacher give us that most students gave up.",
+                    "Such difficult exercises did the teacher give us that most students gave up.",
+                    "So difficult did the teacher give us exercises that most students gave up.",
+                    "Such were the difficult exercises that most students gave up."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là 'Such difficult exercises did the teacher give us that most students gave up.' vì trong câu gốc đã dùng 'such + adj + N số nhiều' nên khi đảo ngữ ta giữ nguyên cấu trúc này và áp dụng đảo ngữ 'Such + adj + N + aux + S + V...'. Vì động từ chính là 'give' (quá khứ) nên ta dùng trợ động từ 'did'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'I was so tired that I fell asleep during the meeting.'",
+                options: [
+                    "So tired I was that I fell asleep during the meeting.",
+                    "So tired was I that I fell asleep during the meeting.",
+                    "Such tired was I that I fell asleep during the meeting.",
+                    "So was I tired that I fell asleep during the meeting."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là 'So tired was I that I fell asleep during the meeting.' vì ta áp dụng cấu trúc 'So + adj + be/aux + S + that...' để đảo ngữ. Tính từ 'tired' đứng trước trợ động từ 'was' và chủ ngữ 'I'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'She spoke so fluently that everyone was impressed.'",
+                options: [
+                    "So fluently she spoke that everyone was impressed.",
+                    "So fluently did she speak that everyone was impressed.",
+                    "Such fluent did she speak that everyone was impressed.",
+                    "So did she speak fluently that everyone was impressed."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là 'So fluently did she speak that everyone was impressed.' vì 'fluently' là trạng từ, nên ta dùng cấu trúc 'So + adv + aux + S + V...' để đảo ngữ. Vì động từ chính là 'speak' (quá khứ) nên ta dùng trợ động từ 'did'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'They had such a great time that they didn't want to leave.'",
+                options: [
+                    "So great a time did they have that they didn't want to leave.",
+                    "Such a great time did they have that they didn't want to leave.",
+                    "So great time did they have that they didn't want to leave.",
+                    "Such great did they have a time that they didn't want to leave."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là 'Such a great time did they have that they didn't want to leave.' vì trong câu gốc đã dùng 'such a + adj + N' nên khi đảo ngữ ta giữ nguyên cấu trúc này và áp dụng đảo ngữ 'Such a + adj + N + aux + S + V...'. Vì động từ chính là 'have' (quá khứ) nên ta dùng trợ động từ 'did'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'The museum had so many visitors that they had to close the entrance early.'",
+                options: [
+                    "So many visitors the museum had that they had to close the entrance early.",
+                    "So many visitors did the museum have that they had to close the entrance early.",
+                    "Such many visitors did the museum have that they had to close the entrance early.",
+                    "So did the museum have many visitors that they had to close the entrance early."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là 'So many visitors did the museum have that they had to close the entrance early.' vì 'visitors' là danh từ đếm được số nhiều, nên ta dùng cấu trúc 'So many + N + aux + S + V...'. Vì động từ chính là 'have' (quá khứ) nên ta dùng trợ động từ 'did'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'The traffic was so bad that we arrived late for the concert.'",
+                options: [
+                    "So bad the traffic was that we arrived late for the concert.",
+                    "So bad was the traffic that we arrived late for the concert.",
+                    "Such bad traffic was it that we arrived late for the concert.",
+                    "Such was the bad traffic that we arrived late for the concert."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là 'So bad was the traffic that we arrived late for the concert.' vì ta áp dụng cấu trúc 'So + adj + be/aux + S + that...' để đảo ngữ. Tính từ 'bad' đứng trước trợ động từ 'was' và chủ ngữ 'the traffic'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'The children played so loudly that they woke up the baby.'",
+                options: [
+                    "So loudly the children played that they woke up the baby.",
+                    "So loudly did the children play that they woke up the baby.",
+                    "Such loudly did the children play that they woke up the baby.",
+                    "So did the children play loudly that they woke up the baby."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là 'So loudly did the children play that they woke up the baby.' vì 'loudly' là trạng từ, nên ta dùng cấu trúc 'So + adv + aux + S + V...' để đảo ngữ. Vì động từ chính là 'play' (quá khứ) nên ta dùng trợ động từ 'did'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'The new smartphone is so expensive that few people can afford it.'",
+                options: [
+                    "So expensive the new smartphone is that few people can afford it.",
+                    "So expensive is the new smartphone that few people can afford it.",
+                    "Such expensive is the new smartphone that few people can afford it.",
+                    "Such an expensive smartphone is it that few people can afford it."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là 'So expensive is the new smartphone that few people can afford it.' vì ta áp dụng cấu trúc 'So + adj + be/aux + S + that...' để đảo ngữ. Tính từ 'expensive' đứng trước trợ động từ 'is' và chủ ngữ 'the new smartphone'."
+            },
+            {
+                question: "Chọn dạng đảo ngữ đúng cho câu: 'The audience applauded so enthusiastically that the performers gave an encore.'",
+                options: [
+                    "So enthusiastically the audience applauded that the performers gave an encore.",
+                    "So enthusiastically did the audience applaud that the performers gave an encore.",
+                    "Such enthusiastic was the audience's applause that the performers gave an encore.",
+                    "So did the audience applaud enthusiastically that the performers gave an encore."
+                ],
+                correctAnswer: 1,
+                explanation: "Đáp án đúng là 'So enthusiastically did the audience applaud that the performers gave an encore.' vì 'enthusiastically' là trạng từ, nên ta dùng cấu trúc 'So + adv + aux + S + V...' để đảo ngữ. Vì động từ chính là 'applaud' (quá khứ) nên ta dùng trợ động từ 'did'."
+            }
+        ];
+
+        // Biến toàn cục
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let answeredQuestions = {};
+
+        // DOM elements
+        const startBtn = document.getElementById('start-btn');
+        const quizContainer = document.getElementById('quiz-container');
+        const introContainer = document.getElementById('intro');
+        const questionNumber = document.getElementById('question-number');
+        const questionContent = document.getElementById('question-content');
+        const explanation = document.getElementById('explanation');
+        const nextBtn = document.getElementById('next-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const resultsContainer = document.getElementById('results');
+        const scoreSummary = document.getElementById('score-summary');
+        const scoreDisplay = document.getElementById('score-display');
+        const restartBtn = document.getElementById('restart-btn');
+
+        // Bắt đầu bài trắc nghiệm
+        startBtn.addEventListener('click', function() {
+            introContainer.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+            displayQuestion(currentQuestionIndex);
+        });
+
+        // Hiển thị câu hỏi
+        function displayQuestion(index) {
+            const question = questions[index];
+            
+            questionNumber.textContent = `Câu hỏi ${index + 1}/${questions.length}`;
+            
+            let optionsHTML = '';
+            question.options.forEach((option, optionIndex) => {
+                const isDisabled = answeredQuestions[index] !== undefined ? 'disabled' : '';
+                const isChecked = answeredQuestions[index] === optionIndex ? 'checked' : '';
+                
+                let optionClass = 'option-label border rounded-md p-3 mb-2 block';
+                if (answeredQuestions[index] !== undefined) {
+                    if (optionIndex === question.correctAnswer) {
+                        optionClass += ' correct-answer';
+                    } else if (optionIndex === answeredQuestions[index] && optionIndex !== question.correctAnswer) {
+                        optionClass += ' wrong-answer';
+                    }
+                }
+                
+                optionsHTML += `
+                    <div>
+                        <input type="radio" name="question" id="option-${optionIndex}" class="option-input hidden" value="${optionIndex}" ${isChecked} ${isDisabled}>
+                        <label for="option-${optionIndex}" class="${optionClass}">
+                            ${String.fromCharCode(65 + optionIndex)}. ${option}
+                        </label>
+                    </div>
+                `;
+            });
+            
+            questionContent.innerHTML = `
+                <h3 class="text-lg font-medium mb-4">${question.question}</h3>
+                <div class="mb-4">
+                    ${optionsHTML}
+                </div>
+            `;
+            
+            // Hiển thị giải thích nếu câu hỏi đã được trả lời
+            if (answeredQuestions[index] !== undefined) {
+                explanation.innerHTML = `
+                    <h4 class="font-semibold mb-2">Giải thích:</h4>
+                    <p>${question.explanation}</p>
+                `;
+                explanation.classList.remove('hidden');
+            } else {
+                explanation.classList.add('hidden');
+            }
+            
+            // Cập nhật nút điều hướng
+            prevBtn.classList.toggle('hidden', index === 0);
+            
+            if (index === questions.length - 1) {
+                nextBtn.textContent = 'Xem kết quả';
+            } else {
+                nextBtn.textContent = 'Câu tiếp theo';
+            }
+            
+            // Thêm sự kiện click cho các tùy chọn
+            const optionInputs = document.querySelectorAll('.option-input');
+            optionInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    // Không cho phép chọn lại nếu đã trả lời
+                    if (answeredQuestions[index] !== undefined) return;
+                    
+                    const selectedOption = parseInt(this.value);
+                    answeredQuestions[index] = selectedOption;
+                    
+                    // Cập nhật giao diện
+                    const optionLabels = document.querySelectorAll('.option-label');
+                    optionLabels.forEach((label, optionIndex) => {
+                        if (optionIndex === question.correctAnswer) {
+                            label.classList.add('correct-answer');
+                        } else if (optionIndex === selectedOption && optionIndex !== question.correctAnswer) {
+                            label.classList.add('wrong-answer');
+                        }
+                        
+                        // Vô hiệu hóa tùy chọn sau khi chọn
+                        const input = document.getElementById(`option-${optionIndex}`);
+                        input.disabled = true;
+                    });
+                    
+                    // Cập nhật điểm số
+                    if (selectedOption === question.correctAnswer) {
+                        score++;
+                        scoreDisplay.textContent = `Điểm: ${score}/${questions.length}`;
+                    }
+                    
+                    // Hiển thị giải thích
+                    explanation.innerHTML = `
+                        <h4 class="font-semibold mb-2">Giải thích:</h4>
+                        <p>${question.explanation}</p>
+                    `;
+                    explanation.classList.remove('hidden');
+                });
+            });
+        }
+
+        // Xử lý nút Next
+        nextBtn.addEventListener('click', function() {
+            if (currentQuestionIndex === questions.length - 1) {
+                showResults();
+            } else {
+                currentQuestionIndex++;
+                displayQuestion(currentQuestionIndex);
+            }
+        });
+
+        // Xử lý nút Previous
+        prevBtn.addEventListener('click', function() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                displayQuestion(currentQuestionIndex);
+            }
+        });
+
+        // Hiển thị kết quả
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultsContainer.classList.remove('hidden');
+            
+            const percentage = (score / questions.length) * 100;
+            let feedback = '';
+            
+            if (percentage >= 90) {
+                feedback = 'Xuất sắc! Bạn đã nắm vững cấu trúc đảo ngữ trong tiếng Anh.';
+            } else if (percentage >= 70) {
+                feedback = 'Tốt! Bạn đã hiểu khá tốt về cấu trúc đảo ngữ.';
+            } else if (percentage >= 50) {
+                feedback = 'Khá! Bạn cần luyện tập thêm để nắm vững hơn.';
+            } else {
+                feedback = 'Bạn cần ôn tập lại cấu trúc đảo ngữ và luyện tập nhiều hơn.';
+            }
+            
+            scoreSummary.innerHTML = `
+                <div class="text-4xl font-bold mb-2">${score}/${questions.length}</div>
+                <div class="text-lg mb-4">${percentage.toFixed(1)}%</div>
+                <div class="text-lg">${feedback}</div>
+                <div class="mt-4 text-gray-700">
+                    <p>Dưới đây là tóm tắt các cấu trúc đảo ngữ chính:</p>
+                    <ul class="list-disc pl-6 mt-2 text-left">
+                        <li>So + adj/adv + aux/be + S + that + S + V + O</li>
+                        <li>So many + N (đếm được số nhiều) + aux + S + V + that...</li>
+                        <li>So much + N (không đếm được) + aux + S + V + that...</li>
+                        <li>Such + be + S (N) + that + S + V + O</li>
+                        <li>Such + adj + N (số nhiều) + aux + S + V + that...</li>
+                        <li>Such a/an + adj + N (số ít) + aux + S + V + that...</li>
+                    </ul>
+                </div>
+            `;
+        }
+
+        // Restart quiz
+        restartBtn.addEventListener('click', function() {
+            currentQuestionIndex = 0;
+            score = 0;
+            answeredQuestions = {};
+            scoreDisplay.textContent = `Điểm: 0/${questions.length}`;
+            
+            resultsContainer.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+            displayQuestion(currentQuestionIndex);
+        });
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
