@@ -1,0 +1,525 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Câu Điều Kiện Loại 2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hidden {
+            display: none;
+        }
+        .explanation {
+            border-left: 4px solid #4f46e5;
+            padding-left: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+        .option-selected {
+            background-color: #e0e7ff;
+            border-color: #4f46e5;
+        }
+        .option-correct {
+            background-color: #dcfce7;
+            border-color: #22c55e;
+        }
+        .option-incorrect {
+            background-color: #fee2e2;
+            border-color: #ef4444;
+        }
+        .progress-bar {
+            height: 8px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background-color: #4f46e5;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-indigo-700 mb-2">Bài Trắc Nghiệm Câu Điều Kiện Loại 2</h1>
+            <p class="text-lg text-gray-600">Unreal Condition in the Present (Type 2 Conditional)</p>
+            <div class="mt-4 progress-bar">
+                <div id="progress" class="progress" style="width: 0%"></div>
+            </div>
+            <div class="mt-2 flex justify-between text-sm text-gray-500">
+                <span id="current-question">Câu hỏi: 0/30</span>
+                <span id="score">Điểm: 0/30</span>
+            </div>
+        </header>
+
+        <div id="quiz-container" class="bg-white rounded-lg shadow-md p-6">
+            <div id="question-container" class="mb-6">
+                <!-- Questions will be inserted here -->
+            </div>
+
+            <div id="controls" class="flex justify-between mt-8">
+                <button id="prev-btn" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition hidden">Câu trước</button>
+                <button id="next-btn" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">Câu tiếp theo</button>
+            </div>
+        </div>
+
+        <div id="results-container" class="bg-white rounded-lg shadow-md p-6 mt-8 hidden">
+            <h2 class="text-2xl font-bold text-center mb-4">Kết quả của bạn</h2>
+            <div class="text-center mb-8">
+                <span id="final-score" class="text-4xl font-bold text-indigo-700">0/30</span>
+                <p id="performance-message" class="mt-2 text-gray-600">Hãy cố gắng hơn!</p>
+            </div>
+            <div class="border-t pt-4">
+                <h3 class="font-bold text-lg mb-2">Câu trả lời của bạn:</h3>
+                <div id="answers-summary" class="space-y-2">
+                    <!-- Summary will be inserted here -->
+                </div>
+            </div>
+            <button id="restart-btn" class="w-full mt-6 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">Làm lại bài</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "If Tom _____ better, he could go out today.",
+                options: ["feels", "felt", "would feel", "is feeling"],
+                correctAnswer: 1,
+                explanation: "Câu điều kiện loại 2 (không có thật ở hiện tại) sử dụng cấu trúc 'If + S + V-ed/were + O, S + would/could/might + V + O'. Ở đây, chúng ta cần dùng Simple Past 'felt' sau 'If'."
+            },
+            {
+                question: "We could fly without gravity if we _____ on the moon.",
+                options: ["are", "would be", "were", "will be"],
+                correctAnswer: 2,
+                explanation: "Trong câu điều kiện loại 2, sau 'if' chúng ta sử dụng động từ ở dạng quá khứ. Với động từ 'to be', chúng ta thường dùng 'were' cho tất cả các ngôi, nên 'were' là đáp án đúng."
+            },
+            {
+                question: "If everything _____ cheaper, city life would be more enjoyable.",
+                options: ["is", "was", "were", "would be"],
+                correctAnswer: 2,
+                explanation: "Trong câu điều kiện loại 2, chúng ta dùng quá khứ đơn sau 'if'. 'Everything' là danh từ số ít nên dùng 'was', tuy nhiên 'were' cũng được chấp nhận trong ngữ cảnh này."
+            },
+            {
+                question: "If the guards _____ who you are, they would let you in.",
+                options: ["know", "knew", "would know", "had known"],
+                correctAnswer: 1,
+                explanation: "Đây là câu điều kiện không có thật ở hiện tại (type 2), nên sau 'if' dùng động từ ở thì quá khứ đơn 'knew'."
+            },
+            {
+                question: "She advises him to buy that house. If she _____ him, he would buy a different one.",
+                options: ["wouldn't advise", "doesn't advise", "didn't advise", "hadn't advised"],
+                correctAnswer: 2,
+                explanation: "Trong loại câu điều kiện 2, chúng ta dùng quá khứ đơn sau 'if', nên 'didn't advise' là đáp án đúng để diễn tả điều kiện không có thật ở hiện tại."
+            },
+            {
+                question: "I don't have time, so I don't sleep more. If I _____ time, I would sleep more.",
+                options: ["had", "have", "would have", "will have"],
+                correctAnswer: 0,
+                explanation: "Trong câu điều kiện loại 2, chúng ta dùng quá khứ đơn sau 'if' để diễn tả một giả định không có thật ở hiện tại. Vì vậy, 'had' (quá khứ của 'have') là đáp án đúng."
+            },
+            {
+                question: "Without water, we couldn't live on the earth. If there _____ no water, we couldn't survive.",
+                options: ["is", "was", "were", "would be"],
+                correctAnswer: 2,
+                explanation: "Trong câu điều kiện loại 2, sau 'if there' chúng ta thường dùng 'were' (không phải 'was') dù là cho danh từ số ít. Đây là cách dùng chính thức và phổ biến, nên 'were' là đáp án đúng."
+            },
+            {
+                question: "You don't take good care of the car. If you _____ better care of it, it wouldn't break down so often.",
+                options: ["take", "took", "would take", "had taken"],
+                correctAnswer: 1,
+                explanation: "Câu điều kiện loại 2 sử dụng quá khứ đơn sau 'if', nên 'took' là đáp án đúng để diễn tả một điều kiện không có thật ở hiện tại."
+            },
+            {
+                question: "That man is too lazy, so he is unemployed. If he _____ more hard-working, he would have a job.",
+                options: ["is", "was", "were", "would be"],
+                correctAnswer: 2,
+                explanation: "Trong câu điều kiện không có thật ở hiện tại, chúng ta dùng 'were' sau 'if' (thay vì 'was') cho tất cả các ngôi. Đây là cách dùng chính thức và được ưa chuộng trong tiếng Anh học thuật."
+            },
+            {
+                question: "We can't get the tickets because I don't have the right chance. If I _____ the right chance, we could get the tickets.",
+                options: ["had", "have", "would have", "will have"],
+                correctAnswer: 0,
+                explanation: "Câu điều kiện loại 2 dùng quá khứ đơn sau 'if', nên 'had' (quá khứ của 'have') là lựa chọn đúng."
+            },
+            {
+                question: "I suggest you take the offer. If I _____ you, I would accept it immediately.",
+                options: ["am", "was", "were", "would be"],
+                correctAnswer: 2,
+                explanation: "Cấu trúc 'If I were you' là một cấu trúc phổ biến trong câu điều kiện loại 2, dùng để đưa ra lời khuyên. Chúng ta luôn dùng 'were' (không phải 'was') trong cấu trúc này."
+            },
+            {
+                question: "You'd better not hide this from your father. If I _____ this from my father, he would be very angry.",
+                options: ["hide", "hid", "would hide", "had hidden"],
+                correctAnswer: 1,
+                explanation: "Trong câu điều kiện loại 2, chúng ta dùng quá khứ đơn sau 'if', nên 'hid' (quá khứ của 'hide') là đáp án đúng."
+            },
+            {
+                question: "Behaving like that will make you end up in trouble. If you _____ more carefully, you would avoid problems.",
+                options: ["behave", "behaved", "would behave", "will behave"],
+                correctAnswer: 1,
+                explanation: "Trong cấu trúc câu điều kiện loại 2, chúng ta dùng quá khứ đơn sau 'if' để diễn tả một giả định không có thật ở hiện tại. Vì vậy, 'behaved' là đáp án đúng."
+            },
+            {
+                question: "Smoking too much makes you cough a lot. If you _____ less, you wouldn't cough so much.",
+                options: ["smoke", "smoked", "would smoke", "had smoked"],
+                correctAnswer: 1,
+                explanation: "Câu điều kiện loại 2 dùng quá khứ đơn sau 'if', nên 'smoked' (quá khứ của 'smoke') là lựa chọn đúng."
+            },
+            {
+                question: "If we _____ a dictionary, we could understand this text better.",
+                options: ["have", "had", "would have", "will have"],
+                correctAnswer: 1,
+                explanation: "Trong câu điều kiện loại 2, chúng ta dùng quá khứ đơn sau 'if'. Vì vậy, 'had' (quá khứ của 'have') là đáp án đúng."
+            },
+            {
+                question: "If I _____ rich, I would buy a big house.",
+                options: ["am", "was", "were", "would be"],
+                correctAnswer: 2,
+                explanation: "Cấu trúc 'If I were rich' là cách dùng chính thức trong câu điều kiện loại 2. Mặc dù 'was' cũng được chấp nhận trong ngôn ngữ hàng ngày, nhưng 'were' là dạng chuẩn mực trong ngữ cảnh học thuật."
+            },
+            {
+                question: "She would find it difficult to learn English if she _____ have a good teacher.",
+                options: ["doesn't", "didn't", "wouldn't", "won't"],
+                correctAnswer: 1,
+                explanation: "Câu điều kiện loại 2 dùng quá khứ đơn sau 'if'. Vì vậy, 'didn't' (quá khứ của 'doesn't') là lựa chọn đúng."
+            },
+            {
+                question: "If she _____ more time, she could practice English every day.",
+                options: ["has", "had", "would have", "will have"],
+                correctAnswer: 1,
+                explanation: "Theo cấu trúc câu điều kiện loại 2 (không có thật ở hiện tại), sau 'if' chúng ta dùng động từ ở thì quá khứ đơn. Vì vậy, 'had' (quá khứ của 'has') là đáp án đúng."
+            },
+            {
+                question: "The beach is far from here. If it _____ closer, we could go there more often.",
+                options: ["is", "was", "were", "would be"],
+                correctAnswer: 2,
+                explanation: "Trong câu điều kiện loại 2, chúng ta dùng 'were' sau 'if' (thay vì 'was') cho tất cả các ngôi. Đây là cách dùng chính thức và được ưa chuộng trong tiếng Anh học thuật."
+            },
+            {
+                question: "Mary is busy now. If she _____ free, she would join us for lunch.",
+                options: ["is", "was", "were", "would be"],
+                correctAnswer: 2,
+                explanation: "Câu điều kiện loại 2 dùng thì quá khứ sau 'if'. Với động từ 'to be', hình thức chuẩn mực là dùng 'were' cho tất cả các ngôi."
+            },
+            {
+                question: "I didn't bring my camera. If I _____ it with me, I could take some photos.",
+                options: ["bring", "brought", "would bring", "had brought"],
+                correctAnswer: 1,
+                explanation: "Câu điều kiện loại 2 dùng quá khứ đơn sau 'if', nên 'brought' (quá khứ của 'bring') là lựa chọn đúng để diễn tả một giả định không có thật ở hiện tại."
+            },
+            {
+                question: "Peter can't speak French. If he _____ French, he could get that job in Paris.",
+                options: ["speaks", "spoke", "would speak", "speaking"],
+                correctAnswer: 1,
+                explanation: "Trong câu điều kiện loại 2, chúng ta dùng quá khứ đơn sau 'if', nên 'spoke' (quá khứ của 'speak') là đáp án đúng."
+            },
+            {
+                question: "John doesn't know her phone number. If he _____ her number, he would call her.",
+                options: ["knows", "knew", "would know", "knowing"],
+                correctAnswer: 1,
+                explanation: "Câu điều kiện loại 2 sử dụng quá khứ đơn sau 'if', nên 'knew' (quá khứ của 'know') là đáp án đúng để diễn tả một điều kiện không có thật ở hiện tại."
+            },
+            {
+                question: "Jane cannot drive a car. If she _____ drive, she wouldn't need to take the bus.",
+                options: ["can", "could", "would", "will"],
+                correctAnswer: 1,
+                explanation: "Trong câu điều kiện loại 2, chúng ta dùng hình thức quá khứ của động từ khiếm khuyết sau 'if'. Vì vậy, 'could' (quá khứ của 'can') là đáp án đúng."
+            },
+            {
+                question: "Nick doesn't earn enough money. If he _____ more, he could buy a new house.",
+                options: ["earns", "earned", "would earn", "earning"],
+                correctAnswer: 1,
+                explanation: "Câu điều kiện loại 2 dùng quá khứ đơn sau 'if', nên 'earned' (quá khứ của 'earn') là lựa chọn đúng."
+            },
+            {
+                question: "If there _____ no pollution, the world would be a better place.",
+                options: ["is", "was", "were", "would be"],
+                correctAnswer: 2,
+                explanation: "Trong cấu trúc 'if there were' của câu điều kiện loại 2, chúng ta luôn dùng 'were' (không phải 'was') dù là cho danh từ số ít. Đây là cách dùng chính thức và phổ biến."
+            },
+            {
+                question: "If we _____ more time, we could visit more museums.",
+                options: ["have", "had", "would have", "having"],
+                correctAnswer: 1,
+                explanation: "Câu điều kiện loại 2 dùng quá khứ đơn sau 'if'. Vì vậy, 'had' (quá khứ của 'have') là đáp án đúng để diễn tả một điều kiện không có thật ở hiện tại."
+            },
+            {
+                question: "They would succeed if they _____ harder.",
+                options: ["try", "tried", "would try", "trying"],
+                correctAnswer: 1,
+                explanation: "Trong câu điều kiện loại 2, chúng ta dùng quá khứ đơn sau 'if', nên 'tried' (quá khứ của 'try') là đáp án đúng."
+            },
+            {
+                question: "If I _____ the answer, I would tell you.",
+                options: ["know", "knew", "would know", "known"],
+                correctAnswer: 1,
+                explanation: "Câu điều kiện loại 2 sử dụng quá khứ đơn sau 'if', nên 'knew' (quá khứ của 'know') là đáp án đúng để diễn tả một điều kiện không có thật ở hiện tại."
+            },
+            {
+                question: "She would help you if you _____ her.",
+                options: ["ask", "asked", "would ask", "asking"],
+                correctAnswer: 1,
+                explanation: "Trong câu điều kiện loại 2, chúng ta dùng quá khứ đơn sau 'if', nên 'asked' (quá khứ của 'ask') là đáp án đúng."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answeredQuestions = [];
+
+        const questionContainer = document.getElementById('question-container');
+        const nextButton = document.getElementById('next-btn');
+        const prevButton = document.getElementById('prev-btn');
+        const resultsContainer = document.getElementById('results-container');
+        const quizContainer = document.getElementById('quiz-container');
+        const finalScoreElement = document.getElementById('final-score');
+        const performanceMessage = document.getElementById('performance-message');
+        const answersSummary = document.getElementById('answers-summary');
+        const restartButton = document.getElementById('restart-btn');
+        const progressBar = document.getElementById('progress');
+        const currentQuestionText = document.getElementById('current-question');
+        const scoreText = document.getElementById('score');
+
+        function showQuestion(index) {
+            currentQuestion = index;
+            questionContainer.innerHTML = '';
+
+            const questionDiv = document.createElement('div');
+            questionDiv.classList.add('mb-6');
+
+            // Question number and text
+            const questionText = document.createElement('h3');
+            questionText.classList.add('text-xl', 'font-bold', 'mb-4');
+            questionText.textContent = `Câu ${index + 1}: ${questions[index].question}`;
+            questionDiv.appendChild(questionText);
+
+            // Options
+            const optionsDiv = document.createElement('div');
+            optionsDiv.classList.add('space-y-3');
+
+            questions[index].options.forEach((option, optionIndex) => {
+                const optionButton = document.createElement('button');
+                optionButton.classList.add('w-full', 'text-left', 'p-3', 'border', 'rounded-lg', 'hover:bg-gray-50', 'transition');
+                
+                // If this question has been answered
+                if (answeredQuestions[index] !== undefined) {
+                    optionButton.disabled = true;
+                    
+                    if (optionIndex === answeredQuestions[index]) {
+                        if (optionIndex === questions[index].correctAnswer) {
+                            optionButton.classList.add('option-correct');
+                        } else {
+                            optionButton.classList.add('option-incorrect');
+                        }
+                    } else if (optionIndex === questions[index].correctAnswer) {
+                        optionButton.classList.add('option-correct');
+                    }
+                }
+
+                optionButton.innerHTML = `
+                    <span class="inline-block w-6 h-6 text-sm text-center bg-indigo-100 text-indigo-800 rounded-full mr-2">
+                        ${String.fromCharCode(65 + optionIndex)}
+                    </span>
+                    ${option}
+                `;
+
+                optionButton.addEventListener('click', () => selectOption(optionIndex));
+                optionsDiv.appendChild(optionButton);
+            });
+
+            questionDiv.appendChild(optionsDiv);
+
+            // Explanation
+            const explanationDiv = document.createElement('div');
+            explanationDiv.classList.add('explanation', 'mt-4', 'p-4', 'bg-indigo-50', 'rounded-lg');
+            
+            if (answeredQuestions[index] !== undefined) {
+                explanationDiv.style.display = 'block';
+                explanationDiv.innerHTML = `
+                    <p class="font-semibold text-indigo-700">Giải thích:</p>
+                    <p class="mt-1 text-gray-700">${questions[index].explanation}</p>
+                `;
+            }
+            
+            questionDiv.appendChild(explanationDiv);
+            questionContainer.appendChild(questionDiv);
+
+            // Update buttons
+            updateNavigationButtons();
+            updateProgress();
+        }
+
+        function selectOption(optionIndex) {
+            const allOptions = questionContainer.querySelectorAll('button');
+            
+            // Disable all options
+            allOptions.forEach(option => {
+                option.disabled = true;
+            });
+
+            // Style selected option
+            allOptions[optionIndex].classList.add(
+                optionIndex === questions[currentQuestion].correctAnswer 
+                    ? 'option-correct' 
+                    : 'option-incorrect'
+            );
+
+            // Show correct answer if wrong choice
+            if (optionIndex !== questions[currentQuestion].correctAnswer) {
+                allOptions[questions[currentQuestion].correctAnswer].classList.add('option-correct');
+            }
+
+            // Show explanation
+            const explanationDiv = questionContainer.querySelector('.explanation');
+            explanationDiv.style.display = 'block';
+
+            // Update score
+            answeredQuestions[currentQuestion] = optionIndex;
+            if (optionIndex === questions[currentQuestion].correctAnswer) {
+                score++;
+            }
+
+            updateScore();
+        }
+
+        function updateNavigationButtons() {
+            prevButton.classList.toggle('hidden', currentQuestion === 0);
+            
+            if (currentQuestion === questions.length - 1) {
+                // If all questions have been answered, enable finish button
+                const allAnswered = answeredQuestions.filter(ans => ans !== undefined).length === questions.length;
+                if (allAnswered) {
+                    nextButton.textContent = 'Xem kết quả';
+                    nextButton.classList.add('bg-green-600', 'hover:bg-green-700');
+                    nextButton.classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
+                } else {
+                    nextButton.textContent = 'Câu tiếp theo';
+                    nextButton.classList.add('bg-indigo-600', 'hover:bg-indigo-700');
+                    nextButton.classList.remove('bg-green-600', 'hover:bg-green-700');
+                }
+            } else {
+                nextButton.textContent = 'Câu tiếp theo';
+                nextButton.classList.add('bg-indigo-600', 'hover:bg-indigo-700');
+                nextButton.classList.remove('bg-green-600', 'hover:bg-green-700');
+            }
+        }
+
+        function updateProgress() {
+            const progressPercentage = (currentQuestion / questions.length) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+            currentQuestionText.textContent = `Câu hỏi: ${currentQuestion + 1}/${questions.length}`;
+        }
+
+        function updateScore() {
+            scoreText.textContent = `Điểm: ${score}/${questions.length}`;
+        }
+
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultsContainer.classList.remove('hidden');
+            
+            finalScoreElement.textContent = `${score}/${questions.length}`;
+            
+            // Set performance message
+            const percentage = (score / questions.length) * 100;
+            if (percentage >= 90) {
+                performanceMessage.textContent = 'Xuất sắc! Bạn đã nắm vững câu điều kiện loại 2.';
+            } else if (percentage >= 70) {
+                performanceMessage.textContent = 'Tốt! Bạn đã hiểu phần lớn câu điều kiện loại 2.';
+            } else if (percentage >= 50) {
+                performanceMessage.textContent = 'Khá! Bạn đã nắm được cơ bản về câu điều kiện loại 2.';
+            } else {
+                performanceMessage.textContent = 'Bạn cần luyện tập thêm về câu điều kiện loại 2.';
+            }
+
+            // Show answers summary
+            answersSummary.innerHTML = '';
+            questions.forEach((question, index) => {
+                const userChoice = answeredQuestions[index];
+                const isCorrect = userChoice === question.correctAnswer;
+                
+                const summaryItem = document.createElement('div');
+                summaryItem.classList.add('p-2', 'rounded', isCorrect ? 'bg-green-50' : 'bg-red-50');
+                
+                summaryItem.innerHTML = `
+                    <div class="flex items-start">
+                        <span class="inline-block min-w-6 h-6 text-xs text-center ${isCorrect ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'} rounded-full p-1 mr-2">
+                            ${index + 1}
+                        </span>
+                        <div>
+                            <p class="text-sm">${question.question}</p>
+                            <p class="text-sm mt-1">
+                                <span class="font-semibold">Đáp án đúng:</span> 
+                                ${question.options[question.correctAnswer]}
+                            </p>
+                            ${userChoice !== undefined && userChoice !== question.correctAnswer ? 
+                                `<p class="text-sm text-red-600">
+                                    <span class="font-semibold">Bạn chọn:</span> 
+                                    ${question.options[userChoice]}
+                                </p>` : ''}
+                        </div>
+                    </div>
+                `;
+                
+                answersSummary.appendChild(summaryItem);
+            });
+        }
+
+        nextButton.addEventListener('click', () => {
+            if (currentQuestion < questions.length - 1) {
+                showQuestion(currentQuestion + 1);
+            } else {
+                showResults();
+            }
+        });
+
+        prevButton.addEventListener('click', () => {
+            if (currentQuestion > 0) {
+                showQuestion(currentQuestion - 1);
+            }
+        });
+
+        restartButton.addEventListener('click', () => {
+            currentQuestion = 0;
+            score = 0;
+            answeredQuestions = Array(questions.length).fill(undefined);
+            
+            resultsContainer.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+            
+            showQuestion(0);
+            updateScore();
+        });
+
+        // Initialize
+        showQuestion(0);
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
