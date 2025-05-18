@@ -1,0 +1,633 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Tập Mệnh Đề Nhượng Bộ Tiếng Anh - Lớp 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+        }
+        .explanation {
+            display: none;
+            background-color: #edf7ed;
+            border-left: 4px solid #4caf50;
+        }
+        .option-btn.selected {
+            background-color: #3b82f6;
+            color: white;
+        }
+        .option-btn.correct {
+            background-color: #10b981;
+            color: white;
+        }
+        .option-btn.incorrect {
+            background-color: #ef4444;
+            color: white;
+        }
+        .option-btn:disabled {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6">
+        <header class="text-center mb-8">
+            <h1 class="text-2xl font-bold text-gray-800 mb-2">Bài Tập Mệnh Đề Nhượng Bộ Tiếng Anh</h1>
+            <p class="text-gray-600">Adverb Clause / Phrase of Concession - Lớp 9</p>
+        </header>
+
+        <div class="progress mb-6">
+            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+            </div>
+            <p class="text-right text-sm text-gray-600 mt-1">Câu: <span id="current-question">1</span>/<span id="total-questions">30</span></p>
+        </div>
+
+        <div id="quiz-container">
+            <!-- Questions will be inserted here -->
+        </div>
+
+        <div id="navigation" class="mt-6 flex justify-between">
+            <button id="prev-btn" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed">Câu trước</button>
+            <button id="next-btn" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Câu tiếp theo</button>
+        </div>
+
+        <div id="results-container" class="mt-8 text-center hidden">
+            <h2 class="text-xl font-bold mb-4">Kết Quả</h2>
+            <p class="text-lg mb-2">Số câu đúng: <span id="correct-count" class="font-bold text-green-600">0</span>/<span id="total-count">30</span></p>
+            <p class="text-lg mb-4">Điểm số: <span id="score" class="font-bold text-blue-600">0</span>/10</p>
+            <button id="retry-btn" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Làm lại bài tập</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "Although footballers are well-paid, they have short careers. Chọn cách viết lại câu đúng:",
+                options: [
+                    "In spite of being well-paid, footballers have short careers.",
+                    "In spite of well-paid, footballers have short careers.",
+                    "In spite of they are well-paid, footballers have short careers.",
+                    "Despite well-paid, footballers have short careers."
+                ],
+                correctIndex: 0,
+                explanation: "Câu đúng là 'In spite of being well-paid, footballers have short careers'. Khi chuyển từ mệnh đề 'although' sang cụm từ 'in spite of/despite', ta phải biến động từ thành V-ing hoặc danh từ. Ở đây 'are well-paid' trở thành 'being well-paid'."
+            },
+            {
+                question: "Chọn cách nói khác của câu: 'Despite her young age, she is very responsible.'",
+                options: [
+                    "Although she is young, she is very responsible.",
+                    "Although she is young age, she is very responsible.",
+                    "In spite of she is young, she is very responsible.",
+                    "Despite she is young, she is very responsible."
+                ],
+                correctIndex: 0,
+                explanation: "Câu đúng là 'Although she is young, she is very responsible'. Khi chuyển từ cụm từ 'despite/in spite of + danh từ' sang mệnh đề 'although', ta cần thêm chủ ngữ và động từ. 'Despite her young age' trở thành 'Although she is young'."
+            },
+            {
+                question: "In spite of facing some financial problems, she decided to invest in that project. Chọn cách viết lại câu đúng:",
+                options: [
+                    "Although she faced some financial problems, she decided to invest in that project.",
+                    "Although she was facing some financial problems, she decided to invest in that project.",
+                    "Though her faced some financial problems, she decided to invest in that project.",
+                    "Though she financial problems, she decided to invest in that project."
+                ],
+                correctIndex: 1,
+                explanation: "Câu đúng là 'Although she was facing some financial problems, she decided to invest in that project'. Cấu trúc 'in spite of + V-ing' khi chuyển sang 'although' cần có chủ ngữ và động từ. Vì đang nói về quá khứ tiếp diễn nên dùng 'was facing'."
+            },
+            {
+                question: "Though Mike felt tired, he managed to finish his homework. Chọn cách viết lại câu đúng:",
+                options: [
+                    "Despite felt tired, Mike managed to finish his homework.",
+                    "Despite feeling tired, Mike managed to finish his homework.",
+                    "Despite tired, Mike managed to finish his homework.",
+                    "Despite of feeling tired, Mike managed to finish his homework."
+                ],
+                correctIndex: 1,
+                explanation: "Câu đúng là 'Despite feeling tired, Mike managed to finish his homework'. Khi chuyển từ mệnh đề 'though' sang cụm từ 'despite', ta phải biến động từ thành V-ing. 'felt tired' trở thành 'feeling tired'. Lưu ý không dùng 'despite of'."
+            },
+            {
+                question: "She decided to go to the beach even though it was chilly and windy. Chọn cách viết lại câu đúng:",
+                options: [
+                    "Despite it was chilly and windy, she decided to go to the beach.",
+                    "Despite of the chilly and windy weather, she decided to go to the beach.",
+                    "Despite the chilly and windy weather, she decided to go to the beach.",
+                    "In spite it was chilly and windy, she decided to go to the beach."
+                ],
+                correctIndex: 2,
+                explanation: "Câu đúng là 'Despite the chilly and windy weather, she decided to go to the beach'. Khi chuyển từ mệnh đề 'even though' sang cụm từ 'despite', ta cần biến 'it was chilly and windy' thành danh từ 'the chilly and windy weather'. Không dùng 'despite of' hoặc 'in spite' mà không có 'of'."
+            },
+            {
+                question: "Lan is not confident despite her speaking skills are good. Câu nào sau đây KHÔNG đúng về mặt ngữ pháp?",
+                options: [
+                    "Although Lan's speaking skills are good, she is not confident.",
+                    "Despite her good speaking skills, Lan is not confident.",
+                    "Despite her speaking skills are good, Lan is not confident.",
+                    "In spite of her good speaking skills, Lan is not confident."
+                ],
+                correctIndex: 2,
+                explanation: "Câu không đúng là 'Despite her speaking skills are good, Lan is not confident'. Sau 'despite' không thể có một mệnh đề hoàn chỉnh (có chủ ngữ và động từ). Đúng phải là 'Despite her good speaking skills' (danh từ) hoặc 'Despite having good speaking skills' (V-ing)."
+            },
+            {
+                question: "Chọn cách nói khác của câu: 'I didn't feel hungry in spite of not eating for 12 hours.'",
+                options: [
+                    "Even though I hadn't eaten for 12 hours, I didn't feel hungry.",
+                    "Even though I didn't eat for 12 hours, I didn't feel hungry.",
+                    "Despite I didn't eat for 12 hours, I didn't feel hungry.",
+                    "Although I not eating for 12 hours, I didn't feel hungry."
+                ],
+                correctIndex: 0,
+                explanation: "Câu đúng là 'Even though I hadn't eaten for 12 hours, I didn't feel hungry'. Cụm 'in spite of not eating' được chuyển thành mệnh đề với 'even though'. Vì nói về quá khứ hoàn thành (một việc xảy ra trước một thời điểm trong quá khứ) nên phải dùng 'hadn't eaten'."
+            },
+            {
+                question: "I eat vegetables every day though I don't like them. Chọn cách viết lại câu đúng:",
+                options: [
+                    "In spite of don't like vegetables, I eat them every day.",
+                    "In spite of not liking vegetables, I eat them every day.",
+                    "In spite of I don't like them, I eat vegetables every day.",
+                    "Despite of not liking vegetables, I eat them every day."
+                ],
+                correctIndex: 1,
+                explanation: "Câu đúng là 'In spite of not liking vegetables, I eat them every day'. Khi chuyển từ mệnh đề 'though' sang cụm từ 'in spite of', ta phải biến động từ thành V-ing có phủ định. 'I don't like them' trở thành 'not liking vegetables'."
+            },
+            {
+                question: "Despite having access to healthy snacks, students still prefer junk food. Câu này tương đương với câu nào?",
+                options: [
+                    "Students still prefer junk food, despite they have access to healthy snacks.",
+                    "Although students have access to healthy snacks, they still prefer junk food.",
+                    "Even though students having access to healthy snacks, they still prefer junk food.",
+                    "Students still prefer junk food even though they access to healthy snacks."
+                ],
+                correctIndex: 1,
+                explanation: "Câu đúng là 'Although students have access to healthy snacks, they still prefer junk food'. Khi chuyển từ cụm từ 'despite having' sang mệnh đề với 'although', ta cần thêm chủ ngữ và động từ đầy đủ. 'having access' trở thành 'have access'."
+            },
+            {
+                question: "Jack never gains weight despite all the junk food he eats. Chọn cách viết lại câu đúng:",
+                options: [
+                    "Even though Jack eats all the junk food, he never gains weight.",
+                    "Even though all the junk food Jack eats, he never gains weight.",
+                    "Though Jack eats all the junk food, never he gains weight.",
+                    "Although the junk food he eats, Jack never gains weight."
+                ],
+                correctIndex: 0,
+                explanation: "Câu đúng là 'Even though Jack eats all the junk food, he never gains weight'. Khi chuyển từ cụm từ 'despite' sang mệnh đề với 'even though', ta cần có cấu trúc câu đúng với chủ ngữ - động từ. Sau 'even though' phải là một mệnh đề hoàn chỉnh."
+            },
+            {
+                question: "My brother has managed to save a lot of money despite his small salary. Chọn cách viết lại câu đúng:",
+                options: [
+                    "Though his small salary, my brother has managed to save a lot of money.",
+                    "Though my brother has a small salary, he has managed to save a lot of money.",
+                    "Though his salary is small, my brother has managed to save a lot of money.",
+                    "Though he has small salary, my brother has managed to save a lot of money."
+                ],
+                correctIndex: 2,
+                explanation: "Câu đúng là 'Though his salary is small, my brother has managed to save a lot of money'. Khi chuyển từ 'despite + danh từ' sang mệnh đề với 'though', ta cần thêm động từ. 'his small salary' trở thành 'his salary is small'."
+            },
+            {
+                question: "We managed to walk to the nearest village despite our injured feet. Chọn cách viết lại câu đúng:",
+                options: [
+                    "Although our feet were injured, we managed to walk to the nearest village.",
+                    "Although our feet injured, we managed to walk to the nearest village.",
+                    "Although we had feet injured, we managed to walk to the nearest village.",
+                    "Although we were injured feet, we managed to walk to the nearest village."
+                ],
+                correctIndex: 0,
+                explanation: "Câu đúng là 'Although our feet were injured, we managed to walk to the nearest village'. Khi chuyển từ 'despite our injured feet' sang 'although', ta cần thêm động từ 'were' vì 'injured' ở đây là tính từ, nên cần động từ 'be' để tạo thành mệnh đề hoàn chỉnh."
+            },
+            {
+                question: "In spite of many difficulties, I learned about all of the instruments and helped with X-rays and mixing stuff. Chọn cách viết lại câu đúng:",
+                options: [
+                    "Though there were many difficulties, I learned about all of the instruments and helped with X-rays and mixing stuff.",
+                    "Though many difficulties, I learned about all of the instruments and helped with X-rays and mixing stuff.",
+                    "Though I had many difficulties, I learned about all of the instruments and helped with X-rays and mixing stuff.",
+                    "Though I faced with many difficulties, I learned about all of the instruments and helped with X-rays and mixing stuff."
+                ],
+                correctIndex: 0,
+                explanation: "Câu đúng là 'Though there were many difficulties, I learned about all of the instruments and helped with X-rays and mixing stuff'. Khi chuyển từ 'in spite of many difficulties' sang mệnh đề với 'though', ta cần thêm chủ ngữ và động từ. Vì 'difficulties' là danh từ số nhiều không xác định chủ thể, nên dùng 'there were'."
+            },
+            {
+                question: "Even though the movie was boring, we stayed until the end. Chọn cách viết lại câu đúng:",
+                options: [
+                    "Despite of the boring movie, we stayed until the end.",
+                    "Despite the boring movie, we stayed until the end.",
+                    "In spite of the movie was boring, we stayed until the end.",
+                    "In spite the boring movie, we stayed until the end."
+                ],
+                correctIndex: 1,
+                explanation: "Câu đúng là 'Despite the boring movie, we stayed until the end'. Khi chuyển từ mệnh đề 'even though the movie was boring' sang cụm từ với 'despite', ta cần biến thành danh từ. 'The movie was boring' trở thành 'the boring movie'. Lưu ý không dùng 'despite of' hoặc 'in spite' mà không có 'of'."
+            },
+            {
+                question: "She passed the exam in spite of studying for only one day. Chọn cách viết lại câu đúng:",
+                options: [
+                    "Although she studied for only one day, she passed the exam.",
+                    "Although she was studying for only one day, she passed the exam.",
+                    "Even though she has studied for only one day, she passed the exam.",
+                    "Even though she had studied for only one day, she passed the exam."
+                ],
+                correctIndex: 0,
+                explanation: "Câu đúng là 'Although she studied for only one day, she passed the exam'. Cụm 'in spite of studying' khi chuyển sang mệnh đề với 'although', ta dùng chủ ngữ và động từ ở thì quá khứ đơn vì nói về hành động đã hoàn thành trong quá khứ."
+            },
+            {
+                question: "Despite being very expensive, the restaurant was full of customers. Chọn cách viết lại câu đúng:",
+                options: [
+                    "Although it was very expensive, the restaurant was full of customers.",
+                    "Even though the restaurant very expensive, it was full of customers.",
+                    "Even though the restaurant is very expensive, it was full of customers.",
+                    "Although very expensive, the restaurant was full of customers."
+                ],
+                correctIndex: 0,
+                explanation: "Câu đúng là 'Although it was very expensive, the restaurant was full of customers'. Khi chuyển từ cụm 'despite being very expensive' sang mệnh đề với 'although', ta cần thêm chủ ngữ (it) và động từ ở thì quá khứ (was) để phù hợp với ngữ cảnh quá khứ của mệnh đề chính."
+            },
+            {
+                question: "He went jogging although it was raining heavily. Chọn cách viết lại câu đúng:",
+                options: [
+                    "Despite it was raining heavily, he went jogging.",
+                    "In spite of it was raining heavily, he went jogging.",
+                    "Despite the heavy rain, he went jogging.",
+                    "Despite of the heavy rain, he went jogging."
+                ],
+                correctIndex: 2,
+                explanation: "Câu đúng là 'Despite the heavy rain, he went jogging'. Khi chuyển từ mệnh đề 'although it was raining heavily' sang cụm từ với 'despite', ta cần biến mệnh đề thành danh từ 'the heavy rain'. Không dùng 'despite + mệnh đề' hoặc 'despite of'."
+            },
+            {
+                question: "In spite of her illness, she came to work. Câu nào sau đây có nghĩa tương tự?",
+                options: [
+                    "Despite she was ill, she came to work.",
+                    "Although she was ill, she came to work.",
+                    "Even though her illness, she came to work.",
+                    "Though ill her, she came to work."
+                ],
+                correctIndex: 1,
+                explanation: "Câu đúng là 'Although she was ill, she came to work'. Khi chuyển từ cụm từ 'in spite of her illness' sang mệnh đề với 'although', ta cần thêm chủ ngữ (she) và động từ (was). Danh từ 'illness' chuyển thành tính từ 'ill'."
+            },
+            {
+                question: "Though I respect his opinion, I don't agree with him. Chọn cách viết lại câu đúng:",
+                options: [
+                    "Despite respecting his opinion, I don't agree with him.",
+                    "In spite of I respect his opinion, I don't agree with him.",
+                    "Despite I respect his opinion, I don't agree with him.",
+                    "In spite respecting his opinion, I don't agree with him."
+                ],
+                correctIndex: 0,
+                explanation: "Câu đúng là 'Despite respecting his opinion, I don't agree with him'. Khi chuyển từ mệnh đề 'though I respect' sang cụm từ với 'despite', ta phải biến động từ thành V-ing. 'I respect his opinion' trở thành 'respecting his opinion'."
+            },
+            {
+                question: "Despite his physical disability, he became a famous athlete. Câu nào sau đây diễn đạt cùng ý nghĩa?",
+                options: [
+                    "Although his physical disability, he became a famous athlete.",
+                    "Even though his physical disability, he became a famous athlete.",
+                    "Despite of he had a physical disability, he became a famous athlete.",
+                    "Although he had a physical disability, he became a famous athlete."
+                ],
+                correctIndex: 3,
+                explanation: "Câu đúng là 'Although he had a physical disability, he became a famous athlete'. Khi chuyển từ cụm từ 'despite his physical disability' sang mệnh đề với 'although', ta cần thêm chủ ngữ (he) và động từ (had). Sau 'although' phải là một mệnh đề hoàn chỉnh."
+            },
+            {
+                question: "We continued our journey in spite of the bad weather. Chọn cách viết lại câu:",
+                options: [
+                    "We continued our journey although the weather bad.",
+                    "Although the bad weather, we continued our journey.",
+                    "Although the weather was bad, we continued our journey.",
+                    "We continued our journey although weather was bad."
+                ],
+                correctIndex: 2,
+                explanation: "Câu đúng là 'Although the weather was bad, we continued our journey'. Khi chuyển từ cụm từ 'in spite of the bad weather' sang mệnh đề với 'although', ta cần thêm động từ 'was'. Cấu trúc đúng là 'although + mệnh đề hoàn chỉnh'."
+            },
+            {
+                question: "She speaks English fluently despite growing up in Vietnam. Chọn cách viết lại câu đúng:",
+                options: [
+                    "Although she grew up in Vietnam, she speaks English fluently.",
+                    "Even though she grows up in Vietnam, she speaks English fluently.",
+                    "Although she grows up in Vietnam, she speaks English fluently.",
+                    "Though growing up in Vietnam, she speaks English fluently."
+                ],
+                correctIndex: 0,
+                explanation: "Câu đúng là 'Although she grew up in Vietnam, she speaks English fluently'. Khi chuyển từ 'despite growing up' sang mệnh đề với 'although', ta cần dùng động từ ở thì quá khứ đơn (grew up) vì đây là sự kiện đã hoàn thành trong quá khứ."
+            },
+            {
+                question: "Even though he trained hard, he didn't win the race. Chọn cách viết lại câu đúng:",
+                options: [
+                    "Despite he trained hard, he didn't win the race.",
+                    "In spite of trained hard, he didn't win the race.",
+                    "Despite training hard, he didn't win the race.",
+                    "Despite of his training hard, he didn't win the race."
+                ],
+                correctIndex: 2,
+                explanation: "Câu đúng là 'Despite training hard, he didn't win the race'. Khi chuyển từ mệnh đề 'even though he trained hard' sang cụm từ với 'despite', ta phải biến động từ thành V-ing. 'He trained hard' trở thành 'training hard'. Không dùng 'despite + mệnh đề' hoặc 'despite of'."
+            },
+            {
+                question: "In spite of the heavy traffic, we arrived on time. Chọn cách viết lại câu đúng:",
+                options: [
+                    "Despite the heavy traffic, we arrived on time.",
+                    "Although there was the heavy traffic, we arrived on time.",
+                    "Although the heavy traffic, we arrived on time.",
+                    "Even though there is heavy traffic, we arrived on time."
+                ],
+                correctIndex: 0,
+                explanation: "Câu đúng là 'Despite the heavy traffic, we arrived on time'. 'In spite of' và 'despite' có thể thay thế cho nhau mà không cần thay đổi cấu trúc câu. Cả hai đều đi với danh từ/cụm danh từ."
+            },
+            {
+                question: "Though it was late, the children were still playing outside. Chọn cách viết lại câu đúng:",
+                options: [
+                    "Despite of being late, the children were still playing outside.",
+                    "Despite it was late, the children were still playing outside.",
+                    "Despite the lateness, the children were still playing outside.",
+                    "In spite it was late, the children were still playing outside."
+                ],
+                correctIndex: 2,
+                explanation: "Câu đúng là 'Despite the lateness, the children were still playing outside'. Khi chuyển từ mệnh đề 'though it was late' sang cụm từ với 'despite', ta cần biến mệnh đề thành danh từ 'the lateness'. Không dùng 'despite + mệnh đề' hoặc 'despite of'."
+            },
+            {
+                question: "The team won the match despite playing with only ten players. Chọn cách viết lại câu đúng:",
+                options: [
+                    "Although the team played with only ten players, they won the match.",
+                    "Even though the team was playing with only ten players, they won the match.",
+                    "Although the team were playing with only ten players, they won the match.",
+                    "Even though with only ten players, the team won the match."
+                ],
+                correctIndex: 1,
+                explanation: "Câu đúng là 'Even though the team was playing with only ten players, they won the match'. Khi chuyển từ 'despite playing' sang mệnh đề với 'even though', ta dùng thì quá khứ tiếp diễn 'was playing' vì đây là hành động đang diễn ra tại một thời điểm trong quá khứ. 'The team' là danh từ tập hợp dùng với động từ số ít 'was'."
+            },
+            {
+                question: "In spite of having no experience, she got the job. Câu nào sau đây diễn đạt cùng ý nghĩa?",
+                options: [
+                    "Although she has no experience, she got the job.",
+                    "Although she had no experience, she got the job.",
+                    "Even though she didn't have experience, she got the job.",
+                    "Though she hasn't had experience, she got the job."
+                ],
+                correctIndex: 1,
+                explanation: "Câu đúng là 'Although she had no experience, she got the job'. Khi chuyển từ 'in spite of having no experience' sang mệnh đề với 'although', ta dùng thì quá khứ đơn 'had' để phù hợp với ngữ cảnh quá khứ của mệnh đề chính 'got the job'."
+            },
+            {
+                question: "Despite being rich, he lives very simply. Chọn cách viết lại câu đúng:",
+                options: [
+                    "Although he is rich, he lives very simply.",
+                    "Even though he rich, he lives very simply.",
+                    "Although is rich, he lives very simply.",
+                    "Though he was rich, he lives very simply."
+                ],
+                correctIndex: 0,
+                explanation: "Câu đúng là 'Although he is rich, he lives very simply'. Khi chuyển từ 'despite being rich' sang mệnh đề với 'although', ta cần thêm chủ ngữ 'he' và động từ ở thì hiện tại 'is' vì đây là tình trạng hiện tại ('lives')."
+            },
+            {
+                question: "Although her parents disagreed, she decided to study abroad. Chọn cách viết lại câu đúng:",
+                options: [
+                    "Despite her parents disagreed, she decided to study abroad.",
+                    "In spite of her parents' disagreement, she decided to study abroad.",
+                    "Despite of her parents' disagreement, she decided to study abroad.",
+                    "In spite her parents disagreed, she decided to study abroad."
+                ],
+                correctIndex: 1,
+                explanation: "Câu đúng là 'In spite of her parents' disagreement, she decided to study abroad'. Khi chuyển từ mệnh đề 'although her parents disagreed' sang cụm từ với 'in spite of', ta cần biến mệnh đề thành danh từ 'her parents' disagreement'. Không dùng 'in spite + mệnh đề' hoặc 'despite of'."
+            },
+            {
+                question: "Despite the rain, the football match wasn't cancelled. Câu nào sau đây diễn đạt cùng ý nghĩa?",
+                options: [
+                    "Although it rained, the football match wasn't cancelled.",
+                    "Even though it was raining, the football match wasn't cancelled.",
+                    "Despite it was raining, the football match wasn't cancelled.",
+                    "Though it has rained, the football match wasn't cancelled."
+                ],
+                correctIndex: 1,
+                explanation: "Câu đúng là 'Even though it was raining, the football match wasn't cancelled'. Khi chuyển từ 'despite the rain' sang mệnh đề với 'even though', ta nên dùng thì quá khứ tiếp diễn 'was raining' để mô tả tình trạng thời tiết đang diễn ra tại thời điểm diễn ra trận đấu."
+            },
+            {
+                question: "Although I had never met her before, I recognized her immediately. Chọn cách viết lại câu đúng:",
+                options: [
+                    "Despite I had never met her before, I recognized her immediately.",
+                    "In spite of never having met her before, I recognized her immediately.",
+                    "Despite never met her before, I recognized her immediately.",
+                    "In spite of I had never met her before, I recognized her immediately."
+                ],
+                correctIndex: 1,
+                explanation: "Câu đúng là 'In spite of never having met her before, I recognized her immediately'. Khi chuyển từ mệnh đề 'although I had never met her before' sang cụm từ với 'in spite of', ta phải biến động từ thành cấu trúc 'having + past participle' vì đây là hành động hoàn thành trước một hành động khác trong quá khứ."
+            }
+        ];
+
+        let currentIndex = 0;
+        let answered = Array(questions.length).fill(false);
+        let userAnswers = Array(questions.length).fill(-1);
+        let correctCount = 0;
+
+        // Initialize quiz
+        function initQuiz() {
+            displayQuestion();
+            updateNavButtons();
+            updateProgressBar();
+        }
+
+        // Display current question
+        function displayQuestion() {
+            const question = questions[currentIndex];
+            const isAnswered = answered[currentIndex];
+            
+            let optionsHTML = '';
+            for (let i = 0; i < question.options.length; i++) {
+                let optionClass = 'option-btn px-4 py-2 mb-2 rounded-md w-full text-left border hover:bg-gray-100';
+                if (isAnswered) {
+                    if (i === userAnswers[currentIndex] && i === question.correctIndex) {
+                        optionClass += ' correct';
+                    } else if (i === userAnswers[currentIndex]) {
+                        optionClass += ' incorrect';
+                    } else if (i === question.correctIndex) {
+                        optionClass += ' correct';
+                    }
+                    optionClass += ' cursor-not-allowed';
+                } else {
+                    optionClass += ' cursor-pointer';
+                }
+
+                optionsHTML += `<button class="${optionClass}" data-index="${i}" ${isAnswered ? 'disabled' : ''}>${String.fromCharCode(65 + i)}. ${question.options[i]}</button>`;
+            }
+
+            let explanationHTML = isAnswered ? 
+                `<div class="explanation p-4 mt-4 rounded-md">
+                    <p class="font-bold text-green-800">Giải thích:</p>
+                    <p>${question.explanation}</p>
+                </div>` : '';
+
+            document.getElementById('quiz-container').innerHTML = `
+                <div class="question-container">
+                    <p class="text-lg font-semibold mb-4">${currentIndex + 1}. ${question.question}</p>
+                    <div class="options-container">
+                        ${optionsHTML}
+                    </div>
+                    ${explanationHTML}
+                </div>
+            `;
+
+            // Add event listeners to options
+            if (!isAnswered) {
+                document.querySelectorAll('.option-btn').forEach(btn => {
+                    btn.addEventListener('click', handleOptionClick);
+                });
+            }
+
+            // Update progress indicator
+            document.getElementById('current-question').textContent = currentIndex + 1;
+        }
+
+        // Handle option click
+        function handleOptionClick(e) {
+            const selectedIndex = parseInt(e.target.dataset.index);
+            const question = questions[currentIndex];
+            
+            // Mark question as answered
+            answered[currentIndex] = true;
+            userAnswers[currentIndex] = selectedIndex;
+            
+            // Update correct count
+            if (selectedIndex === question.correctIndex) {
+                correctCount++;
+            }
+            
+            // Disable all options
+            document.querySelectorAll('.option-btn').forEach(btn => {
+                btn.disabled = true;
+                btn.classList.add('cursor-not-allowed');
+                btn.removeEventListener('click', handleOptionClick);
+            });
+            
+            // Highlight correct and incorrect answers
+            document.querySelectorAll('.option-btn').forEach((btn, i) => {
+                if (i === selectedIndex && i === question.correctIndex) {
+                    btn.classList.add('correct');
+                } else if (i === selectedIndex) {
+                    btn.classList.add('incorrect');
+                } else if (i === question.correctIndex) {
+                    btn.classList.add('correct');
+                }
+            });
+            
+            // Show explanation
+            const explanationHTML = `
+                <div class="explanation p-4 mt-4 rounded-md">
+                    <p class="font-bold text-green-800">Giải thích:</p>
+                    <p>${question.explanation}</p>
+                </div>
+            `;
+            document.querySelector('.question-container').insertAdjacentHTML('beforeend', explanationHTML);
+            
+            // Show or enable next button
+            updateNavButtons();
+            
+            // Check if all questions are answered
+            if (answered.every(a => a)) {
+                showResults();
+            }
+        }
+
+        // Update navigation buttons
+        function updateNavButtons() {
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            prevBtn.disabled = currentIndex === 0;
+            
+            if (currentIndex === questions.length - 1) {
+                if (answered.every(a => a)) {
+                    nextBtn.textContent = 'Xem kết quả';
+                    nextBtn.addEventListener('click', showResults);
+                } else {
+                    nextBtn.disabled = !answered[currentIndex];
+                }
+            } else {
+                nextBtn.textContent = 'Câu tiếp theo';
+                nextBtn.disabled = !answered[currentIndex];
+            }
+        }
+
+        // Update progress bar
+        function updateProgressBar() {
+            const progress = ((currentIndex + 1) / questions.length) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+            document.getElementById('total-questions').textContent = questions.length;
+        }
+
+        // Show results
+        function showResults() {
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('navigation').style.display = 'none';
+            document.getElementById('results-container').classList.remove('hidden');
+            
+            const score = (correctCount / questions.length * 10).toFixed(2);
+            document.getElementById('correct-count').textContent = correctCount;
+            document.getElementById('total-count').textContent = questions.length;
+            document.getElementById('score').textContent = score;
+        }
+
+        // Navigate to previous question
+        function prevQuestion() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                displayQuestion();
+                updateNavButtons();
+                updateProgressBar();
+            }
+        }
+
+        // Navigate to next question
+        function nextQuestion() {
+            if (currentIndex < questions.length - 1) {
+                currentIndex++;
+                displayQuestion();
+                updateNavButtons();
+                updateProgressBar();
+            } else if (answered.every(a => a)) {
+                showResults();
+            }
+        }
+
+        // Restart quiz
+        function restartQuiz() {
+            currentIndex = 0;
+            answered = Array(questions.length).fill(false);
+            userAnswers = Array(questions.length).fill(-1);
+            correctCount = 0;
+            
+            document.getElementById('quiz-container').style.display = 'block';
+            document.getElementById('navigation').style.display = 'flex';
+            document.getElementById('results-container').classList.add('hidden');
+            
+            initQuiz();
+        }
+
+        // Event listeners
+        document.getElementById('prev-btn').addEventListener('click', prevQuestion);
+        document.getElementById('next-btn').addEventListener('click', nextQuestion);
+        document.getElementById('retry-btn').addEventListener('click', restartQuiz);
+
+        // Initialize quiz when the page loads
+        initQuiz();
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
