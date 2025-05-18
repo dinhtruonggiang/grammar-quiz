@@ -1,0 +1,597 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Trắc Nghiệm Câu Điều Kiện Loại 3 - Lớp 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+        }
+        .explanation {
+            display: none;
+        }
+        .options label {
+            transition: all 0.2s;
+        }
+        .options label:hover {
+            background-color: #f0f9ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-blue-800 mb-2">Bài Trắc Nghiệm Câu Điều Kiện Loại 3</h1>
+            <p class="text-gray-600">Luyện tập câu điều kiện loại 3 (Type 3 Conditional) - Chuẩn bị cho kỳ thi lớp 10</p>
+            <div class="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                <p class="text-blue-800 font-medium">Câu điều kiện loại 3 (Type 3 Conditional): If + S + had V3/ed + O, S + would/should/could/might + have + V3/ed + O</p>
+                <p class="text-blue-700 mt-1">Diễn tả điều kiện không có thật trong quá khứ và kết quả trái ngược trong quá khứ</p>
+            </div>
+        </header>
+
+        <div id="quiz-container" class="bg-white rounded-xl shadow-md p-6 mb-8">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-semibold text-gray-800">Câu hỏi <span id="current-question">1</span>/<span id="total-questions">30</span></h2>
+                <div class="px-4 py-2 bg-blue-100 rounded-full text-blue-800 font-medium">
+                    Điểm: <span id="score">0</span>/<span id="max-score">30</span>
+                </div>
+            </div>
+
+            <div id="question-container" class="mb-6">
+                <!-- Questions will be loaded here -->
+            </div>
+
+            <div class="explanation p-4 rounded-lg mb-6 border">
+                <h3 class="font-semibold text-gray-800 mb-2">Giải thích:</h3>
+                <p id="explanation-text" class="text-gray-700"></p>
+            </div>
+
+            <div class="flex justify-between mt-6">
+                <button id="prev-btn" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 focus:outline-none disabled:opacity-50">Câu trước</button>
+                <button id="next-btn" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none disabled:opacity-50">Câu tiếp theo</button>
+            </div>
+        </div>
+
+        <div id="results-container" class="bg-white rounded-xl shadow-md p-6 text-center hidden">
+            <h2 class="text-2xl font-bold text-blue-800 mb-4">Kết quả bài làm</h2>
+            <div class="text-5xl font-bold text-blue-600 mb-4">
+                <span id="final-score">0</span>/<span id="final-max-score">30</span>
+            </div>
+            <p class="text-xl text-gray-700 mb-6">Điểm số của bạn: <span id="percentage">0</span>%</p>
+            <div id="feedback" class="p-4 rounded-lg mb-6 text-lg"></div>
+            <button id="restart-btn" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none">Làm lại bài</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "Hoàn thành câu: 'If you had not studied harder, _________.'",
+                options: [
+                    "you would have failed the exam",
+                    "you would fail the exam",
+                    "you will have failed the exam",
+                    "you had failed the exam"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'you would have failed the exam'. Trong câu điều kiện loại 3, chúng ta sử dụng 'would have + V3/ed' trong mệnh đề chính để diễn tả kết quả giả định trong quá khứ. Cấu trúc hoàn chỉnh: If + S + had (not) + V3/ed, S + would have + V3/ed."
+            },
+            {
+                question: "Hoàn thành câu: 'She didn't work hard last year. Therefore, she failed. If she _________.'",
+                options: [
+                    "had worked hard last year, she would not have failed",
+                    "worked hard last year, she would not fail",
+                    "has worked hard last year, she would not have failed",
+                    "would work hard last year, she had not failed"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'had worked hard last year, she would not have failed'. Đây là câu điều kiện loại 3 hoàn chỉnh, diễn tả một điều kiện không có thật trong quá khứ (thực tế cô ấy đã không làm việc chăm chỉ) và kết quả giả định trái ngược (lẽ ra cô ấy đã không thất bại)."
+            },
+            {
+                question: "Hoàn thành câu: 'The boy was punished because he stole the money of his father. If the boy _________.'",
+                options: [
+                    "had not stolen the money, he would not have been punished",
+                    "did not steal the money, he would not be punished",
+                    "would not steal the money, he had not been punished",
+                    "has not stolen the money, he would not have been punished"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'had not stolen the money, he would not have been punished'. Cậu bé đã bị phạt vì đã lấy tiền của cha, nên câu điều kiện loại 3 diễn tả: nếu cậu ấy đã không lấy tiền (had not stolen) thì đã không bị phạt (would not have been punished)."
+            },
+            {
+                question: "Hoàn thành câu: 'Mary went away because of Tom's violence. If the boy _________.'",
+                options: [
+                    "had not been violent, Mary would not have gone away",
+                    "was not violent, Mary would not go away",
+                    "would not be violent, Mary had not gone away",
+                    "had not been violent, Mary will not have gone away"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'had not been violent, Mary would not have gone away'. Thực tế Mary đã rời đi vì sự bạo lực của Tom, nên câu điều kiện loại 3 diễn tả: nếu Tom đã không bạo lực (had not been violent) thì Mary đã không rời đi (would not have gone away)."
+            },
+            {
+                question: "Hoàn thành câu: 'I didn't see you last night because there were so many people there. If _________.'",
+                options: [
+                    "there had not been so many people there, I would have seen you",
+                    "there were not so many people there, I would see you",
+                    "there would not be so many people there, I had seen you",
+                    "there were not so many people there, I will have seen you"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'there had not been so many people there, I would have seen you'. Thực tế là có quá nhiều người nên tôi đã không nhìn thấy bạn. Câu điều kiện loại 3 diễn tả: nếu đã không có nhiều người ở đó (had not been so many people) thì tôi đã nhìn thấy bạn (would have seen you)."
+            },
+            {
+                question: "Hoàn thành câu: 'Peter had a terrible accident because of the heavy rain. If it _________.'",
+                options: [
+                    "had not rained heavily, Peter would not have had a terrible accident",
+                    "did not rain heavily, Peter would not have a terrible accident",
+                    "would not rain heavily, Peter had not had a terrible accident",
+                    "has not rained heavily, Peter would not have had a terrible accident"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'had not rained heavily, Peter would not have had a terrible accident'. Thực tế Peter đã gặp tai nạn vì trời mưa to, nên câu điều kiện loại 3 diễn tả: nếu trời đã không mưa to (had not rained heavily) thì Peter đã không gặp tai nạn (would not have had a terrible accident)."
+            },
+            {
+                question: "Hoàn thành câu: 'John was so hungry because he didn't eat anything. If _________.'",
+                options: [
+                    "he had eaten something, he would not have been so hungry",
+                    "he ate something, he would not be so hungry",
+                    "he has eaten something, he would not have been so hungry",
+                    "he would eat something, he had not been so hungry"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'he had eaten something, he would not have been so hungry'. Thực tế John đã đói vì không ăn gì, nên câu điều kiện loại 3 diễn tả: nếu anh ấy đã ăn gì đó (had eaten something) thì anh ấy đã không quá đói (would not have been so hungry)."
+            },
+            {
+                question: "Hoàn thành câu: 'James really wanted to buy that nice coat, but he left his money at home. If _________.'",
+                options: [
+                    "he had not left his money at home, he would have bought that nice coat",
+                    "he did not leave his money at home, he would buy that nice coat",
+                    "he would not leave his money at home, he had bought that nice coat",
+                    "he has not left his money at home, he would have bought that nice coat"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'he had not left his money at home, he would have bought that nice coat'. Thực tế James đã để quên tiền ở nhà nên không mua được áo khoác, nên câu điều kiện loại 3 diễn tả: nếu anh ấy đã không để quên tiền ở nhà (had not left his money) thì anh ấy đã mua được chiếc áo khoác đẹp đó (would have bought that nice coat)."
+            },
+            {
+                question: "Hoàn thành câu: 'Nick came to the party late, so he couldn't meet Irene. If _________.'",
+                options: [
+                    "he had not come to the party late, he would have met Irene",
+                    "he did not come to the party late, he would meet Irene",
+                    "he would not come to the party late, he had met Irene",
+                    "he has not come to the party late, he would have met Irene"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'he had not come to the party late, he would have met Irene'. Thực tế Nick đã đến dự tiệc muộn nên không gặp được Irene, nên câu điều kiện loại 3 diễn tả: nếu anh ấy đã không đến muộn (had not come late) thì anh ấy đã gặp được Irene (would have met Irene)."
+            },
+            {
+                question: "Hoàn thành câu: 'I couldn't recognize my niece due to not meeting her before. If _________.'",
+                options: [
+                    "I had met her before, I would have recognized my niece",
+                    "I met her before, I would recognize my niece",
+                    "I would meet her before, I had recognized my niece",
+                    "I have met her before, I would have recognized my niece"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'I had met her before, I would have recognized my niece'. Thực tế tôi đã không nhận ra cháu gái vì chưa từng gặp trước đó, nên câu điều kiện loại 3 diễn tả: nếu tôi đã gặp cô ấy trước đó (had met her before) thì tôi đã nhận ra cháu gái của mình (would have recognized my niece)."
+            },
+            {
+                question: "Hoàn thành câu: 'The driver didn't see the stop sign, otherwise, the accident didn't happen. If _________.'",
+                options: [
+                    "the driver had seen the stop sign, the accident would not have happened",
+                    "the driver saw the stop sign, the accident would not happen",
+                    "the driver would see the stop sign, the accident had not happened",
+                    "the driver has seen the stop sign, the accident would not have happened"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'the driver had seen the stop sign, the accident would not have happened'. Thực tế tài xế đã không nhìn thấy biển báo dừng nên tai nạn đã xảy ra, nên câu điều kiện loại 3 diễn tả: nếu tài xế đã nhìn thấy biển báo dừng (had seen the stop sign) thì tai nạn đã không xảy ra (would not have happened)."
+            },
+            {
+                question: "Hoàn thành câu: 'She missed the train because she woke up late. If she _________.'",
+                options: [
+                    "had not woken up late, she would not have missed the train",
+                    "did not wake up late, she would not miss the train",
+                    "would not wake up late, she had not missed the train",
+                    "has not woken up late, she would not have missed the train"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'had not woken up late, she would not have missed the train'. Thực tế cô ấy đã lỡ chuyến tàu vì dậy muộn, nên câu điều kiện loại 3 diễn tả: nếu cô ấy đã không dậy muộn (had not woken up late) thì cô ấy đã không lỡ chuyến tàu (would not have missed the train)."
+            },
+            {
+                question: "Hoàn thành câu: 'Tom failed the exam because he didn't study enough. If _________.'",
+                options: [
+                    "he had studied enough, he would have passed the exam",
+                    "he studied enough, he would pass the exam",
+                    "he has studied enough, he would have passed the exam",
+                    "he would study enough, he had passed the exam"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'he had studied enough, he would have passed the exam'. Thực tế Tom đã trượt kỳ thi vì không học đủ, nên câu điều kiện loại 3 diễn tả: nếu anh ấy đã học đủ (had studied enough) thì anh ấy đã đỗ kỳ thi (would have passed the exam)."
+            },
+            {
+                question: "Hoàn thành câu: 'We got lost because we didn't bring a map. If _________.'",
+                options: [
+                    "we had brought a map, we would not have got lost",
+                    "we brought a map, we would not get lost",
+                    "we would bring a map, we had not got lost",
+                    "we have brought a map, we would not have got lost"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'we had brought a map, we would not have got lost'. Thực tế chúng tôi đã bị lạc vì không mang theo bản đồ, nên câu điều kiện loại 3 diễn tả: nếu chúng tôi đã mang theo bản đồ (had brought a map) thì chúng tôi đã không bị lạc (would not have got lost)."
+            },
+            {
+                question: "Hoàn thành câu: 'Sarah was late for the interview, so she didn't get the job. If _________.'",
+                options: [
+                    "she had not been late for the interview, she might have got the job",
+                    "she was not late for the interview, she might get the job",
+                    "she would not be late for the interview, she had got the job",
+                    "she has not been late for the interview, she might have got the job"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'she had not been late for the interview, she might have got the job'. Thực tế Sarah đã không được nhận việc vì đến phỏng vấn muộn, nên câu điều kiện loại 3 diễn tả: nếu cô ấy đã không đến muộn (had not been late) thì cô ấy có thể đã được nhận việc (might have got the job). Lưu ý rằng 'might have' được sử dụng để diễn tả khả năng có thể xảy ra nhưng không chắc chắn."
+            },
+            {
+                question: "Hoàn thành câu: 'The flowers died because I forgot to water them. If _________.'",
+                options: [
+                    "I had not forgotten to water them, the flowers would not have died",
+                    "I did not forget to water them, the flowers would not die",
+                    "I would not forget to water them, the flowers had not died",
+                    "I have not forgotten to water them, the flowers would not have died"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'I had not forgotten to water them, the flowers would not have died'. Thực tế hoa đã chết vì tôi quên tưới nước, nên câu điều kiện loại 3 diễn tả: nếu tôi đã không quên tưới nước cho chúng (had not forgotten to water them) thì hoa đã không chết (would not have died)."
+            },
+            {
+                question: "Hoàn thành câu: 'He couldn't afford a new car because he spent all his money on holiday. If _________.'",
+                options: [
+                    "he had not spent all his money on holiday, he could have afforded a new car",
+                    "he did not spend all his money on holiday, he could afford a new car",
+                    "he would not spend all his money on holiday, he had afforded a new car",
+                    "he has not spent all his money on holiday, he could have afforded a new car"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'he had not spent all his money on holiday, he could have afforded a new car'. Thực tế anh ấy đã không mua nổi xe mới vì đã tiêu hết tiền vào kỳ nghỉ, nên câu điều kiện loại 3 diễn tả: nếu anh ấy đã không tiêu hết tiền vào kỳ nghỉ (had not spent all his money) thì anh ấy đã có thể mua nổi một chiếc xe mới (could have afforded a new car)."
+            },
+            {
+                question: "Hoàn thành câu: 'We didn't go to the beach because it rained all day. If _________.'",
+                options: [
+                    "it had not rained all day, we would have gone to the beach",
+                    "it did not rain all day, we would go to the beach",
+                    "it would not rain all day, we had gone to the beach",
+                    "it has not rained all day, we would have gone to the beach"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'it had not rained all day, we would have gone to the beach'. Thực tế chúng tôi đã không đi biển vì trời mưa cả ngày, nên câu điều kiện loại 3 diễn tả: nếu trời đã không mưa cả ngày (had not rained all day) thì chúng tôi đã đi biển (would have gone to the beach)."
+            },
+            {
+                question: "Hoàn thành câu: 'I didn't buy the jacket because it was too expensive. If _________.'",
+                options: [
+                    "it had not been too expensive, I would have bought the jacket",
+                    "it was not too expensive, I would buy the jacket",
+                    "it would not be too expensive, I had bought the jacket",
+                    "it has not been too expensive, I would have bought the jacket"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'it had not been too expensive, I would have bought the jacket'. Thực tế tôi đã không mua áo khoác vì nó quá đắt, nên câu điều kiện loại 3 diễn tả: nếu nó đã không quá đắt (had not been too expensive) thì tôi đã mua chiếc áo khoác đó (would have bought the jacket)."
+            },
+            {
+                question: "Hoàn thành câu: 'She didn't call him because she lost his phone number. If _________.'",
+                options: [
+                    "she had not lost his phone number, she would have called him",
+                    "she did not lose his phone number, she would call him",
+                    "she would not lose his phone number, she had called him",
+                    "she has not lost his phone number, she would have called him"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'she had not lost his phone number, she would have called him'. Thực tế cô ấy đã không gọi cho anh ấy vì đã mất số điện thoại, nên câu điều kiện loại 3 diễn tả: nếu cô ấy đã không mất số điện thoại của anh ấy (had not lost his phone number) thì cô ấy đã gọi cho anh ấy (would have called him)."
+            },
+            {
+                question: "Hoàn thành câu: 'The team lost the match because their best player was injured. If _________.'",
+                options: [
+                    "their best player had not been injured, the team would not have lost the match",
+                    "their best player was not injured, the team would not lose the match",
+                    "their best player would not be injured, the team had not lost the match",
+                    "their best player has not been injured, the team would not have lost the match"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'their best player had not been injured, the team would not have lost the match'. Thực tế đội đã thua trận đấu vì cầu thủ giỏi nhất bị chấn thương, nên câu điều kiện loại 3 diễn tả: nếu cầu thủ giỏi nhất của họ đã không bị chấn thương (had not been injured) thì đội đã không thua trận đấu (would not have lost the match)."
+            },
+            {
+                question: "Hoàn thành câu: 'I was tired yesterday because I stayed up late. If _________.'",
+                options: [
+                    "I had not stayed up late, I would not have been tired yesterday",
+                    "I did not stay up late, I would not be tired yesterday",
+                    "I would not stay up late, I had not been tired yesterday",
+                    "I have not stayed up late, I would not have been tired yesterday"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'I had not stayed up late, I would not have been tired yesterday'. Thực tế tôi đã mệt hôm qua vì thức khuya, nên câu điều kiện loại 3 diễn tả: nếu tôi đã không thức khuya (had not stayed up late) thì tôi đã không mệt hôm qua (would not have been tired yesterday)."
+            },
+            {
+                question: "Hoàn thành câu: 'They arrived late at the theater, so they missed the first act. If _________.'",
+                options: [
+                    "they had arrived on time, they would not have missed the first act",
+                    "they arrived on time, they would not miss the first act",
+                    "they would arrive on time, they had not missed the first act",
+                    "they have arrived on time, they would not have missed the first act"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'they had arrived on time, they would not have missed the first act'. Thực tế họ đã bỏ lỡ màn đầu tiên vì đến nhà hát muộn, nên câu điều kiện loại 3 diễn tả: nếu họ đã đến đúng giờ (had arrived on time) thì họ đã không bỏ lỡ màn đầu tiên (would not have missed the first act)."
+            },
+            {
+                question: "Hoàn thành câu: 'He got a bad grade because he didn't prepare well for the test. If _________.'",
+                options: [
+                    "he had prepared well for the test, he would have got a better grade",
+                    "he prepared well for the test, he would get a better grade",
+                    "he would prepare well for the test, he had got a better grade",
+                    "he has prepared well for the test, he would have got a better grade"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'he had prepared well for the test, he would have got a better grade'. Thực tế anh ấy đã bị điểm kém vì không chuẩn bị tốt cho bài kiểm tra, nên câu điều kiện loại 3 diễn tả: nếu anh ấy đã chuẩn bị tốt cho bài kiểm tra (had prepared well) thì anh ấy đã được điểm tốt hơn (would have got a better grade)."
+            },
+            {
+                question: "Hoàn thành câu: 'I didn't attend the party because I was sick. If _________.'",
+                options: [
+                    "I had not been sick, I would have attended the party",
+                    "I was not sick, I would attend the party",
+                    "I would not be sick, I had attended the party",
+                    "I have not been sick, I would have attended the party"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'I had not been sick, I would have attended the party'. Thực tế tôi đã không tham dự bữa tiệc vì bị ốm, nên câu điều kiện loại 3 diễn tả: nếu tôi đã không bị ốm (had not been sick) thì tôi đã tham dự bữa tiệc (would have attended the party)."
+            },
+            {
+                question: "Hoàn thành câu: 'She didn't accept the job offer because the salary was too low. If _________.'",
+                options: [
+                    "the salary had not been too low, she would have accepted the job offer",
+                    "the salary was not too low, she would accept the job offer",
+                    "the salary would not be too low, she had accepted the job offer",
+                    "the salary has not been too low, she would have accepted the job offer"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'the salary had not been too low, she would have accepted the job offer'. Thực tế cô ấy đã không chấp nhận lời đề nghị công việc vì mức lương quá thấp, nên câu điều kiện loại 3 diễn tả: nếu mức lương đã không quá thấp (had not been too low) thì cô ấy đã chấp nhận lời đề nghị công việc (would have accepted the job offer)."
+            },
+            {
+                question: "Hoàn thành câu: 'The plants died because there was a drought. If _________.'",
+                options: [
+                    "there had not been a drought, the plants would not have died",
+                    "there was not a drought, the plants would not die",
+                    "there would not be a drought, the plants had not died",
+                    "there has not been a drought, the plants would not have died"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'there had not been a drought, the plants would not have died'. Thực tế cây đã chết vì có hạn hán, nên câu điều kiện loại 3 diễn tả: nếu đã không có hạn hán (had not been a drought) thì cây đã không chết (would not have died)."
+            },
+            {
+                question: "Hoàn thành câu: 'They didn't reach the summit because the weather turned bad. If _________.'",
+                options: [
+                    "the weather had not turned bad, they would have reached the summit",
+                    "the weather did not turn bad, they would reach the summit",
+                    "the weather would not turn bad, they had reached the summit",
+                    "the weather has not turned bad, they would have reached the summit"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'the weather had not turned bad, they would have reached the summit'. Thực tế họ đã không lên đến đỉnh vì thời tiết chuyển xấu, nên câu điều kiện loại 3 diễn tả: nếu thời tiết đã không chuyển xấu (had not turned bad) thì họ đã lên đến đỉnh (would have reached the summit)."
+            },
+            {
+                question: "Hoàn thành câu: 'I didn't hear about the concert because I was out of town. If _________.'",
+                options: [
+                    "I had not been out of town, I might have heard about the concert",
+                    "I was not out of town, I might hear about the concert",
+                    "I would not be out of town, I had heard about the concert",
+                    "I have not been out of town, I might have heard about the concert"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'I had not been out of town, I might have heard about the concert'. Thực tế tôi đã không nghe về buổi hòa nhạc vì tôi không có ở trong thành phố, nên câu điều kiện loại 3 diễn tả: nếu tôi đã không ra khỏi thành phố (had not been out of town) thì tôi có thể đã nghe về buổi hòa nhạc (might have heard about the concert)."
+            },
+            {
+                question: "Hoàn thành câu: 'She couldn't finish her assignment because her computer crashed. If _________.'",
+                options: [
+                    "her computer had not crashed, she would have finished her assignment",
+                    "her computer did not crash, she would finish her assignment",
+                    "her computer would not crash, she had finished her assignment",
+                    "her computer has not crashed, she would have finished her assignment"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'her computer had not crashed, she would have finished her assignment'. Thực tế cô ấy đã không hoàn thành bài tập vì máy tính bị hỏng, nên câu điều kiện loại 3 diễn tả: nếu máy tính của cô ấy đã không bị hỏng (had not crashed) thì cô ấy đã hoàn thành bài tập của mình (would have finished her assignment)."
+            },
+            {
+                question: "Hoàn thành câu: 'He missed the bus because he overslept. If _________.'",
+                options: [
+                    "he had not overslept, he would not have missed the bus",
+                    "he did not oversleep, he would not miss the bus",
+                    "he would not oversleep, he had not missed the bus",
+                    "he has not overslept, he would not have missed the bus"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'he had not overslept, he would not have missed the bus'. Thực tế anh ấy đã lỡ chuyến xe buýt vì ngủ quên, nên câu điều kiện loại 3 diễn tả: nếu anh ấy đã không ngủ quên (had not overslept) thì anh ấy đã không lỡ chuyến xe buýt (would not have missed the bus)."
+            },
+            {
+                question: "Hoàn thành câu: 'We got stuck in traffic because we left during rush hour. If _________.'",
+                options: [
+                    "we had not left during rush hour, we would not have got stuck in traffic",
+                    "we did not leave during rush hour, we would not get stuck in traffic",
+                    "we would not leave during rush hour, we had not got stuck in traffic",
+                    "we have not left during rush hour, we would not have got stuck in traffic"
+                ],
+                correctIndex: 0,
+                explanation: "Đáp án đúng là 'we had not left during rush hour, we would not have got stuck in traffic'. Thực tế chúng tôi đã bị kẹt xe vì khởi hành vào giờ cao điểm, nên câu điều kiện loại 3 diễn tả: nếu chúng tôi đã không khởi hành vào giờ cao điểm (had not left during rush hour) thì chúng tôi đã không bị kẹt xe (would not have got stuck in traffic)."
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let answers = new Array(questions.length).fill(null);
+        let questionsAnswered = 0;
+
+        function loadQuestion(index) {
+            const question = questions[index];
+            const questionContainer = document.getElementById('question-container');
+            let optionsHTML = '';
+
+            question.options.forEach((option, i) => {
+                const isDisabled = answers[index] !== null ? 'disabled' : '';
+                const isChecked = answers[index] === i ? 'checked' : '';
+                optionsHTML += `
+                    <div class="options mb-2">
+                        <label class="flex items-center p-3 border rounded-lg ${answers[index] === i ? (i === question.correctIndex ? 'bg-green-100 border-green-500' : 'bg-red-100 border-red-500') : 'hover:border-blue-400'} cursor-pointer">
+                            <input type="radio" name="question" value="${i}" ${isChecked} ${isDisabled} class="mr-3 h-4 w-4 text-blue-600" onclick="selectAnswer(${i})">
+                            <span class="text-gray-800">${option}</span>
+                        </label>
+                    </div>
+                `;
+            });
+
+            questionContainer.innerHTML = `
+                <h3 class="text-lg font-medium text-gray-800 mb-4">${question.question}</h3>
+                <div class="space-y-2">
+                    ${optionsHTML}
+                </div>
+            `;
+
+            // Update explanation if already answered
+            if (answers[index] !== null) {
+                const explanation = document.querySelector('.explanation');
+                explanation.style.display = 'block';
+                document.getElementById('explanation-text').textContent = question.explanation;
+                
+                if (answers[index] === question.correctIndex) {
+                    explanation.classList.remove('bg-red-50', 'text-red-800', 'border-red-200');
+                    explanation.classList.add('bg-green-50', 'text-green-800', 'border-green-200');
+                } else {
+                    explanation.classList.remove('bg-green-50', 'text-green-800', 'border-green-200');
+                    explanation.classList.add('bg-red-50', 'text-red-800', 'border-red-200');
+                }
+            } else {
+                document.querySelector('.explanation').style.display = 'none';
+            }
+
+            // Update navigation buttons
+            document.getElementById('prev-btn').disabled = index === 0;
+            document.getElementById('next-btn').textContent = index === questions.length - 1 ? 'Kết thúc' : 'Câu tiếp theo';
+            document.getElementById('current-question').textContent = index + 1;
+        }
+
+        function selectAnswer(optionIndex) {
+            if (answers[currentQuestionIndex] === null) {
+                answers[currentQuestionIndex] = optionIndex;
+                questionsAnswered++;
+                
+                // Show explanation
+                const explanation = document.querySelector('.explanation');
+                explanation.style.display = 'block';
+                document.getElementById('explanation-text').textContent = questions[currentQuestionIndex].explanation;
+                
+                if (optionIndex === questions[currentQuestionIndex].correctIndex) {
+                    explanation.classList.remove('bg-red-50', 'text-red-800', 'border-red-200');
+                    explanation.classList.add('bg-green-50', 'text-green-800', 'border-green-200');
+                } else {
+                    explanation.classList.remove('bg-green-50', 'text-green-800', 'border-green-200');
+                    explanation.classList.add('bg-red-50', 'text-red-800', 'border-red-200');
+                }
+                
+                // Update score
+                updateScore();
+                
+                // Reload question to update UI
+                loadQuestion(currentQuestionIndex);
+            }
+        }
+
+        function updateScore() {
+            const score = answers.filter((answer, index) => answer === questions[index].correctIndex).length;
+            document.getElementById('score').textContent = score;
+        }
+
+        function showResults() {
+            const score = answers.filter((answer, index) => answer === questions[index].correctIndex).length;
+            const percentage = Math.round((score / questions.length) * 100);
+            
+            document.getElementById('final-score').textContent = score;
+            document.getElementById('percentage').textContent = percentage;
+            
+            const feedback = document.getElementById('feedback');
+            if (percentage >= 90) {
+                feedback.innerHTML = 'Xuất sắc! Bạn đã nắm vững câu điều kiện loại 3.';
+                feedback.className = 'p-4 rounded-lg mb-6 text-lg bg-green-50 text-green-800';
+            } else if (percentage >= 70) {
+                feedback.innerHTML = 'Tốt! Bạn đã hiểu khá tốt về câu điều kiện loại 3.';
+                feedback.className = 'p-4 rounded-lg mb-6 text-lg bg-blue-50 text-blue-800';
+            } else if (percentage >= 50) {
+                feedback.innerHTML = 'Bạn cần luyện tập thêm để nắm vững câu điều kiện loại 3.';
+                feedback.className = 'p-4 rounded-lg mb-6 text-lg bg-yellow-50 text-yellow-800';
+            } else {
+                feedback.innerHTML = 'Bạn cần ôn lại cấu trúc câu điều kiện loại 3 và luyện tập nhiều hơn.';
+                feedback.className = 'p-4 rounded-lg mb-6 text-lg bg-red-50 text-red-800';
+            }
+            
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('results-container').classList.remove('hidden');
+        }
+
+        document.getElementById('next-btn').addEventListener('click', function() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion(currentQuestionIndex);
+            } else {
+                showResults();
+            }
+        });
+
+        document.getElementById('prev-btn').addEventListener('click', function() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion(currentQuestionIndex);
+            }
+        });
+
+        document.getElementById('restart-btn').addEventListener('click', function() {
+            currentQuestionIndex = 0;
+            answers = new Array(questions.length).fill(null);
+            questionsAnswered = 0;
+            
+            document.getElementById('score').textContent = '0';
+            document.getElementById('quiz-container').classList.remove('hidden');
+            document.getElementById('results-container').classList.add('hidden');
+            
+            loadQuestion(currentQuestionIndex);
+        });
+
+        // Initialize
+        document.getElementById('total-questions').textContent = questions.length;
+        document.getElementById('max-score').textContent = questions.length;
+        document.getElementById('final-max-score').textContent = questions.length;
+        loadQuestion(currentQuestionIndex);
+
+        // Make selectAnswer function available globally
+        window.selectAnswer = selectAnswer;
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
